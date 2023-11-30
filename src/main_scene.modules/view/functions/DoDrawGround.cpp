@@ -1,5 +1,4 @@
 #include "DoDrawGround.h"
-#include "configuration/model/Configuration.h"
 #include "core.drawing/view/ImageDrawingView.h"
 #include "world.structure/model/Tile.h"
 
