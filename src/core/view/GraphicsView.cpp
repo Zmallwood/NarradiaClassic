@@ -1,6 +1,7 @@
 #include "GraphicsView.h"
 #include "../model/Engine.h"
 #include "../model/Graphics.h"
+#include "GraphicsGLView.h"
 
 namespace Narradia {
     /**
@@ -16,29 +17,29 @@ namespace Narradia {
                 window_size.height, window_flags),
             SDLDeleter());
 
-        auto renderer = std::shared_ptr<SDL_Renderer>(
-            SDL_CreateRenderer(window.get(), -1, SDL_RENDERER_ACCELERATED),
-            SDLDeleter());
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+        if (SDL_GL_CreateContext(window.get()) == nullptr) {
+            std::cout << "OpenGL context could not be created! SDL Error: "
+                      << std::string(SDL_GetError()) << std::endl;
+            return;
+        }
 
         Graphics::Get()->set_window(window);
-        Graphics::Get()->set_renderer(renderer);
+        GraphicsGLView::Touch();
     }
 
     /**
      * Clear canvas in the beginning of each new frame.
      */
     void GraphicsView::ClearCanvas() {
-        auto renderer = Graphics::Get()->renderer();
-        auto clear_color = Graphics::Get()->clear_color();
-        SDL_SetRenderDrawColor(
-            renderer.get(), clear_color.r, clear_color.g, clear_color.b, 255);
-        SDL_RenderClear(renderer.get());
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     /**
      * Present canvas to the screen at the end of each frame.
      */
     void GraphicsView::PresentCanvas() {
-        SDL_RenderPresent(Graphics::Get()->renderer().get());
+        SDL_GL_SwapWindow(Graphics::Get()->window().get());
     }
 }

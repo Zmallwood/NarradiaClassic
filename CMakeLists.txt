@@ -57,10 +57,13 @@ set(PCH_FILES
 "src/matter/model/RectF.h"
 "src/matter/model/Point.h"
 "src/matter/model/PointF.h"
+"src/matter/model/GLRectF.h"
+"src/matter/model/Vertex2F.h"
 
 "src/common/system/functions/SingletonsCleanup.h"
 "src/common/system/functions/Utilities.h"
 "src/common/system/Singleton.h"
+"src/common/system/Typedefs.h"
 "src/core/model/SDLDeleter.h"
 )
 

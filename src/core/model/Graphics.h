@@ -14,13 +14,13 @@ namespace Narradia {
             window_ = value;
         }
 
-        std::shared_ptr<SDL_Renderer> renderer() {
-            return renderer_;
-        }
+        //std::shared_ptr<SDL_Renderer> renderer() {
+        //    return renderer_;
+        //}
 
-        void set_renderer(std::shared_ptr<SDL_Renderer> value) {
-            renderer_ = value;
-        }
+        //void set_renderer(std::shared_ptr<SDL_Renderer> value) {
+        //    renderer_ = value;
+        //}
 
         Size window_size() {
             return window_size_;
@@ -36,9 +36,10 @@ namespace Narradia {
 
       private:
         std::shared_ptr<SDL_Window> window_;
-        std::shared_ptr<SDL_Renderer> renderer_;
+        //std::shared_ptr<SDL_Renderer> renderer_;
         Size window_size_ = {660, 660};
-        Uint32 window_flags_ = SDL_WINDOW_FULLSCREEN_DESKTOP;
+        Uint32 window_flags_ = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN |
+                               SDL_WINDOW_FULLSCREEN_DESKTOP;
         Color clear_color_ = {0, 150, 255, 255};
     };
 }

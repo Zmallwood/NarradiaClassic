@@ -24,14 +24,15 @@ namespace Narradia {
 
     std::shared_ptr<SDL_Texture>
     ImageBank::LoadSingleImage(std::string_view abs_file_path) {
-        auto surface = IMG_Load(abs_file_path.data());
-        auto texture = std::shared_ptr<SDL_Texture>(
-            SDL_CreateTextureFromSurface(
-                Graphics::Get()->renderer().get(), surface),
-            SDLDeleter());
-        SDL_FreeSurface(surface);
-
-        return texture;
+        //        auto surface = IMG_Load(abs_file_path.data());
+        //        auto texture = std::shared_ptr<SDL_Texture>(
+        //            SDL_CreateTextureFromSurface(
+        //                Graphics::Get()->renderer().get(), surface),
+        //            SDLDeleter());
+        //        SDL_FreeSurface(surface);
+        //
+        //        return texture;
+        return nullptr;
     }
 
     SDL_Texture *ImageBank::GetImage(std::string_view image_name) {

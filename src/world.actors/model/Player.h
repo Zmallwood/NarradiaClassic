@@ -29,9 +29,18 @@ namespace Narradia {
             ticks_last_move_ = value;
         }
 
+        Point destination() {
+            return destination_;
+        }
+
+        void set_destination(Point value) {
+            destination_ = value;
+        }
+
       private:
         Point position_;
         float movement_speed_ = 2.0f;
         int ticks_last_move_ = 0;
+        Point destination_ = {-1, -1};
     };
 }

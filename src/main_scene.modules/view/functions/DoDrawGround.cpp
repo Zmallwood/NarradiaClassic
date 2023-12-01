@@ -1,5 +1,4 @@
 #include "DoDrawGround.h"
-#include "core.drawing/view/ImageDrawingView.h"
 #include "world.structure/model/Tile.h"
 
 namespace Narradia {
@@ -15,10 +14,5 @@ namespace Narradia {
             if (anim_index > 0)
                 ground = "GroundWater_" + std::to_string(anim_index);
         }
-
-        ImageDrawingView::Get()->DrawImage(
-            ground, {tile_info.col * tile_info.tile_width,
-                     tile_info.row * tile_info.tile_height,
-                     tile_info.tile_width, tile_info.tile_height});
     }
 }

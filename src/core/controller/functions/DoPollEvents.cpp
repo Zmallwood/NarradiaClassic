@@ -1,5 +1,6 @@
 #include "DoPollEvents.h"
 #include "../../../core.input/model/KeyboardInput.h"
+#include "../../../core.input/model/MouseInput.h"
 #include "../../model/Engine.h"
 
 namespace Narradia {
@@ -20,10 +21,10 @@ namespace Narradia {
                 KeyboardInput::Get()->RegisterReleasedKey(event.key.keysym.sym);
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                //                MouseInput::Get()->RegisterPress(event.button.button);
+                MouseInput::Get()->RegisterPress(event.button.button);
                 break;
             case SDL_MOUSEBUTTONUP:
-                //                MouseInput::Get()->RegisterRelease(event.button.button);
+                MouseInput::Get()->RegisterRelease(event.button.button);
                 break;
             case SDL_MOUSEMOTION:
                 break;
