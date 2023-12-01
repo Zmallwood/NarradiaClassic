@@ -17,16 +17,18 @@ namespace Narradia {
         UseVaoBegin(vao_id);
         auto index_buffer_id =
             renderer_base_->GenerateNewBufferId(BufferTypes::Indices, vao_id);
-        auto position_buffer_id =
-            renderer_base_->GenerateNewBufferId(BufferTypes::Positions2D, vao_id);
+        auto position_buffer_id = renderer_base_->GenerateNewBufferId(
+            BufferTypes::Positions2D, vao_id);
         auto color_buffer_id =
             renderer_base_->GenerateNewBufferId(BufferTypes::Colors, vao_id);
         SetIndicesData(
             index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
-        SetPositions2DData(
-            position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
-        SetColorsData(
-            color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
+        SetData(
+            position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
+            BufferTypes::Positions2D);
+        SetData(
+            color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
+            BufferTypes::Colors);
         UseVaoEnd();
 
         return vao_id;
@@ -66,8 +68,11 @@ namespace Narradia {
         auto color_buffer_id =
             renderer_base_->GetBufferId(BufferTypes::Colors, vao_id);
         UpdateIndicesData(index_buffer_id, indices);
-        UpdatePositions2DData(position_buffer_id, positions, kLocationPosition);
-        UpdateColorsData(color_buffer_id, colors, kLocationColor);
+        UpdateData(
+            position_buffer_id, positions, BufferTypes::Positions2D,
+            kLocationPosition);
+        UpdateData(
+            color_buffer_id, colors, BufferTypes::Colors, kLocationColor);
         glDrawElements(
             GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle,
             GL_UNSIGNED_INT, NULL);

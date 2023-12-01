@@ -1,6 +1,5 @@
 #include "RendererBaseView.h"
 #include "../model/ShaderProgram.h"
-#include "core.render/model/BufferTypes.h"
 #include "core.render/model/RendererBase.h"
 #include "core.render/view/ShaderProgramView.h"
 
@@ -20,6 +19,15 @@ namespace Narradia {
                 sizeof(float),
             data, GL_DYNAMIC_DRAW);
     }
+
+    void RendererBaseView::SetData(
+        GLuint vbo_id, int num_vertices, const void *data,
+        BufferTypes buffer_type, int layout_location) const {
+        SetArrayBufferData(
+            vbo_id, num_vertices, data,
+            RendererBase::kNumFloatsPerEntry.at(buffer_type), layout_location);
+    }
+
     void RendererBaseView::SetArrayBufferData(
         GLuint vbo_id, int num_vertices, const void *data,
         int num_floats_per_entry, int layout_location) const {
@@ -34,51 +42,6 @@ namespace Narradia {
                 (const GLvoid *)0);
             glEnableVertexAttribArray(layout_location);
         }
-    }
-
-    void RendererBaseView::SetPositions2DData(
-        GLuint pos_2d_vbo_id, int num_vertices, const void *data,
-        int layout_location) const {
-        SetArrayBufferData(
-            pos_2d_vbo_id, num_vertices, data,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Positions2D),
-            layout_location);
-    }
-
-    void RendererBaseView::SetPositions3DData(
-        GLuint pos_3d_vbo_id, int num_vertices, const void *data,
-        int layout_location) const {
-        SetArrayBufferData(
-            pos_3d_vbo_id, num_vertices, data,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Positions3D),
-            layout_location);
-    }
-
-    void RendererBaseView::SetUvsData(
-        GLuint uv_vbo_id, int num_vertices, const void *data,
-        int layout_location) const {
-        SetArrayBufferData(
-            uv_vbo_id, num_vertices, data,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Uvs),
-            layout_location);
-    }
-
-    void RendererBaseView::SetColorsData(
-        GLuint color_vbo_id, int num_vertices, const void *data,
-        int layout_location) const {
-        SetArrayBufferData(
-            color_vbo_id, num_vertices, data,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Colors),
-            layout_location);
-    }
-
-    void RendererBaseView::SetNormalsData(
-        GLuint normal_vbo_id, int num_vertices, const void *data,
-        int layout_location) const {
-        SetArrayBufferData(
-            normal_vbo_id, num_vertices, data,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Normals),
-            layout_location);
     }
 
     void RendererBaseView::UpdateIndicesData(
@@ -101,47 +64,11 @@ namespace Narradia {
         glEnableVertexAttribArray(layout_location);
     }
 
-    void RendererBaseView::UpdatePositions2DData(
-        GLuint positions_vbo_id, std::vector<float> &positions,
-        int layout_location) const {
+    void RendererBaseView::UpdateData(
+        GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
+        int layout_location) {
         UpdateArrayBufferData(
-            positions_vbo_id, positions,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Positions2D),
-            layout_location);
-    }
-
-    void RendererBaseView::UpdatePositions3DData(
-        GLuint positions_vbo_id, std::vector<float> &positions,
-        int layout_location) const {
-        UpdateArrayBufferData(
-            positions_vbo_id, positions,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Positions3D),
-            layout_location);
-    }
-
-    void RendererBaseView::UpdateUvsData(
-        GLuint uvs_vbo_id, std::vector<float> &uvs, int layout_location) const {
-        UpdateArrayBufferData(
-            uvs_vbo_id, uvs,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Uvs),
-            layout_location);
-    }
-
-    void RendererBaseView::UpdateColorsData(
-        GLuint colors_vbo_id, std::vector<float> &colors,
-        int layout_location) const {
-        UpdateArrayBufferData(
-            colors_vbo_id, colors,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Colors),
-            layout_location);
-    }
-
-    void RendererBaseView::UpdateNormalsData(
-        GLuint normals_vbo_id, std::vector<float> &normals,
-        int layout_location) const {
-        UpdateArrayBufferData(
-            normals_vbo_id, normals,
-            RendererBase::kNumFloatsPerEntry.at(BufferTypes::Normals),
+            vbo_id, data, RendererBase::kNumFloatsPerEntry.at(buffer_type),
             layout_location);
     }
 
