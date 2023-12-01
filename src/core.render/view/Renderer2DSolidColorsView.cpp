@@ -18,7 +18,7 @@ namespace Narradia {
         auto index_buffer_id =
             renderer_base_->GenerateNewBufferId(BufferTypes::Indices, vao_id);
         auto position_buffer_id =
-            renderer_base_->GenerateNewBufferId(BufferTypes::Positions, vao_id);
+            renderer_base_->GenerateNewBufferId(BufferTypes::Positions2D, vao_id);
         auto color_buffer_id =
             renderer_base_->GenerateNewBufferId(BufferTypes::Colors, vao_id);
         SetIndicesData(
@@ -62,7 +62,7 @@ namespace Narradia {
         auto index_buffer_id =
             renderer_base_->GetBufferId(BufferTypes::Indices, vao_id);
         auto position_buffer_id =
-            renderer_base_->GetBufferId(BufferTypes::Positions, vao_id);
+            renderer_base_->GetBufferId(BufferTypes::Positions2D, vao_id);
         auto color_buffer_id =
             renderer_base_->GetBufferId(BufferTypes::Colors, vao_id);
         UpdateIndicesData(index_buffer_id, indices);
