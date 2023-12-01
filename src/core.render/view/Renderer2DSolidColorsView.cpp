@@ -74,7 +74,7 @@ namespace Narradia {
         UseVaoEnd();
     }
 
-    void Renderer2DSolidColorsView::Cleanup() {
+    Renderer2DSolidColorsView::~Renderer2DSolidColorsView() {
         CleanupBase();
     }
 }

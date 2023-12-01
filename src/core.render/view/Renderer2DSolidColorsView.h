@@ -1,21 +1,22 @@
 #pragma once
 #include "RendererBaseView.h"
 
-namespace Narradia
-{
+namespace Narradia {
 
-    class Renderer2DSolidColorsView : public RendererBaseView, public Singleton<Renderer2DSolidColorsView> {
-        public:
-            Renderer2DSolidColorsView();
+    class Renderer2DSolidColorsView
+        : public RendererBaseView,
+          public Singleton<Renderer2DSolidColorsView> {
+      public:
+        Renderer2DSolidColorsView();
 
-            RenderId NewRect();
+        ~Renderer2DSolidColorsView();
 
-            void FillRect(RenderId vao_id, RectF rect, Color color);
+        RenderId NewRect();
 
-            void Cleanup();
+        void FillRect(RenderId vao_id, RectF rect, Color color);
 
-        private:
-            const int kLocationPosition = 0;
-            const int kLocationColor = 1;
+      private:
+        const int kLocationPosition = 0;
+        const int kLocationColor = 1;
     };
 }

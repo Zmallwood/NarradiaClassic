@@ -5,7 +5,6 @@ namespace Narradia {
     class GraphicsGLView : public Singleton<GraphicsGLView> {
       public:
         GraphicsGLView();
-        void Cleanup();
 
       private:
         static constexpr bool kCullFace = false;

@@ -7,8 +7,14 @@
 #include "functions/DoDrawTileSymbols.h"
 #include "functions/DoDrawObjects.h"
 #include "functions/DoDrawPlayer.h"
+#include "core.render/view/Renderer2DSolidColorsView.h"
 
 namespace Narradia {
+    WorldDisplayModuleView::WorldDisplayModuleView() {
+
+
+    }
+
     void WorldDisplayModuleView::Render() {
         auto aspect_ratio = GetAspectRatio();
         auto tile_width = kTileWidth;

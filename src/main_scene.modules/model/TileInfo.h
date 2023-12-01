@@ -12,5 +12,7 @@ namespace Narradia {
         int row = -1;
         float tile_width = 0.0f;
         float tile_height = 0.0f;
+        RenderId rid_ground = -1;
+        RenderId rid_object = -1;
     };
 }
