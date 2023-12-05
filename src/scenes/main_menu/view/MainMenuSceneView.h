@@ -5,14 +5,14 @@ namespace Narradia {
     /**
      * View for MainMenuScene.
      */
-    class MainMenuSceneView : public ISceneView {
+    class MainMenuSceneView : public ISceneView,
+                              public Singleton<MainMenuSceneView> {
       public:
         MainMenuSceneView();
 
       private:
         void RenderDerived() override;
 
-        RenderId rid_box;
         RenderId rid_background;
     };
 }

@@ -5,14 +5,13 @@ namespace Narradia {
     /**
      * View for IntroScene.
      */
-    class IntroSceneView : public ISceneView {
+    class IntroSceneView : public ISceneView, public Singleton<IntroSceneView> {
       public:
         IntroSceneView();
 
       private:
         void RenderDerived() override;
 
-        RenderId rid_box;
         RenderId rid_background;
         RenderId rid_text;
     };

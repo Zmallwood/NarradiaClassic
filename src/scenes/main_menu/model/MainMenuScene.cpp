@@ -4,7 +4,7 @@
 namespace Narradia {
     MainMenuScene::MainMenuScene() {
         scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
-            "Play", RectF{0.1f, 0.1f, 0.2f, 0.1f}, [] {}));
+            "Play", RectF{0.4f, 0.4f, 0.2f, 0.1f}, [] {}));
     }
 
     /**

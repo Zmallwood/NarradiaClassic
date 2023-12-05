@@ -9,12 +9,9 @@ namespace Narradia {
      * Initialize scene views that will be used.
      */
     SceneMngrView::SceneMngrView() {
-        scene_views_.insert(
-            {SceneNames::Intro, std::make_shared<IntroSceneView>()});
-        scene_views_.insert(
-            {SceneNames::MainMenu, std::make_shared<MainMenuSceneView>()});
-        scene_views_.insert(
-            {SceneNames::Main, std::make_shared<MainSceneView>()});
+        scene_views_.insert({SceneNames::Intro, IntroSceneView::Get()});
+        scene_views_.insert({SceneNames::MainMenu, MainMenuSceneView::Get()});
+        scene_views_.insert({SceneNames::Main, MainSceneView::Get()});
     }
 
     /**

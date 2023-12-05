@@ -16,4 +16,9 @@ namespace Narradia {
     PointF RectF::GetCenter() const {
         return {x + width / 2, y + height / 2};
     }
+
+    bool RectF::Contains(PointF point) const {
+        return point.x >= x && point.y >= y && point.x < x + width &&
+               point.y < y + height;
+    }
 }

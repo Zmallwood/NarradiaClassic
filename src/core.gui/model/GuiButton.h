@@ -7,9 +7,8 @@ namespace Narradia {
         GuiButton(
             const std::string_view &text, RectF bounds,
             std::function<void()> action,
-            const std::string_view &image_name = "GuiButtonBack",
-            const std::string_view &hovered_image_name =
-                "GuiButtonBackHovered");
+            std::string_view image_name = "GuiButtonBack",
+            std::string_view hovered_image_name = "GuiButtonBackHovered");
 
         void UpdateGameLogic() override;
 

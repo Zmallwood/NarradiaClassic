@@ -8,10 +8,9 @@ namespace Narradia {
      * Initialize scenes that will be used.
      */
     SceneMngr::SceneMngr() {
-        scenes_.insert({SceneNames::Intro, std::make_shared<IntroScene>()});
-        scenes_.insert(
-            {SceneNames::MainMenu, std::make_shared<MainMenuScene>()});
-        scenes_.insert({SceneNames::Main, std::make_shared<MainScene>()});
+        scenes_.insert({SceneNames::Intro, IntroScene::Get()});
+        scenes_.insert({SceneNames::MainMenu, MainMenuScene::Get()});
+        scenes_.insert({SceneNames::Main, MainScene::Get()});
 
         curr_scene_ = SceneNames::Intro;
     }

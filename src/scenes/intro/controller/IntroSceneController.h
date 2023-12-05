@@ -5,7 +5,8 @@ namespace Narradia {
     /**
      * Controller for IntroScene.
      */
-    class IntroSceneController : public ISceneController {
+    class IntroSceneController : public ISceneController,
+                                 public Singleton<IntroSceneController> {
       private:
         void UpdateGameFlowDerived() override;
     };

@@ -5,7 +5,8 @@ namespace Narradia {
     /**
      * Controller for MainMenuScene.
      */
-    class MainMenuSceneController : public ISceneController {
+    class MainMenuSceneController : public ISceneController,
+                                    public Singleton<MainMenuSceneController> {
       private:
         void UpdateGameFlowDerived() override;
     };

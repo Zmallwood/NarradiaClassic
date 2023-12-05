@@ -5,7 +5,7 @@ namespace Narradia {
     /**
      * View for MainScene.
      */
-    class MainSceneView : public ISceneView {
+    class MainSceneView : public ISceneView, public Singleton<MainSceneView> {
       public:
         MainSceneView();
 

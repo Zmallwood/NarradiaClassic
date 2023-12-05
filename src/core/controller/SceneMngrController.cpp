@@ -10,12 +10,11 @@ namespace Narradia {
      */
     SceneMngrController::SceneMngrController() {
         scene_controllers_.insert(
-            {SceneNames::Intro, std::make_shared<IntroSceneController>()});
+            {SceneNames::Intro, IntroSceneController::Get()});
         scene_controllers_.insert(
-            {SceneNames::MainMenu,
-             std::make_shared<MainMenuSceneController>()});
+            {SceneNames::MainMenu, MainMenuSceneController::Get()});
         scene_controllers_.insert(
-            {SceneNames::Main, std::make_shared<MainSceneController>()});
+            {SceneNames::Main, MainSceneController::Get()});
     }
 
     /**
@@ -34,7 +33,7 @@ namespace Narradia {
     void SceneMngrController::ChangeScene(SceneNames new_scene) {
         SceneMngr::Get()->set_curr_scene(new_scene);
     }
-//    string SceneMngrController::LakSho() {
-//        return "Laksh0!!!";
-//    }
+    //    string SceneMngrController::LakSho() {
+    //        return "Laksh0!!!";
+    //    }
 }
