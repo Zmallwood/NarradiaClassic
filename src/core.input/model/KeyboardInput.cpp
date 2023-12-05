@@ -41,4 +41,12 @@ namespace Narradia {
         pressed_keys_.clear();
         return result;
     }
+
+    void KeyboardInput::AppendTextInput(std::string_view to_append) {
+        text_input_.append(to_append);
+    }
+
+    std::string_view KeyboardInput::PickTextInput() {
+        return text_input_;
+    }
 }

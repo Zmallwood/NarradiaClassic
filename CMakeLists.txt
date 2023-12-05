@@ -55,6 +55,7 @@ set(PCH_FILES
 "src/matter/model/Size.h"
 "src/matter/model/SizeF.h"
 "src/matter/model/Color.h"
+"src/matter/model/Colors.h"
 "src/matter/model/RectF.h"
 "src/matter/model/Point.h"
 "src/matter/model/PointF.h"

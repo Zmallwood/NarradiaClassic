@@ -26,4 +26,13 @@ namespace Narradia {
 
         return {x, y};
     }
+
+    std::string_view GetCurrTime() {
+        time_t now = time(0);
+        char buffer[80];
+        auto p_tstruct = localtime(&now);
+        strftime(buffer, sizeof(buffer), "%X", p_tstruct);
+
+        return buffer;
+    }
 }

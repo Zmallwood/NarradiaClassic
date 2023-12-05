@@ -60,9 +60,6 @@ namespace Narradia {
         vertices[3].uv = {1.0f, 1.0f};
         glDisable(GL_DEPTH_TEST);
         auto image_id = ImageBank::Get()->GetImage(image_name);
-        if (image_name == "RenderedImage0") {
-            std::cout << "img_id: " << image_id << std::endl;
-        }
         glBindTexture(GL_TEXTURE_2D, image_id);
         std::vector<int> indices(RendererBase::kNumVerticesInRectangle);
         std::iota(std::begin(indices), std::end(indices), 0);
@@ -98,13 +95,6 @@ namespace Narradia {
             GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle,
             GL_UNSIGNED_INT, NULL);
         UseVaoEnd();
-        if (image_name == "RenderedImage0")
-        {
-            std::cout << "rend\n";
-            std::cout << "rid: " << rid << std::endl;
-            std::cout << "dest.x: " << dest.x << std::endl;
-            std::cout << "color.r: " << color.r << std::endl;
-        }
     }
 
     Renderer2DImagesView::~Renderer2DImagesView() {

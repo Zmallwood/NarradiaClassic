@@ -29,6 +29,7 @@ namespace Narradia {
             case SDL_MOUSEMOTION:
                 break;
             case SDL_TEXTINPUT:
+                KeyboardInput::Get()->AppendTextInput(event.text.text);
                 break;
             case SDL_MOUSEWHEEL:
                 break;
