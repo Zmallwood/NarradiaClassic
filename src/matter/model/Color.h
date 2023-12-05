@@ -2,15 +2,15 @@
 
 namespace Narradia {
     /**
-     * Contains RGBA-color data, each component ranging between 0-255.
+     * Contains RGBA-color data, each component ranging between 0-1.
      */
     class Color {
       public:
         SDL_Color ToSDLColor() const;
 
-        int r = 0;
-        int g = 0;
-        int b = 0;
-        int a = 0;
+        float r = 0.0f;
+        float g = 0.0f;
+        float b = 0.0f;
+        float a = 0.0f;
     };
 }

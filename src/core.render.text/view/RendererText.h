@@ -12,7 +12,7 @@ namespace Narradia {
 
         void DrawString(
             RenderId rid, std::string_view text, PointF position,
-            Color color = {255, 255, 255, 255}, bool center_align = false,
+            Color color = {1.0f, 1.0f, 1.0f, 1.0f}, bool center_align = false,
             FontSizes font_size = FontSizes::_20);
 
       private:
@@ -24,7 +24,7 @@ namespace Narradia {
         std::string CreateGetBlankTexture();
 
         const std::string kRelFontsPath = "Resources/Fonts/";
-        const Color kOutlineColor = {0, 0, 0, 255};
+        const Color kOutlineColor = {0.0f, 0.0f, 0.0f, 1.0f};
         std::map<FontSizes, std::shared_ptr<Font>> fonts_;
         std::map<RenderId, std::string> unique_name_ids_;
     };

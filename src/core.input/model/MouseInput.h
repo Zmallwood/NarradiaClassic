@@ -10,6 +10,8 @@ namespace Narradia {
 
         void RegisterRelease(Uint8 button);
 
+        bool AnyButtonBeenFiredPickResult();
+
         std::shared_ptr<MouseButton> left_button() {
             return left_button_;
         }

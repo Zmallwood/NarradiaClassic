@@ -27,4 +27,11 @@ namespace Narradia {
             break;
         }
     }
+
+    bool MouseInput::AnyButtonBeenFiredPickResult() {
+        auto left = left_button_->HasBeenFiredPickResult();
+        auto right = left_button_->HasBeenFiredPickResult();
+
+        return left | right;
+    }
 }

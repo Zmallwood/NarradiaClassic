@@ -3,9 +3,9 @@
 namespace Narradia {
     SDL_Color Color::ToSDLColor() const {
         return {
-            static_cast<unsigned char>(r),
-            static_cast<unsigned char>(g),
-            static_cast<unsigned char>(b),
-            static_cast<unsigned char>(a)};
+            static_cast<unsigned char>(r * 255),
+            static_cast<unsigned char>(g * 255),
+            static_cast<unsigned char>(b * 255),
+            static_cast<unsigned char>(a * 255)};
     }
 }
