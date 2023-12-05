@@ -20,8 +20,9 @@ namespace Narradia {
         RectF rect = {0.1f, 0.1f, 0.2f, 0.1f};
         Color color = {255, 0, 0, 255};
         Renderer2DSolidColorsView::Get()->FillRect(rid_box, rect, color);
-        RendererText::Get()->DrawString(
-            rid_text, "Press to start", {0.5f, 0.5f}, {255, 255, 255, 255},
-            true);
+        if (SDL_GetTicks() % 600 > 300)
+            RendererText::Get()->DrawString(
+                rid_text, "Press to start", {0.5f, 0.5f}, {255, 255, 255, 255},
+                true);
     }
 }
