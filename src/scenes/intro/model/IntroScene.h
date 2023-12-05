@@ -5,7 +5,7 @@ namespace Narradia {
     /**
      * Model for IntroScene.
      */
-    class IntroScene : public IScene {
+    class IntroScene : public IScene, public Singleton<IntroScene> {
       private:
         void UpdateGameLogicDerived() override;
     };

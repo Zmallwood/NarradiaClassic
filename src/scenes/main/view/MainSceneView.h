@@ -6,6 +6,9 @@ namespace Narradia {
      * View for MainScene.
      */
     class MainSceneView : public ISceneView {
+      public:
+        MainSceneView();
+
       private:
         void RenderDerived() override;
     };
