@@ -8,6 +8,8 @@ namespace Narradia {
             : mouse_action_mngr_(std::make_shared<MouseActionMngr>()) {
         }
 
+        void Reset();
+
         void RegisterPress();
 
         void RegisterRelease();

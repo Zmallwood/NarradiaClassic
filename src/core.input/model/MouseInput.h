@@ -6,13 +6,13 @@ namespace Narradia {
       public:
         MouseInput();
 
+        void Reset();
+
         void RegisterPress(Uint8 button);
 
         void RegisterRelease(Uint8 button);
 
         bool AnyButtonBeenFiredPickResult();
-
-        void ClearMouseActions();
 
         void PerformMouseActions();
 
@@ -25,6 +25,8 @@ namespace Narradia {
         }
 
       private:
+        void ClearMouseActions();
+
         std::shared_ptr<MouseButton> left_button_;
         std::shared_ptr<MouseButton> right_button_;
     };

@@ -6,6 +6,12 @@ namespace Narradia {
           right_button_(std::make_shared<MouseButton>()) {
     }
 
+    void MouseInput::Reset() {
+        left_button_->Reset();
+        right_button_->Reset();
+        ClearMouseActions();
+    }
+
     void MouseInput::RegisterPress(Uint8 button) {
         switch (button) {
         case SDL_BUTTON_LEFT:

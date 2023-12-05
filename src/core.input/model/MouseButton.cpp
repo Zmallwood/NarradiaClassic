@@ -1,10 +1,14 @@
 #include "MouseButton.h"
 
 namespace Narradia {
+    void MouseButton::Reset() {
+        has_been_fired_ = false;
+        has_been_released_ = false;
+    }
+
     void MouseButton::RegisterPress() {
         is_pressed_ = true;
         has_been_fired_ = true;
-        has_been_released_ = false;
     }
 
     void MouseButton::RegisterRelease() {

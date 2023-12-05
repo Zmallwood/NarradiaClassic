@@ -11,8 +11,8 @@ namespace Narradia {
      * Update game logic for current frame.
      */
     void Engine::UpdateGameLogic() {
-        MouseInput::Get()->ClearMouseActions();
         SceneMngr::Get()->UpdateGameLogicCurrScene();
         MouseInput::Get()->PerformMouseActions();
+        MouseInput::Get()->Reset();
     }
 }
