@@ -66,7 +66,7 @@ namespace Narradia {
 
     void RendererBaseView::UpdateData(
         GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
-        int layout_location) {
+        int layout_location) const {
         UpdateArrayBufferData(
             vbo_id, data, RendererBase::kNumFloatsPerEntry.at(buffer_type),
             layout_location);

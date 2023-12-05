@@ -34,4 +34,7 @@ namespace Narradia {
     void SceneMngrController::ChangeScene(SceneNames new_scene) {
         SceneMngr::Get()->set_curr_scene(new_scene);
     }
+//    string SceneMngrController::LakSho() {
+//        return "Laksh0!!!";
+//    }
 }

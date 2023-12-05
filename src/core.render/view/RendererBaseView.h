@@ -21,7 +21,7 @@ namespace Narradia {
 
         void UpdateData(
             GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
-            int layout_location);
+            int layout_location) const;
 
         void UseVaoBegin(int vao_id) const;
 

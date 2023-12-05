@@ -13,5 +13,6 @@ namespace Narradia {
         void RenderDerived() override;
 
         RenderId rid_box;
+        RenderId rid_background;
     };
 }

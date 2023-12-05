@@ -4,7 +4,7 @@
 namespace Narradia {
     class RectF {
       public:
-        GLRectF ToGLRectF();
+        GLRectF ToGLRectF() const;
 
         float x = 0.0f;
         float y = 0.0f;
