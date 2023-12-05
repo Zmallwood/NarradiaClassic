@@ -13,10 +13,6 @@ namespace Narradia {
 
         void Render();
 
-        std::shared_ptr<SceneGuiView> scene_gui_view() {
-            return scene_gui_view_;
-        }
-
       protected:
         virtual void RenderDerived() = 0;
 

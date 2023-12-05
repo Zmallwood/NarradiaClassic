@@ -5,7 +5,7 @@
 
 namespace Narradia {
     MainSceneView::MainSceneView() {
-        scene_gui_view()->set_scene_gui(MainScene::Get()->scene_gui());
+        scene_gui_view_->set_scene_gui(MainScene::Get()->scene_gui());
     }
 
     /**

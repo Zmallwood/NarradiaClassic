@@ -6,7 +6,7 @@
 
 namespace Narradia {
     IntroSceneView::IntroSceneView() {
-        scene_gui_view()->set_scene_gui(IntroScene::Get()->scene_gui());
+        scene_gui_view_->set_scene_gui(IntroScene::Get()->scene_gui());
         rid_box = Renderer2DSolidColorsView::Get()->NewRect();
         rid_background = Renderer2DImagesView::Get()->NewImage();
         rid_text = RendererText::Get()->NewString();

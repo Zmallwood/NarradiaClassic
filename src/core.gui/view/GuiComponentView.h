@@ -10,7 +10,11 @@ namespace Narradia {
             return gui_component_;
         }
 
-      private:
+        void set_gui_component(std::shared_ptr<GuiComponent> value) {
+            gui_component_ = value;
+        }
+
+      protected:
         std::shared_ptr<GuiComponent> gui_component_;
     };
 }

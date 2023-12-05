@@ -12,4 +12,8 @@ namespace Narradia {
     PointF RectF::GetPosition() const {
         return {x, y};
     }
+
+    PointF RectF::GetCenter() const {
+        return {x + width / 2, y + height / 2};
+    }
 }
