@@ -1,5 +1,6 @@
 #include "GuiButton.h"
 #include "common/system/functions/Utilities.h"
+#include "core.input/model/MouseInput.h"
 
 namespace Narradia {
 
@@ -24,13 +25,18 @@ namespace Narradia {
         if (used_bounds.Contains(GetMousePosition())) {
             //            Cursor::Get()->SetCursorType(CursorTypes::Hovering);
             hovered_ = true;
+            MouseInput::Get()
+                ->left_button()
+                ->mouse_action_mngr()
+                ->AddReleasedAction([&] { action_(); }, 1);
             //            MouseInput::Get()->GetLeftButton().AddFiredAction(
             //                "PerformGuiButtonAction", [&] { p->action_(); },
             //                1);
-            //std::cout << "inside\n";
+            // std::cout << "inside\n";
         }
         else {
-            //std::cout << "outside, x:"  << GetMousePosition().x << " y:" << GetMousePosition().y << std::endl;
+            // std::cout << "outside, x:"  << GetMousePosition().x << " y:" <<
+            // GetMousePosition().y << std::endl;
         }
     }
 }

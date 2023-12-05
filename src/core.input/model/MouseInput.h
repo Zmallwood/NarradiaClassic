@@ -12,6 +12,10 @@ namespace Narradia {
 
         bool AnyButtonBeenFiredPickResult();
 
+        void ClearMouseActions();
+
+        void PerformMouseActions();
+
         std::shared_ptr<MouseButton> left_button() {
             return left_button_;
         }

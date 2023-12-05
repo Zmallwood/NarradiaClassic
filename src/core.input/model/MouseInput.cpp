@@ -34,4 +34,14 @@ namespace Narradia {
 
         return left | right;
     }
+
+    void MouseInput::ClearMouseActions() {
+        left_button_->mouse_action_mngr()->ClearActions();
+        right_button_->mouse_action_mngr()->ClearActions();
+    }
+
+    void MouseInput::PerformMouseActions() {
+        left_button_->PerformMouseActions();
+        right_button_->PerformMouseActions();
+    }
 }

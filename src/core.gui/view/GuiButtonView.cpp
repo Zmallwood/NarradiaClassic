@@ -5,7 +5,6 @@
 
 namespace Narradia {
     GuiButtonView::GuiButtonView() {
-        std::cout << "create btn view\n";
         rid_image = Renderer2DImagesView::Get()->NewImage();
         rid_label_text_ = RendererText::Get()->NewString();
     }
