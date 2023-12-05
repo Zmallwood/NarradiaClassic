@@ -6,6 +6,8 @@ namespace Narradia {
      */
     class Color {
       public:
+        SDL_Color ToSDLColor() const;
+
         int r = 0;
         int g = 0;
         int b = 0;

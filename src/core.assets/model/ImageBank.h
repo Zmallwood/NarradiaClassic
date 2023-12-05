@@ -10,6 +10,8 @@ namespace Narradia {
 
         GLuint GetImage(std::string_view image_name);
 
+        void CreateBlankTextImage(std::string unique_image_name);
+
       private:
         void LoadImages();
 

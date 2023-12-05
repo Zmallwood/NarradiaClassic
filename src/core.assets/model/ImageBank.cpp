@@ -51,6 +51,12 @@ namespace Narradia {
         return -1;
     }
 
+    void ImageBank::CreateBlankTextImage(std::string unique_image_name) {
+        GLuint texture_id;
+        glGenTextures(1, &texture_id);
+        images_.insert({unique_image_name, texture_id});
+    }
+
     ImageBank::~ImageBank() {
         for (const auto &image : images_)
             glDeleteTextures(1, &image.second);

@@ -14,5 +14,6 @@ namespace Narradia {
 
         RenderId rid_box;
         RenderId rid_background;
+        RenderId rid_text;
     };
 }

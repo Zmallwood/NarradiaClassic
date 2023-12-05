@@ -1,4 +1,5 @@
 #include "IntroSceneView.h"
+#include "core.render.text/view/RendererText.h"
 #include "core.render/view/Renderer2DImagesView.h"
 #include "core.render/view/Renderer2DSolidColorsView.h"
 
@@ -6,6 +7,7 @@ namespace Narradia {
     IntroSceneView::IntroSceneView() {
         rid_box = Renderer2DSolidColorsView::Get()->NewRect();
         rid_background = Renderer2DImagesView::Get()->NewImage();
+        rid_text = RendererText::Get()->NewString();
     }
 
     /**
@@ -18,5 +20,8 @@ namespace Narradia {
         RectF rect = {0.1f, 0.1f, 0.2f, 0.1f};
         Color color = {255, 0, 0, 255};
         Renderer2DSolidColorsView::Get()->FillRect(rid_box, rect, color);
+        RendererText::Get()->DrawString(
+            rid_text, "Press to start", {0.5f, 0.5f}, {255, 255, 255, 255},
+            true);
     }
 }

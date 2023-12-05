@@ -53,6 +53,7 @@ set(PCH_FILES
 <glm/gtx/closest_point.hpp>
 
 "src/matter/model/Size.h"
+"src/matter/model/SizeF.h"
 "src/matter/model/Color.h"
 "src/matter/model/RectF.h"
 "src/matter/model/Point.h"

@@ -1,7 +1,7 @@
 #include "EngineView.h"
+#include "CursorView.h"
 #include "GraphicsView.h"
 #include "SceneMngrView.h"
-#include "CursorView.h"
 
 namespace Narradia {
     /**
