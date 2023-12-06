@@ -3,12 +3,14 @@
 #include "core.input/model/MouseInput.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
+#include "MobTargetingModule.h"
 
 namespace Narradia {
     void MouseMovementModule::UpdateGameLogic() {
         if (MouseInput::Get()->left_button()->HasBeenFiredPickResult()) {
             Player::Get()->set_destination(
                 TileHoveringModule::Get()->hovered_tile());
+            MobTargetingModule::Get()->ClearTarget();
         }
 
         auto destination = Player::Get()->destination();

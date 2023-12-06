@@ -5,6 +5,8 @@
 #include "main_2d_scene.modules/model/MobMovementModule.h"
 #include "main_2d_scene.modules/model/MouseMovementModule.h"
 #include "main_2d_scene.modules/model/TileHoveringModule.h"
+#include "main_2d_scene.modules/model/CombatModule.h"
+#include "main_2d_scene.modules/model/MobTargetingModule.h"
 
 namespace Narradia {
     Main2DScene::Main2DScene() {
@@ -28,6 +30,8 @@ namespace Narradia {
         MouseMovementModule::Get()->UpdateGameLogic();
         TileHoveringModule::Get()->UpdateGameLogic();
         MobMovementModule::Get()->UpdateGameLogic();
+        MobTargetingModule::Get()->UpdateGameLogic();
+        CombatModule::Get()->UpdateGameLogic();
         FPSCounterModule::Get()->UpdateGameLogic();
     }
 }
