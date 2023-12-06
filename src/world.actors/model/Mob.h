@@ -35,6 +35,10 @@ namespace Narradia {
             return ticks_last_hit_recieved_;
         }
 
+        float hp() {
+            return hp_;
+        }
+
       private:
         std::string_view type_;
         int ticks_last_move_ = 0;

@@ -22,6 +22,9 @@ namespace Narradia {
                         if (dx * dx + dy * dy <= r * r) {
                             map_area->GetTile(x, y)->set_tile_effect(
                                 {"UltiSkillTileFire", SDL_GetTicks()});
+                            if (map_area->GetTile(x, y)->mob())
+                                map_area->GetTile(x, y)->mob()->Hit(
+                                    map_area->GetTile(x, y)->mob()->hp());
                         }
                     }
                 }
