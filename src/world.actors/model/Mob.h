@@ -26,6 +26,6 @@ namespace Narradia {
       private:
         std::string_view type_;
         int ticks_last_move_ = 0;
-        float movement_speed_ = 0.6f;
+        float movement_speed_ = 1.0f;
     };
 }

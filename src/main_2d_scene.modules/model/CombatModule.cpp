@@ -2,6 +2,5 @@
 
 namespace Narradia{
     void CombatModule::UpdateGameLogic() {
-
     }
 }
