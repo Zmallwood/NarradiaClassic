@@ -2,7 +2,9 @@
 #include "configuration/model/Configuration.h"
 
 namespace Narradia {
-    MapArea::MapArea() {
+    MapArea::MapArea()
+        : mobs_mirror_(
+              std::make_shared<std::map<std::shared_ptr<Mob>, Point>>()) {
         for (auto x = 0; x < kMapWidth; x++) {
             tiles_.push_back(std::vector<std::shared_ptr<Tile>>());
 

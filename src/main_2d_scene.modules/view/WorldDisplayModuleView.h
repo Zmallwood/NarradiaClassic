@@ -6,5 +6,9 @@ namespace Narradia {
         WorldDisplayModuleView();
 
         void Render();
+
+      private:
+        std::vector<std::vector<RenderId>> rids_ground;
+        std::vector<std::vector<RenderId>> rids_objects;
     };
 }

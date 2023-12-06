@@ -8,6 +8,6 @@ namespace Narradia {
 
       private:
         static constexpr bool kCullFace = false;
-        const Color kClearColor = {0, 150, 255, 0};
+        const Color kClearColor = {0.0f, 0.0f, 0.0f, 1.0f};
     };
 }

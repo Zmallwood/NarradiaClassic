@@ -27,6 +27,7 @@ namespace Narradia {
                 Player::Get()->MoveLeft();
 
             Player::Get()->set_ticks_last_move(SDL_GetTicks());
+            Player::Get()->set_destination({-1, -1});
         }
     }
 }

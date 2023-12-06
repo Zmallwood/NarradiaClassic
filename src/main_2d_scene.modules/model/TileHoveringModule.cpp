@@ -1,4 +1,5 @@
 #include "TileHoveringModule.h"
+#include "common/system/functions/Utilities.h"
 #include "configuration/model/Configuration.h"
 #include "world.actors/model/Player.h"
 
@@ -10,8 +11,8 @@ namespace Narradia {
         auto player_pos = Player::Get()->position();
         auto col = mouse_pos.x / tile_width;
         auto row = mouse_pos.y / tile_height;
-        auto map_x = static_cast<int>(player_pos.x - 5 + col);
-        auto map_y = static_cast<int>(player_pos.y - 5 + row);
+        auto map_x = static_cast<int>(player_pos.x - GetGridCenterX() + col);
+        auto map_y = static_cast<int>(player_pos.y - GetGridCenterY() + row);
 
         hovered_tile_ = {map_x, map_y};
     }

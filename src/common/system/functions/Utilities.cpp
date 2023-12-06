@@ -1,4 +1,5 @@
 #include "Utilities.h"
+#include "configuration/model/Configuration.h"
 #include "core/model/Graphics.h"
 
 namespace Narradia {
@@ -34,5 +35,25 @@ namespace Narradia {
         strftime(buffer, sizeof(buffer), "%X", p_tstruct);
 
         return buffer;
+    }
+
+    float GetTileHeight() {
+        return kTileWidth * GetAspectRatio();
+    }
+
+    int GetNumGridCols() {
+        return static_cast<int>(1.0f / kTileWidth);
+    }
+
+    int GetNumGridRows() {
+        return static_cast<int>(1.0f / GetTileHeight());
+    }
+
+    int GetGridCenterX() {
+        return (GetNumGridCols() - 1) / 2;
+    }
+
+    int GetGridCenterY() {
+        return (GetNumGridRows() - 1) / 2;
     }
 }

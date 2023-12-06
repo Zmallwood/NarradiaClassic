@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "world.actors/model/Mob.h"
 
 namespace Narradia {
     class Tile {
@@ -20,8 +21,17 @@ namespace Narradia {
             object_ = value;
         }
 
+        std::shared_ptr<Mob> mob() {
+            return mob_;
+        }
+
+        void set_mob(std::shared_ptr<Mob> value) {
+            mob_ = value;
+        }
+
       private:
         std::string_view ground_;
         std::shared_ptr<Object> object_;
+        std::shared_ptr<Mob> mob_;
     };
 }

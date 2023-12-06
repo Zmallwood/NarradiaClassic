@@ -8,4 +8,14 @@ namespace Narradia {
     PointF GetMousePosition();
 
     std::string_view GetCurrTime();
+
+    float GetTileHeight();
+
+    int GetNumGridCols();
+
+    int GetNumGridRows();
+
+    int GetGridCenterX();
+
+    int GetGridCenterY();
 }
