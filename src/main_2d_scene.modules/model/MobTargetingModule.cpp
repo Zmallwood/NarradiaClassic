@@ -3,6 +3,7 @@
 #include "configuration/model/Configuration.h"
 #include "core.input/model/MouseInput.h"
 #include "world.structure/model/World.h"
+#include "world.actors/model/Player.h"
 
 namespace Narradia {
     void MobTargetingModule::UpdateGameLogic() {
@@ -17,6 +18,7 @@ namespace Narradia {
                     map_area->GetTile(hovered_tile.x, hovered_tile.y)->mob();
                 if (mob)
                     targeted_mob_ = mob;
+                Player::Get()->set_destination({-1, -1});
             });
     }
 
