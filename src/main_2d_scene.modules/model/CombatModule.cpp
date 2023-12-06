@@ -30,7 +30,8 @@ namespace Narradia {
                     auto dice = static_cast<float>(rand()) / RAND_MAX;
 
                     if (dice < Player::Get()->ultimate_skill_chance()) {
-                        Player::Get()->set_ultimate_skill_duraiton(3000);
+                        Player::Get()->set_ticks_ulti_skill_start(
+                            SDL_GetTicks());
                     }
                 }
             }

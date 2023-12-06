@@ -25,5 +25,13 @@ namespace Narradia {
             {tile_info.col * tile_info.tile_width,
              tile_info.row * tile_info.tile_height, tile_info.tile_width,
              tile_info.tile_height});
+
+        if (SDL_GetTicks() < tile_info.tile->tile_effect().ticks_started + 800) {
+        Renderer2DImagesView::Get()->DrawImage(
+            tile_info.tile->tile_effect().type, tile_info.rid_ground,
+            {tile_info.col * tile_info.tile_width,
+             tile_info.row * tile_info.tile_height, tile_info.tile_width,
+             tile_info.tile_height});
+        }
     }
 }

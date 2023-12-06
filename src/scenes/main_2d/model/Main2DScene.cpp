@@ -9,6 +9,7 @@
 #include "main_2d_scene.modules/model/MobTargetingModule.h"
 #include "main_2d_scene.modules/model/CombatChaseMovementModule.h"
 #include "main_2d_scene.modules/model/MobDeathHandlingModule.h"
+#include "main_2d_scene.modules/model/SkillPerformingModule.h"
 
 namespace Narradia {
     Main2DScene::Main2DScene() {
@@ -36,6 +37,7 @@ namespace Narradia {
         CombatChaseMovementModule::Get()->UpdateGameLogic();
         CombatModule::Get()->UpdateGameLogic();
         MobDeathHandlingModule::Get()->UpdateGameLogic();
+        SkillPerformingModule::Get()->UpdateGameLogic();
         FPSCounterModule::Get()->UpdateGameLogic();
     }
 }

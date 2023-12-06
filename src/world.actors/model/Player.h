@@ -53,16 +53,20 @@ namespace Narradia {
             ticks_last_hit_performed_ = value;
         }
 
-        int ultimate_skill_duration() {
-            return ultimate_skill_duration_;
-        }
-
-        void set_ultimate_skill_duraiton(int value) {
-            ultimate_skill_duration_ = value;
-        }
-
         float ultimate_skill_chance() {
             return ultimate_skill_chance_;
+        }
+
+        int ticks_ulti_skill_start() {
+            return ticks_ulti_skill_start_;
+        }
+
+        void set_ticks_ulti_skill_start(int value) {
+            ticks_ulti_skill_start_ = value;
+        }
+
+        float ulti_skill_duration() {
+            return ulti_skill_duration_;
         }
 
       private:
@@ -72,7 +76,8 @@ namespace Narradia {
         Point destination_ = {-1, -1};
         float attack_speed_ = 0.8f;
         int ticks_last_hit_performed_ = 0;
-        int ultimate_skill_duration_ = 0;
-        float ultimate_skill_chance_ = 0.3f;
+        float ultimate_skill_chance_ = 0.4f;
+        int ticks_ulti_skill_start_ = 0;
+        int ulti_skill_duration_ = 9000;
     };
 }

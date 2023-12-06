@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "TileEffect.h"
 #include "world.actors/model/Mob.h"
 
 namespace Narradia {
@@ -29,9 +30,18 @@ namespace Narradia {
             mob_ = value;
         }
 
+        TileEffect tile_effect() {
+            return tile_effect_;
+        }
+
+        void set_tile_effect(TileEffect value) {
+            tile_effect_ = value;
+        }
+
       private:
         std::string_view ground_;
         std::shared_ptr<Object> object_;
         std::shared_ptr<Mob> mob_;
+        TileEffect tile_effect_;
     };
 }
