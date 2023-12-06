@@ -17,6 +17,10 @@ namespace Narradia {
             return position_;
         }
 
+        void set_position(Point value) {
+            position_ = value;
+        }
+
         float movement_speed() {
             return movement_speed_;
         }

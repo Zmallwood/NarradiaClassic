@@ -4,6 +4,9 @@
 #include "core.input/model/MouseInput.h"
 
 namespace Narradia {
+    void IntroSceneController::OnEnter() {
+    }
+
     /**
      * Update game flow between scenes.
      */
