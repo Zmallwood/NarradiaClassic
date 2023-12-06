@@ -2,6 +2,7 @@
 #include "MobTargetingModule.h"
 #include "TileHoveringModule.h"
 #include "configuration.world/model/ObjectsConfiguration.h"
+#include "configuration/model/Configuration.h"
 #include "core.input/model/MouseInput.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
@@ -35,6 +36,10 @@ namespace Narradia {
 
                 auto new_x = Player::Get()->position().x + norm_x;
                 auto new_y = Player::Get()->position().y + norm_y;
+
+                if (new_x < 0 || new_y < 0 || new_x >= kMapWidth ||
+                    new_y >= kMapHeight)
+                    return;
 
                 auto map_area = World::Get()->curr_map_area();
 
