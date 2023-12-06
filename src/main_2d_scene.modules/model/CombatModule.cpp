@@ -9,7 +9,9 @@ namespace Narradia {
 
         if (targeted_mob) {
             if (SDL_GetTicks() > Player::Get()->ticks_last_hit_performed() +
-                                     Player::Get()->attack_speed()) {
+                                     400 / Player::Get()->attack_speed() &&
+                SDL_GetTicks() > Player::Get()->ticks_last_move() +
+                                     400 / Player::Get()->movement_speed()) {
                 auto map_area = World::Get()->curr_map_area();
                 auto mob_coord = map_area->mobs_mirror()->at(targeted_mob);
 
