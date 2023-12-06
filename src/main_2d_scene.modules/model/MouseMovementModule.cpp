@@ -1,20 +1,20 @@
 #include "MouseMovementModule.h"
 #include "MobTargetingModule.h"
 #include "TileHoveringModule.h"
+#include "configuration.world/model/ObjectsConfiguration.h"
 #include "core.input/model/MouseInput.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
 namespace Narradia {
     void MouseMovementModule::UpdateGameLogic() {
-        MouseInput::Get()->left_button()->AddFiredAction(
-            [] {
-                if (MouseInput::Get()->left_button()->is_pressed()) {
-                    Player::Get()->set_destination(
-                        TileHoveringModule::Get()->hovered_tile());
-                    MobTargetingModule::Get()->ClearTarget();
-                }
-            });
+        MouseInput::Get()->left_button()->AddFiredAction([] {
+            if (MouseInput::Get()->left_button()->is_pressed()) {
+                Player::Get()->set_destination(
+                    TileHoveringModule::Get()->hovered_tile());
+                MobTargetingModule::Get()->ClearTarget();
+            }
+        });
 
         auto destination = Player::Get()->destination();
 
@@ -40,7 +40,11 @@ namespace Narradia {
 
                 if (map_area->GetTile(new_x, new_y)->ground() !=
                     "GroundWater") {
-                    if (map_area->GetTile(new_x, new_y)->object() == nullptr) {
+                    auto is_obstacle = false;
+                    if (map_area->GetTile(new_x, new_y)->object())
+                        is_obstacle = ObjectsConfiguration::Get()->IsObstacle(
+                            map_area->GetTile(new_x, new_y)->object()->type());
+                    if (!is_obstacle) {
                         if (norm_y == -1)
                             Player::Get()->MoveUp();
                         else if (norm_y == 1)

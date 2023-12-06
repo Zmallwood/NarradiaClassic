@@ -1,5 +1,6 @@
 #include "WorldDisplayModuleView.h"
 #include "common/system/functions/Utilities.h"
+#include "configuration.world/model/ObjectsConfiguration.h"
 #include "configuration/model/Configuration.h"
 #include "core.render/view/Renderer2DImagesView.h"
 #include "core.render/view/Renderer2DSolidColorsView.h"
@@ -64,10 +65,19 @@ namespace Narradia {
                     auto int_x = static_cast<int>(curr_x);
                     auto int_y = static_cast<int>(curr_y);
 
-                    if (map_area->GetTile(int_x, int_y)->object() ||
-                        map_area->GetTile(int_x, int_y)->mob()) {
+                    if (map_area->GetTile(int_x, int_y)->mob()) {
                         sight_blocked = true;
                         break;
+                    }
+
+                    if (map_area->GetTile(int_x, int_y)->object()) {
+                        if (ObjectsConfiguration::Get()->BlocksSight(
+                                map_area->GetTile(int_x, int_y)
+                                    ->object()
+                                    ->type())) {
+                            sight_blocked = true;
+                            break;
+                        }
                     }
 
                     curr_x += step_x;
