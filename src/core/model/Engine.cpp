@@ -13,6 +13,5 @@ namespace Narradia {
     void Engine::UpdateGameLogic() {
         SceneMngr::Get()->UpdateGameLogicCurrScene();
         MouseInput::Get()->PerformMouseActions();
-        MouseInput::Get()->Reset();
     }
 }

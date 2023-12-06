@@ -8,13 +8,13 @@ namespace Narradia {
 
         void AddReleasedAction(std::function<void()> action, int z_level = 0);
 
-        void ClearActions();
+        bool PerformFiredActions();
 
-        void PerformActions();
+        bool PerformReleasedActions();
 
-        void PerformFiredActions();
+        void ClearFiredActions();
 
-        void PerformReleasedActions();
+        void ClearReleasedActions();
 
       private:
         std::vector<MouseAction> fired_actions_;

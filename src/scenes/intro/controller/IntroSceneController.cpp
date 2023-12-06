@@ -11,9 +11,16 @@ namespace Narradia {
      * Update game flow between scenes.
      */
     void IntroSceneController::UpdateGameFlowDerived() {
-        if (KeyboardInput::Get()->AnyKeyIsPressedPickResult() ||
-            MouseInput::Get()->AnyButtonBeenFiredPickResult()) {
+        if (KeyboardInput::Get()->AnyKeyIsPressedPickResult()) {
             SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
         }
+
+        MouseInput::Get()->left_button()->AddFiredAction([] {
+            SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
+        });
+
+        MouseInput::Get()->right_button()->AddFiredAction([] {
+            SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
+        });
     }
 }

@@ -11,17 +11,10 @@ namespace Narradia {
         released_actions_.push_back({action, z_level});
     }
 
-    void MouseActionMngr::ClearActions() {
-        fired_actions_.clear();
-        released_actions_.clear();
-    }
-
-    void MouseActionMngr::PerformActions() {
-        PerformFiredActions();
-        PerformReleasedActions();
-    }
-
-    void MouseActionMngr::PerformFiredActions() {
+    bool MouseActionMngr::PerformFiredActions() {
+        if (fired_actions_.size() == 0)
+            return false;
+        
         MouseAction top_most_action = {[] {}, -1};
 
         for (auto action : fired_actions_) {
@@ -30,9 +23,14 @@ namespace Narradia {
         }
 
         top_most_action.action();
+
+        return true;
     }
 
-    void MouseActionMngr::PerformReleasedActions() {
+    bool MouseActionMngr::PerformReleasedActions() {
+        if (released_actions_.size() == 0)
+            return false;
+
         MouseAction top_most_action = {[] {}, -1};
 
         for (auto action : released_actions_) {
@@ -41,5 +39,16 @@ namespace Narradia {
         }
 
         top_most_action.action();
+
+        return true;
+    }
+
+    void MouseActionMngr::ClearFiredActions() {
+        fired_actions_.clear();
+    }
+
+    void MouseActionMngr::ClearReleasedActions() {
+
+        released_actions_.clear();
     }
 }

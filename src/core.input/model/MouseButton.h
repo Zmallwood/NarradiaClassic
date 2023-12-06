@@ -8,17 +8,15 @@ namespace Narradia {
             : mouse_action_mngr_(std::make_shared<MouseActionMngr>()) {
         }
 
-        void Reset();
-
         void RegisterPress();
 
         void RegisterRelease();
 
-        bool HasBeenFiredPickResult();
-
-        bool HasBeenReleasedPickResult();
-
         void PerformMouseActions();
+
+        void AddFiredAction(std::function<void()> action, int z_level = 0);
+
+        void AddReleasedAction(std::function<void()> action, int z_level = 0);
 
         bool is_pressed() {
             return is_pressed_;

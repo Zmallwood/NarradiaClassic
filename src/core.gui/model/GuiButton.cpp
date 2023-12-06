@@ -28,7 +28,7 @@ namespace Narradia {
             MouseInput::Get()
                 ->left_button()
                 ->mouse_action_mngr()
-                ->AddFiredAction([&] { action_(); }, 1);
+                ->AddFiredAction([&] { action_(); }, 2);
             //            MouseInput::Get()->GetLeftButton().AddFiredAction(
             //                "PerformGuiButtonAction", [&] { p->action_(); },
             //                1);

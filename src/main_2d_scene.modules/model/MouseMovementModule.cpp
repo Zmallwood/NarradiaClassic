@@ -1,17 +1,20 @@
 #include "MouseMovementModule.h"
+#include "MobTargetingModule.h"
 #include "TileHoveringModule.h"
 #include "core.input/model/MouseInput.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
-#include "MobTargetingModule.h"
 
 namespace Narradia {
     void MouseMovementModule::UpdateGameLogic() {
-        if (MouseInput::Get()->left_button()->HasBeenFiredPickResult()) {
-            Player::Get()->set_destination(
-                TileHoveringModule::Get()->hovered_tile());
-            MobTargetingModule::Get()->ClearTarget();
-        }
+        MouseInput::Get()->left_button()->AddFiredAction(
+            [] {
+                if (MouseInput::Get()->left_button()->is_pressed()) {
+                    Player::Get()->set_destination(
+                        TileHoveringModule::Get()->hovered_tile());
+                    MobTargetingModule::Get()->ClearTarget();
+                }
+            });
 
         auto destination = Player::Get()->destination();
 
@@ -42,7 +45,7 @@ namespace Narradia {
                             Player::Get()->MoveUp();
                         else if (norm_y == 1)
                             Player::Get()->MoveDown();
-                            
+
                         if (norm_x == 1)
                             Player::Get()->MoveRight();
                         else if (norm_x == -1)
