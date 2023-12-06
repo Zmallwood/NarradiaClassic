@@ -12,7 +12,7 @@ namespace Narradia {
                 auto player_pos = Player::Get()->position();
                 auto map_area = World::Get()->curr_map_area();
 
-                auto r = 3;
+                auto r = 4;
                 for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
                     for (auto x = player_pos.x - r; x <= player_pos.x + r;
                          x++) {
