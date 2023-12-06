@@ -4,10 +4,10 @@
 #include "core.render/view/Renderer2DImagesView.h"
 #include "core.render/view/Renderer2DSolidColorsView.h"
 #include "functions/DoDrawGround.h"
+#include "functions/DoDrawMobs.h"
 #include "functions/DoDrawObjects.h"
 #include "functions/DoDrawPlayer.h"
 #include "functions/DoDrawTileSymbols.h"
-#include "functions/DoDrawMobs.h"
 #include "main_2d_scene.modules/model/TileInfo.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
@@ -40,6 +40,41 @@ namespace Narradia {
 
                 if (map_x < 0 || map_y < 0 || map_x >= kMapWidth ||
                     map_y >= kMapHeight)
+                    continue;
+
+                auto dx = player_pos.x - map_x;
+                auto dy = player_pos.y - map_y;
+
+                auto abs_dx = std::abs(dx);
+                auto abs_dy = std::abs(dy);
+
+                auto abs_max = std::max(abs_dx, abs_dy);
+
+                auto step_x = static_cast<float>(dx) / abs_max;
+                auto step_y = static_cast<float>(dy) / abs_max;
+
+                auto num_steps = abs_max;
+
+                auto curr_x = map_x + step_x;
+                auto curr_y = map_y + step_y;
+
+                auto sight_blocked = false;
+
+                for (auto i = 0; i < num_steps - 1; i++) {
+                    auto int_x = static_cast<int>(curr_x);
+                    auto int_y = static_cast<int>(curr_y);
+
+                    if (map_area->GetTile(int_x, int_y)->object() ||
+                        map_area->GetTile(int_x, int_y)->mob()) {
+                        sight_blocked = true;
+                        break;
+                    }
+
+                    curr_x += step_x;
+                    curr_y += step_y;
+                }
+
+                if (sight_blocked)
                     continue;
 
                 auto tile = map_area->GetTile(map_x, map_y);

@@ -18,4 +18,6 @@ namespace Narradia {
     int GetGridCenterX();
 
     int GetGridCenterY();
+
+    Size GetTextureDimensions(std::string_view image_name);
 }

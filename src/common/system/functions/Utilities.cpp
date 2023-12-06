@@ -1,6 +1,7 @@
 #include "Utilities.h"
 #include "configuration/model/Configuration.h"
 #include "core/model/Graphics.h"
+#include "core.assets/model/ImageBank.h"
 
 namespace Narradia {
     Size GetCanvasSize() {
@@ -55,5 +56,16 @@ namespace Narradia {
 
     int GetGridCenterY() {
         return (GetNumGridRows() - 1) / 2;
+    }
+
+    Size GetTextureDimensions(std::string_view image_name) {
+        Size dimensions;
+        int miplevel = 0;
+        auto image_id = ImageBank::Get()->GetImage(image_name);
+        glBindTexture(GL_TEXTURE_2D, image_id);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &dimensions.width);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &dimensions.height);
+
+        return dimensions;
     }
 }
