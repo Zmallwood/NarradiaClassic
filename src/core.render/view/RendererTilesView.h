@@ -6,15 +6,13 @@ namespace Narradia {
       public:
         RendererTilesView();
         ~RendererTilesView();
-        void UpdateDrawTile(
-            std::string_view image_name, RenderId vao_id, Vertex3F &v0, Vertex3F &v1, Vertex3F &v2,
-            Vertex3F &v3, Point3F &normal00, Point3F &normal10, Point3F &normal11,
-            Point3F &normal01, bool depth_test_off = false) const;
-        void StartBatchDrawing();
-        void StopBatchDrawing();
 
         bool is_batch_drawing() {
             return is_batch_drawing_;
+        }
+
+        void set_is_batch_drawing(bool value) {
+            is_batch_drawing_ = value;
         }
 
         int location_projection() {

@@ -20,6 +20,7 @@ namespace Narradia {
         void UpdateData(
             GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
             int layout_location) const;
+        std::shared_ptr<ShaderProgramView> GetShaderProgramView() const;
 
         std::shared_ptr<RendererBase> renderer_base() {
             return renderer_base_;
@@ -27,7 +28,6 @@ namespace Narradia {
 
       protected:
         GLuint GetUniformLocation(std::string_view var_name);
-        std::shared_ptr<ShaderProgramView> GetShaderProgramView() const;
         void CleanupBase();
 
         std::shared_ptr<RendererBase> renderer_base_;

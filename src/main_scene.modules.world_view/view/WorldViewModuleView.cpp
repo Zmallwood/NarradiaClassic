@@ -3,6 +3,8 @@
 #include "core.render/view/RendererTilesView.h"
 #include "core.render/view/functions/NewTile.h"
 #include "core.render/view/functions/SetTileGeometry.h"
+#include "core.render/view/functions/StartTileBatchDrawing.h"
+#include "core.render/view/functions/StopTileBatchDrawing.h"
 #include "functions/DrawGround.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
@@ -44,7 +46,7 @@ namespace Narradia {
         auto r = 10;
         auto x_center = static_cast<int>(player_pos.x);
         auto y_center = static_cast<int>(player_pos.z);
-        RendererTilesView::Get()->StartBatchDrawing();
+        StartTileBatchDrawing();
         for (auto y = y_center - r; y <= y_center + r; y++) {
             for (auto x = x_center - r; x <= x_center + r; x++) {
                 if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
@@ -58,6 +60,6 @@ namespace Narradia {
                 DrawGround(tile, coord);
             }
         }
-        RendererTilesView::Get()->StopBatchDrawing();
+        StopTileBatchDrawing();
     }
 }
