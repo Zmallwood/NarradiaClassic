@@ -3,10 +3,17 @@
 #include "functions/FileUtilities.h"
 
 namespace Narradia {
+    /**
+     * Load images on first use.
+     */
     ImageBank::ImageBank() {
         LoadImages();
     }
 
+    /**
+     * Loads all images in images path, creating GL textures and storing their
+     * ids as GLuints.
+     */
     void ImageBank::LoadImages() {
         using iterator = std::filesystem::recursive_directory_iterator;
         auto abs_all_images_path =
@@ -22,6 +29,10 @@ namespace Narradia {
         }
     }
 
+    /**
+     * Loads a single images with provided path, creating a GL texture and
+     * returning its GLuint id.
+     */
     GLuint ImageBank::LoadSingleImage(std::string_view abs_file_path) {
         auto surface = IMG_Load(abs_file_path.data());
         glEnable(GL_TEXTURE_2D);
@@ -43,6 +54,9 @@ namespace Narradia {
         return texture_id;
     }
 
+    /**
+     * Returns the GLuint id corresponding to the provided image name:
+     */
     GLuint ImageBank::GetImage(std::string_view image_name) {
         for (auto image : images_)
             if (image.first == image_name)
@@ -51,12 +65,18 @@ namespace Narradia {
         return -1;
     }
 
+    /**
+     * Creates a blank GL texture used for rendering text on.
+     */
     void ImageBank::CreateBlankTextImage(std::string unique_image_name) {
         GLuint texture_id;
         glGenTextures(1, &texture_id);
         images_.insert({unique_image_name, texture_id});
     }
 
+    /**
+     * Cleanup on class disposal.
+     */
     ImageBank::~ImageBank() {
         for (const auto &image : images_)
             glDeleteTextures(1, &image.second);

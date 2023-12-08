@@ -2,6 +2,9 @@
 #include "GuiComponentView.h"
 
 namespace Narradia {
+    /**
+     * View component of the GuiButton.
+     */
     class GuiButtonView : public GuiComponentView {
       public:
         GuiButtonView();

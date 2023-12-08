@@ -3,6 +3,9 @@
 #include "core.gui/model/SceneGui.h"
 
 namespace Narradia {
+    /**
+     * View component of SceneGui.
+     */
     class SceneGuiView {
       public:
         void Render();

@@ -5,6 +5,9 @@
 #include "core/model/TextOutBox.h"
 
 namespace Narradia {
+    /**
+     * Prepares RenderIDs for rendering.
+     */
     TextOutBoxView::TextOutBoxView() {
         rid_image_ = Renderer2DImagesView::Get()->NewImage();
         rid_split_line_ = Renderer2DImagesView::Get()->NewImage();
@@ -15,15 +18,18 @@ namespace Narradia {
             rids_text_lines_.push_back(RendererText::Get()->NewString());
     }
 
+    /**
+     * Renders the TextOutBox with its text content to canvas.
+     */
     void TextOutBoxView::Render() const {
         auto model = TextOutBox::Get();
 
         if (!model->enabled())
             return;
         auto used_bounds = TextOutBox::kBounds;
-        //if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
-        //    used_bounds =
-        //        used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
+        // if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+        //     used_bounds =
+        //         used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
         Renderer2DImagesView::Get()->DrawImage(
             "TextOutBoxBack", rid_image_, used_bounds);
         auto max_num_lines = model->GetMaxNumLines();

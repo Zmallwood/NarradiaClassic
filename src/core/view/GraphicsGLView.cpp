@@ -3,6 +3,9 @@
 #include "core/view/GraphicsView.h"
 
 namespace Narradia {
+    /**
+     * Initializes OpenGL-specific graphics parts.
+     */
     GraphicsGLView::GraphicsGLView() {
         glewExperimental = GL_TRUE;
         auto glew_error = glewInit();

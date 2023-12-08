@@ -1,9 +1,12 @@
 #include "Utilities.h"
 #include "configuration/model/Configuration.h"
-#include "core/model/Graphics.h"
 #include "core.assets/model/ImageBank.h"
+#include "core/model/Graphics.h"
 
 namespace Narradia {
+    /**
+     * Returns canvas size in pixels.
+     */
     Size GetCanvasSize() {
         int width;
         int height;
@@ -12,12 +15,18 @@ namespace Narradia {
         return {width, height};
     }
 
+    /**
+     * Returns aspect ratio of canvas.
+     */
     float GetAspectRatio() {
         auto canvasSize = GetCanvasSize();
 
         return static_cast<float>(canvasSize.width) / canvasSize.height;
     }
 
+    /**
+     * Returns normalized mouse position.
+     */
     PointF GetMousePosition() {
         int xPixels;
         int yPixels;
@@ -29,6 +38,9 @@ namespace Narradia {
         return {x, y};
     }
 
+    /**
+     * Returns the current time in text format.
+     */
     std::string_view GetCurrTime() {
         time_t now = time(0);
         char buffer[80];
@@ -58,13 +70,18 @@ namespace Narradia {
         return (GetNumGridRows() - 1) / 2;
     }
 
+    /**
+     * Returns texture, loaded from file system, dimensions in pixels.
+     */
     Size GetTextureDimensions(std::string_view image_name) {
         Size dimensions;
         int miplevel = 0;
         auto image_id = ImageBank::Get()->GetImage(image_name);
         glBindTexture(GL_TEXTURE_2D, image_id);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &dimensions.width);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &dimensions.height);
+        glGetTexLevelParameteriv(
+            GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &dimensions.width);
+        glGetTexLevelParameteriv(
+            GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &dimensions.height);
 
         return dimensions;
     }

@@ -5,7 +5,7 @@
 
 namespace Narradia {
     /**
-     * Initialize SDL window and renderer.
+     * Initialize SDL window and some of the OpenGL settings.
      */
     GraphicsView::GraphicsView() {
         auto window_size = Graphics::Get()->window_size();

@@ -42,11 +42,21 @@ namespace Narradia {
         return result;
     }
 
+    /**
+     * Appends text input to the already typed text not yet been extracted.
+     */
     void KeyboardInput::AppendTextInput(std::string_view to_append) {
         text_input_.append(to_append);
     }
 
+    /**
+     * Picks the typed text and returns it. Clears the internally stored
+     * text input value at the same time.
+     */
     std::string_view KeyboardInput::PickTextInput() {
-        return text_input_;
+        auto result = text_input_;
+        text_input_ = "";
+
+        return result;
     }
 }

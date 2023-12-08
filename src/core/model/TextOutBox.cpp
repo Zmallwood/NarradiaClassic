@@ -2,6 +2,9 @@
 #include "core.input/model/KeyboardInput.h"
 
 namespace Narradia {
+    /**
+     * Checks if input should be activated and processes typed input characters.
+     */
     void TextOutBox::UpdateGameLogic() {
         if (KeyboardInput::Get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
             input_active_ = !input_active_;
@@ -13,6 +16,10 @@ namespace Narradia {
         }
     }
 
+    /**
+     * Adds provided text with color to the internal data structure, being ready
+     * for rendering.
+     */
     void TextOutBox::Print(std::string_view text, Color text_color) {
         if (!enabled_)
             return;
@@ -22,6 +29,10 @@ namespace Narradia {
         text_lines_.push_back({printed_text, text_color});
     }
 
+    /**
+     * Calculates maximum number of text lines that can be displayed in the
+     * TextOutBox.
+     */
     int TextOutBox::GetMaxNumLines() {
         return static_cast<int>(kBounds.height / kTextLineHeight) - 2;
     }

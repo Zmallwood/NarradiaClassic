@@ -2,6 +2,9 @@
 #include "core.gui/model/GuiComponent.h"
 
 namespace Narradia {
+    /**
+     * View component of the GuiComponent.
+     */
     class GuiComponentView {
       public:
         virtual void Render() = 0;

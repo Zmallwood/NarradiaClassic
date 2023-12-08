@@ -3,6 +3,9 @@
 #include "core.input/model/MouseInput.h"
 
 namespace Narradia {
+    /**
+     * Seeds the randomization to get unique random generations each game start.
+     */
     Engine::Engine() {
         srand(time(nullptr));
     }
