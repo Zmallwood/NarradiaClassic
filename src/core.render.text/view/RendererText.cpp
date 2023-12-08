@@ -4,6 +4,9 @@
 #include "core.render/view/Renderer2DImagesView.h"
 
 namespace Narradia {
+    /**
+     * Initializes Font objects for desired sizes.
+     */
     RendererText::RendererText() {
         TTF_Init();
         auto font_path = std::string(SDL_GetBasePath()) + kRelFontsPath +
@@ -14,13 +17,21 @@ namespace Narradia {
             {FontSizes::_26, std::make_shared<Font>(font_path.c_str(), 26)});
     }
 
+    /**
+     * Prepares resources for a new string to be rendered.
+     */
     RenderId RendererText::NewString() {
         auto unique_name = CreateGetBlankTexture();
         auto rendid_image_rect = Renderer2DImagesView::Get()->NewImage();
         unique_name_ids_.insert({rendid_image_rect, unique_name});
+
         return rendid_image_rect;
     }
 
+    /**
+     * Draws a string to the canvas, requires it to first have been initialized
+     * with NewString().
+     */
     void RendererText::DrawString(
         RenderId rid, std::string_view text, PointF position, Color color,
         bool center_align, FontSizes font_size) {
@@ -44,6 +55,11 @@ namespace Narradia {
         Renderer2DImagesView::Get()->DrawImage(unique_name_id, rid, rect);
     }
 
+    /**
+     * Does the core rendering work for a string to be rendered to the canvas.
+     * Can be shared for both 2D string rendering and 3D billboard string
+     * rendering.
+     */
     void RendererText::RenderText(
         RenderId rid, std::string_view text, Color color, bool center_align,
         FontSizes font_size, std::string &out_unique_name_id,

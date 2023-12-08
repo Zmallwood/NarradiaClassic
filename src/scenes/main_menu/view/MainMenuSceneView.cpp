@@ -4,6 +4,10 @@
 #include "scenes/main_menu/model/MainMenuScene.h"
 
 namespace Narradia {
+    /**
+     * Set scene gui and initialize Views for gui components initialize in scene
+     * model. Also prepare RenderIDs for images to be rendered.
+     */
     MainMenuSceneView::MainMenuSceneView() {
         scene_gui_view_->set_scene_gui(MainMenuScene::Get()->scene_gui());
         scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonView>());

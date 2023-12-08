@@ -3,7 +3,7 @@
 
 namespace Narradia {
     /**
-     * Model for MainScene.
+     * Model for Main2DScene.
      */
     class Main2DScene : public IScene, public Singleton<Main2DScene> {
       public:

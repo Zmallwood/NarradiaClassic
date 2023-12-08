@@ -1,6 +1,9 @@
 #include "Color.h"
 
 namespace Narradia {
+    /**
+     * Converts Narradia Color object to SDL type.
+     */
     SDL_Color Color::ToSDLColor() const {
         return {
             static_cast<unsigned char>(r * 255),

@@ -1,3 +1,6 @@
+/**
+ * Vertex shader for Renderer2DImages.
+ */
 R"(
     #version 330 core
     layout (location = 0) in vec2 in_Position;

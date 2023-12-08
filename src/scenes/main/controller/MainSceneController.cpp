@@ -1,6 +1,9 @@
 #include "MainSceneController.h"
 
 namespace Narradia {
+    /**
+     * On entering scene.
+     */
     void MainSceneController::OnEnter() {
     }
 

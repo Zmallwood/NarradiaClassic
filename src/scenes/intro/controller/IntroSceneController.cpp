@@ -4,6 +4,9 @@
 #include "core.input/model/MouseInput.h"
 
 namespace Narradia {
+    /**
+     * On entering scene.
+     */
     void IntroSceneController::OnEnter() {
     }
 

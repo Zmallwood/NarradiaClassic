@@ -1,6 +1,10 @@
 #pragma once
 
 namespace Narradia {
+    /**
+     * Holds SDL font objects for a single font with a specific size, requires
+     * two, one regular and and for the outline.
+     */
     class Font {
       public:
         Font(std::string_view font_file_name, int font_size);

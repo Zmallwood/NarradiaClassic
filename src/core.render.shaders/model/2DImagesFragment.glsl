@@ -1,3 +1,6 @@
+/**
+ * Fragment shader for Renderer2DImages.
+ */
 R"(
     #version 330 core
     precision mediump float;

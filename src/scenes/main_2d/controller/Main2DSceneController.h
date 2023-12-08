@@ -3,7 +3,7 @@
 
 namespace Narradia {
     /**
-     * Controller for MainScene.
+     * Controller for Main2DScene.
      */
     class Main2DSceneController : public ISceneController,
                                   public Singleton<Main2DSceneController> {

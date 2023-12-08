@@ -12,6 +12,9 @@
 #include "main_2d_scene.modules/model/SkillPerformingModule.h"
 
 namespace Narradia {
+    /**
+     * Initialize GUI components.
+     */
     Main2DScene::Main2DScene() {
         scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
             "Char", RectF{0.75f, 0.96f, 0.05f, 0.04f}, [] {}));

@@ -3,7 +3,7 @@
 
 namespace Narradia {
     /**
-     * View for MainScene.
+     * View for Main2DScene.
      */
     class Main2DSceneView : public ISceneView, public Singleton<Main2DSceneView> {
       public:
