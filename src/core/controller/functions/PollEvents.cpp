@@ -1,4 +1,4 @@
-#include "DoPollEvents.h"
+#include "PollEvents.h"
 #include "../../../core.input/model/KeyboardInput.h"
 #include "../../../core.input/model/MouseInput.h"
 #include "../../model/Engine.h"
@@ -7,7 +7,7 @@ namespace Narradia {
     /**
      * Poll for user input events.
      */
-    void DoPollEvents() {
+    void PollEvents() {
         SDL_Event event;
         while (SDL_PollEvent(&event) != 0) {
             switch (event.type) {

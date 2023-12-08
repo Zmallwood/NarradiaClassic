@@ -13,7 +13,6 @@ namespace Narradia {
 
       private:
         void LoadImages();
-        GLuint LoadSingleImage(std::string_view abs_file_path);
 
         const std::string_view kRelImagesPath = "Resources/Images/";
         std::map<std::string, GLuint> images_;

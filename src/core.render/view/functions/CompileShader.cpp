@@ -1,11 +1,11 @@
-#include "DoCompileShader.h"
+#include "CompileShader.h"
 
 namespace Narradia {
 
     /**
      * Compile shader, vertex or fragment type, and returns the success status.
      */
-    GLuint DoCompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
+    GLuint CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
         *shader = glCreateShader(shader_type);
         glShaderSource(*shader, 1, &shader_src, NULL);
         glCompileShader(*shader);

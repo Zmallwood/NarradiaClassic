@@ -1,13 +1,13 @@
 #include "EngineController.h"
 #include "SceneMngrController.h"
-#include "functions/DoPollEvents.h"
+#include "functions/PollEvents.h"
 
 namespace Narradia {
     /**
      * Handle user input every frame.
      */
     void EngineController::HandleInput() {
-        DoPollEvents();
+        PollEvents();
     }
 
     /**

@@ -1,5 +1,5 @@
 #include "ShaderProgramView.h"
-#include "functions/DoCompileShader.h"
+#include "functions/CompileShader.h"
 
 namespace Narradia {
     /**
@@ -9,7 +9,7 @@ namespace Narradia {
         GLuint vertex_shader = 0;
         GLuint fragment_shader = 0;
         shader_program_->set_program_id(glCreateProgram());
-        auto vertex_shader_res = DoCompileShader(vert_shader_src, &vertex_shader, GL_VERTEX_SHADER);
+        auto vertex_shader_res = CompileShader(vert_shader_src, &vertex_shader, GL_VERTEX_SHADER);
         auto success = true;
         if (vertex_shader_res != GL_TRUE) {
             SDL_ShowSimpleMessageBox(
@@ -20,7 +20,7 @@ namespace Narradia {
         if (success) {
             glAttachShader(shader_program_->program_id(), vertex_shader);
             auto fragment_shader_res =
-                DoCompileShader(frag_shader_src, &fragment_shader, GL_FRAGMENT_SHADER);
+                CompileShader(frag_shader_src, &fragment_shader, GL_FRAGMENT_SHADER);
             if (fragment_shader_res != GL_TRUE) {
                 SDL_ShowSimpleMessageBox(
                     SDL_MESSAGEBOX_ERROR, "Shader error", "Unable to compile fragment shader.",

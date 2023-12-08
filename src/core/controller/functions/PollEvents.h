@@ -1,5 +1,5 @@
 #pragma once
 
 namespace Narradia {
-    void DoPollEvents();
+    void PollEvents();
 }

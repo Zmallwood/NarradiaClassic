@@ -1,7 +1,7 @@
 #include "WorldViewModuleView.h"
 #include "configuration/model/Configuration.h"
 #include "core.render/view/RendererTilesView.h"
-#include "functions/DoDrawGround.h"
+#include "functions/DrawGround.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
@@ -53,7 +53,7 @@ namespace Narradia {
                     continue;
                 auto tile = map_area->GetTile(x, y);
                 auto coord = Point{x, y};
-                DoDrawGround(tile, coord);
+                DrawGround(tile, coord);
             }
         }
         RendererTilesView::Get()->StopBatchDrawing();

@@ -1,8 +1,8 @@
-#include "DoDrawGround.h"
+#include "DrawGround.h"
 #include "core.render/view/RendererTilesView.h"
 
 namespace Narradia {
-    void DoDrawGround(std::shared_ptr<Tile> tile, Point coord) {
+    void DrawGround(std::shared_ptr<Tile> tile, Point coord) {
         auto ground = tile->ground();
         if (ground == "GroundWater") {
             auto anim_index = ((SDL_GetTicks() + coord.x * coord.y) % 900) / 300;
