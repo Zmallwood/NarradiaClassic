@@ -24,6 +24,10 @@ namespace Narradia {
             position_ = value;
         }
 
+        Point3F position_3d() {
+            return position_3d_;
+        }
+
         float movement_speed() {
             return movement_speed_;
         }
@@ -74,6 +78,7 @@ namespace Narradia {
 
       private:
         Point position_;
+        Point3F position_3d_;
         float movement_speed_ = 2.0f;
         int ticks_last_move_ = 0;
         Point destination_ = {-1, -1};

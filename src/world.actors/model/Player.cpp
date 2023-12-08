@@ -7,6 +7,7 @@ namespace Narradia {
      */
     Player::Player() {
         position_ = {kMapWidth / 2, kMapHeight / 2};
+        position_3d_ = {kMapWidth / 2.0f, 0.0f, kMapHeight / 2.0f};
     }
 
     void Player::MoveUp() {
