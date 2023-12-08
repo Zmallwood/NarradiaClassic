@@ -1,7 +1,11 @@
 #include "Renderer2DImagesView.h"
 #include "core.assets/model/ImageBank.h"
+#include <GL/glew.h>
 
 namespace Narradia {
+    /**
+     * Create the shader program for the provided shader sources.
+     */
     Renderer2DImagesView::Renderer2DImagesView() {
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model/2DImagesVertex.glsl"
@@ -13,6 +17,10 @@ namespace Narradia {
             vertex_shader_source, fragment_shader_source);
     }
 
+    /**
+     * Prepares resources for a new image later to be rendered, and returns an
+     * id.
+     */
     RenderId Renderer2DImagesView::NewImage() {
         auto vao_id = renderer_base_->GenerateNewVertexArrayId();
         UseVaoBegin(vao_id);
@@ -40,6 +48,10 @@ namespace Narradia {
         return vao_id;
     }
 
+    /**
+     * Draws an image to the canvas, must previously have been initialized with
+     * NewImage().
+     */
     void Renderer2DImagesView::DrawImage(
         std::string_view image_name, RenderId rid, const RectF &dest,
         Color color) const {
@@ -97,6 +109,9 @@ namespace Narradia {
         UseVaoEnd();
     }
 
+    /**
+     * Forwarding cleanup command.
+     */
     Renderer2DImagesView::~Renderer2DImagesView() {
         CleanupBase();
     }

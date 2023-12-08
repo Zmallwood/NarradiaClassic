@@ -3,7 +3,7 @@
 namespace Narradia {
 
     /**
-     * Compile shader.
+     * Compile shader, vertex or fragment type, and returns the success status.
      */
     GLuint DoCompileShader(
         const GLchar *shader_src, GLuint *shader, GLenum shader_type) {

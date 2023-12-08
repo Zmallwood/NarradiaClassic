@@ -4,6 +4,10 @@
 namespace Narradia {
     class ShaderProgram;
 
+    /**
+     * Base class for all renderers providing functions for generating VAO and
+     * VBOs.
+     */
     class RendererBase {
       public:
         constexpr static int kNumVerticesInRectangle = 4;

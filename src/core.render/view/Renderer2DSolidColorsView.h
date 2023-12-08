@@ -2,7 +2,9 @@
 #include "RendererBaseView.h"
 
 namespace Narradia {
-
+    /**
+     * Prepares resources and renders color-filled rectangles to the canvas.
+     */
     class Renderer2DSolidColorsView
         : public RendererBaseView,
           public Singleton<Renderer2DSolidColorsView> {

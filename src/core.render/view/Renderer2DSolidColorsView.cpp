@@ -1,6 +1,10 @@
 #include "Renderer2DSolidColorsView.h"
+#include <GL/glew.h>
 
 namespace Narradia {
+    /**
+     * Create the shader program from shader sources.
+     */
     Renderer2DSolidColorsView::Renderer2DSolidColorsView() {
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model//2DSolidColorsVertex.glsl"
@@ -12,6 +16,10 @@ namespace Narradia {
             vertex_shader_source, fragment_shader_source);
     }
 
+    /**
+     * Prepares resources for a new colored rectangle, later to be rendered,
+     * returning an id.
+     */
     RenderId Renderer2DSolidColorsView::NewRect() {
         auto vao_id = renderer_base_->GenerateNewVertexArrayId();
         UseVaoBegin(vao_id);
@@ -34,6 +42,10 @@ namespace Narradia {
         return vao_id;
     }
 
+    /**
+     * Renders a color-filled rectangle to the canvas, must previously have been
+     * initialized with NewRect().
+     */
     void Renderer2DSolidColorsView::FillRect(
         RenderId vao_id, RectF rect, Color color) {
         auto gl_rect = rect.ToGLRectF();
@@ -79,6 +91,9 @@ namespace Narradia {
         UseVaoEnd();
     }
 
+    /**
+     * Forwarding cleanup command.
+     */
     Renderer2DSolidColorsView::~Renderer2DSolidColorsView() {
         CleanupBase();
     }
