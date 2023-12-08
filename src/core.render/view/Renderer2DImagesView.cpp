@@ -51,10 +51,6 @@ namespace Narradia {
         vertices[1].position = {gl_rect.x, gl_rect.y};
         vertices[2].position = {gl_rect.x + gl_rect.width, gl_rect.y};
         vertices[3].position = {gl_rect.x + gl_rect.width, gl_rect.y - gl_rect.height};
-        vertices[0].color = color;
-        vertices[1].color = color;
-        vertices[2].color = color;
-        vertices[3].color = color;
         vertices[0].uv = {0.0f, 1.0f};
         vertices[1].uv = {0.0f, 0.0f};
         vertices[2].uv = {1.0f, 0.0f};
@@ -70,10 +66,10 @@ namespace Narradia {
         for (auto &vertex : vertices) {
             positions.push_back(vertex.position.x);
             positions.push_back(vertex.position.y);
-            colors.push_back(vertex.color.r);
-            colors.push_back(vertex.color.g);
-            colors.push_back(vertex.color.b);
-            colors.push_back(vertex.color.a);
+            colors.push_back(color.r);
+            colors.push_back(color.g);
+            colors.push_back(color.b);
+            colors.push_back(color.a);
             uvs.push_back(vertex.uv.x);
             uvs.push_back(vertex.uv.y);
         }

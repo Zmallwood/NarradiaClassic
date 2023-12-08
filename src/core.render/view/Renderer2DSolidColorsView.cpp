@@ -47,10 +47,6 @@ namespace Narradia {
         vertices[1].position = {gl_rect.x, gl_rect.y};
         vertices[2].position = {gl_rect.x + gl_rect.width, gl_rect.y};
         vertices[3].position = {gl_rect.x + gl_rect.width, gl_rect.y - gl_rect.height};
-        vertices[0].color = color;
-        vertices[1].color = color;
-        vertices[2].color = color;
-        vertices[3].color = color;
         glDisable(GL_DEPTH_TEST);
         std::vector<int> indices(RendererBase::kNumVerticesInRectangle);
         std::iota(std::begin(indices), std::end(indices), 0);
@@ -59,10 +55,10 @@ namespace Narradia {
         for (auto &vertex : vertices) {
             positions.push_back(vertex.position.x);
             positions.push_back(vertex.position.y);
-            colors.push_back(vertex.color.r);
-            colors.push_back(vertex.color.g);
-            colors.push_back(vertex.color.b);
-            colors.push_back(vertex.color.a);
+            colors.push_back(color.r);
+            colors.push_back(color.g);
+            colors.push_back(color.b);
+            colors.push_back(color.a);
         }
         UseVaoBegin(vao_id);
         auto index_buffer_id = renderer_base_->GetBufferId(BufferTypes::Indices, vao_id);
