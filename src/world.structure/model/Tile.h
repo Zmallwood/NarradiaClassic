@@ -4,6 +4,10 @@
 #include "world.actors/model/Mob.h"
 
 namespace Narradia {
+    /**
+     * A tile in the game map on which objects can be places and actors can walk
+     * on.
+     */
     class Tile {
       public:
         std::string_view ground() {

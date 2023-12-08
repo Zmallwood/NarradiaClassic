@@ -2,7 +2,7 @@
 
 namespace Narradia {
     /**
-     * Game instance.
+     * Complete game instance object.
      */
     class Game {
       public:
