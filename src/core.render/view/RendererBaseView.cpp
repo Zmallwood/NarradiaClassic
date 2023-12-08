@@ -20,8 +20,7 @@ namespace Narradia {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
         glBufferData(
             GL_ELEMENT_ARRAY_BUFFER,
-            num_vertices *
-                RendererBase::kNumFloatsPerEntry.at(BufferTypes::Indices) *
+            num_vertices * RendererBase::kNumFloatsPerEntry.at(BufferTypes::Indices) *
                 sizeof(float),
             data, GL_DYNAMIC_DRAW);
     }
@@ -30,28 +29,26 @@ namespace Narradia {
      * Set all kinds of data, except indices, for rendered object.
      */
     void RendererBaseView::SetData(
-        GLuint vbo_id, int num_vertices, const void *data,
-        BufferTypes buffer_type, int layout_location) const {
+        GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
+        int layout_location) const {
         SetArrayBufferData(
-            vbo_id, num_vertices, data,
-            RendererBase::kNumFloatsPerEntry.at(buffer_type), layout_location);
+            vbo_id, num_vertices, data, RendererBase::kNumFloatsPerEntry.at(buffer_type),
+            layout_location);
     }
 
     /**
      * Set data for an GL_ARRAY_BUFFER, that is all kind of data except indices:
      */
     void RendererBaseView::SetArrayBufferData(
-        GLuint vbo_id, int num_vertices, const void *data,
-        int num_floats_per_entry, int layout_location) const {
+        GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
+        int layout_location) const {
         glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
         glBufferData(
-            GL_ARRAY_BUFFER,
-            num_vertices * num_floats_per_entry * sizeof(float), data,
+            GL_ARRAY_BUFFER, num_vertices * num_floats_per_entry * sizeof(float), data,
             GL_DYNAMIC_DRAW);
         if (layout_location >= 0) {
             glVertexAttribPointer(
-                layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0,
-                (const GLvoid *)0);
+                layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);
             glEnableVertexAttribArray(layout_location);
         }
     }
@@ -59,12 +56,10 @@ namespace Narradia {
     /**
      * Update indices data for rendered object.
      */
-    void RendererBaseView::UpdateIndicesData(
-        GLuint indices_vbo_id, std::vector<int> &indices) const {
+    void
+    RendererBaseView::UpdateIndicesData(GLuint indices_vbo_id, std::vector<int> &indices) const {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
-        glBufferSubData(
-            GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(float) * indices.size(),
-            indices.data());
+        glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(float) * indices.size(), indices.data());
     }
 
     /**
@@ -75,11 +70,9 @@ namespace Narradia {
         GLuint vbo_id, std::vector<float> &data, int num_floats_per_entry,
         int layout_location) const {
         glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
-        glBufferSubData(
-            GL_ARRAY_BUFFER, 0, sizeof(float) * data.size(), data.data());
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * data.size(), data.data());
         glVertexAttribPointer(
-            layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0,
-            (const GLvoid *)0);
+            layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);
         glEnableVertexAttribArray(layout_location);
     }
 
@@ -90,8 +83,7 @@ namespace Narradia {
         GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
         int layout_location) const {
         UpdateArrayBufferData(
-            vbo_id, data, RendererBase::kNumFloatsPerEntry.at(buffer_type),
-            layout_location);
+            vbo_id, data, RendererBase::kNumFloatsPerEntry.at(buffer_type), layout_location);
     }
 
     /**
@@ -117,15 +109,13 @@ namespace Narradia {
      */
     GLuint RendererBaseView::GetUniformLocation(std::string_view var_name) {
         return glGetUniformLocation(
-            shader_program_view_->shader_program()->program_id(),
-            var_name.data());
+            shader_program_view_->shader_program()->program_id(), var_name.data());
     }
 
     /**
      * Returns the View component of the shader program.
      */
-    std::shared_ptr<ShaderProgramView>
-    RendererBaseView::GetShaderProgramView() const {
+    std::shared_ptr<ShaderProgramView> RendererBaseView::GetShaderProgramView() const {
         return shader_program_view_;
     }
 

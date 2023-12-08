@@ -5,8 +5,7 @@ namespace Narradia {
     /**
      * Controller for MainScene.
      */
-    class MainSceneController : public ISceneController,
-                                public Singleton<MainSceneController> {
+    class MainSceneController : public ISceneController, public Singleton<MainSceneController> {
       public:
         void OnEnter() override;
 

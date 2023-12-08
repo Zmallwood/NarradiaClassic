@@ -8,17 +8,11 @@ namespace Narradia {
     class KeyboardInput : public Singleton<KeyboardInput> {
       public:
         void RegisterPressedKey(SDL_Keycode key);
-
         void RegisterReleasedKey(SDL_Keycode key);
-
         bool KeyIsPressed(SDL_Keycode key);
-
         bool KeyHasBeenFiredPickResult(SDL_Keycode key);
-
         bool AnyKeyIsPressedPickResult();
-
         void AppendTextInput(std::string_view to_append);
-
         std::string_view PickTextInput();
 
       private:

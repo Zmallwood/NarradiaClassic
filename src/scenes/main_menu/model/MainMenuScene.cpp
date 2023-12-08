@@ -8,13 +8,12 @@ namespace Narradia {
      * Initialize GuiComponents.
      */
     MainMenuScene::MainMenuScene() {
-        scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
-            "Play", RectF{0.4f, 0.4f, 0.2f, 0.1f}, [] {
+        scene_gui()->AddGuiComponent(
+            std::make_shared<GuiButton>("Play", RectF{0.4f, 0.4f, 0.2f, 0.1f}, [] {
                 SceneMngrController::Get()->ChangeScene(SceneNames::Main);
             }));
         scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
-            "Exit", RectF{0.4f, 0.55f, 0.2f, 0.1f},
-            [] { Engine::Get()->set_running(false); }));
+            "Exit", RectF{0.4f, 0.55f, 0.2f, 0.1f}, [] { Engine::Get()->set_running(false); }));
     }
 
     /**

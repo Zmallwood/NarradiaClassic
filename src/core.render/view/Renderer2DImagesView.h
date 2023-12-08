@@ -5,17 +5,13 @@ namespace Narradia {
     /**
      * Prepares and renders 2d images to the canvas.
      */
-    class Renderer2DImagesView : public RendererBaseView,
-                                 public Singleton<Renderer2DImagesView> {
+    class Renderer2DImagesView : public RendererBaseView, public Singleton<Renderer2DImagesView> {
       public:
         Renderer2DImagesView();
-
         ~Renderer2DImagesView();
-
         RenderId NewImage();
-
         void DrawImage(
-            std::string_view image_name, RenderId rid, const RectF& dest,
+            std::string_view image_name, RenderId rid, const RectF &dest,
             Color color = {255, 255, 255, 255}) const;
 
       private:

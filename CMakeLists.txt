@@ -66,6 +66,7 @@ set(PCH_FILES
 
 "src/common/system/functions/SingletonsCleanup.h"
 "src/common/system/functions/Utilities.h"
+"src/common/system/functions/CanvasUtilities.h"
 "src/common/system/Singleton.h"
 "src/common/system/Typedefs.h"
 "src/core/model/SDLDeleter.h"

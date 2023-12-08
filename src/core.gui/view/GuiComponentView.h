@@ -1,5 +1,6 @@
 #pragma once
 #include "core.gui/model/GuiComponent.h"
+#include <memory>
 
 namespace Narradia {
     /**

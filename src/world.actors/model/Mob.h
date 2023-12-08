@@ -9,9 +9,7 @@ namespace Narradia {
         Mob(std::string_view type)
             : type_(type) {
         }
-
         void Hit(float damage);
-
         bool IsDead();
 
         std::string_view type() {

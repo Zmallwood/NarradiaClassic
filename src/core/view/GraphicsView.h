@@ -7,9 +7,7 @@ namespace Narradia {
     class GraphicsView : public Singleton<GraphicsView> {
       public:
         GraphicsView();
-
         void ClearCanvas();
-
         void PresentCanvas();
     };
 }

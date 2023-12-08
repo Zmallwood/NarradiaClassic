@@ -34,7 +34,6 @@ namespace Narradia {
      * Tells if this rectangle has a point within its boundaries.
      */
     bool RectF::Contains(PointF point) const {
-        return point.x >= x && point.y >= y && point.x < x + width &&
-               point.y < y + height;
+        return point.x >= x && point.y >= y && point.x < x + width && point.y < y + height;
     }
 }

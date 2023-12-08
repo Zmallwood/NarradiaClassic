@@ -16,9 +16,7 @@ namespace Narradia {
      */
     void ImageBank::LoadImages() {
         using iterator = std::filesystem::recursive_directory_iterator;
-        auto abs_all_images_path =
-            std::string(SDL_GetBasePath()) + kRelImagesPath.data();
-
+        auto abs_all_images_path = std::string(SDL_GetBasePath()) + kRelImagesPath.data();
         for (auto &imageFileEntry : iterator(abs_all_images_path)) {
             auto abs_file_path = imageFileEntry.path().string();
             if (GetFileExtension(abs_file_path) != "png")
@@ -43,14 +41,13 @@ namespace Narradia {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         if (surface->format->BytesPerPixel == 4)
             glTexImage2D(
-                GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGBA,
-                GL_UNSIGNED_BYTE, surface->pixels);
+                GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                surface->pixels);
         else
             glTexImage2D(
-                GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGB,
-                GL_UNSIGNED_BYTE, surface->pixels);
+                GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGB, GL_UNSIGNED_BYTE,
+                surface->pixels);
         SDL_FreeSurface(surface);
-
         return texture_id;
     }
 
@@ -61,7 +58,6 @@ namespace Narradia {
         for (auto image : images_)
             if (image.first == image_name)
                 return image.second;
-
         return -1;
     }
 

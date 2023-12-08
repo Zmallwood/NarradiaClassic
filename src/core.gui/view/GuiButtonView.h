@@ -8,7 +8,6 @@ namespace Narradia {
     class GuiButtonView : public GuiComponentView {
       public:
         GuiButtonView();
-
         void Render() override;
 
       private:

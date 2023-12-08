@@ -1,8 +1,8 @@
 #include "MapGenerator.h"
 #include "functions/DoGenerateGrass.h"
-#include "functions/DoGenerateWater.h"
-#include "functions/DoGenerateObjects.h"
 #include "functions/DoGenerateMobs.h"
+#include "functions/DoGenerateObjects.h"
+#include "functions/DoGenerateWater.h"
 
 namespace Narradia {
     /**

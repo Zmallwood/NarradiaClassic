@@ -11,7 +11,6 @@ namespace Narradia {
     class SceneGui {
       public:
         void UpdateGameLogic();
-
         void AddGuiComponent(std::shared_ptr<GuiComponent> component);
 
         std::vector<std::shared_ptr<GuiComponent>> &gui_components() {

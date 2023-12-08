@@ -7,7 +7,6 @@ namespace Narradia {
     class CursorView : public Singleton<CursorView> {
       public:
         CursorView();
-
         void RenderCursor();
 
       private:

@@ -7,7 +7,6 @@ namespace Narradia {
     class Engine : public Singleton<Engine> {
       public:
         Engine();
-
         void UpdateGameLogic();
 
         bool is_running() {

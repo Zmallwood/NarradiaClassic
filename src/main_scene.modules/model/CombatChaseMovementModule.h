@@ -1,9 +1,7 @@
 #pragma once
 
 namespace Narradia {
-    class CombatChaseMovementModule
-        : public Singleton<CombatChaseMovementModule>
-    {
+    class CombatChaseMovementModule : public Singleton<CombatChaseMovementModule> {
       public:
         void UpdateGameLogic();
     };

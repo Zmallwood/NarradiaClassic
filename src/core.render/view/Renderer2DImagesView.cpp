@@ -13,8 +13,7 @@ namespace Narradia {
         const GLchar *fragment_shader_source =
 #include "core.render.shaders/model/2DImagesFragment.glsl"
             ;
-        GetShaderProgramView()->Create(
-            vertex_shader_source, fragment_shader_source);
+        GetShaderProgramView()->Create(vertex_shader_source, fragment_shader_source);
     }
 
     /**
@@ -24,27 +23,19 @@ namespace Narradia {
     RenderId Renderer2DImagesView::NewImage() {
         auto vao_id = renderer_base_->GenerateNewVertexArrayId();
         UseVaoBegin(vao_id);
-        auto index_buffer_id =
-            renderer_base_->GenerateNewBufferId(BufferTypes::Indices, vao_id);
-        auto position_buffer_id = renderer_base_->GenerateNewBufferId(
-            BufferTypes::Positions2D, vao_id);
-        auto color_buffer_id =
-            renderer_base_->GenerateNewBufferId(BufferTypes::Colors, vao_id);
-        auto uv_buffer_id =
-            renderer_base_->GenerateNewBufferId(BufferTypes::Uvs, vao_id);
-        SetIndicesData(
-            index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
+        auto index_buffer_id = renderer_base_->GenerateNewBufferId(BufferTypes::Indices, vao_id);
+        auto position_buffer_id =
+            renderer_base_->GenerateNewBufferId(BufferTypes::Positions2D, vao_id);
+        auto color_buffer_id = renderer_base_->GenerateNewBufferId(BufferTypes::Colors, vao_id);
+        auto uv_buffer_id = renderer_base_->GenerateNewBufferId(BufferTypes::Uvs, vao_id);
+        SetIndicesData(index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
         SetData(
             position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
             BufferTypes::Positions2D);
         SetData(
-            color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
-            BufferTypes::Colors);
-        SetData(
-            uv_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
-            BufferTypes::Uvs);
+            color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
+        SetData(uv_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
         UseVaoEnd();
-
         return vao_id;
     }
 
@@ -53,15 +44,13 @@ namespace Narradia {
      * NewImage().
      */
     void Renderer2DImagesView::DrawImage(
-        std::string_view image_name, RenderId rid, const RectF &dest,
-        Color color) const {
+        std::string_view image_name, RenderId rid, const RectF &dest, Color color) const {
         auto gl_rect = dest.ToGLRectF();
         Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
         vertices[0].position = {gl_rect.x, gl_rect.y - gl_rect.height};
         vertices[1].position = {gl_rect.x, gl_rect.y};
         vertices[2].position = {gl_rect.x + gl_rect.width, gl_rect.y};
-        vertices[3].position = {
-            gl_rect.x + gl_rect.width, gl_rect.y - gl_rect.height};
+        vertices[3].position = {gl_rect.x + gl_rect.width, gl_rect.y - gl_rect.height};
         vertices[0].color = color;
         vertices[1].color = color;
         vertices[2].color = color;
@@ -89,23 +78,16 @@ namespace Narradia {
             uvs.push_back(vertex.uv.y);
         }
         UseVaoBegin(rid);
-        auto index_buffer_id =
-            renderer_base_->GetBufferId(BufferTypes::Indices, rid);
-        auto position_buffer_id =
-            renderer_base_->GetBufferId(BufferTypes::Positions2D, rid);
-        auto color_buffer_id =
-            renderer_base_->GetBufferId(BufferTypes::Colors, rid);
+        auto index_buffer_id = renderer_base_->GetBufferId(BufferTypes::Indices, rid);
+        auto position_buffer_id = renderer_base_->GetBufferId(BufferTypes::Positions2D, rid);
+        auto color_buffer_id = renderer_base_->GetBufferId(BufferTypes::Colors, rid);
         auto uv_buffer_id = renderer_base_->GetBufferId(BufferTypes::Uvs, rid);
         UpdateIndicesData(index_buffer_id, indices);
-        UpdateData(
-            position_buffer_id, positions, BufferTypes::Positions2D,
-            kLocationPosition);
-        UpdateData(
-            color_buffer_id, colors, BufferTypes::Colors, kLocationColor);
+        UpdateData(position_buffer_id, positions, BufferTypes::Positions2D, kLocationPosition);
+        UpdateData(color_buffer_id, colors, BufferTypes::Colors, kLocationColor);
         UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, kLocationUv);
         glDrawElements(
-            GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle,
-            GL_UNSIGNED_INT, NULL);
+            GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
         UseVaoEnd();
     }
 

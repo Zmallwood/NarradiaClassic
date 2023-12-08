@@ -30,10 +30,8 @@ namespace Narradia {
         //            used_bounds.x += p->parent_container_->GetPosition().x;
         //            used_bounds.y += p->parent_container_->GetPosition().y;
         //        }
-        Renderer2DImagesView::Get()->DrawImage(
-            used_image_name, rid_image, used_bounds);
+        Renderer2DImagesView::Get()->DrawImage(used_image_name, rid_image, used_bounds);
         RendererText::Get()->DrawString(
-            rid_label_text_, model->text(), used_bounds.GetCenter(),
-            Colors::wheat, true);
+            rid_label_text_, model->text(), used_bounds.GetCenter(), Colors::wheat, true);
     }
 }

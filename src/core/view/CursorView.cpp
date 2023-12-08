@@ -18,8 +18,7 @@ namespace Narradia {
         auto mouse_pos = GetMousePosition();
         auto width = kCursorWidth;
         auto height = width * GetAspectRatio();
-        RectF rect = {
-            mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
+        RectF rect = {mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
         std::string_view image_name;
         switch (Cursor::Get()->cursor_style()) {
         case CursorStyles::Default:

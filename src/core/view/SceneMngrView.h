@@ -9,7 +9,6 @@ namespace Narradia {
     class SceneMngrView : public Singleton<SceneMngrView> {
       public:
         SceneMngrView();
-
         void RenderCurrScene();
 
       private:

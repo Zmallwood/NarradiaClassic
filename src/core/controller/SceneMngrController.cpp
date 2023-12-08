@@ -9,12 +9,9 @@ namespace Narradia {
      * Initialize scene controllers that will be used.
      */
     SceneMngrController::SceneMngrController() {
-        scene_controllers_.insert(
-            {SceneNames::Intro, IntroSceneController::Get()});
-        scene_controllers_.insert(
-            {SceneNames::MainMenu, MainMenuSceneController::Get()});
-        scene_controllers_.insert(
-            {SceneNames::Main, MainSceneController::Get()});
+        scene_controllers_.insert({SceneNames::Intro, IntroSceneController::Get()});
+        scene_controllers_.insert({SceneNames::MainMenu, MainMenuSceneController::Get()});
+        scene_controllers_.insert({SceneNames::Main, MainSceneController::Get()});
     }
 
     /**
@@ -22,7 +19,6 @@ namespace Narradia {
      */
     void SceneMngrController::UpdateGameFlowCurrScene() {
         auto curr_scene = SceneMngr::Get()->curr_scene();
-
         if (scene_controllers_.count(curr_scene) != 0)
             scene_controllers_.at(curr_scene)->UpdateGameFlow();
     }

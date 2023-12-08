@@ -56,7 +56,6 @@ namespace Narradia {
     std::string_view KeyboardInput::PickTextInput() {
         auto result = text_input_;
         text_input_ = "";
-
         return result;
     }
 }

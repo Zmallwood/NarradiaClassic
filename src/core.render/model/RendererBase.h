@@ -1,5 +1,8 @@
 #pragma once
 #include "BufferTypes.h"
+#include <GL/glew.h>
+#include <map>
+#include <vector>
 
 namespace Narradia {
     class ShaderProgram;
@@ -12,9 +15,8 @@ namespace Narradia {
       public:
         constexpr static int kNumVerticesInRectangle = 4;
         inline const static std::map<BufferTypes, int> kNumFloatsPerEntry = {
-            {BufferTypes::Indices, 1},     {BufferTypes::Positions2D, 2},
-            {BufferTypes::Positions3D, 3}, {BufferTypes::Colors, 4},
-            {BufferTypes::Uvs, 2},         {BufferTypes::Normals, 3}};
+            {BufferTypes::Indices, 1}, {BufferTypes::Positions2D, 2}, {BufferTypes::Positions3D, 3},
+            {BufferTypes::Colors, 4},  {BufferTypes::Uvs, 2},         {BufferTypes::Normals, 3}};
 
         GLuint GenerateNewVertexArrayId();
 

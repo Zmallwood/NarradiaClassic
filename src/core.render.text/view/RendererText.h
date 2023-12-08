@@ -11,9 +11,7 @@ namespace Narradia {
     class RendererText : public Singleton<RendererText> {
       public:
         RendererText();
-
         RenderId NewString();
-
         void DrawString(
             RenderId rid, std::string_view text, PointF position,
             Color color = {1.0f, 1.0f, 1.0f, 1.0f}, bool center_align = false,
@@ -22,8 +20,7 @@ namespace Narradia {
       private:
         void RenderText(
             RenderId rid, std::string_view text, Color color, bool center_align,
-            FontSizes font_size, std::string &out_unique_name_id,
-            SizeF &out_size) const;
+            FontSizes font_size, std::string &out_unique_name_id, SizeF &out_size) const;
 
         std::string CreateGetBlankTexture();
 

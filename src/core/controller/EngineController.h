@@ -7,7 +7,6 @@ namespace Narradia {
     class EngineController : public Singleton<EngineController> {
       public:
         void HandleInput();
-
         void UpdateGameFlow();
     };
 }

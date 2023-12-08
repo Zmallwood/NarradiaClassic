@@ -22,8 +22,7 @@ namespace Narradia {
     void MainMenuSceneView::RenderDerived() {
         Renderer2DImagesView::Get()->DrawImage(
             "DefaultSceneBackground", rid_background, {0.0f, 0.0f, 1.0f, 1.0f});
-        Renderer2DImagesView::Get()->DrawImage(
-            "NarradiaLogo", rid_logo, {0.4f, 0.1f, 0.2f, 0.1f});
+        Renderer2DImagesView::Get()->DrawImage("NarradiaLogo", rid_logo, {0.4f, 0.1f, 0.2f, 0.1f});
         RectF rect = {0.15f, 0.15f, 0.2f, 0.1f};
         Color color = {0, 0, 255, 255};
     }

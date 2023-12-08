@@ -29,8 +29,7 @@ namespace Narradia {
       private:
         std::shared_ptr<SDL_Window> window_;
         Size window_size_ = {660, 660};
-        Uint32 window_flags_ = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN |
-                               SDL_WINDOW_FULLSCREEN_DESKTOP;
+        Uint32 window_flags_ = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP;
         Color clear_color_ = {0, 150, 255, 255};
     };
 }

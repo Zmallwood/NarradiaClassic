@@ -24,8 +24,7 @@ namespace Narradia {
         if (!enabled_)
             return;
         std::string printed_text = std::string(GetCurrTime().data()) + "." +
-                                   std::to_string(SDL_GetTicks() % 1000) +
-                                   ") " + text.data();
+                                   std::to_string(SDL_GetTicks() % 1000) + ") " + text.data();
         text_lines_.push_back({printed_text, text_color});
     }
 

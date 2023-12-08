@@ -7,13 +7,9 @@ namespace Narradia {
     class Player : public Singleton<Player> {
       public:
         Player();
-
         void MoveUp();
-
         void MoveRight();
-
         void MoveDown();
-
         void MoveLeft();
 
         Point3F position() {

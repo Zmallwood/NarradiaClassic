@@ -8,11 +8,9 @@ namespace Narradia {
      */
     void DoGenerateMobs(std::shared_ptr<MapArea> map_area) {
         auto num_cows = 200;
-
         for (auto i = 0; i < num_cows; i++) {
             auto x = rand() % kMapWidth;
             auto y = rand() % kMapHeight;
-
             if (map_area->GetTile(x, y)->ground() != "GroundWater") {
                 if (nullptr == map_area->GetTile(x, y)->mob()) {
                     auto new_mob = std::make_shared<Mob>("MobCow");
@@ -21,13 +19,10 @@ namespace Narradia {
                 }
             }
         }
-
         auto num_rats = 200;
-
         for (auto i = 0; i < num_rats; i++) {
             auto x = rand() % kMapWidth;
             auto y = rand() % kMapHeight;
-
             if (map_area->GetTile(x, y)->ground() != "GroundWater") {
                 if (nullptr == map_area->GetTile(x, y)->mob()) {
                     auto new_mob = std::make_shared<Mob>("MobRat");

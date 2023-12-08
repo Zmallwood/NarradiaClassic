@@ -19,7 +19,6 @@ namespace Narradia {
      */
     void SceneMngrView::RenderCurrScene() {
         auto curr_scene = SceneMngr::Get()->curr_scene();
-
         if (scene_views_.count(curr_scene) != 0)
             scene_views_.at(curr_scene)->Render();
     }

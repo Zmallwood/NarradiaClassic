@@ -1,6 +1,6 @@
 #include "MainSceneController.h"
-#include "main_scene.modules/model/PlayerSpawnPositioningModule.h"
 #include "core/model/TextOutBox.h"
+#include "main_scene.modules/model/PlayerSpawnPositioningModule.h"
 
 namespace Narradia {
     /**

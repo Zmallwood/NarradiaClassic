@@ -18,12 +18,10 @@ namespace Narradia {
             SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
         }
 
-        MouseInput::Get()->left_button()->AddFiredAction([] {
-            SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
-        });
+        MouseInput::Get()->left_button()->AddFiredAction(
+            [] { SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu); });
 
-        MouseInput::Get()->right_button()->AddFiredAction([] {
-            SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
-        });
+        MouseInput::Get()->right_button()->AddFiredAction(
+            [] { SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu); });
     }
 }

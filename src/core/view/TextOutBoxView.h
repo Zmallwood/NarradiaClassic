@@ -7,7 +7,6 @@ namespace Narradia {
     class TextOutBoxView : public Singleton<TextOutBoxView> {
       public:
         TextOutBoxView();
-
         void Render() const;
 
       private:

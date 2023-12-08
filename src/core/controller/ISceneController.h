@@ -7,7 +7,6 @@ namespace Narradia {
     class ISceneController {
       public:
         virtual void OnEnter() = 0;
-
         void UpdateGameFlow();
 
       protected:

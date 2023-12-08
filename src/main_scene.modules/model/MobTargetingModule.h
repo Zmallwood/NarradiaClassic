@@ -6,7 +6,6 @@ namespace Narradia {
     class MobTargetingModule : public Singleton<MobTargetingModule> {
       public:
         void UpdateGameLogic();
-
         void ClearTarget();
 
         std::shared_ptr<Mob> targeted_mob() {

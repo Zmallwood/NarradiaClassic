@@ -9,9 +9,7 @@ namespace Narradia {
     class TextOutBox : public Singleton<TextOutBox> {
       public:
         void UpdateGameLogic();
-
         void Print(std::string_view text, Color text_color = Colors::wheat);
-
         int GetMaxNumLines();
 
         std::vector<TextLine> text_lines() {
