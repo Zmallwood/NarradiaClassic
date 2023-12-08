@@ -9,5 +9,6 @@ namespace Narradia {
 
       private:
         std::vector<std::vector<RenderId>> rids_tiles;
+        float camera_height_ = 3.0f;
     };
 }

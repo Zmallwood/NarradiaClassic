@@ -49,12 +49,12 @@ namespace Narradia {
 
     void WorldViewModuleView::Render() {
         auto map_area = World::Get()->curr_map_area();
-        auto player_pos = Player::Get()->position_3d();
+        auto player_pos = Player::Get()->position();
         auto r = 21;
 
         auto used_fov = 100.0f;
 
-        auto look_from = Point3F{kMapWidth / 2.0f, 1.0f, kMapHeight / 2.0f};
+        auto look_from = player_pos.Translate(0.0f, camera_height_, 0.0f);
         auto look_at = Point3F{0.0f, 0.0f, 0.0f};
 
         auto new_perspective_matrix = glm::perspective(

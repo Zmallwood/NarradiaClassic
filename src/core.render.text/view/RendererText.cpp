@@ -116,11 +116,15 @@ namespace Narradia {
         SDL_FreeSurface(text_outline_surface);
     }
 
+    /**
+     * Creates and returns unique name for a new blank texture.
+     */
     std::string RendererText::CreateGetBlankTexture() {
         static int id_counter = 0;
         auto id = id_counter++;
         auto unique_name = "RenderedImage" + std::to_string(id);
         ImageBank::Get()->CreateBlankTextImage(unique_name);
+
         return unique_name;
     }
 }

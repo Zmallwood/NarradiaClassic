@@ -16,16 +16,12 @@ namespace Narradia {
 
         void MoveLeft();
 
-        Point position() {
+        Point3F position() {
             return position_;
         }
 
-        void set_position(Point value) {
+        void set_position(Point3F value) {
             position_ = value;
-        }
-
-        Point3F position_3d() {
-            return position_3d_;
         }
 
         float movement_speed() {
@@ -77,8 +73,7 @@ namespace Narradia {
         }
 
       private:
-        Point position_;
-        Point3F position_3d_;
+        Point3F position_;
         float movement_speed_ = 2.0f;
         int ticks_last_move_ = 0;
         Point destination_ = {-1, -1};

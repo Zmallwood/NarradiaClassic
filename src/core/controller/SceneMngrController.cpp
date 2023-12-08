@@ -1,7 +1,6 @@
 #include "SceneMngrController.h"
 #include "../../scenes/intro/controller/IntroSceneController.h"
 #include "../../scenes/main/controller/MainSceneController.h"
-#include "../../scenes/main_2d/controller/Main2DSceneController.h"
 #include "../../scenes/main_menu/controller/MainMenuSceneController.h"
 #include "../model/SceneMngr.h"
 
@@ -15,9 +14,7 @@ namespace Narradia {
         scene_controllers_.insert(
             {SceneNames::MainMenu, MainMenuSceneController::Get()});
         scene_controllers_.insert(
-            {SceneNames::Main3D, MainSceneController::Get()});
-        scene_controllers_.insert(
-            {SceneNames::Main2D, Main2DSceneController::Get()});
+            {SceneNames::Main, MainSceneController::Get()});
     }
 
     /**

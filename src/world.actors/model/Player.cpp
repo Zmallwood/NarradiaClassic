@@ -6,12 +6,11 @@ namespace Narradia {
      * Set default spawn coordinate.
      */
     Player::Player() {
-        position_ = {kMapWidth / 2, kMapHeight / 2};
-        position_3d_ = {kMapWidth / 2.0f, 0.0f, kMapHeight / 2.0f};
+        position_ = {kMapWidth / 2.0f, 0.0f, kMapHeight / 2.0f};
     }
 
     void Player::MoveUp() {
-        position_.y--;
+        position_.z--;
     }
 
     void Player::MoveRight() {
@@ -19,7 +18,7 @@ namespace Narradia {
     }
 
     void Player::MoveDown() {
-        position_.y++;
+        position_.z++;
     }
 
     void Player::MoveLeft() {

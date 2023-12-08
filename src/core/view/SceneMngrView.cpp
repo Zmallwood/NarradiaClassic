@@ -1,7 +1,6 @@
 #include "SceneMngrView.h"
 #include "../../scenes/intro/view/IntroSceneView.h"
 #include "../../scenes/main/view/MainSceneView.h"
-#include "../../scenes/main_2d/view/Main2DSceneView.h"
 #include "../../scenes/main_menu/view/MainMenuSceneView.h"
 #include "../model/SceneMngr.h"
 
@@ -12,8 +11,7 @@ namespace Narradia {
     SceneMngrView::SceneMngrView() {
         scene_views_.insert({SceneNames::Intro, IntroSceneView::Get()});
         scene_views_.insert({SceneNames::MainMenu, MainMenuSceneView::Get()});
-        scene_views_.insert({SceneNames::Main3D, MainSceneView::Get()});
-        scene_views_.insert({SceneNames::Main2D, Main2DSceneView::Get()});
+        scene_views_.insert({SceneNames::Main, MainSceneView::Get()});
     }
 
     /**

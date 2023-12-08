@@ -1,10 +1,14 @@
 #include "MainSceneController.h"
+#include "main_scene.modules/model/PlayerSpawnPositioningModule.h"
+#include "core/model/TextOutBox.h"
 
 namespace Narradia {
     /**
      * On entering scene.
      */
     void MainSceneController::OnEnter() {
+        TextOutBox::Get()->Print("Entering Narradia");
+        PlayerSpawnPositioningModule::Get()->SpawnAtGoodLocation();
     }
 
     /**

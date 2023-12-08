@@ -154,8 +154,8 @@ namespace Narradia {
         glUniformMatrix4fv(location_model_, 1, GL_FALSE, glm::value_ptr(model));
         glUniform1f(location_alpha_, 1.0f);
         glm::vec3 view_pos(
-            Player::Get()->position_3d().x, Player::Get()->position_3d().y,
-            Player::Get()->position_3d().z);
+            Player::Get()->position().x, Player::Get()->position().y,
+            Player::Get()->position().z);
         glUniform3fv(location_view_pos_, 1, glm::value_ptr(view_pos));
         glm::vec3 fog_color_gl(
             kFogColorGround.r, kFogColorGround.g, kFogColorGround.b);
@@ -192,8 +192,8 @@ namespace Narradia {
                 location_model_, 1, GL_FALSE, glm::value_ptr(model));
             glUniform1f(location_alpha_, 1.0f);
             glm::vec3 view_pos(
-                Player::Get()->position_3d().x, Player::Get()->position_3d().y,
-                Player::Get()->position_3d().z);
+                Player::Get()->position().x, Player::Get()->position().y,
+                Player::Get()->position().z);
             glUniform3fv(location_view_pos_, 1, glm::value_ptr(view_pos));
             glm::vec3 fog_color_gl(
                 kFogColorGround.r, kFogColorGround.g, kFogColorGround.b);
