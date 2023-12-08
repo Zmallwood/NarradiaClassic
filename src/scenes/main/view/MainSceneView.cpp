@@ -1,4 +1,5 @@
 #include "MainSceneView.h"
+#include "main_scene.modules/view/WorldViewModuleView.h"
 #include "scenes/main/model/MainScene.h"
 
 namespace Narradia {
@@ -10,5 +11,6 @@ namespace Narradia {
      * Render operations.
      */
     void MainSceneView::RenderDerived() {
+        WorldViewModuleView::Get()->Render();
     }
 }

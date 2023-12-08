@@ -204,6 +204,7 @@ namespace Narradia {
         auto image_id = ImageBank::Get()->GetImage(image_name);
         glBindTexture(GL_TEXTURE_2D, image_id);
         glBindVertexArray(vao_id);
+        
         glDrawElements(GL_TRIANGLE_FAN, vertex_count, GL_UNSIGNED_INT, NULL);
         glBindVertexArray(0);
         if (!is_batch_drawing_)
