@@ -1,8 +1,8 @@
 #include "Utilities.h"
 #include "core.assets/model/ImageBank.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Returns normalized mouse position.
      */

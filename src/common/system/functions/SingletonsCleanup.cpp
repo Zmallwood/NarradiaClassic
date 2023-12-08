@@ -1,7 +1,7 @@
 #include "SingletonsCleanup.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     static std::vector<std::function<void()>> gDisposeActions;
 
     /**

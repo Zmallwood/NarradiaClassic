@@ -1,8 +1,8 @@
 #include "CanvasUtilities.h"
 #include "core/model/Graphics.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Returns canvas size in pixels.
      */

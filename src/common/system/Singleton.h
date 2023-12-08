@@ -1,6 +1,7 @@
 #pragma once
 
-namespace Narradia {
+namespace Narradia
+{
     /**
      * Singleton templated class.
      */

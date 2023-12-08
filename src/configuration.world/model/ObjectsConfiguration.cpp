@@ -1,8 +1,8 @@
 #include "ObjectsConfiguration.h"
 #include "configuration.world/model/ObjectFlags.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Set custom object flags on startup.
      */

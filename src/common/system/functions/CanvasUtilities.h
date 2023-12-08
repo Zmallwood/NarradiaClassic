@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     Size GetCanvasSize();
     float GetAspectRatio();
 }
