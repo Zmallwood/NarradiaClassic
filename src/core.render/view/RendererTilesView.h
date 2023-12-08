@@ -2,6 +2,7 @@
 #include "RendererBaseView.h"
 
 namespace Narradia {
+
     class RendererTilesView : public RendererBaseView, public Singleton<RendererTilesView> {
       public:
         RendererTilesView();

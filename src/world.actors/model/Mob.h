@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * Mob actor which can move around and engage in combat.
      */

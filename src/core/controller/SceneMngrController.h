@@ -3,6 +3,7 @@
 #include "ISceneController.h"
 
 namespace Narradia {
+
     /**
      * Controller for SceneMngr.
      */

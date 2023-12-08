@@ -2,7 +2,9 @@
 #include "../RendererTilesView.h"
 
 namespace Narradia {
+
     RenderId NewImagePolygon(int num_vertices) {
+
         auto renderer = RendererTilesView::Get();
         auto renderer_base = renderer->renderer_base();
         auto vertex_array_id = renderer_base->GenerateNewVertexArrayId();
@@ -22,6 +24,7 @@ namespace Narradia {
         renderer->SetData(uv_buffer_id, num_vertices, nullptr, BufferTypes::Uvs);
         renderer->SetData(normal_buffer_id, num_vertices, nullptr, BufferTypes::Normals);
         renderer->UseVaoEnd();
+
         return vertex_array_id;
     }
 }

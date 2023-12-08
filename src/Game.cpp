@@ -5,11 +5,14 @@
 #include "core/view/EngineView.h"
 
 namespace Narradia {
+
     /**
      * Run a new game instance.
      */
     void Game::Run() {
+
         while (Engine::Get()->is_running()) {
+
             if (FPSCapper::Get()->RunningBelow60FPS()) {
                 EngineController::Get()->HandleInput();
                 EngineController::Get()->UpdateGameFlow();
@@ -17,6 +20,7 @@ namespace Narradia {
                 EngineView::Get()->Render();
             }
         }
+
         DisposeAllSingletons();
     }
 }

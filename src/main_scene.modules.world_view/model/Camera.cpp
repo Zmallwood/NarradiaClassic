@@ -5,7 +5,9 @@
 #include "world.structure/model/World.h"
 
 namespace Narradia {
+
     void Camera::UpdateGameLogic() {
+
         auto player_pos = Player::Get()->position();
         auto look_from = GetCameraPosition();
         auto look_at = player_pos;
@@ -19,6 +21,7 @@ namespace Narradia {
     }
 
     Point3F Camera::GetCameraPosition() {
+
         auto player = Player::Get();
         auto world = World::Get();
         auto used_camera_distance = camera_distance_;
@@ -44,18 +47,23 @@ namespace Narradia {
         auto coord10 = tile_coord.Translate(1, 0);
         auto coord11 = tile_coord.Translate(1, 1);
         auto coord01 = tile_coord.Translate(0, 1);
+
         if (map_area->IsInsideMap(coord10))
             elev10 = map_area->GetTile(coord10)->elevation();
+
         if (map_area->IsInsideMap(coord11))
             elev11 = map_area->GetTile(coord11)->elevation();
+
         if (map_area->IsInsideMap(coord01))
             elev01 = map_area->GetTile(coord01)->elevation();
+
         auto tile_avg_elev = (elev00 + elev10 + elev01 + elev11) / 4.0f;
         auto player_tile_dx = player_position.x - static_cast<int>(player_position.x) - 0.5f;
         auto player_tile_dy = player_position.y - static_cast<int>(player_position.y) - 0.5f;
         auto elev_dx = ((elev10 - elev00) + (elev11 - elev01)) / 2.0f;
         auto elev_dy = ((elev01 - elev00) + (elev11 - elev10)) / 2.0f;
         auto player_elev = tile_avg_elev + player_tile_dx * elev_dx + player_tile_dy * elev_dy;
+
         return player_position_no_elevation.Translate(dx, dy + player_elev * elev_amount, dz);
     }
 }

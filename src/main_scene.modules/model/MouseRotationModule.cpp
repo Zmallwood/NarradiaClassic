@@ -5,7 +5,9 @@
 #include "world.actors/model/Player.h"
 
 namespace Narradia {
+
     void MouseRotationModule::UpdateGameLogic() {
+
         MouseInput::Get()->right_button()->AddFiredAction([&] {
             is_rotating_ = true;
             mouse_pos_rotation_start_ = GetMousePosition();
@@ -13,6 +15,7 @@ namespace Narradia {
             cam_vertical_angle_deg_rotation_start_ = Camera::Get()->vertical_angle_deg();
         });
         MouseInput::Get()->right_button()->AddReleasedAction([&] { is_rotating_ = false; });
+
         if (is_rotating_) {
             Cursor::Get()->set_cursor_style(CursorStyles::Rotating);
             auto mouse_pos = GetMousePosition();

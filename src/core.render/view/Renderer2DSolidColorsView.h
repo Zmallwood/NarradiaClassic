@@ -2,6 +2,7 @@
 #include "RendererBaseView.h"
 
 namespace Narradia {
+
     /**
      * Prepares resources and renders color-filled rectangles to the canvas.
      */

@@ -3,6 +3,7 @@
 #include "PointF.h"
 
 namespace Narradia {
+
     /**
      * Floating point type rectangle.
      */

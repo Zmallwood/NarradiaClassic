@@ -3,6 +3,7 @@
 #include "Color.h"
 
 namespace Narradia {
+
     /**
      * Used to describe objects for 2D rendering.
      */

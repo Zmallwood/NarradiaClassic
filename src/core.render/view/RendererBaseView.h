@@ -4,6 +4,7 @@
 #include "core.render/model/BufferTypes.h"
 
 namespace Narradia {
+
     /**
      * View component of RendererBase.
      */

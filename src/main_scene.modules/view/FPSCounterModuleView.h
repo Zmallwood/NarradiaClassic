@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     class FPSCounterModuleView : public Singleton<FPSCounterModuleView> {
       public:
         FPSCounterModuleView();

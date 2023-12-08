@@ -2,6 +2,7 @@
 #include "../../../core/view/ISceneView.h"
 
 namespace Narradia {
+
     /**
      * View for IntroScene.
      */

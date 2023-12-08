@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     class Camera : public Singleton<Camera> {
       public:
         void UpdateGameLogic();

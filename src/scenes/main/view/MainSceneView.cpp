@@ -4,7 +4,9 @@
 #include "scenes/main/model/MainScene.h"
 
 namespace Narradia {
+
     MainSceneView::MainSceneView() {
+
         scene_gui_view_->set_scene_gui(MainScene::Get()->scene_gui());
     }
 
@@ -12,6 +14,7 @@ namespace Narradia {
      * Render operations.
      */
     void MainSceneView::RenderDerived() {
+
         WorldViewModuleView::Get()->Render();
         FPSCounterModuleView::Get()->Render();
     }

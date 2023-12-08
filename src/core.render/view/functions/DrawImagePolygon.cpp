@@ -5,13 +5,17 @@
 #include "world.actors/model/Player.h"
 
 namespace Narradia {
+
     void DrawImagePolygon(
         std::string_view image_name, RenderId vao_id, int vertex_count, bool depth_test_off) {
+
         auto renderer = RendererTilesView::Get();
+
         if (depth_test_off)
             glDisable(GL_DEPTH_TEST);
         else
             glEnable(GL_DEPTH_TEST);
+
         if (!renderer->is_batch_drawing()) {
             renderer->UseVaoBegin(vao_id);
             glUniformMatrix4fv(
@@ -32,12 +36,13 @@ namespace Narradia {
                 RendererTilesView::kFogColorGround.b);
             glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
         }
+
         auto image_id = ImageBank::Get()->GetImage(image_name);
         glBindTexture(GL_TEXTURE_2D, image_id);
         glBindVertexArray(vao_id);
-
         glDrawElements(GL_TRIANGLE_FAN, vertex_count, GL_UNSIGNED_INT, NULL);
         glBindVertexArray(0);
+
         if (!renderer->is_batch_drawing())
             renderer->UseVaoEnd();
     }

@@ -2,6 +2,7 @@
 #include "core.gui/view/SceneGuiView.h"
 
 namespace Narradia {
+
     /**
      * View for IScene.
      */

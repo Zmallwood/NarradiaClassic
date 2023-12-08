@@ -2,21 +2,25 @@
 #include "functions/CompileShader.h"
 
 namespace Narradia {
+
     /**
      * Create vertex and fragment shader from provided sources.
      */
     bool ShaderProgramView::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src) {
+
         GLuint vertex_shader = 0;
         GLuint fragment_shader = 0;
         shader_program_->set_program_id(glCreateProgram());
         auto vertex_shader_res = CompileShader(vert_shader_src, &vertex_shader, GL_VERTEX_SHADER);
         auto success = true;
+
         if (vertex_shader_res != GL_TRUE) {
             SDL_ShowSimpleMessageBox(
                 SDL_MESSAGEBOX_ERROR, "Shader error", "Unable to compile vertex shader.", nullptr);
             printf("Unable to compile vertex shader %d!\n", vertex_shader);
             success = false;
         }
+
         if (success) {
             glAttachShader(shader_program_->program_id(), vertex_shader);
             auto fragment_shader_res =
@@ -29,6 +33,7 @@ namespace Narradia {
                 success = false;
             }
         }
+
         if (success) {
             glAttachShader(shader_program_->program_id(), fragment_shader);
             glLinkProgram(shader_program_->program_id());
@@ -41,8 +46,10 @@ namespace Narradia {
                 success = false;
             }
         }
+
         glDeleteShader(vertex_shader);
         glDeleteShader(fragment_shader);
+
         return success;
     }
 }

@@ -3,6 +3,7 @@
 #include "SceneNames.h"
 
 namespace Narradia {
+
     /**
      * Model for SceneMngr.
      */

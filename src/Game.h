@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * Complete game instance object.
      */

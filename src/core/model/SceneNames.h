@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * Available scene names.
      */

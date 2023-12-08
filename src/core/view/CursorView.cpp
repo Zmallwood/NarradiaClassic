@@ -5,10 +5,12 @@
 #include "core/model/Cursor.h"
 
 namespace Narradia {
+
     /**
      * Hides default system cursor and prepares RenderIDs.
      */
     CursorView::CursorView() {
+
         SDL_ShowCursor(0);
         rid_image = NewImage();
     }
@@ -17,6 +19,7 @@ namespace Narradia {
      * Renders custom cursor image at mouse position.
      */
     void CursorView::RenderCursor() {
+
         auto mouse_pos = GetMousePosition();
         auto width = kCursorWidth;
         auto height = width * GetAspectRatio();

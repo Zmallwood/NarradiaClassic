@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * Helper class for automatically free SDL resources.
      */

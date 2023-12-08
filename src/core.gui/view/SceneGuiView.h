@@ -4,6 +4,7 @@
 #include <memory>
 
 namespace Narradia {
+
     /**
      * View component of SceneGui.
      */

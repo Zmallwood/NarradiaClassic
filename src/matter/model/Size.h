@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * Contains size data that doesnt need floating point precision.
      */

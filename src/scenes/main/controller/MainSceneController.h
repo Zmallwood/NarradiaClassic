@@ -2,6 +2,7 @@
 #include "../../../core/controller/ISceneController.h"
 
 namespace Narradia {
+
     /**
      * Controller for MainScene.
      */

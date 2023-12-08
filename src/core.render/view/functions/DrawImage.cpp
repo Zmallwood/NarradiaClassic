@@ -3,11 +3,13 @@
 #include "core.assets/model/ImageBank.h"
 
 namespace Narradia {
+
     /**
      * Draws an image to the canvas, must previously have been initialized with
      * NewImage().
      */
     void DrawImage(std::string_view image_name, RenderId rid, const RectF &dest, Color color) {
+
         auto renderer = Renderer2DImagesView::Get();
         auto renderer_base = renderer->renderer_base();
         auto gl_rect = dest.ToGLRectF();
@@ -28,6 +30,7 @@ namespace Narradia {
         std::vector<float> positions;
         std::vector<float> colors;
         std::vector<float> uvs;
+
         for (auto &vertex : vertices) {
             positions.push_back(vertex.position.x);
             positions.push_back(vertex.position.y);
@@ -38,6 +41,7 @@ namespace Narradia {
             uvs.push_back(vertex.uv.x);
             uvs.push_back(vertex.uv.y);
         }
+
         renderer->UseVaoBegin(rid);
         auto index_buffer_id = renderer_base->GetBufferId(BufferTypes::Indices, rid);
         auto position_buffer_id = renderer_base->GetBufferId(BufferTypes::Positions2D, rid);

@@ -5,10 +5,12 @@
 #include "functions/GenerateWater.h"
 
 namespace Narradia {
+
     /**
      * Generate all terrain and content for a MapArea.
      */
     void MapGenerator::GenerateMapArea(std::shared_ptr<MapArea> map_area) {
+
         GenerateGrass(map_area);
         GenerateWater(map_area);
         GenerateObjects(map_area);

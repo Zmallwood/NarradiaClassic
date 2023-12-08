@@ -2,6 +2,7 @@
 #include "../../../core/model/IScene.h"
 
 namespace Narradia {
+
     /**
      * Model for IntroScene.
      */

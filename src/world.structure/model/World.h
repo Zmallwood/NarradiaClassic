@@ -2,6 +2,7 @@
 #include "MapArea.h"
 
 namespace Narradia {
+
     /**
      * Top most object in the world map hierchical structure.
      */

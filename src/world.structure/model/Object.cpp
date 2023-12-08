@@ -1,6 +1,7 @@
 #include "Object.h"
 
 namespace Narradia {
+
     /**
      * Set type of objects.
      */

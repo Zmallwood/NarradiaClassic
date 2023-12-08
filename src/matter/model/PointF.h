@@ -2,6 +2,7 @@
 #include "Point.h"
 
 namespace Narradia {
+
     /**
      * Floating point type 2D point.
      */

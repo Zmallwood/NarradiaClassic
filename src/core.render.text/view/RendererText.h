@@ -2,6 +2,7 @@
 #include "core.render.text/model/FontSizes.h"
 
 namespace Narradia {
+
     class Font;
 
     /**
@@ -21,8 +22,6 @@ namespace Narradia {
         void RenderText(
             RenderId rid, std::string_view text, Color color, bool center_align,
             FontSizes font_size, std::string &out_unique_name_id, SizeF &out_size) const;
-
-        std::string CreateGetBlankTexture();
 
         const std::string kRelFontsPath = "Resources/Fonts/";
         const Color kOutlineColor = {0.0f, 0.0f, 0.0f, 1.0f};

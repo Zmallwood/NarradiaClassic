@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 
 namespace Narradia {
+
     /**
      * Simple holding class for an OpenGL program, of which every Renderer has
      * one.

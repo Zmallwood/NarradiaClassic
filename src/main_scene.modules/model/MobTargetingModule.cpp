@@ -5,7 +5,9 @@
 #include "world.structure/model/World.h"
 
 namespace Narradia {
+
     void MobTargetingModule::UpdateGameLogic() {
+
         //        MouseInput::Get()->right_button()->AddFiredAction(
         //            [&] {
         //                auto map_area = World::Get()->curr_map_area();
@@ -24,6 +26,7 @@ namespace Narradia {
     }
 
     void MobTargetingModule::ClearTarget() {
+
         targeted_mob_ = nullptr;
     }
 }

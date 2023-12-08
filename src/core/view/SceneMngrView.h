@@ -3,6 +3,7 @@
 #include "ISceneView.h"
 
 namespace Narradia {
+
     /**
      * View for SceneMngr.
      */

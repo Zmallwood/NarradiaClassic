@@ -6,10 +6,12 @@
 #include "core.render/view/functions/DrawImage.h"
 
 namespace Narradia {
+
     /**
      * Prepares RenderIDs for renderering.
      */
     GuiButtonView::GuiButtonView() {
+
         rid_image = NewImage();
         rid_label_text_ = RendererText::Get()->NewString();
     }
@@ -19,14 +21,17 @@ namespace Narradia {
      * or not.
      */
     void GuiButtonView::Render() {
+
         auto model = std::static_pointer_cast<GuiButton>(gui_component_);
         std::string_view used_image_name;
+
         if (model->hovered()) {
             used_image_name = model->hovered_image_name();
         }
         else {
             used_image_name = model->image_name();
         }
+
         auto used_bounds = model->bounds();
         //        if (p->parent_container_) {
         //            used_bounds.x += p->parent_container_->GetPosition().x;

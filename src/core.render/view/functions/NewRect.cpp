@@ -2,11 +2,13 @@
 #include "../Renderer2DSolidColorsView.h"
 
 namespace Narradia {
+
     /**
      * Prepares resources for a new colored rectangle, later to be rendered,
      * returning an id.
      */
     RenderId NewRect() {
+
         auto renderer = Renderer2DSolidColorsView::Get();
         auto renderer_base = renderer->renderer_base();
         auto vao_id = renderer_base->GenerateNewVertexArrayId();
@@ -22,6 +24,7 @@ namespace Narradia {
         renderer->SetData(
             color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
         renderer->UseVaoEnd();
+
         return vao_id;
     }
 }

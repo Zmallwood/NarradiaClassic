@@ -2,6 +2,7 @@
 #include "core.gui/model/SceneGui.h"
 
 namespace Narradia {
+
     /**
      * Model for IScene.
      */

@@ -2,6 +2,7 @@
 #include "TextLine.h"
 
 namespace Narradia {
+
     /**
      * Renders text lines to a box available in all scenes, takes text input to
      * be rendered through the Print function.

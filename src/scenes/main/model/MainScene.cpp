@@ -5,10 +5,12 @@
 #include "main_scene.modules/model/MouseRotationModule.h"
 
 namespace Narradia {
+
     /**
      * Update game logic.
      */
     void MainScene::UpdateGameLogicDerived() {
+
         WorldViewModule::Get()->UpdateGameLogic();
         MouseRotationModule::Get()->UpdateGameLogic();
         KeyboardMovementModule::Get()->UpdateGameLogic();

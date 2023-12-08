@@ -2,6 +2,7 @@
 #include "CursorStyles.h"
 
 namespace Narradia {
+
     class Cursor : public Singleton<Cursor> {
       public:
         void ResetStyle();

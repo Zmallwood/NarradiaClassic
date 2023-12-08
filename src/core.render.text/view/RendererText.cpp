@@ -2,14 +2,17 @@
 #include "core.assets/model/ImageBank.h"
 #include "core.render.text/model/Font.h"
 #include "core.render/view/Renderer2DImagesView.h"
-#include "core.render/view/functions/NewImage.h"
 #include "core.render/view/functions/DrawImage.h"
+#include "core.render/view/functions/NewImage.h"
+#include "functions/CreateGetBlankTexture.h"
 
 namespace Narradia {
+
     /**
      * Initializes Font objects for desired sizes.
      */
     RendererText::RendererText() {
+
         TTF_Init();
         auto font_path =
             std::string(SDL_GetBasePath()) + kRelFontsPath + "PartyConfettiRegular-eZOn3.ttf";
@@ -21,9 +24,11 @@ namespace Narradia {
      * Prepares resources for a new string to be rendered.
      */
     RenderId RendererText::NewString() {
+
         auto unique_name = CreateGetBlankTexture();
         auto rendid_image_rect = NewImage();
         unique_name_ids_.insert({rendid_image_rect, unique_name});
+
         return rendid_image_rect;
     }
 
@@ -34,6 +39,7 @@ namespace Narradia {
     void RendererText::DrawString(
         RenderId rid, std::string_view text, PointF position, Color color, bool center_align,
         FontSizes font_size) {
+
         std::string unique_name_id;
         SizeF size;
         RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
@@ -43,6 +49,7 @@ namespace Narradia {
         int text_h;
         TTF_SizeText(fonts_.at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
         rect.y -= static_cast<float>(text_h / GetAspectRatio()) / canvas_size.height / 2.0f;
+
         if (center_align)
             rect.x -= static_cast<float>(text_w) / static_cast<float>(canvas_size.height) / 2.0f /
                       GetAspectRatio();
@@ -57,15 +64,20 @@ namespace Narradia {
     void RendererText::RenderText(
         RenderId rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
         std::string &out_unique_name_id, SizeF &out_size) const {
+
         auto font = fonts_.at(font_size)->SDL_font().get();
+
         if (!font)
             return;
+
         auto sdl_color = color.ToSDLColor();
         auto outline_sdl_color = kOutlineColor.ToSDLColor();
         auto text_outline_surface = TTF_RenderText_Blended(
             fonts_.at(font_size)->outline_SDL_font().get(), text.data(), outline_sdl_color);
+
         if (!text_outline_surface)
             return;
+
         auto text_surface = TTF_RenderText_Blended(font, text.data(), sdl_color);
         glEnable(GL_TEXTURE_2D);
         auto unique_name_id = unique_name_ids_.at(rid);
@@ -99,16 +111,5 @@ namespace Narradia {
         SDL_FreeSurface(image);
         SDL_FreeSurface(text_surface);
         SDL_FreeSurface(text_outline_surface);
-    }
-
-    /**
-     * Creates and returns unique name for a new blank texture.
-     */
-    std::string RendererText::CreateGetBlankTexture() {
-        static int id_counter = 0;
-        auto id = id_counter++;
-        auto unique_name = "RenderedImage" + std::to_string(id);
-        ImageBank::Get()->CreateBlankTextImage(unique_name);
-        return unique_name;
     }
 }

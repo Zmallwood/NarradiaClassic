@@ -4,6 +4,7 @@
 #include <vector>
 
 namespace Narradia {
+
     /**
      * Model component for SceneGui, of which every Scene has an inherited
      * member instance of.

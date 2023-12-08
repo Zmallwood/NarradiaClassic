@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * Holds and initializes OpenGL-specific configurations.
      */

@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     class Mob;
 
     class MobTargetingModule : public Singleton<MobTargetingModule> {

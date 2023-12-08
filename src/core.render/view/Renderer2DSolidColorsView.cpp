@@ -2,10 +2,12 @@
 #include <GL/glew.h>
 
 namespace Narradia {
+
     /**
      * Create the shader program from shader sources.
      */
     Renderer2DSolidColorsView::Renderer2DSolidColorsView() {
+
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model//2DSolidColorsVertex.glsl"
             ;
@@ -19,6 +21,7 @@ namespace Narradia {
      * Forwarding cleanup command.
      */
     Renderer2DSolidColorsView::~Renderer2DSolidColorsView() {
+
         CleanupBase();
     }
 }

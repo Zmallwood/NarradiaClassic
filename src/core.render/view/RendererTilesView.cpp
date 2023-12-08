@@ -6,7 +6,9 @@
 #include "world.actors/model/Player.h"
 
 namespace Narradia {
+
     RendererTilesView::RendererTilesView() {
+
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model/TilesVertex.glsl"
             ;
@@ -23,6 +25,7 @@ namespace Narradia {
     }
 
     RendererTilesView::~RendererTilesView() {
+
         CleanupBase();
     }
 }

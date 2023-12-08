@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Narradia {
+
     /**
      * View for Graphics.
      */

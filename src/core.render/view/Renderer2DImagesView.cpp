@@ -3,10 +3,12 @@
 #include <GL/glew.h>
 
 namespace Narradia {
+
     /**
      * Create the shader program for the provided shader sources.
      */
     Renderer2DImagesView::Renderer2DImagesView() {
+
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model/2DImagesVertex.glsl"
             ;
@@ -20,6 +22,7 @@ namespace Narradia {
      * Forwarding cleanup command.
      */
     Renderer2DImagesView::~Renderer2DImagesView() {
+
         CleanupBase();
     }
 }
