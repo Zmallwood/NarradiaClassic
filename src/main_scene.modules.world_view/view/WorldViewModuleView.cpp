@@ -1,6 +1,5 @@
 #include "WorldViewModuleView.h"
 #include "configuration/model/Configuration.h"
-#include "core.render/view/CameraGL.h"
 #include "core.render/view/RendererTilesView.h"
 #include "functions/DoDrawGround.h"
 #include "world.actors/model/Player.h"
@@ -50,26 +49,12 @@ namespace Narradia {
     void WorldViewModuleView::Render() {
         auto map_area = World::Get()->curr_map_area();
         auto player_pos = Player::Get()->position();
-        auto r = 21;
-
-        auto used_fov = 100.0f;
-
-        auto look_from = player_pos.Translate(0.0f, camera_height_, 0.0f);
-        auto look_at = Point3F{0.0f, 0.0f, 0.0f};
-
-        auto new_perspective_matrix = glm::perspective(
-            glm::radians(used_fov / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
-        auto new_view_matrix = glm::lookAt(
-            glm::vec3(look_from.x, look_from.y, look_from.z),
-            glm::vec3(look_at.x, look_at.y, look_at.z),
-            glm::vec3(0.0, 1.0, 0.0));
-
-        CameraGL::Get()->set_perspective_matrix(new_perspective_matrix);
-        CameraGL::Get()->set_view_matrix(new_view_matrix);
+        auto r = 40;
 
         auto x_center = static_cast<int>(player_pos.x);
         auto y_center = static_cast<int>(player_pos.z);
 
+        RendererTilesView::Get()->StartBatchDrawing();
         for (auto y = y_center - r; y <= y_center + r; y++) {
             for (auto x = x_center - r; x <= x_center + r; x++) {
                 if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
@@ -86,5 +71,6 @@ namespace Narradia {
                 DoDrawGround(tile, coord);
             }
         }
+        RendererTilesView::Get()->StopBatchDrawing();
     }
 }

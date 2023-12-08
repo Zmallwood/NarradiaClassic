@@ -1,5 +1,5 @@
 #include "MainSceneView.h"
-#include "main_scene.modules/view/WorldViewModuleView.h"
+#include "main_scene.modules.world_view/view/WorldViewModuleView.h"
 #include "main_scene.modules/view/FPSCounterModuleView.h"
 #include "scenes/main/model/MainScene.h"
 

@@ -9,15 +9,5 @@ namespace Narradia {
 
     std::string_view GetCurrTime();
 
-    float GetTileHeight();
-
-    int GetNumGridCols();
-
-    int GetNumGridRows();
-
-    int GetGridCenterX();
-
-    int GetGridCenterY();
-
     Size GetTextureDimensions(std::string_view image_name);
 }

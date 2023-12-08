@@ -34,6 +34,10 @@ namespace Narradia {
             mob_ = value;
         }
 
+        float elevation() {
+            return elevation_;
+        }
+
         TileEffect tile_effect() {
             return tile_effect_;
         }
@@ -54,6 +58,7 @@ namespace Narradia {
         std::string_view ground_;
         std::shared_ptr<Object> object_;
         std::shared_ptr<Mob> mob_;
+        float elevation_ = 0.0f;
         TileEffect tile_effect_;
         RenderId rid_;
     };

@@ -23,4 +23,12 @@ namespace Narradia {
     std::shared_ptr<Tile> MapArea::GetTile(int x, int y) {
         return tiles_.at(x).at(y);
     }
+
+    std::shared_ptr<Tile> MapArea::GetTile(Point coord) {
+        return GetTile(coord.x, coord.y);
+    }
+
+    bool MapArea::IsInsideMap(Point coord) {
+        return coord.x < tiles_.size() && coord.y < tiles_.at(0).size();
+    }
 }

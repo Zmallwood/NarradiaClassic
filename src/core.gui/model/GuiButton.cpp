@@ -1,6 +1,7 @@
 #include "GuiButton.h"
 #include "common/system/functions/Utilities.h"
 #include "core.input/model/MouseInput.h"
+#include "core/model/Cursor.h"
 
 namespace Narradia {
     /**
@@ -29,7 +30,7 @@ namespace Narradia {
         //            used_bounds.y += p->parent_container_->GetPosition().y;
         //        }
         if (used_bounds.Contains(GetMousePosition())) {
-            //            Cursor::Get()->SetCursorType(CursorTypes::Hovering);
+            Cursor::Get()->set_cursor_style(CursorStyles::Hovering);
             hovered_ = true;
             MouseInput::Get()
                 ->left_button()

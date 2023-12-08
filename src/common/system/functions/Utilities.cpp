@@ -50,26 +50,6 @@ namespace Narradia {
         return buffer;
     }
 
-    float GetTileHeight() {
-        return kTileWidth * GetAspectRatio();
-    }
-
-    int GetNumGridCols() {
-        return static_cast<int>(1.0f / kTileWidth);
-    }
-
-    int GetNumGridRows() {
-        return static_cast<int>(1.0f / GetTileHeight());
-    }
-
-    int GetGridCenterX() {
-        return (GetNumGridCols() - 1) / 2;
-    }
-
-    int GetGridCenterY() {
-        return (GetNumGridRows() - 1) / 2;
-    }
-
     /**
      * Returns texture, loaded from file system, dimensions in pixels.
      */

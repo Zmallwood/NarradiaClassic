@@ -69,6 +69,7 @@ set(PCH_FILES
 "src/common/system/Singleton.h"
 "src/common/system/Typedefs.h"
 "src/core/model/SDLDeleter.h"
+"src/math/system/Trigonometry.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})

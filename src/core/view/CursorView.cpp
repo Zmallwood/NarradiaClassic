@@ -1,5 +1,6 @@
 #include "CursorView.h"
 #include "core.render/view/Renderer2DImagesView.h"
+#include "core/model/Cursor.h"
 
 namespace Narradia {
     /**
@@ -19,6 +20,21 @@ namespace Narradia {
         auto height = width * GetAspectRatio();
         RectF rect = {
             mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
-        Renderer2DImagesView::Get()->DrawImage("CursorDefault", rid_image, rect);
+        std::string_view image_name;
+        switch (Cursor::Get()->cursor_style()) {
+        case CursorStyles::Default:
+            image_name = "CursorDefault";
+            break;
+        case CursorStyles::Hovering:
+            image_name = "CursorHovering";
+            break;
+        case CursorStyles::Rotating:
+            image_name = "CursorRotating";
+            break;
+        case CursorStyles::Attack:
+            image_name = "CursorAttack";
+            break;
+        }
+        Renderer2DImagesView::Get()->DrawImage(image_name, rid_image, rect);
     }
 }

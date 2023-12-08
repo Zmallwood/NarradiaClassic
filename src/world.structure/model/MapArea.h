@@ -12,6 +12,10 @@ namespace Narradia {
 
         std::shared_ptr<Tile> GetTile(int x, int y);
 
+        std::shared_ptr<Tile> GetTile(Point coord);
+
+        bool IsInsideMap(Point coord);
+
         std::shared_ptr<std::map<std::shared_ptr<Mob>, Point>> mobs_mirror() {
             return mobs_mirror_;
         }
