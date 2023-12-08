@@ -1,7 +1,11 @@
 #pragma once
 #include "../model/ShaderProgram.h"
+#include <memory>
 
 namespace Narradia {
+    /**
+     * View component of ShaderProgram.
+     */
     class ShaderProgramView {
       public:
         ShaderProgramView()
