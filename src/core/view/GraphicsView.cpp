@@ -10,13 +10,11 @@ namespace Narradia {
     GraphicsView::GraphicsView() {
         auto window_size = Graphics::Get()->window_size();
         auto window_flags = Graphics::Get()->window_flags();
-
         auto window = std::shared_ptr<SDL_Window>(
             SDL_CreateWindow(
                 Engine::Get()->title().data(), 0, 0, window_size.width, window_size.height,
                 window_flags),
             SDLDeleter());
-
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
         if (SDL_GL_CreateContext(window.get()) == nullptr) {
@@ -24,7 +22,6 @@ namespace Narradia {
                       << std::string(SDL_GetError()) << std::endl;
             return;
         }
-
         Graphics::Get()->set_window(window);
         GraphicsGLView::Touch();
     }

@@ -19,21 +19,7 @@ namespace Narradia {
         auto width = kCursorWidth;
         auto height = width * GetAspectRatio();
         RectF rect = {mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
-        std::string_view image_name;
-        switch (Cursor::Get()->cursor_style()) {
-        case CursorStyles::Default:
-            image_name = "CursorDefault";
-            break;
-        case CursorStyles::Hovering:
-            image_name = "CursorHovering";
-            break;
-        case CursorStyles::Rotating:
-            image_name = "CursorRotating";
-            break;
-        case CursorStyles::Attack:
-            image_name = "CursorAttack";
-            break;
-        }
+        auto image_name = Cursor::Get()->GetCursorImageName();
         Renderer2DImagesView::Get()->DrawImage(image_name, rid_image, rect);
     }
 }

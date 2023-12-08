@@ -11,6 +11,12 @@ namespace Narradia {
         void UpdateGameLogic();
         void Print(std::string_view text, Color text_color = Colors::wheat);
         int GetMaxNumLines();
+        int GetTextLineIndex(int visible_row_index);
+        PointF GetTextLinePosition(int visible_row_index);
+        RectF GetHorizontalSplitterRect();
+        RectF GetInputArrowRect();
+        PointF GetInputTextPosition();
+        std::string GetInputTextWithCursor();
 
         std::vector<TextLine> text_lines() {
             return text_lines_;

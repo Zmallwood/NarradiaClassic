@@ -5,6 +5,7 @@ namespace Narradia {
     class Cursor : public Singleton<Cursor> {
       public:
         void ResetStyle();
+        std::string_view GetCursorImageName();
 
         CursorStyles cursor_style() {
             return cursor_style_;

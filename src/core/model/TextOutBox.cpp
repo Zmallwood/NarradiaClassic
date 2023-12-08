@@ -35,4 +35,42 @@ namespace Narradia {
     int TextOutBox::GetMaxNumLines() {
         return static_cast<int>(kBounds.height / kTextLineHeight) - 2;
     }
+
+    int TextOutBox::GetTextLineIndex(int visible_row_index) {
+        return static_cast<int>(text_lines_.size()) - GetMaxNumLines() + visible_row_index;
+    }
+
+    PointF TextOutBox::GetTextLinePosition(int visible_row_index) {
+        auto used_bounds = kBounds;
+        auto line_position_y = used_bounds.y + (visible_row_index + 1) * kTextLineHeight;
+        return {used_bounds.x + 0.01f, line_position_y};
+    }
+
+    RectF TextOutBox::GetHorizontalSplitterRect() {
+        auto used_bounds = kBounds;
+        return {
+            0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kBounds.width,
+            kSplitLineHeight};
+    }
+
+    RectF TextOutBox::GetInputArrowRect() {
+        auto used_bounds = kBounds;
+        return {
+            0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kTextLineHeight,
+            kTextLineHeight};
+    }
+
+    PointF TextOutBox::GetInputTextPosition() {
+        return GetInputArrowRect().GetPosition().Translate(
+            TextOutBox::kTextLineHeight, TextOutBox::kTextLineHeight / 2);
+    }
+
+    std::string TextOutBox::GetInputTextWithCursor() {
+        auto result = input_text_;
+        if (SDL_GetTicks() % 600 < 300)
+            result.insert(cursor_position_, "|");
+        else
+            result.insert(cursor_position_, " ");
+        return result;
+    }
 }
