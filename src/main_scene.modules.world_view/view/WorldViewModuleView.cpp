@@ -1,6 +1,8 @@
 #include "WorldViewModuleView.h"
 #include "configuration/model/Configuration.h"
 #include "core.render/view/RendererTilesView.h"
+#include "core.render/view/functions/NewTile.h"
+#include "core.render/view/functions/SetTileGeometry.h"
 #include "functions/DrawGround.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
@@ -12,7 +14,7 @@ namespace Narradia {
         for (auto x = 0; x < kMapWidth; x++) {
             rids_tiles.push_back(std::vector<RenderId>());
             for (auto y = 0; y < kMapHeight; y++) {
-                rids_tiles.at(x).push_back(RendererTilesView::Get()->NewTile());
+                rids_tiles.at(x).push_back(NewTile());
                 Vertex3F v0;
                 Vertex3F v1;
                 Vertex3F v2;
@@ -29,7 +31,7 @@ namespace Narradia {
                 Point3F normal10 = {0.0f, 1.f, 0.0f};
                 Point3F normal11 = {0.0f, 1.f, 0.0f};
                 Point3F normal01 = {0.0f, 1.f, 0.0f};
-                RendererTilesView::Get()->SetGeometryTile(
+                SetTileGeometry(
                     rids_tiles[x][y], v0, v1, v2, v3, normal00, normal10, normal11, normal01);
                 map_area->GetTile(x, y)->set_rid(rids_tiles[x][y]);
             }

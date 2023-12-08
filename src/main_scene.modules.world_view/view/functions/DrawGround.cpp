@@ -1,5 +1,6 @@
 #include "DrawGround.h"
 #include "core.render/view/RendererTilesView.h"
+#include "core.render/view/functions/DrawTile.h"
 
 namespace Narradia {
     void DrawGround(std::shared_ptr<Tile> tile, Point coord) {
@@ -13,6 +14,6 @@ namespace Narradia {
             auto vary_index = (coord.x * coord.y) % 3;
             ground = "GroundGrass_" + std::to_string(vary_index);
         }
-        RendererTilesView::Get()->DrawTile(ground, tile->rid());
+        DrawTile(ground, tile->rid());
     }
 }

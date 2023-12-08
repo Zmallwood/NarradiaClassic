@@ -2,13 +2,15 @@
 #include "core.gui/model/GuiButton.h"
 #include "core.render.text/view/RendererText.h"
 #include "core.render/view/Renderer2DImagesView.h"
+#include "core.render/view/functions/NewImage.h"
+#include "core.render/view/functions/DrawImage.h"
 
 namespace Narradia {
     /**
      * Prepares RenderIDs for renderering.
      */
     GuiButtonView::GuiButtonView() {
-        rid_image = Renderer2DImagesView::Get()->NewImage();
+        rid_image = NewImage();
         rid_label_text_ = RendererText::Get()->NewString();
     }
 
@@ -30,7 +32,7 @@ namespace Narradia {
         //            used_bounds.x += p->parent_container_->GetPosition().x;
         //            used_bounds.y += p->parent_container_->GetPosition().y;
         //        }
-        Renderer2DImagesView::Get()->DrawImage(used_image_name, rid_image, used_bounds);
+        DrawImage(used_image_name, rid_image, used_bounds);
         RendererText::Get()->DrawString(
             rid_label_text_, model->text(), used_bounds.GetCenter(), Colors::wheat, true);
     }

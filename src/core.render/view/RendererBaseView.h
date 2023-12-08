@@ -10,8 +10,8 @@ namespace Narradia {
     class RendererBaseView {
       public:
         RendererBaseView();
-
-      protected:
+        void UseVaoBegin(int vao_id) const;
+        void UseVaoEnd() const;
         void SetIndicesData(GLuint indices_vbo_id, int num_vertices, const void *data) const;
         void SetData(
             GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
@@ -20,8 +20,12 @@ namespace Narradia {
         void UpdateData(
             GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
             int layout_location) const;
-        void UseVaoBegin(int vao_id) const;
-        void UseVaoEnd() const;
+
+        std::shared_ptr<RendererBase> renderer_base() {
+            return renderer_base_;
+        }
+
+      protected:
         GLuint GetUniformLocation(std::string_view var_name);
         std::shared_ptr<ShaderProgramView> GetShaderProgramView() const;
         void CleanupBase();

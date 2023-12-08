@@ -9,14 +9,9 @@ namespace Narradia {
       public:
         Renderer2DImagesView();
         ~Renderer2DImagesView();
-        RenderId NewImage();
-        void DrawImage(
-            std::string_view image_name, RenderId rid, const RectF &dest,
-            Color color = {255, 255, 255, 255}) const;
 
-      private:
-        const int kLocationPosition = 0;
-        const int kLocationColor = 1;
-        const int kLocationUv = 2;
+        static constexpr int kLocationPosition = 0;
+        static constexpr int kLocationColor = 1;
+        static constexpr int kLocationUv = 2;
     };
 }

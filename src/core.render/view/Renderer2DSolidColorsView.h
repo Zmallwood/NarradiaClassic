@@ -10,11 +10,8 @@ namespace Narradia {
       public:
         Renderer2DSolidColorsView();
         ~Renderer2DSolidColorsView();
-        RenderId NewRect();
-        void FillRect(RenderId vao_id, RectF rect, Color color);
 
-      private:
-        const int kLocationPosition = 0;
-        const int kLocationColor = 1;
+        static constexpr int kLocationPosition = 0;
+        static constexpr int kLocationColor = 1;
     };
 }

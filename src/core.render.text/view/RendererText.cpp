@@ -2,6 +2,8 @@
 #include "core.assets/model/ImageBank.h"
 #include "core.render.text/model/Font.h"
 #include "core.render/view/Renderer2DImagesView.h"
+#include "core.render/view/functions/NewImage.h"
+#include "core.render/view/functions/DrawImage.h"
 
 namespace Narradia {
     /**
@@ -20,7 +22,7 @@ namespace Narradia {
      */
     RenderId RendererText::NewString() {
         auto unique_name = CreateGetBlankTexture();
-        auto rendid_image_rect = Renderer2DImagesView::Get()->NewImage();
+        auto rendid_image_rect = NewImage();
         unique_name_ids_.insert({rendid_image_rect, unique_name});
         return rendid_image_rect;
     }
@@ -44,7 +46,7 @@ namespace Narradia {
         if (center_align)
             rect.x -= static_cast<float>(text_w) / static_cast<float>(canvas_size.height) / 2.0f /
                       GetAspectRatio();
-        Renderer2DImagesView::Get()->DrawImage(unique_name_id, rid, rect);
+        DrawImage(unique_name_id, rid, rect);
     }
 
     /**

@@ -1,5 +1,7 @@
 #include "CursorView.h"
 #include "core.render/view/Renderer2DImagesView.h"
+#include "core.render/view/functions/NewImage.h"
+#include "core.render/view/functions/DrawImage.h"
 #include "core/model/Cursor.h"
 
 namespace Narradia {
@@ -8,7 +10,7 @@ namespace Narradia {
      */
     CursorView::CursorView() {
         SDL_ShowCursor(0);
-        rid_image = Renderer2DImagesView::Get()->NewImage();
+        rid_image = NewImage();
     }
 
     /**
@@ -20,6 +22,6 @@ namespace Narradia {
         auto height = width * GetAspectRatio();
         RectF rect = {mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
         auto image_name = Cursor::Get()->GetCursorImageName();
-        Renderer2DImagesView::Get()->DrawImage(image_name, rid_image, rect);
+        DrawImage(image_name, rid_image, rect);
     }
 }
