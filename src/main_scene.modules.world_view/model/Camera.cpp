@@ -8,7 +8,7 @@ namespace Narradia {
     void Camera::UpdateGameLogic() {
         auto player_pos = Player::Get()->position();
         auto look_from = GetCameraPosition();
-        auto look_at = Point3F{0.0f, 0.0f, 0.0f};
+        auto look_at = player_pos;
 
         auto new_perspective_matrix = glm::perspective(
             glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
@@ -25,18 +25,18 @@ namespace Narradia {
         auto player = Player::Get();
         auto world = World::Get();
         auto used_camera_distance = camera_distance_;
-        auto used_vertical_angle = vertical_angle_;
+        auto used_vertical_angle = vertical_angle_deg_;
         auto player_position_no_elevation =
             player->position().Multiply(kTileSize);
         auto dz_unrotated = CosDeg(used_vertical_angle) * used_camera_distance;
         auto hypotenuse = dz_unrotated;
-        auto dx = SinDeg(horizontal_angle_) * hypotenuse -
-                  3.0f * SinDeg(horizontal_angle_);
-        auto dz = CosDeg(horizontal_angle_) * hypotenuse -
-                  3.0f * CosDeg(horizontal_angle_);
+        auto dx = SinDeg(horizontal_angle_deg_) * hypotenuse -
+                  3.0f * SinDeg(horizontal_angle_deg_);
+        auto dz = CosDeg(horizontal_angle_deg_) * hypotenuse -
+                  3.0f * CosDeg(horizontal_angle_deg_);
         auto dy = SinDeg(used_vertical_angle) * used_camera_distance;
-        auto dx_player = -4.0f * SinDeg(horizontal_angle_);
-        auto dz_player = -4.0f * CosDeg(horizontal_angle_);
+        auto dx_player = -4.0f * SinDeg(horizontal_angle_deg_);
+        auto dz_player = -4.0f * CosDeg(horizontal_angle_deg_);
 
         auto player_position = player->position().GetXZ();
 

@@ -72,6 +72,14 @@ namespace Narradia {
             return ulti_skill_duration_;
         }
 
+        float facing_angle_deg() {
+            return facing_angle_deg_;
+        }
+
+        void set_facing_angle_deg(float value) {
+            facing_angle_deg_ = value;
+        }
+
       private:
         Point3F position_;
         float movement_speed_ = 2.0f;
@@ -82,5 +90,6 @@ namespace Narradia {
         float ultimate_skill_chance_ = 0.4f;
         int ticks_ulti_skill_start_ = 0;
         int ulti_skill_duration_ = 9000;
+        float facing_angle_deg_ = 0.0f;
     };
 }
