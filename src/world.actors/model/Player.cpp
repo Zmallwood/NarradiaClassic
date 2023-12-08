@@ -2,6 +2,9 @@
 #include "configuration/model/Configuration.h"
 
 namespace Narradia {
+    /**
+     * Set default spawn coordinate.
+     */
     Player::Player() {
         position_ = {kMapWidth / 2, kMapHeight / 2};
     }

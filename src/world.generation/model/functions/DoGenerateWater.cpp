@@ -3,6 +3,9 @@
 #include "world.structure/model/MapArea.h"
 
 namespace Narradia {
+    /**
+     * Generate water randomly.
+     */
     void DoGenerateWater(std::shared_ptr<MapArea> map_area) {
         auto num_lakes = 30;
 

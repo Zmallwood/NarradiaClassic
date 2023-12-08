@@ -3,6 +3,9 @@
 #include "world.structure/model/MapArea.h"
 
 namespace Narradia {
+    /**
+     * Generate objects randomly, such as vegetation and other kinds.
+     */
     void DoGenerateObjects(std::shared_ptr<MapArea> map_area) {
         auto num_forests_tree1 = 20;
 

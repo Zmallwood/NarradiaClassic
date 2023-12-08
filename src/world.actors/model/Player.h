@@ -1,6 +1,9 @@
 #pragma once
 
 namespace Narradia {
+    /**
+     * Player actor which can move around on the map and engage in combat.
+     */
     class Player : public Singleton<Player> {
       public:
         Player();
