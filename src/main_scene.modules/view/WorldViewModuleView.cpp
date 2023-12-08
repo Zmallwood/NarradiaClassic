@@ -2,10 +2,13 @@
 #include "configuration/model/Configuration.h"
 #include "core.render/view/CameraGL.h"
 #include "core.render/view/RendererTilesView.h"
+#include "functions/DoDrawGround.h"
 #include "world.actors/model/Player.h"
+#include "world.structure/model/World.h"
 
 namespace Narradia {
     WorldViewModuleView::WorldViewModuleView() {
+        auto map_area = World::Get()->curr_map_area();
         auto tile_size = 1.0f;
 
         for (auto x = 0; x < kMapWidth; x++) {
@@ -38,13 +41,16 @@ namespace Narradia {
                 RendererTilesView::Get()->SetGeometryTile(
                     rids_tiles[x][y], v0, v1, v2, v3, normal00, normal10,
                     normal11, normal01);
+
+                map_area->GetTile(x, y)->set_rid(rids_tiles[x][y]);
             }
         }
     }
 
     void WorldViewModuleView::Render() {
+        auto map_area = World::Get()->curr_map_area();
         auto player_pos = Player::Get()->position_3d();
-        auto r = 11;
+        auto r = 21;
 
         auto used_fov = 100.0f;
 
@@ -75,8 +81,9 @@ namespace Narradia {
                 if (dx * dx + dy * dy > r * r)
                     continue;
 
-                RendererTilesView::Get()->DrawTile(
-                    "GroundGrass_0", rids_tiles[x][y]);
+                auto tile = map_area->GetTile(x, y);
+                auto coord = Point{x, y};
+                DoDrawGround(tile, coord);
             }
         }
     }

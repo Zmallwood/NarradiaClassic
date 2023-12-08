@@ -1,5 +1,6 @@
 #include "MainSceneView.h"
 #include "main_scene.modules/view/WorldViewModuleView.h"
+#include "main_scene.modules/view/FPSCounterModuleView.h"
 #include "scenes/main/model/MainScene.h"
 
 namespace Narradia {
@@ -12,5 +13,6 @@ namespace Narradia {
      */
     void MainSceneView::RenderDerived() {
         WorldViewModuleView::Get()->Render();
+        FPSCounterModuleView::Get()->Render();
     }
 }

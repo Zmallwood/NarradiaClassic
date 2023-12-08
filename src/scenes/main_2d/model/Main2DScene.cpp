@@ -1,6 +1,6 @@
 #include "Main2DScene.h"
 #include "core.gui/model/GuiButton.h"
-#include "main_2d_scene.modules/model/FPSCounterModule.h"
+#include "main_scene.modules/model/FPSCounterModule.h"
 #include "main_2d_scene.modules/model/KeyboardMovementModule.h"
 #include "main_2d_scene.modules/model/MobMovementModule.h"
 #include "main_2d_scene.modules/model/MouseMovementModule.h"

@@ -1,6 +1,6 @@
 #include "FPSCounterModuleView.h"
 #include "core.render.text/view/RendererText.h"
-#include "main_2d_scene.modules/model/FPSCounterModule.h"
+#include "main_scene.modules/model/FPSCounterModule.h"
 
 namespace Narradia {
     FPSCounterModuleView::FPSCounterModuleView() {

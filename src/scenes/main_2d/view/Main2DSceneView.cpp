@@ -1,6 +1,6 @@
 #include "Main2DSceneView.h"
 #include "core.gui/view/GuiButtonView.h"
-#include "main_2d_scene.modules/view/FPSCounterModuleView.h"
+#include "main_scene.modules/view/FPSCounterModuleView.h"
 #include "main_2d_scene.modules/view/WorldDisplayModuleView.h"
 #include "scenes/main_2d/model/Main2DScene.h"
 

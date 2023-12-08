@@ -42,10 +42,19 @@ namespace Narradia {
             tile_effect_ = value;
         }
 
+        RenderId rid() {
+            return rid_;
+        }
+
+        void set_rid(RenderId value) {
+            rid_ = value;
+        }
+
       private:
         std::string_view ground_;
         std::shared_ptr<Object> object_;
         std::shared_ptr<Mob> mob_;
         TileEffect tile_effect_;
+        RenderId rid_;
     };
 }
