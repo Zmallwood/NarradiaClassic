@@ -2,6 +2,10 @@
 #include "MouseButton.h"
 
 namespace Narradia {
+    /**
+     * Contains the left and right mouse buttons and forwards function calls to
+     * the buttons.
+     */
     class MouseInput : public Singleton<MouseInput> {
       public:
         MouseInput();
