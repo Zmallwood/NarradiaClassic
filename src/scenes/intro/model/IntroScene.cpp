@@ -1,7 +1,7 @@
 #include "IntroScene.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Update game logic.
      */

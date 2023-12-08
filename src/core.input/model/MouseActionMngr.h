@@ -1,8 +1,8 @@
 #pragma once
 #include "MouseAction.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Adds and executes actions triggered by mouse click/release events,
      * depending on the z order of the object clicked with the mouse.

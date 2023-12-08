@@ -1,7 +1,7 @@
 #include "MouseInput.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Create the left and right mouse buttons.
      */

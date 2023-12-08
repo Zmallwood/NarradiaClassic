@@ -2,8 +2,8 @@
 #include "core/model/TextOutBox.h"
 #include "main_scene.modules/model/PlayerSpawnPositioningModule.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * On entering scene.
      */

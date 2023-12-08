@@ -1,8 +1,8 @@
 #include "NewTile.h"
 #include "NewImagePolygon.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     RenderId NewTile() {
 
         return NewImagePolygon(4);

@@ -4,8 +4,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void Camera::UpdateGameLogic() {
 
         auto player_pos = Player::Get()->position();

@@ -6,8 +6,8 @@
 #include "core.render/view/functions/NewImage.h"
 #include "functions/CreateGetBlankTexture.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initializes Font objects for desired sizes.
      */

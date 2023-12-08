@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     RenderId NewImagePolygon(int num_vertices);
 }

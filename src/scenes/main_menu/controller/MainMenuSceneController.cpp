@@ -1,7 +1,7 @@
 #include "MainMenuSceneController.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * On entering scene.
      */

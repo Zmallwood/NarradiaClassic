@@ -1,8 +1,8 @@
 #include "ShaderProgramView.h"
 #include "functions/CompileShader.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Create vertex and fragment shader from provided sources.
      */

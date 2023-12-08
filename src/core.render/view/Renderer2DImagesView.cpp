@@ -2,8 +2,8 @@
 #include "core.assets/model/ImageBank.h"
 #include <GL/glew.h>
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Create the shader program for the provided shader sources.
      */

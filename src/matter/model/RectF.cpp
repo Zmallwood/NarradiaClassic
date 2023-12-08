@@ -1,7 +1,7 @@
 #include "RectF.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Returns this object as a GLRectF type, which is in the OpenGL coordinate
      * system.

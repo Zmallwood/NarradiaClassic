@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Holds and initializes OpenGL-specific configurations.
      */

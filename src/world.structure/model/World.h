@@ -1,8 +1,8 @@
 #pragma once
 #include "MapArea.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Top most object in the world map hierchical structure.
      */

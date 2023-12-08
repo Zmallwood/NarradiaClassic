@@ -1,8 +1,8 @@
 #include "WorldViewModule.h"
 #include "Camera.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void WorldViewModule::UpdateGameLogic() {
 
         Camera::Get()->UpdateGameLogic();

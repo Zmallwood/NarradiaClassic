@@ -1,8 +1,8 @@
 #include "TextOutBox.h"
 #include "core.input/model/KeyboardInput.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Checks if input should be activated and processes typed input characters.
      */

@@ -3,8 +3,8 @@
 #include "core/controller/SceneMngrController.h"
 #include "core/model/Engine.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initialize GuiComponents.
      */

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     void StartTileBatchDrawing();
 }

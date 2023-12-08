@@ -3,8 +3,8 @@
 #include "../../scenes/main/model/MainScene.h"
 #include "../../scenes/main_menu/model/MainMenuScene.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initialize scenes that will be used.
      */

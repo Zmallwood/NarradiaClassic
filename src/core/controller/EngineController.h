@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Controller for Engine.
      */

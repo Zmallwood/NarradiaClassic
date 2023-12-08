@@ -4,8 +4,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void MobTargetingModule::UpdateGameLogic() {
 
         //        MouseInput::Get()->right_button()->AddFiredAction(

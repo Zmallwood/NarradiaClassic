@@ -3,15 +3,14 @@
 #include "core.input/model/MouseInput.h"
 #include "core/model/Cursor.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initializes new GuiButton model.
      */
     GuiButton::GuiButton(
-        const std::string_view &text, RectF bounds,
-        std::function<void()> action, std::string_view image_name,
-        std::string_view hovered_image_name) {
+        const std::string_view &text, RectF bounds, std::function<void()> action,
+        std::string_view image_name, std::string_view hovered_image_name) {
 
         text_ = text;
         bounds_ = bounds;
@@ -32,14 +31,12 @@ namespace Narradia {
         //            used_bounds.x += p->parent_container_->GetPosition().x;
         //            used_bounds.y += p->parent_container_->GetPosition().y;
         //        }
-        
+
         if (used_bounds.Contains(GetMousePosition())) {
             Cursor::Get()->set_cursor_style(CursorStyles::Hovering);
             hovered_ = true;
-            MouseInput::Get()
-                ->left_button()
-                ->mouse_action_mngr()
-                ->AddFiredAction([&] { action_(); }, 2);
+            MouseInput::Get()->left_button()->mouse_action_mngr()->AddFiredAction(
+                [&] { action_(); }, 2);
         }
     }
 }

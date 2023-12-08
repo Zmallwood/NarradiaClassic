@@ -3,8 +3,8 @@
 #include "../../../core.input/model/MouseInput.h"
 #include "../../model/Engine.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Poll for user input events.
      */

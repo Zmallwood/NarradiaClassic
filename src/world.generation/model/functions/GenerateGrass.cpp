@@ -2,8 +2,8 @@
 #include "configuration/model/Configuration.h"
 #include "world.structure/model/MapArea.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Generate grass on the whole map.
      */

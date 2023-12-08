@@ -1,7 +1,7 @@
 #include "SceneGuiView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Forwards the Render request to all contained gui component views.
      */

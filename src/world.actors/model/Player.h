@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Player actor which can move around on the map and engage in combat.
      */

@@ -1,7 +1,7 @@
 #include "MouseButton.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Called from MouseInput when a mouse button has been pressed down.
      */

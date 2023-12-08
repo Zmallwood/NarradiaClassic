@@ -3,8 +3,8 @@
 #include "main_scene.modules/view/FPSCounterModuleView.h"
 #include "scenes/main/model/MainScene.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     MainSceneView::MainSceneView() {
 
         scene_gui_view_->set_scene_gui(MainScene::Get()->scene_gui());

@@ -5,8 +5,8 @@
 #include "core.render/view/functions/NewImage.h"
 #include "scenes/intro/model/IntroScene.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     IntroSceneView::IntroSceneView() {
 
         scene_gui_view_->set_scene_gui(IntroScene::Get()->scene_gui());

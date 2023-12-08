@@ -1,8 +1,8 @@
 #pragma once
 #include "PointF.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     class Point3F {
       public:
         Point3F Translate(float dx, float dy, float dz);

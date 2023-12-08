@@ -1,8 +1,8 @@
 #include "Player.h"
 #include "configuration/model/Configuration.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Set default spawn coordinate.
      */

@@ -2,8 +2,8 @@
 #include "SceneMngrController.h"
 #include "functions/PollEvents.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Handle user input every frame.
      */

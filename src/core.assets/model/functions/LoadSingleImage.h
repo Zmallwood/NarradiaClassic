@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     GLuint LoadSingleImage(std::string_view abs_file_path);
 }

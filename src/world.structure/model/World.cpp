@@ -1,8 +1,8 @@
 #include "World.h"
 #include "world.generation/model/MapGenerator.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initalizes and generates a complete MapArea.
      */

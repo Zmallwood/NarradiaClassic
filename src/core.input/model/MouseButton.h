@@ -1,8 +1,8 @@
 #pragma once
 #include "MouseActionMngr.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Holds state of a single mouse button, left or right, and its
      * MouseActionMngr which handle and execute mouse actions.

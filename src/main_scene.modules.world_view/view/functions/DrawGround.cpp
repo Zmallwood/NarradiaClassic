@@ -2,8 +2,8 @@
 #include "core.render/view/RendererTilesView.h"
 #include "core.render/view/functions/DrawTile.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void DrawGround(std::shared_ptr<Tile> tile, Point coord) {
 
         auto ground = tile->ground();

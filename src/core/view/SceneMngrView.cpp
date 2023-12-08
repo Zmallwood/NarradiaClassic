@@ -4,8 +4,8 @@
 #include "../../scenes/main_menu/view/MainMenuSceneView.h"
 #include "../model/SceneMngr.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initialize scene views that will be used.
      */

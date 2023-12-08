@@ -1,7 +1,7 @@
 #include "SceneGui.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Forwards the update request to all contained gui components.
      */

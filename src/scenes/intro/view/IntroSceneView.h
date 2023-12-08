@@ -1,8 +1,8 @@
 #pragma once
 #include "../../../core/view/ISceneView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * View for IntroScene.
      */

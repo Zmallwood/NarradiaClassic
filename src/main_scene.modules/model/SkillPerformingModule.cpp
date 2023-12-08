@@ -2,8 +2,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void SkillPerformingModule::UpdateGameLogic() {
 
         if (SDL_GetTicks() > ticks_last_skill_tick_ + 400 / skill_ticks_frequency_) {

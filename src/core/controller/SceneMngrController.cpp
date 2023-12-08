@@ -4,8 +4,8 @@
 #include "../../scenes/main_menu/controller/MainMenuSceneController.h"
 #include "../model/SceneMngr.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initialize scene controllers that will be used.
      */

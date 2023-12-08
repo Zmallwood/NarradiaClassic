@@ -1,9 +1,9 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
-     * Pure abstract class inherited by all Gui components.
+     * Pure virtual class inherited by all Gui components.
      */
     class GuiComponent {
       public:

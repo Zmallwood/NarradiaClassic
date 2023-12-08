@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Replaces default system cursor with a custom one.
      */

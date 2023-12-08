@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Holds SDL font objects for a single font with a specific size, requires
      * two, one regular and and for the outline.

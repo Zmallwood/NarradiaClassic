@@ -4,8 +4,8 @@
 #include "main_scene.modules.world_view/model/Camera.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void MouseRotationModule::UpdateGameLogic() {
 
         MouseInput::Get()->right_button()->AddFiredAction([&] {

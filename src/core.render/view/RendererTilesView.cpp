@@ -5,8 +5,8 @@
 #include "functions/SetImagePolygonGeometry.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     RendererTilesView::RendererTilesView() {
 
         const GLchar *vertex_shader_source =

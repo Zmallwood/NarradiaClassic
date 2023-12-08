@@ -1,7 +1,7 @@
 #include "Mob.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Hit mob with damage.
      */

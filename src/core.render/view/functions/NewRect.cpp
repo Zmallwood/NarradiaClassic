@@ -1,8 +1,8 @@
 #include "NewRect.h"
 #include "../Renderer2DSolidColorsView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Prepares resources for a new colored rectangle, later to be rendered,
      * returning an id.

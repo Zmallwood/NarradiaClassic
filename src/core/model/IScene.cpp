@@ -1,7 +1,7 @@
 #include "IScene.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Update game logic from scenes deriving from this class.
      */

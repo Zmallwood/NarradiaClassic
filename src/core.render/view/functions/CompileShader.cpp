@@ -1,7 +1,7 @@
 #include "CompileShader.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Compile shader, vertex or fragment type, and returns the success status.
      */

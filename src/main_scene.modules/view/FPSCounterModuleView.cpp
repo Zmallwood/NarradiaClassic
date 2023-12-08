@@ -2,8 +2,8 @@
 #include "core.render.text/view/RendererText.h"
 #include "main_scene.modules/model/FPSCounterModule.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     FPSCounterModuleView::FPSCounterModuleView() {
 
         rid_text = RendererText::Get()->NewString();

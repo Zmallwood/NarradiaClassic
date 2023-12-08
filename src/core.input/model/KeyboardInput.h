@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Model for KeyboardInput holding keyboard input state, has no controller
      * or view.

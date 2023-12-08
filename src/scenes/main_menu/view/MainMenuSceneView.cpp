@@ -5,8 +5,8 @@
 #include "core.render/view/functions/NewImage.h"
 #include "scenes/main_menu/model/MainMenuScene.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Set scene gui and initialize Views for gui components initialize in scene
      * model. Also prepare RenderIDs for images to be rendered.

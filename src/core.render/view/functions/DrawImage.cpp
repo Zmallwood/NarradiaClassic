@@ -2,8 +2,8 @@
 #include "../Renderer2DImagesView.h"
 #include "core.assets/model/ImageBank.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Draws an image to the canvas, must previously have been initialized with
      * NewImage().

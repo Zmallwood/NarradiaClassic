@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Contains RGBA-color data, each component ranging between 0-1.
      */

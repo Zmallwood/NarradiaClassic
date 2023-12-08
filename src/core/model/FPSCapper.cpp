@@ -1,7 +1,7 @@
 #include "FPSCapper.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     bool FPSCapper::RunningBelow60FPS() {
 
         auto a = SDL_GetTicks();

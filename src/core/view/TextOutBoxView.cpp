@@ -6,8 +6,8 @@
 #include "core/model/SceneMngr.h"
 #include "core/model/TextOutBox.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Prepares RenderIDs for rendering.
      */
@@ -37,7 +37,7 @@ namespace Narradia {
         // if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
         //     used_bounds =
         //         used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
-        
+
         DrawImage("TextOutBoxBack", rid_image_, used_bounds);
 
         for (auto i = 0; i < model->GetMaxNumLines(); i++) {

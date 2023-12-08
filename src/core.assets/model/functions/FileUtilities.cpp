@@ -1,7 +1,7 @@
 #include "FileUtilities.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Gets file extension, without dot, for provided file path.
      */

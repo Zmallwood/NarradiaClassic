@@ -1,11 +1,11 @@
 #include "CursorView.h"
 #include "core.render/view/Renderer2DImagesView.h"
-#include "core.render/view/functions/NewImage.h"
 #include "core.render/view/functions/DrawImage.h"
+#include "core.render/view/functions/NewImage.h"
 #include "core/model/Cursor.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Hides default system cursor and prepares RenderIDs.
      */

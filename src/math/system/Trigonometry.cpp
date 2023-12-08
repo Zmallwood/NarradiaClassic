@@ -1,7 +1,7 @@
 #include "Trigonometry.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     float SinDeg(float angle_deg) {
 
         return sinf(angle_deg * static_cast<float>(M_PI) / 180.0f);

@@ -2,8 +2,8 @@
 #include "configuration/model/Configuration.h"
 #include "world.structure/model/MapArea.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Generate objects randomly, such as vegetation and other kinds.
      */

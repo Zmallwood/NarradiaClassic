@@ -1,7 +1,7 @@
 #include "KeyboardInput.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Register that a key has been pressed.
      */

@@ -1,8 +1,8 @@
 #include "FillRect.h"
 #include "../Renderer2DSolidColorsView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Renders a color-filled rectangle to the canvas, must previously have been
      * initialized with NewRect().

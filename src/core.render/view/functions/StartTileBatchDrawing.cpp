@@ -3,8 +3,8 @@
 #include "../RendererTilesView.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void StartTileBatchDrawing() {
 
         auto renderer = RendererTilesView::Get();

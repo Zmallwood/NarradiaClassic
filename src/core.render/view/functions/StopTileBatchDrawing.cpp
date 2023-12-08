@@ -1,8 +1,8 @@
 #include "StopTileBatchDrawing.h"
 #include "../RendererTilesView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void StopTileBatchDrawing() {
 
         auto renderer = RendererTilesView::Get();

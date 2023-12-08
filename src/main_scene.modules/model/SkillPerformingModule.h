@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     class SkillPerformingModule : public Singleton<SkillPerformingModule> {
       public:
         void UpdateGameLogic();

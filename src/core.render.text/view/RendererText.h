@@ -1,8 +1,8 @@
 #pragma once
 #include "core.render.text/model/FontSizes.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     class Font;
 
     /**

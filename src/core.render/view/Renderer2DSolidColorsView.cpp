@@ -1,8 +1,8 @@
 #include "Renderer2DSolidColorsView.h"
 #include <GL/glew.h>
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Create the shader program from shader sources.
      */

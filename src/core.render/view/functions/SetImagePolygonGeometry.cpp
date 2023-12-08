@@ -1,8 +1,8 @@
 #include "SetImagePolygonGeometry.h"
 #include "../RendererTilesView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void SetImagePolygonGeometry(RenderId vao_id, std::vector<Vertex3F> &vertices) {
 
         auto renderer = RendererTilesView::Get();

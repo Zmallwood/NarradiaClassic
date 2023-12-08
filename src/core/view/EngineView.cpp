@@ -4,8 +4,8 @@
 #include "SceneMngrView.h"
 #include "TextOutBoxView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Render game each frame.
      */

@@ -1,8 +1,8 @@
 #pragma once
 #include "Point.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Floating point type 2D point.
      */

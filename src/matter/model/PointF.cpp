@@ -1,7 +1,7 @@
 #include "PointF.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Returns a translated PointF object, while not modifying this one.
      */

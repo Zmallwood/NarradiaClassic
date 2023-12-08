@@ -2,11 +2,11 @@
 #include "core.gui/model/GuiButton.h"
 #include "core.render.text/view/RendererText.h"
 #include "core.render/view/Renderer2DImagesView.h"
-#include "core.render/view/functions/NewImage.h"
 #include "core.render/view/functions/DrawImage.h"
+#include "core.render/view/functions/NewImage.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Prepares RenderIDs for renderering.
      */

@@ -4,8 +4,8 @@
 #include "main_scene.modules/model/KeyboardMovementModule.h"
 #include "main_scene.modules/model/MouseRotationModule.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Update game logic.
      */

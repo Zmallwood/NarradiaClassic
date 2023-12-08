@@ -1,7 +1,7 @@
 #include "ISceneController.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Update game flow between scenes for sceness deriving this class.
      */

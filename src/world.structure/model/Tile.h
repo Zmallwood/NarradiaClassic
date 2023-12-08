@@ -3,8 +3,8 @@
 #include "TileEffect.h"
 #include "world.actors/model/Mob.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * A tile in the game map on which objects can be places and actors can walk
      * on.

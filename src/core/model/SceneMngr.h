@@ -2,8 +2,8 @@
 #include "IScene.h"
 #include "SceneNames.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Model for SceneMngr.
      */

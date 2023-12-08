@@ -3,8 +3,8 @@
 #include "core.render/model/RendererBase.h"
 #include "core.render/view/ShaderProgramView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Create shader program and renderer base.
      */

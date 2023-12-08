@@ -1,8 +1,8 @@
 #pragma once
 #include "core.gui/model/SceneGui.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Model for IScene.
      */

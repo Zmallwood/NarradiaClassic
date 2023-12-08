@@ -1,7 +1,7 @@
 #include "LoadSingleImage.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Loads a single images with provided path, creating a GL texture and
      * returning its GLuint id.

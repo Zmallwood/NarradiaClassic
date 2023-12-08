@@ -3,8 +3,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     void PlayerSpawnPositioningModule::SpawnAtGoodLocation() {
 
         auto map_area = World::Get()->curr_map_area();

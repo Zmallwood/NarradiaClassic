@@ -3,8 +3,8 @@
 #include "../model/Graphics.h"
 #include "GraphicsGLView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Initialize SDL window and some of the OpenGL settings.
      */

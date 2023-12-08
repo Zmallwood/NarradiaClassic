@@ -1,8 +1,8 @@
 #include "CreateGetBlankTexture.h"
 #include "core.assets/model/ImageBank.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Creates and returns unique name for a new blank texture.
      */

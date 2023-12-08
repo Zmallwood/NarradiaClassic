@@ -3,8 +3,8 @@
 #include "SceneMngr.h"
 #include "core.input/model/MouseInput.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Seeds the randomization to get unique random generations each game start.
      */

@@ -3,8 +3,8 @@
 #include "functions/FileUtilities.h"
 #include "functions/LoadSingleImage.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Load images on first use.
      */

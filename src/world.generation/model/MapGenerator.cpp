@@ -4,8 +4,8 @@
 #include "functions/GenerateObjects.h"
 #include "functions/GenerateWater.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Generate all terrain and content for a MapArea.
      */

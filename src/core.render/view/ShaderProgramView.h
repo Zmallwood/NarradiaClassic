@@ -2,8 +2,8 @@
 #include "../model/ShaderProgram.h"
 #include <memory>
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * View component of ShaderProgram.
      */

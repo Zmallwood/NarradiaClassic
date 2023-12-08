@@ -1,8 +1,8 @@
 #include "NewImagePolygon.h"
 #include "../RendererTilesView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     RenderId NewImagePolygon(int num_vertices) {
 
         auto renderer = RendererTilesView::Get();

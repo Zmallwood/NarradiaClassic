@@ -1,8 +1,8 @@
 #pragma once
 #include <GL/glew.h>
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Simple holding class for an OpenGL program, of which every Renderer has
      * one.

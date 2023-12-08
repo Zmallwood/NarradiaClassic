@@ -1,7 +1,7 @@
 #include "MouseActionMngr.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Adds an action which might be executed on firing the mouse button,
      * depending on its z order.

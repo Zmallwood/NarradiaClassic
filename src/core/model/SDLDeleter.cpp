@@ -1,7 +1,7 @@
 #include "SDLDeleter.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Destroy window when no longer used.
      */

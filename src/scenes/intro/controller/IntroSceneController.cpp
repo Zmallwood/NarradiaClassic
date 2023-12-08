@@ -3,8 +3,8 @@
 #include "../../../core/controller/SceneMngrController.h"
 #include "core.input/model/MouseInput.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * On entering scene.
      */

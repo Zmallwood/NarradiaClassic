@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Floating point rectangle type used to differentiate rectangles specified
      * in OpenGL coordinate system.

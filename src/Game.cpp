@@ -4,8 +4,8 @@
 #include "core/model/FPSCapper.h"
 #include "core/view/EngineView.h"
 
-namespace Narradia {
-
+namespace Narradia
+{
     /**
      * Run a new game instance.
      */
