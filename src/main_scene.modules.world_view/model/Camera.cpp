@@ -22,24 +22,26 @@ namespace Narradia
 
     Point3F Camera::GetCameraPosition()
     {
-        auto player = Player::Get();
-        auto world = World::Get();
+        std::shared_ptr<Player> player = Player::Get();
+        std::shared_ptr<World> world = World::Get();
         float used_camera_distance = camera_distance_;
         float used_vertical_angle = vertical_angle_deg_;
         Point3F player_position_no_elevation = player->position().Multiply(kTileSize);
         float dz_unrotated = CosDeg(used_vertical_angle) * used_camera_distance;
         float hypotenuse = dz_unrotated;
-        float dx = SinDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * SinDeg(horizontal_angle_deg_);
-        float dz = CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
+        float dx =
+            SinDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * SinDeg(horizontal_angle_deg_);
+        float dz =
+            CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
         float dy = SinDeg(used_vertical_angle) * used_camera_distance;
         float dx_player = -4.0f * SinDeg(horizontal_angle_deg_);
         float dz_player = -4.0f * CosDeg(horizontal_angle_deg_);
         PointF player_position = player->position().GetXZ();
-        auto map_area = World::Get()->curr_map_area();
-        auto player_tile = map_area->GetTile(player_position.ToIntPoint());
+        std::shared_ptr<MapArea> map_area = World::Get()->curr_map_area();
+        std::shared_ptr<Tile> player_tile = map_area->GetTile(player_position.ToIntPoint());
         float elev_amount = kElevAmount;
         Point tile_coord = player_position.ToIntPoint();
-        auto tile = map_area->GetTile(tile_coord);
+        std::shared_ptr<Tile> tile = map_area->GetTile(tile_coord);
         float elev00 = static_cast<float>(tile->elevation());
         float elev10 = elev00;
         float elev11 = elev00;
