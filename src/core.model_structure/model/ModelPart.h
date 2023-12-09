@@ -12,7 +12,7 @@ namespace Narradia {
             return texture_name_;
         }
 
-        void set_texture_name(std::string_view value) {
+        void set_texture_name(std::string value) {
             texture_name_ = value;
         }
 
@@ -21,7 +21,7 @@ namespace Narradia {
         }
 
       private:
-        std::string_view texture_name_;
+        std::string texture_name_;
         std::shared_ptr<ModelPartTimeline> timeline_;
     };
 }

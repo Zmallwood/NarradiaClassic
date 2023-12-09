@@ -5,6 +5,6 @@ namespace Narradia {
       public:
         RenderID rid = -1;
         int num_vertices = 0;
-        std::string_view image_name;
+        std::string image_name;
     };
 }

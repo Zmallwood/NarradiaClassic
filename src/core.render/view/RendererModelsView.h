@@ -41,7 +41,7 @@ namespace Narradia {
         int location_fog_color_ = -1;
         int location_no_fog_ = -1;
         int location_no_lighting_ = -1;
-        std::map<std::string_view, std::map<int, std::map<float, const BodyData>>> model_ids_;
+        std::map<std::string, std::map<int, std::map<float, const BodyData>>> model_ids_;
         std::map<std::string_view, std::map<float, RenderID>> timelines_;
         float global_animation_speed_ = 1.0f;
         bool is_batch_drawing_ = false;

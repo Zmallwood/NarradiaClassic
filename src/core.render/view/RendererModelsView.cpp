@@ -24,7 +24,7 @@ namespace Narradia {
 
     void RendererModelsView::NewModel(std::string_view model_name) {
         auto model = ModelBank::Get()->GetModel(model_name);
-        model_ids_.insert({model_name, std::map<int, std::map<float, const BodyData>>()});
+        model_ids_.insert({model_name.data(), std::map<int, std::map<float, const BodyData>>()});
         auto i_body = 0;
         for (auto &body : *model->model_parts()) {
             auto &timelines = body->timeline()->keyframes;
@@ -33,13 +33,13 @@ namespace Narradia {
                 auto anim_key_body_keyframe = keyframe.second;
                 auto vertex_count = anim_key_body_keyframe->vertices.size();
                 auto body_keyframe_id = NewBodyKeyframe(model_name, keyframe_time, vertex_count);
-                if (model_ids_.at(model_name).count(i_body) == 0)
-                    model_ids_.at(model_name).insert({i_body, std::map<float, const BodyData>()});
+                if (model_ids_.at(model_name.data()).count(i_body) == 0)
+                    model_ids_.at(model_name.data()).insert({i_body, std::map<float, const BodyData>()});
                 BodyData body_data;
                 body_data.rid = body_keyframe_id;
                 body_data.image_name = body->texture_name();
                 body_data.num_vertices = vertex_count;
-                model_ids_.at(model_name).at(i_body).insert({keyframe_time, body_data});
+                model_ids_.at(model_name.data()).at(i_body).insert({keyframe_time, body_data});
                 auto &model_keyframe = body->timeline()->keyframes.at(keyframe_time);
                 std::vector<Vertex3F> vertices;
                 std::vector<Point3F> normals;
@@ -129,7 +129,7 @@ namespace Narradia {
     void RendererModelsView::DrawModel(
         std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
         float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) const {
-        if (model_ids_.count(model_name) == 0)
+        if (model_ids_.count(model_name.data()) == 0)
             return;
         if (!is_batch_drawing_) {
             glEnable(GL_DEPTH_TEST);
@@ -163,7 +163,7 @@ namespace Narradia {
         glUniform1f(location_alpha_, brightness);
         glUniform1f(location_no_fog_, no_fog ? 1.0f : 0.0f);
         glUniform1f(location_no_lighting_, no_lighting ? 1.0f : 0.0f);
-        auto &all_nodes = model_ids_.at(model_name);
+        auto &all_nodes = model_ids_.at(model_name.data());
         auto p_model = ModelBank::Get()->GetModel(model_name);
         int ms_time_used;
         if (p_model->anim_duration() == 0)
@@ -196,7 +196,7 @@ namespace Narradia {
         std::string_view model_name, float ms_time, std::vector<Point3F> positions,
         std::vector<float> rotations, std::vector<float> scalings, std::vector<float> brightnesses,
         std::vector<glm::vec3> color_mods) const {
-        if (model_ids_.count(model_name) == 0)
+        if (model_ids_.count(model_name.data()) == 0)
             return;
         if (!is_batch_drawing_) {
             glEnable(GL_DEPTH_TEST);
@@ -207,8 +207,8 @@ namespace Narradia {
             glUniformMatrix4fv(
                 location_view_, 1, GL_FALSE, glm::value_ptr(CameraGL::Get()->view_matrix()));
         }
-        auto &all_nodes = model_ids_.at(model_name);
-        auto p_model = ModelBank::Get()->GetModel(model_name);
+        auto &all_nodes = model_ids_.at(model_name.data());
+        auto p_model = ModelBank::Get()->GetModel(model_name.data());
         int ms_time_used;
         if (p_model->anim_duration() == 0)
             ms_time_used = 0;
