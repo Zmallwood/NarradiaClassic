@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "configuration/model/Configuration.h"
+#include "conf/model/Configuration.h"
 #include "core.render/view/CameraGL.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"

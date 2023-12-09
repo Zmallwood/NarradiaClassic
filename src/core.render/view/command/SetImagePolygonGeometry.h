@@ -1,5 +1,5 @@
 #pragma once
 
 namespace Narradia {
-    void SetImagePolygonGeometry(RenderId vao_id, std::vector<Vertex3F> &vertices);
+    void SetImagePolygonGeometry(RenderID vao_id, std::vector<Vertex3F> &vertices);
 }

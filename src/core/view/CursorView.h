@@ -10,7 +10,7 @@ namespace Narradia {
         void RenderCursor();
 
       private:
-        RenderId rid_image;
+        RenderID rid_image;
 
         static constexpr float kCursorWidth = 0.02f;
     };

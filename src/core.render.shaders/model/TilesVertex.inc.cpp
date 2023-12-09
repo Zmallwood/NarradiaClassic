@@ -1,7 +1,9 @@
 /**
  Vertex shader for RendererTiles.
 */
-R"(
+#include <GL/glew.h>
+inline static const GLchar *vertex_shader_source =
+    R"(
     #version 330 core
 
     layout (location = 0) in vec3 in_Position;
@@ -26,4 +28,4 @@ R"(
         ex_Normal = in_Normal;
         FragPos = vec3(model * vec4(in_Position.x, in_Position.y, in_Position.z, 1.0));
     }
-)"
+)";

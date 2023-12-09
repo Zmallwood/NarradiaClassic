@@ -10,10 +10,10 @@ namespace Narradia {
         void Render() const;
 
       private:
-        RenderId rid_image_;
-        RenderId rid_split_line_;
-        RenderId rid_cmd_line_input_arrow_;
-        RenderId rid_input_text_;
-        std::vector<RenderId> rids_text_lines_;
+        RenderID rid_image_;
+        RenderID rid_split_line_;
+        RenderID rid_cmd_line_input_arrow_;
+        RenderID rid_input_text_;
+        std::vector<RenderID> rids_text_lines_;
     };
 }

@@ -1,5 +1,5 @@
 #pragma once
 
 namespace Narradia {
-    typedef GLuint RenderId;
+    typedef GLuint RenderID;
 }

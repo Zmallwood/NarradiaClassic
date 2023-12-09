@@ -1,6 +1,6 @@
 #include "WorldViewModuleView.h"
 #include "command/DrawGround.h"
-#include "configuration/model/Configuration.h"
+#include "conf/model/Configuration.h"
 #include "core.render/view/RendererTilesView.h"
 #include "core.render/view/command/NewTile.h"
 #include "core.render/view/command/SetTileGeometry.h"
@@ -15,7 +15,7 @@ namespace Narradia {
         auto tile_size = 1.0f;
 
         for (auto x = 0; x < kMapWidth; x++) {
-            rids_tiles.push_back(std::vector<RenderId>());
+            rids_tiles.push_back(std::vector<RenderID>());
 
             for (auto y = 0; y < kMapHeight; y++) {
                 rids_tiles.at(x).push_back(NewTile());

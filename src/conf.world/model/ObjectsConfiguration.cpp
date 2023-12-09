@@ -1,5 +1,5 @@
 #include "ObjectsConfiguration.h"
-#include "configuration.world/model/ObjectFlags.h"
+#include "conf.world/model/ObjectFlags.h"
 
 namespace Narradia {
     /**

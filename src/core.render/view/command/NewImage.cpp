@@ -2,7 +2,7 @@
 #include "../Renderer2DImagesView.h"
 
 namespace Narradia {
-    RenderId NewImage() {
+    RenderID NewImage() {
         auto renderer = Renderer2DImagesView::Get();
         auto renderer_base = renderer->renderer_base();
         auto vao_id = renderer_base->GenerateNewVertexArrayId();

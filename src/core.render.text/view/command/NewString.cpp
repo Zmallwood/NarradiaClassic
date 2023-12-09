@@ -7,7 +7,7 @@ namespace Narradia {
     /**
      Prepares resources for a new string to be rendered.
     */
-    RenderId NewString() {
+    RenderID NewString() {
         auto unique_name = CreateGetBlankTexture();
         auto rendid_image_rect = NewImage();
         RendererText::Get()->unique_name_ids()->insert({rendid_image_rect, unique_name});

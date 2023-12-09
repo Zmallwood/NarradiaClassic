@@ -7,6 +7,6 @@ namespace Narradia {
         void Render();
 
       private:
-        std::vector<std::vector<RenderId>> rids_tiles;
+        std::vector<std::vector<RenderID>> rids_tiles;
     };
 }

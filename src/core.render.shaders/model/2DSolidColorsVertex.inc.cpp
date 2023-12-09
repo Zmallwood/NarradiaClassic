@@ -1,7 +1,9 @@
 /**
  Vertex shader for Renderer2DSolidColors.
 */
-R"(
+#include <GL/glew.h>
+inline static const GLchar *vertex_shader_source =
+    R"(
     #version 330 core
 
     layout (location = 0) in vec2 in_Position;
@@ -14,4 +16,4 @@ R"(
         gl_Position = vec4(in_Position.x, in_Position.y, 0.0, 1.0);
         ex_Color = in_Color;
     }
-)"
+)";

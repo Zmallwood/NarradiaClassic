@@ -6,7 +6,7 @@ namespace Narradia {
      Renders a color-filled rectangle to the canvas, must previously have been
      initialized with NewRect().
     */
-    void FillRect(RenderId vao_id, RectF rect, Color color) {
+    void FillRect(RenderID vao_id, RectF rect, Color color) {
         auto renderer = Renderer2DSolidColorsView::Get();
         auto renderer_base = renderer->renderer_base();
         auto gl_rect = rect.ToGLRectF();

@@ -9,7 +9,7 @@ namespace Narradia {
      with NewString().
     */
     void DrawString(
-        RenderId rid, std::string_view text, PointF position, Color color, bool center_align,
+        RenderID rid, std::string_view text, PointF position, Color color, bool center_align,
         FontSizes font_size) {
         std::string unique_name_id;
         SizeF size;

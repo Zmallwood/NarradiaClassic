@@ -1,5 +1,5 @@
 #pragma once
 
 namespace Narradia {
-    RenderId NewTile();
+    RenderID NewTile();
 }

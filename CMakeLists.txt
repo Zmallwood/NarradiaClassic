@@ -51,6 +51,9 @@ set(PCH_FILES
 <glm/gtc/type_ptr.hpp>
 <glm/ext/matrix_projection.hpp>
 <glm/gtx/closest_point.hpp>
+<assimp/Importer.hpp>
+<assimp/scene.h>
+<assimp/postprocess.h>
 
 "src/matter/model/Size.h"
 "src/matter/model/SizeF.h"
@@ -80,6 +83,6 @@ set_target_properties(NarradiaClassic PROPERTIES
     CXX_STANDARD_REQUIRED ON
 )
 
-target_link_libraries(NarradiaClassic PUBLIC SDL2 SDL2_image SDL2_ttf GL GLEW)
+target_link_libraries(NarradiaClassic PUBLIC SDL2 SDL2_image SDL2_ttf GL GLEW assimp)
 
 target_precompile_headers(NarradiaClassic PRIVATE ${PCH_FILES})

@@ -1,5 +1,5 @@
 #pragma once
 
 namespace Narradia {
-    void FillRect(RenderId vao_id, RectF rect, Color color);
+    void FillRect(RenderID vao_id, RectF rect, Color color);
 }

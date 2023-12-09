@@ -12,7 +12,7 @@ namespace Narradia {
       private:
         void RenderDerived() override;
 
-        RenderId rid_background;
-        RenderId rid_logo;
+        RenderID rid_background;
+        RenderID rid_logo;
     };
 }

@@ -24,8 +24,8 @@ namespace Narradia {
         TileEffect tile_effect() { return tile_effect_; }
         void set_tile_effect(TileEffect value) { tile_effect_ = value; }
 
-        RenderId rid() { return rid_; }
-        void set_rid(RenderId value) { rid_ = value; }
+        RenderID rid() { return rid_; }
+        void set_rid(RenderID value) { rid_ = value; }
 
       private:
         std::string_view ground_;
@@ -33,6 +33,6 @@ namespace Narradia {
         std::shared_ptr<Mob> mob_;
         float elevation_ = 0.0f;
         TileEffect tile_effect_;
-        RenderId rid_;
+        RenderID rid_;
     };
 }

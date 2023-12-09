@@ -1,5 +1,5 @@
 #pragma once
 
 namespace Narradia {
-    RenderId NewString();
+    RenderID NewString();
 }

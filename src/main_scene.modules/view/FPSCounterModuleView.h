@@ -7,6 +7,6 @@ namespace Narradia {
         void Render();
 
       private:
-        RenderId rid_text;
+        RenderID rid_text;
     };
 }

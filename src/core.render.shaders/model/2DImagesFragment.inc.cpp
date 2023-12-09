@@ -1,7 +1,9 @@
 /**
  Fragment shader for Renderer2DImages.
 */
-R"(
+#include <GL/glew.h>
+inline static const GLchar *fragment_shader_source =
+    R"(
     #version 330 core
     precision mediump float;
     
@@ -16,4 +18,4 @@ R"(
         vec4 texColor = texture(TexUnit, ex_TexCoord);
         fragColor = ex_Color*0.0 + texColor;
     }
-)"
+)";

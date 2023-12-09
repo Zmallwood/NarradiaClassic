@@ -1,7 +1,9 @@
 /**
  Fragment shader for RendererTiles.
 */
-R"(
+#include <GL/glew.h>
+inline static const GLchar *fragment_shader_source =
+    R"(
     #version 330 core
     precision mediump float;
 
@@ -62,4 +64,4 @@ R"(
         fragColor = mix(fragColor, vec4(fogColor, 1.0f), fogFactor);
         fragColor.a = 1-alpha;
     }
-)"
+)";

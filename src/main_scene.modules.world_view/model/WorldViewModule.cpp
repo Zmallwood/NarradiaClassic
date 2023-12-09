@@ -1,6 +1,13 @@
 #include "WorldViewModule.h"
 #include "Camera.h"
+#include "core.assets/model/ModelBank.h"
 
 namespace Narradia {
-    void WorldViewModule::UpdateGameLogic() { Camera::Get()->UpdateGameLogic(); }
+    WorldViewModule::WorldViewModule() {
+        auto all_models = ModelBank::Get()->models();
+    }
+
+    void WorldViewModule::UpdateGameLogic() {
+        Camera::Get()->UpdateGameLogic();
+    }
 }

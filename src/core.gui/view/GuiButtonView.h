@@ -11,7 +11,7 @@ namespace Narradia {
         void Render() override;
 
       private:
-        RenderId rid_image;
-        RenderId rid_label_text_;
+        RenderID rid_image;
+        RenderID rid_label_text_;
     };
 }

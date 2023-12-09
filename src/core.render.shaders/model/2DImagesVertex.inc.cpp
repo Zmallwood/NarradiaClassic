@@ -1,7 +1,9 @@
 /**
  Vertex shader for Renderer2DImages.
 */
-R"(
+#include <GL/glew.h>
+inline static const GLchar *vertex_shader_source =
+    R"(
     #version 330 core
 
     layout (location = 0) in vec2 in_Position;
@@ -17,4 +19,4 @@ R"(
         ex_Color = in_Color;
         ex_TexCoord = in_TexCoord;
     }
-)"
+)";
