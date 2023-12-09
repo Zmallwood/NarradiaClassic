@@ -2,10 +2,8 @@
 #include "MobTargetingModule.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    void MobDeathHandlingModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void MobDeathHandlingModule::UpdateGameLogic() {
         auto map_area = World::Get()->curr_map_area();
         auto &mobs = *map_area->mobs_mirror();
 

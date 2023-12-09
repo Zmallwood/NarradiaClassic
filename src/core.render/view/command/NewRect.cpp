@@ -1,14 +1,12 @@
 #include "NewRect.h"
 #include "../Renderer2DSolidColorsView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Prepares resources for a new colored rectangle, later to be rendered,
      returning an id.
     */
-    RenderId NewRect()
-    {
+    RenderId NewRect() {
         auto renderer = Renderer2DSolidColorsView::Get();
         auto renderer_base = renderer->renderer_base();
         auto vao_id = renderer_base->GenerateNewVertexArrayId();

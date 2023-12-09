@@ -1,6 +1,5 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     std::string CreateGetBlankTexture();
 }

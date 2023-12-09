@@ -1,7 +1,6 @@
 #include "RectF.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Returns this object as a GLRectF type, which is in the OpenGL coordinate
      system.
@@ -26,8 +25,7 @@ namespace Narradia
     /**
      Tells if this rectangle has a point within its boundaries.
     */
-    bool RectF::Contains(PointF point) const
-    {
+    bool RectF::Contains(PointF point) const {
         return point.x >= x && point.y >= y && point.x < x + width && point.y < y + height;
     }
 }

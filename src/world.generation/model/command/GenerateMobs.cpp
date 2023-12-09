@@ -2,13 +2,11 @@
 #include "configuration/model/Configuration.h"
 #include "world.structure/model/MapArea.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Generate mobs randomly.
     */
-    void GenerateMobs(std::shared_ptr<MapArea> map_area)
-    {
+    void GenerateMobs(std::shared_ptr<MapArea> map_area) {
         auto num_cows = 200;
 
         for (auto i = 0; i < num_cows; i++) {

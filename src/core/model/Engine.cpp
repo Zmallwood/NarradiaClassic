@@ -3,8 +3,7 @@
 #include "SceneMngr.h"
 #include "core.input/model/MouseInput.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Seeds the randomization to get unique random generations each game start.
     */
@@ -13,8 +12,7 @@ namespace Narradia
     /**
      Update game logic for current frame.
     */
-    void Engine::UpdateGameLogic()
-    {
+    void Engine::UpdateGameLogic() {
         Cursor::Get()->ResetStyle();
         SceneMngr::Get()->UpdateGameLogicCurrScene();
         MouseInput::Get()->PerformMouseActions();

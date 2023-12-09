@@ -1,7 +1,6 @@
 #include "Point3F.h"
 
-namespace Narradia
-{
+namespace Narradia {
     Point3F Point3F::Translate(float dx, float dy, float dz) { return {x + dx, y + dy, z + dz}; }
 
     Point3F Point3F::Multiply(float k) { return {x * k, y * k, z * k}; }

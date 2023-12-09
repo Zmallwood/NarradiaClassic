@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Available buffer types for the renderers.
     */

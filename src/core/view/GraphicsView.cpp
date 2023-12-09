@@ -3,13 +3,11 @@
 #include "../model/Graphics.h"
 #include "GraphicsGLView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Initialize SDL window and some of the OpenGL settings.
     */
-    GraphicsView::GraphicsView()
-    {
+    GraphicsView::GraphicsView() {
         auto window_size = Graphics::Get()->window_size();
         auto window_flags = Graphics::Get()->window_flags();
         auto window = std::shared_ptr<SDL_Window>(

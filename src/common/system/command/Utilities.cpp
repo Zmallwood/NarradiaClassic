@@ -1,13 +1,11 @@
 #include "Utilities.h"
 #include "core.assets/model/ImageBank.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Returns normalized mouse position.
     */
-    PointF GetMousePosition()
-    {
+    PointF GetMousePosition() {
         int xPixels;
         int yPixels;
         auto canvasSize = GetCanvasSize();
@@ -20,8 +18,7 @@ namespace Narradia
     /**
      Returns the current time in text format.
     */
-    std::string_view GetCurrTime()
-    {
+    std::string_view GetCurrTime() {
         time_t now = time(0);
         char buffer[80];
         auto p_tstruct = localtime(&now);
@@ -32,8 +29,7 @@ namespace Narradia
     /**
      Returns texture, loaded from file system, dimensions in pixels.
     */
-    Size GetTextureDimensions(std::string_view image_name)
-    {
+    Size GetTextureDimensions(std::string_view image_name) {
         Size dimensions;
         int miplevel = 0;
         auto image_id = ImageBank::Get()->GetImage(image_name);

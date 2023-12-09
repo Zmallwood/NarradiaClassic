@@ -1,8 +1,7 @@
 #pragma once
 #include "Tile.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Map object composed of a 2D grid of tiles and a mirror to
      facilitate/speedup access to all mob actors on the map.
@@ -14,8 +13,7 @@ namespace Narradia
         std::shared_ptr<Tile> GetTile(Point coord);
         bool IsInsideMap(Point coord);
 
-        std::shared_ptr<std::map<std::shared_ptr<Mob>, Point>> mobs_mirror()
-        {
+        std::shared_ptr<std::map<std::shared_ptr<Mob>, Point>> mobs_mirror() {
             return mobs_mirror_;
         }
 

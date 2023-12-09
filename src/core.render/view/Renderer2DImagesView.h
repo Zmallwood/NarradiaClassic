@@ -1,8 +1,7 @@
 #pragma once
 #include "RendererBaseView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Prepares and renders 2d images to the canvas.
     */

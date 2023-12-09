@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Model for Graphics, has a view but no controller.
     */

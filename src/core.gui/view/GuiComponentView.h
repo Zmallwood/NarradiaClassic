@@ -2,8 +2,7 @@
 #include "core.gui/model/GuiComponent.h"
 #include <memory>
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      View component of the GuiComponent.
     */

@@ -2,15 +2,13 @@
 #include "core.input/model/MouseInput.h"
 #include "core/model/Cursor.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Initializes new GuiButton model.
     */
     GuiButton::GuiButton(
         const std::string_view &text, RectF bounds, std::function<void()> action,
-        std::string_view image_name, std::string_view hovered_image_name)
-    {
+        std::string_view image_name, std::string_view hovered_image_name) {
         text_ = text;
         bounds_ = bounds;
         action_ = action;
@@ -22,8 +20,7 @@ namespace Narradia
      Sets cursor to hovering style if button is hovered, and executes the
      buttons action if clicked.
     */
-    void GuiButton::UpdateGameLogic()
-    {
+    void GuiButton::UpdateGameLogic() {
         hovered_ = false;
         auto used_bounds = bounds_;
         //        if (p->parent_container_) {

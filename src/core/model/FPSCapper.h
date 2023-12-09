@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class FPSCapper : public Singleton<FPSCapper> {
       public:
         bool RunningBelow60FPS();

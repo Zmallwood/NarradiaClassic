@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class PlayerSpawnPositioningModule : public Singleton<PlayerSpawnPositioningModule> {
       public:
         void SpawnAtGoodLocation();

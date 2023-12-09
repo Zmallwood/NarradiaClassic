@@ -1,7 +1,6 @@
 #include "ShaderProgram.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Delete shader program when no longer used.
     */

@@ -3,8 +3,7 @@
 #include "../../../core/controller/SceneMngrController.h"
 #include "core.input/model/MouseInput.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      On entering scene.
     */
@@ -13,8 +12,7 @@ namespace Narradia
     /**
      Update game flow between scenes.
     */
-    void IntroSceneController::UpdateGameFlowDerived()
-    {
+    void IntroSceneController::UpdateGameFlowDerived() {
         if (KeyboardInput::Get()->AnyKeyIsPressedPickResult()) {
             SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
         }

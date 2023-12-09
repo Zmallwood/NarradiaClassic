@@ -1,12 +1,10 @@
 #include "SetTileGeometry.h"
 #include "SetImagePolygonGeometry.h"
 
-namespace Narradia
-{
+namespace Narradia {
     void SetTileGeometry(
         RenderId vao_id, Vertex3F &v0, Vertex3F &v1, Vertex3F &v2, Vertex3F &v3, Point3F &normal00,
-        Point3F &normal10, Point3F &normal11, Point3F &normal01)
-    {
+        Point3F &normal10, Point3F &normal11, Point3F &normal01) {
         std::vector<Vertex3F> vertices;
         v0.normal = normal00;
         v1.normal = normal10;

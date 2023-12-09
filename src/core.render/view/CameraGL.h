@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class CameraGL : public Singleton<CameraGL> {
       public:
         glm::mat4 perspective_matrix() { return perspective_matrix_; }

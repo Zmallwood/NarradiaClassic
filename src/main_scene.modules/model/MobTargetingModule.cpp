@@ -4,10 +4,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    void MobTargetingModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void MobTargetingModule::UpdateGameLogic() {
         //        MouseInput::Get()->right_button()->AddFiredAction(
         //            [&] {
         //                auto map_area = World::Get()->curr_map_area();
@@ -25,8 +23,5 @@ namespace Narradia
         //            0);
     }
 
-    void MobTargetingModule::ClearTarget()
-    {
-        targeted_mob_ = nullptr;
-    }
+    void MobTargetingModule::ClearTarget() { targeted_mob_ = nullptr; }
 }

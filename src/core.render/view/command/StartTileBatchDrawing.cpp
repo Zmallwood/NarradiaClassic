@@ -3,10 +3,8 @@
 #include "../RendererTilesView.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia
-{
-    void StartTileBatchDrawing()
-    {
+namespace Narradia {
+    void StartTileBatchDrawing() {
         auto renderer = RendererTilesView::Get();
         renderer->set_is_batch_drawing(true);
         glUseProgram(renderer->GetShaderProgramView()->shader_program()->program_id());

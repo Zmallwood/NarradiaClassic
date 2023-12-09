@@ -1,8 +1,7 @@
 #pragma once
 #include "MouseActionMngr.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Holds state of a single mouse button, left or right, and its
      MouseActionMngr which handle and execute mouse actions.
@@ -10,9 +9,7 @@ namespace Narradia
     class MouseButton {
       public:
         MouseButton()
-            : mouse_action_mngr_(std::make_shared<MouseActionMngr>())
-        {
-        }
+            : mouse_action_mngr_(std::make_shared<MouseActionMngr>()) {}
         void RegisterPress();
         void RegisterRelease();
         void PerformMouseActions();

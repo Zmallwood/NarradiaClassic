@@ -2,8 +2,7 @@
 #include "SceneMngrController.h"
 #include "command/PollEvents.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Handle user input every frame.
     */
@@ -12,8 +11,7 @@ namespace Narradia
     /**
      Update game flow between scenes every frame.
     */
-    void EngineController::UpdateGameFlow()
-    {
+    void EngineController::UpdateGameFlow() {
         SceneMngrController::Get()->UpdateGameFlowCurrScene();
     }
 }

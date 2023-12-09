@@ -2,8 +2,7 @@
 #include "Color.h"
 #include "PointF.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Used to describe objects for 2D rendering.
     */

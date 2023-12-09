@@ -4,13 +4,11 @@
 #include "core/model/FPSCapper.h"
 #include "core/view/EngineView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Run a new game instance.
     */
-    void Game::Run()
-    {
+    void Game::Run() {
         while (Engine::Get()->is_running()) {
 
             if (FPSCapper::Get()->RunningBelow60FPS()) {

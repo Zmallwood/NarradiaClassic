@@ -1,9 +1,7 @@
 #include "FPSCounterModule.h"
 
-namespace Narradia
-{
-    void FPSCounterModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void FPSCounterModule::UpdateGameLogic() {
         frames_count_++;
 
         if (SDL_GetTicks() - ticks_last_update_ > kMillisPerSecond) {

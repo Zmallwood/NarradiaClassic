@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Text line entry stored and printed in TextOutBox.
     */

@@ -4,8 +4,7 @@
 #include <map>
 #include <vector>
 
-namespace Narradia
-{
+namespace Narradia {
     class ShaderProgram;
 
     /**

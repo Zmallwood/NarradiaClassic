@@ -1,9 +1,7 @@
 #include "FPSCapper.h"
 
-namespace Narradia
-{
-    bool FPSCapper::RunningBelow60FPS()
-    {
+namespace Narradia {
+    bool FPSCapper::RunningBelow60FPS() {
         auto a = SDL_GetTicks();
         auto delta = a - b_;
 

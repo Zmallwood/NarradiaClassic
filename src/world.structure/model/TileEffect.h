@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Describes a effect being present on a tile, such as initiated from a
      player skill.

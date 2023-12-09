@@ -1,8 +1,7 @@
 #pragma once
 #include "../../../core/model/IScene.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Model for MainMenuScene.
     */

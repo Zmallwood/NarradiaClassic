@@ -1,8 +1,7 @@
 #pragma once
 #include "GuiComponentView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      View component of the GuiButton.
     */

@@ -2,14 +2,12 @@
 #include "../Renderer2DImagesView.h"
 #include "core.assets/model/ImageBank.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Draws an image to the canvas, must previously have been initialized with
      NewImage().
     */
-    void DrawImage(std::string_view image_name, RenderId rid, const RectF &dest, Color color)
-    {
+    void DrawImage(std::string_view image_name, RenderId rid, const RectF &dest, Color color) {
         auto renderer = Renderer2DImagesView::Get();
         auto renderer_base = renderer->renderer_base();
         auto gl_rect = dest.ToGLRectF();

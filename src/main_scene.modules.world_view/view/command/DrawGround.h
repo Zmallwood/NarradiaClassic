@@ -2,7 +2,6 @@
 #include "world.structure/model/Tile.h"
 #include <memory>
 
-namespace Narradia
-{
+namespace Narradia {
     void DrawGround(std::shared_ptr<Tile> tile, Point coord);
 }

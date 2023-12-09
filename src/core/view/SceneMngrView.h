@@ -2,8 +2,7 @@
 #include "../model/SceneNames.h"
 #include "ISceneView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      View for SceneMngr.
     */

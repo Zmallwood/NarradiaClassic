@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class Vertex3F {
       public:
         Point3F position;

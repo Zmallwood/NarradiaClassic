@@ -4,13 +4,11 @@
 #include "../../scenes/main_menu/view/MainMenuSceneView.h"
 #include "../model/SceneMngr.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Initialize scene views that will be used.
     */
-    SceneMngrView::SceneMngrView()
-    {
+    SceneMngrView::SceneMngrView() {
         scene_views_.insert({SceneNames::Intro, IntroSceneView::Get()});
         scene_views_.insert({SceneNames::MainMenu, MainMenuSceneView::Get()});
         scene_views_.insert({SceneNames::Main, MainSceneView::Get()});
@@ -19,8 +17,7 @@ namespace Narradia
     /**
      Render currently displayed scene.
     */
-    void SceneMngrView::RenderCurrScene()
-    {
+    void SceneMngrView::RenderCurrScene() {
         auto curr_scene = SceneMngr::Get()->curr_scene();
 
         if (scene_views_.count(curr_scene) != 0)

@@ -7,13 +7,11 @@
 #include "core.render/view/command/DrawImage.h"
 #include "core.render/view/command/NewImage.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Prepares RenderIDs for renderering.
     */
-    GuiButtonView::GuiButtonView()
-    {
+    GuiButtonView::GuiButtonView() {
         rid_image = NewImage();
         rid_label_text_ = NewString();
     }
@@ -22,8 +20,7 @@ namespace Narradia
      Renders the GuiButton to the canvas, taking into account if its hovered
      or not.
     */
-    void GuiButtonView::Render()
-    {
+    void GuiButtonView::Render() {
         auto model = std::static_pointer_cast<GuiButton>(gui_component_);
         std::string_view used_image_name;
 

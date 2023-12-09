@@ -2,13 +2,11 @@
 #include "configuration/model/Configuration.h"
 #include "world.structure/model/MapArea.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Generate water randomly.
     */
-    void GenerateWater(std::shared_ptr<MapArea> map_area)
-    {
+    void GenerateWater(std::shared_ptr<MapArea> map_area) {
         auto num_lakes = 30;
 
         for (auto i = 0; i < num_lakes; i++) {

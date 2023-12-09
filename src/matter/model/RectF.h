@@ -2,8 +2,7 @@
 #include "GLRectF.h"
 #include "PointF.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Floating point type rectangle.
     */

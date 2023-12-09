@@ -3,10 +3,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    void CombatChaseMovementModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void CombatChaseMovementModule::UpdateGameLogic() {
         auto time_to_update = SDL_GetTicks() > Player::Get()->ticks_last_move() +
                                                    400 / Player::Get()->movement_speed();
 

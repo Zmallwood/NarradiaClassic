@@ -3,16 +3,14 @@
 #include "../RendererText.h"
 #include "core.render/view/command/DrawImage.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Draws a string to the canvas, requires it to first have been initialized
      with NewString().
     */
     void DrawString(
         RenderId rid, std::string_view text, PointF position, Color color, bool center_align,
-        FontSizes font_size)
-    {
+        FontSizes font_size) {
         std::string unique_name_id;
         SizeF size;
         RendererText::Get()->RenderText(

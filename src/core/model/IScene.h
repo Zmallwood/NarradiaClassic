@@ -1,17 +1,14 @@
 #pragma once
 #include "core.gui/model/SceneGui.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Model for IScene.
     */
     class IScene {
       public:
         IScene()
-            : scene_gui_(std::make_shared<SceneGui>())
-        {
-        }
+            : scene_gui_(std::make_shared<SceneGui>()) {}
 
         void UpdateGameLogic();
 

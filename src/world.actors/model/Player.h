@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Player actor which can move around on the map and engage in combat.
     */
@@ -13,69 +12,37 @@ namespace Narradia
         void MoveDown();
         void MoveLeft();
 
-        Point3F position() {
-            return position_;
-        }
+        Point3F position() { return position_; }
 
-        void set_position(Point3F value) {
-            position_ = value;
-        }
+        void set_position(Point3F value) { position_ = value; }
 
-        float movement_speed() {
-            return movement_speed_;
-        }
+        float movement_speed() { return movement_speed_; }
 
-        int ticks_last_move() {
-            return ticks_last_move_;
-        }
+        int ticks_last_move() { return ticks_last_move_; }
 
-        void set_ticks_last_move(int value) {
-            ticks_last_move_ = value;
-        }
+        void set_ticks_last_move(int value) { ticks_last_move_ = value; }
 
-        Point destination() {
-            return destination_;
-        }
+        Point destination() { return destination_; }
 
-        void set_destination(Point value) {
-            destination_ = value;
-        }
+        void set_destination(Point value) { destination_ = value; }
 
-        float attack_speed() {
-            return attack_speed_;
-        }
+        float attack_speed() { return attack_speed_; }
 
-        int ticks_last_hit_performed() {
-            return ticks_last_hit_performed_;
-        }
+        int ticks_last_hit_performed() { return ticks_last_hit_performed_; }
 
-        void set_ticks_last_hit_performed(int value) {
-            ticks_last_hit_performed_ = value;
-        }
+        void set_ticks_last_hit_performed(int value) { ticks_last_hit_performed_ = value; }
 
-        float ultimate_skill_chance() {
-            return ultimate_skill_chance_;
-        }
+        float ultimate_skill_chance() { return ultimate_skill_chance_; }
 
-        int ticks_ulti_skill_start() {
-            return ticks_ulti_skill_start_;
-        }
+        int ticks_ulti_skill_start() { return ticks_ulti_skill_start_; }
 
-        void set_ticks_ulti_skill_start(int value) {
-            ticks_ulti_skill_start_ = value;
-        }
+        void set_ticks_ulti_skill_start(int value) { ticks_ulti_skill_start_ = value; }
 
-        float ulti_skill_duration() {
-            return ulti_skill_duration_;
-        }
+        float ulti_skill_duration() { return ulti_skill_duration_; }
 
-        float facing_angle_deg() {
-            return facing_angle_deg_;
-        }
+        float facing_angle_deg() { return facing_angle_deg_; }
 
-        void set_facing_angle_deg(float value) {
-            facing_angle_deg_ = value;
-        }
+        void set_facing_angle_deg(float value) { facing_angle_deg_ = value; }
 
       private:
         Point3F position_;

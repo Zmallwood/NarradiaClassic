@@ -4,10 +4,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    void Camera::UpdateGameLogic()
-    {
+namespace Narradia {
+    void Camera::UpdateGameLogic() {
         {
             auto new_perspective_matrix =
                 glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
@@ -24,8 +22,7 @@ namespace Narradia
         }
     }
 
-    Point3F Camera::GetCameraPosition()
-    {
+    Point3F Camera::GetCameraPosition() {
         auto player = Player::Get();
         auto player_position = player->position().GetXZ();
         auto map_area = World::Get()->curr_map_area();

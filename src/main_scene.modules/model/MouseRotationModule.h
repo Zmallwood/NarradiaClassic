@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class MouseRotationModule : public Singleton<MouseRotationModule> {
       public:
         void UpdateGameLogic();

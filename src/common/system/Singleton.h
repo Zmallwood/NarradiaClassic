@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Singleton templated class.
     */
@@ -19,8 +18,7 @@ namespace Narradia
      Create new instance if none exists.
     */
     template <class T>
-    void Singleton<T>::Touch()
-    {
+    void Singleton<T>::Touch() {
         if (!instance_) {
             instance_ = std::make_shared<T>();
             AddSingletonDisposeAction([&] { instance_.reset(); });
@@ -31,8 +29,7 @@ namespace Narradia
      Get instance of object.
     */
     template <class T>
-    std::shared_ptr<T> Singleton<T>::Get()
-    {
+    std::shared_ptr<T> Singleton<T>::Get() {
         if (!instance_) // Create new instance if none exists
             Touch();
 

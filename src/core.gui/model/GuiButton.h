@@ -1,8 +1,7 @@
 #pragma once
 #include "GuiComponent.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Model component of GuiButton, which is a visible and hoverable button
      which executes an action when clicked.

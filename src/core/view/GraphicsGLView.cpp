@@ -2,13 +2,11 @@
 #include "core.render/view/Renderer2DSolidColorsView.h"
 #include "core/view/GraphicsView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Initializes OpenGL-specific graphics parts.
     */
-    GraphicsGLView::GraphicsGLView()
-    {
+    GraphicsGLView::GraphicsGLView() {
         glewExperimental = GL_TRUE;
         auto glew_error = glewInit();
 

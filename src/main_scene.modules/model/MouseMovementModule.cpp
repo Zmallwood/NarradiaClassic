@@ -6,10 +6,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    void MouseMovementModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void MouseMovementModule::UpdateGameLogic() {
         //        MouseInput::Get()->left_button()->AddFiredAction([] {
         //            if (MouseInput::Get()->left_button()->is_pressed()) {
         //                Player::Get()->set_destination(

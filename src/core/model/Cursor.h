@@ -1,8 +1,7 @@
 #pragma once
 #include "CursorStyles.h"
 
-namespace Narradia
-{
+namespace Narradia {
     class Cursor : public Singleton<Cursor> {
       public:
         void ResetStyle();

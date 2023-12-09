@@ -3,10 +3,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    void CombatModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void CombatModule::UpdateGameLogic() {
         auto targeted_mob = MobTargetingModule::Get()->targeted_mob();
 
         if (targeted_mob) {

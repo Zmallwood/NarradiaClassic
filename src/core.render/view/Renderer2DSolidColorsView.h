@@ -1,8 +1,7 @@
 #pragma once
 #include "RendererBaseView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Prepares resources and renders color-filled rectangles to the canvas.
     */

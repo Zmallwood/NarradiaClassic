@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class WorldViewModuleView : public Singleton<WorldViewModuleView> {
       public:
         WorldViewModuleView();

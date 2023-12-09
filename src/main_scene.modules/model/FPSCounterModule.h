@@ -1,7 +1,6 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     class FPSCounterModule : public Singleton<FPSCounterModule> {
       public:
         void UpdateGameLogic();

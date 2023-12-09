@@ -2,10 +2,8 @@
 #include "core.input/model/KeyboardInput.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia
-{
-    void KeyboardMovementModule::UpdateGameLogic()
-    {
+namespace Narradia {
+    void KeyboardMovementModule::UpdateGameLogic() {
         auto up_is_pressed = KeyboardInput::Get()->KeyIsPressed(SDLK_w);
         auto right_is_pressed = KeyboardInput::Get()->KeyIsPressed(SDLK_d);
         auto down_is_pressed = KeyboardInput::Get()->KeyIsPressed(SDLK_s);

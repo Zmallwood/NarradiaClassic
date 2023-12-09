@@ -1,6 +1,5 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
     RenderId NewRect();
 }

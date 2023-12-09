@@ -2,13 +2,11 @@
 #include "configuration/model/Configuration.h"
 #include "world.structure/model/MapArea.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Generate grass on the whole map.
     */
-    void GenerateGrass(std::shared_ptr<MapArea> map_area)
-    {
+    void GenerateGrass(std::shared_ptr<MapArea> map_area) {
         for (auto y = 0; y < kMapHeight; y++) {
 
             for (auto x = 0; x < kMapWidth; x++) {

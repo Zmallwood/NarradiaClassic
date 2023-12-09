@@ -3,8 +3,7 @@
 #include "ShaderProgramView.h"
 #include "core.render/model/BufferTypes.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      View component of RendererBase.
     */

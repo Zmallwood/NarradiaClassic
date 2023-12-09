@@ -4,11 +4,9 @@
 #include "core.assets/model/ImageBank.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia
-{
+namespace Narradia {
     void DrawImagePolygon(
-        std::string_view image_name, RenderId vao_id, int vertex_count, bool depth_test_off)
-    {
+        std::string_view image_name, RenderId vao_id, int vertex_count, bool depth_test_off) {
         auto renderer = RendererTilesView::Get();
 
         if (depth_test_off)

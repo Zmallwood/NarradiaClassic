@@ -6,14 +6,12 @@
 #include "core.render/view/command/DrawImage.h"
 #include "core.render/view/command/NewImage.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Initializes Font objects for desired sizes.
     */
     RendererText::RendererText()
-        : unique_name_ids_(std::make_shared<std::map<RenderId, std::string>>())
-    {
+        : unique_name_ids_(std::make_shared<std::map<RenderId, std::string>>()) {
         TTF_Init();
         auto font_path =
             std::string(SDL_GetBasePath()) + kRelFontsPath + "PartyConfettiRegular-eZOn3.ttf";
@@ -28,8 +26,7 @@ namespace Narradia
     */
     void RendererText::RenderText(
         RenderId rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
-        std::string &out_unique_name_id, SizeF &out_size) const
-    {
+        std::string &out_unique_name_id, SizeF &out_size) const {
         auto font = fonts_.at(font_size)->SDL_font().get();
 
         if (!font)

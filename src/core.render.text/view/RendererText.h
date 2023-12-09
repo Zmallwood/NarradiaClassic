@@ -1,8 +1,7 @@
 #pragma once
 #include "core.render.text/model/FontSizes.h"
 
-namespace Narradia
-{
+namespace Narradia {
     class Font;
 
     /**
@@ -18,8 +17,7 @@ namespace Narradia
 
         std::map<FontSizes, std::shared_ptr<Font>> fonts() { return fonts_; }
 
-        std::shared_ptr<std::map<RenderId, std::string>> unique_name_ids()
-        {
+        std::shared_ptr<std::map<RenderId, std::string>> unique_name_ids() {
             return unique_name_ids_;
         }
 

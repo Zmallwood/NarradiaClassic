@@ -5,10 +5,8 @@
 #include "core.assets/model/ImageBank.h"
 #include "world.actors/model/Player.h"
 
-namespace Narradia
-{
-    RendererTilesView::RendererTilesView()
-    {
+namespace Narradia {
+    RendererTilesView::RendererTilesView() {
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model/TilesVertex.inc.cpp"
             ;

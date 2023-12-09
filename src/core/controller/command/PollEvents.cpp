@@ -3,13 +3,11 @@
 #include "../../../core.input/model/MouseInput.h"
 #include "../../model/Engine.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Poll for user input events.
     */
-    void PollEvents()
-    {
+    void PollEvents() {
         SDL_Event event;
 
         while (SDL_PollEvent(&event) != 0) {

@@ -7,10 +7,8 @@
 #include "core.render/view/command/NewImage.h"
 #include "scenes/intro/model/IntroScene.h"
 
-namespace Narradia
-{
-    IntroSceneView::IntroSceneView()
-    {
+namespace Narradia {
+    IntroSceneView::IntroSceneView() {
         scene_gui_view_->set_scene_gui(IntroScene::Get()->scene_gui());
         rid_background = NewImage();
         rid_logo = NewImage();
@@ -20,8 +18,7 @@ namespace Narradia
     /**
      Render operations.
     */
-    void IntroSceneView::RenderDerived()
-    {
+    void IntroSceneView::RenderDerived() {
         RectF dest_background = {0.0f, 0.0f, 1.0f, 1.0f};
         DrawImage("DefaultSceneBackground", rid_background, dest_background);
         DrawImage("NarradiaLogo", rid_logo, {0.3f, 0.1f, 0.4f, 0.2f});

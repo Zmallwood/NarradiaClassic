@@ -2,13 +2,11 @@
 #include "core.assets/model/ImageBank.h"
 #include <GL/glew.h>
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Create the shader program for the provided shader sources.
     */
-    Renderer2DImagesView::Renderer2DImagesView()
-    {
+    Renderer2DImagesView::Renderer2DImagesView() {
         const GLchar *vertex_shader_source =
 #include "core.render.shaders/model/2DImagesVertex.inc.cpp"
             ;

@@ -4,13 +4,11 @@
 #include "SceneMngrView.h"
 #include "TextOutBoxView.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Render game each frame.
     */
-    void EngineView::Render()
-    {
+    void EngineView::Render() {
         GraphicsView::Get()->ClearCanvas();
         SceneMngrView::Get()->RenderCurrScene();
         TextOutBoxView::Get()->Render();

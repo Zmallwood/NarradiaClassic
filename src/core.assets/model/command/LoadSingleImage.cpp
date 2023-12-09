@@ -1,13 +1,11 @@
 #include "LoadSingleImage.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Loads a single images with provided path, creating a GL texture and
      returning its GLuint id.
     */
-    GLuint LoadSingleImage(std::string_view abs_file_path)
-    {
+    GLuint LoadSingleImage(std::string_view abs_file_path) {
         auto surface = IMG_Load(abs_file_path.data());
         glEnable(GL_TEXTURE_2D);
         GLuint texture_id;

@@ -1,8 +1,7 @@
 #pragma once
 #include "ObjectFlags.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Sets custom object flags and returns custom properties for specific
      object types.

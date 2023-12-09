@@ -9,10 +9,8 @@
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
-namespace Narradia
-{
-    WorldViewModuleView::WorldViewModuleView()
-    {
+namespace Narradia {
+    WorldViewModuleView::WorldViewModuleView() {
         auto map_area = World::Get()->curr_map_area();
         auto tile_size = 1.0f;
 
@@ -44,8 +42,7 @@ namespace Narradia
         }
     }
 
-    void WorldViewModuleView::Render()
-    {
+    void WorldViewModuleView::Render() {
         auto map_area = World::Get()->curr_map_area();
         auto player_pos = Player::Get()->position();
         auto r = 10;

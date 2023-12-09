@@ -2,13 +2,11 @@
 #include "DrawImagePolygon.h"
 #include "SetImagePolygonGeometry.h"
 
-namespace Narradia
-{
+namespace Narradia {
     void UpdateDrawTile(
         std::string_view image_name, RenderId vao_id, Vertex3F &v0, Vertex3F &v1, Vertex3F &v2,
         Vertex3F &v3, Point3F &normal00, Point3F &normal10, Point3F &normal11, Point3F &normal01,
-        bool depth_test_off)
-    {
+        bool depth_test_off) {
         std::vector<Vertex3F> vertices;
         v0.normal = normal00;
         v1.normal = normal10;

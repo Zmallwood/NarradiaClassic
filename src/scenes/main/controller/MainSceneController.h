@@ -1,8 +1,7 @@
 #pragma once
 #include "../../../core/controller/ISceneController.h"
 
-namespace Narradia
-{
+namespace Narradia {
     /**
      Controller for MainScene.
     */
