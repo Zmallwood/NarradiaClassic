@@ -8,16 +8,20 @@ namespace Narradia
 {
     void Camera::UpdateGameLogic()
     {
-        auto player_pos = Player::Get()->position();
-        auto look_from = GetCameraPosition();
-        auto look_at = player_pos;
-        auto new_perspective_matrix =
-            glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
-        auto new_view_matrix = glm::lookAt(
-            glm::vec3(look_from.x, look_from.y, look_from.z),
-            glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
-        CameraGL::Get()->set_perspective_matrix(new_perspective_matrix);
-        CameraGL::Get()->set_view_matrix(new_view_matrix);
+        {
+            auto new_perspective_matrix =
+                glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
+            CameraGL::Get()->set_perspective_matrix(new_perspective_matrix);
+        }
+        {
+            auto player_pos = Player::Get()->position();
+            auto look_from = GetCameraPosition();
+            auto look_at = player_pos;
+            auto new_view_matrix = glm::lookAt(
+                glm::vec3(look_from.x, look_from.y, look_from.z),
+                glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
+            CameraGL::Get()->set_view_matrix(new_view_matrix);
+        }
     }
 
     Point3F Camera::GetCameraPosition()
