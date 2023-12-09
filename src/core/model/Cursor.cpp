@@ -1,11 +1,12 @@
 #include "Cursor.h"
 
 namespace Narradia {
-    void Cursor::ResetStyle() { cursor_style_ = CursorStyles::Default; }
+    void Cursor::ResetStyle() {
+        cursor_style_ = CursorStyles::Default;
+    }
 
     std::string_view Cursor::GetCursorImageName() {
         std::string_view image_name;
-
         switch (Cursor::Get()->cursor_style()) {
         case CursorStyles::Default:
             image_name = "CursorDefault";
@@ -20,7 +21,6 @@ namespace Narradia {
             image_name = "CursorAttack";
             break;
         }
-
         return image_name;
     }
 }

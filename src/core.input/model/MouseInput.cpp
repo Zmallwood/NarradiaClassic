@@ -6,7 +6,8 @@ namespace Narradia {
     */
     MouseInput::MouseInput()
         : left_button_(std::make_shared<MouseButton>()),
-          right_button_(std::make_shared<MouseButton>()) {}
+          right_button_(std::make_shared<MouseButton>()) {
+    }
 
     /**
      Forwards the press register command to the correct mouse button.

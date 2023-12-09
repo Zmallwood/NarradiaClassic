@@ -9,7 +9,8 @@ namespace Narradia {
     */
     RendererBaseView::RendererBaseView()
         : shader_program_view_(std::make_shared<ShaderProgramView>()),
-          renderer_base_(std::make_shared<RendererBase>()) {}
+          renderer_base_(std::make_shared<RendererBase>()) {
+    }
 
     /**
      Set indices data for rendered object.
@@ -123,5 +124,7 @@ namespace Narradia {
     /**
      Forwards the cleanup command to the shader program view.
     */
-    void RendererBaseView::CleanupBase() { shader_program_view_->shader_program()->Cleanup(); }
+    void RendererBaseView::CleanupBase() {
+        shader_program_view_->shader_program()->Cleanup();
+    }
 }

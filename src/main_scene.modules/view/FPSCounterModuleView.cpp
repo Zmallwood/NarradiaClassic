@@ -5,7 +5,9 @@
 #include "main_scene.modules/model/FPSCounterModule.h"
 
 namespace Narradia {
-    FPSCounterModuleView::FPSCounterModuleView() { rid_text = NewString(); }
+    FPSCounterModuleView::FPSCounterModuleView() {
+        rid_text = NewString();
+    }
 
     void FPSCounterModuleView::Render() {
         DrawString(

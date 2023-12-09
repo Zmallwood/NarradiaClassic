@@ -4,10 +4,12 @@ namespace Narradia {
     /**
      On entering scene.
     */
-    void MainMenuSceneController::OnEnter() {}
+    void MainMenuSceneController::OnEnter() {
+    }
 
     /**
      Update game flow between scenes.
     */
-    void MainMenuSceneController::UpdateGameFlowDerived() {}
+    void MainMenuSceneController::UpdateGameFlowDerived() {
+    }
 }

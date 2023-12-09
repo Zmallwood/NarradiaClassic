@@ -14,5 +14,6 @@ namespace Narradia {
     /**
      Update game flow between scenes.
     */
-    void MainSceneController::UpdateGameFlowDerived() {}
+    void MainSceneController::UpdateGameFlowDerived() {
+    }
 }

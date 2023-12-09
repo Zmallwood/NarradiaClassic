@@ -18,15 +18,25 @@ namespace Narradia {
         PointF GetInputTextPosition();
         std::string GetInputTextWithCursor();
 
-        std::vector<TextLine> text_lines() { return text_lines_; }
+        std::vector<TextLine> text_lines() {
+            return text_lines_;
+        }
 
-        bool enabled() { return enabled_; }
+        bool enabled() {
+            return enabled_;
+        }
 
-        bool input_active() { return input_active_; }
+        bool input_active() {
+            return input_active_;
+        }
 
-        int cursor_position() { return cursor_position_; }
+        int cursor_position() {
+            return cursor_position_;
+        }
 
-        std::string input_text() { return input_text_; }
+        std::string input_text() {
+            return input_text_;
+        }
 
         static constexpr RectF kBounds = {0.0f, 0.8f, 0.3f, 0.2f};
         static constexpr float kTextLineHeight = 0.02f;

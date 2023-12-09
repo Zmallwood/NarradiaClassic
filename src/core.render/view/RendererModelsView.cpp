@@ -34,7 +34,8 @@ namespace Narradia {
                 auto vertex_count = anim_key_body_keyframe->vertices.size();
                 auto body_keyframe_id = NewBodyKeyframe(model_name, keyframe_time, vertex_count);
                 if (model_ids_.at(model_name.data()).count(i_body) == 0)
-                    model_ids_.at(model_name.data()).insert({i_body, std::map<float, const BodyData>()});
+                    model_ids_.at(model_name.data())
+                        .insert({i_body, std::map<float, const BodyData>()});
                 BodyData body_data;
                 body_data.rid = body_keyframe_id;
                 body_data.image_name = body->texture_name();

@@ -12,5 +12,7 @@ namespace Narradia {
     /**
      Is mob dead.
     */
-    bool Mob::IsDead() { return hp_ <= 0.0f; }
+    bool Mob::IsDead() {
+        return hp_ <= 0.0f;
+    }
 }

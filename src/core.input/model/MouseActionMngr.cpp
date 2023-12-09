@@ -58,10 +58,14 @@ namespace Narradia {
     /**
      Clear all fired-actions.
     */
-    void MouseActionMngr::ClearFiredActions() { fired_actions_.clear(); }
+    void MouseActionMngr::ClearFiredActions() {
+        fired_actions_.clear();
+    }
 
     /**
      Clear all released-actions.
     */
-    void MouseActionMngr::ClearReleasedActions() { released_actions_.clear(); }
+    void MouseActionMngr::ClearReleasedActions() {
+        released_actions_.clear();
+    }
 }

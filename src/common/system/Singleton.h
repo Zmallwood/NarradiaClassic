@@ -32,7 +32,6 @@ namespace Narradia {
     std::shared_ptr<T> Singleton<T>::Get() {
         if (!instance_) // Create new instance if none exists
             Touch();
-
         return std::weak_ptr<T>(instance_).lock(); // Return weak_ptr to not increase ref count
     }
 }

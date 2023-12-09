@@ -9,10 +9,16 @@ namespace Narradia {
         Engine();
         void UpdateGameLogic();
 
-        bool is_running() { return is_running_; }
-        void set_running(bool value) { is_running_ = value; }
+        bool is_running() {
+            return is_running_;
+        }
+        void set_running(bool value) {
+            is_running_ = value;
+        }
 
-        std::string_view title() { return title_; }
+        std::string_view title() {
+            return title_;
+        }
 
       private:
         bool is_running_ = true;

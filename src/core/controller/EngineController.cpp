@@ -6,7 +6,9 @@ namespace Narradia {
     /**
      Handle user input every frame.
     */
-    void EngineController::HandleInput() { PollEvents(); }
+    void EngineController::HandleInput() {
+        PollEvents();
+    }
 
     /**
      Update game flow between scenes every frame.

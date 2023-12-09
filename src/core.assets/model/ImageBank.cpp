@@ -7,7 +7,9 @@ namespace Narradia {
     /**
      Load images on first use.
     */
-    ImageBank::ImageBank() { LoadImages(); }
+    ImageBank::ImageBank() {
+        LoadImages();
+    }
 
     /**
      Loads all images in images path, creating GL textures and storing their

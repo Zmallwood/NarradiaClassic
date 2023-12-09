@@ -59,12 +59,13 @@ namespace Narradia {
                 map_area->GetTile(x, y)->set_object(std::make_shared<Object>("ObjectBush1"));
         }
 
-        auto num_stone_boulders = 200;
+        auto num_stone_boulders = 100;
 
         for (auto i = 0; i < num_stone_boulders; i++) {
             auto x = rand() % kMapWidth;
             auto y = rand() % kMapHeight;
-            map_area->GetTile(x, y)->set_object(std::make_shared<Object>("ObjectStoneBoulder"));
+            if (map_area->GetTile(x, y)->ground() != "GroundWater")
+                map_area->GetTile(x, y)->set_object(std::make_shared<Object>("ObjectStoneBoulder"));
         }
     }
 }

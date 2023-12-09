@@ -48,7 +48,7 @@ namespace Narradia {
     void WorldViewModuleView::Render() {
         auto map_area = World::Get()->curr_map_area();
         auto player_pos = Player::Get()->position();
-        auto r = 10;
+        auto r = 20;
         auto x_center = static_cast<int>(player_pos.x);
         auto y_center = static_cast<int>(player_pos.z);
         StartTileBatchDrawing();

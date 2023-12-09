@@ -19,5 +19,6 @@ namespace Narradia {
     /**
      Update game logic.
     */
-    void MainMenuScene::UpdateGameLogicDerived() {}
+    void MainMenuScene::UpdateGameLogicDerived() {
+    }
 }

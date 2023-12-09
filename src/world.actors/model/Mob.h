@@ -7,23 +7,38 @@ namespace Narradia {
     class Mob {
       public:
         Mob(std::string_view type)
-            : type_(type) {}
+            : type_(type) {
+        }
         void Hit(float damage);
         bool IsDead();
 
-        std::string_view type() { return type_; }
+        std::string_view type() {
+            return type_;
+        }
 
-        int ticks_last_move() { return ticks_last_move_; }
+        int ticks_last_move() {
+            return ticks_last_move_;
+        }
 
-        void set_ticks_last_move(int value) { ticks_last_move_ = value; }
+        void set_ticks_last_move(int value) {
+            ticks_last_move_ = value;
+        }
 
-        float movement_speed() { return movement_speed_; }
+        float movement_speed() {
+            return movement_speed_;
+        }
 
-        float attack_speed() { return attack_speed_; }
+        float attack_speed() {
+            return attack_speed_;
+        }
 
-        int ticks_last_hit_recieved() { return ticks_last_hit_recieved_; }
+        int ticks_last_hit_recieved() {
+            return ticks_last_hit_recieved_;
+        }
 
-        float hp() { return hp_; }
+        float hp() {
+            return hp_;
+        }
 
       private:
         std::string_view type_;

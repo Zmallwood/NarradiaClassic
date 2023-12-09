@@ -14,15 +14,25 @@ namespace Narradia {
             std::string_view hovered_image_name = "GuiButtonBackHovered");
         void UpdateGameLogic() override;
 
-        std::string_view text() { return text_; }
+        std::string_view text() {
+            return text_;
+        }
 
-        RectF bounds() { return bounds_; }
+        RectF bounds() {
+            return bounds_;
+        }
 
-        std::string_view image_name() { return image_name_; }
+        std::string_view image_name() {
+            return image_name_;
+        }
 
-        std::string_view hovered_image_name() { return hovered_image_name_; }
+        std::string_view hovered_image_name() {
+            return hovered_image_name_;
+        }
 
-        bool hovered() { return hovered_; }
+        bool hovered() {
+            return hovered_;
+        }
 
       private:
         std::string_view text_;

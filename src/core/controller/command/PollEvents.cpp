@@ -9,7 +9,6 @@ namespace Narradia {
     */
     void PollEvents() {
         SDL_Event event;
-
         while (SDL_PollEvent(&event) != 0) {
             switch (event.type) {
             case SDL_QUIT:

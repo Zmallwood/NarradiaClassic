@@ -63,7 +63,7 @@ namespace Narradia {
             auto elev_amount = kElevAmount;
             auto player_position_no_elevation = player->position().Multiply(kTileSize);
             auto used_vertical_angle = vertical_angle_deg_;
-            auto used_camera_distance = camera_distance_*kTileSize;
+            auto used_camera_distance = camera_distance_ * kTileSize;
             auto dz_unrotated = CosDeg(used_vertical_angle) * used_camera_distance;
             auto hypotenuse = dz_unrotated;
             auto dx =

@@ -2,5 +2,7 @@
 #include "NewImagePolygon.h"
 
 namespace Narradia {
-    RenderID NewTile() { return NewImagePolygon(4); }
+    RenderID NewTile() {
+        return NewImagePolygon(4);
+    }
 }

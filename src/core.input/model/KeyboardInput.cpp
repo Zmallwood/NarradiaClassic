@@ -12,12 +12,16 @@ namespace Narradia {
     /**
      Register that a key has been released.
     */
-    void KeyboardInput::RegisterReleasedKey(SDL_Keycode key) { pressed_keys_.erase(key); }
+    void KeyboardInput::RegisterReleasedKey(SDL_Keycode key) {
+        pressed_keys_.erase(key);
+    }
 
     /**
      Returns state for a key being pressed or not..
     */
-    bool KeyboardInput::KeyIsPressed(SDL_Keycode key) { return pressed_keys_.count(key); }
+    bool KeyboardInput::KeyIsPressed(SDL_Keycode key) {
+        return pressed_keys_.count(key);
+    }
 
     /**
      Returns state for if a key has been fired, and resets the state
