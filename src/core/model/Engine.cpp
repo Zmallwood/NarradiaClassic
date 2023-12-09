@@ -6,12 +6,12 @@
 namespace Narradia
 {
     /**
-    Seeds the randomization to get unique random generations each game start.
+     Seeds the randomization to get unique random generations each game start.
     */
     Engine::Engine() { srand(time(nullptr)); }
 
     /**
-    Update game logic for current frame.
+     Update game logic for current frame.
     */
     void Engine::UpdateGameLogic()
     {
