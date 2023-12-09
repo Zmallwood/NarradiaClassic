@@ -5,8 +5,8 @@ namespace Narradia
     /**
      * Hit mob with damage.
      */
-    void Mob::Hit(float damage) {
-
+    void Mob::Hit(float damage)
+    {
         hp_ -= damage;
         ticks_last_hit_recieved_ = SDL_GetTicks();
     }
@@ -14,8 +14,5 @@ namespace Narradia
     /**
      * Is mob dead.
      */
-    bool Mob::IsDead() {
-
-        return hp_ <= 0.0f;
-    }
+    bool Mob::IsDead() { return hp_ <= 0.0f; }
 }

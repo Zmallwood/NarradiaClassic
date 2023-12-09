@@ -7,13 +7,13 @@ namespace Narradia
     /**
      * Create the shader program for the provided shader sources.
      */
-    Renderer2DImagesView::Renderer2DImagesView() {
-
+    Renderer2DImagesView::Renderer2DImagesView()
+    {
         const GLchar *vertex_shader_source =
-#include "core.render.shaders/model/2DImagesVertex.glsl"
+#include "core.render.shaders/model/2DImagesVertex.inc.cpp"
             ;
         const GLchar *fragment_shader_source =
-#include "core.render.shaders/model/2DImagesFragment.glsl"
+#include "core.render.shaders/model/2DImagesFragment.inc.cpp"
             ;
         GetShaderProgramView()->Create(vertex_shader_source, fragment_shader_source);
     }
@@ -21,8 +21,5 @@ namespace Narradia
     /**
      * Forwarding cleanup command.
      */
-    Renderer2DImagesView::~Renderer2DImagesView() {
-
-        CleanupBase();
-    }
+    Renderer2DImagesView::~Renderer2DImagesView() { CleanupBase(); }
 }

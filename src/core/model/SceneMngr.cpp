@@ -8,8 +8,8 @@ namespace Narradia
     /**
      * Initialize scenes that will be used.
      */
-    SceneMngr::SceneMngr() {
-
+    SceneMngr::SceneMngr()
+    {
         scenes_.insert({SceneNames::Intro, IntroScene::Get()});
         scenes_.insert({SceneNames::MainMenu, MainMenuScene::Get()});
         scenes_.insert({SceneNames::Main, MainScene::Get()});
@@ -19,8 +19,8 @@ namespace Narradia
     /**
      * Update game logic for currently displayed scene.
      */
-    void SceneMngr::UpdateGameLogicCurrScene() {
-
+    void SceneMngr::UpdateGameLogicCurrScene()
+    {
         if (scenes_.count(curr_scene_) != 0)
             scenes_.at(curr_scene_)->UpdateGameLogic();
     }

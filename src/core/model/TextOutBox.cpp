@@ -6,8 +6,8 @@ namespace Narradia
     /**
      * Checks if input should be activated and processes typed input characters.
      */
-    void TextOutBox::UpdateGameLogic() {
-
+    void TextOutBox::UpdateGameLogic()
+    {
         if (KeyboardInput::Get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
             input_active_ = !input_active_;
         }
@@ -23,8 +23,8 @@ namespace Narradia
      * Adds provided text with color to the internal data structure, being ready
      * for rendering.
      */
-    void TextOutBox::Print(std::string_view text, Color text_color) {
-
+    void TextOutBox::Print(std::string_view text, Color text_color)
+    {
         if (!enabled_)
             return;
 
@@ -37,26 +37,26 @@ namespace Narradia
      * Calculates maximum number of text lines that can be displayed in the
      * TextOutBox.
      */
-    int TextOutBox::GetMaxNumLines() {
-
+    int TextOutBox::GetMaxNumLines()
+    {
         return static_cast<int>(kBounds.height / kTextLineHeight) - 2;
     }
 
-    int TextOutBox::GetTextLineIndex(int visible_row_index) {
-
+    int TextOutBox::GetTextLineIndex(int visible_row_index)
+    {
         return static_cast<int>(text_lines_.size()) - GetMaxNumLines() + visible_row_index;
     }
 
-    PointF TextOutBox::GetTextLinePosition(int visible_row_index) {
-
+    PointF TextOutBox::GetTextLinePosition(int visible_row_index)
+    {
         auto used_bounds = kBounds;
         auto line_position_y = used_bounds.y + (visible_row_index + 1) * kTextLineHeight;
 
         return {used_bounds.x + 0.01f, line_position_y};
     }
 
-    RectF TextOutBox::GetHorizontalSplitterRect() {
-
+    RectF TextOutBox::GetHorizontalSplitterRect()
+    {
         auto used_bounds = kBounds;
 
         return {
@@ -64,8 +64,8 @@ namespace Narradia
             kSplitLineHeight};
     }
 
-    RectF TextOutBox::GetInputArrowRect() {
-
+    RectF TextOutBox::GetInputArrowRect()
+    {
         auto used_bounds = kBounds;
 
         return {
@@ -73,14 +73,14 @@ namespace Narradia
             kTextLineHeight};
     }
 
-    PointF TextOutBox::GetInputTextPosition() {
-
+    PointF TextOutBox::GetInputTextPosition()
+    {
         return GetInputArrowRect().GetPosition().Translate(
             TextOutBox::kTextLineHeight, TextOutBox::kTextLineHeight / 2);
     }
 
-    std::string TextOutBox::GetInputTextWithCursor() {
-
+    std::string TextOutBox::GetInputTextWithCursor()
+    {
         auto result = input_text_;
 
         if (SDL_GetTicks() % 600 < 300)

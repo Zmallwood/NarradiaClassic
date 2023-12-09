@@ -6,8 +6,8 @@ namespace Narradia
     /**
      * Render scenes deriving from this class.
      */
-    void ISceneView::Render() {
-
+    void ISceneView::Render()
+    {
         RenderDerived();
         scene_gui_view_->Render();
     }

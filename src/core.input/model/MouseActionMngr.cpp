@@ -6,8 +6,8 @@ namespace Narradia
      * Adds an action which might be executed on firing the mouse button,
      * depending on its z order.
      */
-    void MouseActionMngr::AddFiredAction(std::function<void()> action, int z_level) {
-
+    void MouseActionMngr::AddFiredAction(std::function<void()> action, int z_level)
+    {
         fired_actions_.push_back({action, z_level});
     }
 
@@ -15,16 +15,16 @@ namespace Narradia
      * Adds an action which might be executed on releasing the mouse button,
      * depending on its z order.
      */
-    void MouseActionMngr::AddReleasedAction(std::function<void()> action, int z_level) {
-
+    void MouseActionMngr::AddReleasedAction(std::function<void()> action, int z_level)
+    {
         released_actions_.push_back({action, z_level});
     }
 
     /**
      * Perform the fired-action with the highest z order.
      */
-    bool MouseActionMngr::PerformFiredActions() {
-
+    bool MouseActionMngr::PerformFiredActions()
+    {
         if (fired_actions_.size() == 0)
             return false;
 
@@ -43,8 +43,8 @@ namespace Narradia
     /**
      * Perform the released-action with the highest z order.
      */
-    bool MouseActionMngr::PerformReleasedActions() {
-
+    bool MouseActionMngr::PerformReleasedActions()
+    {
         if (released_actions_.size() == 0)
             return false;
 
@@ -63,16 +63,10 @@ namespace Narradia
     /**
      * Clear all fired-actions.
      */
-    void MouseActionMngr::ClearFiredActions() {
-
-        fired_actions_.clear();
-    }
+    void MouseActionMngr::ClearFiredActions() { fired_actions_.clear(); }
 
     /**
      * Clear all released-actions.
      */
-    void MouseActionMngr::ClearReleasedActions() {
-
-        released_actions_.clear();
-    }
+    void MouseActionMngr::ClearReleasedActions() { released_actions_.clear(); }
 }

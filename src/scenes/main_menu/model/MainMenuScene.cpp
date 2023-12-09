@@ -8,8 +8,8 @@ namespace Narradia
     /**
      * Initialize GuiComponents.
      */
-    MainMenuScene::MainMenuScene() {
-
+    MainMenuScene::MainMenuScene()
+    {
         scene_gui()->AddGuiComponent(
             std::make_shared<GuiButton>("Play", RectF{0.4f, 0.4f, 0.2f, 0.1f}, [] {
                 SceneMngrController::Get()->ChangeScene(SceneNames::Main);
@@ -21,6 +21,5 @@ namespace Narradia
     /**
      * Update game logic.
      */
-    void MainMenuScene::UpdateGameLogicDerived() {
-    }
+    void MainMenuScene::UpdateGameLogicDerived() {}
 }

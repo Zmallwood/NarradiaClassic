@@ -6,8 +6,8 @@
 
 namespace Narradia
 {
-    void MouseRotationModule::UpdateGameLogic() {
-
+    void MouseRotationModule::UpdateGameLogic()
+    {
         MouseInput::Get()->right_button()->AddFiredAction([&] {
             is_rotating_ = true;
             mouse_pos_rotation_start_ = GetMousePosition();

@@ -7,8 +7,8 @@ namespace Narradia
     /**
      * On entering scene.
      */
-    void MainSceneController::OnEnter() {
-
+    void MainSceneController::OnEnter()
+    {
         TextOutBox::Get()->Print("Entering Narradia");
         PlayerSpawnPositioningModule::Get()->SpawnAtGoodLocation();
     }
@@ -16,6 +16,5 @@ namespace Narradia
     /**
      * Update game flow between scenes.
      */
-    void MainSceneController::UpdateGameFlowDerived() {
-    }
+    void MainSceneController::UpdateGameFlowDerived() {}
 }

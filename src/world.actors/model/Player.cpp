@@ -6,28 +6,13 @@ namespace Narradia
     /**
      * Set default spawn coordinate.
      */
-    Player::Player() {
+    Player::Player() { position_ = {kMapWidth / 2.0f, 0.0f, kMapHeight / 2.0f}; }
 
-        position_ = {kMapWidth / 2.0f, 0.0f, kMapHeight / 2.0f};
-    }
+    void Player::MoveUp() { position_.z--; }
 
-    void Player::MoveUp() {
+    void Player::MoveRight() { position_.x++; }
 
-        position_.z--;
-    }
+    void Player::MoveDown() { position_.z++; }
 
-    void Player::MoveRight() {
-
-        position_.x++;
-    }
-
-    void Player::MoveDown() {
-
-        position_.z++;
-    }
-
-    void Player::MoveLeft() {
-
-        position_.x--;
-    }
+    void Player::MoveLeft() { position_.x--; }
 }

@@ -6,8 +6,8 @@
 
 namespace Narradia
 {
-    void Camera::UpdateGameLogic() {
-
+    void Camera::UpdateGameLogic()
+    {
         auto player_pos = Player::Get()->position();
         auto look_from = GetCameraPosition();
         auto look_at = player_pos;
@@ -20,8 +20,8 @@ namespace Narradia
         CameraGL::Get()->set_view_matrix(new_view_matrix);
     }
 
-    Point3F Camera::GetCameraPosition() {
-
+    Point3F Camera::GetCameraPosition()
+    {
         auto player = Player::Get();
         auto world = World::Get();
         auto used_camera_distance = camera_distance_;

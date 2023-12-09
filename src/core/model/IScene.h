@@ -9,14 +9,13 @@ namespace Narradia
     class IScene {
       public:
         IScene()
-            : scene_gui_(std::make_shared<SceneGui>()) {
+            : scene_gui_(std::make_shared<SceneGui>())
+        {
         }
 
         void UpdateGameLogic();
 
-        std::shared_ptr<SceneGui> scene_gui() {
-            return scene_gui_;
-        }
+        std::shared_ptr<SceneGui> scene_gui() { return scene_gui_; }
 
       protected:
         virtual void UpdateGameLogicDerived() = 0;

@@ -9,8 +9,8 @@ namespace Narradia
     /**
      * Run a new game instance.
      */
-    void Game::Run() {
-
+    void Game::Run()
+    {
         while (Engine::Get()->is_running()) {
 
             if (FPSCapper::Get()->RunningBelow60FPS()) {

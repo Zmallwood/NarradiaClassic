@@ -7,25 +7,15 @@ namespace Narradia
      */
     class Graphics : public Singleton<Graphics> {
       public:
-        std::shared_ptr<SDL_Window> window() {
-            return window_;
-        }
+        std::shared_ptr<SDL_Window> window() { return window_; }
 
-        void set_window(std::shared_ptr<SDL_Window> value) {
-            window_ = value;
-        }
+        void set_window(std::shared_ptr<SDL_Window> value) { window_ = value; }
 
-        Size window_size() {
-            return window_size_;
-        }
+        Size window_size() { return window_size_; }
 
-        Uint32 window_flags() {
-            return window_flags_;
-        }
+        Uint32 window_flags() { return window_flags_; }
 
-        Color clear_color() {
-            return clear_color_;
-        }
+        Color clear_color() { return clear_color_; }
 
       private:
         std::shared_ptr<SDL_Window> window_;

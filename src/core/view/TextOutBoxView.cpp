@@ -1,10 +1,10 @@
 #include "TextOutBoxView.h"
 #include "core.render.text/view/RendererText.h"
-#include "core.render.text/view/functions/DrawString.h"
-#include "core.render.text/view/functions/NewString.h"
+#include "core.render.text/view/command/DrawString.h"
+#include "core.render.text/view/command/NewString.h"
 #include "core.render/view/Renderer2DImagesView.h"
-#include "core.render/view/functions/DrawImage.h"
-#include "core.render/view/functions/NewImage.h"
+#include "core.render/view/command/DrawImage.h"
+#include "core.render/view/command/NewImage.h"
 #include "core/model/SceneMngr.h"
 #include "core/model/TextOutBox.h"
 
@@ -13,8 +13,8 @@ namespace Narradia
     /**
      * Prepares RenderIDs for rendering.
      */
-    TextOutBoxView::TextOutBoxView() {
-
+    TextOutBoxView::TextOutBoxView()
+    {
         rid_image_ = NewImage();
         rid_split_line_ = NewImage();
         rid_cmd_line_input_arrow_ = NewImage();
@@ -27,8 +27,8 @@ namespace Narradia
     /**
      * Renders the TextOutBox with its text content to canvas.
      */
-    void TextOutBoxView::Render() const {
-
+    void TextOutBoxView::Render() const
+    {
         auto model = TextOutBox::Get();
 
         if (!model->enabled())

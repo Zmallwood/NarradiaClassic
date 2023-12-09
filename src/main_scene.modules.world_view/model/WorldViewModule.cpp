@@ -3,8 +3,5 @@
 
 namespace Narradia
 {
-    void WorldViewModule::UpdateGameLogic() {
-
-        Camera::Get()->UpdateGameLogic();
-    }
+    void WorldViewModule::UpdateGameLogic() { Camera::Get()->UpdateGameLogic(); }
 }

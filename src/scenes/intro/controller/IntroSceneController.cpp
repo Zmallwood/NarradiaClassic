@@ -8,14 +8,13 @@ namespace Narradia
     /**
      * On entering scene.
      */
-    void IntroSceneController::OnEnter() {
-    }
+    void IntroSceneController::OnEnter() {}
 
     /**
      * Update game flow between scenes.
      */
-    void IntroSceneController::UpdateGameFlowDerived() {
-
+    void IntroSceneController::UpdateGameFlowDerived()
+    {
         if (KeyboardInput::Get()->AnyKeyIsPressedPickResult()) {
             SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
         }

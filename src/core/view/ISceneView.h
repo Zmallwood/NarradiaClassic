@@ -9,7 +9,8 @@ namespace Narradia
     class ISceneView {
       public:
         ISceneView()
-            : scene_gui_view_(std::make_shared<SceneGuiView>()) {
+            : scene_gui_view_(std::make_shared<SceneGuiView>())
+        {
         }
         void Render();
 

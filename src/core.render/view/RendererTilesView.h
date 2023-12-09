@@ -8,37 +8,20 @@ namespace Narradia
         RendererTilesView();
         ~RendererTilesView();
 
-        bool is_batch_drawing() {
-            return is_batch_drawing_;
-        }
+        bool is_batch_drawing() { return is_batch_drawing_; }
+        void set_is_batch_drawing(bool value) { is_batch_drawing_ = value; }
 
-        void set_is_batch_drawing(bool value) {
-            is_batch_drawing_ = value;
-        }
+        int location_projection() { return location_projection_; }
 
-        int location_projection() {
-            return location_projection_;
-        }
+        int location_view() { return location_view_; }
 
-        int location_view() {
-            return location_view_;
-        }
+        int location_model() { return location_model_; }
 
-        int location_model() {
-            return location_model_;
-        }
+        int location_alpha() { return location_alpha_; }
 
-        int location_alpha() {
-            return location_alpha_;
-        }
+        int location_view_pos() { return location_view_pos_; }
 
-        int location_view_pos() {
-            return location_view_pos_;
-        }
-
-        int location_fog_color() {
-            return location_fog_color_;
-        }
+        int location_fog_color() { return location_fog_color_; }
 
         static constexpr int kLocationPosition = 0;
         static constexpr int kLocationColor = 1;

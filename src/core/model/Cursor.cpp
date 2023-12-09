@@ -2,13 +2,10 @@
 
 namespace Narradia
 {
-    void Cursor::ResetStyle() {
+    void Cursor::ResetStyle() { cursor_style_ = CursorStyles::Default; }
 
-        cursor_style_ = CursorStyles::Default;
-    }
-
-    std::string_view Cursor::GetCursorImageName() {
-
+    std::string_view Cursor::GetCursorImageName()
+    {
         std::string_view image_name;
 
         switch (Cursor::Get()->cursor_style()) {

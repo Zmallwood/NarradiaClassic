@@ -6,14 +6,14 @@ namespace Narradia
     /**
      * Set custom object flags on startup.
      */
-    ObjectsConfiguration::ObjectsConfiguration() {
-
+    ObjectsConfiguration::ObjectsConfiguration()
+    {
         object_flags_.insert(
             {"ObjectPoolOfBlood", ObjectFlags::NoObstacle | ObjectFlags::NoSightBlock});
     }
 
-    bool ObjectsConfiguration::BlocksSight(std::string_view object_type) {
-
+    bool ObjectsConfiguration::BlocksSight(std::string_view object_type)
+    {
         if (object_flags_.count(object_type) == 0)
             return true;
 
@@ -24,8 +24,8 @@ namespace Narradia
      * Tells if an object is being flagged as an obstacle, returns to true if no
      * flag is set.
      */
-    bool ObjectsConfiguration::IsObstacle(std::string_view object_type) {
-
+    bool ObjectsConfiguration::IsObstacle(std::string_view object_type)
+    {
         if (object_flags_.count(object_type) == 0)
             return true;
 

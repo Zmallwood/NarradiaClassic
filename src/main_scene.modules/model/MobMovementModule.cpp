@@ -4,8 +4,8 @@
 
 namespace Narradia
 {
-    void MobMovementModule::UpdateGameLogic() {
-
+    void MobMovementModule::UpdateGameLogic()
+    {
         auto map_area = World::Get()->curr_map_area();
         auto &mobs = *(map_area->mobs_mirror());
 

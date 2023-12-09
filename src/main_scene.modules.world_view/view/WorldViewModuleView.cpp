@@ -1,18 +1,18 @@
 #include "WorldViewModuleView.h"
+#include "command/DrawGround.h"
 #include "configuration/model/Configuration.h"
 #include "core.render/view/RendererTilesView.h"
-#include "core.render/view/functions/NewTile.h"
-#include "core.render/view/functions/SetTileGeometry.h"
-#include "core.render/view/functions/StartTileBatchDrawing.h"
-#include "core.render/view/functions/StopTileBatchDrawing.h"
-#include "functions/DrawGround.h"
+#include "core.render/view/command/NewTile.h"
+#include "core.render/view/command/SetTileGeometry.h"
+#include "core.render/view/command/StartTileBatchDrawing.h"
+#include "core.render/view/command/StopTileBatchDrawing.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
 
 namespace Narradia
 {
-    WorldViewModuleView::WorldViewModuleView() {
-
+    WorldViewModuleView::WorldViewModuleView()
+    {
         auto map_area = World::Get()->curr_map_area();
         auto tile_size = 1.0f;
 
@@ -44,8 +44,8 @@ namespace Narradia
         }
     }
 
-    void WorldViewModuleView::Render() {
-
+    void WorldViewModuleView::Render()
+    {
         auto map_area = World::Get()->curr_map_area();
         auto player_pos = Player::Get()->position();
         auto r = 10;

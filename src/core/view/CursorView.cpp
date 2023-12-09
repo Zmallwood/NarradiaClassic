@@ -1,7 +1,7 @@
 #include "CursorView.h"
 #include "core.render/view/Renderer2DImagesView.h"
-#include "core.render/view/functions/DrawImage.h"
-#include "core.render/view/functions/NewImage.h"
+#include "core.render/view/command/DrawImage.h"
+#include "core.render/view/command/NewImage.h"
 #include "core/model/Cursor.h"
 
 namespace Narradia
@@ -9,8 +9,8 @@ namespace Narradia
     /**
      * Hides default system cursor and prepares RenderIDs.
      */
-    CursorView::CursorView() {
-
+    CursorView::CursorView()
+    {
         SDL_ShowCursor(0);
         rid_image = NewImage();
     }
@@ -18,8 +18,8 @@ namespace Narradia
     /**
      * Renders custom cursor image at mouse position.
      */
-    void CursorView::RenderCursor() {
-
+    void CursorView::RenderCursor()
+    {
         auto mouse_pos = GetMousePosition();
         auto width = kCursorWidth;
         auto height = width * GetAspectRatio();

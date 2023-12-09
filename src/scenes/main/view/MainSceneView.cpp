@@ -5,16 +5,16 @@
 
 namespace Narradia
 {
-    MainSceneView::MainSceneView() {
-
+    MainSceneView::MainSceneView()
+    {
         scene_gui_view_->set_scene_gui(MainScene::Get()->scene_gui());
     }
 
     /**
      * Render operations.
      */
-    void MainSceneView::RenderDerived() {
-
+    void MainSceneView::RenderDerived()
+    {
         WorldViewModuleView::Get()->Render();
         FPSCounterModuleView::Get()->Render();
     }

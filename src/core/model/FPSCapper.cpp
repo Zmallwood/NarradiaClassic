@@ -2,8 +2,8 @@
 
 namespace Narradia
 {
-    bool FPSCapper::RunningBelow60FPS() {
-
+    bool FPSCapper::RunningBelow60FPS()
+    {
         auto a = SDL_GetTicks();
         auto delta = a - b_;
 
