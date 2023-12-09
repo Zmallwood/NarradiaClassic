@@ -5,7 +5,7 @@ namespace Narradia {
     class ModelBank : public Singleton<ModelBank> {
       public:
         ModelBank();
-        std::shared_ptr<const Model> GetModel(std::string_view model_name);
+        std::shared_ptr<Model> GetModel(std::string_view model_name);
 
         auto models() {
             return models_;
@@ -17,6 +17,6 @@ namespace Narradia {
 
         const std::string_view kRelModelsPath = "Resources/Models/";
 
-        std::shared_ptr<std::map<std::string_view, std::shared_ptr<const Model>>> models_;
+        std::shared_ptr<std::map<std::string_view, std::shared_ptr<Model>>> models_;
     };
 }

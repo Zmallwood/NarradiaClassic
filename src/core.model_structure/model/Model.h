@@ -6,7 +6,11 @@ namespace Narradia {
       public:
         Model(int anim_duration)
             : anim_duration_(anim_duration),
-              model_parts_(std::make_shared<std::vector<std::shared_ptr<const ModelPart>>>()) {
+              model_parts_(std::make_shared<std::vector<std::shared_ptr<ModelPart>>>()) {
+        }
+
+        auto anim_duration() {
+            return anim_duration_;
         }
 
         auto model_parts() {
@@ -15,6 +19,6 @@ namespace Narradia {
 
       private:
         const int anim_duration_;
-        std::shared_ptr<std::vector<std::shared_ptr<const ModelPart>>> model_parts_;
+        std::shared_ptr<std::vector<std::shared_ptr<ModelPart>>> model_parts_;
     };
 }

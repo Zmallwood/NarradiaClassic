@@ -8,6 +8,10 @@ namespace Narradia {
             : timeline_(std::make_shared<ModelPartTimeline>()) {
         }
 
+        auto texture_name() {
+            return texture_name_;
+        }
+
         void set_texture_name(std::string_view value) {
             texture_name_ = value;
         }

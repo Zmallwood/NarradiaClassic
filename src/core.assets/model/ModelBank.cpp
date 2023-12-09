@@ -3,7 +3,7 @@
 
 namespace Narradia {
     ModelBank::ModelBank()
-        : models_(std::make_shared<std::map<std::string_view, std::shared_ptr<const Model>>>()) {
+        : models_(std::make_shared<std::map<std::string_view, std::shared_ptr<Model>>>()) {
         LoadModels();
     }
 
@@ -31,7 +31,7 @@ namespace Narradia {
         return ModelCreator::Get()->CreateModel(scene);
     }
 
-    std::shared_ptr<const Model> ModelBank::GetModel(std::string_view model_name) {
+    std::shared_ptr<Model> ModelBank::GetModel(std::string_view model_name) {
         return models_->at(model_name);
     }
 }
