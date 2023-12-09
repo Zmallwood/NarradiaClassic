@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Map object composed of a 2D grid of tiles and a mirror to
-     * facilitate/speedup access to all mob actors on the map.
-     */
+     Map object composed of a 2D grid of tiles and a mirror to
+     facilitate/speedup access to all mob actors on the map.
+    */
     class MapArea {
       public:
         MapArea();

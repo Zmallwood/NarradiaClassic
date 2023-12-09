@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Generate mobs randomly.
-     */
+     Generate mobs randomly.
+    */
     void GenerateMobs(std::shared_ptr<MapArea> map_area)
     {
         auto num_cows = 200;

@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Integer type 2D point.
-     */
+     Integer type 2D point.
+    */
     class Point {
       public:
         Point Translate(int dx, int dy);

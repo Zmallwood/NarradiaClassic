@@ -1,6 +1,6 @@
 /**
- * Fragment shader for Renderer2DSolidColors.
- */
+ Fragment shader for Renderer2DSolidColors.
+*/
 R"(
     #version 330 core
     precision mediump float;

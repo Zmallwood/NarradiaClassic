@@ -10,8 +10,8 @@
 namespace Narradia
 {
     /**
-     * Prepares RenderIDs for renderering.
-     */
+     Prepares RenderIDs for renderering.
+    */
     GuiButtonView::GuiButtonView()
     {
         rid_image = NewImage();
@@ -19,9 +19,9 @@ namespace Narradia
     }
 
     /**
-     * Renders the GuiButton to the canvas, taking into account if its hovered
-     * or not.
-     */
+     Renders the GuiButton to the canvas, taking into account if its hovered
+     or not.
+    */
     void GuiButtonView::Render()
     {
         auto model = std::static_pointer_cast<GuiButton>(gui_component_);

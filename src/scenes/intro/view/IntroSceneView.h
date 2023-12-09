@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * View for IntroScene.
-     */
+     View for IntroScene.
+    */
     class IntroSceneView : public ISceneView, public Singleton<IntroSceneView> {
       public:
         IntroSceneView();

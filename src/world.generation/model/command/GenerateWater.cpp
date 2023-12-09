@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Generate water randomly.
-     */
+     Generate water randomly.
+    */
     void GenerateWater(std::shared_ptr<MapArea> map_area)
     {
         auto num_lakes = 30;

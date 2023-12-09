@@ -6,8 +6,8 @@
 namespace Narradia
 {
     /**
-     * View component of SceneGui.
-     */
+     View component of SceneGui.
+    */
     class SceneGuiView {
       public:
         void Render();

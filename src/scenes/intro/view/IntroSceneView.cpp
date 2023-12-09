@@ -18,8 +18,8 @@ namespace Narradia
     }
 
     /**
-     * Render operations.
-     */
+     Render operations.
+    */
     void IntroSceneView::RenderDerived()
     {
         RectF dest_background = {0.0f, 0.0f, 1.0f, 1.0f};

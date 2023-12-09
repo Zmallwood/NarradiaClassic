@@ -3,9 +3,9 @@
 namespace Narradia
 {
     /**
-     * Model for KeyboardInput holding keyboard input state, has no controller
-     * or view.
-     */
+     Model for KeyboardInput holding keyboard input state, has no controller
+     or view.
+    */
     class KeyboardInput : public Singleton<KeyboardInput> {
       public:
         void RegisterPressedKey(SDL_Keycode key);

@@ -6,8 +6,8 @@
 namespace Narradia
 {
     /**
-     * Create shader program and renderer base.
-     */
+     Create shader program and renderer base.
+    */
     RendererBaseView::RendererBaseView()
         : shader_program_view_(std::make_shared<ShaderProgramView>()),
           renderer_base_(std::make_shared<RendererBase>())
@@ -15,8 +15,8 @@ namespace Narradia
     }
 
     /**
-     * Set indices data for rendered object.
-     */
+     Set indices data for rendered object.
+    */
     void RendererBaseView::SetIndicesData(
         GLuint indices_vbo_id, int num_vertices, const void *data) const
     {
@@ -29,8 +29,8 @@ namespace Narradia
     }
 
     /**
-     * Set all kinds of data, except indices, for rendered object.
-     */
+     Set all kinds of data, except indices, for rendered object.
+    */
     void RendererBaseView::SetData(
         GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
         int layout_location) const
@@ -41,8 +41,8 @@ namespace Narradia
     }
 
     /**
-     * Set data for an GL_ARRAY_BUFFER, that is all kind of data except indices:
-     */
+     Set data for an GL_ARRAY_BUFFER, that is all kind of data except indices:
+    */
     void RendererBaseView::SetArrayBufferData(
         GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
         int layout_location) const
@@ -61,8 +61,8 @@ namespace Narradia
     }
 
     /**
-     * Update indices data for rendered object.
-     */
+     Update indices data for rendered object.
+    */
     void RendererBaseView::UpdateIndicesData(GLuint indices_vbo_id, std::vector<int> &indices) const
     {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
@@ -70,9 +70,9 @@ namespace Narradia
     }
 
     /**
-     *  Update data for GL_ARRAY_BUFFER, that is all kind of data except
-     * indices.
-     */
+      Update data for GL_ARRAY_BUFFER, that is all kind of data except
+     indices.
+    */
     void RendererBaseView::UpdateArrayBufferData(
         GLuint vbo_id, std::vector<float> &data, int num_floats_per_entry,
         int layout_location) const
@@ -85,8 +85,8 @@ namespace Narradia
     }
 
     /**
-     * Update all kinds of data, except indices, for rendered object.
-     */
+     Update all kinds of data, except indices, for rendered object.
+    */
     void RendererBaseView::UpdateData(
         GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type, int layout_location) const
     {
@@ -95,8 +95,8 @@ namespace Narradia
     }
 
     /**
-     * Start using the renderers shader program and a VAO with specific id.
-     */
+     Start using the renderers shader program and a VAO with specific id.
+    */
     void RendererBaseView::UseVaoBegin(int vao_id) const
     {
         glUseProgram(shader_program_view_->shader_program()->program_id());
@@ -104,9 +104,9 @@ namespace Narradia
     }
 
     /**
-     * Stop using the current (any) VAO and the currently used (any) shader
-     * program.
-     */
+     Stop using the current (any) VAO and the currently used (any) shader
+     program.
+    */
     void RendererBaseView::UseVaoEnd() const
     {
         glBindVertexArray(0);
@@ -114,9 +114,9 @@ namespace Narradia
     }
 
     /**
-     * Obtains the location of a variable, with provided name, in the shaders
-     * (vertex and fragment).
-     */
+     Obtains the location of a variable, with provided name, in the shaders
+     (vertex and fragment).
+    */
     GLuint RendererBaseView::GetUniformLocation(std::string_view var_name)
     {
         return glGetUniformLocation(
@@ -124,15 +124,15 @@ namespace Narradia
     }
 
     /**
-     * Returns the View component of the shader program.
-     */
+     Returns the View component of the shader program.
+    */
     std::shared_ptr<ShaderProgramView> RendererBaseView::GetShaderProgramView() const
     {
         return shader_program_view_;
     }
 
     /**
-     * Forwards the cleanup command to the shader program view.
-     */
+     Forwards the cleanup command to the shader program view.
+    */
     void RendererBaseView::CleanupBase() { shader_program_view_->shader_program()->Cleanup(); }
 }

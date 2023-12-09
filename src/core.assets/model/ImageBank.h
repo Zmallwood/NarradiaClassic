@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Loads, holds and provides images from image folder on file system.
-     */
+     Loads, holds and provides images from image folder on file system.
+    */
     class ImageBank : public Singleton<ImageBank> {
       public:
         ImageBank();

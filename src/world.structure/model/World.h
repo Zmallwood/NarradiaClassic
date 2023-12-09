@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Top most object in the world map hierchical structure.
-     */
+     Top most object in the world map hierchical structure.
+    */
     class World : public Singleton<World> {
       public:
         World();

@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Prepares resources for a new colored rectangle, later to be rendered,
-     * returning an id.
-     */
+     Prepares resources for a new colored rectangle, later to be rendered,
+     returning an id.
+    */
     RenderId NewRect()
     {
         auto renderer = Renderer2DSolidColorsView::Get();

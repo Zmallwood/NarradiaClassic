@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Create the shader program from shader sources.
-     */
+     Create the shader program from shader sources.
+    */
     Renderer2DSolidColorsView::Renderer2DSolidColorsView()
     {
         const GLchar *vertex_shader_source =
@@ -18,7 +18,7 @@ namespace Narradia
     }
 
     /**
-     * Forwarding cleanup command.
-     */
+     Forwarding cleanup command.
+    */
     Renderer2DSolidColorsView::~Renderer2DSolidColorsView() { CleanupBase(); }
 }

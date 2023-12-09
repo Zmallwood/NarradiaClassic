@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-     * Update game logic.
-     */
+     Update game logic.
+    */
     void IntroScene::UpdateGameLogicDerived() {}
 }

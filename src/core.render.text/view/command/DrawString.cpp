@@ -6,9 +6,9 @@
 namespace Narradia
 {
     /**
-     * Draws a string to the canvas, requires it to first have been initialized
-     * with NewString().
-     */
+     Draws a string to the canvas, requires it to first have been initialized
+     with NewString().
+    */
     void DrawString(
         RenderId rid, std::string_view text, PointF position, Color color, bool center_align,
         FontSizes font_size)

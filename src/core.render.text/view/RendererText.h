@@ -6,9 +6,9 @@ namespace Narradia
     class Font;
 
     /**
-     * Prepares resources for, and renders, text strings as either 2D surfaces
-     * or 3D billboards.
-     */
+     Prepares resources for, and renders, text strings as either 2D surfaces
+     or 3D billboards.
+    */
     class RendererText : public Singleton<RendererText> {
       public:
         RendererText();

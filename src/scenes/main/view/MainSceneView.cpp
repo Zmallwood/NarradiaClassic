@@ -11,8 +11,8 @@ namespace Narradia
     }
 
     /**
-     * Render operations.
-     */
+     Render operations.
+    */
     void MainSceneView::RenderDerived()
     {
         WorldViewModuleView::Get()->Render();

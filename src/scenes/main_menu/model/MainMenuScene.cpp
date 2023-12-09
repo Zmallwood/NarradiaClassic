@@ -6,8 +6,8 @@
 namespace Narradia
 {
     /**
-     * Initialize GuiComponents.
-     */
+     Initialize GuiComponents.
+    */
     MainMenuScene::MainMenuScene()
     {
         scene_gui()->AddGuiComponent(
@@ -19,7 +19,7 @@ namespace Narradia
     }
 
     /**
-     * Update game logic.
-     */
+     Update game logic.
+    */
     void MainMenuScene::UpdateGameLogicDerived() {}
 }

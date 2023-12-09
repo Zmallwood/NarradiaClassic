@@ -1,6 +1,6 @@
 /**
- * Vertex shader for Renderer2DSolidColors.
- */
+ Vertex shader for Renderer2DSolidColors.
+*/
 R"(
     #version 330 core
 

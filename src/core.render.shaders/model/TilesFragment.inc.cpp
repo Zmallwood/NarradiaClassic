@@ -1,6 +1,6 @@
 /**
- * Fragment shader for RendererTiles.
- */
+ Fragment shader for RendererTiles.
+*/
 R"(
     #version 330 core
     precision mediump float;

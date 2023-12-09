@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Generate id for a new vertex array object (VAO).
-     */
+     Generate id for a new vertex array object (VAO).
+    */
     GLuint RendererBase::GenerateNewVertexArrayId()
     {
         GLuint new_vao_id;
@@ -16,8 +16,8 @@ namespace Narradia
     }
 
     /**
-     * Generate id for a new vertex buffer object (VBO.
-     */
+     Generate id for a new vertex buffer object (VBO.
+    */
     GLuint RendererBase::GenerateNewBufferId(BufferTypes buffer_type, GLuint vao_id)
     {
         GLuint new_buffer_id;
@@ -28,16 +28,16 @@ namespace Narradia
     }
 
     /**
-     * Obtains a VBO-id for a specific buffer type and VAO-id.
-     */
+     Obtains a VBO-id for a specific buffer type and VAO-id.
+    */
     GLuint RendererBase::GetBufferId(BufferTypes buffer_type, GLuint vao_id) const
     {
         return vbo_ids_.at(buffer_type).at(vao_id);
     }
 
     /**
-     * Cleanup VBOs and VAO at class disposal.
-     */
+     Cleanup VBOs and VAO at class disposal.
+    */
     void RendererBase::CleanupBase() const
     {
         for (auto &buffer_type : vbo_ids_) {

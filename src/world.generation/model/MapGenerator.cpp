@@ -7,8 +7,8 @@
 namespace Narradia
 {
     /**
-     * Generate all terrain and content for a MapArea.
-     */
+     Generate all terrain and content for a MapArea.
+    */
     void MapGenerator::GenerateMapArea(std::shared_ptr<MapArea> map_area)
     {
         GenerateGrass(map_area);

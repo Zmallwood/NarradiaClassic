@@ -7,8 +7,8 @@
 namespace Narradia
 {
     /**
-     * Update game logic.
-     */
+     Update game logic.
+    */
     void MainScene::UpdateGameLogicDerived()
     {
         WorldViewModule::Get()->UpdateGameLogic();

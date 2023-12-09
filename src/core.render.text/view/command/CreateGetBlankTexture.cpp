@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Creates and returns unique name for a new blank texture.
-     */
+     Creates and returns unique name for a new blank texture.
+    */
     std::string CreateGetBlankTexture()
     {
         static int id_counter = 0;

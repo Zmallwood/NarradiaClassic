@@ -9,9 +9,9 @@ namespace Narradia
     class ShaderProgram;
 
     /**
-     * Base class for all renderers providing functions for generating VAO and
-     * VBOs.
-     */
+     Base class for all renderers providing functions for generating VAO and
+     VBOs.
+    */
     class RendererBase {
       public:
         GLuint GenerateNewVertexArrayId();

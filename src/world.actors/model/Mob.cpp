@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Hit mob with damage.
-     */
+     Hit mob with damage.
+    */
     void Mob::Hit(float damage)
     {
         hp_ -= damage;
@@ -12,7 +12,7 @@ namespace Narradia
     }
 
     /**
-     * Is mob dead.
-     */
+     Is mob dead.
+    */
     bool Mob::IsDead() { return hp_ <= 0.0f; }
 }

@@ -6,8 +6,8 @@
 namespace Narradia
 {
     /**
-     * View component of RendererBase.
-     */
+     View component of RendererBase.
+    */
     class RendererBaseView {
       public:
         RendererBaseView();

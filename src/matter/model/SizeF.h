@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Contains size data that do need floating point precision.
-     */
+     Contains size data that do need floating point precision.
+    */
     class SizeF {
       public:
         float width = 0.0f;

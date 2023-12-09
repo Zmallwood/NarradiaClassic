@@ -6,8 +6,8 @@
 namespace Narradia
 {
     /**
-     * Prepares resources for a new string to be rendered.
-     */
+     Prepares resources for a new string to be rendered.
+    */
     RenderId NewString()
     {
         auto unique_name = CreateGetBlankTexture();

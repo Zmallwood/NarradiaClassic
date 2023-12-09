@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * On entering scene.
-     */
+     On entering scene.
+    */
     void MainSceneController::OnEnter()
     {
         TextOutBox::Get()->Print("Entering Narradia");
@@ -14,7 +14,7 @@ namespace Narradia
     }
 
     /**
-     * Update game flow between scenes.
-     */
+     Update game flow between scenes.
+    */
     void MainSceneController::UpdateGameFlowDerived() {}
 }

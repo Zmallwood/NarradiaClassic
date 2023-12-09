@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Model component of GuiButton, which is a visible and hoverable button
-     * which executes an action when clicked.
-     */
+     Model component of GuiButton, which is a visible and hoverable button
+     which executes an action when clicked.
+    */
     class GuiButton : public GuiComponent {
       public:
         GuiButton(

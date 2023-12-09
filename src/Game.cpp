@@ -7,8 +7,8 @@
 namespace Narradia
 {
     /**
-     * Run a new game instance.
-     */
+     Run a new game instance.
+    */
     void Game::Run()
     {
         while (Engine::Get()->is_running()) {

@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Holds state of a single mouse button, left or right, and its
-     * MouseActionMngr which handle and execute mouse actions.
-     */
+     Holds state of a single mouse button, left or right, and its
+     MouseActionMngr which handle and execute mouse actions.
+    */
     class MouseButton {
       public:
         MouseButton()

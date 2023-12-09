@@ -1,6 +1,6 @@
 /**
- * Vertex shader for RendererTiles.
- */
+ Vertex shader for RendererTiles.
+*/
 R"(
     #version 330 core
 

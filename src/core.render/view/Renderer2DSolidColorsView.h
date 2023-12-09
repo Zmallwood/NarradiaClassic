@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Prepares resources and renders color-filled rectangles to the canvas.
-     */
+     Prepares resources and renders color-filled rectangles to the canvas.
+    */
     class Renderer2DSolidColorsView : public RendererBaseView,
                                       public Singleton<Renderer2DSolidColorsView> {
       public:

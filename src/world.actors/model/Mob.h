@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Mob actor which can move around and engage in combat.
-     */
+     Mob actor which can move around and engage in combat.
+    */
     class Mob {
       public:
         Mob(std::string_view type)

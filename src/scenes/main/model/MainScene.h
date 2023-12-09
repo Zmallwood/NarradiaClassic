@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Model for MainScene.
-     */
+     Model for MainScene.
+    */
     class MainScene : public IScene, public Singleton<MainScene> {
       private:
         void UpdateGameLogicDerived() override;

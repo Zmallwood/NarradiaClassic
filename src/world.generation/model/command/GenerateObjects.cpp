@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Generate objects randomly, such as vegetation and other kinds.
-     */
+     Generate objects randomly, such as vegetation and other kinds.
+    */
     void GenerateObjects(std::shared_ptr<MapArea> map_area)
     {
         auto num_forests_tree1 = 20;

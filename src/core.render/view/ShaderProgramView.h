@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * View component of ShaderProgram.
-     */
+     View component of ShaderProgram.
+    */
     class ShaderProgramView {
       public:
         ShaderProgramView()

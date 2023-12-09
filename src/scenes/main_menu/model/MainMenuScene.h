@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Model for MainMenuScene.
-     */
+     Model for MainMenuScene.
+    */
     class MainMenuScene : public IScene, public Singleton<MainMenuScene> {
       public:
         MainMenuScene();

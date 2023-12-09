@@ -9,8 +9,8 @@
 namespace Narradia
 {
     /**
-     * Initializes Font objects for desired sizes.
-     */
+     Initializes Font objects for desired sizes.
+    */
     RendererText::RendererText()
         : unique_name_ids_(std::make_shared<std::map<RenderId, std::string>>())
     {
@@ -22,10 +22,10 @@ namespace Narradia
     }
 
     /**
-     * Does the core rendering work for a string to be rendered to the canvas.
-     * Can be shared for both 2D string rendering and 3D billboard string
-     * rendering.
-     */
+     Does the core rendering work for a string to be rendered to the canvas.
+     Can be shared for both 2D string rendering and 3D billboard string
+     rendering.
+    */
     void RendererText::RenderText(
         RenderId rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
         std::string &out_unique_name_id, SizeF &out_size) const

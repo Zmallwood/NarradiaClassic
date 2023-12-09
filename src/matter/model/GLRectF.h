@@ -3,9 +3,9 @@
 namespace Narradia
 {
     /**
-     * Floating point rectangle type used to differentiate rectangles specified
-     * in OpenGL coordinate system.
-     */
+     Floating point rectangle type used to differentiate rectangles specified
+     in OpenGL coordinate system.
+    */
     class GLRectF {
       public:
         float x = .0f;

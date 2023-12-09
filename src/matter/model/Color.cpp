@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Converts Narradia Color object to SDL type.
-     */
+     Converts Narradia Color object to SDL type.
+    */
     SDL_Color Color::ToSDLColor() const
     {
         return {

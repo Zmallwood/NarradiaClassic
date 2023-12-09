@@ -6,9 +6,9 @@
 namespace Narradia
 {
     /**
-     * Model component for SceneGui, of which every Scene has an inherited
-     * member instance of.
-     */
+     Model component for SceneGui, of which every Scene has an inherited
+     member instance of.
+    */
     class SceneGui {
       public:
         void UpdateGameLogic();

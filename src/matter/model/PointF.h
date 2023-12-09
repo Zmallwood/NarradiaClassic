@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Floating point type 2D point.
-     */
+     Floating point type 2D point.
+    */
     class PointF {
       public:
         PointF Translate(float dx, float dy) const;

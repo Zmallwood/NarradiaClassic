@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Controller for MainMenuScene.
-     */
+     Controller for MainMenuScene.
+    */
     class MainMenuSceneController : public ISceneController,
                                     public Singleton<MainMenuSceneController> {
       public:

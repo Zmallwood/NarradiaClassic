@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Renders a color-filled rectangle to the canvas, must previously have been
-     * initialized with NewRect().
-     */
+     Renders a color-filled rectangle to the canvas, must previously have been
+     initialized with NewRect().
+    */
     void FillRect(RenderId vao_id, RectF rect, Color color)
     {
         auto renderer = Renderer2DSolidColorsView::Get();

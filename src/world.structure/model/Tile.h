@@ -6,9 +6,9 @@
 namespace Narradia
 {
     /**
-     * A tile in the game map on which objects can be places and actors can walk
-     * on.
-     */
+     A tile in the game map on which objects can be places and actors can walk
+     on.
+    */
     class Tile {
       public:
         std::string_view ground() { return ground_; }

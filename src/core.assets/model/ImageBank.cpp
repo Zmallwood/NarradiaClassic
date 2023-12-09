@@ -6,14 +6,14 @@
 namespace Narradia
 {
     /**
-     * Load images on first use.
-     */
+     Load images on first use.
+    */
     ImageBank::ImageBank() { LoadImages(); }
 
     /**
-     * Loads all images in images path, creating GL textures and storing their
-     * ids as GLuints.
-     */
+     Loads all images in images path, creating GL textures and storing their
+     ids as GLuints.
+    */
     void ImageBank::LoadImages()
     {
         using iterator = std::filesystem::recursive_directory_iterator;
@@ -32,8 +32,8 @@ namespace Narradia
     }
 
     /**
-     * Returns the GLuint id corresponding to the provided image name:
-     */
+     Returns the GLuint id corresponding to the provided image name:
+    */
     GLuint ImageBank::GetImage(std::string_view image_name)
     {
         for (auto image : images_)
@@ -44,8 +44,8 @@ namespace Narradia
     }
 
     /**
-     * Creates a blank GL texture used for rendering text on.
-     */
+     Creates a blank GL texture used for rendering text on.
+    */
     void ImageBank::CreateBlankTextImage(std::string unique_image_name)
     {
         GLuint texture_id;
@@ -54,8 +54,8 @@ namespace Narradia
     }
 
     /**
-     * Cleanup on class disposal.
-     */
+     Cleanup on class disposal.
+    */
     ImageBank::~ImageBank()
     {
         for (const auto &image : images_)

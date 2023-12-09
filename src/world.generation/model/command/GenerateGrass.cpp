@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Generate grass on the whole map.
-     */
+     Generate grass on the whole map.
+    */
     void GenerateGrass(std::shared_ptr<MapArea> map_area)
     {
         for (auto y = 0; y < kMapHeight; y++) {

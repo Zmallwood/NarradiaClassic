@@ -1,6 +1,6 @@
 #include "Game.h"
 
 /**
- * Entry.
- */
+ Entry.
+*/
 int main(int argc, char *argv[]) { Narradia::Game().Run(); }

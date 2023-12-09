@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Prepares and renders 2d images to the canvas.
-     */
+     Prepares and renders 2d images to the canvas.
+    */
     class Renderer2DImagesView : public RendererBaseView, public Singleton<Renderer2DImagesView> {
       public:
         Renderer2DImagesView();

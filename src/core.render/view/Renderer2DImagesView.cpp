@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Create the shader program for the provided shader sources.
-     */
+     Create the shader program for the provided shader sources.
+    */
     Renderer2DImagesView::Renderer2DImagesView()
     {
         const GLchar *vertex_shader_source =
@@ -19,7 +19,7 @@ namespace Narradia
     }
 
     /**
-     * Forwarding cleanup command.
-     */
+     Forwarding cleanup command.
+    */
     Renderer2DImagesView::~Renderer2DImagesView() { CleanupBase(); }
 }

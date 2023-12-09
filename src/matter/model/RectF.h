@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Floating point type rectangle.
-     */
+     Floating point type rectangle.
+    */
     class RectF {
       public:
         GLRectF ToGLRectF() const;
