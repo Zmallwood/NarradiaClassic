@@ -8,6 +8,7 @@
 #include "core.render/view/command/StopTileBatchDrawing.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
+#include "command/DrawPlayer.h"
 
 namespace Narradia {
     WorldViewModuleView::WorldViewModuleView() {
@@ -70,5 +71,7 @@ namespace Narradia {
         }
 
         StopTileBatchDrawing();
+
+        DrawPlayer();
     }
 }
