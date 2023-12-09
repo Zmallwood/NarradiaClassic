@@ -17,6 +17,6 @@ namespace Narradia {
 
         const std::string_view kRelModelsPath = "Resources/Models/";
 
-        std::shared_ptr<std::map<std::string_view, std::shared_ptr<Model>>> models_;
+        std::shared_ptr<std::map<std::string, std::shared_ptr<Model>>> models_;
     };
 }

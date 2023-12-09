@@ -12,6 +12,12 @@ namespace Narradia {
             std::string_view model_name, float ms_time, Point3F position, float rotation,
             float scaling, float brightness, glm::vec3 color_mod, bool no_fog = false,
             bool no_lighting = false) const;
+        void DrawModelsMany(
+            std::string_view model_name, float ms_time, std::vector<Point3F> positions,
+            std::vector<float> rotations, std::vector<float> scalings,
+            std::vector<float> brightnesses, std::vector<glm::vec3> color_mods) const;
+        void StartBatchDrawing();
+        void StopBatchDrawing();
 
       private:
         RenderID NewBodyKeyframe(std::string_view model_name, float ms_time, int num_vertices);
