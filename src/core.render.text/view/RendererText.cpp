@@ -11,49 +11,14 @@ namespace Narradia
     /**
      * Initializes Font objects for desired sizes.
      */
-    RendererText::RendererText() {
+    RendererText::RendererText()
+        : unique_name_ids_(std::make_shared<std::map<RenderId, std::string>>()) {
 
         TTF_Init();
         auto font_path =
             std::string(SDL_GetBasePath()) + kRelFontsPath + "PartyConfettiRegular-eZOn3.ttf";
         fonts_.insert({FontSizes::_20, std::make_shared<Font>(font_path.c_str(), 20)});
         fonts_.insert({FontSizes::_26, std::make_shared<Font>(font_path.c_str(), 26)});
-    }
-
-    /**
-     * Prepares resources for a new string to be rendered.
-     */
-    RenderId RendererText::NewString() {
-
-        auto unique_name = CreateGetBlankTexture();
-        auto rendid_image_rect = NewImage();
-        unique_name_ids_.insert({rendid_image_rect, unique_name});
-
-        return rendid_image_rect;
-    }
-
-    /**
-     * Draws a string to the canvas, requires it to first have been initialized
-     * with NewString().
-     */
-    void RendererText::DrawString(
-        RenderId rid, std::string_view text, PointF position, Color color, bool center_align,
-        FontSizes font_size) {
-
-        std::string unique_name_id;
-        SizeF size;
-        RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
-        auto canvas_size = GetCanvasSize();
-        auto rect = RectF{position.x, position.y, size.width, size.height};
-        int text_w;
-        int text_h;
-        TTF_SizeText(fonts_.at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
-        rect.y -= static_cast<float>(text_h / GetAspectRatio()) / canvas_size.height / 2.0f;
-
-        if (center_align)
-            rect.x -= static_cast<float>(text_w) / static_cast<float>(canvas_size.height) / 2.0f /
-                      GetAspectRatio();
-        DrawImage(unique_name_id, rid, rect);
     }
 
     /**
@@ -80,7 +45,7 @@ namespace Narradia
 
         auto text_surface = TTF_RenderText_Blended(font, text.data(), sdl_color);
         glEnable(GL_TEXTURE_2D);
-        auto unique_name_id = unique_name_ids_.at(rid);
+        auto unique_name_id = unique_name_ids_->at(rid);
         auto image_id = ImageBank::Get()->GetImage(unique_name_id.c_str());
         glBindTexture(GL_TEXTURE_2D, image_id);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

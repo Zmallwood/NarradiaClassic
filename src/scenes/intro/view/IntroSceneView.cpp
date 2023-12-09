@@ -1,5 +1,7 @@
 #include "IntroSceneView.h"
 #include "core.render.text/view/RendererText.h"
+#include "core.render.text/view/functions/DrawString.h"
+#include "core.render.text/view/functions/NewString.h"
 #include "core.render/view/Renderer2DImagesView.h"
 #include "core.render/view/functions/DrawImage.h"
 #include "core.render/view/functions/NewImage.h"
@@ -12,7 +14,7 @@ namespace Narradia
         scene_gui_view_->set_scene_gui(IntroScene::Get()->scene_gui());
         rid_background = NewImage();
         rid_logo = NewImage();
-        rid_text = RendererText::Get()->NewString();
+        rid_text = NewString();
     }
 
     /**
@@ -27,7 +29,6 @@ namespace Narradia
         Color color = {1.0f, 0.0f, 0.0f, 255};
 
         if (SDL_GetTicks() % 600 > 300)
-            RendererText::Get()->DrawString(
-                rid_text, "Press to start", {0.5f, 0.5f}, {1.0f, 1.0f, 1.0f, 1.0f}, true);
+            DrawString(rid_text, "Press to start", {0.5f, 0.5f}, {1.0f, 1.0f, 1.0f, 1.0f}, true);
     }
 }

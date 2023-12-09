@@ -1,5 +1,7 @@
 #include "TextOutBoxView.h"
 #include "core.render.text/view/RendererText.h"
+#include "core.render.text/view/functions/DrawString.h"
+#include "core.render.text/view/functions/NewString.h"
 #include "core.render/view/Renderer2DImagesView.h"
 #include "core.render/view/functions/DrawImage.h"
 #include "core.render/view/functions/NewImage.h"
@@ -16,10 +18,10 @@ namespace Narradia
         rid_image_ = NewImage();
         rid_split_line_ = NewImage();
         rid_cmd_line_input_arrow_ = NewImage();
-        rid_input_text_ = RendererText::Get()->NewString();
+        rid_input_text_ = NewString();
 
         for (auto i = 0; i < TextOutBox::Get()->GetMaxNumLines(); i++)
-            rids_text_lines_.push_back(RendererText::Get()->NewString());
+            rids_text_lines_.push_back(NewString());
     }
 
     /**
@@ -45,7 +47,7 @@ namespace Narradia
 
             if (text_line_index >= 0) {
                 PointF position = model->GetTextLinePosition(i);
-                RendererText::Get()->DrawString(
+                DrawString(
                     rids_text_lines_.at(i), model->text_lines().at(text_line_index).text, position,
                     model->text_lines().at(text_line_index).color);
             }
@@ -57,7 +59,6 @@ namespace Narradia
             return;
 
         DrawImage("CommandLineInputArrow", rid_cmd_line_input_arrow_, model->GetInputArrowRect());
-        RendererText::Get()->DrawString(
-            rid_input_text_, model->GetInputTextWithCursor(), model->GetInputTextPosition());
+        DrawString(rid_input_text_, model->GetInputTextWithCursor(), model->GetInputTextPosition());
     }
 }
