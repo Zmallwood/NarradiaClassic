@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Available scene names.
+     Available scene names.
     */
     enum class SceneNames { None, Intro, MainMenu, Main };
 }

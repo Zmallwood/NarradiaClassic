@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Text line entry stored and printed in TextOutBox.
+     Text line entry stored and printed in TextOutBox.
     */
     class TextLine {
       public:

@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Update game logic from scenes deriving from this class.
+     Update game logic from scenes deriving from this class.
     */
     void IScene::UpdateGameLogic()
     {

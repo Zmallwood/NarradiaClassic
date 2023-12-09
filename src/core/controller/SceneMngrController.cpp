@@ -7,7 +7,7 @@
 namespace Narradia
 {
     /**
-    Initialize scene controllers that will be used.
+     Initialize scene controllers that will be used.
     */
     SceneMngrController::SceneMngrController()
     {
@@ -17,7 +17,7 @@ namespace Narradia
     }
 
     /**
-    Update game flow between scenes for currently displayed scene.
+     Update game flow between scenes for currently displayed scene.
     */
     void SceneMngrController::UpdateGameFlowCurrScene()
     {
@@ -28,7 +28,7 @@ namespace Narradia
     }
 
     /**
-    Change to another scene.
+     Change to another scene.
     */
     void SceneMngrController::ChangeScene(SceneNames new_scene)
     {

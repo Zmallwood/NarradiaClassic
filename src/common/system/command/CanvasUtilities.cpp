@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    Returns canvas size in pixels.
+     Returns canvas size in pixels.
     */
     Size GetCanvasSize()
     {
@@ -15,7 +15,7 @@ namespace Narradia
     }
 
     /**
-    Returns aspect ratio of canvas.
+     Returns aspect ratio of canvas.
     */
     float GetAspectRatio()
     {

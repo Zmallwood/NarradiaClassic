@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    View component of the TextOutBox.
+     View component of the TextOutBox.
     */
     class TextOutBoxView : public Singleton<TextOutBoxView> {
       public:

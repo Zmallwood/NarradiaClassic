@@ -7,7 +7,7 @@
 namespace Narradia
 {
     /**
-    Initialize scene views that will be used.
+     Initialize scene views that will be used.
     */
     SceneMngrView::SceneMngrView()
     {
@@ -17,7 +17,7 @@ namespace Narradia
     }
 
     /**
-    Render currently displayed scene.
+     Render currently displayed scene.
     */
     void SceneMngrView::RenderCurrScene()
     {

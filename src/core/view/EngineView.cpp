@@ -7,7 +7,7 @@
 namespace Narradia
 {
     /**
-    Render game each frame.
+     Render game each frame.
     */
     void EngineView::Render()
     {

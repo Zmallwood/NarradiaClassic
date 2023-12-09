@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    Model for IScene.
+     Model for IScene.
     */
     class IScene {
       public:

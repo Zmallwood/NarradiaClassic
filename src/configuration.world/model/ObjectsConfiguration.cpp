@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    Set custom object flags on startup.
+     Set custom object flags on startup.
     */
     ObjectsConfiguration::ObjectsConfiguration()
     {
@@ -20,8 +20,8 @@ namespace Narradia
     }
 
     /**
-    Tells if an object is being flagged as an obstacle, returns to true if no
-    flag is set.
+     Tells if an object is being flagged as an obstacle, returns to true if no
+     flag is set.
     */
     bool ObjectsConfiguration::IsObstacle(std::string_view object_type)
     {

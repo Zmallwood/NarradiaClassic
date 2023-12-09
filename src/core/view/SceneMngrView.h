@@ -5,7 +5,7 @@
 namespace Narradia
 {
     /**
-    View for SceneMngr.
+     View for SceneMngr.
     */
     class SceneMngrView : public Singleton<SceneMngrView> {
       public:

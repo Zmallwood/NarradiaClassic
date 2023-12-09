@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Helper class for automatically free SDL resources.
+     Helper class for automatically free SDL resources.
     */
     class SDLDeleter {
       public:

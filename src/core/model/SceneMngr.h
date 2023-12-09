@@ -5,7 +5,7 @@
 namespace Narradia
 {
     /**
-    Model for SceneMngr.
+     Model for SceneMngr.
     */
     class SceneMngr : public Singleton<SceneMngr> {
       public:

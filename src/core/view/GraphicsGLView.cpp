@@ -5,7 +5,7 @@
 namespace Narradia
 {
     /**
-    Initializes OpenGL-specific graphics parts.
+     Initializes OpenGL-specific graphics parts.
     */
     GraphicsGLView::GraphicsGLView()
     {

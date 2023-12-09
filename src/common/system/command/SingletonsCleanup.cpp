@@ -5,7 +5,7 @@ namespace Narradia
     static std::vector<std::function<void()>> gDisposeActions;
 
     /**
-    Called every time a singleton is created.
+     Called every time a singleton is created.
     */
     void AddSingletonDisposeAction(std::function<void()> action)
     {
@@ -13,7 +13,7 @@ namespace Narradia
     }
 
     /**
-    Called at game exit.
+     Called at game exit.
     */
     void DisposeAllSingletons()
     {

@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Singleton templated class.
+     Singleton templated class.
     */
     template <class T>
     class Singleton {
@@ -16,7 +16,7 @@ namespace Narradia
     };
 
     /**
-    Create new instance if none exists.
+     Create new instance if none exists.
     */
     template <class T>
     void Singleton<T>::Touch()
@@ -28,7 +28,7 @@ namespace Narradia
     }
 
     /**
-    Get instance of object.
+     Get instance of object.
     */
     template <class T>
     std::shared_ptr<T> Singleton<T>::Get()

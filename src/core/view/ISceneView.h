@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    View for IScene.
+     View for IScene.
     */
     class ISceneView {
       public:

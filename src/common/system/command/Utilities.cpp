@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    Returns normalized mouse position.
+     Returns normalized mouse position.
     */
     PointF GetMousePosition()
     {
@@ -18,7 +18,7 @@ namespace Narradia
     }
 
     /**
-    Returns the current time in text format.
+     Returns the current time in text format.
     */
     std::string_view GetCurrTime()
     {
@@ -30,7 +30,7 @@ namespace Narradia
     }
 
     /**
-    Returns texture, loaded from file system, dimensions in pixels.
+     Returns texture, loaded from file system, dimensions in pixels.
     */
     Size GetTextureDimensions(std::string_view image_name)
     {

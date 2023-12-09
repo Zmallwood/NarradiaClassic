@@ -6,7 +6,7 @@
 namespace Narradia
 {
     /**
-    Initialize scenes that will be used.
+     Initialize scenes that will be used.
     */
     SceneMngr::SceneMngr()
     {
@@ -17,7 +17,7 @@ namespace Narradia
     }
 
     /**
-    Update game logic for currently displayed scene.
+     Update game logic for currently displayed scene.
     */
     void SceneMngr::UpdateGameLogicCurrScene()
     {

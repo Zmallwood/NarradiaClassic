@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    Checks if input should be activated and processes typed input characters.
+     Checks if input should be activated and processes typed input characters.
     */
     void TextOutBox::UpdateGameLogic()
     {
@@ -20,8 +20,8 @@ namespace Narradia
     }
 
     /**
-    Adds provided text with color to the internal data structure, being ready
-    for rendering.
+     Adds provided text with color to the internal data structure, being ready
+     for rendering.
     */
     void TextOutBox::Print(std::string_view text, Color text_color)
     {
@@ -34,8 +34,8 @@ namespace Narradia
     }
 
     /**
-    Calculates maximum number of text lines that can be displayed in the
-    TextOutBox.
+     Calculates maximum number of text lines that can be displayed in the
+     TextOutBox.
     */
     int TextOutBox::GetMaxNumLines()
     {

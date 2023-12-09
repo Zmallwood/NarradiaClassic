@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Holds and initializes OpenGL-specific configurations.
+     Holds and initializes OpenGL-specific configurations.
     */
     class GraphicsGLView : public Singleton<GraphicsGLView> {
       public:

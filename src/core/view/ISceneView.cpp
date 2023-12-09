@@ -4,7 +4,7 @@
 namespace Narradia
 {
     /**
-    Render scenes deriving from this class.
+     Render scenes deriving from this class.
     */
     void ISceneView::Render()
     {

@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Controller for all IScenes.
+     Controller for all IScenes.
     */
     class ISceneController {
       public:

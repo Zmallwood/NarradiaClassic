@@ -7,7 +7,7 @@
 namespace Narradia
 {
     /**
-    Hides default system cursor and prepares RenderIDs.
+     Hides default system cursor and prepares RenderIDs.
     */
     CursorView::CursorView()
     {
@@ -16,7 +16,7 @@ namespace Narradia
     }
 
     /**
-    Renders custom cursor image at mouse position.
+     Renders custom cursor image at mouse position.
     */
     void CursorView::RenderCursor()
     {

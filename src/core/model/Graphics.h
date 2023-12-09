@@ -3,7 +3,7 @@
 namespace Narradia
 {
     /**
-    Model for Graphics, has a view but no controller.
+     Model for Graphics, has a view but no controller.
     */
     class Graphics : public Singleton<Graphics> {
       public:
