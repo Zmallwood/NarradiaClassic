@@ -7,8 +7,8 @@
 namespace Narradia
 {
     /**
-     * Initialize scene controllers that will be used.
-     */
+    Initialize scene controllers that will be used.
+    */
     SceneMngrController::SceneMngrController()
     {
         scene_controllers_.insert({SceneNames::Intro, IntroSceneController::Get()});
@@ -17,8 +17,8 @@ namespace Narradia
     }
 
     /**
-     * Update game flow between scenes for currently displayed scene.
-     */
+    Update game flow between scenes for currently displayed scene.
+    */
     void SceneMngrController::UpdateGameFlowCurrScene()
     {
         auto curr_scene = SceneMngr::Get()->curr_scene();
@@ -28,8 +28,8 @@ namespace Narradia
     }
 
     /**
-     * Change to another scene.
-     */
+    Change to another scene.
+    */
     void SceneMngrController::ChangeScene(SceneNames new_scene)
     {
         SceneMngr::Get()->set_curr_scene(new_scene);

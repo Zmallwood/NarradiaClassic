@@ -14,7 +14,6 @@ namespace Narradia
         SDL_GetMouseState(&xPixels, &yPixels);
         auto x = static_cast<float>(xPixels) / canvasSize.width;
         auto y = static_cast<float>(yPixels) / canvasSize.height;
-
         return {x, y};
     }
 
@@ -27,7 +26,6 @@ namespace Narradia
         char buffer[80];
         auto p_tstruct = localtime(&now);
         strftime(buffer, sizeof(buffer), "%X", p_tstruct);
-
         return buffer;
     }
 
@@ -42,7 +40,6 @@ namespace Narradia
         glBindTexture(GL_TEXTURE_2D, image_id);
         glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &dimensions.width);
         glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &dimensions.height);
-
         return dimensions;
     }
 }

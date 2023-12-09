@@ -4,8 +4,8 @@
 namespace Narradia
 {
     /**
-     * Checks if input should be activated and processes typed input characters.
-     */
+    Checks if input should be activated and processes typed input characters.
+    */
     void TextOutBox::UpdateGameLogic()
     {
         if (KeyboardInput::Get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
@@ -20,9 +20,9 @@ namespace Narradia
     }
 
     /**
-     * Adds provided text with color to the internal data structure, being ready
-     * for rendering.
-     */
+    Adds provided text with color to the internal data structure, being ready
+    for rendering.
+    */
     void TextOutBox::Print(std::string_view text, Color text_color)
     {
         if (!enabled_)
@@ -34,9 +34,9 @@ namespace Narradia
     }
 
     /**
-     * Calculates maximum number of text lines that can be displayed in the
-     * TextOutBox.
-     */
+    Calculates maximum number of text lines that can be displayed in the
+    TextOutBox.
+    */
     int TextOutBox::GetMaxNumLines()
     {
         return static_cast<int>(kBounds.height / kTextLineHeight) - 2;

@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Controller for Engine.
-     */
+    Controller for Engine.
+    */
     class EngineController : public Singleton<EngineController> {
       public:
         void HandleInput();

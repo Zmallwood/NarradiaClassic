@@ -11,7 +11,6 @@ namespace Narradia
         int width;
         int height;
         SDL_GetWindowSize(Graphics::Get()->window().get(), &width, &height);
-
         return {width, height};
     }
 
@@ -21,7 +20,6 @@ namespace Narradia
     float GetAspectRatio()
     {
         auto canvasSize = GetCanvasSize();
-
         return static_cast<float>(canvasSize.width) / canvasSize.height;
     }
 }

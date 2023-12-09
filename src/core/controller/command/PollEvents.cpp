@@ -6,8 +6,8 @@
 namespace Narradia
 {
     /**
-     * Poll for user input events.
-     */
+    Poll for user input events.
+    */
     void PollEvents()
     {
         SDL_Event event;

@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Sets custom object flags and returns custom properties for specific
-     * object types.
-     */
+    Sets custom object flags and returns custom properties for specific
+    object types.
+    */
     class ObjectsConfiguration : public Singleton<ObjectsConfiguration> {
       public:
         ObjectsConfiguration();

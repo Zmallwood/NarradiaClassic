@@ -7,8 +7,8 @@
 namespace Narradia
 {
     /**
-     * Hides default system cursor and prepares RenderIDs.
-     */
+    Hides default system cursor and prepares RenderIDs.
+    */
     CursorView::CursorView()
     {
         SDL_ShowCursor(0);
@@ -16,8 +16,8 @@ namespace Narradia
     }
 
     /**
-     * Renders custom cursor image at mouse position.
-     */
+    Renders custom cursor image at mouse position.
+    */
     void CursorView::RenderCursor()
     {
         auto mouse_pos = GetMousePosition();

@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * Replaces default system cursor with a custom one.
-     */
+    Replaces default system cursor with a custom one.
+    */
     class CursorView : public Singleton<CursorView> {
       public:
         CursorView();

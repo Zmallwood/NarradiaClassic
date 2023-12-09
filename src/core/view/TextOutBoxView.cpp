@@ -11,8 +11,8 @@
 namespace Narradia
 {
     /**
-     * Prepares RenderIDs for rendering.
-     */
+    Prepares RenderIDs for rendering.
+    */
     TextOutBoxView::TextOutBoxView()
     {
         rid_image_ = NewImage();
@@ -25,8 +25,8 @@ namespace Narradia
     }
 
     /**
-     * Renders the TextOutBox with its text content to canvas.
-     */
+    Renders the TextOutBox with its text content to canvas.
+    */
     void TextOutBoxView::Render() const
     {
         auto model = TextOutBox::Get();

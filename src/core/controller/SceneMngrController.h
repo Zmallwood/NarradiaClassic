@@ -5,8 +5,8 @@
 namespace Narradia
 {
     /**
-     * Controller for SceneMngr.
-     */
+    Controller for SceneMngr.
+    */
     class SceneMngrController : public Singleton<SceneMngrController> {
       public:
         SceneMngrController();

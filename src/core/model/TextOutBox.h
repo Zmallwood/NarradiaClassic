@@ -4,9 +4,9 @@
 namespace Narradia
 {
     /**
-     * Renders text lines to a box available in all scenes, takes text input to
-     * be rendered through the Print function.
-     */
+    Renders text lines to a box available in all scenes, takes text input to
+    be rendered through the Print function.
+    */
     class TextOutBox : public Singleton<TextOutBox> {
       public:
         void UpdateGameLogic();

@@ -3,8 +3,8 @@
 namespace Narradia
 {
     /**
-     * View for Graphics.
-     */
+    View for Graphics.
+    */
     class GraphicsView : public Singleton<GraphicsView> {
       public:
         GraphicsView();

@@ -7,8 +7,8 @@
 namespace Narradia
 {
     /**
-     * Initialize scene views that will be used.
-     */
+    Initialize scene views that will be used.
+    */
     SceneMngrView::SceneMngrView()
     {
         scene_views_.insert({SceneNames::Intro, IntroSceneView::Get()});
@@ -17,8 +17,8 @@ namespace Narradia
     }
 
     /**
-     * Render currently displayed scene.
-     */
+    Render currently displayed scene.
+    */
     void SceneMngrView::RenderCurrScene()
     {
         auto curr_scene = SceneMngr::Get()->curr_scene();
