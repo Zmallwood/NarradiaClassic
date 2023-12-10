@@ -55,25 +55,25 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/matter/model/Size.h"
-"src/matter/model/SizeF.h"
-"src/matter/model/Color.h"
-"src/matter/model/Colors.h"
-"src/matter/model/RectF.h"
-"src/matter/model/Point.h"
-"src/matter/model/PointF.h"
-"src/matter/model/Point3F.h"
-"src/matter/model/GLRectF.h"
-"src/matter/model/Vertex2F.h"
-"src/matter/model/Vertex3F.h"
+"src/matter/model/size.h"
+"src/matter/model/sizef.h"
+"src/matter/model/color.h"
+"src/matter/model/colors.h"
+"src/matter/model/rectf.h"
+"src/matter/model/point.h"
+"src/matter/model/pointf.h"
+"src/matter/model/point3f.h"
+"src/matter/model/gl_rectf.h"
+"src/matter/model/vertex2f.h"
+"src/matter/model/vertex3f.h"
 
-"src/common/system/command/SinglCleanup.h"
-"src/common/system/command/Utilities.h"
-"src/common/system/command/CanvasUtilities.h"
-"src/common/system/Singleton.h"
-"src/common/system/Typedefs.h"
-"src/core/model/SDLDeleter.h"
-"src/math/system/Trigonometry.h"
+"src/common/system/command/singl_cleanup.h"
+"src/common/system/command/utilities.h"
+"src/common/system/command/canvas_utils.h"
+"src/common/system/singleton.h"
+"src/common/system/typedefs.h"
+"src/core/model/sdl_deleter.h"
+"src/math/system/trigonometry.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})
