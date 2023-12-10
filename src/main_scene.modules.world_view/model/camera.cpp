@@ -12,7 +12,7 @@ namespace Narradia {
       CameraGL::Get()->set_perspective_matrix(new_perspective_matrix);
     }
     {
-      auto player_pos = Player::Get()->position();
+      auto player_pos = Player::Get()->position().Multiply(kTileSize);
       auto look_from = GetCameraPosition();
       auto look_at = player_pos.Translate(0.0f, camera_height_ * kTileSize, 0.0f);
       auto new_view_matrix = glm::lookAt(

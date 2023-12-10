@@ -1,6 +1,7 @@
 #include "draw_image_polygon.h"
 #include "../camera_gl.h"
 #include "../renderer_tiles_view.h"
+#include "conf/model/conf.h"
 #include "core.assets/model/image_bank.h"
 #include "world.actors/model/player.h"
 
@@ -22,8 +23,8 @@ namespace Narradia {
       glm::mat4 model(1.0);
       glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
       glUniform1f(renderer->location_alpha(), 1.0f);
-      glm::vec3 view_pos(
-          Player::Get()->position().x, Player::Get()->position().y, Player::Get()->position().z);
+      auto player_pos = Player::Get()->position().Multiply(kTileSize);
+      glm::vec3 view_pos(player_pos.x, player_pos.y, player_pos.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
       glm::vec3 fog_color_gl(
           RendererTilesView::kFogColorGround.r, RendererTilesView::kFogColorGround.g,

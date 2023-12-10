@@ -10,7 +10,7 @@ namespace Narradia {
           Player::Get()->ticks_ulti_skill_start() != 0) {
         auto player_pos = Player::Get()->position().GetXZ().ToIntPoint();
         auto map_area = World::Get()->curr_map_area();
-        auto r = 4;
+        auto r = 7;
         for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
           for (auto x = player_pos.x - r; x <= player_pos.x + r; x++) {
             auto dx = x - player_pos.x;

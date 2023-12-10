@@ -41,10 +41,10 @@ namespace Narradia {
         SetTileGeometry(rids_tiles[x][y], v0, v1, v2, v3, normal00, normal10, normal11, normal01);
         map_area->GetTile(x, y)->set_rid(rids_tiles[x][y]);
         rids_tile_symbols.at(x).push_back(NewTile());
-        v0.position.y += 0.001f;
-        v1.position.y += 0.001f;
-        v2.position.y += 0.001f;
-        v3.position.y += 0.001f;
+        v0.position.y += kTinyDistance * kTileSize;
+        v1.position.y += kTinyDistance * kTileSize;
+        v2.position.y += kTinyDistance * kTileSize;
+        v3.position.y += kTinyDistance * kTileSize;
         SetTileGeometry(
             rids_tile_symbols[x][y], v0, v1, v2, v3, normal00, normal10, normal11, normal01);
       }

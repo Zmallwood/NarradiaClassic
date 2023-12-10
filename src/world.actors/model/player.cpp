@@ -1,5 +1,6 @@
 #include "player.h"
 #include "conf/model/conf.h"
+#include "world.structure/model/world.h"
 
 namespace Narradia {
   /**
@@ -29,7 +30,15 @@ namespace Narradia {
     auto used_angle = angle_deg_ - facing_angle_deg_;
     auto dx = CosDeg(used_angle + 90.0f) * step_size_;
     auto dz = SinDeg(used_angle + 90.0f) * step_size_;
-    position_.x += dx;
-    position_.z += dz;
+    auto new_x = position_.x + dx;
+    auto new_z = position_.z + dz;
+    if (new_x < 0 || new_z < 0 || new_x >= kMapWidth || new_z >= kMapHeight)
+      return;
+    auto map_area = World::Get()->curr_map_area();
+    auto new_coord = Point{static_cast<int>(new_x), static_cast<int>(new_z)};
+    if (map_area->GetTile(new_coord)->ground() == "GroundWater")
+      return;
+    position_.x = new_x;
+    position_.z = new_z;
   }
 }

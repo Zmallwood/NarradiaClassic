@@ -8,7 +8,7 @@ namespace Narradia {
     auto map_area = World::Get()->curr_map_area();
     auto tile = map_area->GetTile(
         static_cast<int>(Player::Get()->position().x),
-        static_cast<int>(Player::Get()->position().y));
+        static_cast<int>(Player::Get()->position().z));
     while (tile->ground() == "GroundWater" || tile->object() || tile->mob()) {
       auto new_x = rand() % kMapWidth;
       auto new_y = rand() % kMapHeight;

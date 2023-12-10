@@ -89,6 +89,6 @@ namespace Narradia {
     int ticks_ulti_skill_start_ = 0;
     int ulti_skill_duration_ = 9000;
     float facing_angle_deg_ = 0.0f;
-    float step_size_ = 1.0f;
+    float step_size_ = 0.9f;
   };
 }
