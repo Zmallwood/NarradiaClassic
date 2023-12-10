@@ -8,5 +8,6 @@ namespace Narradia {
 
    private:
     std::vector<std::vector<RenderID>> rids_tiles;
+    std::vector<std::vector<RenderID>> rids_tile_symbols;
   };
 }
