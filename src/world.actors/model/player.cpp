@@ -1,5 +1,6 @@
 #include "player.h"
 #include "conf/model/conf.h"
+#include "core/model/text_out_box.h"
 #include "main_scene.modules.world_view/model/camera.h"
 #include "world.structure/model/world.h"
 
@@ -31,6 +32,11 @@ namespace Narradia {
     MoveAtAngle(-90.0f);
   }
 
+  void Player::AddExperience(int amount) {
+    experience_ += amount;
+    TextOutBox::Get()->Print("You got " + std::to_string(amount) + " experience");
+  }
+
   void Player::MoveAtAngle(float angle_deg_) {
     auto used_angle = angle_deg_ - facing_angle_deg_;
     auto dx = CosDeg(used_angle + 90.0f) * step_size_;
@@ -45,5 +51,9 @@ namespace Narradia {
       return;
     position_.x = new_x;
     position_.z = new_z;
+  }
+
+  bool Player::IsMoving() {
+    return SDL_GetTicks() < ticks_last_move_ + 400 / movement_speed_;
   }
 }

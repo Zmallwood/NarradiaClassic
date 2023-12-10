@@ -2,6 +2,7 @@
 #include "mob_targeting_module.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
+#include "core/model/text_out_box.h"
 
 namespace Narradia {
   void CombatModule::UpdateGameLogic() {
@@ -19,9 +20,11 @@ namespace Narradia {
         if (abs_dx <= 1 && abs_dy <= 1) {
           targeted_mob->Hit(10.0f);
           Player::Get()->set_ticks_last_hit_performed(SDL_GetTicks());
+          Player::Get()->AddExperience(30);
           auto dice = static_cast<float>(rand()) / RAND_MAX;
           if (dice < Player::Get()->ultimate_skill_chance()) {
             Player::Get()->set_ticks_ulti_skill_start(SDL_GetTicks());
+            TextOutBox::Get()->Print("Ulti-skill has been activated!");
           }
         }
       }

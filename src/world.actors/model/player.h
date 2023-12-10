@@ -13,6 +13,8 @@ namespace Narradia {
     void MoveBackwards();
     void MoveLeft();
     void MoveAtAngle(float angle_deg_);
+    void AddExperience(int amount);
+    bool IsMoving();
 
     auto position() {
       return position_;
@@ -78,6 +80,10 @@ namespace Narradia {
       facing_angle_deg_ = value;
     }
 
+    auto experience() {
+      return experience_;
+    }
+
    private:
     Point3F position_;
     float movement_speed_ = 5.0f;
@@ -90,5 +96,6 @@ namespace Narradia {
     int ulti_skill_duration_ = 9000;
     float facing_angle_deg_ = 0.0f;
     float step_size_ = 0.9f;
+    int experience_ = 0;
   };
 }

@@ -1,4 +1,5 @@
 #include "skill_performing_module.h"
+#include "conf/model/conf.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
 
@@ -13,13 +14,17 @@ namespace Narradia {
         auto r = 7;
         for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
           for (auto x = player_pos.x - r; x <= player_pos.x + r; x++) {
+            if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
+              continue;
             auto dx = x - player_pos.x;
             auto dy = y - player_pos.y;
             if (dx * dx + dy * dy <= r * r) {
               map_area->GetTile(x, y)->set_tile_effect(
                   {"UltiSkillTileFire", static_cast<int>(SDL_GetTicks())});
-              if (map_area->GetTile(x, y)->mob())
+              if (map_area->GetTile(x, y)->mob()) {
                 map_area->GetTile(x, y)->mob()->Hit(map_area->GetTile(x, y)->mob()->hp());
+                Player::Get()->AddExperience(30);
+              }
             }
           }
         }
