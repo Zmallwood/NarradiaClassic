@@ -7,6 +7,7 @@
 #include "main_scene.modules/model/tile_hovering_module.h"
 #include "main_scene.modules/model/mouse_movement_module.h"
 #include "main_scene.modules/model/mob_targeting_module.h"
+#include "main_scene.modules/model/combat_chase_movement_module.h"
 
 namespace Narradia {
   /**
@@ -16,6 +17,7 @@ namespace Narradia {
     MobMovementModule::Get()->UpdateGameLogic();
     KeyboardMovementModule::Get()->UpdateGameLogic();
     MouseMovementModule::Get()->UpdateGameLogic();
+    CombatChaseMovementModule::Get()->UpdateGameLogic();
     WorldViewModule::Get()->UpdateGameLogic();
     MouseRotationModule::Get()->UpdateGameLogic();
     TileHoveringModule::Get()->UpdateGameLogic();

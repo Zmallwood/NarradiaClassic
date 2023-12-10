@@ -2,18 +2,18 @@
 #include "conf.world/model/objects_conf.h"
 #include "conf/model/conf.h"
 #include "core.input/model/mouse_input.h"
+#include "main_scene.modules.world_view/model/camera.h"
 #include "mob_targeting_module.h"
 #include "tile_hovering_module.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
-#include "main_scene.modules.world_view/model/camera.h"
 
 namespace Narradia {
   void MouseMovementModule::UpdateGameLogic() {
     MouseInput::Get()->left_button()->AddFiredAction(
         [] {
           Player::Get()->set_destination(TileHoveringModule::Get()->hovered_tile());
-          // MobTargetingModule::Get()->ClearTarget();
+          MobTargetingModule::Get()->ClearTarget();
         },
         5);
     auto destination = Player::Get()->destination();
@@ -30,8 +30,9 @@ namespace Narradia {
         Player::Get()->set_destination({-1, -1});
         return;
       }
-      auto angle = std::atan2(dy, dx) * 180.0f / M_PI + Camera::Get()->horizontal_angle_deg();
-      Player::Get()->MoveAtAngle(angle - 90.0f);
+      auto angle_deg =
+          std::atan2(dy, dx) * 180.0f / M_PI + Camera::Get()->horizontal_angle_deg() - 90.0f;
+      Player::Get()->MoveAtAngle(angle_deg);
       Player::Get()->set_ticks_last_move(SDL_GetTicks());
     }
   }
