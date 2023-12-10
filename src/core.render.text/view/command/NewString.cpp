@@ -11,7 +11,6 @@ namespace Narradia {
         auto unique_name = CreateGetBlankTexture();
         auto rendid_image_rect = NewImage();
         RendererText::Get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
-
         return rendid_image_rect;
     }
 }

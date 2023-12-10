@@ -10,9 +10,10 @@ namespace Narradia {
       public:
         void Cleanup();
 
-        GLuint program_id() const {
+        auto program_id() const {
             return program_id_;
         }
+
         void set_program_id(GLuint value) {
             program_id_ = value;
         }

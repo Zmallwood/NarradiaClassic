@@ -23,5 +23,7 @@ namespace Narradia {
         //            0);
     }
 
-    void MobTargetingModule::ClearTarget() { targeted_mob_ = nullptr; }
+    void MobTargetingModule::ClearTarget() {
+        targeted_mob_ = nullptr;
+    }
 }

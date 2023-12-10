@@ -17,11 +17,11 @@ namespace Narradia {
         void AddFiredAction(std::function<void()> action, int z_level = 0);
         void AddReleasedAction(std::function<void()> action, int z_level = 0);
 
-        bool is_pressed() {
+        auto is_pressed() {
             return is_pressed_;
         }
 
-        std::shared_ptr<MouseActionMngr> mouse_action_mngr() {
+        auto mouse_action_mngr() {
             return mouse_action_mngr_;
         }
 

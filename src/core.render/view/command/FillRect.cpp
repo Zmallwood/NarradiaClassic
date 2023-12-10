@@ -20,7 +20,6 @@ namespace Narradia {
         std::iota(std::begin(indices), std::end(indices), 0);
         std::vector<float> positions;
         std::vector<float> colors;
-
         for (auto &vertex : vertices) {
             positions.push_back(vertex.position.x);
             positions.push_back(vertex.position.y);
@@ -29,7 +28,6 @@ namespace Narradia {
             colors.push_back(color.b);
             colors.push_back(color.a);
         }
-
         renderer->UseVaoBegin(vao_id);
         auto index_buffer_id = renderer_base->GetBufferId(BufferTypes::Indices, vao_id);
         auto position_buffer_id = renderer_base->GetBufferId(BufferTypes::Positions2D, vao_id);

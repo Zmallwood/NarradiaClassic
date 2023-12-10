@@ -12,11 +12,11 @@ namespace Narradia {
         void Hit(float damage);
         bool IsDead();
 
-        std::string_view type() {
+        auto type() {
             return type_;
         }
 
-        int ticks_last_move() {
+        auto ticks_last_move() {
             return ticks_last_move_;
         }
 
@@ -24,19 +24,19 @@ namespace Narradia {
             ticks_last_move_ = value;
         }
 
-        float movement_speed() {
+        auto movement_speed() {
             return movement_speed_;
         }
 
-        float attack_speed() {
+        auto attack_speed() {
             return attack_speed_;
         }
 
-        int ticks_last_hit_recieved() {
+        auto ticks_last_hit_recieved() {
             return ticks_last_hit_recieved_;
         }
 
-        float hp() {
+        auto hp() {
             return hp_;
         }
 

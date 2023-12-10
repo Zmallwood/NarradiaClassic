@@ -27,7 +27,6 @@ namespace Narradia {
         //            used_bounds.x += p->parent_container_->GetPosition().x;
         //            used_bounds.y += p->parent_container_->GetPosition().y;
         //        }
-
         if (used_bounds.Contains(GetMousePosition())) {
             Cursor::Get()->set_cursor_style(CursorStyles::Hovering);
             hovered_ = true;

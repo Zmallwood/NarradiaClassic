@@ -17,13 +17,11 @@ namespace Narradia {
             SDLDeleter());
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-
         if (SDL_GL_CreateContext(window.get()) == nullptr) {
             std::cout << "OpenGL context could not be created! SDL Error: "
                       << std::string(SDL_GetError()) << std::endl;
             return;
         }
-
         Graphics::Get()->set_window(window);
         GraphicsGLView::Touch();
     }

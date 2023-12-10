@@ -8,9 +8,10 @@ namespace Narradia {
       public:
         Object(std::string_view type);
 
-        std::string_view type() {
+        auto type() {
             return type_;
         }
+
         void set_type(std::string_view value) {
             type_ = value;
         }

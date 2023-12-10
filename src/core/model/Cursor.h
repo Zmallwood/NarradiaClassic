@@ -7,7 +7,7 @@ namespace Narradia {
         void ResetStyle();
         std::string_view GetCursorImageName();
 
-        CursorStyles cursor_style() {
+        auto cursor_style() {
             return cursor_style_;
         }
 

@@ -22,7 +22,6 @@ namespace Narradia {
         renderer->SetData(uv_buffer_id, num_vertices, nullptr, BufferTypes::Uvs);
         renderer->SetData(normal_buffer_id, num_vertices, nullptr, BufferTypes::Normals);
         renderer->UseVaoEnd();
-
         return vertex_array_id;
     }
 }

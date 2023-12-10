@@ -18,23 +18,23 @@ namespace Narradia {
         PointF GetInputTextPosition();
         std::string GetInputTextWithCursor();
 
-        std::vector<TextLine> text_lines() {
+        auto text_lines() {
             return text_lines_;
         }
 
-        bool enabled() {
+        auto enabled() {
             return enabled_;
         }
 
-        bool input_active() {
+        auto input_active() {
             return input_active_;
         }
 
-        int cursor_position() {
+        auto cursor_position() {
             return cursor_position_;
         }
 
-        std::string input_text() {
+        auto input_text() {
             return input_text_;
         }
 

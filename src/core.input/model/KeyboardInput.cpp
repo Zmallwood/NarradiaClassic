@@ -30,7 +30,6 @@ namespace Narradia {
     bool KeyboardInput::KeyHasBeenFiredPickResult(SDL_Keycode key) {
         auto result = fired_keys_.count(key) > 0;
         fired_keys_.erase(key);
-
         return result;
     }
 
@@ -40,7 +39,6 @@ namespace Narradia {
     bool KeyboardInput::AnyKeyIsPressedPickResult() {
         auto result = pressed_keys_.size() > 0;
         pressed_keys_.clear();
-
         return result;
     }
 
@@ -58,7 +56,6 @@ namespace Narradia {
     std::string_view KeyboardInput::PickTextInput() {
         auto result = text_input_;
         text_input_ = "";
-
         return result;
     }
 }

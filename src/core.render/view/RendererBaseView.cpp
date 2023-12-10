@@ -43,11 +43,9 @@ namespace Narradia {
         GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
         int layout_location) const {
         glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
-
         glBufferData(
             GL_ARRAY_BUFFER, num_vertices * num_floats_per_entry * sizeof(float), data,
             GL_DYNAMIC_DRAW);
-
         if (layout_location >= 0) {
             glVertexAttribPointer(
                 layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);

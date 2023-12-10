@@ -28,7 +28,6 @@ namespace Narradia {
         std::vector<float> positions;
         std::vector<float> colors;
         std::vector<float> uvs;
-
         for (auto &vertex : vertices) {
             positions.push_back(vertex.position.x);
             positions.push_back(vertex.position.y);
@@ -39,7 +38,6 @@ namespace Narradia {
             uvs.push_back(vertex.uv.x);
             uvs.push_back(vertex.uv.y);
         }
-
         renderer->UseVaoBegin(rid);
         auto index_buffer_id = renderer_base->GetBufferId(BufferTypes::Indices, rid);
         auto position_buffer_id = renderer_base->GetBufferId(BufferTypes::Positions2D, rid);

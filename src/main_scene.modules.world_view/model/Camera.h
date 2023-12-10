@@ -5,16 +5,18 @@ namespace Narradia {
       public:
         void UpdateGameLogic();
 
-        float horizontal_angle_deg() {
+        auto horizontal_angle_deg() {
             return horizontal_angle_deg_;
         }
+
         void set_horizontal_angle_deg(float value) {
             horizontal_angle_deg_ = value;
         }
 
-        float vertical_angle_deg() {
+        auto vertical_angle_deg() {
             return vertical_angle_deg_;
         }
+
         void set_vertical_angle_deg(float value) {
             vertical_angle_deg_ = value;
         }

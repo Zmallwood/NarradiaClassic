@@ -21,7 +21,6 @@ namespace Narradia {
         renderer->SetData(
             uv_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
         renderer->UseVaoEnd();
-
         return vao_id;
     }
 }

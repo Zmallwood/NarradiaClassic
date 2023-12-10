@@ -9,7 +9,6 @@ namespace Narradia {
         if (KeyboardInput::Get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
             input_active_ = !input_active_;
         }
-
         if (input_active_) {
             auto new_text_input = KeyboardInput::Get()->PickTextInput();
             input_text_.insert(cursor_position_, new_text_input);
@@ -24,7 +23,6 @@ namespace Narradia {
     void TextOutBox::Print(std::string_view text, Color text_color) {
         if (!enabled_)
             return;
-
         std::string printed_text = std::string(GetCurrTime().data()) + "." +
                                    std::to_string(SDL_GetTicks() % 1000) + ") " + text.data();
         text_lines_.push_back({printed_text, text_color});
@@ -45,13 +43,11 @@ namespace Narradia {
     PointF TextOutBox::GetTextLinePosition(int visible_row_index) {
         auto used_bounds = kBounds;
         auto line_position_y = used_bounds.y + (visible_row_index + 1) * kTextLineHeight;
-
         return {used_bounds.x + 0.01f, line_position_y};
     }
 
     RectF TextOutBox::GetHorizontalSplitterRect() {
         auto used_bounds = kBounds;
-
         return {
             0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kBounds.width,
             kSplitLineHeight};
@@ -59,7 +55,6 @@ namespace Narradia {
 
     RectF TextOutBox::GetInputArrowRect() {
         auto used_bounds = kBounds;
-
         return {
             0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kTextLineHeight,
             kTextLineHeight};
@@ -72,12 +67,10 @@ namespace Narradia {
 
     std::string TextOutBox::GetInputTextWithCursor() {
         auto result = input_text_;
-
         if (SDL_GetTicks() % 600 < 300)
             result.insert(cursor_position_, "|");
         else
             result.insert(cursor_position_, " ");
-
         return result;
     }
 }

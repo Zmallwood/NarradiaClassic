@@ -28,18 +28,14 @@ namespace Narradia {
         RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
         std::string &out_unique_name_id, SizeF &out_size) const {
         auto font = fonts_.at(font_size)->SDL_font().get();
-
         if (!font)
             return;
-
         auto sdl_color = color.ToSDLColor();
         auto outline_sdl_color = kOutlineColor.ToSDLColor();
         auto text_outline_surface = TTF_RenderText_Blended(
             fonts_.at(font_size)->outline_SDL_font().get(), text.data(), outline_sdl_color);
-
         if (!text_outline_surface)
             return;
-
         auto text_surface = TTF_RenderText_Blended(font, text.data(), sdl_color);
         glEnable(GL_TEXTURE_2D);
         auto unique_name_id = unique_name_ids_->at(rid);

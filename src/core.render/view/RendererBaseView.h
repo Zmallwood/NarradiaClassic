@@ -22,7 +22,7 @@ namespace Narradia {
             int layout_location) const;
         std::shared_ptr<ShaderProgramView> GetShaderProgramView() const;
 
-        std::shared_ptr<RendererBase> renderer_base() {
+        auto renderer_base() {
             return renderer_base_;
         }
 

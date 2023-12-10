@@ -19,7 +19,6 @@ namespace Narradia {
         auto time_to_update = SDL_GetTicks() > Player::Get()->ticks_last_move() +
                                                    400 / Player::Get()->movement_speed();
         if (time_to_update) {
-
             if (destination.x != -1 && destination.y != -1) {
                 auto dx = destination.x - Player::Get()->position().x;
                 auto dy = destination.y - Player::Get()->position().y;
@@ -29,32 +28,24 @@ namespace Narradia {
                 auto norm_y = dy ? dy / abs_dy : 0;
                 auto new_x = Player::Get()->position().x + norm_x;
                 auto new_y = Player::Get()->position().y + norm_y;
-
                 if (new_x < 0 || new_y < 0 || new_x >= kMapWidth || new_y >= kMapHeight)
                     return;
-
                 auto map_area = World::Get()->curr_map_area();
-
                 if (map_area->GetTile(new_x, new_y)->ground() != "GroundWater") {
                     auto is_obstacle = false;
-
                     if (map_area->GetTile(new_x, new_y)->object())
                         is_obstacle = ObjectsConfiguration::Get()->IsObstacle(
                             map_area->GetTile(new_x, new_y)->object()->type());
-
                     if (!is_obstacle) {
-
-                        if (norm_y == -1)
-                            Player::Get()->MoveUp();
-                        else if (norm_y == 1)
-                            Player::Get()->MoveDown();
-
-                        if (norm_x == 1)
-                            Player::Get()->MoveRight();
-                        else if (norm_x == -1)
-                            Player::Get()->MoveLeft();
-
-                        Player::Get()->set_ticks_last_move(SDL_GetTicks());
+//                        if (norm_y == -1)
+//                            Player::Get()->MoveUp();
+//                        else if (norm_y == 1)
+//                            Player::Get()->MoveDown();
+//                        if (norm_x == 1)
+//                            Player::Get()->MoveRight();
+//                        else if (norm_x == -1)
+//                            Player::Get()->MoveLeft();
+//                        Player::Get()->set_ticks_last_move(SDL_GetTicks());
                     }
                 }
             }

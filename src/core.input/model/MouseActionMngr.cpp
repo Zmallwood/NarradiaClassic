@@ -23,16 +23,12 @@ namespace Narradia {
     bool MouseActionMngr::PerformFiredActions() {
         if (fired_actions_.size() == 0)
             return false;
-
         MouseAction top_most_action = {[] {}, -1};
-
         for (auto action : fired_actions_) {
             if (action.z_level > top_most_action.z_level)
                 top_most_action = action;
         }
-
         top_most_action.action();
-
         return true;
     }
 
@@ -42,16 +38,12 @@ namespace Narradia {
     bool MouseActionMngr::PerformReleasedActions() {
         if (released_actions_.size() == 0)
             return false;
-
         MouseAction top_most_action = {[] {}, -1};
-
         for (auto action : released_actions_) {
             if (action.z_level > top_most_action.z_level)
                 top_most_action = action;
         }
-
         top_most_action.action();
-
         return true;
     }
 

@@ -10,7 +10,6 @@ namespace Narradia {
         auto id = id_counter++;
         auto unique_name = "RenderedImage" + std::to_string(id);
         ImageBank::Get()->CreateBlankTextImage(unique_name);
-
         return unique_name;
     }
 }

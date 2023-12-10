@@ -10,7 +10,6 @@ namespace Narradia {
         glCompileShader(*shader);
         GLint shader_compiled = GL_FALSE;
         glGetShaderiv(*shader, GL_COMPILE_STATUS, &shader_compiled);
-
         return shader_compiled;
     }
 }

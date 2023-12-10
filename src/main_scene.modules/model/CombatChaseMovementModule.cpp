@@ -7,12 +7,9 @@ namespace Narradia {
     void CombatChaseMovementModule::UpdateGameLogic() {
         auto time_to_update = SDL_GetTicks() > Player::Get()->ticks_last_move() +
                                                    400 / Player::Get()->movement_speed();
-
         if (false == time_to_update)
             return;
-
         auto targeted_mob = MobTargetingModule::Get()->targeted_mob();
-
         if (targeted_mob) {
             auto map_area = World::Get()->curr_map_area();
             auto player_pos = Player::Get()->position();
@@ -36,16 +33,16 @@ namespace Narradia {
                 return;
             if (tile->mob() != nullptr)
                 return;
-            if (dx > 0)
-                Player::Get()->MoveRight();
-            if (dx < 0)
-                Player::Get()->MoveLeft();
-            if (dy > 0)
-                Player::Get()->MoveDown();
-            if (dy < 0)
-                Player::Get()->MoveUp();
-            Player::Get()->set_ticks_last_move(SDL_GetTicks());
-            Player::Get()->set_destination({-1, -1});
+//            if (dx > 0)
+//                Player::Get()->MoveRight();
+//            if (dx < 0)
+//                Player::Get()->MoveLeft();
+//            if (dy > 0)
+//                Player::Get()->MoveDown();
+//            if (dy < 0)
+//                Player::Get()->MoveUp();
+//            Player::Get()->set_ticks_last_move(SDL_GetTicks());
+//            Player::Get()->set_destination({-1, -1});
         }
     }
 }

@@ -22,7 +22,6 @@ namespace Narradia {
         renderer->SetData(
             color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
         renderer->UseVaoEnd();
-
         return vao_id;
     }
 }

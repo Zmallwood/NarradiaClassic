@@ -24,7 +24,6 @@ namespace Narradia {
         DrawImage("NarradiaLogo", rid_logo, {0.3f, 0.1f, 0.4f, 0.2f});
         RectF rect = {0.1f, 0.1f, 0.2f, 0.1f};
         Color color = {1.0f, 0.0f, 0.0f, 255};
-
         if (SDL_GetTicks() % 600 > 300)
             DrawString(rid_text, "Press to start", {0.5f, 0.5f}, {1.0f, 1.0f, 1.0f, 1.0f}, true);
     }

@@ -11,8 +11,13 @@ namespace Narradia {
         SceneMngr();
         void UpdateGameLogicCurrScene();
 
-        SceneNames curr_scene() { return curr_scene_; }
-        void set_curr_scene(SceneNames value) { curr_scene_ = value; }
+        auto curr_scene() {
+            return curr_scene_;
+        }
+
+        void set_curr_scene(SceneNames value) {
+            curr_scene_ = value;
+        }
 
       private:
         std::map<SceneNames, std::shared_ptr<IScene>> scenes_;

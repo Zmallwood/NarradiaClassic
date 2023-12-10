@@ -13,7 +13,7 @@ namespace Narradia {
         }
         bool Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src);
 
-        std::shared_ptr<ShaderProgram> shader_program() {
+        auto shader_program() {
             return shader_program_;
         }
 

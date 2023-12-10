@@ -10,41 +10,46 @@ namespace Narradia {
     */
     class Tile {
       public:
-        std::string_view ground() {
+        auto ground() {
             return ground_;
         }
+
         void set_ground(std::string_view value) {
             ground_ = value;
         }
 
-        std::shared_ptr<Object> object() {
+        auto object() {
             return object_;
         }
+
         void set_object(std::shared_ptr<Object> value) {
             object_ = value;
         }
 
-        std::shared_ptr<Mob> mob() {
+        auto mob() {
             return mob_;
         }
+
         void set_mob(std::shared_ptr<Mob> value) {
             mob_ = value;
         }
 
-        float elevation() {
+        auto elevation() {
             return elevation_;
         }
 
-        TileEffect tile_effect() {
+        auto tile_effect() {
             return tile_effect_;
         }
+
         void set_tile_effect(TileEffect value) {
             tile_effect_ = value;
         }
 
-        RenderID rid() {
+        auto rid() {
             return rid_;
         }
+
         void set_rid(RenderID value) {
             rid_ = value;
         }

@@ -13,11 +13,11 @@ namespace Narradia {
         void RegisterRelease(Uint8 button);
         void PerformMouseActions();
 
-        std::shared_ptr<MouseButton> left_button() {
+        auto left_button() {
             return left_button_;
         }
 
-        std::shared_ptr<MouseButton> right_button() {
+        auto right_button() {
             return right_button_;
         }
 

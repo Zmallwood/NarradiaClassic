@@ -27,14 +27,11 @@ namespace Narradia {
         if (has_been_fired_) {
             mouse_action_mngr_->PerformFiredActions();
         }
-
         mouse_action_mngr_->ClearFiredActions();
         has_been_fired_ = false;
-
         if (has_been_released_) {
             mouse_action_mngr_->PerformReleasedActions();
         }
-
         mouse_action_mngr_->ClearReleasedActions();
         has_been_released_ = false;
     }

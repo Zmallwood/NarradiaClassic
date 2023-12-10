@@ -5,7 +5,7 @@ namespace Narradia {
       public:
         void UpdateGameLogic();
 
-        int fps() {
+        auto fps() {
             return fps_;
         }
 

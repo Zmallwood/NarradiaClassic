@@ -6,6 +6,6 @@ namespace Narradia {
         bool RunningBelow60FPS();
 
       private:
-        int b_ = 0;
+        int prev_ticks_ = 0;
     };
 }

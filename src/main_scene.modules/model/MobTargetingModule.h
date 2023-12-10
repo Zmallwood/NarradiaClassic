@@ -8,7 +8,7 @@ namespace Narradia {
         void UpdateGameLogic();
         void ClearTarget();
 
-        std::shared_ptr<Mob> targeted_mob() {
+        auto targeted_mob() {
             return targeted_mob_;
         }
 

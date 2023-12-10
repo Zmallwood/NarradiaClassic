@@ -9,7 +9,7 @@ namespace Narradia {
       public:
         World();
 
-        std::shared_ptr<MapArea> curr_map_area() {
+        auto curr_map_area() {
             return curr_map_area_;
         }
 

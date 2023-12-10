@@ -7,12 +7,12 @@ namespace Narradia {
     class Player : public Singleton<Player> {
       public:
         Player();
-        void MoveUp();
+        void MoveForward();
         void MoveRight();
-        void MoveDown();
+        void MoveBackwards();
         void MoveLeft();
 
-        Point3F position() {
+        auto position() {
             return position_;
         }
 
@@ -20,11 +20,11 @@ namespace Narradia {
             position_ = value;
         }
 
-        float movement_speed() {
+        auto movement_speed() {
             return movement_speed_;
         }
 
-        int ticks_last_move() {
+        auto ticks_last_move() {
             return ticks_last_move_;
         }
 
@@ -32,7 +32,7 @@ namespace Narradia {
             ticks_last_move_ = value;
         }
 
-        Point destination() {
+        auto destination() {
             return destination_;
         }
 
@@ -40,11 +40,11 @@ namespace Narradia {
             destination_ = value;
         }
 
-        float attack_speed() {
+        auto attack_speed() {
             return attack_speed_;
         }
 
-        int ticks_last_hit_performed() {
+        auto ticks_last_hit_performed() {
             return ticks_last_hit_performed_;
         }
 
@@ -52,11 +52,11 @@ namespace Narradia {
             ticks_last_hit_performed_ = value;
         }
 
-        float ultimate_skill_chance() {
+        auto ultimate_skill_chance() {
             return ultimate_skill_chance_;
         }
 
-        int ticks_ulti_skill_start() {
+        auto ticks_ulti_skill_start() {
             return ticks_ulti_skill_start_;
         }
 
@@ -64,11 +64,11 @@ namespace Narradia {
             ticks_ulti_skill_start_ = value;
         }
 
-        float ulti_skill_duration() {
+        auto ulti_skill_duration() {
             return ulti_skill_duration_;
         }
 
-        float facing_angle_deg() {
+        auto facing_angle_deg() {
             return facing_angle_deg_;
         }
 
@@ -77,8 +77,10 @@ namespace Narradia {
         }
 
       private:
+        void MoveAtAngle(float angle_deg_);
+
         Point3F position_;
-        float movement_speed_ = 2.0f;
+        float movement_speed_ = 5.0f;
         int ticks_last_move_ = 0;
         Point destination_ = {-1, -1};
         float attack_speed_ = 0.8f;
@@ -87,5 +89,6 @@ namespace Narradia {
         int ticks_ulti_skill_start_ = 0;
         int ulti_skill_duration_ = 9000;
         float facing_angle_deg_ = 0.0f;
+        float step_size_ = 1.0f;
     };
 }

@@ -10,16 +10,14 @@
 #include "core.render/view/command/StopTileBatchDrawing.h"
 #include "world.actors/model/Player.h"
 #include "world.structure/model/World.h"
+#include "command/DrawMob.h"
 
 namespace Narradia {
     WorldViewModuleView::WorldViewModuleView() {
         auto map_area = World::Get()->curr_map_area();
         auto tile_size = kTileSize;
-
         for (auto x = 0; x < kMapWidth; x++) {
-            rids_tiles.push_back(std::vector<RenderID>());
-
-            for (auto y = 0; y < kMapHeight; y++) {
+            rids_tiles.push_back(std::vector<RenderID>()); for (auto y = 0; y < kMapHeight; y++) {
                 rids_tiles.at(x).push_back(NewTile());
                 Vertex3F v0;
                 Vertex3F v1;
@@ -52,47 +50,34 @@ namespace Narradia {
         auto x_center = static_cast<int>(player_pos.x);
         auto y_center = static_cast<int>(player_pos.z);
         StartTileBatchDrawing();
-
         for (auto y = y_center - r; y <= y_center + r; y++) {
-
             for (auto x = x_center - r; x <= x_center + r; x++) {
-
                 if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
                     continue;
-
                 auto dx = x - x_center;
                 auto dy = y - y_center;
-
                 if (dx * dx + dy * dy > r * r)
                     continue;
-
                 auto tile = map_area->GetTile(x, y);
                 auto coord = Point{x, y};
                 DrawGround(tile, coord);
             }
         }
-
         StopTileBatchDrawing();
-
         for (auto y = y_center - r; y <= y_center + r; y++) {
-
             for (auto x = x_center - r; x <= x_center + r; x++) {
-
                 if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
                     continue;
-
                 auto dx = x - x_center;
                 auto dy = y - y_center;
-
                 if (dx * dx + dy * dy > r * r)
                     continue;
-
                 auto tile = map_area->GetTile(x, y);
                 auto coord = Point{x, y};
                 DrawObjects(tile, coord);
+                DrawMob(tile, coord);
             }
         }
-
         DrawPlayer();
     }
 }
