@@ -20,7 +20,6 @@ namespace Narradia {
   */
   void SceneMngrController::UpdateGameFlowCurrScene() {
     auto curr_scene = SceneMngr::Get()->curr_scene();
-
     if (scene_controllers_.count(curr_scene) != 0)
       scene_controllers_.at(curr_scene)->UpdateGameFlow();
   }

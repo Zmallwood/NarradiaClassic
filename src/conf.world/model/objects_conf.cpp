@@ -1,4 +1,4 @@
-#include "objects_configuration.h"
+#include "objects_conf.h"
 #include "conf.world/model/object_flags.h"
 
 namespace Narradia {

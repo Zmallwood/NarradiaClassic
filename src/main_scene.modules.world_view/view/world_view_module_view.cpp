@@ -3,7 +3,7 @@
 #include "command/draw_mob.h"
 #include "command/draw_objects.h"
 #include "command/draw_player.h"
-#include "conf/model/configuration.h"
+#include "conf/model/conf.h"
 #include "core.render/view/renderer_tiles_view.h"
 #include "core.render/view/command/new_tile.h"
 #include "core.render/view/command/set_tile_geometry.h"

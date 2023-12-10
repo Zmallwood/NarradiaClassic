@@ -1,5 +1,5 @@
 #include "mob_targeting_module.h"
-#include "conf/model/configuration.h"
+#include "conf/model/conf.h"
 #include "core.input/model/mouse_input.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"

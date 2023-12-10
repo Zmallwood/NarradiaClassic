@@ -1,5 +1,5 @@
 #include "mob_movement_module.h"
-#include "conf/model/configuration.h"
+#include "conf/model/conf.h"
 #include "world.structure/model/world.h"
 
 namespace Narradia {

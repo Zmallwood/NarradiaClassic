@@ -1,6 +1,6 @@
 #include "renderer_models_view.h"
 #include "camera_gl.h"
-#include "conf/model/configuration.h"
+#include "conf/model/conf.h"
 #include "core.assets/model/image_bank.h"
 #include "core.assets/model/model_bank.h"
 #include "core.render.shaders/model/models_fragment.inc.cpp"
