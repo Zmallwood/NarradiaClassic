@@ -72,6 +72,7 @@ namespace Narradia {
         auto tile_symbols = std::make_shared<Tile>();
         tile_symbols->set_mob(tile->mob());
         tile_symbols->set_rid(rids_tile_symbols[x][y]);
+        tile_symbols->set_tile_effect(tile->tile_effect());
         DrawTileSymbols(tile_symbols, coord);
       }
     }

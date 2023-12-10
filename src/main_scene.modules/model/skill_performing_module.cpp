@@ -8,7 +8,7 @@ namespace Narradia {
       if (SDL_GetTicks() <
               Player::Get()->ticks_ulti_skill_start() + Player::Get()->ulti_skill_duration() &&
           Player::Get()->ticks_ulti_skill_start() != 0) {
-        auto player_pos = Player::Get()->position();
+        auto player_pos = Player::Get()->position().GetXZ().ToIntPoint();
         auto map_area = World::Get()->curr_map_area();
         auto r = 4;
         for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
