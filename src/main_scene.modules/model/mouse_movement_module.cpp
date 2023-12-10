@@ -30,8 +30,10 @@ namespace Narradia {
         Player::Get()->set_destination({-1, -1});
         return;
       }
-      auto angle_deg =
-          std::atan2(dy, dx) * 180.0f / M_PI + Camera::Get()->horizontal_angle_deg() - 90.0f;
+      auto base_angle_deg = std::atan2(dy, dx) * 180.0f / M_PI - 90.0f;
+      Player::Get()->set_facing_angle_deg(-base_angle_deg);
+      auto angle_deg = base_angle_deg + Camera::Get()->horizontal_angle_deg() +
+                       Player::Get()->facing_angle_deg();
       Player::Get()->MoveAtAngle(angle_deg);
       Player::Get()->set_ticks_last_move(SDL_GetTicks());
     }
