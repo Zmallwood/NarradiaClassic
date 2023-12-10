@@ -12,6 +12,7 @@ namespace Narradia {
     void MoveRight();
     void MoveBackwards();
     void MoveLeft();
+    void MoveAtAngle(float angle_deg_);
 
     auto position() {
       return position_;
@@ -78,8 +79,6 @@ namespace Narradia {
     }
 
    private:
-    void MoveAtAngle(float angle_deg_);
-
     Point3F position_;
     float movement_speed_ = 5.0f;
     int ticks_last_move_ = 0;
