@@ -11,7 +11,7 @@ namespace Narradia {
       mouse_pos_rotation_start_ = GetMousePosition();
       cam_horizontal_angle_deg_rotation_start_ = Camera::Get()->horizontal_angle_deg();
       cam_vertical_angle_deg_rotation_start_ = Camera::Get()->vertical_angle_deg();
-    });
+    }, 1);
     MouseInput::Get()->right_button()->AddReleasedAction([&] { is_rotating_ = false; });
     if (is_rotating_) {
       Cursor::Get()->set_cursor_style(CursorStyles::Rotating);

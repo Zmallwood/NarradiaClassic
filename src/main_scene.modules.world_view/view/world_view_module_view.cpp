@@ -70,6 +70,7 @@ namespace Narradia {
         auto coord = Point{x, y};
         DrawGround(tile, coord);
         auto tile_symbols = std::make_shared<Tile>();
+        tile_symbols->set_mob(tile->mob());
         tile_symbols->set_rid(rids_tile_symbols[x][y]);
         DrawTileSymbols(tile_symbols, coord);
       }

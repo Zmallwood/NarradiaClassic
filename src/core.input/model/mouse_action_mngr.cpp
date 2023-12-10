@@ -23,12 +23,21 @@ namespace Narradia {
   bool MouseActionMngr::PerformFiredActions() {
     if (fired_actions_.size() == 0)
       return false;
-    MouseAction top_most_action = {[] {}, -1};
+    int top_most_z_level = -1;
+    std::vector<MouseAction> top_most_actions;
     for (auto action : fired_actions_) {
-      if (action.z_level > top_most_action.z_level)
-        top_most_action = action;
+      if (action.z_level > top_most_z_level) {
+        top_most_actions.clear();
+        top_most_actions.push_back(action);
+        top_most_z_level = action.z_level;
+      }
+      else if (action.z_level == top_most_z_level) {
+        top_most_actions.push_back(action);
+        top_most_z_level = action.z_level;
+      }
     }
-    top_most_action.action();
+    for (auto &action : top_most_actions)
+      action.action();
     return true;
   }
 
@@ -38,12 +47,21 @@ namespace Narradia {
   bool MouseActionMngr::PerformReleasedActions() {
     if (released_actions_.size() == 0)
       return false;
-    MouseAction top_most_action = {[] {}, -1};
+    int top_most_z_level = -1;
+    std::vector<MouseAction> top_most_actions;
     for (auto action : released_actions_) {
-      if (action.z_level > top_most_action.z_level)
-        top_most_action = action;
+      if (action.z_level > top_most_z_level) {
+        top_most_actions.clear();
+        top_most_actions.push_back(action);
+        top_most_z_level = action.z_level;
+      }
+      else if (action.z_level == top_most_z_level) {
+        top_most_actions.push_back(action);
+        top_most_z_level = action.z_level;
+      }
     }
-    top_most_action.action();
+    for (auto &action : top_most_actions)
+      action.action();
     return true;
   }
 

@@ -6,6 +6,7 @@
 #include "main_scene.modules/model/mouse_rotation_module.h"
 #include "main_scene.modules/model/tile_hovering_module.h"
 #include "main_scene.modules/model/mouse_movement_module.h"
+#include "main_scene.modules/model/mob_targeting_module.h"
 
 namespace Narradia {
   /**
@@ -18,6 +19,7 @@ namespace Narradia {
     WorldViewModule::Get()->UpdateGameLogic();
     MouseRotationModule::Get()->UpdateGameLogic();
     TileHoveringModule::Get()->UpdateGameLogic();
+    MobTargetingModule::Get()->UpdateGameLogic();
     FPSCounterModule::Get()->UpdateGameLogic();
   }
 }
