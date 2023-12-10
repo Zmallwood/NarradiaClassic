@@ -1,6 +1,5 @@
 #pragma once
 #include "renderer_base_view.h"
-
 namespace Narradia {
   /**
    Prepares resources and renders color-filled rectangles to

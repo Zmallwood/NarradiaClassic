@@ -1,6 +1,5 @@
 #pragma once
 #include "text_line.h"
-
 namespace Narradia {
   /**
    Renders text lines to a box available in all scenes,

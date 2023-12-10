@@ -3,7 +3,6 @@
 #include <GL/glew.h>
 #include <map>
 #include <vector>
-
 namespace Narradia {
   class ShaderProgram;
 

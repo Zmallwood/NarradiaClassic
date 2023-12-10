@@ -3,7 +3,6 @@
 #include "command/generate_mobs.h"
 #include "command/generate_objects.h"
 #include "command/generate_water.h"
-
 namespace Narradia {
   /**
    Generate all terrain and content for a MapArea.

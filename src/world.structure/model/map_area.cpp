@@ -1,6 +1,5 @@
 #include "map_area.h"
 #include "conf/model/conf.h"
-
 namespace Narradia {
   /**
    Initializes internal map structures.

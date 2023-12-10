@@ -1,5 +1,4 @@
 #include "load_single_image.h"
-
 namespace Narradia {
   /**
    Loads a single images with provided path, creating a GL

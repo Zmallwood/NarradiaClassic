@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   PointF GetMousePosition();
   std::string_view GetCurrTime();

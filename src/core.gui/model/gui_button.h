@@ -1,6 +1,5 @@
 #pragma once
 #include "gui_component.h"
-
 namespace Narradia {
   /**
    Model component of GuiButton, which is a visible and

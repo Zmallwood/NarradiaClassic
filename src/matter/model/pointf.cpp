@@ -1,5 +1,4 @@
 #include "pointf.h"
-
 namespace Narradia {
   /**
    Returns a translated PointF object, while not modifying

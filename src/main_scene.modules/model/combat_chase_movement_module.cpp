@@ -1,9 +1,7 @@
 #include "combat_chase_movement_module.h"
-#include "main_scene.modules.world_view/model/camera.h"
 #include "mob_targeting_module.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
-
 namespace Narradia {
   void CombatChaseMovementModule::UpdateGameLogic() {
     auto time_to_update =

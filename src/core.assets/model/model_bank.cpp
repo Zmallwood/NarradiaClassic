@@ -1,6 +1,5 @@
 #include "model_bank.h"
 #include "core.assets.model_creation/model/model_creator.h"
-
 namespace Narradia {
   ModelBank::ModelBank()
       : models_(std::make_shared<std::map<std::string, std::shared_ptr<Model>>>()) {

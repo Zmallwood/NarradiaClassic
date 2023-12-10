@@ -1,9 +1,8 @@
 #include "scene_mngr_controller.h"
-#include "../../scenes/intro/controller/intro_scene_controller.h"
-#include "../../scenes/main/controller/main_scene_controller.h"
-#include "../../scenes/main_menu/controller/main_menu_scene_controller.h"
-#include "../model/scene_mngr.h"
-
+#include "scenes/intro/controller/intro_scene_controller.h"
+#include "scenes/main/controller/main_scene_controller.h"
+#include "scenes/main_menu/controller/main_menu_scene_controller.h"
+#include "core/model/scene_mngr.h"
 namespace Narradia {
   /**
    Initialize scene controllers that will be used.
@@ -31,8 +30,4 @@ namespace Narradia {
     SceneMngr::Get()->set_curr_scene(new_scene);
     scene_controllers_.at(new_scene)->OnEnter();
   }
-
-  //    string SceneMngrController::LakSho() {
-  //        return "Laksh0!!!";
-  //    }
 }

@@ -1,6 +1,4 @@
 #include "renderer_base.h"
-#include "core.render/model/shader_program.h"
-
 namespace Narradia {
   /**
    Generate id for a new vertex array object (VAO).

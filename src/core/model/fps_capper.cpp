@@ -1,5 +1,4 @@
 #include "fps_capper.h"
-
 namespace Narradia {
   bool FPSCapper::RunningBelow60FPS() {
     auto curr_ticks = SDL_GetTicks();

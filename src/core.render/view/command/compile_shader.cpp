@@ -1,5 +1,4 @@
 #include "compile_shader.h"
-
 namespace Narradia {
   /**
    Compile shader, vertex or fragment type, and returns

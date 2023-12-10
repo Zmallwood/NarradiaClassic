@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Singleton templated class.

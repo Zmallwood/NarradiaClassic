@@ -1,11 +1,8 @@
 #include "renderer_text.h"
-#include "command/create_get_blank_texture.h"
 #include "core.assets/model/image_bank.h"
 #include "core.render.text/model/font.h"
-#include "core.render/view/renderer_2d_images_view.h"
 #include "core.render/view/command/draw_image.h"
 #include "core.render/view/command/new_image.h"
-
 namespace Narradia {
   /**
    Initializes Font objects for desired sizes.

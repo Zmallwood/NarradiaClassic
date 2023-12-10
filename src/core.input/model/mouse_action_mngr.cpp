@@ -1,5 +1,4 @@
 #include "mouse_action_mngr.h"
-
 namespace Narradia {
   /**
    Adds an action which might be executed on firing the

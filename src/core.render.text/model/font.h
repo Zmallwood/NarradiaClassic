@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Holds SDL font objects for a single font with a specific

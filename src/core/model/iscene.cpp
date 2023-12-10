@@ -1,5 +1,4 @@
 #include "iscene.h"
-
 namespace Narradia {
   /**
    Update game logic from scenes deriving from this class.

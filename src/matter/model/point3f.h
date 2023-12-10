@@ -1,6 +1,5 @@
 #pragma once
 #include "pointf.h"
-
 namespace Narradia {
   class Point3F {
    public:

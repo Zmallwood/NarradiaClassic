@@ -1,6 +1,5 @@
 #include "new_image.h"
-#include "../renderer_2d_images_view.h"
-
+#include "core.render/view/renderer_2d_images_view.h"
 namespace Narradia {
   RenderID NewImage() {
     auto renderer = Renderer2DImagesView::Get();

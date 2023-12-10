@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Text line entry stored and printed in TextOutBox.

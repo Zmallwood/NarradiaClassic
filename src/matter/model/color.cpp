@@ -1,5 +1,4 @@
 #include "color.h"
-
 namespace Narradia {
   /**
    Converts Narradia Color object to SDL type.

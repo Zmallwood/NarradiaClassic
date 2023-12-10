@@ -1,6 +1,4 @@
 #include "graphics_gl_view.h"
-#include "core/view/graphics_view.h"
-
 namespace Narradia {
   /**
    Initializes OpenGL-specific graphics parts.

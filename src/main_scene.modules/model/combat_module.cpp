@@ -3,7 +3,6 @@
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
 #include "core/model/text_out_box.h"
-
 namespace Narradia {
   void CombatModule::UpdateGameLogic() {
     auto targeted_mob = MobTargetingModule::Get()->targeted_mob();

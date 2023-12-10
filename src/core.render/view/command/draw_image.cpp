@@ -1,7 +1,6 @@
 #include "draw_image.h"
-#include "../renderer_2d_images_view.h"
+#include "core.render/view/renderer_2d_images_view.h"
 #include "core.assets/model/image_bank.h"
-
 namespace Narradia {
   /**
    Draws an image to the canvas, must previously have been

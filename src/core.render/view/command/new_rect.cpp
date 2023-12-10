@@ -1,6 +1,5 @@
 #include "new_rect.h"
-#include "../renderer_2d_solid_colors_view.h"
-
+#include "core.render/view/renderer_2d_solid_colors_view.h"
 namespace Narradia {
   /**
    Prepares resources for a new colored rectangle, later

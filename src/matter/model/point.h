@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Integer type 2D point.

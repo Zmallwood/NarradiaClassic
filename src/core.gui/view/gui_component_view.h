@@ -1,7 +1,6 @@
 #pragma once
 #include "core.gui/model/gui_component.h"
 #include <memory>
-
 namespace Narradia {
   /**
    View component of the GuiComponent.

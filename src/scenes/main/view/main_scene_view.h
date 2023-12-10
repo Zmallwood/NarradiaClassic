@@ -1,6 +1,5 @@
 #pragma once
-#include "../../../core/view/iscene_view.h"
-
+#include "core/view/iscene_view.h"
 namespace Narradia {
   /**
    View for MainScene.

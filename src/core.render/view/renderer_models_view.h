@@ -1,7 +1,6 @@
 #pragma once
-#include "../model/body_data.h"
+#include "core.render/model/body_data.h"
 #include "renderer_base_view.h"
-
 namespace Narradia {
   class RendererModelsView : public RendererBaseView, public Singleton<RendererModelsView> {
    public:

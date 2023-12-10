@@ -2,7 +2,6 @@
 #include "gui_component.h"
 #include <memory>
 #include <vector>
-
 namespace Narradia {
   /**
    Model component for SceneGui, of which every Scene has

@@ -1,5 +1,4 @@
 #include "font.h"
-
 namespace Narradia {
   /**
    Initialize two SDL fonts, one regular and one for the

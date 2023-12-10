@@ -1,8 +1,7 @@
 #include "graphics_view.h"
-#include "../model/engine.h"
-#include "../model/graphics.h"
+#include "core/model/engine.h"
+#include "core/model/graphics.h"
 #include "graphics_gl_view.h"
-
 namespace Narradia {
   /**
    Initialize SDL window and some of the OpenGL settings.

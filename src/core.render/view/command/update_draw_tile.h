@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   void UpdateDrawTile(
       std::string_view image_name, RenderID vao_id, Vertex3F &v0, Vertex3F &v1, Vertex3F &v2,

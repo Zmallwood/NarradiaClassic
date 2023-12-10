@@ -1,10 +1,9 @@
 #include "draw_image_polygon.h"
-#include "../camera_gl.h"
-#include "../renderer_tiles_view.h"
+#include "core.render/view/camera_gl.h"
+#include "core.render/view/renderer_tiles_view.h"
 #include "conf/model/conf.h"
 #include "core.assets/model/image_bank.h"
 #include "world.actors/model/player.h"
-
 namespace Narradia {
   void DrawImagePolygon(
       std::string_view image_name, RenderID vao_id, int vertex_count, bool depth_test_off) {

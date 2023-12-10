@@ -3,7 +3,6 @@
 #include "core/model/engine.h"
 #include "core/model/fps_capper.h"
 #include "core/view/engine_view.h"
-
 namespace Narradia {
   /**
    Run a new game instance.

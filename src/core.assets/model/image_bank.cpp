@@ -1,8 +1,6 @@
 #include "image_bank.h"
 #include "command/file_utilities.h"
 #include "command/load_single_image.h"
-#include "core/model/graphics.h"
-
 namespace Narradia {
   /**
    Load images on first use.

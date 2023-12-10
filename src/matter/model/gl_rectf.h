@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Floating point rectangle type used to differentiate

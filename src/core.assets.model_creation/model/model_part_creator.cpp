@@ -1,13 +1,11 @@
 #include "model_part_creator.h"
 #include "model_part_keyframe_creator.h"
 #include "core.model_structure/model/model_part.h"
-
 using std::make_shared;
 using std::map;
 using std::shared_ptr;
 using std::string;
 using std::vector;
-
 namespace Narradia {
   auto ModelPartCreator::CreateModelPartFromMesh(
       const aiScene *scene, string nodeName, aiMesh *mesh) const -> shared_ptr<ModelPart> {

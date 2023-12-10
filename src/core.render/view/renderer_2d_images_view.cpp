@@ -1,8 +1,6 @@
 #include "renderer_2d_images_view.h"
-#include "core.assets/model/image_bank.h"
 #include "core.render.shaders/model/2d_images_fragment.inc.cpp"
 #include "core.render.shaders/model/2d_images_vertex.inc.cpp"
-
 namespace Narradia {
   /**
    Create the shader program for the provided shader

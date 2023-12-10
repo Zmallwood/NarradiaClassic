@@ -1,8 +1,4 @@
 #include "renderer_base_view.h"
-#include "../model/shader_program.h"
-#include "core.render/model/renderer_base.h"
-#include "core.render/view/shader_program_view.h"
-
 namespace Narradia {
   /**
    Create shader program and renderer base.

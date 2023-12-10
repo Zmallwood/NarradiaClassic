@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   namespace ObjectFlags {
     inline static int None = 0;

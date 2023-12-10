@@ -1,8 +1,6 @@
 #pragma once
-#include "../model/renderer_base.h"
+#include "core.render/model/renderer_base.h"
 #include "shader_program_view.h"
-#include "core.render/model/buffer_types.h"
-
 namespace Narradia {
   /**
    View component of RendererBase.

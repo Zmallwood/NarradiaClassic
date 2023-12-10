@@ -1,7 +1,6 @@
 #pragma once
-#include "../model/shader_program.h"
+#include "core.render/model/shader_program.h"
 #include <memory>
-
 namespace Narradia {
   /**
    View component of ShaderProgram.

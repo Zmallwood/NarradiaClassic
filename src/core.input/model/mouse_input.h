@@ -1,6 +1,5 @@
 #pragma once
 #include "mouse_button.h"
-
 namespace Narradia {
   /**
    Contains the left and right mouse buttons and forwards

@@ -2,7 +2,6 @@
 #include "core.gui/model/gui_button.h"
 #include "core/controller/scene_mngr_controller.h"
 #include "core/model/engine.h"
-
 namespace Narradia {
   /**
    Initialize GuiComponents.

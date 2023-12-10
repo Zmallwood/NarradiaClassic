@@ -1,5 +1,4 @@
 #include "rectf.h"
-
 namespace Narradia {
   /**
    Returns this object as a GLRectF type, which is in the

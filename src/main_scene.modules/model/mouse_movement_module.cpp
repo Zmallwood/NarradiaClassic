@@ -1,13 +1,8 @@
 #include "mouse_movement_module.h"
-#include "conf.world/model/objects_conf.h"
-#include "conf/model/conf.h"
 #include "core.input/model/mouse_input.h"
-#include "main_scene.modules.world_view/model/camera.h"
 #include "mob_targeting_module.h"
 #include "tile_hovering_module.h"
 #include "world.actors/model/player.h"
-#include "world.structure/model/world.h"
-
 namespace Narradia {
   void MouseMovementModule::UpdateGameLogic() {
     MouseInput::Get()->left_button()->AddFiredAction(

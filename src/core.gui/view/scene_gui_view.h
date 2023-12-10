@@ -2,7 +2,6 @@
 #include "gui_component_view.h"
 #include "core.gui/model/scene_gui.h"
 #include <memory>
-
 namespace Narradia {
   /**
    View component of SceneGui.

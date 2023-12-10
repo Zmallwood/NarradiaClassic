@@ -1,6 +1,4 @@
 #include "iscene_view.h"
-#include "core/view/scene_mngr_view.h"
-
 namespace Narradia {
   /**
    Render scenes deriving from this class.

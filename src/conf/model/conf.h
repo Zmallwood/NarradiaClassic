@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   constexpr int kMapWidth = 100;
   constexpr int kMapHeight = 80;

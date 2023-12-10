@@ -11,7 +11,6 @@
 #include "main_scene.modules/model/combat_module.h"
 #include "main_scene.modules/model/mob_death_handling_module.h"
 #include "main_scene.modules/model/skill_performing_module.h"
-
 namespace Narradia {
   /**
    Update game logic.

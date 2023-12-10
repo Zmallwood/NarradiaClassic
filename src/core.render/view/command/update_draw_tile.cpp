@@ -1,7 +1,6 @@
 #include "update_draw_tile.h"
 #include "draw_image_polygon.h"
 #include "set_image_polygon_geometry.h"
-
 namespace Narradia {
   void UpdateDrawTile(
       std::string_view image_name, RenderID vao_id, Vertex3F &v0, Vertex3F &v1, Vertex3F &v2,

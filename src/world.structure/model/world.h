@@ -1,6 +1,5 @@
 #pragma once
 #include "map_area.h"
-
 namespace Narradia {
   /**
    Top most object in the world map hierchical structure.

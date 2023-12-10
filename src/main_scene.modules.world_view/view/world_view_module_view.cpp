@@ -9,10 +9,8 @@
 #include "core.render/view/command/set_tile_geometry.h"
 #include "core.render/view/command/start_tile_batch_drawing.h"
 #include "core.render/view/command/stop_tile_batch_drawing.h"
-#include "core.render/view/renderer_tiles_view.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
-
 namespace Narradia {
   WorldViewModuleView::WorldViewModuleView() {
     auto map_area = World::Get()->curr_map_area();

@@ -1,6 +1,5 @@
 #pragma once
 #include "mouse_action_mngr.h"
-
 namespace Narradia {
   /**
    Holds state of a single mouse button, left or right,

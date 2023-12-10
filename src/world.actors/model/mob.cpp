@@ -1,5 +1,4 @@
 #include "mob.h"
-
 namespace Narradia {
   /**
    Hit mob with damage.

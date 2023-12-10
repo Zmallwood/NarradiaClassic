@@ -1,7 +1,6 @@
 #pragma once
 #include "iscene.h"
 #include "scene_names.h"
-
 namespace Narradia {
   /**
    Model for SceneMngr.

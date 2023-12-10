@@ -1,6 +1,5 @@
 #pragma once
-#include "../../../core/controller/iscene_controller.h"
-
+#include "core/controller/iscene_controller.h"
 namespace Narradia {
   /**
    Controller for IntroScene.

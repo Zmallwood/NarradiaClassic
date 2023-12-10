@@ -1,9 +1,8 @@
 #include "scene_mngr_view.h"
-#include "../../scenes/intro/view/intro_scene_view.h"
-#include "../../scenes/main/view/main_scene_view.h"
-#include "../../scenes/main_menu/view/main_menu_scene_view.h"
-#include "../model/scene_mngr.h"
-
+#include "scenes/intro/view/intro_scene_view.h"
+#include "scenes/main/view/main_scene_view.h"
+#include "scenes/main_menu/view/main_menu_scene_view.h"
+#include "core/model/scene_mngr.h"
 namespace Narradia {
   /**
    Initialize scene views that will be used.

@@ -1,5 +1,4 @@
 #include "sdl_deleter.h"
-
 namespace Narradia {
   /**
    Destroy window when no longer used.

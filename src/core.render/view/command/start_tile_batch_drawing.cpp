@@ -1,9 +1,8 @@
 #include "start_tile_batch_drawing.h"
-#include "../camera_gl.h"
-#include "../renderer_tiles_view.h"
+#include "core.render/view/camera_gl.h"
+#include "core.render/view/renderer_tiles_view.h"
 #include "conf/model/conf.h"
 #include "world.actors/model/player.h"
-
 namespace Narradia {
   void StartTileBatchDrawing() {
     auto renderer = RendererTilesView::Get();

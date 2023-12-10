@@ -1,5 +1,4 @@
 #include "scene_gui.h"
-
 namespace Narradia {
   /**
    Forwards the update request to all contained gui

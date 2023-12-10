@@ -1,6 +1,5 @@
 #pragma once
-#include "../../../core/model/iscene.h"
-
+#include "core/model/iscene.h"
 namespace Narradia {
   /**
    Model for IntroScene.

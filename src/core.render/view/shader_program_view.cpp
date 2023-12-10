@@ -1,6 +1,5 @@
 #include "shader_program_view.h"
 #include "command/compile_shader.h"
-
 namespace Narradia {
   /**
    Create vertex and fragment shader from provided sources.

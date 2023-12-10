@@ -6,7 +6,6 @@
 #include "core.render.shaders/model/models_fragment.inc.cpp"
 #include "core.render.shaders/model/models_vertex.inc.cpp"
 #include "world.actors/model/player.h"
-
 namespace Narradia {
   RendererModelsView::RendererModelsView() {
     GetShaderProgramView()->Create(vertex_shader_source, fragment_shader_source);

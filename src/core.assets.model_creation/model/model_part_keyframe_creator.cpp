@@ -1,11 +1,9 @@
 #include "model_part_keyframe_creator.h"
-
 using std::make_shared;
 using std::map;
 using std::shared_ptr;
 using std::string;
 using std::vector;
-
 namespace Narradia {
   aiVectorKey ModelPartKeyframeCreator::GetPositionKeyframe(
       const aiScene *scene, string nodeName, int keyFrameIndex) const {

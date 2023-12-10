@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   class ModelPartKeyframe {
    public:

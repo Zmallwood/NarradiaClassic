@@ -1,8 +1,7 @@
 #include "intro_scene_controller.h"
-#include "../../../core.input/model/keyboard_input.h"
-#include "../../../core/controller/scene_mngr_controller.h"
+#include "core.input/model/keyboard_input.h"
+#include "core/controller/scene_mngr_controller.h"
 #include "core.input/model/mouse_input.h"
-
 namespace Narradia {
   /**
    On entering scene.

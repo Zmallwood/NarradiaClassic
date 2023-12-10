@@ -1,13 +1,11 @@
 #include "model_creator.h"
 #include "model_part_creator.h"
 #include "core.model_structure/model/model.h"
-
 using std::make_shared;
 using std::map;
 using std::shared_ptr;
 using std::string;
 using std::vector;
-
 namespace Narradia {
     shared_ptr<Model> ModelCreator::CreateModel(const aiScene *scene) {
         auto anim_duration = scene->mNumAnimations > 0 ? scene->mAnimations[0]->mDuration : 0;

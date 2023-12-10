@@ -1,6 +1,5 @@
 #pragma once
 #include "mouse_action.h"
-
 namespace Narradia {
   /**
    Adds and executes actions triggered by mouse

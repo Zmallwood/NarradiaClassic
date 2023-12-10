@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    View component of the TextOutBox.

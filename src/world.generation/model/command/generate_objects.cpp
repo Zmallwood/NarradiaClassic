@@ -1,7 +1,6 @@
 #include "generate_objects.h"
 #include "conf/model/conf.h"
 #include "world.structure/model/map_area.h"
-
 namespace Narradia {
   /**
    Generate objects randomly, such as vegetation and other

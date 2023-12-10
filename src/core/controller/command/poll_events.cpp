@@ -1,8 +1,7 @@
 #include "poll_events.h"
-#include "../../../core.input/model/keyboard_input.h"
-#include "../../../core.input/model/mouse_input.h"
-#include "../../model/engine.h"
-
+#include "core.input/model/keyboard_input.h"
+#include "core.input/model/mouse_input.h"
+#include "core/model/engine.h"
 namespace Narradia {
   /**
    Poll for user input events.

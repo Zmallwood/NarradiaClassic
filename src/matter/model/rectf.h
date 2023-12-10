@@ -1,7 +1,6 @@
 #pragma once
 #include "gl_rectf.h"
 #include "pointf.h"
-
 namespace Narradia {
   /**
    Floating point type rectangle.

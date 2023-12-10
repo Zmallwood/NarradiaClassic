@@ -1,6 +1,5 @@
 #pragma once
 #include "model_part_timeline.h"
-
 namespace Narradia {
   class ModelPart {
    public:

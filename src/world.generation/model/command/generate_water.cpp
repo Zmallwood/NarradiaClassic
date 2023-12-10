@@ -1,7 +1,6 @@
 #include "generate_water.h"
 #include "conf/model/conf.h"
 #include "world.structure/model/map_area.h"
-
 namespace Narradia {
   /**
    Generate water randomly.

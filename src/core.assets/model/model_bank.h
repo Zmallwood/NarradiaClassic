@@ -1,6 +1,5 @@
 #pragma once
 #include "core.model_structure/model/model.h"
-
 namespace Narradia {
   class ModelBank : public Singleton<ModelBank> {
    public:

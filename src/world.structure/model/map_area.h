@@ -1,6 +1,5 @@
 #pragma once
 #include "tile.h"
-
 namespace Narradia {
   /**
    Map object composed of a 2D grid of tiles and a mirror to

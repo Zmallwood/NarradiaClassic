@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Loads, holds and provides images from image folder on

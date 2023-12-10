@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   class SkillPerformingModule : public Singleton<SkillPerformingModule> {
    public:

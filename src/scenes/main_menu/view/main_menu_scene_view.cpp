@@ -1,10 +1,8 @@
 #include "main_menu_scene_view.h"
 #include "core.gui/view/gui_button_view.h"
-#include "core.render/view/renderer_2d_images_view.h"
 #include "core.render/view/command/draw_image.h"
 #include "core.render/view/command/new_image.h"
 #include "scenes/main_menu/model/main_menu_scene.h"
-
 namespace Narradia {
   /**
    Set scene gui and initialize Views for gui components

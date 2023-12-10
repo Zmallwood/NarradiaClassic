@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Model for keyboard_input.holding keyboard input state,

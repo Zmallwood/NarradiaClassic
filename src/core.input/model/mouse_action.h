@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    An entry for storing an action for possible execution

@@ -1,10 +1,6 @@
 #include "renderer_tiles_view.h"
-#include "camera_gl.h"
-#include "core.assets/model/image_bank.h"
 #include "core.render.shaders/model/tiles_fragment.inc.cpp"
 #include "core.render.shaders/model/tiles_vertex.inc.cpp"
-#include "world.actors/model/player.h"
-
 namespace Narradia {
   RendererTilesView::RendererTilesView() {
     GetShaderProgramView()->Create(vertex_shader_source, fragment_shader_source);

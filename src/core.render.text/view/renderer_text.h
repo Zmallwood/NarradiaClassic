@@ -1,6 +1,5 @@
 #pragma once
 #include "core.render.text/model/font_sizes.h"
-
 namespace Narradia {
   class Font;
 

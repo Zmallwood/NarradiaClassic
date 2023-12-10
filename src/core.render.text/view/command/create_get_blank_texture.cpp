@@ -1,6 +1,5 @@
 #include "create_get_blank_texture.h"
 #include "core.assets/model/image_bank.h"
-
 namespace Narradia {
   /**
    Creates and returns unique name for a new blank texture.

@@ -4,7 +4,6 @@
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
 #include "tile_hovering_module.h"
-
 namespace Narradia {
   void MobTargetingModule::UpdateGameLogic() {
     MouseInput::Get()->right_button()->AddFiredAction(

@@ -1,6 +1,5 @@
 #include "text_out_box.h"
 #include "core.input/model/keyboard_input.h"
-
 namespace Narradia {
   /**
    Checks if input should be activated and processes typed

@@ -1,13 +1,9 @@
 #include "text_out_box_view.h"
-#include "core.render.text/view/renderer_text.h"
 #include "core.render.text/view/command/draw_string.h"
 #include "core.render.text/view/command/new_string.h"
-#include "core.render/view/renderer_2d_images_view.h"
 #include "core.render/view/command/draw_image.h"
 #include "core.render/view/command/new_image.h"
-#include "core/model/scene_mngr.h"
 #include "core/model/text_out_box.h"
-
 namespace Narradia {
   /**
    Prepares RenderIDs for rendering.

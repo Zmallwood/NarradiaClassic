@@ -1,7 +1,6 @@
 #include "mob_death_handling_module.h"
 #include "mob_targeting_module.h"
 #include "world.structure/model/world.h"
-
 namespace Narradia {
   void MobDeathHandlingModule::UpdateGameLogic() {
     auto map_area = World::Get()->curr_map_area();

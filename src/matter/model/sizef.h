@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Contains size data that do need floating point precision.

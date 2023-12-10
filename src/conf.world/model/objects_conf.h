@@ -1,7 +1,6 @@
 #pragma once
 #include "object_flags.h"
 #include "object_conf_entry.h"
-
 namespace Narradia {
   /**
    Sets custom object flags and returns custom properties

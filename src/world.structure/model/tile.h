@@ -2,7 +2,6 @@
 #include "object.h"
 #include "tile_effect.h"
 #include "world.actors/model/mob.h"
-
 namespace Narradia {
   /**
    A tile in the game map on which objects can be places and

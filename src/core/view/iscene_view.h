@@ -1,6 +1,5 @@
 #pragma once
 #include "core.gui/view/scene_gui_view.h"
-
 namespace Narradia {
   /**
    View for IScene.

@@ -1,7 +1,6 @@
 #include "keyboard_movement_module.h"
 #include "core.input/model/keyboard_input.h"
 #include "world.actors/model/player.h"
-
 namespace Narradia {
   void KeyboardMovementModule::UpdateGameLogic() {
     auto w_is_pressed = KeyboardInput::Get()->KeyIsPressed(SDLK_w);

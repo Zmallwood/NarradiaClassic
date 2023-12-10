@@ -1,5 +1,4 @@
 #include "fps_counter_module.h"
-
 namespace Narradia {
   void FPSCounterModule::UpdateGameLogic() {
     frames_count_++;

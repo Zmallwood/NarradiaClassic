@@ -1,8 +1,7 @@
 #include "draw_string.h"
-#include "../../model/font.h"
-#include "../renderer_text.h"
+#include "core.render.text/model/font.h"
+#include "core.render.text/view/renderer_text.h"
 #include "core.render/view/command/draw_image.h"
-
 namespace Narradia {
   /**
    Draws a string to the canvas, requires it to first have

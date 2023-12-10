@@ -1,7 +1,6 @@
 #include "gui_button.h"
 #include "core.input/model/mouse_input.h"
 #include "core/model/cursor.h"
-
 namespace Narradia {
   /**
    Initializes new GuiButton model.

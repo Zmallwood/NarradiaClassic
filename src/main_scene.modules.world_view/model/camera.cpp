@@ -3,7 +3,6 @@
 #include "core.render/view/camera_gl.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
-
 namespace Narradia {
   void Camera::UpdateGameLogic() {
     {

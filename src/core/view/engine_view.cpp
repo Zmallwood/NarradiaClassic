@@ -3,7 +3,6 @@
 #include "graphics_view.h"
 #include "scene_mngr_view.h"
 #include "text_out_box_view.h"
-
 namespace Narradia {
   /**
    Render game each frame.

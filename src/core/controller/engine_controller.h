@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Narradia {
   /**
    Controller for Engine.

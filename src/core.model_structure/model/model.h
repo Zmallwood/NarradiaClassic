@@ -1,6 +1,5 @@
 #pragma once
 #include "model_part.h"
-
 namespace Narradia {
   class Model {
    public:

@@ -2,7 +2,6 @@
 #include "conf.world/model/objects_conf.h"
 #include "conf/model/conf.h"
 #include "core.render/view/renderer_models_view.h"
-
 namespace Narradia {
   void DrawObjects(std::shared_ptr<Tile> tile, Point coord) {
     if (tile->object()) {

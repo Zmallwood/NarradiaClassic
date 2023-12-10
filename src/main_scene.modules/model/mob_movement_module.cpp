@@ -1,7 +1,6 @@
 #include "mob_movement_module.h"
 #include "conf/model/conf.h"
 #include "world.structure/model/world.h"
-
 namespace Narradia {
   void MobMovementModule::UpdateGameLogic() {
     auto map_area = World::Get()->curr_map_area();

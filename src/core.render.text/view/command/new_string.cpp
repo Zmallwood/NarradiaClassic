@@ -1,8 +1,7 @@
 #include "new_string.h"
-#include "../renderer_text.h"
+#include "core.render.text/view/renderer_text.h"
 #include "create_get_blank_texture.h"
 #include "core.render/view/command/new_image.h"
-
 namespace Narradia {
   /**
    Prepares resources for a new string to be rendered.

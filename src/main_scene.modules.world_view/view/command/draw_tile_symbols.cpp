@@ -3,7 +3,6 @@
 #include "main_scene.modules/model/mob_targeting_module.h"
 #include "main_scene.modules/model/tile_hovering_module.h"
 #include "world.actors/model/player.h"
-
 namespace Narradia {
   void DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord) {
     auto player_pos = Player::Get()->position().GetXZ().ToIntPoint();

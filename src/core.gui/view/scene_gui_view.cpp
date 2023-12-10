@@ -1,5 +1,4 @@
 #include "scene_gui_view.h"
-
 namespace Narradia {
   /**
    Forwards the Render request to all contained gui

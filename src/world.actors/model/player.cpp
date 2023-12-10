@@ -3,7 +3,6 @@
 #include "core/model/text_out_box.h"
 #include "main_scene.modules.world_view/model/camera.h"
 #include "world.structure/model/world.h"
-
 namespace Narradia {
   /**
    Set default spawn coordinate.
