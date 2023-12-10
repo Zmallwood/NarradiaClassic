@@ -1,5 +1,6 @@
 #include "player.h"
 #include "conf/model/conf.h"
+#include "main_scene.modules.world_view/model/camera.h"
 #include "world.structure/model/world.h"
 
 namespace Narradia {
@@ -11,18 +12,22 @@ namespace Narradia {
   }
 
   void Player::MoveForward() {
+    facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
     MoveAtAngle(0.0f);
   }
 
   void Player::MoveRight() {
+    facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
     MoveAtAngle(90.0f);
   }
 
   void Player::MoveBackwards() {
+    facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
     MoveAtAngle(180.0f);
   }
 
   void Player::MoveLeft() {
+    facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
     MoveAtAngle(-90.0f);
   }
 
