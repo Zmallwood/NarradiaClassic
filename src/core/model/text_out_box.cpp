@@ -1,5 +1,7 @@
 #include "text_out_box.h"
 #include "core.input/model/keyboard_input.h"
+#include "core/model/scene_mngr.h"
+#include "main_scene.gui/model/experience_bar.h"
 namespace Narradia {
   /**
    Checks if input should be activated and processes typed
@@ -42,12 +44,16 @@ namespace Narradia {
 
   PointF TextOutBox::GetTextLinePosition(int visible_row_index) {
     auto used_bounds = kBounds;
+    if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+      used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
     auto line_position_y = used_bounds.y + (visible_row_index + 1) * kTextLineHeight;
     return {used_bounds.x + 0.01f, line_position_y};
   }
 
   RectF TextOutBox::GetHorizontalSplitterRect() {
     auto used_bounds = kBounds;
+    if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+      used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
     return {
         0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kBounds.width,
         kSplitLineHeight};
@@ -55,6 +61,8 @@ namespace Narradia {
 
   RectF TextOutBox::GetInputArrowRect() {
     auto used_bounds = kBounds;
+    if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+      used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
     return {
         0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kTextLineHeight,
         kTextLineHeight};

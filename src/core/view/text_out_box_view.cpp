@@ -4,6 +4,8 @@
 #include "core.render/view/command/draw_image.h"
 #include "core.render/view/command/new_image.h"
 #include "core/model/text_out_box.h"
+#include "core/model/scene_mngr.h"
+#include "main_scene.gui/model/experience_bar.h"
 namespace Narradia {
   /**
    Prepares RenderIDs for rendering.
@@ -25,11 +27,8 @@ namespace Narradia {
     if (!model->enabled())
       return;
     auto used_bounds = TextOutBox::kBounds;
-    // if (SceneMngr::Get()->curr_scene() ==
-    // SceneNames::Main)
-    //     used_bounds =
-    //         used_bounds.Translate(0.0f,
-    //         -ExperienceBar::kBarHeight);
+    if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+      used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
     DrawImage("TextOutBoxBack", rid_image_, used_bounds);
     for (auto i = 0; i < model->GetMaxNumLines(); i++) {
       auto text_line_index = model->GetTextLineIndex(i);

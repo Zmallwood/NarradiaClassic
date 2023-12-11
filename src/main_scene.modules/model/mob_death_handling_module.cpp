@@ -13,7 +13,7 @@ namespace Narradia {
         MobTargetingModule::Get()->ClearTarget();
         mobs.erase(it++);
         map_area->GetTile(mob_coord.x, mob_coord.y)
-            ->set_tile_effect({"ObjectPoolOfBlood", SDL_GetTicks()});
+            ->set_tile_effect({"ObjectPoolOfBlood", static_cast<int>(SDL_GetTicks())});
         continue;
       }
       ++it;

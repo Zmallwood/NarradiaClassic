@@ -8,15 +8,14 @@ namespace Narradia {
     std::shared_ptr<Tile> tile;
     int x;
     int y;
+    auto x_center = kMapWidth / 2;
+    auto y_center = kMapHeight / 2;
+    auto r_min = std::min(kMapWidth, kMapHeight) / 2;
     do {
-      auto r_min = std::min(kMapWidth, kMapHeight) / 2;
       auto angle_deg = static_cast<float>(rand() % 360);
-      auto x_center = kMapWidth / 2;
-      auto y_center = kMapHeight / 2;
-      x = x_center + static_cast<int>((r_min - 9) * CosDeg(angle_deg));
-      y = y_center + static_cast<int>((r_min - 9) * SinDeg(angle_deg));
+      x = x_center + static_cast<int>((r_min - kShoreSize - 1) * CosDeg(angle_deg));
+      y = y_center + static_cast<int>((r_min - kShoreSize - 1) * SinDeg(angle_deg));
       tile = map_area->GetTile(x, y);
-
     } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
     Player::Get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
   }

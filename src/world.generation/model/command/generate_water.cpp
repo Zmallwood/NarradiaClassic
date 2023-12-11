@@ -10,7 +10,7 @@ namespace Narradia {
     auto r_min = std::min(kMapHeight, kMapWidth) / 2;
     auto x_center = kMapWidth / 2;
     auto y_center = kMapHeight / 2;
-    for (auto r = r_max; r >= r_min - 8; r--) {
+    for (auto r = r_max; r >= r_min - kShoreSize; r--) {
       for (auto y = y_center - r; y <= y_center + r; y++) {
         for (auto x = x_center - r; x <= x_center + r; x++) {
           if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
