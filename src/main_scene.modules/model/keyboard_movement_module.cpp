@@ -1,6 +1,7 @@
 #include "keyboard_movement_module.h"
 #include "core.input/model/keyboard_input.h"
 #include "world.actors/model/player.h"
+#include "mob_targeting_module.h"
 namespace Narradia {
   void KeyboardMovementModule::UpdateGameLogic() {
     auto w_is_pressed = KeyboardInput::Get()->KeyIsPressed(SDLK_w);
@@ -20,6 +21,7 @@ namespace Narradia {
         Player::Get()->MoveLeft();
       Player::Get()->set_ticks_last_move(SDL_GetTicks());
       Player::Get()->set_destination({-1, -1});
+      MobTargetingModule::Get()->ClearTarget();
     }
   }
 }

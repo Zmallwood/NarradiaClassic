@@ -5,14 +5,19 @@
 namespace Narradia {
   void PlayerSpawnPositioningModule::SpawnAtGoodLocation() {
     auto map_area = World::Get()->curr_map_area();
-    auto tile = map_area->GetTile(
-        static_cast<int>(Player::Get()->position().x),
-        static_cast<int>(Player::Get()->position().z));
-    while (tile->ground() == "GroundWater" || tile->object() || tile->mob()) {
-      auto new_x = rand() % kMapWidth;
-      auto new_y = rand() % kMapHeight;
-      tile = map_area->GetTile(new_x, new_y);
-      Player::Get()->set_position({static_cast<float>(new_x), 0.0f, static_cast<float>(new_y)});
-    }
+    std::shared_ptr<Tile> tile;
+    int x;
+    int y;
+    do {
+      auto r_min = std::min(kMapWidth, kMapHeight) / 2;
+      auto angle_deg = static_cast<float>(rand() % 360);
+      auto x_center = kMapWidth / 2;
+      auto y_center = kMapHeight / 2;
+      x = x_center + static_cast<int>((r_min - 9) * CosDeg(angle_deg));
+      y = y_center + static_cast<int>((r_min - 9) * SinDeg(angle_deg));
+      tile = map_area->GetTile(x, y);
+
+    } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
+    Player::Get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
   }
 }
