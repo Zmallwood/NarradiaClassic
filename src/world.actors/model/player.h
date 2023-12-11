@@ -94,7 +94,7 @@ namespace Narradia {
     int ticks_ulti_skill_start_ = 0;
     int ulti_skill_duration_ = 9000;
     float facing_angle_deg_ = 0.0f;
-    float step_size_ = 0.4f;
+    float step_size_ = 0.8f;
     int experience_ = 0;
   };
 }
