@@ -59,6 +59,14 @@ namespace Narradia {
       rid_ = value;
     }
 
+    auto normal() {
+      return normal_;
+    }
+
+    void set_normal(Point3F value) {
+      normal_ = value;
+    }
+
    private:
     std::string_view ground_;
     std::shared_ptr<Object> object_;
@@ -66,5 +74,6 @@ namespace Narradia {
     float elevation_ = 0.0f;
     TileEffect tile_effect_;
     RenderID rid_;
+    Point3F normal_;
   };
 }

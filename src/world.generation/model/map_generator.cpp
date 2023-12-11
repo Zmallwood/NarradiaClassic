@@ -4,6 +4,7 @@
 #include "command/generate_objects.h"
 #include "command/generate_water.h"
 #include "command/generate_elevation.h"
+#include "command/calc_normals.h"
 namespace Narradia {
   /**
    Generate all terrain and content for a MapArea.
@@ -14,5 +15,6 @@ namespace Narradia {
     GenerateElevation(map_area);
     GenerateObjects(map_area);
     GenerateMobs(map_area);
+    CalcNormals(map_area);
   }
 }

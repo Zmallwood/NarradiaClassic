@@ -28,15 +28,25 @@ namespace Narradia {
         auto elev10 = elev00;
         auto elev11 = elev00;
         auto elev01 = elev00;
+        auto normal00 = map_area->GetTile(x, y)->normal();
+        auto normal10 = normal00;
+        auto normal11 = normal00;
+        auto normal01 = normal00;
         auto coord10 = Point{x + 1, y};
         auto coord11 = Point{x + 1, y + 1};
         auto coord01 = Point{x, y + 1};
-        if (map_area->IsInsideMap(coord10))
+        if (map_area->IsInsideMap(coord10)) {
           elev10 = map_area->GetTile(coord10)->elevation() * kElevAmount;
-        if (map_area->IsInsideMap(coord11))
+          normal10 = map_area->GetTile(coord10)->normal();
+        }
+        if (map_area->IsInsideMap(coord11)) {
           elev11 = map_area->GetTile(coord11)->elevation() * kElevAmount;
-        if (map_area->IsInsideMap(coord01))
+          normal11 = map_area->GetTile(coord11)->normal();
+        }
+        if (map_area->IsInsideMap(coord01)) {
           elev01 = map_area->GetTile(coord01)->elevation() * kElevAmount;
+          normal01 = map_area->GetTile(coord01)->normal();
+        }
         v0.position = {x * tile_size, elev00, y * tile_size};
         v1.position = {x * tile_size + tile_size, elev10, y * tile_size};
         v2.position = {x * tile_size + tile_size, elev11, y * tile_size + tile_size};
@@ -45,10 +55,10 @@ namespace Narradia {
         v1.uv = {1.0f, 0.0f};
         v2.uv = {1.0f, 1.0f};
         v3.uv = {0.0f, 1.0f};
-        Point3F normal00 = {0.0f, 1.f, 0.0f};
-        Point3F normal10 = {0.0f, 1.f, 0.0f};
-        Point3F normal11 = {0.0f, 1.f, 0.0f};
-        Point3F normal01 = {0.0f, 1.f, 0.0f};
+        //        Point3F normal00 = {0.0f, 1.f, 0.0f};
+        //        Point3F normal10 = {0.0f, 1.f, 0.0f};
+        //        Point3F normal11 = {0.0f, 1.f, 0.0f};
+        //        Point3F normal01 = {0.0f, 1.f, 0.0f};
         SetTileGeometry(rids_tiles[x][y], v0, v1, v2, v3, normal00, normal10, normal11, normal01);
         map_area->GetTile(x, y)->set_rid(rids_tiles[x][y]);
         rids_tile_symbols.at(x).push_back(NewTile());
