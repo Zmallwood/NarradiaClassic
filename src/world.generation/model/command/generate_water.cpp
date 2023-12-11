@@ -17,8 +17,10 @@ namespace Narradia {
             continue;
           auto dx = x - x_center;
           auto dy = y - y_center;
-          if (dx * dx + dy * dy >= r * r)
+          if (dx * dx + dy * dy >= r * r) {
             map_area->GetTile(x, y)->set_ground("GroundWater");
+            map_area->GetTile(x, y)->color()->b = 1.0f;
+          }
         }
       }
     }

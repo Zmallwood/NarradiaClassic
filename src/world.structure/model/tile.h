@@ -9,6 +9,9 @@ namespace Narradia {
   */
   class Tile {
    public:
+    Tile()
+        : color_(std::make_shared<Color>()) {
+    }
     void IncreaseElevation(float amount);
 
     auto ground() {
@@ -67,6 +70,10 @@ namespace Narradia {
       normal_ = value;
     }
 
+    auto color() {
+      return color_;
+    }
+
    private:
     std::string_view ground_;
     std::shared_ptr<Object> object_;
@@ -75,5 +82,6 @@ namespace Narradia {
     TileEffect tile_effect_;
     RenderID rid_;
     Point3F normal_;
+    std::shared_ptr<Color> color_;
   };
 }

@@ -8,7 +8,9 @@ namespace Narradia {
   void GenerateGrass(std::shared_ptr<MapArea> map_area) {
     for (auto y = 0; y < kMapHeight; y++) {
       for (auto x = 0; x < kMapWidth; x++) {
-        map_area->GetTile(x, y)->set_ground("GroundGrass");
+        map_area->GetTile(x, y)->set_ground("Ground");
+        map_area->GetTile(x,y)->color()->r = 0.0f;
+        map_area->GetTile(x,y)->color()->b = 0.0f;
       }
     }
   }
