@@ -74,6 +74,8 @@ set(PCH_FILES
 "src/common/system/typedefs.h"
 "src/core/model/sdl_deleter.h"
 "src/math/system/trigonometry.h"
+"src/math/system/exp_calc.h"
+"src/math/system/tile_calc.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})

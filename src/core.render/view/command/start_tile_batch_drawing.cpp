@@ -1,7 +1,7 @@
 #include "start_tile_batch_drawing.h"
+#include "conf/model/conf.h"
 #include "core.render/view/camera_gl.h"
 #include "core.render/view/renderer_tiles_view.h"
-#include "conf/model/conf.h"
 #include "world.actors/model/player.h"
 namespace Narradia {
   void StartTileBatchDrawing() {
@@ -17,7 +17,10 @@ namespace Narradia {
     glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
     glUniform1f(renderer->location_alpha(), 1.0f);
     auto player_pos = Player::Get()->position().Multiply(kTileSize);
-    glm::vec3 view_pos(player_pos.x, player_pos.y, player_pos.z);
+    glm::vec3 view_pos(
+        player_pos.x,
+        player_pos.y + CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint()),
+        player_pos.z);
     glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
     glm::vec3 fog_color_gl(
         RendererTilesView::kFogColorGround.r, RendererTilesView::kFogColorGround.g,

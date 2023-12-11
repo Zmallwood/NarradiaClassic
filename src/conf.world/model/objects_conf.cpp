@@ -6,7 +6,8 @@ namespace Narradia {
   ObjectsConf::ObjectsConf() {
     object_confs_.insert(
         {"ObjectPoolOfBlood", {ObjectFlags::NoObstacle | ObjectFlags::NoSightBlock, 1.0f}});
-    object_confs_.insert({"ObjectTree1", {0, 3.0f}});
+    object_confs_.insert({"ObjectTree1", {0, 2.0f}});
+    object_confs_.insert({"ObjectTree2", {0, 2.0f}});
   }
 
   bool ObjectsConf::BlocksSight(std::string_view object_type) {

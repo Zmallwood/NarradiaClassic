@@ -13,7 +13,10 @@ namespace Narradia {
     {
       auto player_pos = Player::Get()->position().Multiply(kTileSize);
       auto look_from = GetCameraPosition();
-      auto look_at = player_pos.Translate(0.0f, camera_height_ * kTileSize, 0.0f);
+      auto player_average_elevation =
+          CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint());
+      auto look_at =
+          player_pos.Translate(0.0f, camera_height_ * kTileSize + player_average_elevation, 0.0f);
       auto new_view_matrix = glm::lookAt(
           glm::vec3(look_from.x, look_from.y, look_from.z),
           glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
@@ -67,7 +70,10 @@ namespace Narradia {
       auto dx = SinDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * SinDeg(horizontal_angle_deg_);
       auto dz = CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
       auto dy = SinDeg(used_vertical_angle) * used_camera_distance;
-      result = player_position_no_elevation.Translate(dx, dy + player_elev * elev_amount, dz);
+      auto player_average_elevation =
+          CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint());
+      result = player_position_no_elevation.Translate(
+          dx, dy + player_average_elevation + player_elev * elev_amount, dz);
     }
     return result.Translate(0.0f, camera_height_ * kTileSize, 0.0f);
   }

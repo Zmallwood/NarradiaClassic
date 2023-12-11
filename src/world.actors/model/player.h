@@ -85,7 +85,7 @@ namespace Narradia {
 
    private:
     Point3F position_;
-    float movement_speed_ = 5.0f;
+    float movement_speed_ = 9.0f;
     int ticks_last_move_ = 0;
     Point destination_ = {-1, -1};
     float attack_speed_ = 0.8f;
@@ -94,7 +94,7 @@ namespace Narradia {
     int ticks_ulti_skill_start_ = 0;
     int ulti_skill_duration_ = 9000;
     float facing_angle_deg_ = 0.0f;
-    float step_size_ = 0.9f;
+    float step_size_ = 0.4f;
     int experience_ = 0;
   };
 }

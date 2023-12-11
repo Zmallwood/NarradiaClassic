@@ -9,6 +9,8 @@ namespace Narradia {
   */
   class Tile {
    public:
+    void IncreaseElevation(float amount);
+
     auto ground() {
       return ground_;
     }
@@ -35,6 +37,10 @@ namespace Narradia {
 
     auto elevation() {
       return elevation_;
+    }
+
+    void set_elevation(float value) {
+      elevation_ = value;
     }
 
     auto tile_effect() {

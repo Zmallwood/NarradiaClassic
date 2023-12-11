@@ -24,10 +24,23 @@ namespace Narradia {
         Vertex3F v1;
         Vertex3F v2;
         Vertex3F v3;
-        v0.position = {x * tile_size, 0.0f * tile_size, y * tile_size};
-        v1.position = {x * tile_size + tile_size, 0.0f * tile_size, y * tile_size};
-        v2.position = {x * tile_size + tile_size, 0.0f * tile_size, y * tile_size + tile_size};
-        v3.position = {x * tile_size, 0.0f * tile_size, y * tile_size + tile_size};
+        auto elev00 = map_area->GetTile(x, y)->elevation() * kElevAmount;
+        auto elev10 = elev00;
+        auto elev11 = elev00;
+        auto elev01 = elev00;
+        auto coord10 = Point{x + 1, y};
+        auto coord11 = Point{x + 1, y + 1};
+        auto coord01 = Point{x, y + 1};
+        if (map_area->IsInsideMap(coord10))
+          elev10 = map_area->GetTile(coord10)->elevation() * kElevAmount;
+        if (map_area->IsInsideMap(coord11))
+          elev11 = map_area->GetTile(coord11)->elevation() * kElevAmount;
+        if (map_area->IsInsideMap(coord01))
+          elev01 = map_area->GetTile(coord01)->elevation() * kElevAmount;
+        v0.position = {x * tile_size, elev00, y * tile_size};
+        v1.position = {x * tile_size + tile_size, elev10, y * tile_size};
+        v2.position = {x * tile_size + tile_size, elev11, y * tile_size + tile_size};
+        v3.position = {x * tile_size, elev01, y * tile_size + tile_size};
         v0.uv = {0.0f, 0.0f};
         v1.uv = {1.0f, 0.0f};
         v2.uv = {1.0f, 1.0f};
@@ -52,7 +65,7 @@ namespace Narradia {
   void WorldViewModuleView::Render() {
     auto map_area = World::Get()->curr_map_area();
     auto player_pos = Player::Get()->position();
-    auto r = 20;
+    auto r = 30;
     auto x_center = static_cast<int>(player_pos.x);
     auto y_center = static_cast<int>(player_pos.z);
     StartTileBatchDrawing();

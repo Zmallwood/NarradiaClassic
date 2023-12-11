@@ -10,5 +10,7 @@ namespace Narradia {
 
    private:
     void RenderDerived() override;
+
+    RenderID rid_level_text;
   };
 }

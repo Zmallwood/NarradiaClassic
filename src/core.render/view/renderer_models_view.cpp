@@ -151,7 +151,11 @@ namespace Narradia {
         location_model_no_translation_, 1, GL_FALSE, glm::value_ptr(model_no_translation_matrix));
     glUniform3fv(location_color_mod_, 1, glm::value_ptr(color_mod));
     auto player_space_coord = Player::Get()->position().Multiply(kTileSize);
-    glm::vec3 viewPos(player_space_coord.x, player_space_coord.y, player_space_coord.z);
+    glm::vec3 viewPos(
+        player_space_coord.x,
+        player_space_coord.y +
+            CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint()),
+        player_space_coord.z);
     glUniform3fv(location_view_pos_, 1, glm::value_ptr(viewPos));
     glm::vec3 fogColorGl(kFogColorModels.r, kFogColorModels.g, kFogColorModels.b);
     glUniform3fv(location_fog_color_, 1, glm::value_ptr(fogColorGl));
@@ -241,7 +245,11 @@ namespace Narradia {
             glm::value_ptr(model_no_translation_matrix));
         glUniform3fv(location_color_mod_, 1, glm::value_ptr(colorMod));
         auto player_space_coord = Player::Get()->position().Multiply(kTileSize);
-        glm::vec3 viewPos(player_space_coord.x, player_space_coord.y, player_space_coord.z);
+        glm::vec3 viewPos(
+            player_space_coord.x,
+            player_space_coord.y +
+                CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint()),
+            player_space_coord.z);
         glUniform3fv(location_view_pos_, 1, glm::value_ptr(viewPos));
         glm::vec3 fogColorGl(kFogColorModels.r, kFogColorModels.g, kFogColorModels.b);
         glUniform3fv(location_fog_color_, 1, glm::value_ptr(fogColorGl));
