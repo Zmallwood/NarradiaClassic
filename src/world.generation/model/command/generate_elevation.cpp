@@ -17,7 +17,7 @@ namespace Narradia {
           if (dx * dx + dy * dy <= r * r) {
             if (map_area->GetTile(x, y)->ground() != "GroundWater")
               map_area->GetTile(x, y)->IncreaseElevation(
-                  0.3 * static_cast<float>(r_max) / (r + 50.0f));
+                  0.3 * static_cast<float>(r_max) / (r + 50.0f*kMapWidth/200.0f*kMapHeight/160.0f));
           }
         }
       }
