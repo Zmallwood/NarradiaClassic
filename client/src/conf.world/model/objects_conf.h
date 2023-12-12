@@ -3,9 +3,9 @@
 #include "object_flags.h"
 namespace Narradia
 {
-    /**
-     * @brief Sets custom object flags and returns custom properties for specific object types.
-     */
+    ////////////////////////////////////////////////////////////////////////////////
+    /// @brief Sets custom object flags and returns custom properties for specific object types.
+    ////////////////////////////////////////////////////////////////////////////////
     class ObjectsConf : public Singleton<ObjectsConf> {
       public:
         ObjectsConf();

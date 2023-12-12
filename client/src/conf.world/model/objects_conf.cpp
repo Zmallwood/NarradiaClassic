@@ -4,10 +4,10 @@ namespace Narradia
     using ObjectFlags::NoObstacle;
     using ObjectFlags::NoSightBlock;
 
-    /**
-     * @brief Sets custom object flags on startup.
-     *
-     */
+    ////////////////////////////////////////////////////////////////////////////////
+    /// @brief Sets custom object flags on startup.
+    ///
+    ////////////////////////////////////////////////////////////////////////////////
     ObjectsConf::ObjectsConf() {
         object_confs_.insert({"ObjectPoolOfBlood", {NoObstacle | NoSightBlock, 1.0f}});
         object_confs_.insert({"ObjectTree1", {0, 6.0f}});

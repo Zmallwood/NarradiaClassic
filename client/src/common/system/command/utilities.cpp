@@ -2,11 +2,11 @@
 #include "core.assets/model/image_bank.h"
 namespace Narradia
 {
-    /**
-     * @brief Get mouses position on canvas.
-     *
-     * @return Mouse position with coordinates ranging from 0-1.
-     */
+    ////////////////////////////////////////////////////////////////////////////////
+    /// @brief Gets mouses position on canvas.
+    ///
+    /// @return Mouse position with coordinates raning from 0-1.
+    ////////////////////////////////////////////////////////////////////////////////
     PointF GetMousePosition() {
         int x_px, y_px;
         auto canv_sz = GetCanvasSize();
@@ -16,10 +16,10 @@ namespace Narradia
         return {x, y};
     }
 
-    /**
-     * @brief Gets current time in text format.
-     *
-     */
+    ////////////////////////////////////////////////////////////////////////////////
+    /// @brief Gets current time in text format.
+    ///
+    ////////////////////////////////////////////////////////////////////////////////
     std::string_view GetCurrTime() {
         time_t now = time(0);
         char buffer[80];
@@ -28,12 +28,12 @@ namespace Narradia
         return std::string_view(buffer);
     }
 
-    /**
-     * @brief Gets texture dimensions in pixels.
-     *
-     * @param[in] image_name Name of image to measure.
-     * @return Texture dimension in pixels.
-     */
+    ////////////////////////////////////////////////////////////////////////////////
+    /// @brief Gets texture dimensions in pixels.
+    ///
+    /// @param[in]] image_name Name of image to measure.
+    /// @return Texture dimensions in pixels.
+    ////////////////////////////////////////////////////////////////////////////////
     Size GetTextureDimensions(std::string_view image_name) {
         Size dim;
         int mip_level = 0;
