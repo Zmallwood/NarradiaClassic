@@ -56,6 +56,7 @@ set(PCH_FILES
 "src/common/system/command/singl_cleanup.h"
 "src/common/system/singleton.h"
 "src/math/system/tile_calc.h"
+"src/math/system/trigonometry.h"
 )
 
 add_executable (NarradiaMapGenerator ${SOURCE_FILES})

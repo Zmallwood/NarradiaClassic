@@ -19,6 +19,5 @@ namespace Narradia
             tile = map_area->GetTile(x, y);
         } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
         Player::Get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
-        std::cout << "b\n";
     }
 }

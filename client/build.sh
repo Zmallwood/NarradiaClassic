@@ -1,3 +1,3 @@
 #!/bin/sh
-cmake -B ../../build/ . && cmake --build ../../build --target release
+cmake -B ../../build_client/ . && cmake --build ../../build_client --target release
 

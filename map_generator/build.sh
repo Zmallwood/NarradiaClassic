@@ -1,3 +1,3 @@
 #!/bin/sh
-cmake -B ../../build/ . && cmake --build ../../build --target release
+cmake -B ../../build_map_generator/ . && cmake --build ../../build_map_generator --target release
 
