@@ -8,10 +8,12 @@ namespace Narradia
     */
     class MapArea {
       public:
-        MapArea();
+        MapArea(int width, int height);
         std::shared_ptr<Tile> GetTile(int x, int y);
         std::shared_ptr<Tile> GetTile(Point coord);
         bool IsInsideMap(Point coord);
+        int GetWidth();
+        int GetHeight();
 
         auto mobs_mirror() {
             return mobs_mirror_;

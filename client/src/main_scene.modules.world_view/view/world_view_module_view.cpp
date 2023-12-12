@@ -16,10 +16,10 @@ namespace Narradia
     WorldViewModuleView::WorldViewModuleView() {
         auto map_area = World::Get()->curr_map_area();
         auto tile_size = kTileSize;
-        for (auto x = 0; x < kMapWidth; x++) {
+        for (auto x = 0; x < map_area->GetWidth(); x++) {
             rids_tiles.push_back(std::vector<RenderID>());
             rids_tile_symbols.push_back(std::vector<RenderID>());
-            for (auto y = 0; y < kMapHeight; y++) {
+            for (auto y = 0; y < map_area->GetHeight(); y++) {
                 rids_tiles.at(x).push_back(NewTile());
                 Vertex3F v0;
                 Vertex3F v1;
@@ -95,7 +95,7 @@ namespace Narradia
         StartTileBatchDrawing();
         for (auto y = y_center - r; y <= y_center + r; y++) {
             for (auto x = x_center - r; x <= x_center + r; x++) {
-                if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
+                if (x < 0 || y < 0 || x >= map_area->GetWidth() || y >= map_area->GetHeight())
                     continue;
                 auto dx = x - x_center;
                 auto dy = y - y_center;
@@ -114,7 +114,7 @@ namespace Narradia
         StopTileBatchDrawing();
         for (auto y = y_center - r; y <= y_center + r; y++) {
             for (auto x = x_center - r; x <= x_center + r; x++) {
-                if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
+                if (x < 0 || y < 0 || x >= map_area->GetWidth() || y >= map_area->GetHeight())
                     continue;
                 auto dx = x - x_center;
                 auto dy = y - y_center;

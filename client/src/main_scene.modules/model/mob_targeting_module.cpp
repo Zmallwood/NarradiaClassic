@@ -11,8 +11,9 @@ namespace Narradia
             [&] {
                 auto map_area = World::Get()->curr_map_area();
                 auto hovered_tile = TileHoveringModule::Get()->hovered_tile();
-                if (hovered_tile.x < 0 || hovered_tile.y < 0 || hovered_tile.x >= kMapWidth ||
-                    hovered_tile.y >= kMapHeight)
+                if (hovered_tile.x < 0 || hovered_tile.y < 0 ||
+                    hovered_tile.x >= map_area->GetWidth() ||
+                    hovered_tile.y >= map_area->GetHeight())
                     return;
                 auto mob = map_area->GetTile(hovered_tile.x, hovered_tile.y)->mob();
                 if (mob) {

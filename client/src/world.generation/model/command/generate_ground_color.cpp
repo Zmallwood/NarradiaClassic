@@ -4,15 +4,16 @@
 namespace Narradia
 {
     void GenerateGroundColor(std::shared_ptr<MapArea> map_area) {
-        auto num_areas = static_cast<int>(50 * kMapWidth / 100.0f * kMapHeight / 80.0f);
+        auto num_areas =
+            static_cast<int>(50 * map_area->GetWidth() / 100.0f * map_area->GetHeight() / 80.0f);
         for (auto i = 0; i < num_areas; i++) {
-            auto x_center = rand() % kMapWidth;
-            auto y_center = rand() % kMapHeight;
+            auto x_center = rand() % map_area->GetWidth();
+            auto y_center = rand() % map_area->GetHeight();
             auto r = 2 + rand() % 6;
             auto color_style = rand() % 3;
             for (auto y = y_center - r; y <= y_center + r; y++) {
                 for (auto x = x_center - r; x <= x_center + r; x++) {
-                    if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
+                    if (x < 0 || y < 0 || x >= map_area->GetWidth() || y >= map_area->GetHeight())
                         continue;
                     auto dx = x - x_center;
                     auto dy = y - y_center;

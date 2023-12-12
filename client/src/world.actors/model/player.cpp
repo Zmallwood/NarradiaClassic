@@ -9,7 +9,7 @@ namespace Narradia
      Set default spawn coordinate.
     */
     Player::Player() {
-        position_ = {kMapWidth / 2.0f, 0.0f, kMapHeight / 2.0f};
+        position_ = {0, 0};
     }
 
     void Player::MoveForward() {
@@ -38,14 +38,15 @@ namespace Narradia
     }
 
     void Player::MoveAtAngle(float angle_deg_) {
+        auto map_area = World::Get()->curr_map_area();
         auto used_angle = angle_deg_ - facing_angle_deg_;
         auto dx = CosDeg(used_angle + 90.0f) * step_size_;
         auto dz = SinDeg(used_angle + 90.0f) * step_size_;
         auto new_x = position_.x + dx;
         auto new_z = position_.z + dz;
-        if (new_x < 0 || new_z < 0 || new_x >= kMapWidth || new_z >= kMapHeight)
+        if (new_x < 0 || new_z < 0 || new_x >= map_area->GetWidth() ||
+            new_z >= map_area->GetHeight())
             return;
-        auto map_area = World::Get()->curr_map_area();
         auto new_coord = Point{static_cast<int>(new_x), static_cast<int>(new_z)};
         if (map_area->GetTile(new_coord)->ground() == "GroundWater")
             return;

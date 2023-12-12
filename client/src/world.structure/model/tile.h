@@ -19,7 +19,7 @@ namespace Narradia
             return ground_;
         }
 
-        void set_ground(std::string_view value) {
+        void set_ground(std::string value) {
             ground_ = value;
         }
 
@@ -75,7 +75,7 @@ namespace Narradia
             return color_;
         }
       private:
-        std::string_view ground_;
+        std::string ground_;
         std::shared_ptr<Object> object_;
         std::shared_ptr<Mob> mob_;
         float elevation_ = 0.0f;

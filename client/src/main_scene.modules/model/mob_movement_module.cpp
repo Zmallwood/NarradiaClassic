@@ -14,7 +14,8 @@ namespace Narradia
                 auto dy = rand() % 2 - rand() % 2;
                 auto new_x = coord.x + dx;
                 auto new_y = coord.y + dy;
-                if (new_x >= 0 && new_y >= 0 && new_x < kMapWidth && new_y < kMapHeight) {
+                if (new_x >= 0 && new_y >= 0 && new_x < map_area->GetWidth() &&
+                    new_y < map_area->GetHeight()) {
                     auto tile = map_area->GetTile(new_x, new_y);
                     if (tile->ground() != "GroundWater") {
                         if (nullptr == tile->object()) {

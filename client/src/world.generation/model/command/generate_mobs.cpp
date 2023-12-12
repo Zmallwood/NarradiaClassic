@@ -7,10 +7,11 @@ namespace Narradia
      Generate mobs randomly.
     */
     void GenerateMobs(std::shared_ptr<MapArea> map_area) {
-        auto num_boards = static_cast<int>(200 * kMapWidth / 100.0f * kMapHeight / 80.0f);
+        auto num_boards =
+            static_cast<int>(200 * map_area->GetWidth() / 100.0f * map_area->GetHeight() / 80.0f);
         for (auto i = 0; i < num_boards; i++) {
-            auto x = rand() % kMapWidth;
-            auto y = rand() % kMapHeight;
+            auto x = rand() % map_area->GetWidth();
+            auto y = rand() % map_area->GetHeight();
             if (map_area->GetTile(x, y)->ground() != "GroundWater") {
                 if (nullptr == map_area->GetTile(x, y)->mob()) {
                     auto new_mob = std::make_shared<Mob>("MobBoar");

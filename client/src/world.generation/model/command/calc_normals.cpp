@@ -4,8 +4,8 @@
 namespace Narradia
 {
     void CalcNormals(std::shared_ptr<MapArea> map_area) {
-        for (auto y = 0; y < kMapHeight; y++) {
-            for (auto x = 0; x < kMapWidth; x++) {
+        for (auto y = 0; y < map_area->GetHeight(); y++) {
+            for (auto x = 0; x < map_area->GetWidth(); x++) {
                 auto tile_coord = Point{x, y};
                 auto tile = map_area->GetTile(tile_coord.x, tile_coord.y);
                 auto elev00 = tile->elevation();

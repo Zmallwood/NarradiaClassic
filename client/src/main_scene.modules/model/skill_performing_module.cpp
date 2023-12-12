@@ -14,7 +14,8 @@ namespace Narradia
                 auto r = 7;
                 for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
                     for (auto x = player_pos.x - r; x <= player_pos.x + r; x++) {
-                        if (x < 0 || y < 0 || x >= kMapWidth || y >= kMapHeight)
+                        if (x < 0 || y < 0 || x >= map_area->GetWidth() ||
+                            y >= map_area->GetHeight())
                             continue;
                         auto dx = x - player_pos.x;
                         auto dy = y - player_pos.y;

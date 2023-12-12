@@ -6,7 +6,7 @@ namespace Narradia
     */
     class Mob {
       public:
-        Mob(std::string_view type)
+        Mob(std::string type)
             : type_(type) {
         }
         void Hit(float damage);
@@ -40,7 +40,7 @@ namespace Narradia
             return hp_;
         }
       private:
-        std::string_view type_;
+        std::string type_;
         int ticks_last_move_ = 0;
         float movement_speed_ = 1.0f;
         float attack_speed_ = 0.6f;

@@ -13,6 +13,7 @@ namespace Narradia
             auto vary_index = (coord.x * coord.y) % 3;
             ground = "GroundGrass_" + std::to_string(vary_index);
         }
+        //std::cout << ground << std::endl;
         DrawTile(ground, tile->rid());
     }
 }
