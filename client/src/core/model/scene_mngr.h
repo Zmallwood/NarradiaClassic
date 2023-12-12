@@ -1,6 +1,7 @@
 #pragma once
 #include "iscene.h"
 #include "scene_names.h"
+#include <map>
 namespace Narradia
 {
     /**

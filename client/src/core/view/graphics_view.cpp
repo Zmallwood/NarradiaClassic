@@ -12,7 +12,7 @@ namespace Narradia
         auto window_flags = Graphics::Get()->window_flags();
         auto window = std::shared_ptr<SDL_Window>(
             SDL_CreateWindow(
-                Engine::Get()->title().data(), 0, 0, window_size.width, window_size.height,
+                Engine::Get()->title().data(), 0, 0, window_size.w, window_size.h,
                 window_flags),
             SDLDeleter());
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);

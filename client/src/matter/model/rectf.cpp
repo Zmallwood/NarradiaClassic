@@ -6,7 +6,7 @@ namespace Narradia
      OpenGL coordinate system.
     */
     GLRectF RectF::ToGLRectF() const {
-        return {x * 2 - 1.0f, 1.0f - y * 2, width * 2, height * 2};
+        return {x * 2 - 1.0f, 1.0f - y * 2, w * 2, h * 2};
     }
 
     /**
@@ -14,7 +14,7 @@ namespace Narradia
      modifying this one.
     */
     RectF RectF::Translate(float dx, float dy) const {
-        return {x + dx, y + dy, width, height};
+        return {x + dx, y + dy, w, h};
     }
 
     /**
@@ -28,7 +28,7 @@ namespace Narradia
      Returns the center point of this rectangle.
     */
     PointF RectF::GetCenter() const {
-        return {x + width / 2, y + height / 2};
+        return {x + w / 2, y + h / 2};
     }
 
     /**
@@ -36,6 +36,6 @@ namespace Narradia
      boundaries.
     */
     bool RectF::Contains(PointF point) const {
-        return point.x >= x && point.y >= y && point.x < x + width && point.y < y + height;
+        return point.x >= x && point.y >= y && point.x < x + w && point.y < y + h;
     }
 }

@@ -60,8 +60,8 @@ namespace Narradia
             GL_TEXTURE_2D, 0, GL_RGBA, image->w, image->h, 0, GL_RGBA, GL_UNSIGNED_BYTE,
             image->pixels);
         auto canvas_size = GetCanvasSize();
-        auto width = text_surface ? static_cast<float>(text_surface->w) / canvas_size.width : 0;
-        auto height = text_surface ? static_cast<float>(text_surface->h) / canvas_size.height : 0;
+        auto width = text_surface ? static_cast<float>(text_surface->w) / canvas_size.w: 0;
+        auto height = text_surface ? static_cast<float>(text_surface->h) / canvas_size.h: 0;
         out_unique_name_id = unique_name_id;
         out_size = {width, height};
         SDL_FreeSurface(image);

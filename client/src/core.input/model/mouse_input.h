@@ -9,8 +9,8 @@ namespace Narradia
     class MouseInput : public Singleton<MouseInput> {
       public:
         MouseInput();
-        void RegisterPress(Uint8 button);
-        void RegisterRelease(Uint8 button);
+        void OnPress(Uint8 button);
+        void OnRelease(Uint8 button);
         void PerformMouseActions();
 
         auto left_button() {

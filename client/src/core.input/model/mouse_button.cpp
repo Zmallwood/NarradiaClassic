@@ -5,7 +5,7 @@ namespace Narradia
      Called from MouseInput when a mouse button has been
      pressed down.
     */
-    void MouseButton::RegisterPress() {
+    void MouseButton::OnPress() {
         is_pressed_ = true;
         has_been_fired_ = true;
         has_been_released_ = false;
@@ -15,7 +15,7 @@ namespace Narradia
      Called from MouseInput when a mouse button has been
      released.
     */
-    void MouseButton::RegisterRelease() {
+    void MouseButton::OnRelease() {
         is_pressed_ = false;
         has_been_fired_ = false;
         has_been_released_ = true;

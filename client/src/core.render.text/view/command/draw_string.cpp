@@ -16,15 +16,15 @@ namespace Narradia
         RendererText::Get()->RenderText(
             rid, text, color, center_align, font_size, unique_name_id, size);
         auto canvas_size = GetCanvasSize();
-        auto rect = RectF{position.x, position.y, size.width, size.height};
+        auto rect = RectF{position.x, position.y, size.w, size.h};
         int text_w;
         int text_h;
         TTF_SizeText(
             RendererText::Get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w,
             &text_h);
-        rect.y -= static_cast<float>(text_h / GetAspectRatio()) / canvas_size.height / 2.0f;
+        rect.y -= static_cast<float>(text_h / GetAspectRatio()) / canvas_size.h / 2.0f;
         if (center_align)
-            rect.x -= static_cast<float>(text_w) / static_cast<float>(canvas_size.height) / 2.0f /
+            rect.x -= static_cast<float>(text_w) / static_cast<float>(canvas_size.h) / 2.0f /
                       GetAspectRatio();
         DrawImage(unique_name_id, rid, rect);
     }

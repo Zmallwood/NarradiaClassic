@@ -4,7 +4,7 @@ namespace Narradia
     /**
      Register that a key has been pressed.
     */
-    void KeyboardInput::RegisterPressedKey(SDL_Keycode key) {
+    void KeyboardInput::OnKeyPress(SDL_Keycode key) {
         pressed_keys_.insert(key);
         fired_keys_.insert(key);
     }
@@ -12,7 +12,7 @@ namespace Narradia
     /**
      Register that a key has been released.
     */
-    void KeyboardInput::RegisterReleasedKey(SDL_Keycode key) {
+    void KeyboardInput::OnKeyRelease(SDL_Keycode key) {
         pressed_keys_.erase(key);
     }
 

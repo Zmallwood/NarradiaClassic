@@ -53,7 +53,7 @@ set(PCH_FILES
 "src/matter/model/color.h"
 "src/matter/model/point3f.h"
 
-"src/common/system/command/singl_cleanup.h"
+"src/common/system/command/singletons_cleanup.h"
 "src/common/system/singleton.h"
 "src/math/system/tile_calc.h"
 "src/math/system/trigonometry.h"

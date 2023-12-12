@@ -67,9 +67,9 @@ set(PCH_FILES
 "src/matter/model/vertex2f.h"
 "src/matter/model/vertex3f.h"
 
-"src/common/system/command/singl_cleanup.h"
+"src/common/system/command/singletons_cleanup.h"
 "src/common/system/command/utilities.h"
-"src/common/system/command/canvas_utils.h"
+"src/common/system/command/canvas_utilities.h"
 "src/common/system/singleton.h"
 "src/common/system/typedefs.h"
 "src/core/model/sdl_deleter.h"

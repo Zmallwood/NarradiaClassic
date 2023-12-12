@@ -3,8 +3,8 @@ namespace Narradia
 {
     namespace ObjectFlags
     {
-        inline static int None = 0;
-        inline static int NoSightBlock = 1 << 0;
-        inline static int NoObstacle = 1 << 1;
+        inline static const int None = 0;
+        inline static const int NoSightBlock = 1 << 0;
+        inline static const int NoObstacle = 1 << 1;
     };
 }

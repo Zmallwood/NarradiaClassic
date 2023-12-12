@@ -1,5 +1,5 @@
 #pragma once
-#include "core.gui/model/scene_gui.h"
+#include "../../core.gui/model/scene_gui.h"
 namespace Narradia
 {
     /**

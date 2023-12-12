@@ -1,9 +1,12 @@
 #pragma once
+#include <memory>
 namespace Narradia
 {
     /**
-     Singleton templated class.
-    */
+     * @brief Singleton templated class.
+     *
+     * @tparam T Class to create singleton of.
+     */
     template <class T>
     class Singleton {
       public:
@@ -14,8 +17,10 @@ namespace Narradia
     };
 
     /**
-     Create new instance if none exists.
-    */
+     * @brief Create new instance if non exists.
+     *
+     * @tparam T Class to create template of.
+     */
     template <class T>
     void Singleton<T>::Touch() {
         if (!instance_) {
@@ -25,8 +30,10 @@ namespace Narradia
     }
 
     /**
-     Get instance of object.
-    */
+     * @brief Get instance of object.
+     *
+     * @tparam T Class to get instance of.
+     */
     template <class T>
     std::shared_ptr<T> Singleton<T>::Get() {
         if (!instance_) // Create new instance if none exists

@@ -6,7 +6,7 @@ namespace Narradia
     */
     class SizeF {
       public:
-        float width = 0.0f;
-        float height = 0.0f;
+        float w = 0.0f;
+        float h = 0.0f;
     };
 }

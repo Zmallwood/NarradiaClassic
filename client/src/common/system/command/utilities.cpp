@@ -3,40 +3,44 @@
 namespace Narradia
 {
     /**
-     Returns normalized mouse position.
-    */
+     * @brief Get mouses position on canvas.
+     *
+     * @return Mouse position with coordinates ranging from 0-1.
+     */
     PointF GetMousePosition() {
-        int xPixels;
-        int yPixels;
-        auto canvasSize = GetCanvasSize();
-        SDL_GetMouseState(&xPixels, &yPixels);
-        auto x = static_cast<float>(xPixels) / canvasSize.width;
-        auto y = static_cast<float>(yPixels) / canvasSize.height;
+        int x_px, y_px;
+        auto canv_sz = GetCanvasSize();
+        SDL_GetMouseState(&x_px, &y_px);
+        auto x = static_cast<float>(x_px) / canv_sz.w;
+        auto y = static_cast<float>(y_px) / canv_sz.h;
         return {x, y};
     }
 
     /**
-     Returns the current time in text format.
-    */
+     * @brief Gets current time in text format.
+     *
+     */
     std::string_view GetCurrTime() {
         time_t now = time(0);
         char buffer[80];
         auto p_tstruct = localtime(&now);
         strftime(buffer, sizeof(buffer), "%X", p_tstruct);
-        return buffer;
+        return std::string_view(buffer);
     }
 
     /**
-     Returns texture, loaded from file system, dimensions in
-     pixels.
-    */
+     * @brief Gets texture dimensions in pixels.
+     *
+     * @param[in] image_name Name of image to measure.
+     * @return Texture dimension in pixels.
+     */
     Size GetTextureDimensions(std::string_view image_name) {
-        Size dimensions;
-        int miplevel = 0;
+        Size dim;
+        int mip_level = 0;
         auto image_id = ImageBank::Get()->GetImage(image_name);
         glBindTexture(GL_TEXTURE_2D, image_id);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &dimensions.width);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &dimensions.height);
-        return dimensions;
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, mip_level, GL_TEXTURE_WIDTH, &dim.w);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, mip_level, GL_TEXTURE_HEIGHT, &dim.h);
+        return dim;
     }
 }

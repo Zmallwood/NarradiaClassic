@@ -43,6 +43,8 @@ namespace Narradia
         static constexpr float kTextLineHeight = 0.02f;
         static constexpr float kSplitLineHeight = 0.001f;
       private:
+        RectF GetUsedBounds();
+
         std::vector<TextLine> text_lines_;
         bool enabled_ = true;
         bool input_active_ = false;

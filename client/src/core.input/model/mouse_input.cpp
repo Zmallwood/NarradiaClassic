@@ -13,13 +13,13 @@ namespace Narradia
      Forwards the press register command to the correct
      mouse button.
     */
-    void MouseInput::RegisterPress(Uint8 button) {
+    void MouseInput::OnPress(Uint8 button) {
         switch (button) {
         case SDL_BUTTON_LEFT:
-            left_button_->RegisterPress();
+            left_button_->OnPress();
             break;
         case SDL_BUTTON_RIGHT:
-            right_button_->RegisterPress();
+            right_button_->OnPress();
             break;
         }
     }
@@ -28,13 +28,13 @@ namespace Narradia
      Forwards the release register command to the correct
      mouse button.
     */
-    void MouseInput::RegisterRelease(Uint8 button) {
+    void MouseInput::OnRelease(Uint8 button) {
         switch (button) {
         case SDL_BUTTON_LEFT:
-            left_button_->RegisterRelease();
+            left_button_->OnRelease();
             break;
         case SDL_BUTTON_RIGHT:
-            right_button_->RegisterRelease();
+            right_button_->OnRelease();
             break;
         }
     }

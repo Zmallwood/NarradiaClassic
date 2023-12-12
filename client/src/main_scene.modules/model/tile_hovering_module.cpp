@@ -18,16 +18,16 @@ namespace Narradia
         auto map_area = World::Get()->curr_map_area();
         auto mouse_world_near_plane = glm::unProject(
             glm::vec3(
-                mouse_position_f.x * canvas_size.width,
-                (1.0f - mouse_position_f.y) * canvas_size.height, 0.0f),
+                mouse_position_f.x * canvas_size.w,
+                (1.0f - mouse_position_f.y) * canvas_size.h, 0.0f),
             view_matrix, perspective_matrix,
-            glm::ivec4(0, 0, canvas_size.width, canvas_size.height));
+            glm::ivec4(0, 0, canvas_size.w, canvas_size.h));
         auto mouse_world_far_plane = glm::unProject(
             glm::vec3(
-                mouse_position_f.x * canvas_size.width,
-                (1.0f - mouse_position_f.y) * canvas_size.height, 1.0f),
+                mouse_position_f.x * canvas_size.w,
+                (1.0f - mouse_position_f.y) * canvas_size.h, 1.0f),
             view_matrix, perspective_matrix,
-            glm::ivec4(0, 0, canvas_size.width, canvas_size.height));
+            glm::ivec4(0, 0, canvas_size.w, canvas_size.h));
         auto columns_count = 111;
         auto rows_count = 111;
         auto player_x_major = static_cast<int>(player_x);

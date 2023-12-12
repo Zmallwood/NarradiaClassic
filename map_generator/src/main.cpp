@@ -11,4 +11,5 @@ int main(int argc, char *argv[]) {
     std::cout << "World generation finished.\n";
     Narradia::MapSaver::Get()->SaveWorldMapToFile();
     std::cout << "World saved to file.\n";
+    Narradia::DisposeAllSingletons();
 }

@@ -12,10 +12,10 @@ namespace Narradia
         auto renderer_base = renderer->renderer_base();
         auto gl_rect = dest.ToGLRectF();
         Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
-        vertices[0].position = {gl_rect.x, gl_rect.y - gl_rect.height};
+        vertices[0].position = {gl_rect.x, gl_rect.y - gl_rect.h};
         vertices[1].position = {gl_rect.x, gl_rect.y};
-        vertices[2].position = {gl_rect.x + gl_rect.width, gl_rect.y};
-        vertices[3].position = {gl_rect.x + gl_rect.width, gl_rect.y - gl_rect.height};
+        vertices[2].position = {gl_rect.x + gl_rect.w, gl_rect.y};
+        vertices[3].position = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
         vertices[0].uv = {0.0f, 1.0f};
         vertices[1].uv = {0.0f, 0.0f};
         vertices[2].uv = {1.0f, 0.0f};

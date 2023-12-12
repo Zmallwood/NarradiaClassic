@@ -9,7 +9,7 @@ namespace Narradia
       public:
         float x = .0f;
         float y = .0f;
-        float width = .0f;
-        float height = .0f;
+        float w = .0f;
+        float h = .0f;
     };
 }

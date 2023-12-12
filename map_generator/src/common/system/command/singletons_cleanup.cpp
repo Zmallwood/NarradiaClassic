@@ -1,4 +1,4 @@
-#include "singl_cleanup.h"
+#include "singletons_cleanup.h"
 namespace Narradia
 {
     static std::vector<std::function<void()>> gDisposeActions;

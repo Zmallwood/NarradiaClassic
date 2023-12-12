@@ -1,6 +1,8 @@
 #pragma once
-#include "core/model/scene_names.h"
+#include "../model/scene_names.h"
 #include "iscene_controller.h"
+#include <map>
+#include <memory>
 namespace Narradia
 {
     /**

@@ -26,8 +26,8 @@ namespace Narradia
     void TextOutBox::Print(std::string_view text, Color text_color) {
         if (!enabled_)
             return;
-        std::string printed_text = std::string(GetCurrTime().data()) + "." +
-                                   std::to_string(SDL_GetTicks() % 1000) + ") " + text.data();
+        auto printed_text = std::string(GetCurrTime().data()) + "." +
+                            std::to_string(SDL_GetTicks() % 1000) + ") " + text.data();
         text_lines_.push_back({printed_text, text_color});
     }
 
@@ -36,7 +36,7 @@ namespace Narradia
      displayed in the TextOutBox.
     */
     int TextOutBox::GetMaxNumLines() {
-        return static_cast<int>(kBounds.height / kTextLineHeight) - 2;
+        return static_cast<int>(kBounds.h / kTextLineHeight) - 2;
     }
 
     int TextOutBox::GetTextLineIndex(int visible_row_index) {
@@ -44,28 +44,22 @@ namespace Narradia
     }
 
     PointF TextOutBox::GetTextLinePosition(int visible_row_index) {
-        auto used_bounds = kBounds;
-        if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
-            used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
+        auto used_bounds = GetUsedBounds();
         auto line_position_y = used_bounds.y + (visible_row_index + 1) * kTextLineHeight;
         return {used_bounds.x + 0.01f, line_position_y};
     }
 
     RectF TextOutBox::GetHorizontalSplitterRect() {
-        auto used_bounds = kBounds;
-        if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
-            used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
+        auto used_bounds = GetUsedBounds();
         return {
-            0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kBounds.width,
+            0.0f, used_bounds.y + used_bounds.h - 1.3f * kTextLineHeight, kBounds.w,
             kSplitLineHeight};
     }
 
     RectF TextOutBox::GetInputArrowRect() {
-        auto used_bounds = kBounds;
-        if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
-            used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
+        auto used_bounds = GetUsedBounds();
         return {
-            0.0f, used_bounds.y + used_bounds.height - 1.3f * kTextLineHeight, kTextLineHeight,
+            0.0f, used_bounds.y + used_bounds.h - 1.3f * kTextLineHeight, kTextLineHeight,
             kTextLineHeight};
     }
 
@@ -75,11 +69,18 @@ namespace Narradia
     }
 
     std::string TextOutBox::GetInputTextWithCursor() {
-        auto result = input_text_;
+        auto res = input_text_;
         if (SDL_GetTicks() % 600 < 300)
-            result.insert(cursor_position_, "|");
+            res.insert(cursor_position_, "|");
         else
-            result.insert(cursor_position_, " ");
-        return result;
+            res.insert(cursor_position_, " ");
+        return res;
+    }
+
+    RectF TextOutBox::GetUsedBounds() {
+        auto res = kBounds;
+        if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+            res = res.Translate(0.0f, -ExperienceBar::kBarHeight);
+        return res;
     }
 }
