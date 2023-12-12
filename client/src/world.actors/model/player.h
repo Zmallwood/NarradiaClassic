@@ -85,7 +85,7 @@ namespace Narradia
         }
       private:
         Point3F position_;
-        float movement_speed_ = 9.0f;
+        float movement_speed_ = 6.0f;
         int ticks_last_move_ = 0;
         Point destination_ = {-1, -1};
         float attack_speed_ = 0.8f;
