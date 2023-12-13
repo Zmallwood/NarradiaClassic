@@ -1,5 +1,5 @@
 #include "text_out_box.h"
-#include "core.input/model/keyboard_input.h"
+#include "core.input/model/kb_input.h"
 #include "core/model/scene_mngr.h"
 #include "main_scene.gui/model/experience_bar.h"
 namespace Narradia
@@ -9,11 +9,11 @@ namespace Narradia
      input characters.
     */
     void TextOutBox::UpdateGameLogic() {
-        if (KeyboardInput::Get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
+        if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
             input_active_ = !input_active_;
         }
         if (input_active_) {
-            auto new_text_input = KeyboardInput::Get()->PickTextInput();
+            auto new_text_input = KbInput::get()->PickTextInput();
             input_text_.insert(cursor_position_, new_text_input);
             cursor_position_ += new_text_input.length();
         }
@@ -79,7 +79,7 @@ namespace Narradia
 
     RectF TextOutBox::GetUsedBounds() {
         auto res = kBounds;
-        if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+        if (SceneMngr::get()->curr_scene() == SceneNames::Main)
             res = res.Translate(0.0f, -ExperienceBar::kBarHeight);
         return res;
     }

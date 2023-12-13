@@ -3,7 +3,7 @@
 namespace Narradia
 {
     void StopTileBatchDrawing() {
-        auto renderer = RendererTilesView::Get();
+        auto renderer = RendererTilesView::get();
         renderer->set_is_batch_drawing(false);
         glUseProgram(0);
         glDisable(GL_CULL_FACE);

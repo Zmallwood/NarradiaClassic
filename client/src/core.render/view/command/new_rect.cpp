@@ -7,7 +7,7 @@ namespace Narradia
      to be rendered, returning an id.
     */
     RenderID NewRect() {
-        auto renderer = Renderer2DSolidColorsView::Get();
+        auto renderer = Renderer2DSolidColorsView::get();
         auto renderer_base = renderer->renderer_base();
         auto vao_id = renderer_base->GenerateNewVertexArrayId();
         renderer->UseVaoBegin(vao_id);

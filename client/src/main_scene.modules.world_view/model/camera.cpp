@@ -9,28 +9,28 @@ namespace Narradia
         {
             auto new_perspective_matrix =
                 glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
-            CameraGL::Get()->set_perspective_matrix(new_perspective_matrix);
+            CameraGL::get()->set_perspective_matrix(new_perspective_matrix);
         }
         {
-            auto player_pos = Player::Get()->position().Multiply(kTileSize);
+            auto player_pos = Player::get()->position().Multiply(kTileSize);
             auto look_from = GetCameraPosition();
             auto player_average_elevation =
-                CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint());
+                CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint());
             auto look_at = player_pos.Translate(
                 0.0f, player_average_elevation, 0.0f);
             auto new_view_matrix = glm::lookAt(
                 glm::vec3(look_from.x, look_from.y, look_from.z),
                 glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
-            CameraGL::Get()->set_view_matrix(new_view_matrix);
+            CameraGL::get()->set_view_matrix(new_view_matrix);
         }
     }
 
     Point3F Camera::GetCameraPosition() {
-        auto player = Player::Get();
+        auto player = Player::get();
         float player_elev;
         {
             auto player_position = player->position().GetXZ();
-            auto map_area = World::Get()->curr_map_area();
+            auto map_area = World::get()->curr_map_area();
             auto tile_coord = player_position.ToIntPoint();
             auto tile = map_area->GetTile(tile_coord);
             float elev00 = static_cast<float>(tile->elevation());
@@ -77,7 +77,7 @@ namespace Narradia
                 CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
             auto dy = SinDeg(used_vertical_angle) * used_camera_distance;
             auto player_average_elevation =
-                CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint());
+                CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint());
             result = player_position_no_elevation.Translate(
                 dx, dy + player_average_elevation , dz);
         }

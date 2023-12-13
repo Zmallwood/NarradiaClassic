@@ -1,19 +1,11 @@
 #include "engine_controller.h"
-#include "command/poll_events.h"
-#include "scene_mngr_controller.h"
 namespace Narradia
 {
-    /**
-     Handle user input every frame.
-    */
-    void EngineController::HandleInput() {
-        PollEvents();
-    }
+   auto EngineController::HandleInput() -> void {
+      PollEvents();
+   }
 
-    /**
-     Update game flow between scenes every frame.
-    */
-    void EngineController::UpdateGameFlow() {
-        SceneMngrController::Get()->UpdateGameFlowCurrScene();
-    }
+   auto EngineController::UpdateGameFlow() -> void {
+      SceneMngrController::get()->UpdateGameFlowCurrScene();
+   }
 }

@@ -9,16 +9,16 @@ namespace Narradia
      Initialize scene views that will be used.
     */
     SceneMngrView::SceneMngrView() {
-        scene_views_.insert({SceneNames::Intro, IntroSceneView::Get()});
-        scene_views_.insert({SceneNames::MainMenu, MainMenuSceneView::Get()});
-        scene_views_.insert({SceneNames::Main, MainSceneView::Get()});
+        scene_views_.insert({SceneNames::Intro, IntroSceneView::get()});
+        scene_views_.insert({SceneNames::MainMenu, MainMenuSceneView::get()});
+        scene_views_.insert({SceneNames::Main, MainSceneView::get()});
     }
 
     /**
      Render currently displayed scene.
     */
     void SceneMngrView::RenderCurrScene() {
-        auto curr_scene = SceneMngr::Get()->curr_scene();
+        auto curr_scene = SceneMngr::get()->curr_scene();
         if (scene_views_.count(curr_scene) != 0)
             scene_views_.at(curr_scene)->Render();
     }

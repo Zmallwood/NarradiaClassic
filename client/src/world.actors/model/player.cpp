@@ -13,32 +13,32 @@ namespace Narradia
     }
 
     void Player::MoveForward() {
-        facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
+        facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
         MoveAtAngle(0.0f);
     }
 
     void Player::MoveRight() {
-        facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
+        facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
         MoveAtAngle(90.0f);
     }
 
     void Player::MoveBackwards() {
-        facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
+        facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
         MoveAtAngle(180.0f);
     }
 
     void Player::MoveLeft() {
-        facing_angle_deg_ = Camera::Get()->horizontal_angle_deg();
+        facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
         MoveAtAngle(-90.0f);
     }
 
     void Player::AddExperience(int amount) {
         experience_ += amount;
-        TextOutBox::Get()->Print("You got " + std::to_string(amount) + " experience");
+        TextOutBox::get()->Print("You got " + std::to_string(amount) + " experience");
     }
 
     void Player::MoveAtAngle(float angle_deg_) {
-        auto map_area = World::Get()->curr_map_area();
+        auto map_area = World::get()->curr_map_area();
         auto used_angle = angle_deg_ - facing_angle_deg_;
         auto dx = CosDeg(used_angle + 90.0f) * step_size_;
         auto dz = SinDeg(used_angle + 90.0f) * step_size_;

@@ -22,17 +22,17 @@ namespace Narradia
      Update game logic.
     */
     void MainScene::UpdateGameLogicDerived() {
-        MobMovementModule::Get()->UpdateGameLogic();
-        KeyboardMovementModule::Get()->UpdateGameLogic();
-        MouseMovementModule::Get()->UpdateGameLogic();
-        CombatChaseMovementModule::Get()->UpdateGameLogic();
-        WorldViewModule::Get()->UpdateGameLogic();
-        MouseRotationModule::Get()->UpdateGameLogic();
-        TileHoveringModule::Get()->UpdateGameLogic();
-        MobTargetingModule::Get()->UpdateGameLogic();
-        CombatModule::Get()->UpdateGameLogic();
-        SkillPerformingModule::Get()->UpdateGameLogic();
-        MobDeathHandlingModule::Get()->UpdateGameLogic();
-        FPSCounterModule::Get()->UpdateGameLogic();
+        MobMovementModule::get()->UpdateGameLogic();
+        KeyboardMovementModule::get()->UpdateGameLogic();
+        MouseMovementModule::get()->UpdateGameLogic();
+        CombatChaseMovementModule::get()->UpdateGameLogic();
+        WorldViewModule::get()->UpdateGameLogic();
+        MouseRotationModule::get()->UpdateGameLogic();
+        TileHoveringModule::get()->UpdateGameLogic();
+        MobTargetingModule::get()->UpdateGameLogic();
+        CombatModule::get()->UpdateGameLogic();
+        SkillPerformingModule::get()->UpdateGameLogic();
+        MobDeathHandlingModule::get()->UpdateGameLogic();
+        FPSCounterModule::get()->UpdateGameLogic();
     }
 }

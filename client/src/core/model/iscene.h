@@ -10,6 +10,7 @@ namespace Narradia
         IScene()
             : scene_gui_(std::make_shared<SceneGui>()) {
         }
+
         void UpdateGameLogic();
 
         auto scene_gui() {

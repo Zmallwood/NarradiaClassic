@@ -7,7 +7,7 @@ namespace Narradia
      previously have been initialized with NewRect().
     */
     void FillRect(RenderID vao_id, RectF rect, Color color) {
-        auto renderer = Renderer2DSolidColorsView::Get();
+        auto renderer = Renderer2DSolidColorsView::get();
         auto renderer_base = renderer->renderer_base();
         auto gl_rect = rect.ToGLRectF();
         Vertex2F vertices[RendererBase::kNumVerticesInRectangle];

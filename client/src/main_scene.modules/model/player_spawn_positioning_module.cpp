@@ -5,7 +5,7 @@
 namespace Narradia
 {
     void PlayerSpawnPositioningModule::SpawnAtGoodLocation() {
-        auto map_area = World::Get()->curr_map_area();
+        auto map_area = World::get()->curr_map_area();
         std::shared_ptr<Tile> tile;
         int x;
         int y;
@@ -18,6 +18,6 @@ namespace Narradia
             y = y_center + static_cast<int>((r_min - kShoreSize - 1) * SinDeg(angle_deg));
             tile = map_area->GetTile(x, y);
         } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
-        Player::Get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
+        Player::get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
     }
 }

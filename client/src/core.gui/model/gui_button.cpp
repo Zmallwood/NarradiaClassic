@@ -30,9 +30,9 @@ namespace Narradia
         //            p->parent_container_->GetPosition().y;
         //        }
         if (used_bounds.Contains(GetMousePosition())) {
-            Cursor::Get()->set_cursor_style(CursorStyles::Hovering);
+            Cursor::get()->set_cursor_style(CursorStyles::Hovering);
             hovered_ = true;
-            MouseInput::Get()->left_button()->mouse_action_mngr()->AddFiredAction(
+            MouseInput::get()->left_button()->mouse_action_mngr()->AddFiredAction(
                 [&] { action_(); }, 2);
         }
     }

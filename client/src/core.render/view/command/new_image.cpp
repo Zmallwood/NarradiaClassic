@@ -3,7 +3,7 @@
 namespace Narradia
 {
     RenderID NewImage() {
-        auto renderer = Renderer2DImagesView::Get();
+        auto renderer = Renderer2DImagesView::get();
         auto renderer_base = renderer->renderer_base();
         auto vao_id = renderer_base->GenerateNewVertexArrayId();
         renderer->UseVaoBegin(vao_id);

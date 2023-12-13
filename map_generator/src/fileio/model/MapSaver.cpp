@@ -4,7 +4,7 @@
 namespace Narradia
 {
     void MapSaver::SaveWorldMapToFile() {
-        auto map_area = World::Get()->curr_map_area();
+        auto map_area = World::get()->curr_map_area();
         std::ofstream file;
         file.open(
             std::string(SDL_GetBasePath()) + "/" + kMapName + ".map",

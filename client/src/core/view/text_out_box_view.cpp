@@ -16,7 +16,7 @@ namespace Narradia
         rid_split_line_ = NewImage();
         rid_cmd_line_input_arrow_ = NewImage();
         rid_input_text_ = NewString();
-        for (auto i = 0; i < TextOutBox::Get()->GetMaxNumLines(); i++)
+        for (auto i = 0; i < TextOutBox::get()->GetMaxNumLines(); i++)
             rids_text_lines_.push_back(NewString());
     }
 
@@ -24,11 +24,11 @@ namespace Narradia
      Renders the TextOutBox with its text content to canvas.
     */
     void TextOutBoxView::Render() const {
-        auto model = TextOutBox::Get();
+        auto model = TextOutBox::get();
         if (!model->enabled())
             return;
         auto used_bounds = TextOutBox::kBounds;
-        if (SceneMngr::Get()->curr_scene() == SceneNames::Main)
+        if (SceneMngr::get()->curr_scene() == SceneNames::Main)
             used_bounds = used_bounds.Translate(0.0f, -ExperienceBar::kBarHeight);
         DrawImage("TextOutBoxBack", rid_image_, used_bounds);
         for (auto i = 0; i < model->GetMaxNumLines(); i++) {

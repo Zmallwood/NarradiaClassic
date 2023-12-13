@@ -10,6 +10,7 @@ namespace Narradia
     class SceneMngr : public Singleton<SceneMngr> {
       public:
         SceneMngr();
+
         void UpdateGameLogicCurrScene();
 
         auto curr_scene() {

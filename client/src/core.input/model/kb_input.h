@@ -2,10 +2,10 @@
 namespace Narradia
 {
     /**
-     Model for keyboard_input.holding keyboard input state,
+     Model for kb_input.holding keyboard input state,
      has no controller or view.
     */
-    class KeyboardInput : public Singleton<KeyboardInput> {
+    class KbInput : public Singleton<KbInput> {
       public:
         void OnKeyPress(SDL_Keycode key);
         void OnKeyRelease(SDL_Keycode key);

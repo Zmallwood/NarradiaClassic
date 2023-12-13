@@ -1,10 +1,20 @@
 #pragma once
 namespace Narradia
 {
-    class FPSCapper : public Singleton<FPSCapper> {
-      public:
-        bool RunningBelow60FPS();
-      private:
-        int prev_ticks_ = 0;
-    };
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Helps capping FPS at 60 so, as more than that just consumed uneccesarry computer
+   /// resources.
+   ////////////////////////////////////////////////////////////////////////////////
+   class FPSCapper : public Singleton<FPSCapper> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Tells if FPS is below 60 FPS (which is checked at the beginning of every frame).
+      ///
+      /// @return True if FPS is below 60, otherwise false.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto RunningBelow60FPS() -> bool;
+
+     private:
+      int prev_ticks_ = 0;
+   };
 }

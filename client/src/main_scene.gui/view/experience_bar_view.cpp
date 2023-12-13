@@ -19,7 +19,7 @@ namespace Narradia
         auto unfilled_area =
             RectF{0.0f, 1.0f - ExperienceBar::kBarHeight, 1.0f, ExperienceBar::kBarHeight};
         FillRect(rid_unfilled_area_, unfilled_area, Colors::black);
-        auto experience_progress = GetFractionalExpProgress(Player::Get()->experience());
+        auto experience_progress = GetFractionalExpProgress(Player::get()->experience());
         auto filled_area = RectF{
             0.0f, 1.0f - ExperienceBar::kBarHeight, experience_progress, ExperienceBar::kBarHeight};
         DrawImage("Green", rid_filled_area_, filled_area);

@@ -1,5 +1,11 @@
 #pragma once
+#include "core.input/model/kb_input.h"
+#include "core.input/model/mouse_input.h"
+#include "core/model/engine.h"
 namespace Narradia
 {
-    void PollEvents();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Poll for user input events,
+   ////////////////////////////////////////////////////////////////////////////////
+   auto PollEvents() -> void;
 }

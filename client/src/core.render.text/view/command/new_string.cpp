@@ -10,7 +10,7 @@ namespace Narradia
     RenderID NewString() {
         auto unique_name = CreateGetBlankTexture();
         auto rendid_image_rect = NewImage();
-        RendererText::Get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
+        RendererText::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
         return rendid_image_rect;
     }
 }

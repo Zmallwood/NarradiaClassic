@@ -1,34 +1,22 @@
 #include "objects_conf.h"
 namespace Narradia
 {
-    using ObjectFlags::NoObstacle;
-    using ObjectFlags::NoSightBlock;
+   using ObjectFlags::NoObstacle;
 
-    ////////////////////////////////////////////////////////////////////////////////
-    /// @brief Sets custom object flags on startup.
-    ///
-    ////////////////////////////////////////////////////////////////////////////////
-    ObjectsConf::ObjectsConf() {
-        object_confs_.insert({"ObjectPoolOfBlood", {NoObstacle | NoSightBlock, 1.0f}});
-        object_confs_.insert({"ObjectTree1", {0, 6.0f}});
-        object_confs_.insert({"ObjectTree2", {0, 6.0f}});
-    }
+   ObjectsConf::ObjectsConf() {
+      object_confs_["ObjectPoolOfBlood"] = {NoObstacle, 1.0f};
+      object_confs_["ObjectTree1"] = {0, 6.0f};
+      object_confs_["ObjectTree2"] = {0, 6.0f};
+   }
 
-    bool ObjectsConf::BlocksSight(std::string_view object_type) {
-        if (object_confs_.count(object_type) == 0)
-            return true;
-        return (object_confs_.at(object_type).flags & NoSightBlock) == 0;
-    }
+   auto ObjectsConf::IsObstacle(std::string_view object_type) -> bool {
+      return object_confs_.count(object_type) == 0
+                 ? true
+                 : (object_confs_.at(object_type).flags & NoObstacle) == 0;
+   }
 
-    bool ObjectsConf::IsObstacle(std::string_view object_type) {
-        if (object_confs_.count(object_type) == 0)
-            return true;
-        return (object_confs_.at(object_type).flags & NoObstacle) == 0;
-    }
-
-    float ObjectsConf::GetModelScaling(std::string_view object_type) {
-        if (object_confs_.count(object_type) == 0)
-            return 1.0f;
-        return object_confs_.at(object_type).model_scaling;
-    }
+   auto ObjectsConf::GetModelScaling(std::string_view object_type) -> float {
+      return object_confs_.count(object_type) == 0 ? 1.0f
+                                                   : object_confs_.at(object_type).model_scaling;
+   }
 }

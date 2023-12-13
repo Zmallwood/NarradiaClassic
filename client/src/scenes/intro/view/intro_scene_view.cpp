@@ -8,7 +8,7 @@
 namespace Narradia
 {
     IntroSceneView::IntroSceneView() {
-        scene_gui_view_->set_scene_gui(IntroScene::Get()->scene_gui());
+        scene_gui_view_->set_scene_gui(IntroScene::get()->scene_gui());
         rid_background = NewImage();
         rid_logo = NewImage();
         rid_text = NewString();

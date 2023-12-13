@@ -28,7 +28,7 @@ namespace Narradia
      Get instance of object.
     */
     template <class T>
-    std::shared_ptr<T> Singleton<T>::Get() {
+    std::shared_ptr<T> Singleton<T>::get() {
         if (!instance_) // Create new instance if none exists
             Touch();
         return std::weak_ptr<T>(instance_).lock(); // Return weak_ptr to not increase ref count

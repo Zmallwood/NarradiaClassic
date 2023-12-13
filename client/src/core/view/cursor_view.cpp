@@ -20,7 +20,7 @@ namespace Narradia
         auto width = kCursorWidth;
         auto height = width * GetAspectRatio();
         RectF rect = {mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
-        auto image_name = Cursor::Get()->GetCursorImageName();
+        auto image_name = Cursor::get()->GetCursorImageName();
         DrawImage(image_name, rid_image, rect);
     }
 }

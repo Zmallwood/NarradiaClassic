@@ -8,7 +8,7 @@ namespace Narradia
      initialized with NewImage().
     */
     void DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color) {
-        auto renderer = Renderer2DImagesView::Get();
+        auto renderer = Renderer2DImagesView::get();
         auto renderer_base = renderer->renderer_base();
         auto gl_rect = dest.ToGLRectF();
         Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
@@ -21,7 +21,7 @@ namespace Narradia
         vertices[2].uv = {1.0f, 0.0f};
         vertices[3].uv = {1.0f, 1.0f};
         glDisable(GL_DEPTH_TEST);
-        auto image_id = ImageBank::Get()->GetImage(image_name);
+        auto image_id = ImageBank::get()->GetImage(image_name);
         glBindTexture(GL_TEXTURE_2D, image_id);
         std::vector<int> indices(RendererBase::kNumVerticesInRectangle);
         std::iota(std::begin(indices), std::end(indices), 0);

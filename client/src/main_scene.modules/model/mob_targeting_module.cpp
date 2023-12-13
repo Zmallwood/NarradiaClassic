@@ -7,10 +7,10 @@
 namespace Narradia
 {
     void MobTargetingModule::UpdateGameLogic() {
-        MouseInput::Get()->right_button()->AddFiredAction(
+        MouseInput::get()->right_button()->AddFiredAction(
             [&] {
-                auto map_area = World::Get()->curr_map_area();
-                auto hovered_tile = TileHoveringModule::Get()->hovered_tile();
+                auto map_area = World::get()->curr_map_area();
+                auto hovered_tile = TileHoveringModule::get()->hovered_tile();
                 if (hovered_tile.x < 0 || hovered_tile.y < 0 ||
                     hovered_tile.x >= map_area->GetWidth() ||
                     hovered_tile.y >= map_area->GetHeight())
@@ -19,7 +19,7 @@ namespace Narradia
                 if (mob) {
                     targeted_mob_ = mob;
                 }
-                Player::Get()->set_destination({-1, -1});
+                Player::get()->set_destination({-1, -1});
             },
             1);
     }

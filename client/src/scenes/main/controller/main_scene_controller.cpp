@@ -7,8 +7,8 @@ namespace Narradia
      On entering scene.
     */
     void MainSceneController::OnEnter() {
-        TextOutBox::Get()->Print("Entering Narradia");
-        PlayerSpawnPositioningModule::Get()->SpawnAtGoodLocation();
+        TextOutBox::get()->Print("Entering Narradia");
+        PlayerSpawnPositioningModule::get()->SpawnAtGoodLocation();
     }
 
     /**

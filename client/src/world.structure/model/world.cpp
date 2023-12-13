@@ -6,6 +6,6 @@ namespace Narradia
      Initalizes and generates a complete MapArea.
     */
     World::World() {
-        MapLoader::Get()->LoadWorldMapFromFile(curr_map_area_);
+        MapLoader::get()->LoadWorldMapFromFile(curr_map_area_);
     }
 }

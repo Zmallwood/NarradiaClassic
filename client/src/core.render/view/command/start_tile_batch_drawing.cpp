@@ -6,21 +6,21 @@
 namespace Narradia
 {
     void StartTileBatchDrawing() {
-        auto renderer = RendererTilesView::Get();
+        auto renderer = RendererTilesView::get();
         renderer->set_is_batch_drawing(true);
         glUseProgram(renderer->GetShaderProgramView()->shader_program()->program_id());
         glUniformMatrix4fv(
             renderer->location_projection(), 1, GL_FALSE,
-            glm::value_ptr(CameraGL::Get()->perspective_matrix()));
+            glm::value_ptr(CameraGL::get()->perspective_matrix()));
         glUniformMatrix4fv(
-            renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::Get()->view_matrix()));
+            renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
         glm::mat4 model(1.0);
         glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
         glUniform1f(renderer->location_alpha(), 1.0f);
-        auto player_pos = Player::Get()->position().Multiply(kTileSize);
+        auto player_pos = Player::get()->position().Multiply(kTileSize);
         glm::vec3 view_pos(
             player_pos.x,
-            player_pos.y + CalcTileAverageElevation(Player::Get()->position().GetXZ().ToIntPoint()),
+            player_pos.y + CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint()),
             player_pos.z);
         glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
         glm::vec3 fog_color_gl(

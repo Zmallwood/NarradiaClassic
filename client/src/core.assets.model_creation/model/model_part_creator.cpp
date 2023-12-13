@@ -14,16 +14,16 @@ namespace Narradia
         auto tex_name = GetTexNameForMesh(scene, mesh);
         new_model_part->set_texture_name(tex_name);
         auto no_keyframe_at_time_0_exists =
-            ModelPartKeyframeCreator::Get()->GetPositionKeyframe(scene, nodeName, 0).mTime > 0;
+            ModelPartKeyframeCreator::get()->GetPositionKeyframe(scene, nodeName, 0).mTime > 0;
         auto num_keyframes =
-            ModelPartKeyframeCreator::Get()->GetNodePositionKeyframes(scene, nodeName).size();
+            ModelPartKeyframeCreator::get()->GetNodePositionKeyframes(scene, nodeName).size();
         for (auto k = 0; k < num_keyframes; k++) {
             auto position_keyframe =
-                ModelPartKeyframeCreator::Get()->GetPositionKeyframe(scene, nodeName, k);
+                ModelPartKeyframeCreator::get()->GetPositionKeyframe(scene, nodeName, k);
             auto rotation_keyframe =
-                ModelPartKeyframeCreator::Get()->GetRotationKeyframe(scene, nodeName, k);
+                ModelPartKeyframeCreator::get()->GetRotationKeyframe(scene, nodeName, k);
             auto scaling_keyframe =
-                ModelPartKeyframeCreator::Get()->GetScalingKeyframe(scene, nodeName, k);
+                ModelPartKeyframeCreator::get()->GetScalingKeyframe(scene, nodeName, k);
             auto keyframe_time = static_cast<float>(position_keyframe.mTime);
             auto new_model_part_keyframe = GetNewModelPartKeyframe(
                 scene, nodeName, mesh, position_keyframe, rotation_keyframe, scaling_keyframe);

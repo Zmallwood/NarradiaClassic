@@ -11,7 +11,7 @@ namespace Narradia
      images to be rendered.
     */
     MainMenuSceneView::MainMenuSceneView() {
-        scene_gui_view_->set_scene_gui(MainMenuScene::Get()->scene_gui());
+        scene_gui_view_->set_scene_gui(MainMenuScene::get()->scene_gui());
         scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonView>());
         scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonView>());
         rid_background = NewImage();

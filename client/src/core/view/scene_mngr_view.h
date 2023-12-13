@@ -9,6 +9,7 @@ namespace Narradia
     class SceneMngrView : public Singleton<SceneMngrView> {
       public:
         SceneMngrView();
+
         void RenderCurrScene();
       private:
         std::map<SceneNames, std::shared_ptr<ISceneView>> scene_views_;

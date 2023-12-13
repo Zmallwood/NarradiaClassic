@@ -1,14 +1,22 @@
 #pragma once
 namespace Narradia
 {
-    /**
-     Controller for all IScenes.
-    */
-    class ISceneController {
-      public:
-        virtual void OnEnter() = 0;
-        void UpdateGameFlow();
-      protected:
-        virtual void UpdateGameFlowDerived() = 0;
-    };
+   /**
+    Controller for all IScenes.
+   */
+   class ISceneController {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Called when the player has transfered from another scene to this one.
+      ////////////////////////////////////////////////////////////////////////////////
+      virtual auto OnEnter() -> void = 0;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Update game flow between scenes for scenes deriving this class.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto UpdateGameFlow() -> void;
+
+     protected:
+      virtual void UpdateGameFlowDerived() = 0;
+   };
 }

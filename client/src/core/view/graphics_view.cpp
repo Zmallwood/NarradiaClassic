@@ -8,11 +8,11 @@ namespace Narradia
      Initialize SDL window and some of the OpenGL settings.
     */
     GraphicsView::GraphicsView() {
-        auto window_size = Graphics::Get()->window_size();
-        auto window_flags = Graphics::Get()->window_flags();
+        auto window_size = Graphics::get()->win_size();
+        auto window_flags = Graphics::get()->win_flags();
         auto window = std::shared_ptr<SDL_Window>(
             SDL_CreateWindow(
-                Engine::Get()->title().data(), 0, 0, window_size.w, window_size.h,
+                Engine::get()->title().data(), 0, 0, window_size.w, window_size.h,
                 window_flags),
             SDLDeleter());
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -23,7 +23,7 @@ namespace Narradia
                       << std::string(SDL_GetError()) << std::endl;
             return;
         }
-        Graphics::Get()->set_window(window);
+        Graphics::get()->set_win(window);
         GraphicsGLView::Touch();
     }
 
@@ -38,6 +38,6 @@ namespace Narradia
      Present canvas to the screen at the end of each frame.
     */
     void GraphicsView::PresentCanvas() {
-        SDL_GL_SwapWindow(Graphics::Get()->window().get());
+        SDL_GL_SwapWindow(Graphics::get()->win().get());
     }
 }

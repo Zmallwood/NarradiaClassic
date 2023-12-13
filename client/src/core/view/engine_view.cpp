@@ -9,10 +9,10 @@ namespace Narradia
      Render game each frame.
     */
     void EngineView::Render() {
-        GraphicsView::Get()->ClearCanvas();
-        SceneMngrView::Get()->RenderCurrScene();
-        TextOutBoxView::Get()->Render();
-        CursorView::Get()->RenderCursor();
-        GraphicsView::Get()->PresentCanvas();
+        GraphicsView::get()->ClearCanvas();
+        SceneMngrView::get()->RenderCurrScene();
+        TextOutBoxView::get()->Render();
+        CursorView::get()->RenderCursor();
+        GraphicsView::get()->PresentCanvas();
     };
 }

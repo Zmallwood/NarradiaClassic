@@ -9,12 +9,12 @@ namespace Narradia
      Run a new game instance.
     */
     void Game::Run() {
-        while (Engine::Get()->is_running()) {
-            if (FPSCapper::Get()->RunningBelow60FPS()) {
-                EngineController::Get()->HandleInput();
-                EngineController::Get()->UpdateGameFlow();
-                Engine::Get()->UpdateGameLogic();
-                EngineView::Get()->Render();
+        while (Engine::get()->is_running()) {
+            if (FPSCapper::get()->RunningBelow60FPS()) {
+                EngineController::get()->HandleInput();
+                EngineController::get()->UpdateGameFlow();
+                Engine::get()->UpdateGameLogic();
+                EngineView::get()->Render();
             }
         }
         DisposeAllSingletons();

@@ -9,7 +9,7 @@
 namespace Narradia
 {
     MainSceneView::MainSceneView() {
-        scene_gui_view_->set_scene_gui(MainScene::Get()->scene_gui());
+        scene_gui_view_->set_scene_gui(MainScene::get()->scene_gui());
         scene_gui_view_->AddGuiComponentView(std::make_shared<ExperienceBarView>());
         rid_level_text = NewString();
     }
@@ -18,10 +18,10 @@ namespace Narradia
      Render operations.
     */
     void MainSceneView::RenderDerived() {
-        WorldViewModuleView::Get()->Render();
-        FPSCounterModuleView::Get()->Render();
+        WorldViewModuleView::get()->Render();
+        FPSCounterModuleView::get()->Render();
         DrawString(
             rid_level_text,
-            "Level: " + std::to_string(GetCurrentLevel(Player::Get()->experience())), {0.1f, 0.1f});
+            "Level: " + std::to_string(GetCurrentLevel(Player::get()->experience())), {0.1f, 0.1f});
     }
 }

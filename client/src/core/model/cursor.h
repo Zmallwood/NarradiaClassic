@@ -2,19 +2,32 @@
 #include "cursor_styles.h"
 namespace Narradia
 {
-    class Cursor : public Singleton<Cursor> {
-      public:
-        void ResetStyle();
-        std::string_view GetCursorImageName();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Custom cursor which replaces the default system cursor.
+   ////////////////////////////////////////////////////////////////////////////////
+   class Cursor : public Singleton<Cursor> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Reset cursor style to Default at start of every frame.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto ResetStyle() -> void;
 
-        auto cursor_style() {
-            return cursor_style_;
-        }
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Gets the image name for the current cursor style.
+      ///
+      /// @return Image name.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto GetCursorImageName() -> std::string_view;
 
-        void set_cursor_style(CursorStyles value) {
-            cursor_style_ = value;
-        }
-      private:
-        CursorStyles cursor_style_ = CursorStyles::Default;
-    };
+      auto cursor_style() {
+         return cursor_style_;
+      }
+
+      void set_cursor_style(CursorStyles value) {
+         cursor_style_ = value;
+      }
+
+     private:
+      CursorStyles cursor_style_ = CursorStyles::Default;
+   };
 }

@@ -3,7 +3,7 @@
 namespace Narradia
 {
     RenderID NewImagePolygon(int num_vertices) {
-        auto renderer = RendererTilesView::Get();
+        auto renderer = RendererTilesView::get();
         auto renderer_base = renderer->renderer_base();
         auto vertex_array_id = renderer_base->GenerateNewVertexArrayId();
         auto index_buffer_id =

@@ -1,5 +1,8 @@
 #pragma once
 namespace Narradia
 {
-    enum class CursorStyles { Default, Hovering, Rotating, Attack };
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Available cursor styles for the Cursor class.
+   ////////////////////////////////////////////////////////////////////////////////
+   enum class CursorStyles { Default, Hovering, Rotating, Attack };
 }

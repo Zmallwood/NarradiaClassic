@@ -1,5 +1,5 @@
 #include "intro_scene_controller.h"
-#include "core.input/model/keyboard_input.h"
+#include "core.input/model/kb_input.h"
 #include "core.input/model/mouse_input.h"
 #include "core/controller/scene_mngr_controller.h"
 namespace Narradia
@@ -14,12 +14,12 @@ namespace Narradia
      Update game flow between scenes.
     */
     void IntroSceneController::UpdateGameFlowDerived() {
-        if (KeyboardInput::Get()->AnyKeyIsPressedPickResult()) {
-            SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu);
+        if (KbInput::get()->AnyKeyIsPressedPickResult()) {
+            SceneMngrController::get()->ChangeScene(SceneNames::MainMenu);
         }
-        MouseInput::Get()->left_button()->AddFiredAction(
-            [] { SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu); });
-        MouseInput::Get()->right_button()->AddFiredAction(
-            [] { SceneMngrController::Get()->ChangeScene(SceneNames::MainMenu); });
+        MouseInput::get()->left_button()->AddFiredAction(
+            [] { SceneMngrController::get()->ChangeScene(SceneNames::MainMenu); });
+        MouseInput::get()->right_button()->AddFiredAction(
+            [] { SceneMngrController::get()->ChangeScene(SceneNames::MainMenu); });
     }
 }

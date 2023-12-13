@@ -28,7 +28,7 @@ namespace Narradia
     std::shared_ptr<Model> ModelBank::LoadSingleModel(std::string_view path_str) {
         Assimp::Importer importer;
         const aiScene *scene = importer.ReadFile(path_str.data(), 0);
-        return ModelCreator::Get()->CreateModel(scene);
+        return ModelCreator::get()->CreateModel(scene);
     }
 
     std::shared_ptr<Model> ModelBank::GetModel(std::string_view model_name) {

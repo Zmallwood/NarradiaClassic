@@ -6,11 +6,11 @@ namespace Narradia
 {
     void SkillPerformingModule::UpdateGameLogic() {
         if (SDL_GetTicks() > ticks_last_skill_tick_ + 400 / skill_ticks_frequency_) {
-            if (SDL_GetTicks() < Player::Get()->ticks_ulti_skill_start() +
-                                     Player::Get()->ulti_skill_duration() &&
-                Player::Get()->ticks_ulti_skill_start() != 0) {
-                auto player_pos = Player::Get()->position().GetXZ().ToIntPoint();
-                auto map_area = World::Get()->curr_map_area();
+            if (SDL_GetTicks() < Player::get()->ticks_ulti_skill_start() +
+                                     Player::get()->ulti_skill_duration() &&
+                Player::get()->ticks_ulti_skill_start() != 0) {
+                auto player_pos = Player::get()->position().GetXZ().ToIntPoint();
+                auto map_area = World::get()->curr_map_area();
                 auto r = 7;
                 for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
                     for (auto x = player_pos.x - r; x <= player_pos.x + r; x++) {
@@ -25,7 +25,7 @@ namespace Narradia
                             if (map_area->GetTile(x, y)->mob()) {
                                 map_area->GetTile(x, y)->mob()->Hit(
                                     map_area->GetTile(x, y)->mob()->hp());
-                                Player::Get()->AddExperience(30);
+                                Player::get()->AddExperience(30);
                             }
                         }
                     }
