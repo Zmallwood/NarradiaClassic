@@ -15,6 +15,7 @@ namespace Narradia
       void MoveAtAngle(float angle_deg_);
       void AddExperience(int amount);
       bool IsMoving();
+      void Hit(float damage);
 
       auto position() {
          return position_;

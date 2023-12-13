@@ -37,6 +37,14 @@ namespace Narradia
          return ticks_last_hit_recieved_;
       }
 
+      auto ticks_last_hit_performed() {
+         return ticks_last_hit_performed_;
+      }
+
+      void set_ticks_last_hit_performed(int value) {
+         ticks_last_hit_performed_ = value;
+      }
+
       auto health() {
          return health_;
       }
@@ -54,5 +62,6 @@ namespace Narradia
       float max_health_ = 10.0f;
       int ticks_last_hit_recieved_ = 0;
       bool aggroing_player_ = false;
+      int ticks_last_hit_performed_ = 0;
    };
 }
