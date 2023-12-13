@@ -1,11 +1,11 @@
 #pragma once
 namespace Narradia
 {
-    /**
-     Pure virtual class inherited by all Gui components.
-    */
-    class GuiComponent {
-      public:
-        virtual void UpdateGameLogic() = 0;
-    };
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Pure virtual class inherited by all Gui components.
+   ////////////////////////////////////////////////////////////////////////////////
+   class GuiComponent {
+     public:
+      virtual auto UpdateGameLogic() -> void = 0;
+   };
 }

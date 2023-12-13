@@ -4,19 +4,35 @@
 #include <vector>
 namespace Narradia
 {
-    /**
-     Model component for SceneGui, of which every Scene has
-     an inherited member instance of.
-    */
-    class SceneGui {
-      public:
-        void UpdateGameLogic();
-        void AddGuiComponent(std::shared_ptr<GuiComponent> component);
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Model component for SceneGui, of which every Scene has an inherited member instance
+   /// of.
+   ////////////////////////////////////////////////////////////////////////////////
+   class SceneGui {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Create internal structure.
+      ////////////////////////////////////////////////////////////////////////////////
+      SceneGui()
+          : gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>()) {
+      }
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Forwards the update request to all contained gui components.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto UpdateGameLogic() -> void;
 
-        auto &gui_components() {
-            return gui_components_;
-        }
-      private:
-        std::vector<std::shared_ptr<GuiComponent>> gui_components_;
-    };
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Adds a new gui component to this scene.
+      ///
+      /// @param[in] component Component to add.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto AddGuiComponent(std::shared_ptr<GuiComponent> comp) -> void;
+
+      auto gui_components() {
+         return gui_components_;
+      }
+
+     private:
+      std::shared_ptr<std::vector<std::shared_ptr<GuiComponent>>> gui_components_;
+   };
 }

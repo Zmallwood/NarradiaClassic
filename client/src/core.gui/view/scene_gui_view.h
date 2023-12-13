@@ -5,19 +5,30 @@
 #include <vector>
 namespace Narradia
 {
-    /**
-     View component of SceneGui.
-    */
-    class SceneGuiView {
-      public:
-        void Render();
-        void AddGuiComponentView(std::shared_ptr<GuiComponentView> gui_component_view);
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief View component of SceneGui.
+   ////////////////////////////////////////////////////////////////////////////////
+   class SceneGuiView {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Forwards the render request to all contains gui components views.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto Render() -> void;
 
-        void set_scene_gui(std::shared_ptr<SceneGui> value) {
-            scene_gui_ = value;
-        }
-      private:
-        std::shared_ptr<SceneGui> scene_gui_;
-        std::vector<std::shared_ptr<GuiComponentView>> gui_component_views_;
-    };
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Adds a new gui component view to the internal data structure, also connects it to
+      /// the corresponding model in the scene gui.
+      ///
+      /// @param[in] comp_view Component view to be added.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto AddGuiComponentView(std::shared_ptr<GuiComponentView> comp_view) -> void;
+
+      void set_scene_gui(std::shared_ptr<SceneGui> value) {
+         scene_gui_ = value;
+      }
+
+     private:
+      std::shared_ptr<SceneGui> scene_gui_;
+      std::vector<std::shared_ptr<GuiComponentView>> gui_component_views_;
+   };
 }

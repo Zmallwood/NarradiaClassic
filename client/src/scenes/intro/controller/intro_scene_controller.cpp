@@ -17,9 +17,9 @@ namespace Narradia
         if (KbInput::get()->AnyKeyIsPressedPickResult()) {
             SceneMngrController::get()->ChangeScene(SceneNames::MainMenu);
         }
-        MouseInput::get()->left_button()->AddFiredAction(
+        MouseInput::get()->left_btn()->AddFiredAction(
             [] { SceneMngrController::get()->ChangeScene(SceneNames::MainMenu); });
-        MouseInput::get()->right_button()->AddFiredAction(
+        MouseInput::get()->right_btn()->AddFiredAction(
             [] { SceneMngrController::get()->ChangeScene(SceneNames::MainMenu); });
     }
 }

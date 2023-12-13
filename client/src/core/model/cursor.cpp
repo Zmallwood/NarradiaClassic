@@ -4,11 +4,11 @@ namespace Narradia
    std::string_view img_name;
 
    auto Cursor::ResetStyle() -> void {
-      cursor_style_ = CursorStyles::Default;
+      style_ = CursorStyles::Default;
    }
 
    auto Cursor::GetCursorImageName() -> std::string_view {
-      switch (Cursor::get()->cursor_style()) {
+      switch (style_) {
       case CursorStyles::Default:
          img_name = "CursorDefault";
          break;

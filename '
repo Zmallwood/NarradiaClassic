@@ -15,15 +15,15 @@ namespace Narradia
         void OnRelease(Uint8 button);
         void PerformMouseActions();
 
-        auto left_btn() {
-            return left_btn_;
+        auto left_button() {
+            return left_button_;
         }
 
-        auto right_btn() {
-            return right_btn_;
+        auto right_button() {
+            return right_button_;
         }
       private:
-        std::shared_ptr<MouseButton> left_btn_;
-        std::shared_ptr<MouseButton> right_btn_;
+        std::shared_ptr<MouseButton> left_button_;
+        std::shared_ptr<MouseButton> right_button_;
     };
 }

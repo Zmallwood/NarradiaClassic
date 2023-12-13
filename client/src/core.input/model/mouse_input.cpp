@@ -5,8 +5,8 @@ namespace Narradia
      Create the left and right mouse buttons.
     */
     MouseInput::MouseInput()
-        : left_button_(std::make_shared<MouseButton>()),
-          right_button_(std::make_shared<MouseButton>()) {
+        : left_btn_(std::make_shared<MouseButton>()),
+          right_btn_(std::make_shared<MouseButton>()) {
     }
 
     /**
@@ -16,10 +16,10 @@ namespace Narradia
     void MouseInput::OnPress(Uint8 button) {
         switch (button) {
         case SDL_BUTTON_LEFT:
-            left_button_->OnPress();
+            left_btn_->OnPress();
             break;
         case SDL_BUTTON_RIGHT:
-            right_button_->OnPress();
+            right_btn_->OnPress();
             break;
         }
     }
@@ -31,10 +31,10 @@ namespace Narradia
     void MouseInput::OnRelease(Uint8 button) {
         switch (button) {
         case SDL_BUTTON_LEFT:
-            left_button_->OnRelease();
+            left_btn_->OnRelease();
             break;
         case SDL_BUTTON_RIGHT:
-            right_button_->OnRelease();
+            right_btn_->OnRelease();
             break;
         }
     }
@@ -43,7 +43,7 @@ namespace Narradia
      Perform mouse actions for both mouse buttons.
     */
     void MouseInput::PerformMouseActions() {
-        left_button_->PerformMouseActions();
-        right_button_->PerformMouseActions();
+        left_btn_->PerformMouseActions();
+        right_btn_->PerformMouseActions();
     }
 }

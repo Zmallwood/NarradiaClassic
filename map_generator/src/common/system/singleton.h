@@ -8,7 +8,7 @@ namespace Narradia
     class Singleton {
       public:
         static void Touch();
-        static std::shared_ptr<T> Get();
+        static std::shared_ptr<T> get();
       private:
         inline static std::shared_ptr<T> instance_;
     };

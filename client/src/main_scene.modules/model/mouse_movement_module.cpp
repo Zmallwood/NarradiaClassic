@@ -6,7 +6,7 @@
 namespace Narradia
 {
     void MouseMovementModule::UpdateGameLogic() {
-        MouseInput::get()->left_button()->AddFiredAction(
+        MouseInput::get()->left_btn()->AddFiredAction(
             [] {
                 Player::get()->set_destination(TileHoveringModule::get()->hovered_tile());
                 MobTargetingModule::get()->ClearTarget();

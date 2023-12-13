@@ -7,7 +7,7 @@
 namespace Narradia
 {
     void MobTargetingModule::UpdateGameLogic() {
-        MouseInput::get()->right_button()->AddFiredAction(
+        MouseInput::get()->right_btn()->AddFiredAction(
             [&] {
                 auto map_area = World::get()->curr_map_area();
                 auto hovered_tile = TileHoveringModule::get()->hovered_tile();

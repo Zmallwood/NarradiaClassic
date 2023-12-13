@@ -6,7 +6,7 @@
 namespace Narradia
 {
     void MouseRotationModule::UpdateGameLogic() {
-        MouseInput::get()->right_button()->AddFiredAction(
+        MouseInput::get()->right_btn()->AddFiredAction(
             [&] {
                 is_rotating_ = true;
                 mouse_pos_rotation_start_ = MousePosition();
@@ -14,9 +14,9 @@ namespace Narradia
                 cam_vertical_angle_deg_rotation_start_ = Camera::get()->vertical_angle_deg();
             },
             1);
-        MouseInput::get()->right_button()->AddReleasedAction([&] { is_rotating_ = false; });
+        MouseInput::get()->right_btn()->AddReleasedAction([&] { is_rotating_ = false; });
         if (is_rotating_) {
-            Cursor::get()->set_cursor_style(CursorStyles::Rotating);
+            Cursor::get()->set_style(CursorStyles::Rotating);
             auto mouse_pos = MousePosition();
             auto dx = mouse_pos.x - mouse_pos_rotation_start_.x;
             auto dy = mouse_pos.y - mouse_pos_rotation_start_.y;

@@ -1,19 +1,12 @@
 #include "scene_gui.h"
 namespace Narradia
 {
-    /**
-     Forwards the update request to all contained gui
-     components.
-    */
-    void SceneGui::UpdateGameLogic() {
-        for (auto gui_component : gui_components_)
-            gui_component->UpdateGameLogic();
-    }
+   auto SceneGui::UpdateGameLogic() -> void {
+      for (auto comp : *gui_components_)
+         comp->UpdateGameLogic();
+   }
 
-    /**
-     Adds a new gui component.
-    */
-    void SceneGui::AddGuiComponent(std::shared_ptr<GuiComponent> component) {
-        gui_components_.push_back(component);
-    }
+   auto SceneGui::AddGuiComponent(std::shared_ptr<GuiComponent> comp) -> void {
+      gui_components_->push_back(comp);
+   }
 }

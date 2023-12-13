@@ -19,15 +19,15 @@ namespace Narradia
       ////////////////////////////////////////////////////////////////////////////////
       auto GetCursorImageName() -> std::string_view;
 
-      auto cursor_style() {
-         return cursor_style_;
+      auto style() {
+         return style_;
       }
 
-      void set_cursor_style(CursorStyles value) {
-         cursor_style_ = value;
+      void set_style(CursorStyles value) {
+         style_ = value;
       }
 
      private:
-      CursorStyles cursor_style_ = CursorStyles::Default;
+      CursorStyles style_ = CursorStyles::Default;
    };
 }
