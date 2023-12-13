@@ -1,29 +1,37 @@
 #pragma once
+#include "../../core.model_structure/model/model_part.h"
+#include "../../matter/model/point3f.h"
+#include "../../matter/model/color.h"
+#include "model_part_keyframe_creator.h"
+#include <assimp/scene.h>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 namespace Narradia
 {
-    class ModelPart;
-    class ModelPartKeyframe;
+   class ModelPartCreator : public Singleton<ModelPartCreator> {
+     public:
+      auto CreateModelPartFromMesh(const aiScene *scene, std::string node_name, aiMesh *mesh) const
+          -> std::shared_ptr<ModelPart>;
 
-    class ModelPartCreator : public Singleton<ModelPartCreator> {
-      public:
-        auto CreateModelPartFromMesh(const aiScene *, std::string, aiMesh *) const
-            -> std::shared_ptr<ModelPart>;
-      private:
-        std::string GetTexNameForMesh(const aiScene *, aiMesh *) const;
+     private:
+      auto TexNameForMesh(const aiScene *scene, aiMesh *mesh) const;
 
-        auto GetNewModelPartKeyframe(
-            const aiScene *, std::string, aiMesh *, aiVectorKey, aiQuatKey, aiVectorKey) const
-            -> std::shared_ptr<ModelPartKeyframe>;
+      auto NewModelPartKeyframe(
+          const aiScene *scene, std::string node_name, aiMesh *mesh, aiVectorKey position_keyframe,
+          aiQuatKey rotation_keyframe, aiVectorKey scaling_keyframe) const;
 
-        std::vector<std::string> GetTexNames(const aiScene *) const;
+      auto TexNames(const aiScene *scene) const;
 
-        aiMatrix4x4 GetNodeTransformation(const aiScene *, std::string) const;
+      auto NodeTransformation(const aiScene *scene, std::string node_name) const;
 
-        Point3F GetPosition(aiVector3D, aiMatrix4x4, aiVectorKey, aiQuatKey, aiVectorKey) const;
+      auto Position(
+          aiVector3D vertex, aiMatrix4x4 node_transformation, aiVectorKey position_keyframe,
+          aiQuatKey rotation_keyframe, aiVectorKey scaling_keyframe) const;
 
-        auto GetTransformations(const aiScene *) const
-            -> std::map<std::shared_ptr<std::string>, aiMatrix4x4>;
+      auto Transformations(const aiScene *scene) const;
 
-        void Translate(Point3F *, aiVectorKey) const;
-    };
+      auto Translate(Point3F *position, aiVectorKey position_keyframe) const;
+   };
 }

@@ -1,17 +1,22 @@
 #pragma once
+#include "../../core.model_structure/model/model.h"
+#include "model_part_creator.h"
+#include <assimp/scene.h>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 namespace Narradia
 {
-    class Model;
-    class ModelPart;
+   class ModelCreator : public Singleton<ModelCreator> {
+     public:
+      auto CreateModel(const aiScene *scene) -> std::shared_ptr<Model>;
 
-    class ModelCreator : public Singleton<ModelCreator> {
-      public:
-        auto CreateModel(const aiScene *scene) -> std::shared_ptr<Model>;
-      private:
-        auto GetModelParts(const aiScene *scene);
+     private:
+      auto ModelParts(const aiScene *scene);
 
-        auto GetModelMeshIds(const aiScene *scene) const;
+      auto ModelMeshIds(const aiScene *scene) const;
 
-        auto GetNodeMeshes(const aiScene *scene, std::vector<int> node_mesh_ids) const;
-    };
+      auto NodeMeshes(const aiScene *scene, std::vector<int> node_mesh_ids) const;
+   };
 }
