@@ -8,6 +8,6 @@ namespace Narradia
    void Engine::UpdateGameLogic() {
       Cursor::get()->ResetStyle();
       SceneMngr::get()->UpdateGameLogicCurrScene();
-      MouseInput::get()->PerformMouseActions();
+      MouseInput::get()->ExecMouseActions();
    }
 }

@@ -4,21 +4,56 @@
 #include <vector>
 namespace Narradia
 {
-    /**
-     Adds and executes actions triggered by mouse
-     click/release events, depending on the z order of the
-     object clicked with the mouse.
-    */
-    class MouseActionMngr {
-      public:
-        void AddFiredAction(std::function<void()> action, int z_level = 0);
-        void AddReleasedAction(std::function<void()> action, int z_level = 0);
-        bool PerformFiredActions();
-        bool PerformReleasedActions();
-        void ClearFiredActions();
-        void ClearReleasedActions();
-      private:
-        std::vector<MouseAction> fired_actions_;
-        std::vector<MouseAction> released_actions_;
-    };
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Adds and executes actions triggered by mouse click/release events, depending on the z
+   /// order of the object clicked with the mouse.
+   ////////////////////////////////////////////////////////////////////////////////
+   class MouseActionMngr {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Adds an action which might be executed when player fires the mouse button,
+      /// depending on its z order.
+      ///
+      /// @param[in] action The action that might be executed.
+      /// @param[in] z_order Z order where 0 is the min value.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto AddFiredAction(std::function<void()> action, int z_order = 0) -> void;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Adds an action which might be executed when player releases the mouse button,
+      /// depending on its z order.
+      ///
+      /// @param[in] action The action that might be executed.
+      /// @param[in] z_order Z order where 0 is the min value.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto AddReleasedAction(std::function<void()> action, int z_order = 0) -> void;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Executes the fired action with the highest z-order.
+      ///
+      /// @return True if at least one action existed, else false.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto ExecFiredActions() -> bool;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Executeds the released action with the highest z-order.
+      ///
+      /// @return True if at least one action existed, else false.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto ExecReleasedActions() -> bool;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Clear all fired actions.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto ClearFiredActions() -> void;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Clear all released actions.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto ClearReleasedActions() -> void;
+
+     private:
+      std::vector<MouseAction> fired_actions_;
+      std::vector<MouseAction> released_actions_;
+   };
 }

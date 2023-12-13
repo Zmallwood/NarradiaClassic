@@ -1,22 +1,67 @@
 #pragma once
 namespace Narradia
 {
-    /**
-     Model for kb_input.holding keyboard input state,
-     has no controller or view.
-    */
-    class KbInput : public Singleton<KbInput> {
-      public:
-        void OnKeyPress(SDL_Keycode key);
-        void OnKeyRelease(SDL_Keycode key);
-        bool KeyIsPressed(SDL_Keycode key);
-        bool KeyHasBeenFiredPickResult(SDL_Keycode key);
-        bool AnyKeyIsPressedPickResult();
-        void AppendTextInput(std::string_view to_append);
-        std::string_view PickTextInput();
-      private:
-        std::set<SDL_Keycode> pressed_keys_;
-        std::set<SDL_Keycode> fired_keys_;
-        std::string text_input_;
-    };
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Model-only. Holds keyboard input state.
+   ////////////////////////////////////////////////////////////////////////////////
+   class KbInput : public Singleton<KbInput> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Registers that a key has been pressed.
+      ///
+      /// @param[in] key Pressed key.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto OnKeyPress(SDL_Keycode key) -> void;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Registers that a key has been released.
+      ///
+      /// @param[in] key Released key.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto OnKeyRelease(SDL_Keycode key) -> void;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Tells if a key is currently being pressed.
+      ///
+      /// @param[in] key Key to get results for.
+      /// @return True if being pressed, else false.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto KeyIsPressed(SDL_Keycode key) -> bool;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Gets state for if key has been fired, and resets the state afterwards.
+      ///
+      /// @param[in] key Key to get result for.
+      /// @return True if has been fired, else false.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto KeyHasBeenFiredPickResult(SDL_Keycode key) -> bool;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Tells if any key at all is currently being pressed, and resets states for all keys
+      /// afterwards.
+      ///
+      /// @return True if any key at all is being pressed, else false.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto AnyKeyIsPressedPickResult() -> bool;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Appends text to the already typed text, that has not yet been extracted.
+      ///
+      /// @param[in] to_append Text to append.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto AppendTextInput(std::string_view to_append) -> void;
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Picks the typed text and returns it, and clears the internally stored typed text at
+      /// the same time.
+      ///
+      /// @return Text typed by player.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto PickTextInput() -> std::string_view;
+
+     private:
+      std::set<SDL_Keycode> pressed_keys_;
+      std::set<SDL_Keycode> fired_keys_;
+      std::string text_input_;
+   };
 }

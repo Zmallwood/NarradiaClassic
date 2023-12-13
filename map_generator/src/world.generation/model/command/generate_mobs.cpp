@@ -14,7 +14,7 @@ namespace Narradia
         auto y_center = kMapHeight / 2;
         for (auto i = 0; i < num_mob_types; i++) {
             auto r_start = r_min - i * r_sector;
-            auto num_mobs = static_cast<int>(100 * kMapWidth / 100.0f * kMapHeight / 80.0f);
+            auto num_mobs = static_cast<int>(r_start * 0.6f * kMapWidth / 100.0f * kMapHeight / 80.0f);
             for (auto j = 0; j < num_mobs; j++) {
                 auto w = rand() % 360;
                 auto r = r_start - rand() % r_sector;

@@ -24,7 +24,7 @@ namespace Narradia
             std::string_view image_name, float ms_time, RenderID vao_id,
             std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals);
 
-        inline static const Color kFogColorModels = Colors::mild_blue;
+        inline static const Color kFogColorModels = Colors::purple;
         const int kLocationPosition = 0;
         const int kLocationColor = 1;
         const int kLocationUv = 2;
