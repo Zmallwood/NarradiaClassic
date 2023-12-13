@@ -1,5 +1,5 @@
 #include "combat_module.h"
-#include "core/model/text_out_box.h"
+#include "core/model/console.h"
 #include "mob_targeting_module.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
@@ -24,7 +24,7 @@ namespace Narradia
                     auto dice = static_cast<float>(rand()) / RAND_MAX;
                     if (dice < Player::get()->ultimate_skill_chance()) {
                         Player::get()->set_ticks_ulti_skill_start(SDL_GetTicks());
-                        TextOutBox::get()->Print("Ulti-skill has been activated!");
+                        Console::get()->Print("Ulti-skill has been activated!");
                     }
                 }
             }

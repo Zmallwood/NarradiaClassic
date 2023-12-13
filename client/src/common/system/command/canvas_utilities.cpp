@@ -3,7 +3,7 @@
 namespace Narradia
 {
    int w, h;
-   inline Size canv_sz;
+   static Size canv_sz;
 
    auto CanvasSize() -> Size {
       SDL_GetWindowSize(Graphics::get()->win().get(), &w, &h);

@@ -1,7 +1,7 @@
-#include "text_out_box.h"
+#include "console.h"
 namespace Narradia
 {
-   auto TextOutBox::UpdateGameLogic() -> void {
+   auto Console::UpdateGameLogic() -> void {
       if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
          input_active_ = !input_active_;
       }
@@ -12,7 +12,7 @@ namespace Narradia
       }
    }
 
-   auto TextOutBox::Print(std::string_view text, Color text_color) -> void {
+   auto Console::Print(std::string_view text, Color text_color) -> void {
       if (!enabled_)
          return;
       auto printed_text = std::string(CurrTime().data()) + "." +
@@ -20,36 +20,35 @@ namespace Narradia
       text_lines_.push_back({printed_text, text_color});
    }
 
-   auto TextOutBox::MaxNumLines() -> int {
+   auto Console::MaxNumLines() -> int {
       return static_cast<int>(kDefaultBounds.h / kTextLineHeight) - 2;
    }
 
-   auto TextOutBox::TextLineIndex(int visible_row_index) -> int {
+   auto Console::TextLineIndex(int visible_row_index) -> int {
       return static_cast<int>(text_lines_.size()) - MaxNumLines() + visible_row_index;
    }
 
-   auto TextOutBox::TextLinePosition(int visible_row_index) -> PointF {
-      auto line_position_y = Bounds().y + (visible_row_index + 1) * kTextLineHeight;
-      return {Bounds().x + 0.01f, line_position_y};
+   auto Console::TextLinePosition(int visible_row_index) -> PointF {
+      return {Bounds().x + 0.01f, Bounds().y + (visible_row_index + 1) * kTextLineHeight};
    }
 
-   auto TextOutBox::HorizontalSplitterRect() -> RectF {
+   auto Console::HorizontalSplitterRect() -> RectF {
       return {
           0.0f, Bounds().y + Bounds().h - 1.3f * kTextLineHeight, kDefaultBounds.w,
           kSplitLineHeight};
    }
 
-   auto TextOutBox::InputArrowRect() -> RectF {
+   auto Console::InputArrowRect() -> RectF {
       return {
           0.0f, Bounds().y + Bounds().h - 1.3f * kTextLineHeight, kTextLineHeight, kTextLineHeight};
    }
 
-   auto TextOutBox::InputTextPosition() -> PointF {
+   auto Console::InputTextPosition() -> PointF {
       return InputArrowRect().GetPosition().Translate(
-          TextOutBox::kTextLineHeight, TextOutBox::kTextLineHeight / 2);
+          Console::kTextLineHeight, Console::kTextLineHeight / 2);
    }
 
-   auto TextOutBox::InputTextWithCursor() -> std::string {
+   auto Console::InputTextWithCursor() -> std::string {
       auto res = input_text_;
       if (SDL_GetTicks() % 600 < 300)
          res.insert(cursor_position_, "|");
@@ -58,7 +57,7 @@ namespace Narradia
       return res;
    }
 
-   auto TextOutBox::Bounds() -> RectF {
+   auto Console::Bounds() -> RectF {
       return SceneMngr::get()->curr_scene() == SceneNames::Main
                  ? kDefaultBounds.Translate(0.0f, -ExperienceBar::kBarHeight)
                  : kDefaultBounds;

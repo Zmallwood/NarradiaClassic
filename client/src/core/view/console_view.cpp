@@ -1,34 +1,22 @@
-#include "text_out_box_view.h"
-#include "core.render.text/view/command/draw_string.h"
-#include "core.render.text/view/command/new_string.h"
-#include "core.render/view/command/draw_image.h"
-#include "core.render/view/command/new_image.h"
-#include "core/model/scene_mngr.h"
-#include "core/model/text_out_box.h"
-#include "main_scene.gui/model/experience_bar.h"
+#include "console_view.h"
 namespace Narradia
 {
-   /**
-    Prepares RenderIDs for rendering.
-   */
-   TextOutBoxView::TextOutBoxView() {
+   ConsoleView::ConsoleView() {
       rid_image_ = NewImage();
       rid_split_line_ = NewImage();
       rid_cmd_line_input_arrow_ = NewImage();
       rid_input_text_ = NewString();
-      for (auto i = 0; i < TextOutBox::get()->MaxNumLines(); i++)
+      for (auto i = 0; i < Console::get()->MaxNumLines(); i++)
          rids_text_lines_.push_back(NewString());
    }
 
-   /**
-    Renders the TextOutBox with its text content to canvas.
-   */
-   void TextOutBoxView::Render() const {
-      auto model = TextOutBox::get();
+   auto ConsoleView::Render() const -> void {
+      auto model = Console::get();
       if (!model->enabled())
          return;
-      auto used_bounds = TextOutBox::get()->Bounds();
-      DrawImage("TextOutBoxBack", rid_image_, used_bounds);
+      // Draw background image
+      DrawImage("TextOutBoxBack", rid_image_, Console::get()->Bounds());
+      // Draw text lines
       for (auto i = 0; i < model->MaxNumLines(); i++) {
          auto text_line_index = model->TextLineIndex(i);
          if (text_line_index >= 0) {
@@ -38,10 +26,13 @@ namespace Narradia
                 model->text_lines().at(text_line_index).color);
          }
       }
-      DrawImage("Wheat", rid_split_line_, model->HorizontalSplitterRect());
+      // Draw horizontal splitter
+      DrawImage("Wheat", rid_split_line_, model->HorizontalSplitterRect()); // Draw horizontal splitter
       if (!model->input_active())
          return;
+      // Draw input arrow symbol
       DrawImage("CommandLineInputArrow", rid_cmd_line_input_arrow_, model->InputArrowRect());
+      // Draw input text
       DrawString(rid_input_text_, model->InputTextWithCursor(), model->InputTextPosition());
    }
 }

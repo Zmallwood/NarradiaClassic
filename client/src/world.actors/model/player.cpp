@@ -1,6 +1,6 @@
 #include "player.h"
 #include "conf/model/conf.h"
-#include "core/model/text_out_box.h"
+#include "core/model/console.h"
 #include "main_scene.modules.world_view/model/camera.h"
 #include "world.structure/model/world.h"
 namespace Narradia
@@ -34,7 +34,7 @@ namespace Narradia
 
     void Player::AddExperience(int amount) {
         experience_ += amount;
-        TextOutBox::get()->Print("You got " + std::to_string(amount) + " experience");
+        Console::get()->Print("You got " + std::to_string(amount) + " experience");
     }
 
     void Player::MoveAtAngle(float angle_deg_) {

@@ -3,7 +3,7 @@
 namespace Narradia
 {
    int x_px, y_px;
-   inline Size canv_sz;
+   static Size canv_sz;
    float x, y;
    time_t now;
    char buffer[80];

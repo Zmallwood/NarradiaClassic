@@ -1,7 +1,8 @@
 #pragma once
-#include "core.gui/model/scene_gui.h"
+#include "../model/scene_gui.h"
 #include "gui_component_view.h"
 #include <memory>
+#include <vector>
 namespace Narradia
 {
     /**

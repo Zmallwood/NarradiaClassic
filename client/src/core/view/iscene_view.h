@@ -1,20 +1,27 @@
 #pragma once
-#include "core.gui/view/scene_gui_view.h"
+#include "../../core.gui/view/scene_gui_view.h"
 namespace Narradia
 {
-    /**
-     View for IScene.
-    */
-    class ISceneView {
-      public:
-        ISceneView()
-            : scene_gui_view_(std::make_shared<SceneGuiView>()) {
-        }
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief View for IScene.
+   ////////////////////////////////////////////////////////////////////////////////
+   class ISceneView {
+     public:
+      ISceneView()
+          : scene_gui_view_(std::make_shared<SceneGuiView>()) {
+      }
 
-        void Render();
-      protected:
-        virtual void RenderDerived() = 0;
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Render scenes deriving from this class.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto Render() -> void;
 
-        std::shared_ptr<SceneGuiView> scene_gui_view_;
-    };
+     protected:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Scene specific rendering in derived class.
+      ////////////////////////////////////////////////////////////////////////////////
+      virtual auto RenderDerived() -> void = 0;
+
+      std::shared_ptr<SceneGuiView> scene_gui_view_;
+   };
 }

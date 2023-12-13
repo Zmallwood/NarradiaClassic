@@ -1,7 +1,17 @@
 #pragma once
 namespace Narradia
 {
-    std::string_view GetFileExtension(std::string_view abs_file_path);
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Gets file extension, without dot-character, for provided file path.
+   ///
+   /// @param[in] abs_file_path File path to get extension for.
+   ////////////////////////////////////////////////////////////////////////////////
+   auto FileExtension(std::string_view abs_path) -> std::string_view;
 
-    std::string_view GetFileNameNoExt(std::string_view abs_file_path);
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Gets file name without path or extension for provided file path.
+   ///
+   /// @param[in] abs_file_path File path to get file name for.
+   ////////////////////////////////////////////////////////////////////////////////
+   auto FileNameNoExt(std::string_view abs_path) -> std::string;
 }

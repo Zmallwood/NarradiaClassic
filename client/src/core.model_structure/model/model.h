@@ -1,5 +1,7 @@
 #pragma once
 #include "model_part.h"
+#include <memory>
+#include <vector>
 namespace Narradia
 {
     class Model {

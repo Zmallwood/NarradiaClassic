@@ -1,23 +1,47 @@
 #pragma once
+#include "command/file_utilities.h"
+#include "command/load_single_image.h"
+#include <map>
 namespace Narradia
 {
-    /**
-     Loads, holds and provides images from image folder on
-     file system.
-    */
-    class ImageBank : public Singleton<ImageBank> {
-      public:
-        ImageBank();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Loads, holds and provides images from image folder on file system.
+   ////////////////////////////////////////////////////////////////////////////////
+   class ImageBank : public Singleton<ImageBank> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Load images on first use.
+      ////////////////////////////////////////////////////////////////////////////////
+      ImageBank();
 
-        ~ImageBank();
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Cleanup on class disposal.
+      ////////////////////////////////////////////////////////////////////////////////
+      ~ImageBank();
 
-        GLuint GetImage(std::string_view image_name);
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Returns the GLuint ID corresponding to the provided image name.
+      ///
+      /// @param[in] img_name Image name for which to get the ID.
+      /// @return GLuint ID for the image.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto GetImage(std::string_view img_name) -> GLuint;
 
-        void CreateBlankTextImage(std::string unique_image_name);
-      private:
-        void LoadImages();
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Creates blank GL texture to render text on.
+      ///
+      /// @param[in] unique_img_name Unique name for which to access the new texture later.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto CreateBlankTextImage(std::string unique_img_name) -> void;
 
-        const std::string_view kRelImagesPath = "Resources/Images/";
-        std::map<std::string, GLuint> images_;
-    };
+     private:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Loads all images in images path, creatin GL texture and storing their ids and
+      /// GLuints.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto LoadImages() -> void;
+
+      const std::string_view kRelImagesPath = "Resources/Images/";
+      std::map<std::string, GLuint> images_;
+   };
 }

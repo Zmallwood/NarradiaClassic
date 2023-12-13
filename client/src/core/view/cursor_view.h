@@ -1,17 +1,27 @@
 #pragma once
+#include "core.render/view/command/draw_image.h"
+#include "core.render/view/command/new_image.h"
+#include "core/model/cursor.h"
 namespace Narradia
 {
-    /**
-     Replaces default system cursor with a custom one.
-    */
-    class CursorView : public Singleton<CursorView> {
-      public:
-        CursorView();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Replaces default system cursor with a custom one.
+   ////////////////////////////////////////////////////////////////////////////////
+   class CursorView : public Singleton<CursorView> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Hides default system cursor and prepares RID.
+      ////////////////////////////////////////////////////////////////////////////////
+      CursorView();
 
-        void RenderCursor();
-      private:
-        RenderID rid_image;
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Renders custom cursor image at mouse position.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto RenderCursor() -> void;
 
-        static constexpr float kCursorWidth = 0.02f;
-    };
+     private:
+      RenderID rid_image;
+
+      static constexpr float kCursorWidth = 0.02f;
+   };
 }
