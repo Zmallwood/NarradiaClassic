@@ -29,7 +29,7 @@ namespace Narradia
         //            used_bounds.y +=
         //            p->parent_container_->GetPosition().y;
         //        }
-        if (used_bounds.Contains(GetMousePosition())) {
+        if (used_bounds.Contains(MousePosition())) {
             Cursor::get()->set_cursor_style(CursorStyles::Hovering);
             hovered_ = true;
             MouseInput::get()->left_button()->mouse_action_mngr()->AddFiredAction(

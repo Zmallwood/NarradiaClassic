@@ -1,62 +1,82 @@
 #pragma once
+#include "core.input/model/kb_input.h"
+#include "core/model/scene_mngr.h"
+#include "main_scene.gui/model/experience_bar.h"
 #include "text_line.h"
 namespace Narradia
 {
-    /**
-     Renders text lines to a box available in all scenes,
-     takes text input to be rendered through the Print
-     function.
-    */
-    class TextOutBox : public Singleton<TextOutBox> {
-      public:
-        void UpdateGameLogic();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Renders text lines to a box available in all scenes, takes text input to be renderer
+   /// through the Print function.
+   ////////////////////////////////////////////////////////////////////////////////
+   class TextOutBox : public Singleton<TextOutBox> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Checks if input should be activated and processed typed input characters.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto UpdateGameLogic() -> void;
 
-        void Print(std::string_view text, Color text_color = Colors::wheat);
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Adds provided text with color to the internal data structure, beind ready for
+      /// rendering.
+      ///
+      /// @param[in] text Text to be printed.
+      /// @param[in] text_color Color of the text to be printed.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto Print(std::string_view text, Color text_color = Colors::wheat) -> void;
 
-        int GetMaxNumLines();
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Calculates the maximum number of text lines that can be displayed in the text box
+      /// without overflowing.
+      ///
+      /// @return Maximum number of text lines.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto MaxNumLines() -> int;
 
-        int GetTextLineIndex(int visible_row_index);
+      auto TextLineIndex(int visible_row_index) -> int;
 
-        PointF GetTextLinePosition(int visible_row_index);
+      auto TextLinePosition(int visible_row_index) -> PointF;
 
-        RectF GetHorizontalSplitterRect();
+      auto HorizontalSplitterRect() -> RectF;
 
-        RectF GetInputArrowRect();
+      auto InputArrowRect() -> RectF;
 
-        PointF GetInputTextPosition();
+      auto InputTextPosition() -> PointF;
 
-        std::string GetInputTextWithCursor();
+      auto InputTextWithCursor() -> std::string;
 
-        auto text_lines() {
-            return text_lines_;
-        }
+      auto Bounds() -> RectF;
 
-        auto enabled() {
-            return enabled_;
-        }
+      auto text_lines() {
+         return text_lines_;
+      }
 
-        auto input_active() {
-            return input_active_;
-        }
+      auto enabled() {
+         return enabled_;
+      }
 
-        auto cursor_position() {
-            return cursor_position_;
-        }
+      auto input_active() {
+         return input_active_;
+      }
 
-        auto input_text() {
-            return input_text_;
-        }
+      auto cursor_position() {
+         return cursor_position_;
+      }
 
-        static constexpr RectF kBounds = {0.0f, 0.8f, 0.3f, 0.2f};
-        static constexpr float kTextLineHeight = 0.02f;
-        static constexpr float kSplitLineHeight = 0.001f;
-      private:
-        RectF GetUsedBounds();
+      auto input_text() {
+         return input_text_;
+      }
 
-        std::vector<TextLine> text_lines_;
-        bool enabled_ = true;
-        bool input_active_ = false;
-        int cursor_position_ = 0;
-        std::string input_text_;
-    };
+      static constexpr float kTextLineHeight = 0.02f;
+      static constexpr float kSplitLineHeight = 0.001f;
+
+     private:
+      static constexpr RectF kDefaultBounds = {0.0f, 0.8f, 0.3f, 0.2f};
+
+      std::vector<TextLine> text_lines_;
+      bool enabled_ = true;
+      bool input_active_ = false;
+      int cursor_position_ = 0;
+      std::string input_text_;
+   };
 }

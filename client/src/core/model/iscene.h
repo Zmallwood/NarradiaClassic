@@ -2,23 +2,33 @@
 #include "../../core.gui/model/scene_gui.h"
 namespace Narradia
 {
-    /**
-     Model for IScene.
-    */
-    class IScene {
-      public:
-        IScene()
-            : scene_gui_(std::make_shared<SceneGui>()) {
-        }
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Model for IScene.
+   ////////////////////////////////////////////////////////////////////////////////
+   class IScene {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Create scene gui.
+      ////////////////////////////////////////////////////////////////////////////////
+      IScene()
+          : scene_gui_(std::make_shared<SceneGui>()) {
+      }
 
-        void UpdateGameLogic();
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Update game logic for scenes deriving from this class.
+      ////////////////////////////////////////////////////////////////////////////////
+      void UpdateGameLogic();
 
-        auto scene_gui() {
-            return scene_gui_;
-        }
-      protected:
-        virtual void UpdateGameLogicDerived() = 0;
+      auto scene_gui() {
+         return scene_gui_;
+      }
 
-        std::shared_ptr<SceneGui> scene_gui_;
-    };
+     protected:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Game logic update specifically for derived scenes.
+      ////////////////////////////////////////////////////////////////////////////////
+      virtual void UpdateGameLogicDerived() = 0;
+
+      std::shared_ptr<SceneGui> scene_gui_;
+   };
 }

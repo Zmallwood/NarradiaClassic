@@ -17,6 +17,9 @@ namespace Narradia
       auto UpdateGameFlow() -> void;
 
      protected:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Game flow update specifically for dervied scene controllers.
+      ////////////////////////////////////////////////////////////////////////////////
       virtual void UpdateGameFlowDerived() = 0;
    };
 }

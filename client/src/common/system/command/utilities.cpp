@@ -12,22 +12,22 @@ namespace Narradia
    int mip_level = 0;
    RenderID img_id;
 
-   auto GetMousePosition() -> PointF {
-      canv_sz = GetCanvasSize();
+   auto MousePosition() -> PointF {
+      canv_sz = CanvasSize();
       SDL_GetMouseState(&x_px, &y_px);
       x = static_cast<float>(x_px) / canv_sz.w;
       y = static_cast<float>(y_px) / canv_sz.h;
       return {x, y};
    }
 
-   auto GetCurrTime() -> std::string_view {
+   auto CurrTime() -> std::string_view {
       now = time(0);
       p_tstruct = localtime(&now);
       strftime(buffer, sizeof(buffer), "%X", p_tstruct);
       return std::string_view(buffer);
    }
 
-   auto GetTextureDimensions(std::string_view img_name) -> Size {
+   auto TextureDimensions(std::string_view img_name) -> Size {
       img_id = ImageBank::get()->GetImage(img_name);
       glBindTexture(GL_TEXTURE_2D, img_id);
       glGetTexLevelParameteriv(GL_TEXTURE_2D, mip_level, GL_TEXTURE_WIDTH, &dim.w);

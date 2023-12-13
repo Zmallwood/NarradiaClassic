@@ -8,8 +8,8 @@ namespace Narradia
     void TileHoveringModule::UpdateGameLogic() {
         auto view_matrix = CameraGL::get()->view_matrix();
         auto perspective_matrix = CameraGL::get()->perspective_matrix();
-        auto mouse_position_f = GetMousePosition();
-        auto canvas_size = GetCanvasSize();
+        auto mouse_position_f = MousePosition();
+        auto canvas_size = CanvasSize();
         auto player_x = Player::get()->position().x;
         auto player_y = Player::get()->position().z;
         auto tile_size = kTileSize;

@@ -16,9 +16,9 @@ namespace Narradia
      Renders custom cursor image at mouse position.
     */
     void CursorView::RenderCursor() {
-        auto mouse_pos = GetMousePosition();
+        auto mouse_pos = MousePosition();
         auto width = kCursorWidth;
-        auto height = width * GetAspectRatio();
+        auto height = width * AspectRatio();
         RectF rect = {mouse_pos.x - width, mouse_pos.y - height, width * 2, height * 2};
         auto image_name = Cursor::get()->GetCursorImageName();
         DrawImage(image_name, rid_image, rect);

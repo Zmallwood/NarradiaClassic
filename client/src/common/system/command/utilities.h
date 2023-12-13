@@ -7,12 +7,12 @@ namespace Narradia
    ///
    /// @return Mouse position with coordinates raning from 0-1.
    ////////////////////////////////////////////////////////////////////////////////
-   auto GetMousePosition() -> PointF;
+   auto MousePosition() -> PointF;
 
    ////////////////////////////////////////////////////////////////////////////////
    /// @brief Gets current time in text format.
    ////////////////////////////////////////////////////////////////////////////////
-   auto GetCurrTime() -> std::string_view;
+   auto CurrTime() -> std::string_view;
 
    ////////////////////////////////////////////////////////////////////////////////
    /// @brief Gets texture dimensions in pixels.
@@ -20,5 +20,5 @@ namespace Narradia
    /// @param[in] image_name Name of image to measure.
    /// @return Texture dimensions in pixels.
    ////////////////////////////////////////////////////////////////////////////////
-   auto GetTextureDimensions(std::string_view img_name) -> Size;
+   auto TextureDimensions(std::string_view img_name) -> Size;
 }

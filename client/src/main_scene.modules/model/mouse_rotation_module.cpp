@@ -9,7 +9,7 @@ namespace Narradia
         MouseInput::get()->right_button()->AddFiredAction(
             [&] {
                 is_rotating_ = true;
-                mouse_pos_rotation_start_ = GetMousePosition();
+                mouse_pos_rotation_start_ = MousePosition();
                 cam_horizontal_angle_deg_rotation_start_ = Camera::get()->horizontal_angle_deg();
                 cam_vertical_angle_deg_rotation_start_ = Camera::get()->vertical_angle_deg();
             },
@@ -17,7 +17,7 @@ namespace Narradia
         MouseInput::get()->right_button()->AddReleasedAction([&] { is_rotating_ = false; });
         if (is_rotating_) {
             Cursor::get()->set_cursor_style(CursorStyles::Rotating);
-            auto mouse_pos = GetMousePosition();
+            auto mouse_pos = MousePosition();
             auto dx = mouse_pos.x - mouse_pos_rotation_start_.x;
             auto dy = mouse_pos.y - mouse_pos_rotation_start_.y;
             Camera::get()->set_horizontal_angle_deg(
