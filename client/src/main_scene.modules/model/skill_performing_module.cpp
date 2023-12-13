@@ -24,7 +24,7 @@ namespace Narradia
                                 {"UltiSkillTileFire", static_cast<int>(SDL_GetTicks())});
                             if (map_area->GetTile(x, y)->mob()) {
                                 map_area->GetTile(x, y)->mob()->Hit(
-                                    map_area->GetTile(x, y)->mob()->hp());
+                                    map_area->GetTile(x, y)->mob()->health());
                                 Player::get()->AddExperience(30);
                             }
                         }

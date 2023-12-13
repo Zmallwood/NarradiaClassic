@@ -12,10 +12,12 @@
 #include "main_scene.modules/model/mouse_rotation_module.h"
 #include "main_scene.modules/model/skill_performing_module.h"
 #include "main_scene.modules/model/tile_hovering_module.h"
+#include "main_scene.gui/model/status_panel.h"
 namespace Narradia
 {
     MainScene::MainScene() {
         scene_gui()->AddGuiComponent(std::make_shared<ExperienceBar>());
+        scene_gui()->AddGuiComponent(std::make_shared<StatusPanel>());
     }
 
     /**

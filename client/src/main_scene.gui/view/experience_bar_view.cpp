@@ -18,7 +18,7 @@ namespace Narradia
     void ExperienceBarView::Render() {
         auto unfilled_area =
             RectF{0.0f, 1.0f - ExperienceBar::kBarHeight, 1.0f, ExperienceBar::kBarHeight};
-        FillRect(rid_unfilled_area_, unfilled_area, Colors::black);
+        FillRect(rid_unfilled_area_, unfilled_area, Colors::dark_gray);
         auto experience_progress = GetFractionalExpProgress(Player::get()->experience());
         auto filled_area = RectF{
             0.0f, 1.0f - ExperienceBar::kBarHeight, experience_progress, ExperienceBar::kBarHeight};

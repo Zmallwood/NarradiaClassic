@@ -13,6 +13,7 @@ namespace Narradia
         PointF GetPosition() const;
         PointF GetCenter() const;
         bool Contains(PointF point) const;
+        RectF WithWidth(float w_new) const;
 
         float x = 0.0f;
         float y = 0.0f;

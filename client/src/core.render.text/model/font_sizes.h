@@ -4,5 +4,5 @@ namespace Narradia
     /**
      Available font sizes.
     */
-    enum class FontSizes { _20, _26 };
+    enum class FontSizes { _20, _40 };
 }

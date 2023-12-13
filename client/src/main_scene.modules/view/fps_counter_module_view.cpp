@@ -10,6 +10,6 @@ namespace Narradia
 
     void FPSCounterModuleView::Render() {
         DrawString(
-            rid_text, "Fps: " + std::to_string(FPSCounterModule::get()->fps()), {0.05f, 0.05f});
+            rid_text, "Fps: " + std::to_string(FPSCounterModule::get()->fps()), {0.95f, 0.05f});
     }
 }

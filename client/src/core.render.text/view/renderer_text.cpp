@@ -14,7 +14,7 @@ namespace Narradia
         auto font_path =
             std::string(SDL_GetBasePath()) + kRelFontsPath + "PartyConfettiRegular-eZOn3.ttf";
         fonts_.insert({FontSizes::_20, std::make_shared<Font>(font_path.c_str(), 20)});
-        fonts_.insert({FontSizes::_26, std::make_shared<Font>(font_path.c_str(), 26)});
+        fonts_.insert({FontSizes::_40, std::make_shared<Font>(font_path.c_str(), 40)});
     }
 
     /**

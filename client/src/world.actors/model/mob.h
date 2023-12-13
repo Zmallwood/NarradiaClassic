@@ -36,16 +36,16 @@ namespace Narradia
             return ticks_last_hit_recieved_;
         }
 
-        auto hp() {
-            return hp_;
+        auto health() {
+            return health_;
         }
       private:
         std::string type_;
         int ticks_last_move_ = 0;
         float movement_speed_ = 1.0f;
         float attack_speed_ = 0.6f;
-        float hp_ = 10.0f;
-        float max_hp_ = 10.0f;
+        float health_ = 10.0f;
+        float max_health_ = 10.0f;
         int ticks_last_hit_recieved_ = 0;
     };
 }
