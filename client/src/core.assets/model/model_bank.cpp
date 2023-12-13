@@ -5,8 +5,8 @@ namespace Narradia
 
    auto ModelBank::LoadSingleModel(std::string_view path) {
       Assimp::Importer importer;
-      const aiScene *scene = importer.ReadFile(path.data(), 0);
-      return ModelCreator::get()->CreateModel(scene);
+      const aiScene *raw_model = importer.ReadFile(path.data(), 0);
+      return ModelCreator::get()->CreateModel(raw_model);
    }
 
    auto ModelBank::LoadModels() {

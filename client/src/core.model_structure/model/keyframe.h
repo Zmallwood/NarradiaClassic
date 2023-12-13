@@ -3,7 +3,7 @@
 #include "../../matter/model/vertex3f.h"
 namespace Narradia
 {
-    class ModelPartKeyframe {
+    class Keyframe {
       public:
         std::vector<Vertex3F> vertices;
     };

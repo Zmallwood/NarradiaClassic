@@ -37,6 +37,7 @@ namespace Narradia
       /// @brief Loads a single 3D model at the specified path.
       ///
       /// @param[in] path Absolut path to model to load.
+      /// @return Loaded model.
       ////////////////////////////////////////////////////////////////////////////////
       auto LoadSingleModel(std::string_view path);
 

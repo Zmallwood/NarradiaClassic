@@ -1,28 +1,28 @@
 #include "model_part_creator.h"
 namespace Narradia
 {
-   auto ModelPartCreator::TexNames(const aiScene *scene) const {
-      std::vector<std::string> texture_names;
-      auto num_materials = scene->mNumMaterials;
+   auto ModelPartCreator::TexNames(const aiScene *raw_model) const {
+      std::vector<std::string> tex_names;
+      auto num_materials = raw_model->mNumMaterials;
       for (auto i = 0; i < num_materials; i++) {
-         aiString texture_name_cstr;
-         scene->mMaterials[i]->Get(AI_MATKEY_TEXTURE(aiTextureType_DIFFUSE, 0), texture_name_cstr);
-         auto texture_name = std::string(texture_name_cstr.C_Str());
-         auto texture_name_no_extension = texture_name.substr(0, texture_name.length() - 4);
-         texture_names.push_back(texture_name_no_extension);
+         aiString tex_name_cstr;
+         raw_model->mMaterials[i]->Get(AI_MATKEY_TEXTURE(aiTextureType_DIFFUSE, 0), tex_name_cstr);
+         auto tex_name = std::string(tex_name_cstr.C_Str());
+         auto tex_name_no_extension = tex_name.substr(0, tex_name.length() - 4);
+         tex_names.push_back(tex_name_no_extension);
       }
-      return texture_names;
+      return tex_names;
    }
 
-   auto ModelPartCreator::TexNameForMesh(const aiScene *scene, aiMesh *mesh) const {
-      auto texture_names = TexNames(scene);
+   auto ModelPartCreator::TexNameForMesh(const aiScene *raw_model, aiMesh *mesh) const {
+      auto tex_names = TexNames(raw_model);
       auto material = mesh->mMaterialIndex;
-      auto texture_name = texture_names.at(material);
-      return texture_name;
+      auto tex_name = tex_names.at(material);
+      return tex_name;
    }
 
-   auto ModelPartCreator::Transformations(const aiScene *scene) const {
-      auto root_node = scene->mRootNode;
+   auto ModelPartCreator::Transformations(const aiScene *raw_model) const {
+      auto root_node = raw_model->mRootNode;
       auto num_nodes = root_node->mNumChildren;
       auto node_name_to_transformations = std::map<std::shared_ptr<std::string>, aiMatrix4x4>();
       for (auto i = 0; i < num_nodes; i++) {
@@ -35,8 +35,9 @@ namespace Narradia
       return node_name_to_transformations;
    }
 
-   auto ModelPartCreator::NodeTransformation(const aiScene *scene, std::string node_name) const {
-      auto all_transformations = Transformations(scene);
+   auto
+   ModelPartCreator::NodeTransformation(const aiScene *raw_model, std::string node_name) const {
+      auto all_transformations = Transformations(raw_model);
       for (auto &alpha : all_transformations) {
          if (*alpha.first == node_name.data())
             return alpha.second;
@@ -45,16 +46,16 @@ namespace Narradia
    }
 
    auto ModelPartCreator::Translate(Point3F *position, aiVectorKey position_keyframe) const {
-      auto translation_matrix = aiMatrix4x4();
-      translation_matrix[0][3] = position_keyframe.mValue.x;
-      translation_matrix[1][3] = position_keyframe.mValue.y;
-      translation_matrix[2][3] = position_keyframe.mValue.z;
-      translation_matrix[0][0] = 1;
-      translation_matrix[1][1] = 1;
-      translation_matrix[2][2] = 1;
-      translation_matrix[3][3] = 1;
+      auto transl_mat = aiMatrix4x4();
+      transl_mat[0][3] = position_keyframe.mValue.x;
+      transl_mat[1][3] = position_keyframe.mValue.y;
+      transl_mat[2][3] = position_keyframe.mValue.z;
+      transl_mat[0][0] = 1;
+      transl_mat[1][1] = 1;
+      transl_mat[2][2] = 1;
+      transl_mat[3][3] = 1;
       auto ai_position = aiVector3D{position->x, position->y, position->z};
-      ai_position = translation_matrix * ai_position;
+      ai_position = transl_mat * ai_position;
       *position = {-ai_position.x, ai_position.y, ai_position.z};
    }
 
@@ -79,10 +80,10 @@ namespace Narradia
    }
 
    auto ModelPartCreator::NewModelPartKeyframe(
-       const aiScene *scene, std::string node_name, aiMesh *mesh, aiVectorKey position_keyframe,
+       const aiScene *raw_model, std::string node_name, aiMesh *mesh, aiVectorKey position_keyframe,
        aiQuatKey rotation_keyframe, aiVectorKey scaling_keyframe) const {
-      auto new_model_part_keyframe = std::make_shared<ModelPartKeyframe>();
-      auto node_transformation = NodeTransformation(scene, node_name);
+      auto new_model_part_keyframe = std::make_shared<Keyframe>();
+      auto node_transformation = NodeTransformation(raw_model, node_name);
       auto num_vertices = mesh->mNumVertices;
       for (auto i = 0; i < num_vertices; i++) {
          auto mesh_vertex = mesh->mVertices[i];
@@ -107,25 +108,22 @@ namespace Narradia
    }
 
    auto ModelPartCreator::CreateModelPartFromMesh(
-       const aiScene *scene, std::string node_name, aiMesh *mesh) const
+       const aiScene *raw_model, std::string node_name, aiMesh *mesh) const
        -> std::shared_ptr<ModelPart> {
       auto new_model_part = std::make_shared<ModelPart>();
-      auto tex_name = TexNameForMesh(scene, mesh);
+      auto tex_name = TexNameForMesh(raw_model, mesh);
       new_model_part->set_texture_name(tex_name);
       auto no_keyframe_at_time_0_exists =
-          ModelPartKeyframeCreator::get()->GetPositionKeyframe(scene, node_name, 0).mTime > 0;
+          KeyframeCreator::get()->PositionKeyframe(raw_model, node_name, 0).mTime > 0;
       auto num_keyframes =
-          ModelPartKeyframeCreator::get()->GetNodePositionKeyframes(scene, node_name).size();
+          KeyframeCreator::get()->NodePositionKeyframes(raw_model, node_name).size();
       for (auto k = 0; k < num_keyframes; k++) {
-         auto position_keyframe =
-             ModelPartKeyframeCreator::get()->GetPositionKeyframe(scene, node_name, k);
-         auto rotation_keyframe =
-             ModelPartKeyframeCreator::get()->GetRotationKeyframe(scene, node_name, k);
-         auto scaling_keyframe =
-             ModelPartKeyframeCreator::get()->GetScalingKeyframe(scene, node_name, k);
+         auto position_keyframe = KeyframeCreator::get()->PositionKeyframe(raw_model, node_name, k);
+         auto rotation_keyframe = KeyframeCreator::get()->RotationKeyframe(raw_model, node_name, k);
+         auto scaling_keyframe = KeyframeCreator::get()->ScalingKeyframe(raw_model, node_name, k);
          auto keyframe_time = static_cast<float>(position_keyframe.mTime);
          auto new_model_part_keyframe = NewModelPartKeyframe(
-             scene, node_name, mesh, position_keyframe, rotation_keyframe, scaling_keyframe);
+             raw_model, node_name, mesh, position_keyframe, rotation_keyframe, scaling_keyframe);
          new_model_part->timeline()->keyframes.insert({keyframe_time, new_model_part_keyframe});
          if (no_keyframe_at_time_0_exists && k == 0)
             new_model_part->timeline()->keyframes.insert({0.0f, new_model_part_keyframe});

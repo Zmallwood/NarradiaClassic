@@ -1,5 +1,5 @@
 #pragma once
-#include "model_part_timeline.h"
+#include "timeline.h"
 #include <string>
 #include <memory>
 namespace Narradia
@@ -7,7 +7,7 @@ namespace Narradia
     class ModelPart {
       public:
         ModelPart()
-            : timeline_(std::make_shared<ModelPartTimeline>()) {
+            : timeline_(std::make_shared<Timeline>()) {
         }
 
         auto texture_name() {
@@ -23,6 +23,6 @@ namespace Narradia
         }
       private:
         std::string texture_name_;
-        std::shared_ptr<ModelPartTimeline> timeline_;
+        std::shared_ptr<Timeline> timeline_;
     };
 }
