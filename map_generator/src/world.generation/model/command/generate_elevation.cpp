@@ -19,13 +19,13 @@ namespace Narradia
                if (dx * dx + dy * dy <= r * r) {
                   if (map_area->GetTile(x, y)->ground() != "GroundWater")
                      map_area->GetTile(x, y)->IncreaseElevation(
-                         0.6 * static_cast<float>(r_max) /
+                         0.4 * static_cast<float>(r_max) /
                          (r + 50.0f * kMapWidth / 200.0f * kMapHeight / 160.0f));
                }
             }
          }
       }
-      auto num_spikes = static_cast<int>(100 * (kMapWidth / 100.0f * kMapHeight / 80.0f));
+      auto num_spikes = static_cast<int>(20 * (kMapWidth / 100.0f * kMapHeight / 80.0f));
       for (auto i = 0; i < num_spikes; i++) {
          auto x_center = rand() % kMapWidth;
          auto y_center = rand() % kMapHeight;
@@ -43,7 +43,7 @@ namespace Narradia
             }
          }
       }
-      auto num_hills = static_cast<int>(40 * (kMapWidth / 100.0f * kMapHeight / 80.0f));
+      auto num_hills = static_cast<int>(20 * (kMapWidth / 100.0f * kMapHeight / 80.0f));
       for (auto i = 0; i < num_hills; i++) {
          auto x_center = rand() % kMapWidth;
          auto y_center = rand() % kMapHeight;

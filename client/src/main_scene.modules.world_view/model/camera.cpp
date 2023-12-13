@@ -72,7 +72,7 @@ namespace Narradia
              SinDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * SinDeg(horizontal_angle_deg_);
          auto dz =
              CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
-         auto dy = SinDeg(used_vertical_angle) * used_camera_distance;
+         auto dy = SinDeg(used_vertical_angle) * used_camera_distance * 3.0f;
          auto player_average_elevation =
              CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint());
          result = player_position_no_elevation.Translate(dx, dy + player_average_elevation, dz);
