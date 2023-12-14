@@ -1,4 +1,6 @@
 #pragma once
+#include "../../../core.assets/model/image_bank.h"
+#include "../../../core.render/view/camera_gl.h"
 #include "../renderer_models_view.h"
 namespace Narradia
 {

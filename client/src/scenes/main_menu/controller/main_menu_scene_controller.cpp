@@ -1,6 +1,6 @@
 #include "main_menu_scene_controller.h"
 #include "core.assets/model/model_bank.h"
-#include "core.render.models/view/renderer_models_view.h"
+#include "core.render.models/view/command/new_model.h"
 namespace Narradia
 {
     /**
@@ -9,7 +9,7 @@ namespace Narradia
     void MainMenuSceneController::OnEnter() {
         auto all_models = *ModelBank::get()->models();
         for (auto &entry : all_models)
-            RendererModelsView::get()->NewModel(entry.first);
+            NewModel(entry.first);
     }
 
     /**
