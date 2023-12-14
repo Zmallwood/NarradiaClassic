@@ -1,5 +1,5 @@
 #include "player_spawn_positioning_module.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
 namespace Narradia

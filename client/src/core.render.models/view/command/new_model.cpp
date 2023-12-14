@@ -1,7 +1,7 @@
 #include "new_model.h"
 namespace Narradia
 {
-   void NewModel(std::string_view model_name) {
+   auto NewModel(std::string_view model_name) -> void {
       auto renderer = RendererModelsView::get();
       auto model = ModelBank::get()->GetModel(model_name);
       auto model_ids = renderer->model_ids();
@@ -13,7 +13,7 @@ namespace Narradia
             auto keyframe_time = keyframe.first;
             auto anim_key_body_keyframe = keyframe.second;
             auto vertex_count = anim_key_body_keyframe->vertices.size();
-            auto body_keyframe_id = NewBodyKeyframe(model_name, keyframe_time, vertex_count);
+            auto body_keyframe_id = NewBodyKeyframe(model_name, keyframe_time);
             if (model_ids->at(model_name.data()).count(i_body) == 0)
                model_ids->at(model_name.data()).insert({i_body, std::map<float, const BodyData>()});
             BodyData body_data;
@@ -37,8 +37,7 @@ namespace Narradia
                n3f.z = v.normal.z;
                normals.push_back(n3f);
             }
-            NewBodyKeyframeGeometry(
-                body->texture_name(), keyframe_time, body_keyframe_id, vertices, normals);
+            NewBodyKeyframeGeometry(body_keyframe_id, vertices, normals);
          }
          i_body++;
       }

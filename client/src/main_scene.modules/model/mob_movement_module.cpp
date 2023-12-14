@@ -1,6 +1,6 @@
 #include "mob_movement_module.h"
 #include "conf.world/model/mobs_conf.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "world.actors/model/player.h"
 #include "world.structure/model/world.h"
 namespace Narradia

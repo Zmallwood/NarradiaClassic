@@ -4,7 +4,7 @@
 #include "command/draw_objects.h"
 #include "command/draw_player.h"
 #include "command/draw_tile_symbols.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "core.render.models/view/command/start_models_batch_drawing.h"
 #include "core.render.models/view/command/stop_models_batch_drawing.h"
 #include "core.render.models/view/renderer_models_view.h"

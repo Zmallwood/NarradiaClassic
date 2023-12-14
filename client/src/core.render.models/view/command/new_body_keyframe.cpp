@@ -1,7 +1,7 @@
 #include "new_body_keyframe.h"
 namespace Narradia
 {
-   RenderID NewBodyKeyframe(std::string_view model_name, float ms_time, int num_vertices) {
+   auto NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID {
       auto renderer = RendererModelsView::get();
       auto renderer_base = renderer->renderer_base();
       auto timelines = renderer->timelines();

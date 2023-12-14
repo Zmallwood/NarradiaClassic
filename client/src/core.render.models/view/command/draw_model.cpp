@@ -1,10 +1,9 @@
 #include "draw_model.h"
-#include "world.actors/model/player.h"
 namespace Narradia
 {
-   void DrawModel(
+   auto DrawModel(
        std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
-       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) {
+       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) -> void {
       auto renderer = RendererModelsView::get();
       auto model_ids = renderer->model_ids();
       auto is_batch_drawing = renderer->is_batch_drawing();

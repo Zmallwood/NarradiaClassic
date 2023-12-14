@@ -1,6 +1,6 @@
 #pragma once
 #include "../../../common/system/typedefs.h"
-#include "../../../conf/model/conf.h"
+#include "../../../conf/model/constants.h"
 #include "../../../core.assets/model/image_bank.h"
 #include "../../view/camera_gl.h"
 #include "../../view/renderer_tiles_view.h"

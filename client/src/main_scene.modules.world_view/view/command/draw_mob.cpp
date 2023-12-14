@@ -1,5 +1,5 @@
 #include "draw_mob.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "core.render.models/view/command/draw_model.h"
 namespace Narradia
 {

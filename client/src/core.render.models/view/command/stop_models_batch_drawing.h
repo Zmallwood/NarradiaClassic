@@ -2,5 +2,9 @@
 #include "../renderer_models_view.h"
 namespace Narradia
 {
-   void StopModelsBatchDrawing();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Called after a render loop which was preceded with a call to
+   /// StartModelsBatchDrawing().
+   ////////////////////////////////////////////////////////////////////////////////
+   auto StopModelsBatchDrawing() -> void;
 }

@@ -1,6 +1,6 @@
 #include "draw_objects.h"
 #include "conf.world/model/objects_conf.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "core.render.models/view/command/draw_model.h"
 namespace Narradia
 {

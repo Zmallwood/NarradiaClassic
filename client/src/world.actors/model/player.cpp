@@ -1,5 +1,5 @@
 #include "player.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "core/model/console.h"
 #include "main_scene.modules.world_view/model/camera.h"
 #include "world.structure/model/world.h"

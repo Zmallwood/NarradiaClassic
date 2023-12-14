@@ -1,5 +1,5 @@
 #include "generate_elevation.h"
-#include "conf/model/conf.h"
+#include "conf/model/constants.h"
 #include "world.structure/model/map_area.h"
 namespace Narradia
 {

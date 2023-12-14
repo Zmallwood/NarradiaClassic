@@ -1,9 +1,8 @@
 #include "new_body_keyframe_geometry.h"
 namespace Narradia
 {
-   void NewBodyKeyframeGeometry(
-       std::string_view image_name, float ms_time, GLuint vao_id, std::vector<Vertex3F> vertices,
-       std::vector<Point3F> vertex_normals) {
+   auto NewBodyKeyframeGeometry(
+       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) -> void {
       auto renderer = RendererModelsView::get();
       auto renderer_base = renderer->renderer_base();
       glEnable(GL_DEPTH_TEST);
@@ -14,8 +13,6 @@ namespace Narradia
       glUniformMatrix4fv(
           renderer->location_view(), 1, GL_FALSE, value_ptr(CameraGL::get()->view_matrix()));
       glUniform1f(renderer->location_alpha(), 1.0f);
-      auto image_id = ImageBank::get()->GetImage(image_name);
-      glBindTexture(GL_TEXTURE_2D, image_id);
       std::vector<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;

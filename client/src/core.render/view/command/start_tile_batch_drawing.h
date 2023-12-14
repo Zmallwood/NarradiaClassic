@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../conf/model/conf.h"
+#include "../../../conf/model/constants.h"
 #include "../camera_gl.h"
 #include "../renderer_tiles_view.h"
 #include "../../../world.actors/model/player.h"

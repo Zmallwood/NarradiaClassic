@@ -1,7 +1,7 @@
 #include "start_models_batch_drawing.h"
 namespace Narradia
 {
-   void StartModelsBatchDrawing() {
+   auto StartModelsBatchDrawing() -> void {
       auto renderer = RendererModelsView::get();
       renderer->set_is_batch_drawing(true);
       glEnable(GL_DEPTH_TEST);

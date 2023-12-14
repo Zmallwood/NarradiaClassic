@@ -1,4 +1,5 @@
 #pragma once
+#include "../../common/system/typedefs.h"
 #include "../../core.render.shaders/model/models_fragment.inc.cpp"
 #include "../../core.render.shaders/model/models_vertex.inc.cpp"
 #include "../../core.render/model/body_data.h"
@@ -6,7 +7,6 @@
 #include "../../core.render/view/shader_program_view.h"
 #include "../../matter/model/color.h"
 #include "../../matter/model/colors.h"
-#include "../../common/system/typedefs.h"
 #include <map>
 #include <string>
 #include <vector>
@@ -14,8 +14,15 @@ namespace Narradia
 {
    class RendererModelsView : public RendererBaseView, public Singleton<RendererModelsView> {
      public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Create internal data structures and gets locations of uniform parameters in shader
+      /// source.
+      ////////////////////////////////////////////////////////////////////////////////
       RendererModelsView();
 
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Cleanup render base view.
+      ////////////////////////////////////////////////////////////////////////////////
       ~RendererModelsView();
 
       auto timelines() {
