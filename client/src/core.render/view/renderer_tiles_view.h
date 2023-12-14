@@ -1,5 +1,6 @@
 #pragma once
 #include "renderer_base_view.h"
+#include "../../matter/model/colors.h"
 namespace Narradia
 {
     class RendererTilesView : public RendererBaseView, public Singleton<RendererTilesView> {
