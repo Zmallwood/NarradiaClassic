@@ -1,16 +1,9 @@
 #include "draw_string.h"
-#include "core.render.text/model/font.h"
-#include "core.render.text/view/renderer_text.h"
-#include "core.render/view/command/draw_image.h"
 namespace Narradia
 {
-   /**
-    Draws a string to the canvas, requires it to first have
-    been initialized with NewString().
-   */
-   void DrawString(
+   auto DrawString(
        RenderID rid, std::string_view text, PointF position, Color color, bool center_align,
-       FontSizes font_size) {
+       FontSizes font_size) -> void {
       std::string unique_name_id;
       SizeF size;
       RendererText::get()->RenderText(

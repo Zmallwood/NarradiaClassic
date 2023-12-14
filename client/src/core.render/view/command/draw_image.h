@@ -1,4 +1,6 @@
 #pragma once
+#include "../../../common/system/typedefs.h"
+#include "../../../matter/model/color.h"
 namespace Narradia
 {
     void DrawImage(
