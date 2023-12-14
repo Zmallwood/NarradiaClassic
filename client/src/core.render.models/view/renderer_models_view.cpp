@@ -1,15 +1,8 @@
 #include "renderer_models_view.h"
-#include "camera_gl.h"
-#include "conf/model/conf.h"
-#include "core.assets/model/image_bank.h"
-#include "core.assets/model/model_bank.h"
-#include "core.render.shaders/model/models_fragment.inc.cpp"
-#include "core.render.shaders/model/models_vertex.inc.cpp"
-#include "world.actors/model/player.h"
 namespace Narradia
 {
    RendererModelsView::RendererModelsView() {
-      GetShaderProgramView()->Create(vertex_shader_source_models, fragment_shader_source_models);
+      shader_program_view()->Create(vertex_shader_source_models, fragment_shader_source_models);
       location_view_ = GetUniformLocation("view");
       location_projection_ = GetUniformLocation("projection");
       location_alpha_ = GetUniformLocation("mAlpha");
@@ -73,10 +66,10 @@ namespace Narradia
    }
 
    void RendererModelsView::NewBodyKeyframeGeometry(
-       std::string_view image_name, float ms_time, RenderID vao_id, std::vector<Vertex3F> vertices,
+       std::string_view image_name, float ms_time, GLuint vao_id, std::vector<Vertex3F> vertices,
        std::vector<Point3F> vertex_normals) {
       glEnable(GL_DEPTH_TEST);
-      UseVaoBegin(vao_id);
+      UseVAOBegin(vao_id);
       glUniformMatrix4fv(
           location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->perspective_matrix()));
       glUniformMatrix4fv(location_view_, 1, GL_FALSE, value_ptr(CameraGL::get()->view_matrix()));
@@ -122,17 +115,17 @@ namespace Narradia
       SetData(uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, kLocationUv);
       SetData(
           normal_buffer_id, num_vertices, normals.data(), BufferTypes::Normals, kLocationNormal);
-      UseVaoEnd();
+      UseVAOEnd();
    }
 
    void RendererModelsView::DrawModel(
        std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
-       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) const {
+       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) {
       if (model_ids_.count(model_name.data()) == 0)
          return;
       if (!is_batch_drawing_) {
          glEnable(GL_DEPTH_TEST);
-         glUseProgram(GetShaderProgramView()->shader_program()->program_id());
+         glUseProgram(shader_program_view()->shader_program()->program_id());
          glUniformMatrix4fv(
              location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->perspective_matrix()));
          glUniformMatrix4fv(
@@ -196,12 +189,12 @@ namespace Narradia
    void RendererModelsView::DrawModelsMany(
        std::string_view model_name, float ms_time, std::vector<Point3F> positions,
        std::vector<float> rotations, std::vector<float> scalings, std::vector<float> brightnesses,
-       std::vector<glm::vec3> color_mods) const {
+       std::vector<glm::vec3> color_mods) {
       if (model_ids_.count(model_name.data()) == 0)
          return;
       if (!is_batch_drawing_) {
          glEnable(GL_DEPTH_TEST);
-         glUseProgram(GetShaderProgramView()->shader_program()->program_id());
+         glUseProgram(shader_program_view()->shader_program()->program_id());
          glUniformMatrix4fv(
              location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->perspective_matrix()));
          glUniformMatrix4fv(
@@ -273,7 +266,7 @@ namespace Narradia
    void RendererModelsView::StartBatchDrawing() {
       is_batch_drawing_ = true;
       glEnable(GL_DEPTH_TEST);
-      glUseProgram(GetShaderProgramView()->shader_program()->program_id());
+      glUseProgram(shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
           location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->perspective_matrix()));
       glUniformMatrix4fv(

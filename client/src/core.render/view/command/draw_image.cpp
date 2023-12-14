@@ -33,7 +33,7 @@ namespace Narradia
          uvs.push_back(vertex.uv.x);
          uvs.push_back(vertex.uv.y);
       }
-      renderer->UseVaoBegin(rid);
+      renderer->UseVAOBegin(rid);
       auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, rid);
       auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions2D, rid);
       auto color_buffer_id = renderer_base->BufId(BufferTypes::Colors, rid);
@@ -46,6 +46,6 @@ namespace Narradia
           color_buffer_id, colors, BufferTypes::Colors, Renderer2DImagesView::kLocationColor);
       renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, Renderer2DImagesView::kLocationUv);
       glDrawElements(GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
-      renderer->UseVaoEnd();
+      renderer->UseVAOEnd();
    }
 }

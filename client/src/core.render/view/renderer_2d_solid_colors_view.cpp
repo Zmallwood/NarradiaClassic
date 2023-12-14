@@ -2,7 +2,7 @@
 namespace Narradia
 {
    Renderer2DSolidColorsView::Renderer2DSolidColorsView() {
-      GetShaderProgramView()->Create(
+      shader_program_view()->Create(
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
    }
 

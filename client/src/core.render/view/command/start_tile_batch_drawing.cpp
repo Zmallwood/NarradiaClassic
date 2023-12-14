@@ -4,7 +4,7 @@ namespace Narradia
    auto StartTileBatchDrawing() -> void {
       auto renderer = RendererTilesView::get();
       renderer->set_is_batch_drawing(true);
-      glUseProgram(renderer->GetShaderProgramView()->shader_program()->program_id());
+      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
           renderer->location_projection(), 1, GL_FALSE,
           glm::value_ptr(CameraGL::get()->perspective_matrix()));
@@ -23,7 +23,7 @@ namespace Narradia
           RendererTilesView::kFogColorGround.r, RendererTilesView::kFogColorGround.g,
           RendererTilesView::kFogColorGround.b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
-      glUseProgram(renderer->GetShaderProgramView()->shader_program()->program_id());
+      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }

@@ -1,6 +1,6 @@
 #include "draw_player.h"
 #include "conf/model/conf.h"
-#include "core.render/view/renderer_models_view.h"
+#include "core.render.models/view/renderer_models_view.h"
 #include "world.actors/model/player.h"
 namespace Narradia
 {

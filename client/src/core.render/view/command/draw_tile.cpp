@@ -9,7 +9,7 @@ namespace Narradia
       else
          glEnable(GL_DEPTH_TEST);
       if (!renderer->is_batch_drawing()) {
-         renderer->UseVaoBegin(vao_id);
+         renderer->UseVAOBegin(vao_id);
          glUniformMatrix4fv(
              renderer->location_projection(), 1, GL_FALSE,
              glm::value_ptr(CameraGL::get()->perspective_matrix()));
@@ -37,6 +37,6 @@ namespace Narradia
       glDrawElements(GL_TRIANGLE_FAN, vertex_count, GL_UNSIGNED_INT, NULL);
       glBindVertexArray(0);
       if (!renderer->is_batch_drawing())
-         renderer->UseVaoEnd();
+         renderer->UseVAOEnd();
    }
 }

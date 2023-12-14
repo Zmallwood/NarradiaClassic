@@ -16,7 +16,7 @@ namespace Narradia
       auto renderer = RendererTilesView::get();
       auto renderer_base = renderer->renderer_base();
       if (!renderer->is_batch_drawing())
-         renderer->UseVaoBegin(vao_id);
+         renderer->UseVAOBegin(vao_id);
       std::vector<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
@@ -55,6 +55,6 @@ namespace Narradia
           normal_buffer_id, normals, BufferTypes::Normals, RendererTilesView::kLocationNormal);
       glBindVertexArray(0);
       if (!renderer->is_batch_drawing())
-         renderer->UseVaoEnd();
+         renderer->UseVAOEnd();
    }
 }
