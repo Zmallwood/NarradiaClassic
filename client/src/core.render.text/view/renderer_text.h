@@ -5,6 +5,7 @@
 #include "../../matter/model/color.h"
 #include "../model/font.h"
 #include "../model/font_sizes.h"
+#include <SDL2/SDL_rect.h>
 #include <map>
 #include <memory>
 #include <string>

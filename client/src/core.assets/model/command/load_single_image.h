@@ -1,4 +1,5 @@
 #pragma once
+#include <string_view>
 #include <GL/glew.h>
 namespace Narradia
 {

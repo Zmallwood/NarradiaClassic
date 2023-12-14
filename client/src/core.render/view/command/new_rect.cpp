@@ -1,27 +1,21 @@
 #include "new_rect.h"
-#include "core.render/view/renderer_2d_solid_colors_view.h"
 namespace Narradia
 {
-    /**
-     Prepares resources for a new colored rectangle, later
-     to be rendered, returning an id.
-    */
-    RenderID NewRect() {
-        auto renderer = Renderer2DSolidColorsView::get();
-        auto renderer_base = renderer->renderer_base();
-        auto vao_id = renderer_base->GenerateNewVertexArrayId();
-        renderer->UseVaoBegin(vao_id);
-        auto index_buffer_id = renderer_base->GenerateNewBufferId(BufferTypes::Indices, vao_id);
-        auto position_buffer_id =
-            renderer_base->GenerateNewBufferId(BufferTypes::Positions2D, vao_id);
-        auto color_buffer_id = renderer_base->GenerateNewBufferId(BufferTypes::Colors, vao_id);
-        renderer->SetIndicesData(index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
-        renderer->SetData(
-            position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
-            BufferTypes::Positions2D);
-        renderer->SetData(
-            color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
-        renderer->UseVaoEnd();
-        return vao_id;
-    }
+   auto NewRect() -> RenderID {
+      auto renderer = Renderer2DSolidColorsView::get();
+      auto renderer_base = renderer->renderer_base();
+      auto vao_id = renderer_base->GenNewVAOId();
+      renderer->UseVaoBegin(vao_id);
+      auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vao_id);
+      auto position_buffer_id = renderer_base->GenNewBufId(BufferTypes::Positions2D, vao_id);
+      auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vao_id);
+      renderer->SetIndicesData(index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
+      renderer->SetData(
+          position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
+          BufferTypes::Positions2D);
+      renderer->SetData(
+          color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
+      renderer->UseVaoEnd();
+      return vao_id;
+   }
 }

@@ -2,6 +2,8 @@
 #include "command/file_utilities.h"
 #include "command/load_single_image.h"
 #include <map>
+#include <string>
+#include <GL/glew.h>
 namespace Narradia
 {
    ////////////////////////////////////////////////////////////////////////////////

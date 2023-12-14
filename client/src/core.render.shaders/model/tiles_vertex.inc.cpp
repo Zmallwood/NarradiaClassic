@@ -2,7 +2,7 @@
  Vertex shader for RendererTiles.
 */
 #include <GL/glew.h>
-inline static const GLchar *vertex_shader_source =
+inline static const GLchar *vertex_shader_source_tiles =
     R"(
     #version 330 core
 

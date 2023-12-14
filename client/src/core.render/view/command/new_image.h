@@ -1,5 +1,11 @@
 #pragma once
+#include "core.render/view/renderer_2d_images_view.h"
 namespace Narradia
 {
-    RenderID NewImage();
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Initializes a new image and return a RID for later rendering.
+   ///
+   /// @return RID for the new image.
+   ////////////////////////////////////////////////////////////////////////////////
+   auto NewImage() -> RenderID;
 }

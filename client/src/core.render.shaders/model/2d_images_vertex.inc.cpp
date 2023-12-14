@@ -2,7 +2,7 @@
  Vertex shader for Renderer2DImages.
 */
 #include <GL/glew.h>
-inline static const GLchar *vertex_shader_source =
+inline static const GLchar *vertex_shader_source_2d_images =
     R"(
     #version 330 core
 

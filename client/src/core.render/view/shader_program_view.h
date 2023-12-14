@@ -1,5 +1,5 @@
 #pragma once
-#include "core.render/model/shader_program.h"
+#include "../model/shader_program.h"
 #include <memory>
 namespace Narradia
 {

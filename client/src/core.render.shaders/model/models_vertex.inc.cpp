@@ -2,7 +2,7 @@
  Vertex shader for RendererModels.
 */
 #include <GL/glew.h>
-inline static const GLchar *vertex_shader_source =
+inline static const GLchar *vertex_shader_source_models =
     R"(
     #version 330 core
 
