@@ -75,6 +75,9 @@ inline static const GLchar *fragment_shader_source_models =
         fragColor.g = fragColor.g*mColorMod.g;
         fragColor.b = fragColor.b*mColorMod.b;
 
+        if (fogColor == vec3(1.0, 1.0, 1.0))
+            return;
+
         if (noFog == 0.0)
         {
             float d = distance(viewPos, FragPos);

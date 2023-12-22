@@ -1,4 +1,4 @@
-#include "MapLoader.h"
+#include "map_loader.h"
 #include "world-structure/model/map_area.h"
 namespace Narradia
 {

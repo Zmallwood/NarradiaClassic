@@ -58,6 +58,8 @@ inline static const GLchar *fragment_shader_source_tiles =
         vec3 result = mAmbient + mDiffuse;
         vec4 result2 = vec4(result.r*color.r, result.g*color.g, result.b*color.b, color.a);
         fragColor = result2;
+        if (fogColor == vec3(1.0, 1.0, 1.0))
+            return;
         float d = distance(viewPos, FragPos);
         float fogFactor = getFogFactor(d, nearPlane, farPlane);
         float alpha = getFogFactorAlpha(d, nearPlane, farPlane);

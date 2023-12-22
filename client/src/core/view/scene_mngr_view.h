@@ -5,6 +5,7 @@
 #include "../../scenes/intro/view/intro_scene_view.h"
 #include "../../scenes/main/view/main_scene_view.h"
 #include "../../scenes/main_menu/view/main_menu_scene_view.h"
+#include "../../scenes/map_overview_gen/view/map_overview_gen_scene_view.h"
 namespace Narradia
 {
    ////////////////////////////////////////////////////////////////////////////////

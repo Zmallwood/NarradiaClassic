@@ -5,18 +5,19 @@
 #include "core/view/engine_view.h"
 namespace Narradia
 {
-    /**
-     Run a new game instance.
-    */
-    void Game::Run() {
-        while (Engine::get()->is_running()) {
-            if (FPSCapper::get()->RunningBelow60FPS()) {
-                EngineController::get()->HandleInput();
-                EngineController::get()->UpdateGameFlow();
-                Engine::get()->UpdateGameLogic();
-                EngineView::get()->Render();
-            }
-        }
-        DisposeAllSingletons();
-    }
+   /**
+    Run a new game instance.
+   */
+   void Game::Run() {
+      while (Engine::get()->is_running()) {
+         if (FPSCapper::get()->RunningBelow60FPS()) {
+            EngineController::get()->HandleInput();
+            EngineController::get()->UpdateGameFlow();
+            Engine::get()->UpdateGameLogic();
+            EngineView::get()->Render();
+            Engine::get()->Finalize();
+         }
+      }
+      DisposeAllSingletons();
+   }
 }

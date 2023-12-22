@@ -105,6 +105,10 @@ namespace Narradia
          return name_;
       }
 
+      auto world_location() {
+         return world_location_;
+      }
+
      private:
       Point3F position_;
       float movement_speed_ = 6.0f;
@@ -122,6 +126,7 @@ namespace Narradia
       float max_health_ = 10.0f;
       float stamina_ = 10.0f;
       float max_stamina_ = 10.0f;
+      Point world_location_ = {0, 0};
       std::string_view name_ = "SomePlayer";
    };
 }

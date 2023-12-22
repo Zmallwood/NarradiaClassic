@@ -5,7 +5,7 @@ namespace Narradia
    class GuiWindowWorldMap : public GuiWindow, public Singleton<GuiWindowWorldMap> {
      public:
       GuiWindowWorldMap()
-          : GuiWindow("World Map", {0.1f, 0.1f, 0.3f, 0.2f}) {
+          : GuiWindow("World Map", {0.3f, 0.2f, 0.5f, 0.5f}) {
       }
 
      private:

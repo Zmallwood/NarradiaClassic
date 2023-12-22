@@ -8,5 +8,6 @@ namespace Narradia
     class IntroScene : public IScene, public Singleton<IntroScene> {
       private:
         void UpdateGameLogicDerived() override;
+        void Finalize() override {}
     };
 }

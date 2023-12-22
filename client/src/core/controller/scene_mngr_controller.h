@@ -2,6 +2,7 @@
 #include "../../scenes/intro/controller/intro_scene_controller.h"
 #include "../../scenes/main/controller/main_scene_controller.h"
 #include "../../scenes/main_menu/controller/main_menu_scene_controller.h"
+#include "../../scenes/map_overview_gen/controller/map_overview_gen_scene_controller.h"
 #include "../model/scene_names.h"
 #include "core/model/scene_mngr.h"
 #include "iscene_controller.h"

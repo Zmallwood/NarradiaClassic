@@ -89,7 +89,7 @@ namespace Narradia
       static constexpr int kLocationColor = 1;
       static constexpr int kLocationUv = 2;
       static constexpr int kLocationNormal = 3;
-      inline static const Color kFogColorModels = Colors::purple;
+      inline static Color kFogColorModels = Colors::purple;
 
      private:
       int location_projection_ = -1;

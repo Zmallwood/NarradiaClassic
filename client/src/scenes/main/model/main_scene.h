@@ -10,5 +10,6 @@ namespace Narradia
         MainScene();
       private:
         void UpdateGameLogicDerived() override;
+        void Finalize() override {}
     };
 }

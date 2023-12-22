@@ -19,6 +19,8 @@ namespace Narradia
       ////////////////////////////////////////////////////////////////////////////////
       void UpdateGameLogic();
 
+      void Finalize();
+
       auto is_running() {
          return is_running_;
       }

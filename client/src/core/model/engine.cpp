@@ -10,4 +10,8 @@ namespace Narradia
       SceneMngr::get()->UpdateGameLogicCurrScene();
       MouseInput::get()->ExecMouseActions();
    }
+
+   void Engine::Finalize() {
+      SceneMngr::get()->FinalizeCurrScene();
+   }
 }
