@@ -13,7 +13,7 @@ namespace Narradia
     */
     void MapGenerator::GenerateMapArea(std::shared_ptr<MapArea> map_area) {
         GenerateGrass(map_area);
-        GenerateWater(map_area);
+        //GenerateWater(map_area);
         GenerateElevation(map_area);
         GenerateObjects(map_area);
         GenerateMobs(map_area);

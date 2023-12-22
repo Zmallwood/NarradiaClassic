@@ -17,6 +17,8 @@ namespace Narradia
       ////////////////////////////////////////////////////////////////////////////////
       static auto Touch() -> void;
 
+      static auto Dispose() -> void;
+
       ////////////////////////////////////////////////////////////////////////////////
       /// @brief Get instance of class.
       ///
@@ -38,9 +40,18 @@ namespace Narradia
    }
 
    template <class T>
+   auto Singleton<T>::Dispose() -> void {
+      if (instance_) {
+         instance_.reset();
+         instance_ = nullptr;
+         std::cout << "disposed singleotn\n";
+      }
+   }
+
+   template <class T>
    auto Singleton<T>::get() -> std::shared_ptr<T> {
       if (!instance_) // Create new instance if none exists
          Touch();
-      return std::weak_ptr<T>(instance_).lock(); // Return weak_ptr to not increase ref count
+      return instance_;// Return weak_ptr to not increase ref count
    }
 }

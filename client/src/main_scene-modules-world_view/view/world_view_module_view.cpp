@@ -17,7 +17,7 @@
 namespace Narradia
 {
    WorldViewModuleView::WorldViewModuleView() {
-      auto map_area = World::get()->curr_map_area();
+      auto map_area = World::get()->CurrMapArea();
       auto tile_size = kTileSize;
       for (auto x = 0; x < map_area->GetWidth(); x++) {
          rids_tiles.push_back(std::vector<RenderID>());
@@ -89,7 +89,7 @@ namespace Narradia
    }
 
    void WorldViewModuleView::Render() {
-      auto map_area = World::get()->curr_map_area();
+      auto map_area = World::get()->CurrMapArea();
       auto player_pos = Player::get()->position();
       auto r = render_distance_;
       auto x_center = static_cast<int>(player_pos.x);

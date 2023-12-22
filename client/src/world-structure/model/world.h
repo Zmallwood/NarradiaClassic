@@ -9,15 +9,17 @@ namespace Narradia
      public:
       World();
 
-      auto curr_map_area() {
-         return map_areas_[0][1];
-      }
+      std::shared_ptr<MapArea> CurrMapArea();
 
       auto world_width() {
          return world_width_;
       }
       auto world_height() {
          return world_height_;
+      }
+
+      auto map_areas() {
+         return map_areas_;
       }
 
      private:

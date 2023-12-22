@@ -109,6 +109,10 @@ namespace Narradia
          return world_location_;
       }
 
+      void set_world_location(Point value) {
+         world_location_ = value;
+      }
+
      private:
       Point3F position_;
       float movement_speed_ = 6.0f;

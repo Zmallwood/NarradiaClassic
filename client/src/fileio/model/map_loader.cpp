@@ -2,9 +2,9 @@
 #include "world-structure/model/map_area.h"
 namespace Narradia
 {
-   void MapLoader::LoadWorldMapFromFile(std::shared_ptr<MapArea> &map_area) {
+   void MapLoader::LoadWorldMapFromFile(std::shared_ptr<MapArea> &map_area, std::string map_name) {
       std::ifstream file;
-      file.open(std::string(SDL_GetBasePath()) + kMapName + ".map");
+      file.open(std::string(SDL_GetBasePath()) + map_name);
       std::string s;
       file >> s;
       auto width_str = s.substr(s.find(">") + 1, s.find_last_of("<") - s.find(">") - 1);

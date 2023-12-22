@@ -29,7 +29,7 @@ namespace Narradia
       float player_elev;
       {
          auto player_position = player->position().GetXZ();
-         auto map_area = World::get()->curr_map_area();
+         auto map_area = World::get()->CurrMapArea();
          auto tile_coord = player_position.ToIntPoint();
          auto tile = map_area->GetTile(tile_coord);
          float elev00 = static_cast<float>(tile->elevation());

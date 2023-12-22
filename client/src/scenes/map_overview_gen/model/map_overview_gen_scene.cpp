@@ -13,6 +13,7 @@
 #include "core-render-models/view/renderer_models_view.h"
 #include "main_scene-modules-world_view/view/world_view_module_view.h"
 #include "main_scene-modules-world_view/model/camera.h"
+#include "core/controller/scene_mngr_controller.h"
 namespace Narradia
 {
    void MapOverviewGenScene::UpdateGameLogicDerived() {
@@ -25,6 +26,6 @@ namespace Narradia
 
 
    void MapOverviewGenScene::Finalize() {
-       SceneMngr::get()->set_curr_scene(SceneNames::Main);
+       SceneMngrController::get()->ChangeScene(SceneNames::Main);
    }
 }

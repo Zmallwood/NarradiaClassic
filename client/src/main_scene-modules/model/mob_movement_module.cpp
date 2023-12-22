@@ -6,7 +6,7 @@
 namespace Narradia
 {
    void MobMovementModule::UpdateGameLogic() {
-      auto map_area = World::get()->curr_map_area();
+      auto map_area = World::get()->CurrMapArea();
       auto &mobs = *(map_area->mobs_mirror());
       for (auto it = mobs.begin(); it != mobs.end();) {
          auto mob = it->first;

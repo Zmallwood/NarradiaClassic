@@ -11,7 +11,7 @@ namespace Narradia
             return;
         auto targeted_mob = MobTargetingModule::get()->targeted_mob();
         if (targeted_mob) {
-            auto map_area = World::get()->curr_map_area();
+            auto map_area = World::get()->CurrMapArea();
             auto player_pos = Player::get()->position();
             auto mob_coord = map_area->mobs_mirror()->at(targeted_mob);
             auto dx = mob_coord.x - player_pos.x;

@@ -4,7 +4,7 @@
 namespace Narradia
 {
     float CalcTileAverageElevation(Point coord) {
-        auto map_area = World::get()->curr_map_area();
+        auto map_area = World::get()->CurrMapArea();
         auto elev00 = map_area->GetTile(coord.x, coord.y)->elevation() * kElevAmount;
         auto elev10 = elev00;
         auto elev11 = elev00;

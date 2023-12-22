@@ -40,7 +40,7 @@ namespace Narradia
       auto i = 0;
       for (auto y = 0; y < world_h; y++) {
          for (auto x = 0; x < world_w; x++) {
-             DrawImage("WorldMapImage0", rids_images_[i], {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height});
+             DrawImage("WorldMapImage" + std::to_string(x) + "_" + std::to_string(y), rids_images_[i], {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height});
             DrawRect(
                 rids_rectangles_[i],
                 {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height},

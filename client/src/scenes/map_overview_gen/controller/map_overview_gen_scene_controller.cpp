@@ -4,7 +4,7 @@
 namespace Narradia
 {
    void MapOverViewGenSceneController::OnEnter() {
-      auto map_area = World::get()->curr_map_area();
+      auto map_area = World::get()->CurrMapArea();
       auto x = map_area->GetWidth() / 2.0f;
       auto y = map_area->GetHeight() / 2.0f;
       Player::get()->set_position({x, 0.0f, y});

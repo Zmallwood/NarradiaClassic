@@ -15,6 +15,12 @@ namespace Narradia
             world_map_width_ = std::stoi(s.substr(6));
          else if (s.substr(0, 6) == "Height")
             world_map_height_ = std::stoi(s.substr(7));
+         else {
+            auto x = std::stoi(s.substr(0, s.find(',')));
+            auto y = std::stoi(s.substr(s.find(',') + 1, s.find('=') - s.find(',') - 1));
+            auto map_name = s.substr(s.find('=') + 1);
+            map_area_names_[x][y] = map_name;
+         }
       }
 
       file.close();

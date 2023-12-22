@@ -38,7 +38,7 @@ namespace Narradia
    }
 
    void Player::MoveAtAngle(float angle_deg_) {
-      auto map_area = World::get()->curr_map_area();
+      auto map_area = World::get()->CurrMapArea();
       auto used_angle = angle_deg_ - facing_angle_deg_;
       auto dx = CosDeg(used_angle + 90.0f) * step_size_;
       auto dz = SinDeg(used_angle + 90.0f) * step_size_;

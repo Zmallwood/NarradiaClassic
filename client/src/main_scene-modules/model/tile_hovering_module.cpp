@@ -15,7 +15,7 @@ namespace Narradia
         auto tile_size = kTileSize;
         auto elev_amount = kElevAmount;
         auto player_world_area_position = Player::get()->position().Multiply(kTileSize);
-        auto map_area = World::get()->curr_map_area();
+        auto map_area = World::get()->CurrMapArea();
         auto mouse_world_near_plane = glm::unProject(
             glm::vec3(
                 mouse_position_f.x * canvas_size.w,
