@@ -13,14 +13,15 @@ namespace Narradia
    }
 
    void GuiWindowView::Render() {
-      if (!model_->visible())
+      auto model = static_pointer_cast<GuiWindow>(gui_component_);
+      if (!model->visible())
          return;
-      DrawImage(model_->background_image_name(), rid_background_, model_->Bounds());
-      DrawImage("GuiWindowTitleBar", rid_title_bar_, model_->AbsTitleBarBounds());
+      DrawImage(model->background_image_name(), rid_background_, model->Bounds());
+      DrawImage("GuiWindowTitleBar", rid_title_bar_, model->AbsTitleBarBounds());
       gui_window_close_button_view_->Render();
       DrawString(
-          rid_title_text_, model_->title(),
-          model_->Bounds().GetPosition().Translate(0.005f, 0.01f));
+          rid_title_text_, model->title(),
+          model->Bounds().GetPosition().Translate(0.005f, 0.01f));
       RenderDerived();
       GuiMovableContainerView::Render();
    }

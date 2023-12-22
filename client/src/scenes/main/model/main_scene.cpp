@@ -13,11 +13,13 @@
 #include "main_scene-modules/model/skill_performing_module.h"
 #include "main_scene-modules/model/tile_hovering_module.h"
 #include "main_scene-gui/model/status_panel.h"
+#include "main_scene-gui/model/gui_window_world_map.h"
 namespace Narradia
 {
     MainScene::MainScene() {
         scene_gui()->AddGuiComponent(std::make_shared<ExperienceBar>());
         scene_gui()->AddGuiComponent(std::make_shared<StatusPanel>());
+        scene_gui()->AddGuiComponent(std::make_shared<GuiWindowWorldMap>());
     }
 
     /**

@@ -7,12 +7,14 @@
 #include "scenes/main/model/main_scene.h"
 #include "world-actors/model/player.h"
 #include "main_scene-gui/view/status_panel_view.h"
+#include "main_scene-gui/view/gui_window_world_map_view.h"
 namespace Narradia
 {
     MainSceneView::MainSceneView() {
         scene_gui_view_->set_scene_gui(MainScene::get()->scene_gui());
         scene_gui_view_->AddGuiComponentView(std::make_shared<ExperienceBarView>());
         scene_gui_view_->AddGuiComponentView(std::make_shared<StatusPanelView>());
+        scene_gui_view_->AddGuiComponentView(std::make_shared<GuiWindowWorldMapView>());
     }
 
     /**

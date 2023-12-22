@@ -8,10 +8,6 @@ namespace Narradia
      public:
       GuiWindowView();
 
-      void set_model(std::shared_ptr<GuiWindow> value) {
-         model_ = value;
-      }
-
       auto gui_window_close_button_view() {
          return gui_window_close_button_view_;
       }
@@ -25,7 +21,6 @@ namespace Narradia
       RenderID rid_background_;
       RenderID rid_title_bar_;
       RenderID rid_title_text_;
-      std::shared_ptr<GuiWindow> model_;
       std::shared_ptr<GuiWindowCloseButtonView> gui_window_close_button_view_;
    };
 }
