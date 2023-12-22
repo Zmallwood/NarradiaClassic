@@ -17,4 +17,6 @@ namespace Narradia
    auto AspectRatio() -> float;
 
    float WidthToHeight(float width);
+
+   float HeightToWidth(float height);
 }

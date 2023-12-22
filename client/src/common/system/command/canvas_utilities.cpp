@@ -18,4 +18,8 @@ namespace Narradia
    float WidthToHeight(float width) {
       return width * AspectRatio();
    }
+
+   float HeightToWidth(float height) {
+      return height / AspectRatio();
+   }
 }

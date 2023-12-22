@@ -50,10 +50,10 @@ namespace Narradia
       typedef char byte;
       byte*data = new byte[canv_sz.w * canv_sz.h * 3];
       glReadBuffer(GL_FRONT);
-      glReadPixels(0, 0, canv_sz.w, canv_sz.h, GL_RGB, GL_UNSIGNED_BYTE, data);
+      glReadPixels(canv_sz.w/2 - canv_sz.h/2, 0, canv_sz.h, canv_sz.h, GL_RGB, GL_UNSIGNED_BYTE, data);
 
       glTexImage2D(
-          GL_TEXTURE_2D, 0, GL_RGB, canv_sz.w, canv_sz.h, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+          GL_TEXTURE_2D, 0, GL_RGB, canv_sz.h, canv_sz.h, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
       //      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 512, 0, GL_RGBA, GL_UNSIGNED_BYTE,
       //      data);
       glBindTexture(GL_TEXTURE_2D, 0);

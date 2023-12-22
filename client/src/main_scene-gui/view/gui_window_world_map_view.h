@@ -14,5 +14,7 @@ namespace Narradia
       void RenderDerived() override;
       RenderID rid_img_;
       GLuint tex_id_ = -1;
+      std::vector<RenderID> rids_rectangles_;
+      std::vector<RenderID> rids_images_;
    };
 }
