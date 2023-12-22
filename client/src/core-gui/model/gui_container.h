@@ -1,4 +1,7 @@
 #pragma once
+#include "../../matter/model/pointf.h"
+#include "../../matter/model/rectf.h"
+#include "../../matter/model/sizef.h"
 #include "gui_component.h"
 #include <memory>
 #include <vector>
@@ -13,8 +16,18 @@ namespace Narradia
 
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
 
-      PointF position() {
+      RectF Bounds();
+
+      auto position() {
          return position_;
+      }
+
+      auto size() {
+         return size_;
+      }
+
+      auto gui_components() {
+         return gui_components_;
       }
 
      protected:
@@ -27,6 +40,6 @@ namespace Narradia
      private:
       PointF position_;
       SizeF size_;
-      std::vector<std::shared_ptr<GuiComponent>> gui_components_;
+      std::shared_ptr<std::vector<std::shared_ptr<GuiComponent>>> gui_components_;
    };
 }

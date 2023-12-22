@@ -28,6 +28,8 @@ namespace Narradia
       ////////////////////////////////////////////////////////////////////////////////
       auto AddGuiComponent(std::shared_ptr<GuiComponent> comp) -> void;
 
+      auto RemoveGuiComponent(std::shared_ptr<GuiComponent> comp) -> void;
+
       auto gui_components() {
          return gui_components_;
       }

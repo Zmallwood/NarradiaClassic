@@ -14,4 +14,8 @@ namespace Narradia
       canv_sz = CanvasSize();
       return static_cast<float>(canv_sz.w) / canv_sz.h;
    }
+
+   float WidthToHeight(float width) {
+      return width * AspectRatio();
+   }
 }

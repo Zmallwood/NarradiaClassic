@@ -1,6 +1,7 @@
 #pragma once
 #include "gl_rectf.h"
 #include "pointf.h"
+#include "sizef.h"
 namespace Narradia
 {
     /**
@@ -14,6 +15,7 @@ namespace Narradia
         PointF GetCenter() const;
         bool Contains(PointF point) const;
         RectF WithWidth(float w_new) const;
+        SizeF GetSize() const;
 
         float x = 0.0f;
         float y = 0.0f;

@@ -1,5 +1,6 @@
 #pragma once
 #include "../../../matter/model/pointf.h"
+#include "../../../matter/model/size.h"
 namespace Narradia
 {
    ////////////////////////////////////////////////////////////////////////////////

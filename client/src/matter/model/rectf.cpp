@@ -42,4 +42,8 @@ namespace Narradia
    RectF RectF::WithWidth(float w_new) const {
       return {x, y, w_new, h};
    }
+
+   SizeF RectF::GetSize() const {
+      return {w, h};
+   }
 }

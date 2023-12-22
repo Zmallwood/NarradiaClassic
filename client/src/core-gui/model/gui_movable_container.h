@@ -1,5 +1,8 @@
 #pragma once
 #include "gui_container.h"
+#include "../../matter/model/rectf.h"
+#include "../../matter/model/pointf.h"
+#include "../../matter/model/sizef.h"
 namespace Narradia
 {
    class GuiMovableContainer : public GuiContainer {
