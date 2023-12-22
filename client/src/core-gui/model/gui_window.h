@@ -13,6 +13,8 @@ namespace Narradia
 
       void Hide();
 
+      void ToggleVisibility();
+
       RectF AbsTitleBarBounds();
 
       auto destroy_on_close() {
@@ -31,6 +33,10 @@ namespace Narradia
          return title_;
       }
 
+      auto gui_window_close_button() {
+         return gui_window_close_button_;
+      }
+
      protected:
       void UpdateGameLogic() override;
 
@@ -42,7 +48,7 @@ namespace Narradia
       std::string_view title_ = "Unnamed window";
       bool visible_ = false;
       bool destroy_on_close_ = false;
-      GuiWindowCloseButton gui_window_close_button_;
+      std::shared_ptr<GuiWindowCloseButton> gui_window_close_button_;
       std::string_view background_image_name_;
    };
 }

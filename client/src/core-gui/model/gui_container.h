@@ -11,7 +11,8 @@ namespace Narradia
      public:
       GuiContainer(PointF position, SizeF size)
           : position_(position),
-            size_(size) {
+            size_(size),
+            gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>()) {
       }
 
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);

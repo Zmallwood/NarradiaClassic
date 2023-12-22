@@ -3,6 +3,9 @@
 namespace Narradia
 {
    class GuiWindowWorldMapView : public GuiWindowView {
+     public:
+      GuiWindowWorldMapView();
+
      private:
       void RenderDerived() override;
    };
