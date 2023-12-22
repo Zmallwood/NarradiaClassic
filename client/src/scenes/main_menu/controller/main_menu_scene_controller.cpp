@@ -1,6 +1,6 @@
 #include "main_menu_scene_controller.h"
-#include "core.assets/model/model_bank.h"
-#include "core.render.models/view/command/new_model.h"
+#include "core-assets/model/model_bank.h"
+#include "core-render-models/view/command/new_model.h"
 namespace Narradia
 {
     /**

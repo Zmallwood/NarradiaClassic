@@ -1,6 +1,6 @@
 #include "intro_scene_controller.h"
-#include "core.input/model/kb_input.h"
-#include "core.input/model/mouse_input.h"
+#include "core-input/model/kb_input.h"
+#include "core-input/model/mouse_input.h"
 #include "core/controller/scene_mngr_controller.h"
 namespace Narradia
 {

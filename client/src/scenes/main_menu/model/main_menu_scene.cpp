@@ -1,5 +1,5 @@
 #include "main_menu_scene.h"
-#include "core.gui/model/gui_button.h"
+#include "core-gui/model/gui_button.h"
 #include "core/controller/scene_mngr_controller.h"
 #include "core/model/engine.h"
 #include "model_display_module.h"

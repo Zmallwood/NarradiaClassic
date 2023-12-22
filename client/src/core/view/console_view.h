@@ -1,11 +1,11 @@
 #pragma once
-#include "core.render.text/view/command/draw_string.h"
-#include "core.render.text/view/command/new_string.h"
-#include "core.render/view/command/draw_image.h"
-#include "core.render/view/command/new_image.h"
+#include "core-render-text/view/command/draw_string.h"
+#include "core-render-text/view/command/new_string.h"
+#include "core-render/view/command/draw_image.h"
+#include "core-render/view/command/new_image.h"
 #include "core/model/console.h"
 #include "core/model/scene_mngr.h"
-#include "main_scene.gui/model/experience_bar.h"
+#include "main_scene-gui/model/experience_bar.h"
 namespace Narradia
 {
    ////////////////////////////////////////////////////////////////////////////////

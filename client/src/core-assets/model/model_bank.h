@@ -1,0 +1,47 @@
+#pragma once
+#include "../../core-model_structure/model/model.h"
+#include "command/file_utilities.h"
+#include "core-assets-model_creation/model/model_creator.h"
+#include <map>
+#include <memory>
+namespace Narradia
+{
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Loads, holds and provides 3D models loaded from file system.
+   ////////////////////////////////////////////////////////////////////////////////
+   class ModelBank : public Singleton<ModelBank> {
+     public:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Initializes internal structure and loads all models.
+      ////////////////////////////////////////////////////////////////////////////////
+      ModelBank();
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Gets a 3D model with the specified name.
+      ///
+      /// @param[in] model_name Name of model to obtain.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto GetModel(std::string_view model_name) -> std::shared_ptr<Model>;
+
+      auto models() {
+         return models_;
+      }
+
+     private:
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Loads all 3D models from file system.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto LoadModels();
+
+      ////////////////////////////////////////////////////////////////////////////////
+      /// @brief Loads a single 3D model at the specified path.
+      ///
+      /// @param[in] path Absolut path to model to load.
+      /// @return Loaded model.
+      ////////////////////////////////////////////////////////////////////////////////
+      auto LoadSingleModel(std::string_view path);
+
+      const std::string_view kRelModelsPath = "Resources/Models/";
+      std::shared_ptr<std::map<std::string, std::shared_ptr<Model>>> models_;
+   };
+}

@@ -1,6 +1,6 @@
 #include "tile_calc.h"
 #include "conf/model/constants.h"
-#include "world.structure/model/world.h"
+#include "world-structure/model/world.h"
 namespace Narradia
 {
     float CalcTileAverageElevation(Point coord) {

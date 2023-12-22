@@ -1,7 +1,7 @@
 #include "main_menu_scene_view.h"
-#include "core.gui/view/gui_button_view.h"
-#include "core.render/view/command/draw_image.h"
-#include "core.render/view/command/new_image.h"
+#include "core-gui/view/gui_button_view.h"
+#include "core-render/view/command/draw_image.h"
+#include "core-render/view/command/new_image.h"
 #include "model_display_module_view.h"
 #include "scenes/main_menu/model/main_menu_scene.h"
 namespace Narradia

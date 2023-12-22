@@ -1,9 +1,9 @@
 #include "intro_scene_view.h"
-#include "core.render.text/view/command/draw_string.h"
-#include "core.render.text/view/command/new_string.h"
-#include "core.render/view/command/draw_image.h"
-#include "core.render/view/command/new_image.h"
-#include "core.render/view/renderer_2d_images_view.h"
+#include "core-render-text/view/command/draw_string.h"
+#include "core-render-text/view/command/new_string.h"
+#include "core-render/view/command/draw_image.h"
+#include "core-render/view/command/new_image.h"
+#include "core-render/view/renderer_2d_images_view.h"
 #include "scenes/intro/model/intro_scene.h"
 namespace Narradia
 {

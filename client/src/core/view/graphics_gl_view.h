@@ -13,6 +13,6 @@ namespace Narradia
 
      private:
       static constexpr bool kCullFace = false;
-      const Color kClearColor = Colors::purple;
+      const Color kClearColor = Colors::mild_blue;
    };
 }

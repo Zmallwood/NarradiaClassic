@@ -1,5 +1,5 @@
 #include "utilities.h"
-#include "core.assets/model/image_bank.h"
+#include "core-assets/model/image_bank.h"
 namespace Narradia
 {
    int x_px, y_px;

@@ -1,7 +1,7 @@
 #pragma once
-#include "core.input/model/kb_input.h"
+#include "core-input/model/kb_input.h"
 #include "core/model/scene_mngr.h"
-#include "main_scene.gui/model/experience_bar.h"
+#include "main_scene-gui/model/experience_bar.h"
 #include "text_line.h"
 namespace Narradia
 {

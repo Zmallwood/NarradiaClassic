@@ -1,6 +1,6 @@
 #include "tile_calc.h"
 #include "conf/model/constants.h"
-#include "world.structure/model/world.h"
+#include "world-structure/model/world.h"
 namespace Narradia
 {
     Point3F CalcTileNormal(Point3F v0, Point3F v1, Point3F v2) {

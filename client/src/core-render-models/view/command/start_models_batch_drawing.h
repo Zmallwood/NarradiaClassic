@@ -1,0 +1,10 @@
+#pragma once
+#include "../../../core-render/view/camera_gl.h"
+#include "../renderer_models_view.h"
+namespace Narradia
+{
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief Called before a render loop with many DrawModel() calls.
+   ////////////////////////////////////////////////////////////////////////////////
+   auto StartModelsBatchDrawing() -> void;
+}

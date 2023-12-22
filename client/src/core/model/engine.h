@@ -1,5 +1,5 @@
 #pragma once
-#include "core.input/model/mouse_input.h"
+#include "core-input/model/mouse_input.h"
 #include "cursor.h"
 #include "scene_mngr.h"
 namespace Narradia

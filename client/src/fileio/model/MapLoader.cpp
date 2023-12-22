@@ -1,5 +1,5 @@
 #include "MapLoader.h"
-#include "world.structure/model/map_area.h"
+#include "world-structure/model/map_area.h"
 namespace Narradia
 {
    void MapLoader::LoadWorldMapFromFile(std::shared_ptr<MapArea> &map_area) {

@@ -1,5 +1,5 @@
 #include "fileio/model/MapSaver.h"
-#include "world.structure/model/world.h"
+#include "world-structure/model/world.h"
 
 /**
  Entry.

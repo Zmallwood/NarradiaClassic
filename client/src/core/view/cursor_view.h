@@ -1,6 +1,6 @@
 #pragma once
-#include "core.render/view/command/draw_image.h"
-#include "core.render/view/command/new_image.h"
+#include "core-render/view/command/draw_image.h"
+#include "core-render/view/command/new_image.h"
 #include "core/model/cursor.h"
 namespace Narradia
 {
