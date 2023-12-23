@@ -11,6 +11,8 @@ namespace Narradia
 
       std::shared_ptr<MapArea> CurrMapArea();
 
+      std::shared_ptr<MapArea> MapAreaAt(Point location);
+
       auto world_width() {
          return world_width_;
       }

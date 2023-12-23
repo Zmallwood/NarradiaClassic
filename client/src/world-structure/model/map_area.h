@@ -14,6 +14,7 @@ namespace Narradia
         bool IsInsideMap(Point coord);
         int GetWidth();
         int GetHeight();
+        void ClearAllRIDS();
 
         auto mobs_mirror() {
             return mobs_mirror_;

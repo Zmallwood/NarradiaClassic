@@ -15,6 +15,9 @@ namespace Narradia
       }
 
      private:
+      void UnloadTile(int x, int y);
+      void LoadTile(int x, int y);
+
       std::vector<std::vector<RenderID>> rids_tiles;
       std::vector<std::vector<RenderID>> rids_tile_symbols;
       int render_distance_ = 30;

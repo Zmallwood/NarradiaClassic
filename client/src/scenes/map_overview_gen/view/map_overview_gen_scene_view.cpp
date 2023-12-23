@@ -76,6 +76,7 @@ namespace Narradia
             delete[] data;
             GraphicsView::get()->ClearCanvas();
             GraphicsView::get()->PresentCanvas();
+            map_area->ClearAllRIDS();
          }
       }
       WorldViewModuleView::Dispose();

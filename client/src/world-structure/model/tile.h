@@ -80,7 +80,7 @@ namespace Narradia
         std::shared_ptr<Mob> mob_;
         float elevation_ = 0.0f;
         TileEffect tile_effect_;
-        RenderID rid_;
+        RenderID rid_ = 0;
         Point3F normal_;
         std::shared_ptr<Color> color_;
     };
