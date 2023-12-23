@@ -24,6 +24,7 @@ namespace Narradia
       }
 
       rid_player_ = NewRect();
+      rid_player_outline_ = NewRect();
    }
 
    void GuiWindowWorldMapView::RenderDerived() {
@@ -59,7 +60,8 @@ namespace Narradia
                auto marker_size = 0.005f;
                auto rect = RectF{
                   bounds.x + player_pos.x * tile_width, bounds.y + player_pos.z * tile_height, marker_size, marker_size};
-               FillRect(rid_player_, rect, Colors::yellow);
+               FillRect(rid_player_, rect, Colors::red);
+               DrawRect(rid_player_outline_, rect, Colors::black);
             }
             i++;
          }

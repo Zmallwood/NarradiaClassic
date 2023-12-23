@@ -38,7 +38,7 @@ namespace Narradia
             auto orig_camera_vert_angle = Camera::get()->vertical_angle_deg();
             Camera::get()->set_vertical_angle_deg(90.0f);
             auto orig_camera_distance = Camera::get()->camera_distance();
-            Camera::get()->set_camera_distance(120.0f);
+            Camera::get()->set_camera_distance(110.0f);
             Camera::get()->UpdateGameLogic();
             WorldViewModuleView::get()->set_render_distance(render_dist);
             RendererTilesView::get()->kFogColorGround = Colors::white;
