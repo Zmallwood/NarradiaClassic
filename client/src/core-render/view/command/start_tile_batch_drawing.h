@@ -3,6 +3,7 @@
 #include "../camera_gl.h"
 #include "../renderer_tiles_view.h"
 #include "../../../world-actors/model/player.h"
+#include "world-structure/model/world.h"
 namespace Narradia
 {
    ////////////////////////////////////////////////////////////////////////////////

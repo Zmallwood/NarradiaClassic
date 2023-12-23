@@ -14,6 +14,13 @@ namespace Narradia
       glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
       glUniform1f(renderer->location_alpha(), 1.0f);
       auto player_pos = Player::get()->position().Multiply(kTileSize);
+      auto curr_map_location = Player::get()->world_location();
+      auto map_area = World::get()->CurrMapArea();
+      auto tile_size = kTileSize;
+      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+      player_pos.x += map_offset_x;
+      player_pos.z += map_offset_y;
       glm::vec3 view_pos(
           player_pos.x,
           player_pos.y + CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint()),

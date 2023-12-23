@@ -35,6 +35,14 @@ namespace Narradia
           glm::value_ptr(model_no_translation_matrix));
       glUniform3fv(renderer->location_color_mod(), 1, glm::value_ptr(color_mod));
       auto player_space_coord = Player::get()->position().Multiply(kTileSize);
+      
+      auto curr_map_location = Player::get()->world_location();
+      auto map_area = World::get()->CurrMapArea();
+      auto tile_size = kTileSize;
+      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+      player_space_coord.x += map_offset_x;
+      player_space_coord.z += map_offset_y;
       glm::vec3 viewPos(
           player_space_coord.x,
           player_space_coord.y +

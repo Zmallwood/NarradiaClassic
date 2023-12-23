@@ -13,10 +13,17 @@ namespace Narradia
       }
       {
          auto player_pos = Player::get()->position().Multiply(kTileSize);
+         auto curr_map_location = Player::get()->world_location();
+         auto tile_size = kTileSize;
+         auto map_area = World::get()->CurrMapArea();
+         auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+         auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
          auto look_from = GetCameraPosition();
+         look_from = look_from.Translate(map_offset_x, 0.0f, map_offset_y);
          auto player_average_elevation =
              CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint());
          auto look_at = player_pos.Translate(0.0f, player_average_elevation, 0.0f);
+         look_at = look_at.Translate(map_offset_x, 0.0f, map_offset_y);
          auto new_view_matrix = glm::lookAt(
              glm::vec3(look_from.x, look_from.y, look_from.z),
              glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));

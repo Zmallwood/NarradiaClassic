@@ -6,6 +6,7 @@
 #include "../renderer_models_view.h"
 #include "world-actors/model/player.h"
 #include <glm/glm.hpp>
+#include "world-structure/model/world.h"
 namespace Narradia
 {
    ////////////////////////////////////////////////////////////////////////////////

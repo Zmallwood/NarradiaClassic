@@ -19,7 +19,10 @@ namespace Narradia
    WorldViewModuleView::WorldViewModuleView(bool simplified_ground)
        : simplified_ground_(simplified_ground) {
       auto map_area = World::get()->CurrMapArea();
+      auto curr_map_location = Player::get()->world_location();
       auto tile_size = kTileSize;
+      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
       auto inc = 1;
       if (simplified_ground_)
          inc = kGroundSimpleK;
@@ -64,11 +67,17 @@ namespace Narradia
             }
             auto tile_size_side = tile_size;
             if (simplified_ground_)
-                tile_size_side *= kGroundSimpleK;
-            v0.position = {x * tile_size, elev00, y * tile_size};
-            v1.position = {x * tile_size + tile_size_side, elev10, y * tile_size};
-            v2.position = {x * tile_size + tile_size_side, elev11, y * tile_size + tile_size_side};
-            v3.position = {x * tile_size, elev01, y * tile_size + tile_size_side};
+               tile_size_side *= kGroundSimpleK;
+            v0.position = {map_offset_x + x * tile_size, elev00, map_offset_y + y * tile_size};
+            v1.position = {
+                map_offset_x + x * tile_size + tile_size_side, elev10,
+                map_offset_y + y * tile_size};
+            v2.position = {
+                map_offset_x + x * tile_size + tile_size_side, elev11,
+                map_offset_y + y * tile_size + tile_size_side};
+            v3.position = {
+                map_offset_x + x * tile_size, elev01,
+                map_offset_y + y * tile_size + tile_size_side};
             v0.uv = {0.0f, 0.0f};
             v1.uv = {1.0f, 0.0f};
             v2.uv = {1.0f, 1.0f};

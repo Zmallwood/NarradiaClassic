@@ -5,8 +5,8 @@
 #include "../model/gui_window_world_map.h"
 #include "core-render/view/command/new_image.h"
 #include "core-render/view/command/new_rect.h"
-#include "world-structure/model/world.h"
 #include "world-actors/model/player.h"
+#include "world-structure/model/world.h"
 namespace Narradia
 {
    GuiWindowWorldMapView::GuiWindowWorldMapView() {
@@ -59,7 +59,9 @@ namespace Narradia
                auto tile_height = cell_height / map_area->GetHeight();
                auto marker_size = 0.005f;
                auto rect = RectF{
-                  bounds.x + player_pos.x * tile_width, bounds.y + player_pos.z * tile_height, marker_size, marker_size};
+                   bounds.x + x * cell_width + player_pos.x * tile_width,
+                   bounds.y + y * cell_height + player_pos.z * tile_height, marker_size,
+                   marker_size};
                FillRect(rid_player_, rect, Colors::red);
                DrawRect(rid_player_outline_, rect, Colors::black);
             }
