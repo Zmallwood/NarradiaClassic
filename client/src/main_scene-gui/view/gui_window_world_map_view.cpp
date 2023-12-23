@@ -1,10 +1,12 @@
 #include "gui_window_world_map_view.h"
 #include "../../core-render/view/command/draw_image.h";
 #include "../../core-render/view/command/draw_rect.h"
+#include "../../core-render/view/command/fill_rect.h"
 #include "../model/gui_window_world_map.h"
 #include "core-render/view/command/new_image.h"
 #include "core-render/view/command/new_rect.h"
 #include "world-structure/model/world.h"
+#include "world-actors/model/player.h"
 namespace Narradia
 {
    GuiWindowWorldMapView::GuiWindowWorldMapView() {
@@ -20,6 +22,8 @@ namespace Narradia
             rids_images_.push_back(NewImage());
          }
       }
+
+      rid_player_ = NewRect();
    }
 
    void GuiWindowWorldMapView::RenderDerived() {
@@ -29,7 +33,7 @@ namespace Narradia
       auto world_h = World::get()->world_height();
       auto bounds = model->Bounds();
       bounds.y += GuiWindow::kTitleBarHeight + GuiWindow::kMargin;
-      bounds.h -= GuiWindow::kTitleBarHeight + 3*GuiWindow::kMargin;
+      bounds.h -= GuiWindow::kTitleBarHeight + 3 * GuiWindow::kMargin;
       auto cell_width = bounds.w / world_w;
       auto cell_height = WidthToHeight(cell_width);
       if (world_h * cell_height > bounds.h) {
@@ -40,11 +44,23 @@ namespace Narradia
       auto i = 0;
       for (auto y = 0; y < world_h; y++) {
          for (auto x = 0; x < world_w; x++) {
-             DrawImage("WorldMapImage" + std::to_string(x) + "_" + std::to_string(y), rids_images_[i], {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height});
+            DrawImage(
+                "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y), rids_images_[i],
+                {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height});
             DrawRect(
                 rids_rectangles_[i],
                 {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height},
                 Colors::black);
+            if (x == Player::get()->world_location().x && y == Player::get()->world_location().y) {
+               auto player_pos = Player::get()->position();
+               auto map_area = World::get()->map_areas()[x][y];
+               auto tile_width = cell_width / map_area->GetWidth();
+               auto tile_height = cell_height / map_area->GetHeight();
+               auto marker_size = 0.005f;
+               auto rect = RectF{
+                  bounds.x + player_pos.x * tile_width, bounds.y + player_pos.z * tile_height, marker_size, marker_size};
+               FillRect(rid_player_, rect, Colors::yellow);
+            }
             i++;
          }
       }

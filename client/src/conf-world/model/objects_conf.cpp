@@ -5,8 +5,8 @@ namespace Narradia
 
    ObjectsConf::ObjectsConf() {
       object_confs_["ObjectPoolOfBlood"] = {NoObstacle, 1.0f};
-      object_confs_["ObjectTree1"] = {0, 6.0f};
-      object_confs_["ObjectTree2"] = {0, 6.0f};
+      object_confs_["ObjectTree1"] = {0, 3.0f};
+      object_confs_["ObjectTree2"] = {0, 3.0f};
    }
 
    auto ObjectsConf::IsObstacle(std::string_view object_type) -> bool {

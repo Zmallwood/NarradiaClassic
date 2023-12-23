@@ -5,6 +5,7 @@
 namespace Narradia
 {
     void PlayerSpawnPositioningModule::SpawnAtGoodLocation() {
+        Player::get()->set_world_location({0,0});
         auto map_area = World::get()->CurrMapArea();
         std::shared_ptr<Tile> tile;
         int x;

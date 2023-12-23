@@ -5,6 +5,6 @@ namespace Narradia
       public:
         void SaveWorldMapToFile();
       private:
-        const std::string kMapName = "DefaultMap";
+        const std::string kMapName = "NewMap";
     };
 }

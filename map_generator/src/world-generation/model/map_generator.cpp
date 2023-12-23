@@ -6,6 +6,7 @@
 #include "command/generate_mobs.h"
 #include "command/generate_objects.h"
 #include "command/generate_water.h"
+#include "command/generate_desert.h"
 namespace Narradia
 {
     /**
@@ -13,7 +14,8 @@ namespace Narradia
     */
     void MapGenerator::GenerateMapArea(std::shared_ptr<MapArea> map_area) {
         GenerateGrass(map_area);
-        //GenerateWater(map_area);
+        //GenerateDesert(map_area);
+        GenerateWater(map_area);
         GenerateElevation(map_area);
         GenerateObjects(map_area);
         GenerateMobs(map_area);

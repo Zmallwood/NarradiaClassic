@@ -21,18 +21,23 @@ namespace Narradia
                   auto k = 0.5f;
                   if (map_area->GetTile(x, y)->ground() == "Ground") {
                      if (color_style == 0) {
-                        map_area->GetTile(x, y)->color()->g *= 0.1f * r_inv * k;
+                        map_area->GetTile(x, y)->color()->g *= 0.91f * r_inv * k;
                      }
                      else if (color_style == 1) {
                         map_area->GetTile(x, y)->color()->g *= 0.2f * r_inv * k;
                         map_area->GetTile(x, y)->color()->r = 0.1f * r_inv * k;
-                        map_area->GetTile(x, y)->color()->b = 0.0f;
+                        map_area->GetTile(x, y)->color()->b = 0.f;
                      }
                      else if (color_style == 2) {
                         map_area->GetTile(x, y)->color()->g = 0.3f * r_inv * k;
                         map_area->GetTile(x, y)->color()->r = 0.3f * r_inv * k;
                         map_area->GetTile(x, y)->color()->b = 0.3f * r_inv * k;
                      }
+                  }
+                  else if (map_area->GetTile(x, y)->ground() == "GroundWater") {
+                     map_area->GetTile(x, y)->color()->g = 0.0f;
+                     map_area->GetTile(x, y)->color()->r = 0.5f;
+                     map_area->GetTile(x, y)->color()->b = 1.0f;
                   }
                }
             }

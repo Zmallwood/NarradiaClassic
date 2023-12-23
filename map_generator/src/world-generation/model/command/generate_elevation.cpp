@@ -4,7 +4,6 @@
 namespace Narradia
 {
    void GenerateElevation(std::shared_ptr<MapArea> map_area) {
-       return;
       auto r_max = std::max(kMapHeight, kMapWidth) / 2;
       auto r_min = std::min(kMapHeight, kMapWidth) / 2;
       auto x_center = kMapWidth / 2;
