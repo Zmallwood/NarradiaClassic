@@ -3,7 +3,8 @@ namespace Narradia
 {
    class WorldViewModuleView : public Singleton<WorldViewModuleView> {
      public:
-      WorldViewModuleView();
+      WorldViewModuleView(bool simplified_ground = false);
+
       void Render();
 
       auto render_distance() {
@@ -17,6 +18,8 @@ namespace Narradia
       std::vector<std::vector<RenderID>> rids_tiles;
       std::vector<std::vector<RenderID>> rids_tile_symbols;
       int render_distance_ = 30;
+      bool simplified_ground_ = false;
       const float kTinyDistance = 0.001f;
+      static constexpr int kGroundSimpleK = 6;
    };
 }

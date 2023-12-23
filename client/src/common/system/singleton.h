@@ -15,7 +15,8 @@ namespace Narradia
       ///
       /// @tparam T Class to create instance of.
       ////////////////////////////////////////////////////////////////////////////////
-      static auto Touch() -> void;
+      template <typename ...U>
+      static auto Touch(U ...args) -> void;
 
       static auto Dispose() -> void;
 
@@ -32,9 +33,10 @@ namespace Narradia
    };
 
    template <class T>
-   auto Singleton<T>::Touch() -> void {
+      template<class... __Args>
+   auto Singleton<T>::Touch(__Args... args ) -> void {
       if (!instance_) {
-         instance_ = std::make_shared<T>();
+         instance_ = std::make_shared<T>(args...);
          AddSingletonDisposeAction([&] { instance_.reset(); });
       }
    }
@@ -44,7 +46,6 @@ namespace Narradia
       if (instance_) {
          instance_.reset();
          instance_ = nullptr;
-         std::cout << "disposed singleotn\n";
       }
    }
 
@@ -52,6 +53,6 @@ namespace Narradia
    auto Singleton<T>::get() -> std::shared_ptr<T> {
       if (!instance_) // Create new instance if none exists
          Touch();
-      return instance_;// Return weak_ptr to not increase ref count
+      return instance_; // Return weak_ptr to not increase ref count
    }
 }

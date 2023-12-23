@@ -77,5 +77,6 @@ namespace Narradia
 
    void RendererBaseView::CleanupBase() {
       shader_program_view_->shader_program()->Cleanup();
+      renderer_base_->CleanupBase();
    }
 }

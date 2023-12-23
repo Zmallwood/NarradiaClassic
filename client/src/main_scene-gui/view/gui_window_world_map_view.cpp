@@ -28,8 +28,8 @@ namespace Narradia
       auto world_w = World::get()->world_width();
       auto world_h = World::get()->world_height();
       auto bounds = model->Bounds();
-      bounds.y += GuiWindow::kTitleBarHeight;
-      bounds.h -= GuiWindow::kTitleBarHeight;
+      bounds.y += GuiWindow::kTitleBarHeight + GuiWindow::kMargin;
+      bounds.h -= GuiWindow::kTitleBarHeight + 3*GuiWindow::kMargin;
       auto cell_width = bounds.w / world_w;
       auto cell_height = WidthToHeight(cell_width);
       if (world_h * cell_height > bounds.h) {

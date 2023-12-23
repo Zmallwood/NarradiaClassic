@@ -77,7 +77,7 @@ namespace Narradia
          return shader_program_view_;
       }
 
-      auto renderer_base() {
+      std::shared_ptr<RendererBase> renderer_base() {
          return renderer_base_;
       }
 

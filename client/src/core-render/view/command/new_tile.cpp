@@ -1,7 +1,7 @@
 #include "new_tile.h"
 namespace Narradia
 {
-   auto NewTile() -> RenderID {
+   RenderID NewTile() {
       auto num_vertices = 4;
       auto renderer = RendererTilesView::get();
       auto renderer_base = renderer->renderer_base();

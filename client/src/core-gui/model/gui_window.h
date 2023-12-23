@@ -38,6 +38,7 @@ namespace Narradia
       }
 
       static constexpr float kTitleBarHeight = 0.03f;
+      static constexpr float kMargin = 0.005f;
 
      protected:
       void UpdateGameLogic() override;
@@ -45,7 +46,6 @@ namespace Narradia
      private:
       virtual void UpdateGameLogicDerived() = 0;
 
-      static constexpr float kMargin = 0.005f;
       std::string_view title_ = "Unnamed window";
       bool visible_ = false;
       bool destroy_on_close_ = false;

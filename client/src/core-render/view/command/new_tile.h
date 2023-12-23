@@ -8,5 +8,5 @@ namespace Narradia
    ///
    /// @return RID for the new tile.
    ////////////////////////////////////////////////////////////////////////////////
-   auto NewTile() -> RenderID;
+   RenderID NewTile();
 }

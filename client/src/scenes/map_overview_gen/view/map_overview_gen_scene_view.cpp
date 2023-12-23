@@ -18,6 +18,8 @@ namespace Narradia
          for (auto x = 0; x < world_width; x++) {
 
             WorldViewModuleView::Dispose();
+            RendererTilesView::Dispose();
+
             GraphicsView::get()->ClearCanvas();
 
             auto map_area = map_areas[x][y];
@@ -30,6 +32,7 @@ namespace Narradia
             auto width = map_area->GetWidth();
             auto height = map_area->GetHeight();
             auto render_dist = std::sqrt(width * width + height * height) / 2.0f;
+            WorldViewModuleView::Touch(true);
             auto a = WorldViewModuleView::get().get();
             auto orig_render_dist = WorldViewModuleView::get()->render_distance();
             auto orig_camera_vert_angle = Camera::get()->vertical_angle_deg();
@@ -54,7 +57,7 @@ namespace Narradia
             auto tex = ImageBank::get()->GetImage(
                 "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y));
             glBindTexture(GL_TEXTURE_2D, tex);
-            
+
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
             glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -67,13 +70,15 @@ namespace Narradia
             glReadPixels(
                 canv_sz.w / 2 - canv_sz.h / 2, 0, canv_sz.h, canv_sz.h, GL_RGB, GL_UNSIGNED_BYTE,
                 data);
-
             glTexImage2D(
                 GL_TEXTURE_2D, 0, GL_RGB, canv_sz.h, canv_sz.h, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
             glBindTexture(GL_TEXTURE_2D, 0);
             delete[] data;
-
+            GraphicsView::get()->ClearCanvas();
+            GraphicsView::get()->PresentCanvas();
          }
       }
+      WorldViewModuleView::Dispose();
+      RendererTilesView::Dispose();
    }
 }
