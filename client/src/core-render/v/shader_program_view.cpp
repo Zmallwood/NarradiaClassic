@@ -2,9 +2,6 @@
 #include "cmd/compile_shader.h"
 namespace Narradia
 {
-   /**
-    Create vertex and fragment shader from provided sources.
-   */
    bool ShaderProgramView::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src)
    {
       GLuint vertex_shader = 0;

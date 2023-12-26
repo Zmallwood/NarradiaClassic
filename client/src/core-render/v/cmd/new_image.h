@@ -2,10 +2,5 @@
 #include "core-render/v/renderer_2d_images_view.h"
 namespace Narradia
 {
-   ////////////////////////////////////////////////////////////////////////////////
-   /// @brief Initializes a new image and return a RID for later rendering.
-   ///
-   /// @return RID for the new image.
-   ////////////////////////////////////////////////////////////////////////////////
    auto NewImage() -> RenderID;
 }

@@ -14,7 +14,7 @@ namespace Narradia
       inline static std::shared_ptr<T> instance_;
    };
 
-// Function def:
+// Function definitions
 #if 1
    template <class T>
    template <class... __Args>

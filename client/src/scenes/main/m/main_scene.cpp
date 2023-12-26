@@ -25,9 +25,6 @@ namespace Narradia
       scene_gui()->AddGuiComponent(GuiWindowWorldMap::get());
    }
 
-   /**
-    Update game logic.
-   */
    void MainScene::UpdateGameLogicDerived()
    {
       KbBindingsModule::get()->UpdateGameLogic();

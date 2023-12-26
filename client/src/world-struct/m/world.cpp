@@ -4,9 +4,6 @@
 #include "world-actors/m/player.h"
 namespace Narradia
 {
-   /**
-    Initalizes and generates a complete MapArea.
-   */
    World::World()
    {
       world_width_ = WorldConfReader::get()->world_map_width();

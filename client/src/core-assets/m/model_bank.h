@@ -1,9 +1,7 @@
 #pragma once
-#include "../../core-assets-model_creation/m/model_creator.h"
-#include "../../core-model_struct/m/model.h"
+#include "core-assets-model_creation/m/model_creator.h"
+#include "core-model_struct/m/model.h"
 #include "cmd/file_utilities.h"
-#include <map>
-#include <memory>
 namespace Narradia
 {
    class ModelBank : public Singleton<ModelBank>

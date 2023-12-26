@@ -1,7 +1,4 @@
 #pragma once
-#include <assimp/scene.h>
-#include <map>
-#include <vector>
 namespace Narradia
 {
    class KeyframeCreator : public Singleton<KeyframeCreator>

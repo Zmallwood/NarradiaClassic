@@ -4,8 +4,6 @@
 #include "../../core-render/m/body_data.h"
 #include "../../core-render/v/renderer_base_view.h"
 #include "../../core-render/v/shader_program_view.h"
-#include "../../matter/m/color.h"
-#include "../../matter/m/colors.h"
 #include <map>
 #include <string>
 #include <vector>
@@ -14,15 +12,8 @@ namespace Narradia
    class RendererModelsView : public RendererBaseView, public Singleton<RendererModelsView>
    {
      public:
-      ////////////////////////////////////////////////////////////////////////////////
-      /// @brief Create internal data structures and gets locations of uniform parameters in shader
-      /// source.
-      ////////////////////////////////////////////////////////////////////////////////
       RendererModelsView();
 
-      ////////////////////////////////////////////////////////////////////////////////
-      /// @brief Cleanup render base view.
-      ////////////////////////////////////////////////////////////////////////////////
       ~RendererModelsView();
 
       auto timelines()

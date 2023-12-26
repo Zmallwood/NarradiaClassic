@@ -1,13 +1,6 @@
 #pragma once
-#include "../../core-model_struct/m/model_part.h"
-#include "../../matter/m/color.h"
-#include "../../matter/m/point3f.h"
+#include "core-model_struct/m/model_part.h"
 #include "keyframe_creator.h"
-#include <assimp/scene.h>
-#include <map>
-#include <memory>
-#include <string>
-#include <vector>
 namespace Narradia
 {
    class ModelPartCreator : public Singleton<ModelPartCreator>

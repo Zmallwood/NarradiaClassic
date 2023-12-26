@@ -2,9 +2,6 @@
 #include "core/m/iscene.h"
 namespace Narradia
 {
-   /**
-    Model for MainMenuScene.
-   */
    class MainMenuScene : public IScene, public Singleton<MainMenuScene>
    {
      public:

@@ -7,19 +7,19 @@ namespace Narradia
    class KbInput : public Singleton<KbInput>
    {
      public:
-      auto OnKeyPress(SDL_Keycode key) -> void;
+      void OnKeyPress(SDL_Keycode key);
 
-      auto OnKeyRelease(SDL_Keycode key) -> void;
+      void OnKeyRelease(SDL_Keycode key);
 
-      auto KeyIsPressed(SDL_Keycode key) -> bool;
+      bool KeyIsPressed(SDL_Keycode key);
 
-      auto KeyHasBeenFiredPickResult(SDL_Keycode key) -> bool;
+      bool KeyHasBeenFiredPickResult(SDL_Keycode key);
 
-      auto AnyKeyIsPressedPickResult() -> bool;
+      bool AnyKeyIsPressedPickResult();
 
-      auto AppendTextInput(std::string_view to_append) -> void;
+      void AppendTextInput(std::string_view to_append);
 
-      auto PickTextInput() -> std::string_view;
+      std::string_view PickTextInput();
 
      private:
       std::set<SDL_Keycode> pressed_keys_;

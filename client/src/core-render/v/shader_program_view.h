@@ -4,9 +4,6 @@
 #include <memory>
 namespace Narradia
 {
-   /**
-    View component of ShaderProgram.
-   */
    class ShaderProgramView
    {
      public:

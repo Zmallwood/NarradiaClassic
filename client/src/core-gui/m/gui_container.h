@@ -1,10 +1,5 @@
 #pragma once
-#include "../../matter/m/pointf.h"
-#include "../../matter/m/rectf.h"
-#include "../../matter/m/sizef.h"
 #include "gui_component.h"
-#include <memory>
-#include <vector>
 namespace Narradia
 {
    class GuiContainer : public GuiComponent

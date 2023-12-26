@@ -1,10 +1,6 @@
 #pragma once
 namespace Narradia
 {
-   /**
-    An object in the game world, such as on the map or in
-    player inventory.
-   */
    class Object
    {
      public:

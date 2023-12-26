@@ -1,11 +1,13 @@
 #pragma once
 namespace Narradia
 {
+#if 1
    class MobConfEntry
    {
      public:
       int aggro_range = 0;
    };
+#endif
 
    class MobsConf : public Singleton<MobsConf>
    {

@@ -1,6 +1,7 @@
 #pragma once
 namespace Narradia
 {
+#if 1
    namespace ObjectFlags
    {
       static constexpr int None = 0;
@@ -13,6 +14,7 @@ namespace Narradia
       int flags = 0;
       float model_scaling = 1.0f;
    };
+#endif
 
    class ObjectsConf : public Singleton<ObjectsConf>
    {

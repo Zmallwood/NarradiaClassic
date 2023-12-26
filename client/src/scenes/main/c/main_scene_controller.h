@@ -2,9 +2,6 @@
 #include "core/c/iscene_controller.h"
 namespace Narradia
 {
-   /**
-    Controller for MainScene.
-   */
    class MainSceneController : public ISceneController, public Singleton<MainSceneController>
    {
      public:

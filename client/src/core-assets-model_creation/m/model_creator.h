@@ -1,11 +1,6 @@
 #pragma once
-#include "../../core-model_struct/m/model.h"
+#include "core-model_struct/m/model.h"
 #include "model_part_creator.h"
-#include <assimp/scene.h>
-#include <map>
-#include <memory>
-#include <string>
-#include <vector>
 namespace Narradia
 {
    class ModelCreator : public Singleton<ModelCreator>

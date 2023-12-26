@@ -55,17 +55,7 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/matter/m/size.h"
-"src/matter/m/sizef.h"
-"src/matter/m/color.h"
-"src/matter/m/colors.h"
-"src/matter/m/rectf.h"
-"src/matter/m/point.h"
-"src/matter/m/pointf.h"
-"src/matter/m/point3f.h"
-"src/matter/m/gl_rectf.h"
-"src/matter/m/vertex2f.h"
-"src/matter/m/vertex3f.h"
+"src/comm/m/matter.h"
 
 "src/comm/sys/cmd/stons_clean.h"
 "src/comm/sys/cmd/utils.h"

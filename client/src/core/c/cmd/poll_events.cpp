@@ -1,6 +1,7 @@
 #include "poll_events.h"
-#include "../../../core-input/m/kb_input.h"
-#include "../../../core-input/m/mouse_input.h"
+#include "core-input/m/kb_input.h"
+#include "core-input/m/mouse_input.h"
+#include "core/m/engine.h"
 
 namespace Narradia
 {

@@ -5,7 +5,6 @@
 #include "scenes/main/m/main_scene.h"
 #include "scenes/main_menu/m/main_menu_scene.h"
 #include "scenes/map_overview_gen/m/map_overview_gen_scene.h"
-#include <map>
 namespace Narradia
 {
    class SceneMngr : public Singleton<SceneMngr>

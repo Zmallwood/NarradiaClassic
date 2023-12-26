@@ -18,9 +18,6 @@ namespace Narradia
       scene_gui_view_->AddGuiComponentView(std::make_shared<GuiWindowWorldMapView>());
    }
 
-   /**
-    Render operations.
-   */
    void MainSceneView::RenderDerived()
    {
       WorldViewModuleView::get()->Render();

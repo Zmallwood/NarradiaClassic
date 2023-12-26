@@ -2,9 +2,6 @@
 #include "core/v/iscene_view.h"
 namespace Narradia
 {
-   /**
-    View for MainMenuScene.
-   */
    class MainMenuSceneView : public ISceneView, public Singleton<MainMenuSceneView>
    {
      public:

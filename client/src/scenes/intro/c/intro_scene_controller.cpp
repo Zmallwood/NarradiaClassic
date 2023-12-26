@@ -4,16 +4,10 @@
 #include "core/c/scene_mngr_controller.h"
 namespace Narradia
 {
-   /**
-    On entering scene.
-   */
    void IntroSceneController::OnEnter()
    {
    }
 
-   /**
-    Update game flow between scenes.
-   */
    void IntroSceneController::UpdateGameFlowDerived()
    {
       if (KbInput::get()->AnyKeyIsPressedPickResult())

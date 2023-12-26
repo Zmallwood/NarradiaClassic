@@ -1,7 +1,5 @@
 #pragma once
 #include "mouse_action.h"
-#include <functional>
-#include <vector>
 namespace Narradia
 {
    class MouseActionMngr

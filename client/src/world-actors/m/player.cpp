@@ -5,9 +5,6 @@
 #include "world-struct/m/world.h"
 namespace Narradia
 {
-   /**
-    Set default spawn coordinate.
-   */
    Player::Player()
    {
       position_ = {0, 0};

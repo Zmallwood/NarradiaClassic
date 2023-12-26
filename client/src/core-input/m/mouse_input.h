@@ -1,7 +1,5 @@
 #pragma once
 #include "mouse_button.h"
-#include <SDL2/SDL.h>
-#include <memory>
 namespace Narradia
 {
    class MouseInput : public Singleton<MouseInput>

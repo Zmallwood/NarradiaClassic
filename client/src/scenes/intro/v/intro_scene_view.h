@@ -2,9 +2,6 @@
 #include "core/v/iscene_view.h"
 namespace Narradia
 {
-   /**
-    View for IntroScene.
-   */
    class IntroSceneView : public ISceneView, public Singleton<IntroSceneView>
    {
      public:

@@ -5,9 +5,6 @@
 #include "model_display_module.h"
 namespace Narradia
 {
-   /**
-    Initialize GuiComponents.
-   */
    MainMenuScene::MainMenuScene()
    {
       scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
@@ -17,9 +14,6 @@ namespace Narradia
           "Exit", RectF{0.4f, 0.55f, 0.2f, 0.1f}, [] { Engine::get()->set_running(false); }));
    }
 
-   /**
-    Update game logic.
-   */
    void MainMenuScene::UpdateGameLogicDerived()
    {
       ModelDisplayModule::get()->UpdateGameLogic();

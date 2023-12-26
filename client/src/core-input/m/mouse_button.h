@@ -1,7 +1,5 @@
 #pragma once
 #include "mouse_action_mngr.h"
-#include <functional>
-#include <memory>
 namespace Narradia
 {
    class MouseButton

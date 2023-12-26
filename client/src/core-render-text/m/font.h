@@ -3,19 +3,9 @@
 #include <memory>
 namespace Narradia
 {
-   ////////////////////////////////////////////////////////////////////////////////
-   /// @brief Holds SDL font objects for a single font with a specfic size, requires two, one
-   /// regular and one for the outline.
-   ////////////////////////////////////////////////////////////////////////////////
    class Font
    {
      public:
-      ////////////////////////////////////////////////////////////////////////////////
-      /// @brief Creates the SDL font objects and set font outline width.
-      ///
-      /// @param[in] font_file_name Font file name, with path.
-      /// @param[in] font_size Font size to use for the new font.
-      ////////////////////////////////////////////////////////////////////////////////
       Font(std::string_view font_file_name, int font_size);
 
       auto SDL_font()

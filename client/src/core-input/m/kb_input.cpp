@@ -1,42 +1,42 @@
 #include "kb_input.h"
 namespace Narradia
 {
-   auto KbInput::OnKeyPress(SDL_Keycode key) -> void
+   void KbInput::OnKeyPress(SDL_Keycode key) 
    {
       pressed_keys_.insert(key);
       fired_keys_.insert(key);
    }
 
-   auto KbInput::OnKeyRelease(SDL_Keycode key) -> void
+   void KbInput::OnKeyRelease(SDL_Keycode key)
    {
       pressed_keys_.erase(key);
    }
 
-   auto KbInput::KeyIsPressed(SDL_Keycode key) -> bool
+   bool KbInput::KeyIsPressed(SDL_Keycode key) 
    {
       return pressed_keys_.count(key);
    }
 
-   auto KbInput::KeyHasBeenFiredPickResult(SDL_Keycode key) -> bool
+   bool KbInput::KeyHasBeenFiredPickResult(SDL_Keycode key)
    {
       auto result = fired_keys_.count(key) > 0;
       fired_keys_.erase(key);
       return result;
    }
 
-   auto KbInput::AnyKeyIsPressedPickResult() -> bool
+   bool KbInput::AnyKeyIsPressedPickResult() 
    {
       auto result = pressed_keys_.size() > 0;
       pressed_keys_.clear();
       return result;
    }
 
-   auto KbInput::AppendTextInput(std::string_view to_append) -> void
+   void KbInput::AppendTextInput(std::string_view to_append) 
    {
       text_input_.append(to_append);
    }
 
-   auto KbInput::PickTextInput() -> std::string_view
+   std::string_view KbInput::PickTextInput() 
    {
       auto result = text_input_;
       text_input_ = "";

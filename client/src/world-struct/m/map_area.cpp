@@ -2,9 +2,6 @@
 #include "conf/m/consts.h"
 namespace Narradia
 {
-   /**
-    Initializes internal map structures.
-   */
    MapArea::MapArea(int width, int height)
        : mobs_mirror_(std::make_shared<std::map<std::shared_ptr<Mob>, Point>>())
    {
@@ -18,9 +15,6 @@ namespace Narradia
       }
    }
 
-   /**
-    Returns pointer to specific tile at coordinate.
-   */
    std::shared_ptr<Tile> MapArea::GetTile(int x, int y)
    {
       return tiles_.at(x).at(y);

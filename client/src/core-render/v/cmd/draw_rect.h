@@ -3,13 +3,5 @@
 #include <vector>
 namespace Narradia
 {
-   ////////////////////////////////////////////////////////////////////////////////
-   /// @brief Renders a color-filled rectangle to the canvas. Must previously have been initialized
-   /// with NewRect();.
-   ///
-   /// @param[[TODO:direction]] vao_id [TODO:description]
-   /// @param[[TODO:direction]] rect [TODO:description]
-   /// @param[[TODO:direction]] color [TODO:description]
-   ////////////////////////////////////////////////////////////////////////////////
    auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void;
 }

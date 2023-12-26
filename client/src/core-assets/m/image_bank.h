@@ -1,8 +1,5 @@
 #pragma once
 #include "cmd/load_single_image.h"
-#include <GL/glew.h>
-#include <map>
-#include <string>
 namespace Narradia
 {
    class ImageBank : public Singleton<ImageBank>

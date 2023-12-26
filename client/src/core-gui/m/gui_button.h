@@ -1,9 +1,7 @@
 #pragma once
-#include "../../core-input/m/mouse_input.h"
-#include "../../core/m/cursor.h"
+#include "core-input/m/mouse_input.h"
+#include "core/m/cursor.h"
 #include "gui_component.h"
-#include <functional>
-#include <string_view>
 namespace Narradia
 {
    class GuiButton : public GuiComponent
