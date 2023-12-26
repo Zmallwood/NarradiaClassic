@@ -1,0 +1,14 @@
+#pragma once
+#include "../../matter/m/vertex3f.h"
+#include <vector>
+namespace Narradia
+{
+   ////////////////////////////////////////////////////////////////////////////////
+   /// @brief A keyframe entry in the timeline of a ModelPart.
+   ////////////////////////////////////////////////////////////////////////////////
+   class Keyframe
+   {
+     public:
+      std::vector<Vertex3F> vertices;
+   };
+}

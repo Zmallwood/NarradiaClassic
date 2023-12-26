@@ -1,10 +1,10 @@
 cmake_minimum_required (VERSION 3.0.0)
 set(CMAKE_CXX_COMPILER_WORKS 1)
 project (NarradiaMapGenerator)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_CXX_FLAGS "-Wfatal-errors -std=c++20 -O2")
 
@@ -49,14 +49,14 @@ set(PCH_FILES
 <glm/ext/matrix_projection.hpp>
 <glm/gtx/closest_point.hpp>
 
-"src/matter/model/point.h"
-"src/matter/model/color.h"
-"src/matter/model/point3f.h"
+"src/matter/m/point.h"
+"src/matter/m/color.h"
+"src/matter/m/point3f.h"
 
-"src/common/system/command/singletons_cleanup.h"
-"src/common/system/singleton.h"
-"src/math/system/tile_calc.h"
-"src/math/system/trigonometry.h"
+"srccomm/sys/cmd/singletons_cleanup.h"
+"srccomm/sys/singleton.h"
+"src/math/sys/tile_calc.h"
+"src/math/sys/trigonometry.h"
 )
 
 add_executable (NarradiaMapGenerator ${SOURCE_FILES})

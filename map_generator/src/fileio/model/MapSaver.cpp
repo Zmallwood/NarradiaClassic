@@ -1,6 +1,6 @@
 #include "MapSaver.h"
-#include "conf/model/constants.h"
-#include "world-structure/model/world.h"
+#include "conf/m/consts.h"
+#include "world-struct/m/world.h"
 namespace Narradia
 {
    void MapSaver::SaveWorldMapToFile() {

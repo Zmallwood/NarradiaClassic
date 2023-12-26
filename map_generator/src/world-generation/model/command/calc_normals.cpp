@@ -1,6 +1,6 @@
 #include "calc_normals.h"
-#include "conf/model/constants.h"
-#include "world-structure/model/map_area.h"
+#include "conf/m/consts.h"
+#include "world-struct/m/map_area.h"
 namespace Narradia
 {
     void CalcNormals(std::shared_ptr<MapArea> map_area) {

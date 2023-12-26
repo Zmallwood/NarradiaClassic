@@ -2,6 +2,7 @@
 /**
  Entry.
 */
-int main(int argc, char *argv[]) {
-    Narradia::Game().Run();
+int main(int argc, char *argv[])
+{
+   Narradia::Game().Run();
 }

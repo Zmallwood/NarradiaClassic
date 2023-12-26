@@ -1,5 +1,5 @@
 #include "map_area.h"
-#include "conf/model/constants.h"
+#include "conf/m/consts.h"
 namespace Narradia
 {
     /**

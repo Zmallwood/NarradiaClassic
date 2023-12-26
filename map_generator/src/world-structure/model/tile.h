@@ -1,6 +1,6 @@
 #pragma once
 #include "object.h"
-#include "world-actors/model/mob.h"
+#include "world-actors/m/mob.h"
 namespace Narradia
 {
     /**

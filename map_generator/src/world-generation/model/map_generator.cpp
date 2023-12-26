@@ -1,13 +1,13 @@
 #include "map_generator.h"
-#include "command/calc_normals.h"
-#include "command/generate_elevation.h"
-#include "command/generate_grass.h"
-#include "command/generate_ground_color.h"
-#include "command/generate_mobs.h"
-#include "command/generate_objects.h"
-#include "command/generate_water.h"
-#include "command/generate_desert.h"
-#include "command/generate_snow.h"
+#include "cmd/calc_normals.h"
+#include "cmd/generate_elevation.h"
+#include "cmd/generate_grass.h"
+#include "cmd/generate_ground_color.h"
+#include "cmd/generate_mobs.h"
+#include "cmd/generate_objects.h"
+#include "cmd/generate_water.h"
+#include "cmd/generate_desert.h"
+#include "cmd/generate_snow.h"
 namespace Narradia
 {
     /**

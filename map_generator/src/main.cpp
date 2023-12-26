@@ -1,6 +1,6 @@
-#include "fileio/model/MapSaver.h"
-#include "world-structure/model/world.h"
-#include "world-generation/model/map_generator.h"
+#include "fileio/m/MapSaver.h"
+#include "world-struct/m/world.h"
+#include "world-generation/m/map_generator.h"
 
 /**
  Entry.

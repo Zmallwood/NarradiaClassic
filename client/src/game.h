@@ -1,11 +1,12 @@
 #pragma once
 namespace Narradia
 {
-    /**
-     Complete game instance object.
-    */
-    class Game {
-      public:
-        void Run();
-    };
+   /**
+    Complete game instance object.
+   */
+   class Game
+   {
+     public:
+      void Run();
+   };
 }

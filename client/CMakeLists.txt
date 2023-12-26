@@ -1,10 +1,10 @@
 cmake_minimum_required (VERSION 3.0.0)
 set(CMAKE_CXX_COMPILER_WORKS 1)
 project (NarradiaClassic)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_CXX_FLAGS "-Wfatal-errors -std=c++20 -O2")
 
@@ -55,27 +55,25 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/matter/model/size.h"
-"src/matter/model/sizef.h"
-"src/matter/model/color.h"
-"src/matter/model/colors.h"
-"src/matter/model/rectf.h"
-"src/matter/model/point.h"
-"src/matter/model/pointf.h"
-"src/matter/model/point3f.h"
-"src/matter/model/gl_rectf.h"
-"src/matter/model/vertex2f.h"
-"src/matter/model/vertex3f.h"
+"src/matter/m/size.h"
+"src/matter/m/sizef.h"
+"src/matter/m/color.h"
+"src/matter/m/colors.h"
+"src/matter/m/rectf.h"
+"src/matter/m/point.h"
+"src/matter/m/pointf.h"
+"src/matter/m/point3f.h"
+"src/matter/m/gl_rectf.h"
+"src/matter/m/vertex2f.h"
+"src/matter/m/vertex3f.h"
 
-"src/common/system/command/singletons_cleanup.h"
-"src/common/system/command/utilities.h"
-"src/common/system/command/canvas_utilities.h"
-"src/common/system/singleton.h"
-"src/common/system/typedefs.h"
-"src/core/model/sdl_deleter.h"
-"src/math/system/trigonometry.h"
-"src/math/system/exp_calc.h"
-"src/math/system/tile_calc.h"
+"src/comm/sys/cmd/stons_clean.h"
+"src/comm/sys/cmd/utils.h"
+"src/comm/sys/singleton.h"
+"src/core/m/sdl_deleter.h"
+"src/math/sys/trigonometry.h"
+"src/math/sys/exp_calc.h"
+"src/math/sys/tile_calc.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})
