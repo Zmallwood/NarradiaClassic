@@ -1,5 +1,7 @@
+#if 1
 #include "gui_container_view.h"
 #include "gui-core/m/gui_container.h"
+#endif
 
 namespace Narradia
 {
