@@ -57,13 +57,13 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/comm/m/matter.h"
+"src/comm/matter.h"
 
-"src/comm/sys/cmd/stons_clean.h"
-"src/comm/sys/cmd/utils.h"
-"src/comm/sys/singleton.h"
-"src/core/m/sdl_deleter.h"
-"src/comm/sys/math.h"
+"src/comm/cmd_sys/stons_clean.h"
+"src/comm/cmd_sys/utils.h"
+"src/comm/singleton_sys.h"
+"src/core/sdl_deleter.h"
+"src/comm/math_sys.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})
