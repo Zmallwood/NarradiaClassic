@@ -1,4 +1,5 @@
 #include "console_view.h"
+
 namespace Narradia
 {
    ConsoleView::ConsoleView()

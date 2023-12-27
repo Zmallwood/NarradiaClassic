@@ -1,5 +1,6 @@
 #include "map_area.h"
 #include "conf/m/consts.h"
+
 namespace Narradia
 {
    MapArea::MapArea(int width, int height)

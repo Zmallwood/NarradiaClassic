@@ -1,4 +1,5 @@
 #include "objects_conf.h"
+
 namespace Narradia
 {
    using ObjectFlags::NoObstacle;

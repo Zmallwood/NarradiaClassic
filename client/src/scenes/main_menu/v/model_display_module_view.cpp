@@ -1,5 +1,6 @@
 #include "model_display_module_view.h"
-#include "core-render-models/v/cmd/draw_model.h"
+#include "render-models/v/cmd/draw_model.h"
+
 namespace Narradia
 {
    void ModelDisplayModuleView::Render()

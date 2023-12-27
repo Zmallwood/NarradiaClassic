@@ -1,4 +1,5 @@
 #include "graphics_gl_view.h"
+
 namespace Narradia
 {
    GraphicsGLView::GraphicsGLView()

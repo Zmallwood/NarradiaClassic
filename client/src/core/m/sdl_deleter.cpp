@@ -1,4 +1,5 @@
 #include "sdl_deleter.h"
+
 namespace Narradia
 {
    void SDLDeleter::operator()(SDL_Window *win)

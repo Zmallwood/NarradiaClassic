@@ -1,5 +1,7 @@
 #pragma once
+
 #include "cursor_styles.h"
+
 namespace Narradia
 {
    class Cursor : public Singleton<Cursor>

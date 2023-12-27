@@ -1,6 +1,7 @@
 #include "kb_bindings_module.h"
-#include "../../core-input/m/kb_input.h"
-#include "../../main_scene-gui/m/gui_window_world_map.h"
+#include "input/m/kb_input.h"
+#include "main_scene-gui/m/gui_window_world_map.h"
+
 namespace Narradia
 {
    void KbBindingsModule::UpdateGameLogic()

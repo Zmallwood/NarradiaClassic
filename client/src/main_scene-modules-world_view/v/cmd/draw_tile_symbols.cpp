@@ -1,8 +1,9 @@
 #include "draw_tile_symbols.h"
-#include "core-render/v/cmd/draw_tile.h"
+#include "render/v/cmd/draw_tile.h"
 #include "main_scene-modules/m/mob_targeting_module.h"
 #include "main_scene-modules/m/tile_hovering_module.h"
 #include "world-actors/m/player.h"
+
 namespace Narradia
 {
    void DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord)

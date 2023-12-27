@@ -1,5 +1,6 @@
 #include "model_display_module.h"
-#include "core-render/v/camera_gl.h"
+#include "render/v/camera_gl.h"
+
 namespace Narradia
 {
    void ModelDisplayModule::UpdateGameLogic()

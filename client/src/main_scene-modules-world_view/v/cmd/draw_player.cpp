@@ -1,7 +1,8 @@
 #include "draw_player.h"
 #include "conf/m/consts.h"
-#include "core-render-models/v/cmd/draw_model.h"
+#include "render-models/v/cmd/draw_model.h"
 #include "world-actors/m/player.h"
+
 namespace Narradia
 {
    void DrawPlayer()

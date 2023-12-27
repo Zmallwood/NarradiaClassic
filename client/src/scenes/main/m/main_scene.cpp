@@ -1,7 +1,7 @@
 #include "main_scene.h"
-#include "../../../core-gui/m/scene_gui.h"
-#include "../../../main_scene-modules/m/kb_bindings_module.h"
-#include "../../../main_scene-modules/m/mob_movement_module.h"
+#include "gui-core/m/scene_gui.h"
+#include "main_scene-modules/m/kb_bindings_module.h"
+#include "main_scene-modules/m/mob_movement_module.h"
 #include "main_scene-gui/m/experience_bar.h"
 #include "main_scene-gui/m/gui_window_world_map.h"
 #include "main_scene-gui/m/status_panel.h"
@@ -16,6 +16,7 @@
 #include "main_scene-modules/m/mouse_rotation_module.h"
 #include "main_scene-modules/m/skill_performing_module.h"
 #include "main_scene-modules/m/tile_hovering_module.h"
+
 namespace Narradia
 {
    MainScene::MainScene()

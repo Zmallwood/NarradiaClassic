@@ -1,4 +1,5 @@
 #include "engine_view.h"
+
 namespace Narradia
 {
    auto EngineView::Render() -> void

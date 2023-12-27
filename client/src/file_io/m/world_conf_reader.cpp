@@ -1,4 +1,5 @@
 #include "world_conf_reader.h"
+
 namespace Narradia
 {
    WorldConfReader::WorldConfReader()

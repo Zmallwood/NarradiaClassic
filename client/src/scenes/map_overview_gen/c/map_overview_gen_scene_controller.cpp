@@ -1,6 +1,7 @@
 #include "map_overview_gen_scene_controller.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    void MapOverViewGenSceneController::OnEnter()

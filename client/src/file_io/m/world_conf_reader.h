@@ -1,6 +1,5 @@
 #pragma once
-#include <map>
-#include <string>
+
 namespace Narradia
 {
    class WorldConfReader : public Singleton<WorldConfReader>

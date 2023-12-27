@@ -1,4 +1,5 @@
 #include "mobs_conf.h"
+
 namespace Narradia
 {
    MobsConf::MobsConf()

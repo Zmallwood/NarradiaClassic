@@ -1,5 +1,7 @@
 #pragma once
+
 #include <GL/glew.h>
+
 namespace Narradia
 {
    typedef GLuint RenderID;
@@ -22,5 +24,12 @@ namespace Narradia
    std::string_view CurrTime();
 
    Size TextureDimensions(std::string_view img_name);
+#endif
+
+  // File utils 
+#if 1
+   std::string_view FileExtension(std::string_view abs_path);
+
+   std::string FileNameNoExt(std::string_view abs_path);
 #endif
 }

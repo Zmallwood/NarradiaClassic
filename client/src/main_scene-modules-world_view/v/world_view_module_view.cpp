@@ -1,21 +1,22 @@
 #if 1
 #include "world_view_module_view.h"
-#include "../../core-render/v/cmd/new_tile.h"
+#include "../../render/v/cmd/new_tile.h"
 #include "cmd/draw_ground.h"
 #include "cmd/draw_mob.h"
 #include "cmd/draw_objects.h"
 #include "cmd/draw_player.h"
 #include "cmd/draw_tile_symbols.h"
 #include "conf/m/consts.h"
-#include "core-render-models/v/cmd/start_models_batch_drawing.h"
-#include "core-render-models/v/cmd/stop_models_batch_drawing.h"
-#include "core-render-models/v/renderer_models_view.h"
-#include "core-render/v/cmd/set_tile_geometry.h"
-#include "core-render/v/cmd/start_tile_batch_drawing.h"
-#include "core-render/v/cmd/stop_tile_batch_drawing.h"
+#include "render-models/v/cmd/start_models_batch_drawing.h"
+#include "render-models/v/cmd/stop_models_batch_drawing.h"
+#include "render-models/v/renderer_models_view.h"
+#include "render/v/cmd/set_tile_geometry.h"
+#include "render/v/cmd/start_tile_batch_drawing.h"
+#include "render/v/cmd/stop_tile_batch_drawing.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
 #endif
+
 namespace Narradia
 {
    WorldViewModuleView::WorldViewModuleView(bool simplified_ground)

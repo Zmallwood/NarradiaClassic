@@ -1,8 +1,9 @@
 #include "camera.h"
 #include "conf/m/consts.h"
-#include "core-render/v/camera_gl.h"
+#include "render/v/camera_gl.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    void Camera::UpdateGameLogic()

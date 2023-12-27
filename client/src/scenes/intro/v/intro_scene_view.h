@@ -1,5 +1,7 @@
 #pragma once
+
 #include "core/v/iscene_view.h"
+
 namespace Narradia
 {
    class IntroSceneView : public ISceneView, public Singleton<IntroSceneView>

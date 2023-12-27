@@ -1,5 +1,7 @@
 #pragma once
+
 #include "map_area.h"
+
 namespace Narradia
 {
    class World : public Singleton<World>

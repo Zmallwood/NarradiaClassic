@@ -1,8 +1,9 @@
 #include "draw_objects.h"
 #include "conf/m/objects_conf.h"
 #include "conf/m/consts.h"
-#include "core-render-models/v/cmd/draw_model.h"
+#include "render-models/v/cmd/draw_model.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    void DrawObjects(std::shared_ptr<Tile> tile, Point coord)

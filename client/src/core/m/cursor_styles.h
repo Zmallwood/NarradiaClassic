@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Narradia
 {
    enum class CursorStyles

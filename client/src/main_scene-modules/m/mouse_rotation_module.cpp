@@ -1,8 +1,9 @@
 #include "mouse_rotation_module.h"
-#include "core-input/m/mouse_input.h"
+#include "input/m/mouse_input.h"
 #include "core/m/cursor.h"
 #include "main_scene-modules-world_view/m/camera.h"
 #include "world-actors/m/player.h"
+
 namespace Narradia
 {
    void MouseRotationModule::UpdateGameLogic()

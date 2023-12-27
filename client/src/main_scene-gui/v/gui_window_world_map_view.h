@@ -1,5 +1,7 @@
 #pragma once
-#include "../../core-gui/v/gui_window_view.h"
+
+#include "gui-core/v/gui_window_view.h"
+
 namespace Narradia
 {
    class GuiWindowWorldMapView : public GuiWindowView

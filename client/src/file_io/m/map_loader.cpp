@@ -1,5 +1,6 @@
 #include "map_loader.h"
 #include "world-struct/m/map_area.h"
+
 namespace Narradia
 {
    void MapLoader::LoadWorldMapFromFile(std::shared_ptr<MapArea> &map_area, std::string map_name)

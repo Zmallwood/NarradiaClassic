@@ -1,4 +1,5 @@
 #include "engine.h"
+
 namespace Narradia
 {
    Engine::Engine()

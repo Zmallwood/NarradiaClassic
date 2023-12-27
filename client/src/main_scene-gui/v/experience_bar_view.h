@@ -1,5 +1,7 @@
 #pragma once
-#include "core-gui/v/gui_component_view.h"
+
+#include "gui-core/v/gui_component_view.h"
+
 namespace Narradia
 {
    class ExperienceBarView : public GuiComponentView

@@ -1,8 +1,9 @@
 #include "main_menu_scene.h"
-#include "core-gui/m/gui_button.h"
+#include "gui-core/m/gui_button.h"
 #include "core/c/scene_mngr_controller.h"
 #include "core/m/engine.h"
 #include "model_display_module.h"
+
 namespace Narradia
 {
    MainMenuScene::MainMenuScene()

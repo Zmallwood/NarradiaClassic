@@ -1,6 +1,7 @@
 #include "mob_death_handling_module.h"
 #include "mob_targeting_module.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    void MobDeathHandlingModule::UpdateGameLogic()

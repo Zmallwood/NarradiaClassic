@@ -1,4 +1,5 @@
 #include "cursor.h"
+
 namespace Narradia
 {
    std::string_view img_name;

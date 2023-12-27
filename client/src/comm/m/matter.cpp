@@ -1,4 +1,5 @@
 #include "matter.h"
+
 namespace Narradia
 {
    Point Point::Translate(int dx, int dy)

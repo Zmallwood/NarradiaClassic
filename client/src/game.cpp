@@ -5,6 +5,7 @@
 #include "core/m/fps_capper.h"
 #include "core/v/engine_view.h"
 #endif
+
 namespace Narradia
 {
    void Game::Run()

@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Narradia
 {
    class ModelDisplayModule : public Singleton<ModelDisplayModule>

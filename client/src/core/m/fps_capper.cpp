@@ -1,4 +1,5 @@
 #include "fps_capper.h"
+
 namespace Narradia
 {
    int curr_ticks, delta;

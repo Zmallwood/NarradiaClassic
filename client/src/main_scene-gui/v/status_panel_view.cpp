@@ -1,12 +1,13 @@
 #include "status_panel_view.h"
-#include "../m/status_panel.h"
-#include "core-render-text/v/cmd/draw_string.h"
-#include "core-render-text/v/cmd/new_string.h"
-#include "core-render/v/cmd/draw_image.h"
-#include "core-render/v/cmd/fill_rect.h"
-#include "core-render/v/cmd/new_image.h"
-#include "core-render/v/cmd/new_rect.h"
+#include "main_scene-gui/m/status_panel.h"
+#include "render-text/v/cmd/draw_string.h"
+#include "render-text/v/cmd/new_string.h"
+#include "render/v/cmd/draw_image.h"
+#include "render/v/cmd/fill_rect.h"
+#include "render/v/cmd/new_image.h"
+#include "render/v/cmd/new_rect.h"
 #include "world-actors/m/player.h"
+
 namespace Narradia
 {
    StatusPanelView::StatusPanelView()

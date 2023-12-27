@@ -1,6 +1,7 @@
 #include "main_menu_scene_controller.h"
-#include "core-assets/m/model_bank.h"
-#include "core-render-models/v/cmd/new_model.h"
+#include "assets/m/model_bank.h"
+#include "render-models/v/cmd/new_model.h"
+
 namespace Narradia
 {
    void MainMenuSceneController::OnEnter()

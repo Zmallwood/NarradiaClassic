@@ -1,9 +1,10 @@
 #include "mob_targeting_module.h"
 #include "conf/m/consts.h"
-#include "core-input/m/mouse_input.h"
+#include "input/m/mouse_input.h"
 #include "tile_hovering_module.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    void MobTargetingModule::UpdateGameLogic()

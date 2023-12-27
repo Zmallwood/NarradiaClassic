@@ -1,5 +1,6 @@
 #include "draw_ground.h"
-#include "core-render/v/cmd/draw_tile.h"
+#include "render/v/cmd/draw_tile.h"
+
 namespace Narradia
 {
    void DrawGround(std::shared_ptr<Tile> tile, Point coord)

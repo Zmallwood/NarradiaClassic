@@ -3,6 +3,7 @@
 #include "mob_targeting_module.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    void CombatModule::UpdateGameLogic()

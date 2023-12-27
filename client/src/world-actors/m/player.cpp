@@ -3,6 +3,7 @@
 #include "core/m/console.h"
 #include "main_scene-modules-world_view/m/camera.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    Player::Player()

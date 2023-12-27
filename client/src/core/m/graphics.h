@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Narradia
 {
    class Graphics : public Singleton<Graphics>

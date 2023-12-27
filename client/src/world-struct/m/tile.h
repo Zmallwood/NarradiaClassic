@@ -1,7 +1,9 @@
 #pragma once
+
 #include "object.h"
 #include "tile_effect.h"
 #include "world-actors/m/mob.h"
+
 namespace Narradia
 {
    class Tile

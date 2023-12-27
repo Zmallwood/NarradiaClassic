@@ -1,5 +1,7 @@
 #pragma once
-#include "../../../core/m/iscene.h"
+
+#include "core/m/iscene.h"
+
 namespace Narradia
 {
     class MainScene : public IScene, public Singleton<MainScene> {

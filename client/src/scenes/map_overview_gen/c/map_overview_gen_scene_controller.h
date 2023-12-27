@@ -1,5 +1,7 @@
 #pragma once
-#include "../../../core/c/iscene_controller.h"
+
+#include "core/c/iscene_controller.h"
+
 namespace Narradia
 {
    class MapOverViewGenSceneController : public ISceneController,

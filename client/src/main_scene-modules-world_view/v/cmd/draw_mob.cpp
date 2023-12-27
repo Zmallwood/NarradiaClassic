@@ -1,6 +1,7 @@
 #include "draw_mob.h"
 #include "conf/m/consts.h"
-#include "core-render-models/v/cmd/draw_model.h"
+#include "render-models/v/cmd/draw_model.h"
+
 namespace Narradia
 {
    void DrawMob(std::shared_ptr<Tile> tile, Point coord)

@@ -1,7 +1,9 @@
 #pragma once
+
 #include "core/m/engine.h"
 #include "core/m/graphics.h"
 #include "graphics_gl_view.h"
+
 namespace Narradia
 {
    class GraphicsView : public Singleton<GraphicsView>

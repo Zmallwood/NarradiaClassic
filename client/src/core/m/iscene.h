@@ -1,5 +1,7 @@
 #pragma once
-#include "core-gui/m/scene_gui.h"
+
+#include "gui-core/m/scene_gui.h"
+
 namespace Narradia
 {
    class IScene

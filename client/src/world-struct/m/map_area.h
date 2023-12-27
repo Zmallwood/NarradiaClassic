@@ -1,5 +1,7 @@
 #pragma once
+
 #include "tile.h"
+
 namespace Narradia
 {
    class MapArea

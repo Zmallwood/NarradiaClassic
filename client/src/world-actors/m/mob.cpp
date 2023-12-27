@@ -1,4 +1,5 @@
 #include "mob.h"
+
 namespace Narradia
 {
    void Mob::Hit(float damage)

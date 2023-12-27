@@ -1,4 +1,5 @@
 #include "console.h"
+
 namespace Narradia
 {
    auto Console::UpdateGameLogic() -> void

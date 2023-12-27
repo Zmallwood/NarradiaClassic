@@ -1,4 +1,5 @@
 #include "iscene.h"
+
 namespace Narradia
 {
    void IScene::UpdateGameLogic()

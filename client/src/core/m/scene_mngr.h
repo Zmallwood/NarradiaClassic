@@ -1,10 +1,12 @@
 #pragma once
+
 #include "iscene.h"
 #include "scene_names.h"
 #include "scenes/intro/m/intro_scene.h"
 #include "scenes/main/m/main_scene.h"
 #include "scenes/main_menu/m/main_menu_scene.h"
 #include "scenes/map_overview_gen/m/map_overview_gen_scene.h"
+
 namespace Narradia
 {
    class SceneMngr : public Singleton<SceneMngr>

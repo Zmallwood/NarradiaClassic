@@ -1,10 +1,11 @@
 #include "intro_scene_view.h"
-#include "core-render-text/v/cmd/draw_string.h"
-#include "core-render-text/v/cmd/new_string.h"
-#include "core-render/v/cmd/draw_image.h"
-#include "core-render/v/cmd/new_image.h"
-#include "core-render/v/renderer_2d_images_view.h"
+#include "render-text/v/cmd/draw_string.h"
+#include "render-text/v/cmd/new_string.h"
+#include "render/v/cmd/draw_image.h"
+#include "render/v/cmd/new_image.h"
+#include "render/v/renderer_2d_images_view.h"
 #include "scenes/intro/m/intro_scene.h"
+
 namespace Narradia
 {
    IntroSceneView::IntroSceneView()

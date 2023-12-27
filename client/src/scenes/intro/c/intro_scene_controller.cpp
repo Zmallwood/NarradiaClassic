@@ -1,7 +1,8 @@
 #include "intro_scene_controller.h"
-#include "core-input/m/kb_input.h"
-#include "core-input/m/mouse_input.h"
+#include "input/m/kb_input.h"
+#include "input/m/mouse_input.h"
 #include "core/c/scene_mngr_controller.h"
+
 namespace Narradia
 {
    void IntroSceneController::OnEnter()

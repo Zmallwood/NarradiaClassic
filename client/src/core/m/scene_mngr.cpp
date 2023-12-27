@@ -1,4 +1,5 @@
 #include "scene_mngr.h"
+
 namespace Narradia
 {
    SceneMngr::SceneMngr()

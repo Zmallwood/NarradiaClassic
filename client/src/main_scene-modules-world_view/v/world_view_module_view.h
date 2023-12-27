@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+
 namespace Narradia
 {
    class WorldViewModuleView : public Singleton<WorldViewModuleView>

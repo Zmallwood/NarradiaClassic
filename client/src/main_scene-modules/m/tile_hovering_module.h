@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Narradia
 {
    class TileHoveringModule : public Singleton<TileHoveringModule>

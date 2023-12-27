@@ -1,5 +1,7 @@
 #pragma once
-#include "../../core-gui/m/gui_window.h"
+
+#include "gui-core/m/gui_window.h"
+
 namespace Narradia
 {
    class GuiWindowWorldMap : public GuiWindow, public Singleton<GuiWindowWorldMap> {

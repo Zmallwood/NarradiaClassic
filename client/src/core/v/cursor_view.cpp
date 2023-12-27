@@ -1,4 +1,5 @@
 #include "cursor_view.h"
+
 namespace Narradia
 {
    CursorView::CursorView()

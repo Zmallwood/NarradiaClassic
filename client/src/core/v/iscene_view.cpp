@@ -1,4 +1,5 @@
 #include "iscene_view.h"
+
 namespace Narradia
 {
    auto ISceneView::Render() -> void

@@ -1,8 +1,10 @@
 #pragma once
-#include "core-input/m/kb_input.h"
+
+#include "input/m/kb_input.h"
 #include "core/m/scene_mngr.h"
 #include "main_scene-gui/m/experience_bar.h"
 #include "text_line.h"
+
 namespace Narradia
 {
    class Console : public Singleton<Console>

@@ -1,12 +1,13 @@
 #include "gui_window_world_map_view.h"
-#include "../../core-render/v/cmd/draw_image.h"
-#include "../../core-render/v/cmd/draw_rect.h"
-#include "../../core-render/v/cmd/fill_rect.h"
-#include "../m/gui_window_world_map.h"
-#include "core-render/v/cmd/new_image.h"
-#include "core-render/v/cmd/new_rect.h"
+#include "render/v/cmd/draw_image.h"
+#include "render/v/cmd/draw_rect.h"
+#include "render/v/cmd/fill_rect.h"
+#include "main_scene-gui/m/gui_window_world_map.h"
+#include "render/v/cmd/new_image.h"
+#include "render/v/cmd/new_rect.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+
 namespace Narradia
 {
    GuiWindowWorldMapView::GuiWindowWorldMapView()
