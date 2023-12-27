@@ -1,5 +1,7 @@
 #pragma once
 
+struct SDL_Color;
+
 namespace Narradia
 {
     // Geometry

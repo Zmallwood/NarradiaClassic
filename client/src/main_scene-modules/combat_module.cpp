@@ -2,9 +2,8 @@
 #include "combat_module.h"
 #include "core/console.h"
 #include "mob_targeting_module.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
-#include "actors/mob.h"
 #endif
 
 namespace Narradia

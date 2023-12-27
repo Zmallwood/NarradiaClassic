@@ -6,14 +6,14 @@
 #include "cmd_v/draw_objects.h"
 #include "cmd_v/draw_player.h"
 #include "cmd_v/draw_tile_symbols.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "render-models/cmd_v/start_models_batch_drawing.h"
 #include "render-models/cmd_v/stop_models_batch_drawing.h"
 #include "render-models/renderer_models_v.h"
 #include "render/cmd_v/set_tile_geometry.h"
 #include "render/cmd_v/start_tile_batch_drawing.h"
 #include "render/cmd_v/stop_tile_batch_drawing.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
 #endif
 

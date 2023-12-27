@@ -1,10 +1,10 @@
 #if 1
 #include "draw_player.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "render-models/cmd_v/draw_model.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
-#include "comm/math_sys.h"
+#include "math.h"
 #endif
 
 namespace Narradia

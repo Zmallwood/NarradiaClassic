@@ -1,8 +1,8 @@
 #if 1
 #include "tile_hovering_module.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "render/camera_gl.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
 #endif
 

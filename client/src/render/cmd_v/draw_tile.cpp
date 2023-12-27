@@ -1,11 +1,11 @@
 #if 1
 #include "draw_tile.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "assets.h"
 #include "render/camera_gl.h"
 #include "render/renderer_tiles_v.h"
-#include "actors/player.h"
-#include "comm/math_sys.h"
+#include "actors.h"
+#include "math.h"
 #endif
 
 namespace Narradia

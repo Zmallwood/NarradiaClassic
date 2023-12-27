@@ -24,7 +24,7 @@ namespace Narradia
       if (!instance_)
       {
          instance_ = std::make_shared<T>(args...);
-         AddStonDisposeAction([&] { instance_.reset(); });
+         AddSingletonDisposeAction([&] { instance_.reset(); });
       }
    }
 

@@ -1,11 +1,10 @@
 #if 1
 #include "draw_mob.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "render-models/cmd_v/draw_model.h"
 #include "world-struct.h"
-#include "actors/mob.h"
-#include "actors/player.h"
-#include "comm/math_sys.h"
+#include "actors.h"
+#include "math.h"
 #endif
 
 namespace Narradia

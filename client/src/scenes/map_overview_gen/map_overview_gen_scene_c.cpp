@@ -1,6 +1,6 @@
 #if 1
 #include "map_overview_gen_scene_c.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
 #endif
 

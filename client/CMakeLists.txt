@@ -57,11 +57,10 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/comm/matter.h"
+"src/matter.h"
 
-"src/comm/cmd_sys/stons_clean.h"
-"src/comm/cmd_sys/utils.h"
-"src/comm/singleton_sys.h"
+"src/utils.h"
+"src/singleton.h"
 "src/core/sdl_deleter.h"
 #"src/comm/math_sys.h"
 )

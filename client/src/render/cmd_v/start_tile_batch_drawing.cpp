@@ -1,13 +1,13 @@
 #if 1
 #include "start_tile_batch_drawing.h"
-#include "conf/consts.h"
-#include "actors/player.h"
+#include "conf.h"
+#include "actors.h"
 #include "render/camera_gl.h"
 #include "render/renderer_tiles_v.h"
 #include "world-struct.h"
 #include "render/shader_program_v.h"
 #include "render/shader_program.h"
-#include "comm/math_sys.h"
+#include "math.h"
 #endif
 
 namespace Narradia

@@ -1,10 +1,10 @@
 #if 1
 #include "camera.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "render/camera_gl.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
-#include "comm/math_sys.h"
+#include "math.h"
 #endif
 
 namespace Narradia

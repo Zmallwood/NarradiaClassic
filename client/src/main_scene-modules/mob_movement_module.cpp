@@ -1,9 +1,7 @@
 #if 1
 #include "mob_movement_module.h"
-#include "conf/mobs_conf.h"
-#include "conf/consts.h"
-#include "actors/player.h"
-#include "actors/mob.h"
+#include "conf.h"
+#include "actors.h"
 #include "world-struct.h"
 #endif
 

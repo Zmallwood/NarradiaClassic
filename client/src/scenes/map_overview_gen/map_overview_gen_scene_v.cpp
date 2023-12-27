@@ -6,7 +6,7 @@
 #include "core/graphics_v.h"
 #include "main_scene-modules-world_view/camera.h"
 #include "main_scene-modules-world_view/world_view_module_v.h"
-#include "actors/player.h"
+#include "actors.h"
 #include "world-struct.h"
 #endif
 

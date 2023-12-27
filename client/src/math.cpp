@@ -1,6 +1,6 @@
 #if 1
 #include "math.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "world-struct.h"
 #endif
 
@@ -67,7 +67,7 @@ namespace Narradia
 
    int GetExpForLevel(int lvl)
    {
-      auto value = std::max(sqrt(powf(2, lvl - 1) * 5000) - 70, 0.0f);
+      auto value = std::max(sqrtf(powf(2, lvl - 1) * 5000) - 70, 0.0f);
       auto experience = static_cast<int>(value);
 
       return experience;

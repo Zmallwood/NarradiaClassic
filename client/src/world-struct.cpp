@@ -1,9 +1,8 @@
 #if 1
 #include "world-struct.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "world_map_loader.h"
-#include "actors/mob.h"
-#include "actors/player.h"
+#include "actors.h"
 #endif
 
 namespace Narradia

@@ -1,10 +1,9 @@
 #if 1
 #include "mob_targeting_module.h"
-#include "conf/consts.h"
+#include "conf.h"
 #include "core/mouse_input.h"
 #include "tile_hovering_module.h"
-#include "actors/player.h"
-#include "actors/mob.h"
+#include "actors.h"
 #include "world-struct.h"
 #endif
 

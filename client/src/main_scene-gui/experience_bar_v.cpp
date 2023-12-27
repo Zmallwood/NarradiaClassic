@@ -7,8 +7,8 @@
 #include "render/cmd_v/new_image.h"
 #include "render/cmd_v/new_rect.h"
 #include "main_scene-gui/experience_bar.h"
-#include "actors/player.h"
-#include "comm/math_sys.h"
+#include "actors.h"
+#include "math.h"
 #endif
 
 namespace Narradia

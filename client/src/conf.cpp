@@ -1,9 +1,10 @@
-#include "objects_conf.h"
+#include "conf.h"
 
 namespace Narradia
 {
+    // ObjectsConf
+#if 1
    using ObjectFlags::NoObstacle;
-
    ObjectsConf::ObjectsConf()
    {
       object_confs_["ObjectPoolOfBlood"] = {NoObstacle, 1.0f};
@@ -21,4 +22,22 @@ namespace Narradia
       return object_confs_.count(object_type) == 0 ? 1.0f
                                                    : object_confs_.at(object_type).model_scaling;
    }
+#endif
+
+   // MobsConf
+#if 1
+   MobsConf::MobsConf()
+   {
+      mobs_confs_["MobBoar"] = {4};
+      mobs_confs_["MobTroll"] = {6};
+      mobs_confs_["MobEvilSpirit"] = {8};
+   }
+   int MobsConf::GetAggroRange(std::string_view mob_type)
+   {
+      if (mobs_confs_.count(mob_type) == 0)
+         return 0;
+      else
+         return mobs_confs_.at(mob_type).aggro_range;
+   }
+#endif
 }

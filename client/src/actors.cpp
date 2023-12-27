@@ -1,14 +1,16 @@
 #if 1
-#include "player.h"
-#include "conf/consts.h"
+#include "actors.h"
+#include "math.h"
+#include "conf.h"
 #include "core/console.h"
 #include "main_scene-modules-world_view/camera.h"
 #include "world-struct.h"
-#include "comm/math_sys.h"
 #endif
 
 namespace Narradia
 {
+   // Player
+#if 1
    Player::Player()
    {
       position_ = {0, 0};
@@ -62,4 +64,23 @@ namespace Narradia
    {
       health_ -= damage;
    }
+#endif
+
+   // Mob
+#if 1
+   void Mob::Hit(float damage)
+   {
+      health_ -= damage;
+      ticks_last_hit_recieved_ = SDL_GetTicks();
+      aggroing_player_ = true;
+   }
+   bool Mob::IsDead()
+   {
+      return health_ <= 0.0f;
+   }
+   void Mob::AggroPlayer()
+   {
+      aggroing_player_ = true;
+   }
+#endif
 }

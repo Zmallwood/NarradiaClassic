@@ -67,4 +67,14 @@ namespace Narradia
 
       return std::string(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
    }
+   static std::vector<std::function<void()>> gDisposeActions;
+   void AddSingletonDisposeAction(std::function<void()> action)
+   {
+      gDisposeActions.push_back(action);
+   }
+   void DisposeSingletons()
+   {
+      for (auto &action : gDisposeActions)
+         action();
+   }
 }
