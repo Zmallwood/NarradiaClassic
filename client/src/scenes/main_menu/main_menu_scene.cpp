@@ -1,10 +1,9 @@
 #if 1
 #include "main_menu_scene.h"
-#include "gui-core/gui_button.h"
 #include "core/scene_mngr_c.h"
 #include "core/engine.h"
 #include "model_display_module.h"
-#include "gui-core/scene_gui.h"
+#include "gui-core.h"
 #endif
 
 namespace Narradia

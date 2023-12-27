@@ -7,7 +7,6 @@
 #include "render/cmd_v/new_image.h"
 #include "render/cmd_v/new_rect.h"
 #include "actors/player.h"
-#include "gui-core/gui_window_close_button_v.h"
 #include "world-struct.h"
 #endif
 

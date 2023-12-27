@@ -1,6 +1,5 @@
 #if 1
 #include "main_scene.h"
-#include "gui-core/scene_gui.h"
 #include "main_scene-modules/kb_bindings_module.h"
 #include "main_scene-modules/mob_movement_module.h"
 #include "main_scene-gui/experience_bar.h"

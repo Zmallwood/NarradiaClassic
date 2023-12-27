@@ -1,6 +1,5 @@
 #if 1
 #include "main_scene_v.h"
-#include "gui-core/scene_gui_v.h"
 #include "main_scene-gui/experience_bar_v.h"
 #include "main_scene-gui/gui_window_world_map_v.h"
 #include "main_scene-gui/status_panel_v.h"

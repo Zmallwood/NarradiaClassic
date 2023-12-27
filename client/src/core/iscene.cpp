@@ -1,6 +1,6 @@
 #if 1
 #include "iscene.h"
-#include "gui-core/scene_gui.h"
+#include "gui-core.h"
 #endif
 
 namespace Narradia

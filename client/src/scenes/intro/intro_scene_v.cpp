@@ -6,7 +6,7 @@
 #include "render/cmd_v/new_image.h"
 #include "render/renderer_2d_images_v.h"
 #include "intro_scene.h"
-#include "gui-core/scene_gui_v.h"
+#include "gui-core_v.h"
 #endif
 
 namespace Narradia

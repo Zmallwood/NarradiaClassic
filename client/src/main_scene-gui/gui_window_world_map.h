@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gui-core/gui_window.h"
+#include "gui-core.h"
 
 namespace Narradia
 {

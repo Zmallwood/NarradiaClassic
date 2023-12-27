@@ -1,11 +1,10 @@
 #if 1
 #include "main_menu_scene_v.h"
-#include "gui-core/gui_button_v.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
 #include "model_display_module_v.h"
 #include "scenes/main_menu/main_menu_scene.h"
-#include "gui-core/scene_gui_v.h"
+#include "gui-core_v.h"
 #endif
 
 namespace Narradia
