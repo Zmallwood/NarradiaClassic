@@ -9,7 +9,7 @@
 
 namespace Narradia
 {
-    //Engine
+   // Engine
 #if 1
    Engine::Engine()
    {
@@ -27,7 +27,7 @@ namespace Narradia
    }
 #endif
 
-   //FPSCapper
+   // FPSCapper
 #if 1
    auto FPSCapper::Below60FPS() -> bool
    {

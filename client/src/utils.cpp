@@ -6,6 +6,8 @@
 
 namespace Narradia
 {
+   // Canvas utils
+#if 1
    Size CanvasSize()
    {
       int w, h;
@@ -27,6 +29,10 @@ namespace Narradia
    {
       return h / AspectRatio();
    }
+#endif
+
+   // Mouse, mouse and texture utils
+#if 1
    PointF MousePosition()
    {
       int x_px, y_px;
@@ -57,6 +63,10 @@ namespace Narradia
 
       return dim;
    }
+#endif
+
+   // File utils
+#if 1
    std::string_view FileExtension(std::string_view abs_path)
    {
       return abs_path.substr(abs_path.find_last_of('.') + 1);
@@ -67,6 +77,10 @@ namespace Narradia
 
       return std::string(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
    }
+#endif
+
+// Singleton helpers
+#if 1
    static std::vector<std::function<void()>> gDisposeActions;
    void AddSingletonDisposeAction(std::function<void()> action)
    {
@@ -77,4 +91,5 @@ namespace Narradia
       for (auto &action : gDisposeActions)
          action();
    }
+#endif
 }

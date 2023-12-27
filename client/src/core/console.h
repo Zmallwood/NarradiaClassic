@@ -17,12 +17,6 @@ namespace Narradia
      public:
       auto UpdateGameLogic() -> void;
       auto Print(std::string_view text, Color text_color = Colors::wheat) -> void;
-      auto MaxNumLines() -> int;
-      auto TextLineIndex(int visible_row_index) -> int;
-      auto TextLinePosition(int visible_row_index) -> PointF;
-      auto HorizontalSplitterRect() -> RectF;
-      auto InputArrowRect() -> RectF;
-      auto InputTextPosition() -> PointF;
       auto InputTextWithCursor() -> std::string;
       auto Bounds() -> RectF;
       auto text_lines()

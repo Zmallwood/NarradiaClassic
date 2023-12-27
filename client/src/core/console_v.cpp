@@ -1,12 +1,13 @@
 #if 1
 #include "console_v.h"
+#include "core.h"
+#include "core/console.h"
+#include "main_scene-gui/experience_bar.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
-#include "core/console.h"
-#include "main_scene-gui/experience_bar.h"
-#include "core.h"
+#include "console_calc.h"
 #endif
 
 namespace Narradia
@@ -17,7 +18,7 @@ namespace Narradia
       rid_split_line_ = NewImage();
       rid_cmd_line_input_arrow_ = NewImage();
       rid_input_text_ = NewString();
-      for (auto i = 0; i < Console::get()->MaxNumLines(); i++)
+      for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++)
          rids_text_lines_.push_back(NewString());
    }
    void ConsoleV::Render() const
@@ -25,28 +26,27 @@ namespace Narradia
       auto model = Console::get();
       if (!model->enabled())
          return;
-      // Draw background image
+
       DrawImage("TextOutBoxBack", rid_image_, Console::get()->Bounds());
-      // Draw text lines
-      for (auto i = 0; i < model->MaxNumLines(); i++)
+
+      for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++)
       {
-         auto text_line_index = model->TextLineIndex(i);
+         auto text_line_index = ConsoleCalc::get()->TextLineIndex(i);
          if (text_line_index >= 0)
          {
-            PointF position = model->TextLinePosition(i);
+            PointF position = ConsoleCalc::get()->TextLinePosition(i);
             DrawString(
                 rids_text_lines_.at(i), model->text_lines().at(text_line_index).text, position,
                 model->text_lines().at(text_line_index).color);
          }
       }
-      // Draw horizontal splitter
-      DrawImage(
-          "Wheat", rid_split_line_, model->HorizontalSplitterRect()); // Draw horizontal splitter
+
+      DrawImage("Wheat", rid_split_line_, ConsoleCalc::get()->HorizontalSplitterRect());
       if (!model->input_active())
          return;
-      // Draw input arrow symbol
-      DrawImage("CommandLineInputArrow", rid_cmd_line_input_arrow_, model->InputArrowRect());
-      // Draw input text
-      DrawString(rid_input_text_, model->InputTextWithCursor(), model->InputTextPosition());
+
+      DrawImage("CommandLineInputArrow", rid_cmd_line_input_arrow_, ConsoleCalc::get()->InputArrowRect());
+
+      DrawString(rid_input_text_, model->InputTextWithCursor(), ConsoleCalc::get()->InputTextPosition());
    }
 }
