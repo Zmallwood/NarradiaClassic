@@ -1,10 +1,9 @@
 #if 1
 #include "world-struct.h"
 #include "conf/consts.h"
-#include "file_io/map_loader.h"
-#include "file_io/world_conf_reader.h"
-#include "world-actors/mob.h"
-#include "world-actors/player.h"
+#include "world_map_loader.h"
+#include "actors/mob.h"
+#include "actors/player.h"
 #endif
 
 namespace Narradia
@@ -75,15 +74,15 @@ namespace Narradia
 #if 1
    World::World()
    {
-      world_width_ = WorldConfReader::get()->world_map_width();
-      world_height_ = WorldConfReader::get()->world_map_height();
-      auto map_names = WorldConfReader::get()->map_area_names();
+      world_width_ = WorldMapLoader::get()->world_map_width();
+      world_height_ = WorldMapLoader::get()->world_map_height();
+      auto map_names = WorldMapLoader::get()->map_area_names();
       for (auto y = 0; y < world_height_; y++)
       {
          for (auto x = 0; x < world_width_; x++)
          {
             map_areas_[x][y] = nullptr;
-            MapLoader::get()->LoadWorldMapFromFile(map_areas_[x][y], map_names[x][y]);
+            WorldMapLoader::get()->LoadWorldMapFromFile(map_areas_[x][y], map_names[x][y]);
          }
       }
    }

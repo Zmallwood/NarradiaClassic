@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O2",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/world_map_loader.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/world_map_loader.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/world_map_loader.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/world_map_loader.cpp.o"
+  }
+]

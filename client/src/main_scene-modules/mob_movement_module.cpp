@@ -2,8 +2,8 @@
 #include "mob_movement_module.h"
 #include "conf/mobs_conf.h"
 #include "conf/consts.h"
-#include "world-actors/player.h"
-#include "world-actors/mob.h"
+#include "actors/player.h"
+#include "actors/mob.h"
 #include "world-struct.h"
 #endif
 

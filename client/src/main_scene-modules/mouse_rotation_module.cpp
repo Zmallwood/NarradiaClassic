@@ -3,7 +3,7 @@
 #include "core/mouse_input.h"
 #include "core/cursor.h"
 #include "main_scene-modules-world_view/camera.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #endif
 
 namespace Narradia

@@ -1,9 +1,9 @@
 #if 1
 #include "skill_performing_module.h"
 #include "conf/consts.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
-#include "world-actors/mob.h"
+#include "actors/mob.h"
 #endif
 
 namespace Narradia

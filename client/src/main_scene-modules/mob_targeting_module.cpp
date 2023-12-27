@@ -3,8 +3,8 @@
 #include "conf/consts.h"
 #include "core/mouse_input.h"
 #include "tile_hovering_module.h"
-#include "world-actors/player.h"
-#include "world-actors/mob.h"
+#include "actors/player.h"
+#include "actors/mob.h"
 #include "world-struct.h"
 #endif
 

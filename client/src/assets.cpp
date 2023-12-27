@@ -3,6 +3,8 @@
 
 namespace Narradia
 {
+    // ImageBank
+#if 1
    ImageBank::ImageBank()
    {
       LoadImages();
@@ -68,6 +70,10 @@ namespace Narradia
 
       return tex_id;
    }
+#endif 
+   
+   // ModelBank
+#if 1
    auto ModelBank::LoadSingleModel(std::string_view path)
    {
       Assimp::Importer importer;
@@ -97,4 +103,5 @@ namespace Narradia
    {
       return models_->at(model_name.data());
    }
+#endif
 }

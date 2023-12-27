@@ -13,7 +13,7 @@
 #include "render/cmd_v/set_tile_geometry.h"
 #include "render/cmd_v/start_tile_batch_drawing.h"
 #include "render/cmd_v/stop_tile_batch_drawing.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
 #endif
 

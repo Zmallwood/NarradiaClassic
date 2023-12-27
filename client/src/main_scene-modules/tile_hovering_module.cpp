@@ -2,7 +2,7 @@
 #include "tile_hovering_module.h"
 #include "conf/consts.h"
 #include "render/camera_gl.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
 #endif
 

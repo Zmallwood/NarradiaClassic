@@ -3,7 +3,7 @@
 #include "core/mouse_input.h"
 #include "mob_targeting_module.h"
 #include "tile_hovering_module.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #endif
 
 namespace Narradia

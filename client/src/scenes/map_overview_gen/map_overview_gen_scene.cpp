@@ -13,7 +13,7 @@
 #include "main_scene-modules/mouse_movement_module.h"
 #include "main_scene-modules/mouse_rotation_module.h"
 #include "main_scene-modules/tile_hovering_module.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
 #endif
 

@@ -3,7 +3,7 @@
 #include "render/cmd_v/draw_tile.h"
 #include "main_scene-modules/mob_targeting_module.h"
 #include "main_scene-modules/tile_hovering_module.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
 #endif
 

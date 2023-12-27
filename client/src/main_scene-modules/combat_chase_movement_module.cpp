@@ -1,7 +1,7 @@
 #if 1
 #include "combat_chase_movement_module.h"
 #include "mob_targeting_module.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
 #endif
 

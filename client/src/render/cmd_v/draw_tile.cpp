@@ -4,7 +4,8 @@
 #include "assets.h"
 #include "render/camera_gl.h"
 #include "render/renderer_tiles_v.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
+#include "comm/math_sys.h"
 #endif
 
 namespace Narradia

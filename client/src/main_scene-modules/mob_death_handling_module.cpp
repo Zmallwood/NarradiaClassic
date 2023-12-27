@@ -2,7 +2,7 @@
 #include "mob_death_handling_module.h"
 #include "mob_targeting_module.h"
 #include "world-struct.h"
-#include "world-actors/mob.h"
+#include "actors/mob.h"
 #endif
 
 namespace Narradia

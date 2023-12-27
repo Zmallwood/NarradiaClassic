@@ -4,6 +4,7 @@
 #include "core/console.h"
 #include "main_scene-modules-world_view/camera.h"
 #include "world-struct.h"
+#include "comm/math_sys.h"
 #endif
 
 namespace Narradia

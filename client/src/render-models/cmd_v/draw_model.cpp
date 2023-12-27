@@ -4,10 +4,11 @@
 #include "assets.h"
 #include "render/camera_gl.h"
 #include "render-models/renderer_models_v.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "render/shader_program.h"
 #include "render/shader_program_v.h"
 #include "world-struct.h"
+#include "comm/math_sys.h"
 #endif
 
 namespace Narradia

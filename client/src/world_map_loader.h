@@ -2,10 +2,13 @@
 
 namespace Narradia
 {
-   class WorldConfReader : public S<WorldConfReader>
+   class MapArea;
+
+   class WorldMapLoader: public S<WorldMapLoader>
    {
      public:
-      WorldConfReader();
+      WorldMapLoader();
+      void LoadWorldMapFromFile(std::shared_ptr<MapArea> &map_area, std::string map_name);
       auto world_map_width()
       {
          return world_map_width_;

@@ -2,7 +2,7 @@
 #include "keyboard_movement_module.h"
 #include "core/kb_input.h"
 #include "mob_targeting_module.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #endif
 
 namespace Narradia

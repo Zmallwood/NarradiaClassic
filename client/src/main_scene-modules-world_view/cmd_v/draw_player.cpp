@@ -2,8 +2,9 @@
 #include "draw_player.h"
 #include "conf/consts.h"
 #include "render-models/cmd_v/draw_model.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #include "world-struct.h"
+#include "comm/math_sys.h"
 #endif
 
 namespace Narradia

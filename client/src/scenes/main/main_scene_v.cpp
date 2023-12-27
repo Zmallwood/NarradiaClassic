@@ -9,7 +9,7 @@
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
 #include "scenes/main/main_scene.h"
-#include "world-actors/player.h"
+#include "actors/player.h"
 #endif
 
 namespace Narradia
