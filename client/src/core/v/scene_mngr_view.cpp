@@ -1,4 +1,10 @@
 #include "scene_mngr_view.h"
+#include "scenes/intro/v/intro_scene_view.h"
+#include "scenes/main/v/main_scene_view.h"
+#include "scenes/main_menu/v/main_menu_scene_view.h"
+#include "scenes/map_overview_gen/v/map_overview_gen_scene_view.h"
+#include "core/m/scene_mngr.h"
+#include "iscene_view.h"
 
 namespace Narradia
 {

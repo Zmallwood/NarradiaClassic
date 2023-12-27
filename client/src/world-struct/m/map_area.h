@@ -1,9 +1,10 @@
 #pragma once
 
-#include "tile.h"
-
 namespace Narradia
 {
+   class Tile;
+   class Mob;
+
    class MapArea
    {
      public:

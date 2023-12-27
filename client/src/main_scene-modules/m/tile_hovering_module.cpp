@@ -1,8 +1,12 @@
+#if 1
 #include "tile_hovering_module.h"
 #include "conf/m/consts.h"
 #include "render/v/camera_gl.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/tile.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

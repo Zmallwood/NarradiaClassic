@@ -1,4 +1,9 @@
+#if 1
 #include "renderer_2d_images_view.h"
+#include "shaders/m/2d_images_fragment.inc.cpp"
+#include "shaders/m/2d_images_vertex.inc.cpp"
+#include "render/v/shader_program_view.h"
+#endif
 
 namespace Narradia
 {

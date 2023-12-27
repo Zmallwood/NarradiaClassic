@@ -1,9 +1,9 @@
 #pragma once
 
-#include "gui-core/m/gui_window_close_button.h"
-
 namespace Narradia
 {
+   class GuiWindowCloseButton;
+
    class GuiWindowCloseButtonView
    {
      public:

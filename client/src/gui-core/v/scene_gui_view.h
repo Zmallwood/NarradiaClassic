@@ -1,10 +1,10 @@
 #pragma once
 
-#include "gui-core/m/scene_gui.h"
-#include "gui_component_view.h"
-
 namespace Narradia
 {
+   class GuiComponentView;
+   class SceneGui;
+
    class SceneGuiView
    {
      public:

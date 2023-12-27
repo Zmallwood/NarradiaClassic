@@ -1,13 +1,5 @@
 #pragma once
 
-#include "conf/m/consts.h"
-#include "assets/m/image_bank.h"
-#include "assets/m/model_bank.h"
-#include "render/v/camera_gl.h"
-#include "render-models/v/renderer_models_view.h"
-#include "world-actors/m/player.h"
-#include "world-struct/m/world.h"
-
 namespace Narradia
 {
    auto DrawModel(

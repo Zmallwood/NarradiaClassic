@@ -1,16 +1,13 @@
 #pragma once
 
-#include "gui-core/v/scene_gui_view.h"
-
 namespace Narradia
 {
+   class SceneGuiView;
+
    class ISceneView
    {
      public:
-      ISceneView()
-          : scene_gui_view_(std::make_shared<SceneGuiView>())
-      {
-      }
+      ISceneView();
 
       auto Render() -> void;
 

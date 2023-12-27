@@ -1,6 +1,9 @@
+#if 1
 #include "map_overview_gen_scene_controller.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

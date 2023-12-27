@@ -1,7 +1,9 @@
+#if 1
 #include "model_constr.h"
 #include "model_part_constr.h"
 #include "assets/m/model.h"
 #include "mesh_obtainer.h"
+#endif
 
 namespace Narradia
 {

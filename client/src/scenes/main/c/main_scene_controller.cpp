@@ -1,6 +1,8 @@
+#if 1
 #include "main_scene_controller.h"
 #include "core/m/console.h"
 #include "main_scene-modules/m/player_spawn_positioning_module.h"
+#endif
 
 namespace Narradia
 {

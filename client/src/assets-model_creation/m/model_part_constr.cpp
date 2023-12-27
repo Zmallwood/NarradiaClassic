@@ -1,4 +1,8 @@
+#if 1
 #include "model_part_constr.h"
+#include "assets/m/model.h"
+#include "keyframe_constr.h"
+#endif
 
 namespace Narradia
 {

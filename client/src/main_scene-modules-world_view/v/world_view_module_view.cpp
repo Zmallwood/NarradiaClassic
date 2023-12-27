@@ -15,6 +15,8 @@
 #include "render/v/cmd/stop_tile_batch_drawing.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/tile.h"
+#include "world-struct/m/map_area.h"
 #endif
 
 namespace Narradia

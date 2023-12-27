@@ -1,9 +1,14 @@
+#if 1
 #include "mob_targeting_module.h"
 #include "conf/m/consts.h"
-#include "input/m/mouse_input.h"
+#include "core/m/mouse_input.h"
 #include "tile_hovering_module.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/tile.h"
+#include "world-actors/m/mob.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

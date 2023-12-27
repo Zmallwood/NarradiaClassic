@@ -1,10 +1,9 @@
 #pragma once
 
-#include "assets/m/model.h"
-#include "keyframe_constr.h"
-
 namespace Narradia
 {
+   class ModelPart;
+
    class ModelPartConstr : public Singleton<ModelPartConstr>
    {
      public:

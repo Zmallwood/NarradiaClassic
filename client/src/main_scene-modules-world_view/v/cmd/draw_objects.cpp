@@ -1,8 +1,14 @@
+#if 1
 #include "draw_objects.h"
 #include "conf/m/objects_conf.h"
 #include "conf/m/consts.h"
 #include "render-models/v/cmd/draw_model.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/tile.h"
+#include "world-struct/m/object.h"
+#include "world-actors/m/player.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

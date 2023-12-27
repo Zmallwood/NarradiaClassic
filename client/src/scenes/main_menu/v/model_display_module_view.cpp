@@ -1,5 +1,7 @@
+#if 1
 #include "model_display_module_view.h"
 #include "render-models/v/cmd/draw_model.h"
+#endif
 
 namespace Narradia
 {

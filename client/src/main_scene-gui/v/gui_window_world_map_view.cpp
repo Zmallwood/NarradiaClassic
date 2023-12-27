@@ -1,3 +1,4 @@
+#if 1
 #include "gui_window_world_map_view.h"
 #include "render/v/cmd/draw_image.h"
 #include "render/v/cmd/draw_rect.h"
@@ -7,6 +8,9 @@
 #include "render/v/cmd/new_rect.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "gui-core/v/gui_window_close_button_view.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

@@ -1,4 +1,10 @@
+#if 1
 #include "math.h"
+#include "world-struct/m/world.h"
+#include "conf/m/consts.h"
+#include "world-struct/m/tile.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

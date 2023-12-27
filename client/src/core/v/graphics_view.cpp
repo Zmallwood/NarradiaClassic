@@ -1,4 +1,9 @@
+#if 1
 #include "graphics_view.h"
+#include "core/m/engine.h"
+#include "core/m/graphics.h"
+#include "graphics_gl_view.h"
+#endif
 
 namespace Narradia
 {

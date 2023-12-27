@@ -1,16 +1,13 @@
 #pragma once
 
-#include "gui-core/m/scene_gui.h"
-
 namespace Narradia
 {
+   class SceneGui;
+
    class IScene
    {
      public:
-      IScene()
-          : scene_gui_(std::make_shared<SceneGui>())
-      {
-      }
+      IScene();
 
       void UpdateGameLogic();
       virtual void Finalize() = 0;

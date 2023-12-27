@@ -1,4 +1,7 @@
+#if 1
 #include "new_rect.h"
+#include "render/v/renderer_2d_solid_colors_view.h"
+#endif
 
 namespace Narradia
 {

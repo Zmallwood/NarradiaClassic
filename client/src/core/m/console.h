@@ -1,19 +1,24 @@
 #pragma once
 
-#include "input/m/kb_input.h"
-#include "core/m/scene_mngr.h"
-#include "main_scene-gui/m/experience_bar.h"
-#include "text_line.h"
-
 namespace Narradia
 {
+   // Show sub classes
+#if 1
+   class TextLine
+   {
+     public:
+      std::string text;
+      Color color;
+   };
+#endif
+
    class Console : public Singleton<Console>
    {
      public:
       auto UpdateGameLogic() -> void;
-      
+
       auto Print(std::string_view text, Color text_color = Colors::wheat) -> void;
-      
+
       auto MaxNumLines() -> int;
 
       auto TextLineIndex(int visible_row_index) -> int;

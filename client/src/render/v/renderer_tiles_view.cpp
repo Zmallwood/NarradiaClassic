@@ -1,6 +1,9 @@
+#if 1
 #include "renderer_tiles_view.h"
-#include "render-shaders/m/tiles_fragment.inc.cpp"
-#include "render-shaders/m/tiles_vertex.inc.cpp"
+#include "shaders/m/tiles_fragment.inc.cpp"
+#include "shaders/m/tiles_vertex.inc.cpp"
+#include "render/v/shader_program_view.h"
+#endif
 
 namespace Narradia
 {

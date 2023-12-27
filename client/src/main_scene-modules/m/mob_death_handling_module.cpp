@@ -1,6 +1,11 @@
+#if 1
 #include "mob_death_handling_module.h"
 #include "mob_targeting_module.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/tile.h"
+#include "world-actors/m/mob.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

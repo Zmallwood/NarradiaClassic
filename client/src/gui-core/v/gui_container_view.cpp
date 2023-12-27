@@ -1,4 +1,5 @@
 #include "gui_container_view.h"
+#include "gui-core/m/gui_container.h"
 
 namespace Narradia
 {

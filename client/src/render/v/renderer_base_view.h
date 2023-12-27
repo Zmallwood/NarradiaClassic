@@ -1,11 +1,12 @@
 #pragma once
 
-#include "render/m/buffer_types.h"
 #include "render/m/renderer_base.h"
-#include "shader_program_view.h"
 
 namespace Narradia
 {
+   class RendererBase;
+   class ShaderProgramView;
+
    class RendererBaseView
    {
      public:

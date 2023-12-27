@@ -1,4 +1,7 @@
+#if 1
 #include "new_tile.h"
+#include "render/v/renderer_tiles_view.h"
+#endif
 
 namespace Narradia
 {

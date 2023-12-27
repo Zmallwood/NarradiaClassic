@@ -1,3 +1,4 @@
+#if 1
 #include "main_scene.h"
 #include "gui-core/m/scene_gui.h"
 #include "main_scene-modules/m/kb_bindings_module.h"
@@ -16,6 +17,7 @@
 #include "main_scene-modules/m/mouse_rotation_module.h"
 #include "main_scene-modules/m/skill_performing_module.h"
 #include "main_scene-modules/m/tile_hovering_module.h"
+#endif
 
 namespace Narradia
 {

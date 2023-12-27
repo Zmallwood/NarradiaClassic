@@ -1,7 +1,9 @@
+#if 1
 #include "world.h"
 #include "file_io/m/world_conf_reader.h"
 #include "file_io/m/map_loader.h"
 #include "world-actors/m/player.h"
+#endif
 
 namespace Narradia
 {

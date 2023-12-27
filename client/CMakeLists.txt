@@ -63,9 +63,7 @@ set(PCH_FILES
 "src/comm/sys/cmd/utils.h"
 "src/comm/sys/singleton.h"
 "src/core/m/sdl_deleter.h"
-"src/math/sys/trigonometry.h"
-"src/math/sys/exp_calc.h"
-"src/math/sys/tile_calc.h"
+"src/comm/sys/math.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})

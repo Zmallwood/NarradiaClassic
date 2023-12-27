@@ -1,8 +1,12 @@
+#if 1
 #include "gui_window_view.h"
 #include "render-text/v/cmd/draw_string.h"
 #include "render-text/v/cmd/new_string.h"
 #include "render/v/cmd/draw_image.h"
 #include "render/v/cmd/new_image.h"
+#include "gui_window_close_button_view.h"
+#include "gui-core/m/gui_window.h"
+#endif
 
 namespace Narradia
 {

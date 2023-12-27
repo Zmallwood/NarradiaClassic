@@ -1,4 +1,7 @@
+#if 1
 #include "stop_tile_batch_drawing.h"
+#include "render/v/renderer_tiles_view.h"
+#endif
 
 namespace Narradia
 {

@@ -1,10 +1,11 @@
 #pragma once
 
 #include "gui_movable_container.h"
-#include "gui_window_close_button.h"
 
 namespace Narradia
 {
+   class GuiWindowCloseButton;
+
    class GuiWindow : public GuiMovableContainer
    {
      public:

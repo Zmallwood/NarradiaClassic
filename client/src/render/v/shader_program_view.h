@@ -1,16 +1,14 @@
 #pragma once
 
-#include "render/m/shader_program.h"
-
 namespace Narradia
 {
+   class ShaderProgram;
+
    class ShaderProgramView
    {
      public:
-      ShaderProgramView()
-          : shader_program_(std::make_shared<ShaderProgram>())
-      {
-      }
+      ShaderProgramView();
+
       bool Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src);
 
       auto shader_program()

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "world-struct/m/tile.h"
-
 namespace Narradia
 {
+   class Tile;
+
    void DrawMob(std::shared_ptr<Tile> tile, Point coord);
 }

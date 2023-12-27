@@ -1,7 +1,11 @@
+#if 1
 #include "draw_player.h"
 #include "conf/m/consts.h"
 #include "render-models/v/cmd/draw_model.h"
 #include "world-actors/m/player.h"
+#include "world-struct/m/world.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

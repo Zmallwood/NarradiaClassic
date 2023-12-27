@@ -1,4 +1,11 @@
+#if 1
 #include "new_model.h"
+#include "assets/m/model_bank.h"
+#include "assets/m/model.h"
+#include "render-models/v/renderer_models_view.h"
+#include "new_body_keyframe.h"
+#include "new_body_keyframe_geometry.h"
+#endif
 
 namespace Narradia
 {

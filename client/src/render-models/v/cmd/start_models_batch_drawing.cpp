@@ -1,4 +1,10 @@
+#if 1
 #include "start_models_batch_drawing.h"
+#include "render/v/camera_gl.h"
+#include "render-models/v/renderer_models_view.h"
+#include "render/m/shader_program.h"
+#include "render/v/shader_program_view.h"
+#endif
 
 namespace Narradia
 {

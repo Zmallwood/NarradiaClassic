@@ -1,5 +1,8 @@
+#if 1
 #include "map_area.h"
 #include "conf/m/consts.h"
+#include "tile.h"
+#endif
 
 namespace Narradia
 {

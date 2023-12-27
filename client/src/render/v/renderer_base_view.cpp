@@ -1,4 +1,8 @@
+#if 1
 #include "renderer_base_view.h"
+#include "shader_program_view.h"
+#include "render/m/shader_program.h"
+#endif
 
 namespace Narradia
 {

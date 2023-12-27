@@ -1,4 +1,11 @@
+#if 1
 #include "draw_tile.h"
+#include "conf/m/consts.h"
+#include "assets/m/image_bank.h"
+#include "render/v/camera_gl.h"
+#include "render/v/renderer_tiles_view.h"
+#include "world-actors/m/player.h"
+#endif
 
 namespace Narradia
 {

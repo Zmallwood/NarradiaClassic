@@ -1,4 +1,5 @@
 #include "gui_window.h"
+#include "gui_window_close_button.h"
 
 namespace Narradia
 {

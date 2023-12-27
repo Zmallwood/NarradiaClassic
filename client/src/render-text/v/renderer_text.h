@@ -1,13 +1,15 @@
 #pragma once
 
-#include "assets/m/image_bank.h"
-#include "render/v/cmd/draw_image.h"
-#include "render/v/cmd/new_image.h"
-#include "render-text/m/font.h"
-#include "render-text/m/font_sizes.h"
-
 namespace Narradia
 {
+   enum class FontSizes
+   {
+      _20,
+      _40
+   };
+
+   class Font;
+
    class RendererText : public Singleton<RendererText>
    {
      public:

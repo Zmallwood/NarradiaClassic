@@ -1,4 +1,8 @@
+#if 1
 #include "scene_gui_view.h"
+#include "gui-core/m/scene_gui.h"
+#include "gui_component_view.h"
+#endif
 
 namespace Narradia
 {

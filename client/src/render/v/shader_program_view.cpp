@@ -1,8 +1,14 @@
 #include "shader_program_view.h"
 #include "cmd/compile_shader.h"
+#include "render/m/shader_program.h"
 
 namespace Narradia
 {
+   ShaderProgramView::ShaderProgramView()
+       : shader_program_(std::make_shared<ShaderProgram>())
+   {
+   }
+
    bool ShaderProgramView::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src)
    {
       GLuint vertex_shader = 0;

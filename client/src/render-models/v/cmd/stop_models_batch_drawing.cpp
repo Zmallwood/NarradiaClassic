@@ -1,4 +1,7 @@
+#if 1
 #include "stop_models_batch_drawing.h"
+#include "render-models/v/renderer_models_view.h"
+#endif
 
 namespace Narradia
 {

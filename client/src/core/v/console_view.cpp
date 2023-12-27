@@ -1,4 +1,13 @@
+#if 1
 #include "console_view.h"
+#include "render-text/v/cmd/draw_string.h"
+#include "render-text/v/cmd/new_string.h"
+#include "render/v/cmd/draw_image.h"
+#include "render/v/cmd/new_image.h"
+#include "core/m/console.h"
+#include "core/m/scene_mngr.h"
+#include "main_scene-gui/m/experience_bar.h"
+#endif
 
 namespace Narradia
 {

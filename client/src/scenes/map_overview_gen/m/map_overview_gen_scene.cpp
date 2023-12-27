@@ -1,3 +1,4 @@
+#if 1
 #include "map_overview_gen_scene.h"
 #include "core/m/scene_mngr.h"
 #include "assets/m/image_bank.h"
@@ -14,6 +15,7 @@
 #include "main_scene-modules/m/tile_hovering_module.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#endif
 
 namespace Narradia
 {

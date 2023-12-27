@@ -1,4 +1,7 @@
+#if 1
 #include "create_get_blank_texture.h"
+#include "assets/m/image_bank.h"
+#endif
 
 namespace Narradia
 {

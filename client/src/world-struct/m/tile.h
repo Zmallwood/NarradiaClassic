@@ -1,11 +1,20 @@
 #pragma once
 
-#include "object.h"
-#include "tile_effect.h"
-#include "world-actors/m/mob.h"
-
 namespace Narradia
 {
+   // Show sub classes
+#if 1
+   class TileEffect
+   {
+     public:
+      std::string_view type;
+      int ticks_started = 0;
+   };
+#endif
+
+   class Object;
+   class Mob;
+
    class Tile
    {
      public:

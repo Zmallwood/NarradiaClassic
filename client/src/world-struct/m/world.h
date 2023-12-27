@@ -1,9 +1,9 @@
 #pragma once
 
-#include "map_area.h"
-
 namespace Narradia
 {
+   class MapArea;
+
    class World : public Singleton<World>
    {
      public:

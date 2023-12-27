@@ -1,3 +1,4 @@
+#if 1
 #include "map_overview_gen_scene_view.h"
 #include "assets/m/image_bank.h"
 #include "render-models/v/renderer_models_view.h"
@@ -7,6 +8,8 @@
 #include "main_scene-modules-world_view/v/world_view_module_view.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

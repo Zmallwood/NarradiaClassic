@@ -1,9 +1,12 @@
+#if 1
 #include "gui_window_close_button.h"
-#include "input/m/mouse_input.h"
+#include "core/m/mouse_input.h"
 #include "core/m/cursor.h"
 #include "core/m/scene_mngr.h"
 #include "scenes/main/m/main_scene.h"
 #include "gui_window.h"
+#include "gui-core/m/scene_gui.h"
+#endif
 
 namespace Narradia
 {

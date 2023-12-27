@@ -1,8 +1,12 @@
+#if 1
 #include "combat_module.h"
 #include "core/m/console.h"
 #include "mob_targeting_module.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-actors/m/mob.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

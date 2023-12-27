@@ -2,8 +2,6 @@
 
 namespace Narradia
 {
-   std::string_view img_name;
-
    auto Cursor::ResetStyle() -> void
    {
       style_ = CursorStyles::Default;
@@ -11,6 +9,8 @@ namespace Narradia
 
    auto Cursor::GetCursorImageName() -> std::string_view
    {
+      std::string_view img_name;
+
       switch (style_)
       {
       case CursorStyles::Default:
@@ -26,6 +26,7 @@ namespace Narradia
          img_name = "CursorAttack";
          break;
       }
+
       return img_name;
    }
 }

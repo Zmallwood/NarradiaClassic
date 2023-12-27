@@ -1,10 +1,7 @@
 #pragma once
 
-#include "render-shaders/m/models_fragment.inc.cpp"
-#include "render-shaders/m/models_vertex.inc.cpp"
 #include "render/m/body_data.h"
 #include "render/v/renderer_base_view.h"
-#include "render/v/shader_program_view.h"
 
 namespace Narradia
 {

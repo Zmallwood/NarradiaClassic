@@ -1,3 +1,4 @@
+#if 1
 #include "experience_bar_view.h"
 #include "render-text/v/cmd/draw_string.h"
 #include "render-text/v/cmd/new_string.h"
@@ -7,6 +8,7 @@
 #include "render/v/cmd/new_rect.h"
 #include "main_scene-gui/m/experience_bar.h"
 #include "world-actors/m/player.h"
+#endif
 
 namespace Narradia
 {

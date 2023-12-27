@@ -1,4 +1,11 @@
+#if 1
 #include "gui_button_view.h"
+#include "gui-core/m/gui_button.h"
+#include "render-text/v/cmd/draw_string.h"
+#include "render-text/v/cmd/new_string.h"
+#include "render/v/cmd/draw_image.h"
+#include "render/v/cmd/new_image.h"
+#endif
 
 namespace Narradia
 {

@@ -1,5 +1,8 @@
+#if 1
 #include "draw_ground.h"
 #include "render/v/cmd/draw_tile.h"
+#include "world-struct/m/tile.h"
+#endif
 
 namespace Narradia
 {

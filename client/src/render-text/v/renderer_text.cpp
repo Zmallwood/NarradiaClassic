@@ -1,4 +1,10 @@
+#if 1
 #include "renderer_text.h"
+#include "assets/m/image_bank.h"
+#include "render/v/cmd/draw_image.h"
+#include "render/v/cmd/new_image.h"
+#include "render-text/m/font.h"
+#endif
 
 namespace Narradia
 {

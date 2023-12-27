@@ -1,4 +1,8 @@
+#if 1
 #include "draw_string.h"
+#include "render-text/m/font.h"
+#include "render/v/cmd/draw_image.h"
+#endif
 
 namespace Narradia
 {

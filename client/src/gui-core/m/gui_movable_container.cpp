@@ -1,5 +1,7 @@
+#if 1
 #include "gui_movable_container.h"
-#include "input/m/mouse_input.h"
+#include "core/m/mouse_input.h"
+#endif
 
 namespace Narradia
 {

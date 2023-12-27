@@ -1,14 +1,16 @@
+#if 1
 #include "poll_events.h"
-#include "input/m/kb_input.h"
-#include "input/m/mouse_input.h"
+#include "core/m/kb_input.h"
+#include "core/m/mouse_input.h"
 #include "core/m/engine.h"
+#endif
 
 namespace Narradia
 {
    auto PollEvents() -> void
    {
-
       SDL_Event ev;
+
       while (SDL_PollEvent(&ev) != 0)
       {
          switch (ev.type)

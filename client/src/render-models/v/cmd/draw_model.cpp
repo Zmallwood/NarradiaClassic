@@ -1,4 +1,17 @@
+#if 1
 #include "draw_model.h"
+#include "conf/m/consts.h"
+#include "assets/m/image_bank.h"
+#include "assets/m/model_bank.h"
+#include "assets/m/model.h"
+#include "render/v/camera_gl.h"
+#include "render-models/v/renderer_models_view.h"
+#include "world-actors/m/player.h"
+#include "world-struct/m/world.h"
+#include "render/m/shader_program.h"
+#include "render/v/shader_program_view.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

@@ -1,9 +1,17 @@
 #pragma once
 
-#include "buffer_types.h"
-
 namespace Narradia
 {
+   enum class BufferTypes
+   {
+      Indices,
+      Positions2D,
+      Positions3D,
+      Colors,
+      Uvs,
+      Normals
+   };
+
    class RendererBase
    {
      public:

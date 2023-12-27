@@ -1,7 +1,9 @@
+#if 1
 #include "fps_counter_module_view.h"
 #include "render-text/v/cmd/draw_string.h"
 #include "render-text/v/cmd/new_string.h"
 #include "main_scene-modules/m/fps_counter_module.h"
+#endif
 
 namespace Narradia
 {

@@ -1,4 +1,11 @@
+#if 1
 #include "scene_mngr.h"
+#include "iscene.h"
+#include "scenes/intro/m/intro_scene.h"
+#include "scenes/main/m/main_scene.h"
+#include "scenes/main_menu/m/main_menu_scene.h"
+#include "scenes/map_overview_gen/m/map_overview_gen_scene.h"
+#endif
 
 namespace Narradia
 {

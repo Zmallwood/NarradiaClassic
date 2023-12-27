@@ -1,8 +1,11 @@
+#if 1
 #include "draw_tile_symbols.h"
 #include "render/v/cmd/draw_tile.h"
 #include "main_scene-modules/m/mob_targeting_module.h"
 #include "main_scene-modules/m/tile_hovering_module.h"
 #include "world-actors/m/player.h"
+#include "world-struct/m/tile.h"
+#endif
 
 namespace Narradia
 {

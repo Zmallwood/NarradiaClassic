@@ -1,8 +1,13 @@
+#if 1
 #include "mob_movement_module.h"
 #include "conf/m/mobs_conf.h"
 #include "conf/m/consts.h"
 #include "world-actors/m/player.h"
 #include "world-struct/m/world.h"
+#include "world-actors/m/mob.h"
+#include "world-struct/m/tile.h"
+#include "world-struct/m/map_area.h"
+#endif
 
 namespace Narradia
 {

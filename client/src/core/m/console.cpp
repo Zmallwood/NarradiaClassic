@@ -1,4 +1,9 @@
+#if 1
 #include "console.h"
+#include "core/m/kb_input.h"
+#include "core/m/scene_mngr.h"
+#include "main_scene-gui/m/experience_bar.h"
+#endif
 
 namespace Narradia
 {

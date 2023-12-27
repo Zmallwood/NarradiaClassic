@@ -1,8 +1,10 @@
+#if 1
 #include "mouse_movement_module.h"
-#include "input/m/mouse_input.h"
+#include "core/m/mouse_input.h"
 #include "mob_targeting_module.h"
 #include "tile_hovering_module.h"
 #include "world-actors/m/player.h"
+#endif
 
 namespace Narradia
 {

@@ -1,7 +1,9 @@
+#if 1
 #include "keyboard_movement_module.h"
-#include "input/m/kb_input.h"
+#include "core/m/kb_input.h"
 #include "mob_targeting_module.h"
 #include "world-actors/m/player.h"
+#endif
 
 namespace Narradia
 {

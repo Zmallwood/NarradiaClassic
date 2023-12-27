@@ -1,9 +1,9 @@
 #pragma once
 
-#include "gui_component.h"
-
 namespace Narradia
 {
+   class GuiComponent;
+
    class SceneGui
    {
      public:

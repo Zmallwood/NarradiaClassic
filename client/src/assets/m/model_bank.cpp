@@ -1,4 +1,8 @@
+#if 1
 #include "model_bank.h"
+#include "assets-model_creation/m/model_constr.h"
+#include "model.h"
+#endif
 
 namespace Narradia
 {

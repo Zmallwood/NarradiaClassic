@@ -1,6 +1,8 @@
+#if 1
 #include "main_menu_scene_controller.h"
 #include "assets/m/model_bank.h"
 #include "render-models/v/cmd/new_model.h"
+#endif
 
 namespace Narradia
 {

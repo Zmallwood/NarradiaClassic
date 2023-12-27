@@ -1,3 +1,4 @@
+#if 1
 #include "main_scene_view.h"
 #include "render-text/v/cmd/draw_string.h"
 #include "render-text/v/cmd/new_string.h"
@@ -8,6 +9,8 @@
 #include "main_scene-modules/v/fps_counter_module_view.h"
 #include "scenes/main/m/main_scene.h"
 #include "world-actors/m/player.h"
+#include "gui-core/v/scene_gui_view.h"
+#endif
 
 namespace Narradia
 {

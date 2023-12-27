@@ -1,3 +1,4 @@
+#if 1
 #include "status_panel_view.h"
 #include "main_scene-gui/m/status_panel.h"
 #include "render-text/v/cmd/draw_string.h"
@@ -7,6 +8,7 @@
 #include "render/v/cmd/new_image.h"
 #include "render/v/cmd/new_rect.h"
 #include "world-actors/m/player.h"
+#endif
 
 namespace Narradia
 {

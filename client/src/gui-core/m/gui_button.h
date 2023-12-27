@@ -1,7 +1,5 @@
 #pragma once
 
-#include "input/m/mouse_input.h"
-#include "core/m/cursor.h"
 #include "gui_component.h"
 
 namespace Narradia

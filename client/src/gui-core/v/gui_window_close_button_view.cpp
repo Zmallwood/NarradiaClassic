@@ -1,6 +1,9 @@
+#if 1
 #include "gui_window_close_button_view.h"
 #include "render/v/cmd/draw_image.h"
 #include "render/v/cmd/new_image.h"
+#include "gui-core/m/gui_window_close_button.h"
+#endif
 
 namespace Narradia
 {

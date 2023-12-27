@@ -1,3 +1,4 @@
+#if 1
 #include "intro_scene_view.h"
 #include "render-text/v/cmd/draw_string.h"
 #include "render-text/v/cmd/new_string.h"
@@ -5,6 +6,8 @@
 #include "render/v/cmd/new_image.h"
 #include "render/v/renderer_2d_images_view.h"
 #include "scenes/intro/m/intro_scene.h"
+#include "gui-core/v/scene_gui_view.h"
+#endif
 
 namespace Narradia
 {

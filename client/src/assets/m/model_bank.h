@@ -1,10 +1,9 @@
 #pragma once
 
-#include "assets-model_creation/m/model_constr.h"
-#include "model.h"
-
 namespace Narradia
 {
+   class Model;
+
    class ModelBank : public Singleton<ModelBank>
    {
      public:

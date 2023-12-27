@@ -1,7 +1,5 @@
 #pragma once
 
-#include "render-shaders/m/2d_solid_colors_fragment.inc.cpp"
-#include "render-shaders/m/2d_solid_colors_vertex.inc.cpp"
 #include "renderer_base_view.h"
 
 namespace Narradia

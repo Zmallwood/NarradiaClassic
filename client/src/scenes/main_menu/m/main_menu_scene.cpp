@@ -1,8 +1,11 @@
+#if 1
 #include "main_menu_scene.h"
 #include "gui-core/m/gui_button.h"
 #include "core/c/scene_mngr_controller.h"
 #include "core/m/engine.h"
 #include "model_display_module.h"
+#include "gui-core/m/scene_gui.h"
+#endif
 
 namespace Narradia
 {

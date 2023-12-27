@@ -1,10 +1,11 @@
 #pragma once
 
-#include "gui-core/m/gui_container.h"
 #include "gui_component_view.h"
 
 namespace Narradia
 {
+   class GuiContainer;
+
    class GuiContainerView : public GuiComponentView
    {
      protected:

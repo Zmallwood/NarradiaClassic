@@ -1,4 +1,7 @@
+#if 1
 #include "new_image.h"
+#include "render/v/renderer_2d_images_view.h"
+#endif
 
 namespace Narradia
 {

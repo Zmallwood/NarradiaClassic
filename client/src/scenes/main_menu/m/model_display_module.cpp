@@ -1,5 +1,7 @@
+#if 1
 #include "model_display_module.h"
 #include "render/v/camera_gl.h"
+#endif
 
 namespace Narradia
 {

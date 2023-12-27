@@ -1,5 +1,8 @@
 #include "map_loader.h"
 #include "world-struct/m/map_area.h"
+#include "world-struct/m/tile.h"
+#include "world-struct/m/object.h"
+#include "world-actors/m/mob.h"
 
 namespace Narradia
 {
