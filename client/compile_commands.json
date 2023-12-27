@@ -14,12 +14,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/scenes/main_menu/model_display_module_v.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/main_menu/model_display_module_v.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/core/fps_capper.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/core/fps_capper.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/main_menu/model_display_module_v.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/scenes/main_menu/model_display_module_v.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/core/fps_capper.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/core/fps_capper.cpp.o"
   },
   {
     "arguments": [
@@ -36,12 +36,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/scenes/map_overview_gen/map_overview_gen_scene_c.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/map_overview_gen/map_overview_gen_scene_c.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/gui-core.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/gui-core.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/map_overview_gen/map_overview_gen_scene_c.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/scenes/map_overview_gen/map_overview_gen_scene_c.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/gui-core.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/gui-core.cpp.o"
   },
   {
     "arguments": [
@@ -58,12 +58,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/scenes/map_overview_gen/map_overview_gen_scene.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/map_overview_gen/map_overview_gen_scene.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/gui-core_v.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/gui-core_v.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/map_overview_gen/map_overview_gen_scene.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/scenes/map_overview_gen/map_overview_gen_scene.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/gui-core_v.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/gui-core_v.cpp.o"
   },
   {
     "arguments": [
@@ -80,12 +80,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/scenes/main_menu/main_menu_scene_v.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/main_menu/main_menu_scene_v.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/assets.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/assets.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/main_menu/main_menu_scene_v.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/scenes/main_menu/main_menu_scene_v.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/assets.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/assets.cpp.o"
   },
   {
     "arguments": [
@@ -102,55 +102,11 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/scenes/map_overview_gen/map_overview_gen_scene_v.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/map_overview_gen/map_overview_gen_scene_v.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/main.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/main.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/scenes/map_overview_gen/map_overview_gen_scene_v.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/scenes/map_overview_gen/map_overview_gen_scene_v.cpp.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
-      "-Wfatal-errors",
-      "-std=c++20",
-      "-O2",
-      "-O3",
-      "-DNDEBUG",
-      "-std=gnu++20",
-      "-Winvalid-pch",
-      "-include",
-      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
-      "-c",
-      "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/world_map_loader.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/world_map_loader.cpp"
-    ],
-    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/world_map_loader.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/world_map_loader.cpp.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
-      "-Wfatal-errors",
-      "-std=c++20",
-      "-O2",
-      "-O3",
-      "-DNDEBUG",
-      "-std=gnu++20",
-      "-Winvalid-pch",
-      "-include",
-      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
-      "-c",
-      "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/world-struct.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/world-struct.cpp"
-    ],
-    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/world-struct.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/world-struct.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/main.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/main.cpp.o"
   }
 ]

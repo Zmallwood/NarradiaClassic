@@ -82,6 +82,7 @@ namespace Narradia
       SizeF size_;
       std::shared_ptr<std::vector<std::shared_ptr<GuiComponent>>> gui_components_;
    };
+
    class GuiMovableContainer : public GuiContainer
    {
      public:
@@ -101,6 +102,7 @@ namespace Narradia
       PointF mouse_pos_start_moving_;
       PointF self_pos_start_moving_;
    };
+
    class GuiWindowCloseButton;
 
    class GuiWindow : public GuiMovableContainer
@@ -148,6 +150,7 @@ namespace Narradia
       std::shared_ptr<GuiWindowCloseButton> gui_window_close_button_;
       std::string_view background_image_name_;
    };
+
    class GuiWindowCloseButton
    {
      public:

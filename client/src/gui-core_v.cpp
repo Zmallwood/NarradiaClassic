@@ -8,6 +8,8 @@
 
 namespace Narradia
 {
+   // GuiButtonV
+#if 1
    GuiButtonV::GuiButtonV()
    {
       rid_image = NewImage();
@@ -35,6 +37,10 @@ namespace Narradia
       DrawImage(used_image_name, rid_image, used_bounds);
       DrawString(rid_label_text_, model->text(), used_bounds.GetCenter(), Colors::wheat, true);
    }
+#endif
+
+   // GuiContainerV
+#if 1
    void GuiContainerV::Render()
    {
       for (auto &comp_view : gui_component_views_)
@@ -46,10 +52,18 @@ namespace Narradia
       comp_view->set_gui_component(comp_model);
       gui_component_views_.push_back(comp_view);
    }
+#endif
+
+   // GuiMovableContainerV
+#if 1
    void GuiMovableContainerV::Render()
    {
       GuiContainerV::Render();
    }
+#endif
+
+   // GuiWindowV
+#if 1
    GuiWindowV::GuiWindowV()
        : gui_window_close_button_view_(std::make_shared<GuiWindowCloseButtonV>())
    {
@@ -70,6 +84,10 @@ namespace Narradia
       RenderDerived();
       GuiMovableContainerV::Render();
    }
+#endif
+
+   // GuiWindowCloseButtonV
+#if 1
    GuiWindowCloseButtonV::GuiWindowCloseButtonV()
    {
       rid_close_btn_img_ = NewImage();
@@ -81,6 +99,10 @@ namespace Narradia
       else
          DrawImage("GuiWindowCloseButton", rid_close_btn_img_, model_->Bounds());
    }
+#endif
+
+   // SceneGuiV
+#if 1
    void SceneGuiV::Render()
    {
       for (auto gui_component_view : gui_component_views_)
@@ -92,4 +114,5 @@ namespace Narradia
       comp_view->set_gui_component(comp_model);
       gui_component_views_.push_back(comp_view);
    }
+#endif
 }

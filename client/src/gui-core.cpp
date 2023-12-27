@@ -8,6 +8,8 @@
 
 namespace Narradia
 {
+   // GuiButton
+#if 1
    GuiButton::GuiButton(
        const std::string_view &text, RectF bounds, std::function<void()> action,
        std::string_view img_name, std::string_view hovered_img_name)
@@ -35,6 +37,10 @@ namespace Narradia
          MouseInput::get()->left_btn()->AddFiredAction([&] { action_(); }, 2);
       }
    }
+#endif
+
+   // GuiContainer
+#if 1
    void GuiContainer::UpdateGameLogic()
    {
       for (auto &comp : *gui_components_)
@@ -48,6 +54,10 @@ namespace Narradia
    {
       return {position_.x, position_.y, size_.w, size_.h};
    }
+#endif
+
+   // GuiMovableContainer
+#if 1
    void GuiMovableContainer::UpdateGameLogic()
    {
       auto mouse_pos = MousePosition();
@@ -82,6 +92,10 @@ namespace Narradia
       }
       GuiContainer::UpdateGameLogic();
    }
+#endif
+
+   // GuiWindow
+#if 1
    GuiWindow::GuiWindow(
        std::string_view title, RectF bounds, bool destroy_on_close,
        std::string_view background_image_name)
@@ -114,6 +128,10 @@ namespace Narradia
    {
       return {position().x, position().y, size().w, kTitleBarHeight};
    }
+#endif
+
+   // GuiWindowCloseButton
+#if 1
    void GuiWindowCloseButton::UpdateGameLogic()
    {
       hovered_ = false;
@@ -148,6 +166,10 @@ namespace Narradia
           parent_window_->Bounds().x + parent_window_->Bounds().w - width - 0.005f,
           parent_window_->Bounds().y + 0.03f / 2 - height / 2, width, height};
    }
+#endif
+
+   // SceneGui
+#if 1
    void SceneGui::UpdateGameLogic()
    {
       for (auto comp : *gui_components_)
@@ -170,4 +192,5 @@ namespace Narradia
          i++;
       }
    }
+#endif
 }

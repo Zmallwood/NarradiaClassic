@@ -20,6 +20,7 @@ namespace Narradia
      protected:
       std::shared_ptr<GuiComponent> gui_component_;
    };
+
    class GuiButtonV : public GuiComponentV
    {
      public:
@@ -30,6 +31,7 @@ namespace Narradia
       RenderID rid_image;
       RenderID rid_label_text_;
    };
+
    class GuiContainerV : public GuiComponentV
    {
      protected:
@@ -44,11 +46,13 @@ namespace Narradia
       std::shared_ptr<GuiContainer> gui_container_;
       std::vector<std::shared_ptr<GuiComponentV>> gui_component_views_;
    };
+
    class GuiMovableContainerV : public GuiContainerV
    {
      protected:
       void Render() override;
    };
+
    class GuiWindowCloseButtonV;
 
    class GuiWindowV : public GuiMovableContainerV
@@ -71,6 +75,7 @@ namespace Narradia
       RenderID rid_title_text_;
       std::shared_ptr<GuiWindowCloseButtonV> gui_window_close_button_view_;
    };
+
    class GuiWindowCloseButtonV
    {
      public:
@@ -85,6 +90,7 @@ namespace Narradia
       std::shared_ptr<GuiWindowCloseButton> model_;
       RenderID rid_close_btn_img_;
    };
+
    class SceneGuiV
    {
      public:

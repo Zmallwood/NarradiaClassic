@@ -5,7 +5,7 @@ namespace Narradia
    class FPSCapper : public S<FPSCapper>
    {
      public:
-      auto RunningBelow60FPS() -> bool;
+      auto Below60FPS() -> bool;
 
      private:
       int prev_ticks_ = 0;

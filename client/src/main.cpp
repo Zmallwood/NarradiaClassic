@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
    while (Engine::get()->is_running())
    {
-      if (FPSCapper::get()->RunningBelow60FPS())
+      if (FPSCapper::get()->Below60FPS())
       {
          EngineC::get()->HandleInput();
          EngineC::get()->UpdateGameFlow();
