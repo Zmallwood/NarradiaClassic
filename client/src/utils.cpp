@@ -1,7 +1,7 @@
 #if 1
 #include "utils.h"
 #include "assets.h"
-#include "core/graphics.h"
+#include "core.h"
 #endif
 
 namespace Narradia

@@ -1,8 +1,7 @@
 #if 1
 #include "intro_scene_c.h"
-#include "core/kb_input.h"
-#include "core/mouse_input.h"
-#include "core/scene_mngr_c.h"
+#include "core.h"
+#include "core_c.h"
 #endif
 
 namespace Narradia

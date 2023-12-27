@@ -1,6 +1,6 @@
 #if 1
 #include "keyboard_movement_module.h"
-#include "core/kb_input.h"
+#include "core.h"
 #include "mob_targeting_module.h"
 #include "actors.h"
 #endif

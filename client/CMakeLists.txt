@@ -61,7 +61,7 @@ set(PCH_FILES
 
 "src/utils.h"
 "src/singleton.h"
-"src/core/sdl_deleter.h"
+#"src/core/sdl_deleter.h"
 #"src/comm/math_sys.h"
 )
 

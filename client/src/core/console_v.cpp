@@ -5,8 +5,8 @@
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
 #include "core/console.h"
-#include "core/scene_mngr.h"
 #include "main_scene-gui/experience_bar.h"
+#include "core.h"
 #endif
 
 namespace Narradia

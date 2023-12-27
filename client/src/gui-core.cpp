@@ -1,8 +1,6 @@
 #if 1
 #include "gui-core.h"
-#include "core/cursor.h"
-#include "core/mouse_input.h"
-#include "core/scene_mngr.h"
+#include "core.h"
 #include "scenes/main/main_scene.h"
 #endif
 

@@ -1,6 +1,6 @@
 #if 1
 #include "mouse_movement_module.h"
-#include "core/mouse_input.h"
+#include "core.h"
 #include "mob_targeting_module.h"
 #include "tile_hovering_module.h"
 #include "actors.h"

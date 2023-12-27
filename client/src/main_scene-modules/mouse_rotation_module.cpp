@@ -1,7 +1,6 @@
 #if 1
 #include "mouse_rotation_module.h"
-#include "core/mouse_input.h"
-#include "core/cursor.h"
+#include "core.h"
 #include "main_scene-modules-world_view/camera.h"
 #include "actors.h"
 #endif

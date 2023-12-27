@@ -1,4 +1,5 @@
 #include "font.h"
+#include "core.h"
 
 namespace Narradia
 {

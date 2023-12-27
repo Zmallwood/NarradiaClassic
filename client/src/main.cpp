@@ -1,8 +1,7 @@
 #if 1
-#include "core/engine_c.h"
-#include "core/engine.h"
-#include "core/fps_capper.h"
-#include "core/engine_v.h"
+#include "core.h"
+#include "core_c.h"
+#include "core_v.h"
 #endif
 
 int main(int argc, char *argv[])

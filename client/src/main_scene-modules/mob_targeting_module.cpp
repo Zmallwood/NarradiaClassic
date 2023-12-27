@@ -1,7 +1,7 @@
 #if 1
 #include "mob_targeting_module.h"
 #include "conf.h"
-#include "core/mouse_input.h"
+#include "core.h"
 #include "tile_hovering_module.h"
 #include "actors.h"
 #include "world-struct.h"

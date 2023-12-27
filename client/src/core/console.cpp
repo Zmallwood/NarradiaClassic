@@ -1,7 +1,6 @@
 #if 1
 #include "console.h"
-#include "core/kb_input.h"
-#include "core/scene_mngr.h"
+#include "core.h"
 #include "main_scene-gui/experience_bar.h"
 #endif
 

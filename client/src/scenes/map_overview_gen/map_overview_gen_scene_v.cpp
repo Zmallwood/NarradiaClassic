@@ -3,7 +3,7 @@
 #include "assets.h"
 #include "render-models/renderer_models_v.h"
 #include "render/renderer_tiles_v.h"
-#include "core/graphics_v.h"
+#include "core_v.h"
 #include "main_scene-modules-world_view/camera.h"
 #include "main_scene-modules-world_view/world_view_module_v.h"
 #include "actors.h"

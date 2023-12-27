@@ -1,7 +1,7 @@
 #if 1
 #include "main_menu_scene.h"
-#include "core/scene_mngr_c.h"
-#include "core/engine.h"
+#include "core_c.h"
+#include "core.h"
 #include "model_display_module.h"
 #include "gui-core.h"
 #endif

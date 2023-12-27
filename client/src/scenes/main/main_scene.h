@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/iscene.h"
+#include "core.h"
 
 namespace Narradia
 {
