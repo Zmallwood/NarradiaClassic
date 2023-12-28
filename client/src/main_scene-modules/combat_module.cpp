@@ -1,7 +1,7 @@
 #if 1
 #include "combat_module.h"
-#include "core/console.h"
 #include "mob_targeting_module.h"
+#include "core.h"
 #include "actors.h"
 #include "world-struct.h"
 #endif

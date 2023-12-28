@@ -1,6 +1,7 @@
 #if 1
 #include "core_v.h"
-#include "core/console_v.h"
+#include "render-text/cmd_v/draw_string.h"
+#include "render-text/cmd_v/new_string.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
 #include "scenes/intro/intro_scene_v.h"
@@ -119,6 +120,49 @@ namespace Narradia
       }
       glEnable(GL_BLEND);
       glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+   }
+#endif
+
+   // ConsoleV
+#if 1
+   ConsoleV::ConsoleV()
+   {
+      rid_image_ = NewImage();
+      rid_split_line_ = NewImage();
+      rid_cmd_line_input_arrow_ = NewImage();
+      rid_input_text_ = NewString();
+      for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++)
+         rids_text_lines_.push_back(NewString());
+   }
+   void ConsoleV::Render() const
+   {
+      auto model = Console::get();
+      if (!model->enabled())
+         return;
+
+      DrawImage("TextOutBoxBack", rid_image_, Console::get()->Bounds());
+
+      for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++)
+      {
+         auto text_line_index = ConsoleCalc::get()->TextLineIndex(i);
+         if (text_line_index >= 0)
+         {
+            PointF position = ConsoleCalc::get()->TextLinePosition(i);
+            DrawString(
+                rids_text_lines_.at(i), model->text_lines().at(text_line_index).text, position,
+                model->text_lines().at(text_line_index).color);
+         }
+      }
+
+      DrawImage("Wheat", rid_split_line_, ConsoleCalc::get()->HorizontalSplitterRect());
+      if (!model->input_active())
+         return;
+
+      DrawImage(
+          "CommandLineInputArrow", rid_cmd_line_input_arrow_, ConsoleCalc::get()->InputArrowRect());
+
+      DrawString(
+          rid_input_text_, model->InputTextWithCursor(), ConsoleCalc::get()->InputTextPosition());
    }
 #endif
 }

@@ -5,6 +5,7 @@
 #include "scenes/main/main_scene.h"
 #include "scenes/main_menu/main_menu_scene.h"
 #include "scenes/map_overview_gen/map_overview_gen_scene.h"
+#include "main_scene-gui/experience_bar.h"
 #endif
 
 namespace Narradia
@@ -311,6 +312,84 @@ namespace Narradia
    void SDLDeleter::operator()(TTF_Font *font)
    {
       TTF_CloseFont(font);
+   }
+#endif
+
+   // Console
+#if 1
+   auto Console::UpdateGameLogic() -> void
+   {
+      if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_RETURN))
+      {
+         input_active_ = !input_active_;
+      }
+      if (input_active_)
+      {
+         auto new_text_input = KbInput::get()->PickTextInput();
+         input_text_.insert(cursor_position_, new_text_input);
+         cursor_position_ += new_text_input.length();
+      }
+   }
+   auto Console::Print(std::string_view text, Color text_color) -> void
+   {
+      if (!enabled_)
+         return;
+      auto printed_text = std::string(CurrTime().data()) + "." +
+                          std::to_string(SDL_GetTicks() % 1000) + ") " + text.data();
+      text_lines_.push_back({printed_text, text_color});
+   }
+   auto Console::InputTextWithCursor() -> std::string
+   {
+      auto res = input_text_;
+      if (SDL_GetTicks() % 600 < 300)
+         res.insert(cursor_position_, "|");
+      else
+         res.insert(cursor_position_, " ");
+      return res;
+   }
+   auto Console::Bounds() -> RectF
+   {
+      return SceneMngr::get()->curr_scene() == SceneNames::Main
+                 ? kDefaultBounds.Translate(0.0f, -ExperienceBar::kBarHeight)
+                 : kDefaultBounds;
+   }
+#endif
+
+   // ConsoleCalc
+#if 1
+   auto ConsoleCalc::MaxNumLines() -> int
+   {
+      return static_cast<int>(Console::get()->Bounds().h / Console::kTextLineHeight) - 2;
+   }
+   auto ConsoleCalc::TextLineIndex(int visible_row_index) -> int
+   {
+      return static_cast<int>(Console::get()->text_lines().size()) - MaxNumLines() +
+             visible_row_index;
+   }
+   auto ConsoleCalc::InputTextPosition() -> PointF
+   {
+      return InputArrowRect().GetPosition().Translate(
+          Console::kTextLineHeight, Console::kTextLineHeight / 2);
+   }
+   auto ConsoleCalc::TextLinePosition(int visible_row_index) -> PointF
+   {
+      return {
+          Console::get()->Bounds().x + 0.01f,
+          Console::get()->Bounds().y + (visible_row_index + 1) * Console::kTextLineHeight};
+   }
+   auto ConsoleCalc::HorizontalSplitterRect() -> RectF
+   {
+      return {
+          0.0f,
+          Console::get()->Bounds().y + Console::get()->Bounds().h - 1.3f * Console::kTextLineHeight,
+          Console::get()->Bounds().w, Console::kSplitLineHeight};
+   }
+   auto ConsoleCalc::InputArrowRect() -> RectF
+   {
+      return {
+          0.0f,
+          Console::get()->Bounds().y + Console::get()->Bounds().h - 1.3f * Console::kTextLineHeight,
+          Console::kTextLineHeight, Console::kTextLineHeight};
    }
 #endif
 }

@@ -2,9 +2,9 @@
 #include "actors.h"
 #include "math.h"
 #include "conf.h"
-#include "core/console.h"
 #include "main_scene-modules-world_view/camera.h"
 #include "world-struct.h"
+#include "core.h"
 #endif
 
 namespace Narradia

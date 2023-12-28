@@ -1,6 +1,5 @@
 #if 1
 #include "main_scene_c.h"
-#include "core/console.h"
 #include "main_scene-modules/player_spawn_positioning_module.h"
 #endif
 
