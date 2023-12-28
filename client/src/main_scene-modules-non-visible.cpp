@@ -1,9 +1,12 @@
 #if 1
-#include "combat_module.h"
-#include "mob_targeting_module.h"
-#include "core.h"
+#include "main_scene-modules-non-visible.h"
 #include "actors.h"
 #include "world-struct.h"
+#include "core.h"
+#include "main_scene-gui_windows.h"
+#include "conf.h"
+#include "math.h"
+#include "main_scene-modules-visible.h"
 #endif
 
 namespace Narradia
@@ -60,5 +63,51 @@ namespace Narradia
          }
          ++it;
       }
+   }
+   void KbBindingsModule::UpdateGameLogic()
+   {
+      if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_m))
+      {
+         GuiWindowWorldMap::get()->ToggleVisibility();
+      }
+   }
+   void MobDeathHandlingModule::UpdateGameLogic()
+   {
+      auto map_area = World::get()->CurrMapArea();
+      auto &mobs = *map_area->mobs_mirror();
+      for (auto it = mobs.begin(); it != mobs.end();)
+      {
+         auto mob = it->first;
+         auto mob_coord = it->second;
+         if (mob->IsDead())
+         {
+            map_area->GetTile(mob_coord.x, mob_coord.y)->set_mob(nullptr);
+            MobTargetingModule::get()->ClearTarget();
+            mobs.erase(it++);
+            map_area->GetTile(mob_coord.x, mob_coord.y)
+                ->set_tile_effect({"ObjectPoolOfBlood", static_cast<int>(SDL_GetTicks())});
+            continue;
+         }
+         ++it;
+      }
+   }
+   void PlayerSpawnPositioningModule::SpawnAtGoodLocation()
+   {
+      Player::get()->set_world_location({2, 2});
+      auto map_area = World::get()->CurrMapArea();
+      std::shared_ptr<Tile> tile;
+      int x;
+      int y;
+      auto x_center = map_area->GetWidth() / 2;
+      auto y_center = map_area->GetHeight() / 2;
+      auto r_min = std::min(map_area->GetWidth(), map_area->GetHeight()) / 2;
+      do
+      {
+         auto angle_deg = static_cast<float>(rand() % 360);
+         x = x_center + static_cast<int>((r_min - 1) * CosDeg(angle_deg));
+         y = y_center + static_cast<int>((r_min - 1) * SinDeg(angle_deg));
+         tile = map_area->GetTile(x, y);
+      } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
+      Player::get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
    }
 }

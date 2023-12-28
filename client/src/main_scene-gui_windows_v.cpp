@@ -12,6 +12,8 @@
 
 namespace Narradia
 {
+    // GuiWindowWorldMapV
+#if 1
    GuiWindowWorldMapV::GuiWindowWorldMapV()
    {
       gui_window_close_button_view()->set_model(
@@ -79,4 +81,5 @@ namespace Narradia
          }
       }
    }
+#endif
 }

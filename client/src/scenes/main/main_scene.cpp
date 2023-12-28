@@ -1,20 +1,10 @@
 #if 1
 #include "main_scene.h"
-#include "main_scene-modules/kb_bindings_module.h"
-#include "main_scene-modules/mob_movement_module.h"
 #include "main_scene-gui_components.h"
-#include "main_scene-modules-world_view/world_view_module.h"
-#include "main_scene-modules/combat_chase_movement_module.h"
-#include "main_scene-modules/combat_module.h"
-#include "main_scene-modules/fps_counter_module.h"
-#include "main_scene-modules/keyboard_movement_module.h"
-#include "main_scene-modules/mob_death_handling_module.h"
-#include "main_scene-modules/mob_targeting_module.h"
-#include "main_scene-modules/mouse_movement_module.h"
-#include "main_scene-modules/mouse_rotation_module.h"
-#include "main_scene-modules/skill_performing_module.h"
-#include "main_scene-modules/tile_hovering_module.h"
 #include "main_scene-gui_windows.h"
+#include "main_scene-modules-non-visible.h"
+#include "main_scene-modules-visible.h"
+#include "main_scene-modules-world_view/world_view_module.h"
 #endif
 
 namespace Narradia
