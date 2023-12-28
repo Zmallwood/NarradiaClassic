@@ -22,4 +22,16 @@ namespace Narradia
       RenderID rid_level_label_;
       RenderID rid_level_;
    };
+
+   class ExperienceBarV : public GuiComponentV
+   {
+     public:
+      ExperienceBarV();
+      void Render() override;
+
+     private:
+      RenderID rid_unfilled_area_;
+      RenderID rid_filled_area_;
+      RenderID rid_text_;
+   };
 }

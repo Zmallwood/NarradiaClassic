@@ -2,9 +2,7 @@
 #include "main_scene.h"
 #include "main_scene-modules/kb_bindings_module.h"
 #include "main_scene-modules/mob_movement_module.h"
-#include "main_scene-gui/experience_bar.h"
-#include "main_scene-gui/gui_window_world_map.h"
-#include "main_scene-gui/status_panel.h"
+#include "main_scene-gui_components.h"
 #include "main_scene-modules-world_view/world_view_module.h"
 #include "main_scene-modules/combat_chase_movement_module.h"
 #include "main_scene-modules/combat_module.h"
@@ -16,6 +14,7 @@
 #include "main_scene-modules/mouse_rotation_module.h"
 #include "main_scene-modules/skill_performing_module.h"
 #include "main_scene-modules/tile_hovering_module.h"
+#include "main_scene-gui_windows.h"
 #endif
 
 namespace Narradia

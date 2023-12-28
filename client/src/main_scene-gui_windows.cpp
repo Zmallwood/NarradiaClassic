@@ -1,4 +1,4 @@
-#include "gui_window_world_map.h"
+#include "main_scene-gui_windows.h"
 
 namespace Narradia
 {

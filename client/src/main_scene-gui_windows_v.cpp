@@ -1,13 +1,13 @@
 #if 1
-#include "gui_window_world_map_v.h"
+#include "main_scene-gui_windows_v.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/draw_rect.h"
 #include "render/cmd_v/fill_rect.h"
-#include "main_scene-gui/gui_window_world_map.h"
 #include "render/cmd_v/new_image.h"
 #include "render/cmd_v/new_rect.h"
 #include "actors.h"
 #include "world-struct.h"
+#include "main_scene-gui_windows.h"
 #endif
 
 namespace Narradia

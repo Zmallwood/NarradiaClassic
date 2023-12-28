@@ -1,7 +1,7 @@
 #if 1
 #include "kb_bindings_module.h"
 #include "core.h"
-#include "main_scene-gui/gui_window_world_map.h"
+#include "main_scene-gui_windows.h"
 #endif
 
 namespace Narradia
