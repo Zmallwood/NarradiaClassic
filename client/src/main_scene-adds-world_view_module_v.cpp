@@ -10,7 +10,7 @@
 #include "render/cmd_v/stop_tile_batch_drawing.h"
 #include "render/cmd_v/draw_tile.h"
 #include "render-models/cmd_v/draw_model.h"
-#include "main_scene-adds-visible.h"
+#include "main_scene-adds-visual.h"
 #include "actors.h"
 #include "world-struct.h"
 #endif

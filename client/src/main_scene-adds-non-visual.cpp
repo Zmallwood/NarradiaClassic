@@ -1,12 +1,12 @@
 #if 1
-#include "main_scene-adds-non-visible.h"
+#include "main_scene-adds-non-visual.h"
 #include "actors.h"
 #include "world-struct.h"
 #include "core.h"
 #include "main_scene-gui_windows.h"
 #include "conf.h"
 #include "math.h"
-#include "main_scene-adds-visible.h"
+#include "main_scene-adds-visual.h"
 #endif
 
 namespace Narradia

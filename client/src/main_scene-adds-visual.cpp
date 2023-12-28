@@ -1,5 +1,5 @@
 #if 1
-#include "main_scene-adds-visible.h"
+#include "main_scene-adds-visual.h"
 #include "conf.h"
 #include "core.h"
 #include "actors.h"

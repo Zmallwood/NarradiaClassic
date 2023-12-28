@@ -1,8 +1,8 @@
 #if 1
-#include "main_scene-adds-visible_v.h"
+#include "main_scene-adds-visual_v.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
-#include "main_scene-adds-visible.h"
+#include "main_scene-adds-visual.h"
 #endif
 
 namespace Narradia
