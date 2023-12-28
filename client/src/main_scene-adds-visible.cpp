@@ -1,11 +1,11 @@
 #if 1
-#include "main_scene-modules-visible.h"
+#include "main_scene-adds-visible.h"
 #include "conf.h"
 #include "core.h"
 #include "actors.h"
 #include "world-struct.h"
 #include "render/camera_gl.h"
-#include "main_scene-modules-world_view_module.h"
+#include "main_scene-adds-world_view_module.h"
 #include "actors.h"
 #endif
 

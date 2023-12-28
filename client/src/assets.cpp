@@ -1,6 +1,6 @@
 #if 1
 #include "assets.h"
-#include "model_creation/model_constr.h"
+#include "model_creation.h"
 #endif
 
 namespace Narradia
@@ -80,7 +80,7 @@ namespace Narradia
    {
       Assimp::Importer importer;
       const aiScene *raw_model = importer.ReadFile(path.data(), 0);
-      return ModelConstr::get()->CreateModel(raw_model);
+      return ModelCreator::get()->CreateModel(raw_model);
    }
    auto ModelBank::LoadModels()
    {

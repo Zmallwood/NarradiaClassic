@@ -5,8 +5,8 @@
 #include "render/renderer_tiles_v.h"
 #include "core_v.h"
 #include "actors.h"
-#include "main_scene-modules-world_view_module.h"
-#include "main_scene-modules-world_view_module_v.h"
+#include "main_scene-adds-world_view_module.h"
+#include "main_scene-adds-world_view_module_v.h"
 #include "world-struct.h"
 #endif
 

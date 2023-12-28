@@ -1,5 +1,5 @@
 #if 1
-#include "main_scene-modules-world_view_module_v.h"
+#include "main_scene-adds-world_view_module_v.h"
 #include "render/cmd_v/new_tile.h"
 #include "conf.h"
 #include "render-models/cmd_v/start_models_batch_drawing.h"
@@ -10,7 +10,7 @@
 #include "render/cmd_v/stop_tile_batch_drawing.h"
 #include "render/cmd_v/draw_tile.h"
 #include "render-models/cmd_v/draw_model.h"
-#include "main_scene-modules-visible.h"
+#include "main_scene-adds-visible.h"
 #include "actors.h"
 #include "world-struct.h"
 #endif

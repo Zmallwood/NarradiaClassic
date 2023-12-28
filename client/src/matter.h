@@ -4,7 +4,7 @@ struct SDL_Color;
 
 namespace Narradia
 {
-    // Geometry
+   // Geometry
 #if 1
    class Point
    {

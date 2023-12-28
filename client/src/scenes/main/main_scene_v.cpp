@@ -1,10 +1,10 @@
 #if 1
 #include "main_scene_v.h"
 #include "main_scene-gui_windows_v.h"
-#include "main_scene-modules-world_view_module_v.h"
+#include "main_scene-adds-world_view_module_v.h"
 #include "main_scene-gui_components_v.h"
 #include "render-text/cmd_v/draw_string.h"
-#include "main_scene-modules-visible_v.h"
+#include "main_scene-adds-visible_v.h"
 #include "render-text/cmd_v/new_string.h"
 #include "scenes/main/main_scene.h"
 #include "actors.h"

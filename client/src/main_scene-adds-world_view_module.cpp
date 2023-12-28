@@ -1,5 +1,5 @@
 #if 1
-#include "main_scene-modules-world_view_module.h"
+#include "main_scene-adds-world_view_module.h"
 #include "assets.h"
 #include "conf.h"
 #include "render/camera_gl.h"

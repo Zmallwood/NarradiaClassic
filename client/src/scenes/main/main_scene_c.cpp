@@ -1,6 +1,6 @@
 #if 1
 #include "main_scene_c.h"
-#include "main_scene-modules-non-visible.h"
+#include "main_scene-adds-non-visible.h"
 #endif
 
 namespace Narradia
