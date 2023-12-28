@@ -5,7 +5,7 @@
 #include "scenes/main/main_scene.h"
 #include "scenes/main_menu/main_menu_scene.h"
 #include "scenes/map_overview_gen/map_overview_gen_scene.h"
-#include "main_scene-gui_components.h"
+#include "main_scene-gui_comps.h"
 #endif
 
 namespace Narradia

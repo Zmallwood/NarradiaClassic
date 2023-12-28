@@ -1,6 +1,6 @@
 #if 1
 #include "main_scene.h"
-#include "main_scene-gui_components.h"
+#include "main_scene-gui_comps.h"
 #include "main_scene-gui_windows.h"
 #include "main_scene-adds-non-visual.h"
 #include "main_scene-adds-visual.h"

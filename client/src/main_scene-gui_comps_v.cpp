@@ -1,6 +1,6 @@
 #if 1
-#include "main_scene-gui_components_v.h"
-#include "main_scene-gui_components.h"
+#include "main_scene-gui_comps_v.h"
+#include "main_scene-gui_comps.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
 #include "render/cmd_v/draw_image.h"

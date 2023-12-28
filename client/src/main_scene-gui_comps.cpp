@@ -1,4 +1,4 @@
-#include "main_scene-gui_components.h"
+#include "main_scene-gui_comps.h"
 
 namespace Narradia
 {
