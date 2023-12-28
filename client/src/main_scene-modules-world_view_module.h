@@ -2,6 +2,15 @@
 
 namespace Narradia
 {
+   class WorldViewModule : public S<WorldViewModule>
+   {
+     public:
+      WorldViewModule();
+      void UpdateGameLogic();
+   };
+
+   // Show Camera class 
+#if 1
    class Camera : public S<Camera>
    {
      public:
@@ -40,4 +49,5 @@ namespace Narradia
       float horizontal_angle_deg_ = 0.0f;
       float vertical_angle_deg_ = 160.0f;
    };
+#endif
 }

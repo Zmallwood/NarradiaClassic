@@ -4,9 +4,9 @@
 #include "render-models/renderer_models_v.h"
 #include "render/renderer_tiles_v.h"
 #include "core_v.h"
-#include "main_scene-modules-world_view/camera.h"
-#include "main_scene-modules-world_view/world_view_module_v.h"
 #include "actors.h"
+#include "main_scene-modules-world_view_module.h"
+#include "main_scene-modules-world_view_module_v.h"
 #include "world-struct.h"
 #endif
 
@@ -55,8 +55,8 @@ namespace Narradia
             WorldViewModuleV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             Camera::get()->set_camera_distance(orig_camera_distance);
+            //GraphicsV::get()->PresentCanvas();
 
-            GraphicsV::get()->PresentCanvas();
 
             ImageBank::get()->CreateBlankTextImage(
                 "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y));
@@ -72,7 +72,7 @@ namespace Narradia
             auto canv_sz = CanvasSize();
             typedef char byte;
             byte *data = new byte[canv_sz.w * canv_sz.h * 3];
-            glReadBuffer(GL_FRONT);
+            glReadBuffer(GL_BACK);
             glReadPixels(
                 canv_sz.w / 2 - canv_sz.h / 2, 0, canv_sz.h, canv_sz.h, GL_RGB, GL_UNSIGNED_BYTE,
                 data);
@@ -81,7 +81,7 @@ namespace Narradia
             glBindTexture(GL_TEXTURE_2D, 0);
             delete[] data;
             GraphicsV::get()->ClearCanvas();
-            GraphicsV::get()->PresentCanvas();
+            //GraphicsV::get()->PresentCanvas();
             map_area->ClearAllRIDS();
          }
       }

@@ -1,5 +1,6 @@
 #if 1
-#include "camera.h"
+#include "main_scene-modules-world_view_module.h"
+#include "assets.h"
 #include "conf.h"
 #include "render/camera_gl.h"
 #include "actors.h"
@@ -9,6 +10,19 @@
 
 namespace Narradia
 {
+    // WorldViewModele
+#if 1
+   WorldViewModule::WorldViewModule()
+   {
+   }
+   void WorldViewModule::UpdateGameLogic()
+   {
+      Camera::get()->UpdateGameLogic();
+   }
+#endif
+
+   // Camera
+#if 1
    void Camera::UpdateGameLogic()
    {
       {
@@ -91,4 +105,5 @@ namespace Narradia
       }
       return result.Translate(0.0f, camera_height_ * kTileSize, 0.0f);
    }
+#endif
 }

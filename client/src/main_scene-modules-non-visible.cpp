@@ -11,6 +11,8 @@
 
 namespace Narradia
 {
+    // CombatModule
+#if 1
    void CombatModule::UpdateGameLogic()
    {
       auto targeted_mob = MobTargetingModule::get()->targeted_mob();
@@ -64,6 +66,10 @@ namespace Narradia
          ++it;
       }
    }
+#endif
+
+   // KbBindingsModule
+#if 1
    void KbBindingsModule::UpdateGameLogic()
    {
       if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_m))
@@ -71,6 +77,10 @@ namespace Narradia
          GuiWindowWorldMap::get()->ToggleVisibility();
       }
    }
+#endif
+
+   // MobDeathHandlingModule
+#if 1
    void MobDeathHandlingModule::UpdateGameLogic()
    {
       auto map_area = World::get()->CurrMapArea();
@@ -91,6 +101,10 @@ namespace Narradia
          ++it;
       }
    }
+#endif
+
+   // PlayerSpawnPositioningModule
+#if 1
    void PlayerSpawnPositioningModule::SpawnAtGoodLocation()
    {
       Player::get()->set_world_location({2, 2});
@@ -110,4 +124,5 @@ namespace Narradia
       } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
       Player::get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
    }
+#endif
 }

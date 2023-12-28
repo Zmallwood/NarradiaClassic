@@ -2,8 +2,8 @@
 #include "actors.h"
 #include "math.h"
 #include "conf.h"
-#include "main_scene-modules-world_view/camera.h"
 #include "world-struct.h"
+#include "main_scene-modules-world_view_module.h"
 #include "core.h"
 #endif
 

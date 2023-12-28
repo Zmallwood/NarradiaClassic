@@ -1,11 +1,6 @@
 #if 1
-#include "world_view_module_v.h"
+#include "main_scene-modules-world_view_module_v.h"
 #include "render/cmd_v/new_tile.h"
-#include "cmd_v/draw_ground.h"
-#include "cmd_v/draw_mob.h"
-#include "cmd_v/draw_objects.h"
-#include "cmd_v/draw_player.h"
-#include "cmd_v/draw_tile_symbols.h"
 #include "conf.h"
 #include "render-models/cmd_v/start_models_batch_drawing.h"
 #include "render-models/cmd_v/stop_models_batch_drawing.h"
@@ -13,6 +8,9 @@
 #include "render/cmd_v/set_tile_geometry.h"
 #include "render/cmd_v/start_tile_batch_drawing.h"
 #include "render/cmd_v/stop_tile_batch_drawing.h"
+#include "render/cmd_v/draw_tile.h"
+#include "render-models/cmd_v/draw_model.h"
+#include "main_scene-modules-visible.h"
 #include "actors.h"
 #include "world-struct.h"
 #endif
@@ -342,10 +340,103 @@ namespace Narradia
       DrawPlayer();
       StopModelsBatchDrawing();
    }
-   void WorldViewModuleV::UnloadTile(int x, int y)
+   void WorldViewModuleV::DrawGround(std::shared_ptr<Tile> tile, Point coord)
    {
+      auto ground = tile->ground();
+      if (ground == "GroundWater")
+      {
+         auto anim_index = ((SDL_GetTicks() + coord.x * coord.y) % 900) / 300;
+         if (anim_index > 0)
+            ground = "GroundWater_" + std::to_string(anim_index);
+      }
+      if (ground == "GroundGrass")
+      {
+         auto vary_index = (coord.x * coord.y) % 3;
+         ground = "GroundGrass_" + std::to_string(vary_index);
+      }
+      // std::cout << ground << std::endl;
+      DrawTile(ground, tile->rid());
    }
-   void WorldViewModuleV::LoadTile(int x, int y)
+   void WorldViewModuleV::DrawMob(std::shared_ptr<Tile> tile, Point coord)
    {
+      auto map_area = World::get()->CurrMapArea();
+      auto curr_map_location = Player::get()->world_location();
+      auto tile_size = kTileSize;
+      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+      auto pos = Point3F{coord.x * kTileSize, CalcTileAverageElevation(coord), coord.y * kTileSize}
+                     .Translate(0.5f, 0.0f, 0.5f)
+                     .Translate(map_offset_x, 0.0f, map_offset_y);
+      if (tile->mob())
+      {
+         DrawModel(tile->mob()->type(), 0.0f, pos, 0.0f, 0.7f);
+      }
+   }
+   void WorldViewModuleV::DrawObjects(std::shared_ptr<Tile> tile, Point coord)
+   {
+      if (tile->object())
+      {
+         auto map_area = World::get()->CurrMapArea();
+         auto curr_map_location = Player::get()->world_location();
+         auto tile_size = kTileSize;
+         auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+         auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+         auto pos =
+             Point3F{coord.x * kTileSize, CalcTileAverageElevation(coord), coord.y * kTileSize}
+                 .Translate(0.5f, 0.0f, 0.5f)
+                 .Translate(map_offset_x, 0.0f, map_offset_y);
+         auto model_rotation = 360.0f * ((coord.x * coord.y) % 10) / 10.0f;
+         auto model_scaling = 0.6f * ObjectsConf::get()->GetModelScaling(tile->object()->type());
+         DrawModel(
+             tile->object()->type(), SDL_GetTicks() + coord.x * coord.y * 10, pos, model_rotation,
+             model_scaling);
+      }
+   }
+   void WorldViewModuleV::DrawPlayer()
+   {
+      auto map_area = World::get()->CurrMapArea();
+      auto curr_map_location = Player::get()->world_location();
+      auto tile_size = kTileSize;
+      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+      auto player_space_coord = Player::get()->position().Multiply(kTileSize);
+      player_space_coord.x += map_offset_x;
+      player_space_coord.z += map_offset_y;
+      auto player_map_coord = Player::get()->position().GetXZ().ToIntPoint();
+      auto tile_average_elevation = CalcTileAverageElevation(player_map_coord);
+      player_space_coord.y += tile_average_elevation;
+      auto ms_anim_time = 0.0f;
+      if (Player::get()->IsMoving())
+         ms_anim_time = SDL_GetTicks();
+      DrawModel(
+          "Player2", ms_anim_time, player_space_coord, Player::get()->facing_angle_deg() + 180.0f,
+          0.6f);
+   }
+   void WorldViewModuleV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord)
+   {
+      auto player_pos = Player::get()->position().GetXZ().ToIntPoint();
+      if (SDL_GetTicks() <
+              Player::get()->ticks_ulti_skill_start() + Player::get()->ulti_skill_duration() &&
+          Player::get()->ticks_ulti_skill_start() != 0 && coord.x == player_pos.x &&
+          coord.y == player_pos.y)
+      {
+         DrawTile("TilePlayerUltiSkill", tile->rid());
+      }
+      else if (MobTargetingModule::get()->targeted_mob() == tile->mob() && tile->mob() != nullptr)
+      {
+         DrawTile("TileTargetedMob", tile->rid());
+      }
+      else if (SDL_GetTicks() < tile->tile_effect().ticks_started + 800)
+      {
+         DrawTile(tile->tile_effect().type, tile->rid());
+      }
+      else
+      {
+         auto hovered_tile = TileHoveringModule::get()->hovered_tile();
+         if (hovered_tile.x == coord.x && hovered_tile.y == coord.y)
+         {
+            DrawTile("TileHovered", tile->rid());
+         }
+      }
    }
 }

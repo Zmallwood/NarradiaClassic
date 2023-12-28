@@ -4,13 +4,15 @@
 #include "core.h"
 #include "actors.h"
 #include "world-struct.h"
-#include "main_scene-modules-world_view/camera.h"
 #include "render/camera_gl.h"
+#include "main_scene-modules-world_view_module.h"
 #include "actors.h"
 #endif
 
 namespace Narradia
 {
+    // FPSCounterModule
+#if 1
    void FPSCounterModule::UpdateGameLogic()
    {
       frames_count_++;
@@ -21,6 +23,10 @@ namespace Narradia
          ticks_last_update_ = SDL_GetTicks();
       }
    }
+#endif
+
+   // MobTargetingModule
+#if 1
    void MobTargetingModule::UpdateGameLogic()
    {
       MouseInput::get()->right_btn()->AddFiredAction(
@@ -44,6 +50,10 @@ namespace Narradia
    {
       targeted_mob_ = nullptr;
    }
+#endif
+
+   // KeyboardMovementModule
+#if 1
    void KeyboardMovementModule::UpdateGameLogic()
    {
       auto w_is_pressed = KbInput::get()->KeyIsPressed(SDLK_w);
@@ -67,6 +77,10 @@ namespace Narradia
          MobTargetingModule::get()->ClearTarget();
       }
    }
+#endif
+
+   // CombatChaseMovementModule
+#if 1
    void CombatChaseMovementModule::UpdateGameLogic()
    {
       auto time_to_update =
@@ -94,6 +108,10 @@ namespace Narradia
          Player::get()->set_destination({-1, -1});
       }
    }
+#endif
+
+   // MouseMovementModule
+#if 1
    void MouseMovementModule::UpdateGameLogic()
    {
       MouseInput::get()->left_btn()->AddFiredAction(
@@ -126,6 +144,10 @@ namespace Narradia
          Player::get()->set_ticks_last_move(SDL_GetTicks());
       }
    }
+#endif
+
+   //MobMovementModule
+#if 1
    void MobMovementModule::UpdateGameLogic()
    {
       auto map_area = World::get()->CurrMapArea();
@@ -192,6 +214,10 @@ namespace Narradia
          ++it;
       }
    }
+#endif
+
+// MouseRotationModule
+#if 1
    void MouseRotationModule::UpdateGameLogic()
    {
       MouseInput::get()->right_btn()->AddFiredAction(
@@ -217,6 +243,10 @@ namespace Narradia
          Player::get()->set_facing_angle_deg(Camera::get()->horizontal_angle_deg());
       }
    }
+#endif
+
+   // SkillPerformingModule
+#if 1
    void SkillPerformingModule::UpdateGameLogic()
    {
       if (SDL_GetTicks() > ticks_last_skill_tick_ + 400 / skill_ticks_frequency_)
@@ -253,6 +283,10 @@ namespace Narradia
          ticks_last_skill_tick_ = SDL_GetTicks();
       }
    }
+#endif
+
+   // TileHoveringModule
+#if 1
    void TileHoveringModule::UpdateGameLogic()
    {
       auto view_matrix = CameraGL::get()->view_matrix();
@@ -328,4 +362,5 @@ namespace Narradia
          }
       }
    }
+#endif
 }

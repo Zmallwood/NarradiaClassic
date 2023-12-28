@@ -7,6 +7,8 @@
 
 namespace Narradia
 {
+    // FPSCounterModuleV
+#if 1
    FPSCounterModuleV::FPSCounterModuleV()
    {
       rid_text = NewString();
@@ -16,4 +18,5 @@ namespace Narradia
       DrawString(
           rid_text, "Fps: " + std::to_string(FPSCounterModule::get()->fps()), {0.95f, 0.05f});
    }
+#endif
 }

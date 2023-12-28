@@ -4,7 +4,7 @@
 #include "main_scene-gui_windows.h"
 #include "main_scene-modules-non-visible.h"
 #include "main_scene-modules-visible.h"
-#include "main_scene-modules-world_view/world_view_module.h"
+#include "main_scene-modules-world_view_module.h"
 #endif
 
 namespace Narradia

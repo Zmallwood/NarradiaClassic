@@ -2,6 +2,8 @@
 
 namespace Narradia
 {
+   class Tile;
+
    class WorldViewModuleV : public S<WorldViewModuleV>
    {
      public:
@@ -17,8 +19,11 @@ namespace Narradia
       }
 
      private:
-      void UnloadTile(int x, int y);
-      void LoadTile(int x, int y);
+      void DrawGround(std::shared_ptr<Tile> tile, Point coord);
+      void DrawMob(std::shared_ptr<Tile> tile, Point coord);
+      void DrawObjects(std::shared_ptr<Tile> tile, Point coord);
+      void DrawPlayer();
+      void DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord);
 
       std::vector<std::vector<RenderID>> rids_tiles;
       std::vector<std::vector<RenderID>> rids_tile_symbols;
