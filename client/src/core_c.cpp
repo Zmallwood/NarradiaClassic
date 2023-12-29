@@ -1,9 +1,9 @@
 #if 1
 #include "core_c.h"
-#include "scenes/intro/intro_scene_c.h"
-#include "scenes/main/main_scene_c.h"
-#include "scenes/main_menu/main_menu_scene_c.h"
-#include "scenes/map_overview_gen/map_overview_gen_scene_c.h"
+#include "pg_intro/intro_pg_c.h"
+#include "pg_main/main_pg_c.h"
+#include "pg_main_menu/main_menu_pg_c.h"
+#include "pg_map_creation/map_creation_pg_c.h"
 #endif
 
 namespace Narradia
@@ -16,7 +16,7 @@ namespace Narradia
    }
    auto EngineC::UpdateGameFlow() -> void
    {
-      SceneMngrC::get()->UpdateGameFlowCurrScene();
+      PageMngrC::get()->UpdateGameFlowCurrScene();
    }
    void EngineC::PollEvents()
    {
@@ -53,33 +53,33 @@ namespace Narradia
    }
 #endif
 
-   // SceneMngrC
+   // PageMngrC
 #if 1
-   SceneMngrC::SceneMngrC()
+   PageMngrC::PageMngrC()
    {
-      scene_controllers_[SceneNames::Intro] = IntroSceneC::get();
-      scene_controllers_[SceneNames::MainMenu] = MainMenuSceneC::get();
-      scene_controllers_[SceneNames::MapOverviewGen] = MapOverViewGenSceneC::get();
-      scene_controllers_[SceneNames::Main] = MainSceneC::get();
+      scene_controllers_[PageNames::Intro] = IntroPgC::get();
+      scene_controllers_[PageNames::MainMenu] = MainMenuPgC::get();
+      scene_controllers_[PageNames::MapCreation] = MapCreationPgC::get();
+      scene_controllers_[PageNames::Main] = MainPgC::get();
    }
-   auto SceneMngrC::UpdateGameFlowCurrScene() -> void
+   auto PageMngrC::UpdateGameFlowCurrScene() -> void
    {
-      SceneMngr::get()->set_curr_scene_canceled(false);
-      auto curr_scene = SceneMngr::get()->curr_scene();
+      PageMngr::get()->set_curr_scene_canceled(false);
+      auto curr_scene = PageMngr::get()->curr_scene();
       if (scene_controllers_.count(curr_scene) != 0)
          scene_controllers_.at(curr_scene)->UpdateGameFlow();
    }
-   auto SceneMngrC::ChangeScene(SceneNames new_scene) -> void
+   auto PageMngrC::ChangeScene(PageNames new_scene) -> void
    {
-      SceneMngr::get()->set_curr_scene(new_scene);
+      PageMngr::get()->set_curr_scene(new_scene);
       scene_controllers_.at(new_scene)->OnEnter();
-      SceneMngr::get()->set_curr_scene_canceled(true);
+      PageMngr::get()->set_curr_scene_canceled(true);
    }
 #endif
 
-   // ISceneC
+   // IPageC
 #if 1
-   auto ISceneC::UpdateGameFlow() -> void
+   auto IPageC::UpdateGameFlow() -> void
    {
       UpdateGameFlowDerived();
    }

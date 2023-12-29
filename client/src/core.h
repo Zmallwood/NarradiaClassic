@@ -35,28 +35,28 @@ namespace Narradia
       int prev_ticks_ = 0;
    };
 
-   enum class SceneNames
+   enum class PageNames
    {
       None,
       Intro,
       MainMenu,
       Main,
-      MapOverviewGen
+      MapCreation
    };
 
-   class IScene;
+   class IPage;
 
-   class SceneMngr : public S<SceneMngr>
+   class PageMngr : public S<PageMngr>
    {
      public:
-      SceneMngr();
+      PageMngr();
       void UpdateGameLogicCurrScene();
       void FinalizeCurrScene();
       auto curr_scene()
       {
          return curr_scene_;
       }
-      void set_curr_scene(SceneNames value)
+      void set_curr_scene(PageNames value)
       {
          curr_scene_ = value;
       }
@@ -70,17 +70,17 @@ namespace Narradia
       }
 
      private:
-      std::map<SceneNames, std::shared_ptr<IScene>> scenes_;
-      SceneNames curr_scene_ = SceneNames::None;
+      std::map<PageNames, std::shared_ptr<IPage>> scenes_;
+      PageNames curr_scene_ = PageNames::None;
       bool curr_scene_canceled_ = false;
    };
 
    class SceneGui;
 
-   class IScene
+   class IPage
    {
      public:
-      IScene();
+      IPage();
       void UpdateGameLogic();
       virtual void Finalize() = 0;
       auto scene_gui()

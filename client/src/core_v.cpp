@@ -4,10 +4,10 @@
 #include "render-text/cmd_v/new_string.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
-#include "scenes/intro/intro_scene_v.h"
-#include "scenes/main/main_scene_v.h"
-#include "scenes/main_menu/main_menu_scene_v.h"
-#include "scenes/map_overview_gen/map_overview_gen_scene_v.h"
+#include "pg_intro/intro_pg_v.h"
+#include "pg_main/main_pg_v.h"
+#include "pg_main_menu/main_menu_pg_v.h"
+#include "pg_map_creation/map_creation_pg_v.h"
 #endif
 
 namespace Narradia
@@ -17,39 +17,39 @@ namespace Narradia
    void EngineV::Render()
    {
       GraphicsV::get()->ClearCanvas();
-      SceneMngrV::get()->RenderCurrScene();
+      PageMngrV::get()->RenderCurrScene();
       ConsoleV::get()->Render();
       CursorV::get()->RenderCursor();
       GraphicsV::get()->PresentCanvas();
    };
 #endif
 
-      // SceneMngrV
+      // PageMngrV
 #if 1
-   SceneMngrV::SceneMngrV()
+   PageMngrV::PageMngrV()
    {
-      scene_views_[SceneNames::Intro] = IntroSceneV::get();
-      scene_views_[SceneNames::MainMenu] = MainMenuSceneV::get();
-      scene_views_[SceneNames::MapOverviewGen] = MapOverviewGenSceneV::get();
-      scene_views_[SceneNames::Main] = MainSceneV::get();
+      scene_views_[PageNames::Intro] = IntroPgV::get();
+      scene_views_[PageNames::MainMenu] = MainMenuPgV::get();
+      scene_views_[PageNames::MapCreation] = MapCreationPgV::get();
+      scene_views_[PageNames::Main] = MainPgV::get();
    }
-   auto SceneMngrV::RenderCurrScene() -> void
+   auto PageMngrV::RenderCurrScene() -> void
    {
-      if (SceneMngr::get()->curr_scene_canceled())
+      if (PageMngr::get()->curr_scene_canceled())
          return;
-      auto curr_scene = SceneMngr::get()->curr_scene();
+      auto curr_scene = PageMngr::get()->curr_scene();
       if (scene_views_.count(curr_scene) != 0)
          scene_views_.at(curr_scene)->Render();
    }
 #endif
 
-   // ISceneV
+   // IPageV
 #if 1
-   ISceneV::ISceneV()
+   IPageV::IPageV()
        : scene_gui_view_(std::make_shared<SceneGuiV>())
    {
    }
-   void ISceneV::Render()
+   void IPageV::Render()
    {
       RenderDerived();
       scene_gui_view_->Render();

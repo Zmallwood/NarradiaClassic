@@ -23,7 +23,7 @@ namespace Narradia
 #if 1
    float CalcTileAverageElevation(Point coord)
    {
-      auto map_area = World::get()->CurrMapArea();
+      auto map_area = World::get()->CurrWorldArea();
       auto elev00 = map_area->GetTile(coord.x, coord.y)->elevation() * kElevAmount;
       auto elev10 = elev00;
       auto elev11 = elev00;

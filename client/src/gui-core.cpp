@@ -1,7 +1,7 @@
 #if 1
 #include "gui-core.h"
 #include "core.h"
-#include "scenes/main/main_scene.h"
+#include "pg_main/main_pg.h"
 #endif
 
 namespace Narradia
@@ -142,9 +142,9 @@ namespace Narradia
              {
                 if (parent_window_->destroy_on_close())
                 {
-                   if (SceneMngr::get()->curr_scene() == SceneNames::Main)
+                   if (PageMngr::get()->curr_scene() == PageNames::Main)
                    {
-                      auto scene_gui = MainScene::get()->scene_gui();
+                      auto scene_gui = MainPg::get()->scene_gui();
                       scene_gui->RemoveGuiComponent(parent_window_);
                    }
                 }

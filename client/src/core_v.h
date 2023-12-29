@@ -11,22 +11,22 @@ namespace Narradia
       void Render();
    };
 
-   class ISceneV;
+   class IPageV;
 
-   class SceneMngrV : public S<SceneMngrV>
+   class PageMngrV : public S<PageMngrV>
    {
      public:
-      SceneMngrV();
+      PageMngrV();
       void RenderCurrScene();
 
      private:
-      std::map<SceneNames, std::shared_ptr<ISceneV>> scene_views_;
+      std::map<PageNames, std::shared_ptr<IPageV>> scene_views_;
    };
 
-   class ISceneV
+   class IPageV
    {
      public:
-      ISceneV();
+      IPageV();
       void Render();
 
      protected:

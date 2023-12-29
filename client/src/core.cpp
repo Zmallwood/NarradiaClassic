@@ -1,11 +1,11 @@
 #if 1
 #include "core.h"
 #include "gui-core.h"
-#include "scenes/intro/intro_scene.h"
-#include "scenes/main/main_scene.h"
-#include "scenes/main_menu/main_menu_scene.h"
-#include "scenes/map_overview_gen/map_overview_gen_scene.h"
-#include "main_scene-gui_comps.h"
+#include "pg_intro/intro_pg.h"
+#include "pg_main/main_pg.h"
+#include "pg_main_menu/main_menu_pg.h"
+#include "pg_map_creation/map_creation_pg.h"
+#include "main_pg-gui_comps.h"
 #endif
 
 namespace Narradia
@@ -19,12 +19,12 @@ namespace Narradia
    void Engine::UpdateGameLogic()
    {
       Cursor::get()->ResetStyle();
-      SceneMngr::get()->UpdateGameLogicCurrScene();
+      PageMngr::get()->UpdateGameLogicCurrScene();
       MouseInput::get()->ExecMouseActions();
    }
    void Engine::Finalize()
    {
-      SceneMngr::get()->FinalizeCurrScene();
+      PageMngr::get()->FinalizeCurrScene();
    }
 #endif
 
@@ -43,24 +43,24 @@ namespace Narradia
    }
 #endif
 
-// SceneMngr
+// PageMngr
 #if 1
-   SceneMngr::SceneMngr()
+   PageMngr::PageMngr()
    {
-      scenes_[SceneNames::Intro] = IntroScene::get();
-      scenes_[SceneNames::MainMenu] = MainMenuScene::get();
-      scenes_[SceneNames::MapOverviewGen] = MapOverviewGenScene::get();
-      scenes_[SceneNames::Main] = MainScene::get();
-      curr_scene_ = SceneNames::Intro;
+      scenes_[PageNames::Intro] = IntroPg::get();
+      scenes_[PageNames::MainMenu] = MainMenuPg::get();
+      scenes_[PageNames::MapCreation] = MapCreationPg::get();
+      scenes_[PageNames::Main] = MainPg::get();
+      curr_scene_ = PageNames::Intro;
    }
-   void SceneMngr::UpdateGameLogicCurrScene()
+   void PageMngr::UpdateGameLogicCurrScene()
    {
       if (curr_scene_canceled_)
          return;
       if (scenes_.count(curr_scene_) != 0)
          scenes_.at(curr_scene_)->UpdateGameLogic();
    }
-   void SceneMngr::FinalizeCurrScene()
+   void PageMngr::FinalizeCurrScene()
    {
       if (curr_scene_canceled_)
          return;
@@ -69,13 +69,13 @@ namespace Narradia
    }
 #endif
 
-   // IScene
+   // IPage
 #if 1
-   IScene::IScene()
+   IPage::IPage()
        : scene_gui_(std::make_shared<SceneGui>())
    {
    }
-   void IScene::UpdateGameLogic()
+   void IPage::UpdateGameLogic()
    {
       UpdateGameLogicDerived();
       scene_gui_->UpdateGameLogic();
@@ -349,7 +349,7 @@ namespace Narradia
    }
    auto Console::Bounds() -> RectF
    {
-      return SceneMngr::get()->curr_scene() == SceneNames::Main
+      return PageMngr::get()->curr_scene() == PageNames::Main
                  ? kDefaultBounds.Translate(0.0f, -ExperienceBar::kBarHeight)
                  : kDefaultBounds;
    }

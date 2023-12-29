@@ -23,9 +23,9 @@ namespace Narradia
    }
 #endif
 
-   // MapArea
+   // WorldArea
 #if 1
-   MapArea::MapArea(int width, int height)
+   WorldArea::WorldArea(int width, int height)
        : mobs_mirror_(std::make_shared<std::map<std::shared_ptr<Mob>, Point>>())
    {
       for (auto x = 0; x < width; x++)
@@ -37,27 +37,27 @@ namespace Narradia
          }
       }
    }
-   std::shared_ptr<Tile> MapArea::GetTile(int x, int y)
+   std::shared_ptr<Tile> WorldArea::GetTile(int x, int y)
    {
       return tiles_.at(x).at(y);
    }
-   std::shared_ptr<Tile> MapArea::GetTile(Point coord)
+   std::shared_ptr<Tile> WorldArea::GetTile(Point coord)
    {
       return GetTile(coord.x, coord.y);
    }
-   bool MapArea::IsInsideMap(Point coord)
+   bool WorldArea::IsInsideMap(Point coord)
    {
       return coord.x < tiles_.size() && coord.y < tiles_.at(0).size();
    }
-   int MapArea::GetWidth()
+   int WorldArea::GetWidth()
    {
       return tiles_.size();
    }
-   int MapArea::GetHeight()
+   int WorldArea::GetHeight()
    {
       return tiles_.at(0).size();
    }
-   void MapArea::ClearAllRIDS()
+   void WorldArea::ClearAllRIDS()
    {
       for (auto y = 0; y < GetHeight(); y++)
       {
@@ -75,26 +75,26 @@ namespace Narradia
    {
       world_width_ = WorldMapLoader::get()->world_map_width();
       world_height_ = WorldMapLoader::get()->world_map_height();
-      auto map_names = WorldMapLoader::get()->map_area_names();
+      auto map_names = WorldMapLoader::get()->world_area_names();
       for (auto y = 0; y < world_height_; y++)
       {
          for (auto x = 0; x < world_width_; x++)
          {
-            map_areas_[x][y] = nullptr;
-            WorldMapLoader::get()->LoadWorldMapFromFile(map_areas_[x][y], map_names[x][y]);
+            world_areas_[x][y] = nullptr;
+            WorldMapLoader::get()->LoadWorldMapFromFile(world_areas_[x][y], map_names[x][y]);
          }
       }
    }
-   auto World::CurrMapArea() -> std::shared_ptr<MapArea>
+   auto World::CurrWorldArea() -> std::shared_ptr<WorldArea>
    {
       auto world_loc = Player::get()->world_location();
-      return map_areas_[world_loc.x][world_loc.y];
+      return world_areas_[world_loc.x][world_loc.y];
    }
-   auto World::MapAreaAt(Point location) -> std::shared_ptr<MapArea>
+   auto World::WorldAreaAt(Point location) -> std::shared_ptr<WorldArea>
    {
-      if (map_areas_.count(location.x) != 0)
-         if (map_areas_.at(location.x).count(location.y) != 0)
-            return map_areas_[location.x][location.y];
+      if (world_areas_.count(location.x) != 0)
+         if (world_areas_.at(location.x).count(location.y) != 0)
+            return world_areas_[location.x][location.y];
       return nullptr;
    }
 #endif

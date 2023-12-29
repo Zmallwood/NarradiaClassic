@@ -3,7 +3,7 @@
 #include "math.h"
 #include "conf.h"
 #include "world-struct.h"
-#include "main_scene-adds-world_view_add.h"
+#include "main_pg-adds-world_view.h"
 #include "core.h"
 #endif
 
@@ -42,7 +42,7 @@ namespace Narradia
    }
    void Player::MoveAtAngle(float angle_deg_)
    {
-      auto map_area = World::get()->CurrMapArea();
+      auto map_area = World::get()->CurrWorldArea();
       auto used_angle = angle_deg_ - facing_angle_deg_;
       auto dx = CosDeg(used_angle + 90.0f) * step_size_;
       auto dz = SinDeg(used_angle + 90.0f) * step_size_;

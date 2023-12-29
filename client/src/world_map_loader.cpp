@@ -27,13 +27,13 @@ namespace Narradia
             auto x = std::stoi(s.substr(0, s.find(',')));
             auto y = std::stoi(s.substr(s.find(',') + 1, s.find('=') - s.find(',') - 1));
             auto map_name = s.substr(s.find('=') + 1);
-            map_area_names_[x][y] = map_name;
+            world_area_names_[x][y] = map_name;
          }
       }
 
       file.close();
    }
-   void WorldMapLoader::LoadWorldMapFromFile(std::shared_ptr<MapArea> &map_area, std::string map_name)
+   void WorldMapLoader::LoadWorldMapFromFile(std::shared_ptr<WorldArea> &world_area, std::string map_name)
    {
       std::ifstream file;
       file.open(std::string(SDL_GetBasePath()) + map_name);
@@ -44,12 +44,12 @@ namespace Narradia
       file >> s;
       auto height_str = s.substr(s.find(">") + 1, s.find_last_of("<") - s.find(">") - 1);
       auto height = std::stoi(height_str);
-      map_area = std::make_shared<MapArea>(width, height);
+      world_area = std::make_shared<WorldArea>(width, height);
       for (auto y = 0; y < height; y++)
       {
          for (auto x = 0; x < width; x++)
          {
-            auto tile = map_area->GetTile(x, y);
+            auto tile = world_area->GetTile(x, y);
             Point3F normal;
             std::string s;
             file >> s;
@@ -106,7 +106,7 @@ namespace Narradia
                   if (mob_type != "0")
                   {
                      tile->set_mob(std::make_shared<Mob>(mob_type));
-                     map_area->mobs_mirror()->insert({tile->mob(), {x, y}});
+                     world_area->mobs_mirror()->insert({tile->mob(), {x, y}});
                   }
                }
                else if (s.find("<red>") != std::string::npos)

@@ -14,20 +14,20 @@ namespace Narradia
       void PollEvents();
    };
 
-   class ISceneC;
+   class IPageC;
 
-   class SceneMngrC : public S<SceneMngrC>
+   class PageMngrC : public S<PageMngrC>
    {
      public:
-      SceneMngrC();
+      PageMngrC();
       auto UpdateGameFlowCurrScene() -> void;
-      auto ChangeScene(SceneNames new_scene) -> void;
+      auto ChangeScene(PageNames new_scene) -> void;
 
      private:
-      std::map<SceneNames, std::shared_ptr<ISceneC>> scene_controllers_;
+      std::map<PageNames, std::shared_ptr<IPageC>> scene_controllers_;
    };
 
-   class ISceneC
+   class IPageC
    {
      public:
       virtual auto OnEnter() -> void = 0;

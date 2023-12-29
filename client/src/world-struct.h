@@ -121,10 +121,10 @@ namespace Narradia
 
 #endif
 
-   class MapArea
+   class WorldArea
    {
      public:
-      MapArea(int width, int height);
+      WorldArea(int width, int height);
       std::shared_ptr<Tile> GetTile(int x, int y);
       std::shared_ptr<Tile> GetTile(Point coord);
       bool IsInsideMap(Point coord);
@@ -147,8 +147,8 @@ namespace Narradia
    {
      public:
       World();
-      auto CurrMapArea() -> std::shared_ptr<MapArea>;
-      auto MapAreaAt(Point location) -> std::shared_ptr<MapArea>;
+      auto CurrWorldArea() -> std::shared_ptr<WorldArea>;
+      auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea>;
       auto world_width()
       {
          return world_width_;
@@ -157,13 +157,13 @@ namespace Narradia
       {
          return world_height_;
       }
-      auto map_areas()
+      auto world_areas()
       {
-         return map_areas_;
+         return world_areas_;
       }
 
      private:
-      std::map<int, std::map<int, std::shared_ptr<MapArea>>> map_areas_;
+      std::map<int, std::map<int, std::shared_ptr<WorldArea>>> world_areas_;
       int world_width_ = -1;
       int world_height_ = -1;
    };
