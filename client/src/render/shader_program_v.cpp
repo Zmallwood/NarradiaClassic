@@ -1,5 +1,4 @@
 #include "shader_program_v.h"
-#include "cmd_v/compile_shader.h"
 #include "render/shader_program.h"
 
 namespace Narradia
@@ -53,5 +52,14 @@ namespace Narradia
       glDeleteShader(vertex_shader);
       glDeleteShader(fragment_shader);
       return success;
+   }
+   auto ShaderProgramV::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) -> GLuint
+   {
+      *shader = glCreateShader(shader_type);
+      glShaderSource(*shader, 1, &shader_src, NULL);
+      glCompileShader(*shader);
+      GLint shader_compiled = GL_FALSE;
+      glGetShaderiv(*shader, GL_COMPILE_STATUS, &shader_compiled);
+      return shader_compiled;
    }
 }

@@ -1,5 +1,5 @@
 #if 1
-#include "main_scene-adds-world_view_module_v.h"
+#include "main_scene-adds-world_view_add_v.h"
 #include "render/cmd_v/new_tile.h"
 #include "conf.h"
 #include "render-models/cmd_v/start_models_batch_drawing.h"
@@ -17,7 +17,7 @@
 
 namespace Narradia
 {
-   WorldViewModuleV::WorldViewModuleV(bool simplified_ground)
+   WorldViewAddV::WorldViewAddV(bool simplified_ground)
        : simplified_ground_(simplified_ground)
    {
       auto map_area = World::get()->CurrMapArea();
@@ -129,7 +129,7 @@ namespace Narradia
          }
       }
    }
-   void WorldViewModuleV::Render()
+   void WorldViewAddV::Render()
    {
       auto map_area = World::get()->CurrMapArea();
       auto world_loc = Player::get()->world_location();
@@ -340,7 +340,7 @@ namespace Narradia
       DrawPlayer();
       StopModelsBatchDrawing();
    }
-   void WorldViewModuleV::DrawGround(std::shared_ptr<Tile> tile, Point coord)
+   void WorldViewAddV::DrawGround(std::shared_ptr<Tile> tile, Point coord)
    {
       auto ground = tile->ground();
       if (ground == "GroundWater")
@@ -357,7 +357,7 @@ namespace Narradia
       // std::cout << ground << std::endl;
       DrawTile(ground, tile->rid());
    }
-   void WorldViewModuleV::DrawMob(std::shared_ptr<Tile> tile, Point coord)
+   void WorldViewAddV::DrawMob(std::shared_ptr<Tile> tile, Point coord)
    {
       auto map_area = World::get()->CurrMapArea();
       auto curr_map_location = Player::get()->world_location();
@@ -372,7 +372,7 @@ namespace Narradia
          DrawModel(tile->mob()->type(), 0.0f, pos, 0.0f, 0.7f);
       }
    }
-   void WorldViewModuleV::DrawObjects(std::shared_ptr<Tile> tile, Point coord)
+   void WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord)
    {
       if (tile->object())
       {
@@ -392,7 +392,7 @@ namespace Narradia
              model_scaling);
       }
    }
-   void WorldViewModuleV::DrawPlayer()
+   void WorldViewAddV::DrawPlayer()
    {
       auto map_area = World::get()->CurrMapArea();
       auto curr_map_location = Player::get()->world_location();
@@ -412,7 +412,7 @@ namespace Narradia
           "Player2", ms_anim_time, player_space_coord, Player::get()->facing_angle_deg() + 180.0f,
           0.6f);
    }
-   void WorldViewModuleV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord)
+   void WorldViewAddV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord)
    {
       auto player_pos = Player::get()->position().GetXZ().ToIntPoint();
       if (SDL_GetTicks() <
@@ -422,7 +422,7 @@ namespace Narradia
       {
          DrawTile("TilePlayerUltiSkill", tile->rid());
       }
-      else if (MobTargetingModule::get()->targeted_mob() == tile->mob() && tile->mob() != nullptr)
+      else if (MobTargetingAdd::get()->targeted_mob() == tile->mob() && tile->mob() != nullptr)
       {
          DrawTile("TileTargetedMob", tile->rid());
       }
@@ -432,7 +432,7 @@ namespace Narradia
       }
       else
       {
-         auto hovered_tile = TileHoveringModule::get()->hovered_tile();
+         auto hovered_tile = TileHoveringAdd::get()->hovered_tile();
          if (hovered_tile.x == coord.x && hovered_tile.y == coord.y)
          {
             DrawTile("TileHovered", tile->rid());

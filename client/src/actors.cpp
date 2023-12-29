@@ -3,7 +3,7 @@
 #include "math.h"
 #include "conf.h"
 #include "world-struct.h"
-#include "main_scene-adds-world_view_module.h"
+#include "main_scene-adds-world_view_add.h"
 #include "core.h"
 #endif
 

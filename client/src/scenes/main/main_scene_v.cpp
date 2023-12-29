@@ -1,7 +1,7 @@
 #if 1
 #include "main_scene_v.h"
 #include "main_scene-gui_windows_v.h"
-#include "main_scene-adds-world_view_module_v.h"
+#include "main_scene-adds-world_view_add_v.h"
 #include "main_scene-gui_comps_v.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "main_scene-adds-visual_v.h"
@@ -21,7 +21,7 @@ namespace Narradia
    }
    void MainSceneV::RenderDerived()
    {
-      WorldViewModuleV::get()->Render();
-      FPSCounterModuleV::get()->Render();
+      WorldViewAddV::get()->Render();
+      FPSCounterAddV::get()->Render();
    }
 }

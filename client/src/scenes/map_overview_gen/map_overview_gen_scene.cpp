@@ -7,7 +7,7 @@
 #include "core_c.h"
 #include "core_v.h"
 #include "actors.h"
-#include "main_scene-adds-world_view_module.h"
+#include "main_scene-adds-world_view_add.h"
 #include "world-struct.h"
 #endif
 
@@ -15,7 +15,7 @@ namespace Narradia
 {
    void MapOverviewGenScene::UpdateGameLogicDerived()
    {
-      WorldViewModule::get()->UpdateGameLogic();
+      WorldViewAdd::get()->UpdateGameLogic();
    }
    void MapOverviewGenScene::Finalize()
    {

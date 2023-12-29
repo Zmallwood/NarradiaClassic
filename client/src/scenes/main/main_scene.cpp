@@ -4,7 +4,7 @@
 #include "main_scene-gui_windows.h"
 #include "main_scene-adds-non-visual.h"
 #include "main_scene-adds-visual.h"
-#include "main_scene-adds-world_view_module.h"
+#include "main_scene-adds-world_view_add.h"
 #endif
 
 namespace Narradia
@@ -17,18 +17,18 @@ namespace Narradia
    }
    void MainScene::UpdateGameLogicDerived()
    {
-      KbBindingsModule::get()->UpdateGameLogic();
-      MobMovementModule::get()->UpdateGameLogic();
-      KeyboardMovementModule::get()->UpdateGameLogic();
-      MouseMovementModule::get()->UpdateGameLogic();
-      CombatChaseMovementModule::get()->UpdateGameLogic();
-      WorldViewModule::get()->UpdateGameLogic();
-      MouseRotationModule::get()->UpdateGameLogic();
-      TileHoveringModule::get()->UpdateGameLogic();
-      MobTargetingModule::get()->UpdateGameLogic();
-      CombatModule::get()->UpdateGameLogic();
-      SkillPerformingModule::get()->UpdateGameLogic();
-      MobDeathHandlingModule::get()->UpdateGameLogic();
-      FPSCounterModule::get()->UpdateGameLogic();
+      KbBindingsAdd::get()->UpdateGameLogic();
+      MobMovementAdd::get()->UpdateGameLogic();
+      KeyboardMovementAdd::get()->UpdateGameLogic();
+      MouseMovementAdd::get()->UpdateGameLogic();
+      CombatChaseMovementAdd::get()->UpdateGameLogic();
+      WorldViewAdd::get()->UpdateGameLogic();
+      MouseRotationAdd::get()->UpdateGameLogic();
+      TileHoveringAdd::get()->UpdateGameLogic();
+      MobTargetingAdd::get()->UpdateGameLogic();
+      CombatAdd::get()->UpdateGameLogic();
+      SkillPerformingAdd::get()->UpdateGameLogic();
+      MobDeathHandlingAdd::get()->UpdateGameLogic();
+      FPSCounterAdd::get()->UpdateGameLogic();
    }
 }

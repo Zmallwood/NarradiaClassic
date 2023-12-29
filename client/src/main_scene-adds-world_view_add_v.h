@@ -4,10 +4,10 @@ namespace Narradia
 {
    class Tile;
 
-   class WorldViewModuleV : public S<WorldViewModuleV>
+   class WorldViewAddV : public S<WorldViewAddV>
    {
      public:
-      WorldViewModuleV(bool simplified_ground = false);
+      WorldViewAddV(bool simplified_ground = false);
       void Render();
       auto render_distance()
       {

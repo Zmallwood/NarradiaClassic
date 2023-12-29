@@ -5,8 +5,8 @@
 #include "render/renderer_tiles_v.h"
 #include "core_v.h"
 #include "actors.h"
-#include "main_scene-adds-world_view_module.h"
-#include "main_scene-adds-world_view_module_v.h"
+#include "main_scene-adds-world_view_add.h"
+#include "main_scene-adds-world_view_add_v.h"
 #include "world-struct.h"
 #endif
 
@@ -23,7 +23,7 @@ namespace Narradia
          for (auto x = 0; x < world_width; x++)
          {
 
-            WorldViewModuleV::Dispose();
+            WorldViewAddV::Dispose();
             RendererTilesV::Dispose();
 
             GraphicsV::get()->ClearCanvas();
@@ -38,21 +38,21 @@ namespace Narradia
             auto width = map_area->GetWidth();
             auto height = map_area->GetHeight();
             auto render_dist = std::sqrt(width * width + height * height) / 2.0f;
-            WorldViewModuleV::Touch(true);
-            auto a = WorldViewModuleV::get().get();
-            auto orig_render_dist = WorldViewModuleV::get()->render_distance();
+            WorldViewAddV::Touch(true);
+            auto a = WorldViewAddV::get().get();
+            auto orig_render_dist = WorldViewAddV::get()->render_distance();
             auto orig_camera_vert_angle = Camera::get()->vertical_angle_deg();
             Camera::get()->set_vertical_angle_deg(90.0f);
             auto orig_camera_distance = Camera::get()->camera_distance();
             Camera::get()->set_camera_distance(110.0f);
             Camera::get()->UpdateGameLogic();
-            WorldViewModuleV::get()->set_render_distance(render_dist);
+            WorldViewAddV::get()->set_render_distance(render_dist);
             RendererTilesV::get()->kFogColorGround = Colors::white;
             RendererModelsV::get()->kFogColorModels = Colors::white;
-            WorldViewModuleV::get()->Render();
+            WorldViewAddV::get()->Render();
             RendererTilesV::get()->kFogColorGround = orig_ground_fog;
             RendererModelsV::get()->kFogColorModels = orig_objs_fog;
-            WorldViewModuleV::get()->set_render_distance(orig_render_dist);
+            WorldViewAddV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             Camera::get()->set_camera_distance(orig_camera_distance);
             //GraphicsV::get()->PresentCanvas();
@@ -85,7 +85,7 @@ namespace Narradia
             map_area->ClearAllRIDS();
          }
       }
-      WorldViewModuleV::Dispose();
+      WorldViewAddV::Dispose();
       RendererTilesV::Dispose();
    }
 }

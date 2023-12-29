@@ -2,7 +2,7 @@
 
 namespace Narradia
 {
-   class FPSCounterModule : public S<FPSCounterModule>
+   class FPSCounterAdd : public S<FPSCounterAdd>
    {
      public:
       void UpdateGameLogic();
@@ -21,7 +21,7 @@ namespace Narradia
 
    class Mob;
 
-   class MobTargetingModule : public S<MobTargetingModule>
+   class MobTargetingAdd : public S<MobTargetingAdd>
    {
      public:
       void UpdateGameLogic();
@@ -35,31 +35,31 @@ namespace Narradia
       std::shared_ptr<Mob> targeted_mob_;
    };
 
-   class KeyboardMovementModule : public S<KeyboardMovementModule>
+   class KeyboardMovementAdd : public S<KeyboardMovementAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class CombatChaseMovementModule : public S<CombatChaseMovementModule>
+   class CombatChaseMovementAdd : public S<CombatChaseMovementAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class MouseMovementModule : public S<MouseMovementModule>
+   class MouseMovementAdd : public S<MouseMovementAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class MobMovementModule : public S<MobMovementModule>
+   class MobMovementAdd : public S<MobMovementAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class MouseRotationModule : public S<MouseRotationModule>
+   class MouseRotationAdd : public S<MouseRotationAdd>
    {
      public:
       void UpdateGameLogic();
@@ -73,7 +73,7 @@ namespace Narradia
       const float kRotationSens = 200.0f;
    };
 
-   class SkillPerformingModule : public S<SkillPerformingModule>
+   class SkillPerformingAdd : public S<SkillPerformingAdd>
    {
      public:
       void UpdateGameLogic();
@@ -83,7 +83,7 @@ namespace Narradia
       float skill_ticks_frequency_ = 0.4f;
    };
 
-   class TileHoveringModule : public S<TileHoveringModule>
+   class TileHoveringAdd : public S<TileHoveringAdd>
    {
      public:
       void UpdateGameLogic();

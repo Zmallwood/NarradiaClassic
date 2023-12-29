@@ -13,9 +13,9 @@ namespace Narradia
 {
     // CombatModule
 #if 1
-   void CombatModule::UpdateGameLogic()
+   void CombatAdd::UpdateGameLogic()
    {
-      auto targeted_mob = MobTargetingModule::get()->targeted_mob();
+      auto targeted_mob = MobTargetingAdd::get()->targeted_mob();
       if (targeted_mob)
       {
          if (SDL_GetTicks() >
@@ -70,7 +70,7 @@ namespace Narradia
 
    // KbBindingsModule
 #if 1
-   void KbBindingsModule::UpdateGameLogic()
+   void KbBindingsAdd::UpdateGameLogic()
    {
       if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_m))
       {
@@ -81,7 +81,7 @@ namespace Narradia
 
    // MobDeathHandlingModule
 #if 1
-   void MobDeathHandlingModule::UpdateGameLogic()
+   void MobDeathHandlingAdd::UpdateGameLogic()
    {
       auto map_area = World::get()->CurrMapArea();
       auto &mobs = *map_area->mobs_mirror();
@@ -92,7 +92,7 @@ namespace Narradia
          if (mob->IsDead())
          {
             map_area->GetTile(mob_coord.x, mob_coord.y)->set_mob(nullptr);
-            MobTargetingModule::get()->ClearTarget();
+            MobTargetingAdd::get()->ClearTarget();
             mobs.erase(it++);
             map_area->GetTile(mob_coord.x, mob_coord.y)
                 ->set_tile_effect({"ObjectPoolOfBlood", static_cast<int>(SDL_GetTicks())});
@@ -105,7 +105,7 @@ namespace Narradia
 
    // PlayerSpawnPositioningModule
 #if 1
-   void PlayerSpawnPositioningModule::SpawnAtGoodLocation()
+   void PlayerSpawnPositioningAdd::SpawnAtGoodLocation()
    {
       Player::get()->set_world_location({2, 2});
       auto map_area = World::get()->CurrMapArea();

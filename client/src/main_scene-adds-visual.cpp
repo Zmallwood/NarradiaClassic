@@ -5,7 +5,7 @@
 #include "actors.h"
 #include "world-struct.h"
 #include "render/camera_gl.h"
-#include "main_scene-adds-world_view_module.h"
+#include "main_scene-adds-world_view_add.h"
 #include "actors.h"
 #endif
 
@@ -13,7 +13,7 @@ namespace Narradia
 {
     // FPSCounterModule
 #if 1
-   void FPSCounterModule::UpdateGameLogic()
+   void FPSCounterAdd::UpdateGameLogic()
    {
       frames_count_++;
       if (SDL_GetTicks() - ticks_last_update_ > kMillisPerSecond)
@@ -27,13 +27,13 @@ namespace Narradia
 
    // MobTargetingModule
 #if 1
-   void MobTargetingModule::UpdateGameLogic()
+   void MobTargetingAdd::UpdateGameLogic()
    {
       MouseInput::get()->right_btn()->AddFiredAction(
           [&]
           {
              auto map_area = World::get()->CurrMapArea();
-             auto hovered_tile = TileHoveringModule::get()->hovered_tile();
+             auto hovered_tile = TileHoveringAdd::get()->hovered_tile();
              if (hovered_tile.x < 0 || hovered_tile.y < 0 ||
                  hovered_tile.x >= map_area->GetWidth() || hovered_tile.y >= map_area->GetHeight())
                 return;
@@ -46,7 +46,7 @@ namespace Narradia
           },
           1);
    }
-   void MobTargetingModule::ClearTarget()
+   void MobTargetingAdd::ClearTarget()
    {
       targeted_mob_ = nullptr;
    }
@@ -54,7 +54,7 @@ namespace Narradia
 
    // KeyboardMovementModule
 #if 1
-   void KeyboardMovementModule::UpdateGameLogic()
+   void KeyboardMovementAdd::UpdateGameLogic()
    {
       auto w_is_pressed = KbInput::get()->KeyIsPressed(SDLK_w);
       auto d_is_pressed = KbInput::get()->KeyIsPressed(SDLK_d);
@@ -74,20 +74,20 @@ namespace Narradia
             Player::get()->MoveLeft();
          Player::get()->set_ticks_last_move(SDL_GetTicks());
          Player::get()->set_destination({-1, -1});
-         MobTargetingModule::get()->ClearTarget();
+         MobTargetingAdd::get()->ClearTarget();
       }
    }
 #endif
 
    // CombatChaseMovementModule
 #if 1
-   void CombatChaseMovementModule::UpdateGameLogic()
+   void CombatChaseMovementAdd::UpdateGameLogic()
    {
       auto time_to_update =
           SDL_GetTicks() > Player::get()->ticks_last_move() + 400 / Player::get()->movement_speed();
       if (false == time_to_update)
          return;
-      auto targeted_mob = MobTargetingModule::get()->targeted_mob();
+      auto targeted_mob = MobTargetingAdd::get()->targeted_mob();
       if (targeted_mob)
       {
          auto map_area = World::get()->CurrMapArea();
@@ -112,13 +112,13 @@ namespace Narradia
 
    // MouseMovementModule
 #if 1
-   void MouseMovementModule::UpdateGameLogic()
+   void MouseMovementAdd::UpdateGameLogic()
    {
       MouseInput::get()->left_btn()->AddFiredAction(
           []
           {
-             Player::get()->set_destination(TileHoveringModule::get()->hovered_tile());
-             MobTargetingModule::get()->ClearTarget();
+             Player::get()->set_destination(TileHoveringAdd::get()->hovered_tile());
+             MobTargetingAdd::get()->ClearTarget();
           },
           5);
       auto destination = Player::get()->destination();
@@ -148,7 +148,7 @@ namespace Narradia
 
    //MobMovementModule
 #if 1
-   void MobMovementModule::UpdateGameLogic()
+   void MobMovementAdd::UpdateGameLogic()
    {
       auto map_area = World::get()->CurrMapArea();
       auto &mobs = *(map_area->mobs_mirror());
@@ -218,7 +218,7 @@ namespace Narradia
 
 // MouseRotationModule
 #if 1
-   void MouseRotationModule::UpdateGameLogic()
+   void MouseRotationAdd::UpdateGameLogic()
    {
       MouseInput::get()->right_btn()->AddFiredAction(
           [&]
@@ -247,7 +247,7 @@ namespace Narradia
 
    // SkillPerformingModule
 #if 1
-   void SkillPerformingModule::UpdateGameLogic()
+   void SkillPerformingAdd::UpdateGameLogic()
    {
       if (SDL_GetTicks() > ticks_last_skill_tick_ + 400 / skill_ticks_frequency_)
       {
@@ -287,7 +287,7 @@ namespace Narradia
 
    // TileHoveringModule
 #if 1
-   void TileHoveringModule::UpdateGameLogic()
+   void TileHoveringAdd::UpdateGameLogic()
    {
       auto view_matrix = CameraGL::get()->view_matrix();
       auto perspective_matrix = CameraGL::get()->perspective_matrix();

@@ -2,10 +2,10 @@
 
 namespace Narradia
 {
-   class WorldViewModule : public S<WorldViewModule>
+   class WorldViewAdd : public S<WorldViewAdd>
    {
      public:
-      WorldViewModule();
+      WorldViewAdd();
       void UpdateGameLogic();
    };
 

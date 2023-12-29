@@ -1,5 +1,5 @@
 #if 1
-#include "main_scene-adds-world_view_module.h"
+#include "main_scene-adds-world_view_add.h"
 #include "assets.h"
 #include "conf.h"
 #include "render/camera_gl.h"
@@ -12,10 +12,10 @@ namespace Narradia
 {
     // WorldViewModele
 #if 1
-   WorldViewModule::WorldViewModule()
+   WorldViewAdd::WorldViewAdd()
    {
    }
-   void WorldViewModule::UpdateGameLogic()
+   void WorldViewAdd::UpdateGameLogic()
    {
       Camera::get()->UpdateGameLogic();
    }

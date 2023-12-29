@@ -3,25 +3,25 @@
 namespace Narradia
 {
 
-   class CombatModule : public S<CombatModule>
+   class CombatAdd : public S<CombatAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class KbBindingsModule : public S<KbBindingsModule>
+   class KbBindingsAdd : public S<KbBindingsAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class MobDeathHandlingModule : public S<MobDeathHandlingModule>
+   class MobDeathHandlingAdd : public S<MobDeathHandlingAdd>
    {
      public:
       void UpdateGameLogic();
    };
 
-   class PlayerSpawnPositioningModule : public S<PlayerSpawnPositioningModule>
+   class PlayerSpawnPositioningAdd : public S<PlayerSpawnPositioningAdd>
    {
      public:
       void SpawnAtGoodLocation();

@@ -8,7 +8,7 @@ namespace Narradia
    void MainSceneC::OnEnter()
    {
       Console::get()->Print("Entering Narradia");
-      PlayerSpawnPositioningModule::get()->SpawnAtGoodLocation();
+      PlayerSpawnPositioningAdd::get()->SpawnAtGoodLocation();
    }
    void MainSceneC::UpdateGameFlowDerived()
    {

@@ -1,5 +1,7 @@
 #pragma once
 
+typedef char GLchar;
+
 namespace Narradia
 {
    class ShaderProgram;
@@ -15,6 +17,8 @@ namespace Narradia
       }
 
      private:
+      auto CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) -> GLuint;
+
       std::shared_ptr<ShaderProgram> shader_program_;
    };
 }
