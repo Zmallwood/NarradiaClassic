@@ -1,13 +1,10 @@
 #if 1
 #include "main_pg-gui_windows_v.h"
-#include "render/cmd_v/draw_image.h"
-#include "render/cmd_v/draw_rect.h"
-#include "render/cmd_v/fill_rect.h"
-#include "render/cmd_v/new_image.h"
-#include "render/cmd_v/new_rect.h"
+#include "render/renderer_2d_images_v.h"
 #include "actors.h"
 #include "world-struct.h"
 #include "main_pg-gui_windows.h"
+#include "render/renderer_2d_solid_colors_v.h"
 #endif
 
 namespace Narradia

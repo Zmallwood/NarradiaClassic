@@ -1,8 +1,8 @@
 #if 1
 #include "new_string.h"
 #include "render-text/renderer_text.h"
-#include "render/cmd_v/new_image.h"
 #include "create_get_blank_texture.h"
+#include "render/renderer_2d_images_v.h"
 #endif
 
 namespace Narradia

@@ -3,12 +3,10 @@
 #include "main_pg-gui_comps.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
-#include "render/cmd_v/draw_image.h"
-#include "render/cmd_v/fill_rect.h"
-#include "render/cmd_v/new_image.h"
-#include "render/cmd_v/new_rect.h"
+#include "render/renderer_2d_images_v.h"
 #include "actors.h"
 #include "math.h"
+#include "render/renderer_2d_solid_colors_v.h"
 #endif
 
 namespace Narradia

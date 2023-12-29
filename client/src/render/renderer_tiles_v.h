@@ -57,4 +57,14 @@ namespace Narradia
       int location_fog_color_ = -1;
       bool is_batch_drawing_ = false;
    };
+
+   RenderID NewTile();
+
+   auto SetTileGeometry(RenderID vao_id, Square<Vertex3F> &verts) -> void;
+
+   auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off = false) -> void;
+
+   auto StartTileBatchDrawing() -> void;
+
+   auto StopTileBatchDrawing() -> void;
 }

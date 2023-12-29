@@ -2,8 +2,6 @@
 #include "intro_pg_v.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
-#include "render/cmd_v/draw_image.h"
-#include "render/cmd_v/new_image.h"
 #include "render/renderer_2d_images_v.h"
 #include "intro_pg.h"
 #include "gui-core_v.h"

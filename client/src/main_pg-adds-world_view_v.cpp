@@ -8,11 +8,7 @@
 #include "render-models/cmd_v/start_models_batch_drawing.h"
 #include "render-models/cmd_v/stop_models_batch_drawing.h"
 #include "render-models/renderer_models_v.h"
-#include "render/cmd_v/draw_tile.h"
-#include "render/cmd_v/new_tile.h"
-#include "render/cmd_v/set_tile_geometry.h"
-#include "render/cmd_v/start_tile_batch_drawing.h"
-#include "render/cmd_v/stop_tile_batch_drawing.h"
+#include "render/renderer_tiles_v.h"
 #include "world-struct.h"
 #endif
 

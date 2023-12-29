@@ -14,4 +14,10 @@ namespace Narradia
       static constexpr int kLocationColor = 1;
       static constexpr int kLocationUv = 2;
    };
+
+   auto NewImage() -> RenderID;
+
+   auto DrawImage(
+       std::string_view image_name, RenderID rid, const RectF &dest, Color color = Colors::white)
+       -> void;
 }

@@ -1,13 +1,12 @@
 #if 1
 #include "core_v.h"
 #include "intro_pg_v.h"
+#include "render/renderer_2d_images_v.h"
 #include "main_menu_pg_v.h"
 #include "main_pg_v.h"
 #include "map_creation_pg_v.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
-#include "render/cmd_v/draw_image.h"
-#include "render/cmd_v/new_image.h"
 #endif
 
 namespace Narradia

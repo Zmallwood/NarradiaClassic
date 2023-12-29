@@ -4,6 +4,7 @@
 #include "core.h"
 #include "main_menu_pg-adds-menu_models.h"
 #include "gui-core.h"
+#include "render/renderer_2d_images_v.h"
 #endif
 
 namespace Narradia

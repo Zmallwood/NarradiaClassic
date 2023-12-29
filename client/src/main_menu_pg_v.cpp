@@ -1,7 +1,6 @@
 #if 1
 #include "main_menu_pg_v.h"
-#include "render/cmd_v/draw_image.h"
-#include "render/cmd_v/new_image.h"
+#include "render/renderer_2d_images_v.h"
 #include "main_menu_pg-adds-menu_models_v.h"
 #include "main_menu_pg.h"
 #include "gui-core_v.h"

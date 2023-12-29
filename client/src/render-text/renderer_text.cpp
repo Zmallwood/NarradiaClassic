@@ -1,8 +1,6 @@
 #if 1
 #include "renderer_text.h"
 #include "assets.h"
-#include "render/cmd_v/draw_image.h"
-#include "render/cmd_v/new_image.h"
 #include "render-text/font.h"
 #endif
 
