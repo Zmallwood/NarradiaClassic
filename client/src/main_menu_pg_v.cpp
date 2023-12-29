@@ -2,7 +2,7 @@
 #include "main_menu_pg_v.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
-#include "model_display_add_v.h"
+#include "main_menu_pg-adds-menu_models_v.h"
 #include "main_menu_pg.h"
 #include "gui-core_v.h"
 #endif
@@ -21,6 +21,6 @@ namespace Narradia
    {
       DrawImage("DefaultSceneBackground", rid_background, {0.0f, 0.0f, 1.0f, 1.0f});
       DrawImage("NarradiaLogo", rid_logo, {0.4f, 0.1f, 0.2f, 0.1f});
-      ModelDisplayAddV::get()->Render();
+      MenuModelsAddV::get()->Render();
    }
 }

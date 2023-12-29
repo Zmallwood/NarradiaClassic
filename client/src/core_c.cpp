@@ -1,9 +1,9 @@
 #if 1
 #include "core_c.h"
-#include "pg_intro/intro_pg_c.h"
-#include "pg_main/main_pg_c.h"
-#include "pg_main_menu/main_menu_pg_c.h"
-#include "pg_map_creation/map_creation_pg_c.h"
+#include "intro_pg_c.h"
+#include "main_pg_c.h"
+#include "main_menu_pg_c.h"
+#include "map_creation_pg_c.h"
 #endif
 
 namespace Narradia

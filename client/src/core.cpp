@@ -1,10 +1,10 @@
 #if 1
 #include "core.h"
 #include "gui-core.h"
-#include "pg_intro/intro_pg.h"
-#include "pg_main/main_pg.h"
-#include "pg_main_menu/main_menu_pg.h"
-#include "pg_map_creation/map_creation_pg.h"
+#include "intro_pg.h"
+#include "main_pg.h"
+#include "main_menu_pg.h"
+#include "map_creation_pg.h"
 #include "main_pg-gui_comps.h"
 #endif
 

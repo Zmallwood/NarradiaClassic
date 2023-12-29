@@ -4,10 +4,10 @@
 #include "render-text/cmd_v/new_string.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
-#include "pg_intro/intro_pg_v.h"
-#include "pg_main/main_pg_v.h"
-#include "pg_main_menu/main_menu_pg_v.h"
-#include "pg_map_creation/map_creation_pg_v.h"
+#include "intro_pg_v.h"
+#include "main_pg_v.h"
+#include "main_menu_pg_v.h"
+#include "map_creation_pg_v.h"
 #endif
 
 namespace Narradia

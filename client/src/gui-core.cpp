@@ -1,7 +1,7 @@
 #if 1
 #include "gui-core.h"
 #include "core.h"
-#include "pg_main/main_pg.h"
+#include "main_pg.h"
 #endif
 
 namespace Narradia

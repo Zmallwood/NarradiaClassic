@@ -2,7 +2,7 @@
 
 namespace Narradia
 {
-   class ModelDisplayAdd : public S<ModelDisplayAdd>
+   class MenuModelsAdd : public S<MenuModelsAdd>
    {
      public:
       void UpdateGameLogic();

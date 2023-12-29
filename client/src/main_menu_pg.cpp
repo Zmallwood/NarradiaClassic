@@ -2,7 +2,7 @@
 #include "main_menu_pg.h"
 #include "core_c.h"
 #include "core.h"
-#include "model_display_add.h"
+#include "main_menu_pg-adds-menu_models.h"
 #include "gui-core.h"
 #endif
 
@@ -18,6 +18,6 @@ namespace Narradia
    }
    void MainMenuPg::UpdateGameLogicDerived()
    {
-      ModelDisplayAdd::get()->UpdateGameLogic();
+      MenuModelsAdd::get()->UpdateGameLogic();
    }
 }

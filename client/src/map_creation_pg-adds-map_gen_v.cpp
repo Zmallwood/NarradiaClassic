@@ -1,5 +1,5 @@
 #if 1
-#include "map_creation_pg_v.h"
+#include "map_creation_pg-adds-map_gen_v.h"
 #include "assets.h"
 #include "render-models/renderer_models_v.h"
 #include "render/renderer_tiles_v.h"
@@ -12,7 +12,7 @@
 
 namespace Narradia
 {
-   void MapCreationPgV::RenderDerived()
+   void MapGenAddV::Render()
    {
       auto world_width = World::get()->world_width();
       auto world_height = World::get()->world_height();
@@ -89,3 +89,4 @@ namespace Narradia
       RendererTilesV::Dispose();
    }
 }
+
