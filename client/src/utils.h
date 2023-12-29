@@ -36,4 +36,25 @@ namespace Narradia
    void AddSingletonDisposeAction(std::function<void()> action);
    void DisposeSingletons();
 #endif
+
+   // Misc
+#if 1
+   template <class T>
+   class Square
+   {
+     public:
+      void SetAll(T value)
+      {
+         _00 = value;
+         _01 = value;
+         _11 = value;
+         _10 = value;
+      }
+
+      T _00;
+      T _01;
+      T _11;
+      T _10;
+   };
+#endif
 }

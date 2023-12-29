@@ -43,45 +43,36 @@ namespace Narradia
          for (auto y = 0; y < map_area->GetHeight(); y += inc)
          {
             rids_tiles.at(x / inc).push_back(NewTile());
-            Vertex3F v0;
-            Vertex3F v1;
-            Vertex3F v2;
-            Vertex3F v3;
-            auto elev00 = map_area->GetTile(x, y)->elevation() * kElevAmount;
-            auto elev10 = elev00;
-            auto elev11 = elev00;
-            auto elev01 = elev00;
-            auto normal00 = map_area->GetTile(x, y)->normal();
-            auto normal10 = normal00;
-            auto normal11 = normal00;
-            auto normal01 = normal00;
-            auto color00 = *map_area->GetTile(x, y)->color();
-            auto color10 = color00;
-            auto color11 = color00;
-            auto color01 = color00;
+            Square<Vertex3F> verts;
+            Square<float> elevs;
+            Square<Point3F> normals;
+            Square<Color> colors;
+            elevs.SetAll(map_area->GetTile(x, y)->elevation() * kElevAmount);
+            normals.SetAll(map_area->GetTile(x, y)->normal());
+            colors.SetAll(*map_area->GetTile(x, y)->color());
             auto coord10 = Point{x + 1, y};
             auto coord11 = Point{x + 1, y + 1};
             auto coord01 = Point{x, y + 1};
 
             if (map_area->IsInsideMap(coord10))
             {
-               elev10 = map_area->GetTile(coord10)->elevation() * kElevAmount;
-               normal10 = map_area->GetTile(coord10)->normal();
-               color10 = *map_area->GetTile(coord10)->color();
+               elevs._10 = map_area->GetTile(coord10)->elevation() * kElevAmount;
+               normals._10 = map_area->GetTile(coord10)->normal();
+               colors._10 = *map_area->GetTile(coord10)->color();
             }
 
             if (map_area->IsInsideMap(coord11))
             {
-               elev11 = map_area->GetTile(coord11)->elevation() * kElevAmount;
-               normal11 = map_area->GetTile(coord11)->normal();
-               color11 = *map_area->GetTile(coord11)->color();
+               elevs._11 = map_area->GetTile(coord11)->elevation() * kElevAmount;
+               normals._11 = map_area->GetTile(coord11)->normal();
+               colors._11 = *map_area->GetTile(coord11)->color();
             }
 
             if (map_area->IsInsideMap(coord01))
             {
-               elev01 = map_area->GetTile(coord01)->elevation() * kElevAmount;
-               normal01 = map_area->GetTile(coord01)->normal();
-               color01 = *map_area->GetTile(coord01)->color();
+               elevs._01 = map_area->GetTile(coord01)->elevation() * kElevAmount;
+               normals._01 = map_area->GetTile(coord01)->normal();
+               colors._01 = *map_area->GetTile(coord01)->color();
             }
 
             auto tile_size_side = tile_size;
@@ -89,48 +80,49 @@ namespace Narradia
             if (simplified_ground_)
                tile_size_side *= kGroundSimpleK;
 
-            v0.position = {map_offset_x + x * tile_size, elev00, map_offset_y + y * tile_size};
-            v1.position = {
-                map_offset_x + x * tile_size + tile_size_side, elev10,
+            verts._00.position = {
+                map_offset_x + x * tile_size, elevs._00, map_offset_y + y * tile_size};
+            verts._10.position = {
+                map_offset_x + x * tile_size + tile_size_side, elevs._10,
                 map_offset_y + y * tile_size};
-            v2.position = {
-                map_offset_x + x * tile_size + tile_size_side, elev11,
+            verts._11.position = {
+                map_offset_x + x * tile_size + tile_size_side, elevs._11,
                 map_offset_y + y * tile_size + tile_size_side};
-            v3.position = {
-                map_offset_x + x * tile_size, elev01,
+            verts._01.position = {
+                map_offset_x + x * tile_size, elevs._01,
                 map_offset_y + y * tile_size + tile_size_side};
 
-            v0.uv = {0.0f, 0.0f};
-            v1.uv = {1.0f, 0.0f};
-            v2.uv = {1.0f, 1.0f};
-            v3.uv = {0.0f, 1.0f};
+            verts._00.uv = {0.0f, 0.0f};
+            verts._10.uv = {1.0f, 0.0f};
+            verts._11.uv = {1.0f, 1.0f};
+            verts._01.uv = {0.0f, 1.0f};
 
-            v0.color = color00;
-            v1.color = color10;
-            v2.color = color11;
-            v3.color = color01;
+            verts._00.color = colors._00;
+            verts._10.color = colors._10;
+            verts._11.color = colors._11;
+            verts._01.color = colors._01;
 
             SetTileGeometry(
-                rids_tiles[x / inc][y / inc], v0, v1, v2, v3, normal00, normal10, normal11,
-                normal01);
+                rids_tiles[x / inc][y / inc], verts._00, verts._10, verts._11, verts._01,
+                normals._00, normals._10, normals._11, normals._01);
 
             map_area->GetTile(x, y)->set_rid(rids_tiles[x / inc][y / inc]);
 
             rids_tile_symbols.at(x / inc).push_back(NewTile());
 
-            v0.position.y += kTinyDistance * kTileSize;
-            v1.position.y += kTinyDistance * kTileSize;
-            v2.position.y += kTinyDistance * kTileSize;
-            v3.position.y += kTinyDistance * kTileSize;
+            verts._00.position.y += kTinyDistance * kTileSize;
+            verts._10.position.y += kTinyDistance * kTileSize;
+            verts._11.position.y += kTinyDistance * kTileSize;
+            verts._01.position.y += kTinyDistance * kTileSize;
 
-            v0.color = Colors::white;
-            v1.color = Colors::white;
-            v2.color = Colors::white;
-            v3.color = Colors::white;
+            verts._00.color = Colors::white;
+            verts._10.color = Colors::white;
+            verts._11.color = Colors::white;
+            verts._01.color = Colors::white;
 
             SetTileGeometry(
-                rids_tile_symbols[x / inc][y / inc], v0, v1, v2, v3, normal00, normal10, normal11,
-                normal01);
+                rids_tile_symbols[x / inc][y / inc], verts._00, verts._10, verts._11, verts._01,
+                normals._00, normals._10, normals._11, normals._01);
          }
       }
    }
