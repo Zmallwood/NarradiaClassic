@@ -109,7 +109,7 @@ namespace Narradia
    class Vertex2F
    {
      public:
-      PointF position;
+      PointF pos;
       Color color;
       PointF uv;
    };
@@ -117,7 +117,7 @@ namespace Narradia
    class Vertex3F
    {
      public:
-      Point3F position;
+      Point3F pos;
       Color color;
       PointF uv;
       Point3F normal;

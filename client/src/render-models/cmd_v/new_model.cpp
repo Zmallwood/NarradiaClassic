@@ -38,7 +38,7 @@ namespace Narradia
             for (auto v : anim_vertices)
             {
                Vertex3F v3f;
-               v3f.position = v.position;
+               v3f.pos = v.pos;
                v3f.color = v.color;
                v3f.uv = v.uv;
                vertices.push_back(v3f);

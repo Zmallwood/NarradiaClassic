@@ -35,6 +35,20 @@ namespace Narradia
       if (simplified_ground_)
          inc = kGroundSimpleK;
 
+      class TileSquare
+      {
+        public:
+         TileSquare(int x, int y)
+         {
+            coords._00 = {x, y};
+            coords._10 = {x + 1, y};
+            coords._11 = {x + 1, y + 1};
+            coords._01 = {x, y + 1};
+         }
+
+         Square<Point> coords;
+      };
+
       for (auto x = 0; x < world_area->GetWidth(); x += inc)
       {
          rids_tiles.push_back(std::vector<RenderID>());
@@ -43,36 +57,37 @@ namespace Narradia
          for (auto y = 0; y < world_area->GetHeight(); y += inc)
          {
             rids_tiles.at(x / inc).push_back(NewTile());
+            auto t_square = TileSquare(x, y);
             Square<Vertex3F> verts;
             Square<float> elevs;
             Square<Color> colors;
             elevs.SetAll(world_area->GetTile(x, y)->elevation() * kElevAmount);
             colors.SetAll(*world_area->GetTile(x, y)->color());
-            auto coord10 = Point{x + 1, y};
-            auto coord11 = Point{x + 1, y + 1};
-            auto coord01 = Point{x, y + 1};
 
             verts._00.normal = world_area->GetTile(x, y)->normal();
 
-            if (world_area->IsInsideMap(coord10))
+            if (world_area->IsInsideMap(t_square.coords._10))
             {
-               elevs._10 = world_area->GetTile(coord10)->elevation() * kElevAmount;
-               verts._10.normal = world_area->GetTile(coord10)->normal();
-               colors._10 = *world_area->GetTile(coord10)->color();
+               auto tile = world_area->GetTile(t_square.coords._10);
+               elevs._10 = tile->elevation() * kElevAmount;
+               verts._10.normal = tile->normal();
+               colors._10 = *tile->color();
             }
 
-            if (world_area->IsInsideMap(coord11))
+            if (world_area->IsInsideMap(t_square.coords._11))
             {
-               elevs._11 = world_area->GetTile(coord11)->elevation() * kElevAmount;
-               verts._11.normal = world_area->GetTile(coord11)->normal();
-               colors._11 = *world_area->GetTile(coord11)->color();
+               auto tile = world_area->GetTile(t_square.coords._11);
+               elevs._11 = tile->elevation() * kElevAmount;
+               verts._11.normal = tile->normal();
+               colors._11 = *tile->color();
             }
 
-            if (world_area->IsInsideMap(coord01))
+            if (world_area->IsInsideMap(t_square.coords._01))
             {
-               elevs._01 = world_area->GetTile(coord01)->elevation() * kElevAmount;
-               verts._01.normal = world_area->GetTile(coord01)->normal();
-               colors._01 = *world_area->GetTile(coord01)->color();
+               auto tile = world_area->GetTile(t_square.coords._01);
+               elevs._01 = tile->elevation() * kElevAmount;
+               verts._01.normal = tile->normal();
+               colors._01 = *tile->color();
             }
 
             auto tile_size_side = tile_size;
@@ -80,15 +95,15 @@ namespace Narradia
             if (simplified_ground_)
                tile_size_side *= kGroundSimpleK;
 
-            verts._00.position = {
+            verts._00.pos = {
                 map_offset_x + x * tile_size, elevs._00, map_offset_y + y * tile_size};
-            verts._10.position = {
+            verts._10.pos = {
                 map_offset_x + x * tile_size + tile_size_side, elevs._10,
                 map_offset_y + y * tile_size};
-            verts._11.position = {
+            verts._11.pos = {
                 map_offset_x + x * tile_size + tile_size_side, elevs._11,
                 map_offset_y + y * tile_size + tile_size_side};
-            verts._01.position = {
+            verts._01.pos = {
                 map_offset_x + x * tile_size, elevs._01,
                 map_offset_y + y * tile_size + tile_size_side};
 
@@ -108,10 +123,10 @@ namespace Narradia
 
             rids_tile_symbols.at(x / inc).push_back(NewTile());
 
-            verts._00.position.y += kTinyDistance * kTileSize;
-            verts._10.position.y += kTinyDistance * kTileSize;
-            verts._11.position.y += kTinyDistance * kTileSize;
-            verts._01.position.y += kTinyDistance * kTileSize;
+            verts._00.pos.y += kTinyDistance * kTileSize;
+            verts._10.pos.y += kTinyDistance * kTileSize;
+            verts._11.pos.y += kTinyDistance * kTileSize;
+            verts._01.pos.y += kTinyDistance * kTileSize;
 
             SetTileGeometry(rids_tile_symbols[x / inc][y / inc], verts);
          }
@@ -246,16 +261,16 @@ namespace Narradia
 
                               if (simplified_ground_)
                                  tile_size_side *= kGroundSimpleK;
-                              v0.position = {
+                              v0.pos = {
                                   map_offset_x + x * tile_size, elev00,
                                   map_offset_y + y * tile_size};
-                              v1.position = {
+                              v1.pos = {
                                   map_offset_x + x * tile_size + tile_size_side, elev10,
                                   map_offset_y + y * tile_size};
-                              v2.position = {
+                              v2.pos = {
                                   map_offset_x + x * tile_size + tile_size_side, elev11,
                                   map_offset_y + y * tile_size + tile_size_side};
-                              v3.position = {
+                              v3.pos = {
                                   map_offset_x + x * tile_size, elev01,
                                   map_offset_y + y * tile_size + tile_size_side};
 

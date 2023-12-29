@@ -24,9 +24,9 @@ namespace Narradia
       std::vector<float> normals;
       for (auto &vertex : vertices)
       {
-         positions.push_back(vertex.position.x);
-         positions.push_back(vertex.position.y);
-         positions.push_back(vertex.position.z);
+         positions.push_back(vertex.pos.x);
+         positions.push_back(vertex.pos.y);
+         positions.push_back(vertex.pos.z);
          colors.push_back(vertex.color.r);
          colors.push_back(vertex.color.g);
          colors.push_back(vertex.color.b);

@@ -345,7 +345,7 @@ namespace Narradia
              scaling_keyframe);
          auto uv = PointF{1.0f - mesh_uv.x, 1.0f - mesh_uv.y};
          Vertex3F anim_vertex;
-         anim_vertex.position = position;
+         anim_vertex.pos = position;
          anim_vertex.color = color;
          anim_vertex.normal = normal;
          anim_vertex.uv = uv;

@@ -11,10 +11,10 @@ namespace Narradia
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
       Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
-      vertices[0].position = {gl_rect.x, gl_rect.y - gl_rect.h};
-      vertices[1].position = {gl_rect.x, gl_rect.y};
-      vertices[2].position = {gl_rect.x + gl_rect.w, gl_rect.y};
-      vertices[3].position = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
+      vertices[0].pos = {gl_rect.x, gl_rect.y - gl_rect.h};
+      vertices[1].pos = {gl_rect.x, gl_rect.y};
+      vertices[2].pos = {gl_rect.x + gl_rect.w, gl_rect.y};
+      vertices[3].pos = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
       glDisable(GL_DEPTH_TEST);
       auto indices = std::vector<int>(RendererBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
@@ -22,8 +22,8 @@ namespace Narradia
       std::vector<float> colors;
       for (auto &vertex : vertices)
       {
-         positions.push_back(vertex.position.x);
-         positions.push_back(vertex.position.y);
+         positions.push_back(vertex.pos.x);
+         positions.push_back(vertex.pos.y);
          colors.push_back(color.r);
          colors.push_back(color.g);
          colors.push_back(color.b);

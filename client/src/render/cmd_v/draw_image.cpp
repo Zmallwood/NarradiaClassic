@@ -13,10 +13,10 @@ namespace Narradia
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = dest.ToGLRectF();
       Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
-      vertices[0].position = {gl_rect.x, gl_rect.y - gl_rect.h};
-      vertices[1].position = {gl_rect.x, gl_rect.y};
-      vertices[2].position = {gl_rect.x + gl_rect.w, gl_rect.y};
-      vertices[3].position = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
+      vertices[0].pos = {gl_rect.x, gl_rect.y - gl_rect.h};
+      vertices[1].pos = {gl_rect.x, gl_rect.y};
+      vertices[2].pos = {gl_rect.x + gl_rect.w, gl_rect.y};
+      vertices[3].pos = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
       vertices[0].uv = {0.0f, 1.0f};
       vertices[1].uv = {0.0f, 0.0f};
       vertices[2].uv = {1.0f, 0.0f};
@@ -31,8 +31,8 @@ namespace Narradia
       std::vector<float> uvs;
       for (auto &vertex : vertices)
       {
-         positions.push_back(vertex.position.x);
-         positions.push_back(vertex.position.y);
+         positions.push_back(vertex.pos.x);
+         positions.push_back(vertex.pos.y);
          colors.push_back(color.r);
          colors.push_back(color.g);
          colors.push_back(color.b);
