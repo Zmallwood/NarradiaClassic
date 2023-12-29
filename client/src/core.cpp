@@ -2,10 +2,10 @@
 #include "core.h"
 #include "gui-core.h"
 #include "intro_pg.h"
-#include "main_pg.h"
 #include "main_menu_pg.h"
-#include "map_creation_pg.h"
 #include "main_pg-gui_comps.h"
+#include "main_pg.h"
+#include "map_creation_pg.h"
 #endif
 
 namespace Narradia
@@ -18,9 +18,16 @@ namespace Narradia
    }
    void Engine::UpdateGameLogic()
    {
-      Cursor::get()->ResetStyle();
-      PageMngr::get()->UpdateGameLogicCurrScene();
-      MouseInput::get()->ExecMouseActions();
+      try
+      {
+         Cursor::get()->ResetStyle();
+         PageMngr::get()->UpdateGameLogicCurrScene();
+         MouseInput::get()->ExecMouseActions();
+      }
+      catch (std::exception &e)
+      {
+         Console::get()->Print("Exception in Engine::UpdateGameLogic: " + std::string(e.what()));
+      }
    }
    void Engine::Finalize()
    {

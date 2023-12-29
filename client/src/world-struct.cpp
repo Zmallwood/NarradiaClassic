@@ -1,8 +1,8 @@
 #if 1
 #include "world-struct.h"
+#include "actors.h"
 #include "conf.h"
 #include "world_map_loader.h"
-#include "actors.h"
 #endif
 
 namespace Narradia
@@ -39,7 +39,14 @@ namespace Narradia
    }
    std::shared_ptr<Tile> WorldArea::GetTile(int x, int y)
    {
-      return tiles_.at(x).at(y);
+      try
+      {
+         return tiles_.at(x).at(y);
+      }
+      catch (std::exception &e)
+      {
+         throw std::runtime_error("Tried to access tile with an invalid coordinate.");
+      }
    }
    std::shared_ptr<Tile> WorldArea::GetTile(Point coord)
    {

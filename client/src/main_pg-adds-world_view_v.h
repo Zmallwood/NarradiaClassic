@@ -9,6 +9,7 @@ namespace Narradia
      public:
       WorldViewAddV(bool simplified_ground = false);
       void Render();
+      void InitCurrWorldArea();
       auto render_distance()
       {
          return render_distance_;

@@ -12,11 +12,18 @@ int main(int argc, char *argv[])
    {
       if (FPSCapper::get()->Below60FPS())
       {
-         EngineC::get()->HandleInput();
-         EngineC::get()->UpdateGameFlow();
-         Engine::get()->UpdateGameLogic();
-         EngineV::get()->Render();
-         Engine::get()->Finalize();
+         try
+         {
+            EngineC::get()->HandleInput();
+            EngineC::get()->UpdateGameFlow();
+            Engine::get()->UpdateGameLogic();
+            EngineV::get()->Render();
+            Engine::get()->Finalize();
+         }
+         catch (std::exception &e)
+         {
+            Console::get()->Print("Exception in main: " + std::string(e.what()));
+         }
       }
    }
 

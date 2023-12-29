@@ -1,17 +1,16 @@
 #if 1
 #include "main_pg-adds-visual.h"
+#include "actors.h"
 #include "conf.h"
 #include "core.h"
-#include "actors.h"
-#include "world-struct.h"
-#include "render/camera_gl.h"
 #include "main_pg-adds-world_view.h"
-#include "actors.h"
+#include "render/camera_gl.h"
+#include "world-struct.h"
 #endif
 
 namespace Narradia
 {
-    // FPSCounterModule
+   // FPSCounterModule
 #if 1
    void FPSCounterAdd::UpdateGameLogic()
    {
@@ -56,25 +55,33 @@ namespace Narradia
 #if 1
    void KeyboardMovementAdd::UpdateGameLogic()
    {
-      auto w_is_pressed = KbInput::get()->KeyIsPressed(SDLK_w);
-      auto d_is_pressed = KbInput::get()->KeyIsPressed(SDLK_d);
-      auto s_is_pressed = KbInput::get()->KeyIsPressed(SDLK_s);
-      auto a_is_pressed = KbInput::get()->KeyIsPressed(SDLK_a);
-      auto time_to_update =
-          SDL_GetTicks() > Player::get()->ticks_last_move() + 400 / Player::get()->movement_speed();
-      if (time_to_update && (w_is_pressed || d_is_pressed || s_is_pressed || a_is_pressed))
+      try
       {
-         if (w_is_pressed)
-            Player::get()->MoveForward();
-         if (d_is_pressed)
-            Player::get()->MoveRight();
-         if (s_is_pressed)
-            Player::get()->MoveBackwards();
-         if (a_is_pressed)
-            Player::get()->MoveLeft();
-         Player::get()->set_ticks_last_move(SDL_GetTicks());
-         Player::get()->set_destination({-1, -1});
-         MobTargetingAdd::get()->ClearTarget();
+         auto w_is_pressed = KbInput::get()->KeyIsPressed(SDLK_w);
+         auto d_is_pressed = KbInput::get()->KeyIsPressed(SDLK_d);
+         auto s_is_pressed = KbInput::get()->KeyIsPressed(SDLK_s);
+         auto a_is_pressed = KbInput::get()->KeyIsPressed(SDLK_a);
+         auto time_to_update = SDL_GetTicks() > Player::get()->ticks_last_move() +
+                                                    400 / Player::get()->movement_speed();
+         if (time_to_update && (w_is_pressed || d_is_pressed || s_is_pressed || a_is_pressed))
+         {
+            if (w_is_pressed)
+               Player::get()->MoveForward();
+            if (d_is_pressed)
+               Player::get()->MoveRight();
+            if (s_is_pressed)
+               Player::get()->MoveBackwards();
+            if (a_is_pressed)
+               Player::get()->MoveLeft();
+            Player::get()->set_ticks_last_move(SDL_GetTicks());
+            Player::get()->set_destination({-1, -1});
+            MobTargetingAdd::get()->ClearTarget();
+         }
+      }
+      catch (std::exception &e)
+      {
+         Console::get()->Print(
+             "Exception in KeyboardMovementAdd::UpdateGameLogic: " + std::string(e.what()));
       }
    }
 #endif
@@ -146,7 +153,7 @@ namespace Narradia
    }
 #endif
 
-   //MobMovementModule
+   // MobMovementModule
 #if 1
    void MobMovementAdd::UpdateGameLogic()
    {

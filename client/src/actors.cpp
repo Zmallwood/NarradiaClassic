@@ -1,10 +1,12 @@
 #if 1
 #include "actors.h"
-#include "math.h"
 #include "conf.h"
-#include "world-struct.h"
-#include "main_pg-adds-world_view.h"
 #include "core.h"
+#include "main_pg-adds-world_view.h"
+#include "math.h"
+#include "world-struct.h"
+#include "main_pg-adds-world_view_v.h"
+#include "render/renderer_tiles_v.h"
 #endif
 
 namespace Narradia
@@ -42,19 +44,37 @@ namespace Narradia
    }
    void Player::MoveAtAngle(float angle_deg_)
    {
-      auto map_area = World::get()->CurrWorldArea();
-      auto used_angle = angle_deg_ - facing_angle_deg_;
-      auto dx = CosDeg(used_angle + 90.0f) * step_size_;
-      auto dz = SinDeg(used_angle + 90.0f) * step_size_;
-      auto new_x = position_.x + dx;
-      auto new_z = position_.z + dz;
-      if (new_x < 0 || new_z < 0 || new_x >= map_area->GetWidth() || new_z >= map_area->GetHeight())
-         return;
-      auto new_coord = Point{static_cast<int>(new_x), static_cast<int>(new_z)};
-      if (map_area->GetTile(new_coord)->ground() == "GroundWater")
-         return;
-      position_.x = new_x;
-      position_.z = new_z;
+      try
+      {
+         auto map_area = World::get()->CurrWorldArea();
+         auto used_angle = angle_deg_ - facing_angle_deg_;
+         auto dx = CosDeg(used_angle + 90.0f) * step_size_;
+         auto dz = SinDeg(used_angle + 90.0f) * step_size_;
+         auto new_x = position_.x + dx;
+         auto new_z = position_.z + dz;
+         // if (new_x < 0 || new_z < 0 || new_x >= map_area->GetWidth() || new_z >=
+         // map_area->GetHeight())
+         if (new_z < 0 || new_x >= map_area->GetWidth() || new_z >= map_area->GetHeight())
+            return;
+         auto new_coord = Point{static_cast<int>(new_x), static_cast<int>(new_z)};
+         if (new_coord.x < 0)
+         {
+            new_coord.x += map_area->GetWidth();
+            new_x += map_area->GetWidth();
+            world_location_.x--;
+            map_area = World::get()->CurrWorldArea();
+            WorldViewAddV::Dispose();
+            RendererTilesV::Dispose();
+         }
+         if (map_area->GetTile(new_coord)->ground() == "GroundWater")
+            return;
+         position_.x = new_x;
+         position_.z = new_z;
+      }
+      catch (std::exception &e)
+      {
+         Console::get()->Print("Exception in Player::MoveAtAngle: " + std::string(e.what()));
+      }
    }
    bool Player::IsMoving()
    {

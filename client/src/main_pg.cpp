@@ -1,10 +1,10 @@
 #if 1
 #include "main_pg.h"
-#include "main_pg-gui_comps.h"
-#include "main_pg-gui_windows.h"
 #include "main_pg-adds-non-visual.h"
 #include "main_pg-adds-visual.h"
 #include "main_pg-adds-world_view.h"
+#include "main_pg-gui_comps.h"
+#include "main_pg-gui_windows.h"
 #endif
 
 namespace Narradia
@@ -17,18 +17,26 @@ namespace Narradia
    }
    void MainPg::UpdateGameLogicDerived()
    {
-      KbBindingsAdd::get()->UpdateGameLogic();
-      MobMovementAdd::get()->UpdateGameLogic();
-      KeyboardMovementAdd::get()->UpdateGameLogic();
-      MouseMovementAdd::get()->UpdateGameLogic();
-      CombatChaseMovementAdd::get()->UpdateGameLogic();
-      WorldViewAdd::get()->UpdateGameLogic();
-      MouseRotationAdd::get()->UpdateGameLogic();
-      TileHoveringAdd::get()->UpdateGameLogic();
-      MobTargetingAdd::get()->UpdateGameLogic();
-      CombatAdd::get()->UpdateGameLogic();
-      SkillPerformingAdd::get()->UpdateGameLogic();
-      MobDeathHandlingAdd::get()->UpdateGameLogic();
-      FPSCounterAdd::get()->UpdateGameLogic();
+      try
+      {
+         KbBindingsAdd::get()->UpdateGameLogic();
+         MobMovementAdd::get()->UpdateGameLogic();
+         KeyboardMovementAdd::get()->UpdateGameLogic();
+         MouseMovementAdd::get()->UpdateGameLogic();
+         CombatChaseMovementAdd::get()->UpdateGameLogic();
+         WorldViewAdd::get()->UpdateGameLogic();
+         MouseRotationAdd::get()->UpdateGameLogic();
+         TileHoveringAdd::get()->UpdateGameLogic();
+         MobTargetingAdd::get()->UpdateGameLogic();
+         CombatAdd::get()->UpdateGameLogic();
+         SkillPerformingAdd::get()->UpdateGameLogic();
+         MobDeathHandlingAdd::get()->UpdateGameLogic();
+         FPSCounterAdd::get()->UpdateGameLogic();
+      }
+      catch (std::exception &e)
+      {
+         Console::get()->Print(
+             "Exception in MainPg::UpdateGameLogicDerived: " + std::string(e.what()));
+      }
    }
 }

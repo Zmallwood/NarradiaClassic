@@ -1,13 +1,13 @@
 #if 1
 #include "core_v.h"
+#include "intro_pg_v.h"
+#include "main_menu_pg_v.h"
+#include "main_pg_v.h"
+#include "map_creation_pg_v.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
 #include "render/cmd_v/draw_image.h"
 #include "render/cmd_v/new_image.h"
-#include "intro_pg_v.h"
-#include "main_pg_v.h"
-#include "main_menu_pg_v.h"
-#include "map_creation_pg_v.h"
 #endif
 
 namespace Narradia
@@ -16,11 +16,18 @@ namespace Narradia
 #if 1
    void EngineV::Render()
    {
-      GraphicsV::get()->ClearCanvas();
-      PageMngrV::get()->RenderCurrScene();
-      ConsoleV::get()->Render();
-      CursorV::get()->RenderCursor();
-      GraphicsV::get()->PresentCanvas();
+      try
+      {
+         GraphicsV::get()->ClearCanvas();
+         PageMngrV::get()->RenderCurrScene();
+         ConsoleV::get()->Render();
+         CursorV::get()->RenderCursor();
+         GraphicsV::get()->PresentCanvas();
+      }
+      catch (std::exception &e)
+      {
+         Console::get()->Print("Exception in EngineV::Render:" + std::string(e.what()));
+      }
    };
 #endif
 
