@@ -1,7 +1,7 @@
 #if 1
 #include "core_v.h"
 #include "pages_v.h"
-#include "rend/rend_2d_images_v.h"
+#include "rend_2d_images_v.h"
 #include "rend_text.h"
 #endif
 

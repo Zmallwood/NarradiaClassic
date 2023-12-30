@@ -12,9 +12,9 @@
 #include "main_pg-adds-world_view.h"
 #include "main_pg-gui_comps.h"
 #include "main_pg-gui_windows.h"
-#include "rend-models/rend_models_v.h"
-#include "rend/rend_2d_images_v.h"
-#include "rend/rend_tiles_v.h"
+#include "rend_models_v.h"
+#include "rend_2d_images_v.h"
+#include "rend_tiles_v.h"
 #include "world-struct.h"
 #endif
 

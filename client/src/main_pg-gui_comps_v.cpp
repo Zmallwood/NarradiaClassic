@@ -3,8 +3,8 @@
 #include "actors.h"
 #include "main_pg-gui_comps.h"
 #include "math.h"
-#include "rend/rend_2d_images_v.h"
-#include "rend/rend_2d_solid_colors_v.h"
+#include "rend_2d_images_v.h"
+#include "rend_2d_solid_colors_v.h"
 #include "rend_text.h"
 #endif
 

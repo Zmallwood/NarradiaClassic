@@ -4,8 +4,8 @@
 #include "conf.h"
 #include "core.h"
 #include "main_pg-adds-world_view.h"
-#include "rend/camera_gl.h"
 #include "world-struct.h"
+#include "rend-core.h"
 #endif
 
 namespace Narradia

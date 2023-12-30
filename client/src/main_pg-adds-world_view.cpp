@@ -4,8 +4,8 @@
 #include "assets.h"
 #include "conf.h"
 #include "math.h"
-#include "rend/camera_gl.h"
 #include "world-struct.h"
+#include "rend-core.h"
 #endif
 
 namespace Narradia

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rend_base_v.h"
+#include "rend-core_v.h"
 
 namespace Narradia
 {
@@ -14,9 +14,11 @@ namespace Narradia
       static constexpr int kLocationUv = 2;
    };
 
+   // Free functions
+#if 1
    auto NewImage() -> RenderID;
-
    auto DrawImage(
        std::string_view image_name, RenderID rid, const RectF &dest, Color color = Colors::white)
        -> void;
+#endif
 }

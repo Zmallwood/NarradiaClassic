@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rend_base_v.h"
+#include "rend-core_v.h"
 
 namespace Narradia
 {
@@ -13,9 +13,10 @@ namespace Narradia
       static constexpr int kLocationColor = 1;
    };
 
+   // Free functions
+#if 1
    auto NewRect() -> RenderID;
-
    auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void;
-
    auto FillRect(RenderID vao_id, RectF rect, Color color) -> void;
+#endif
 }

@@ -5,6 +5,8 @@
 
 namespace Narradia
 {
+   // Rend2DSolidColorsV
+#if 1
    Rend2DSolidColorsV::Rend2DSolidColorsV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
@@ -12,6 +14,10 @@ namespace Narradia
    Rend2DSolidColorsV::~Rend2DSolidColorsV() {
       CleanupBase();
    }
+#endif
+
+   // Free functions
+#if 1
    auto NewRect() -> RenderID {
       auto renderer = Rend2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
@@ -99,4 +105,5 @@ namespace Narradia
       glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
+#endif
 }

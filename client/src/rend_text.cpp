@@ -2,7 +2,7 @@
 #include "rend_text.h"
 #include "assets.h"
 #include "core.h"
-#include "rend/rend_2d_images_v.h"
+#include "rend_2d_images_v.h"
 #endif
 
 namespace Narradia

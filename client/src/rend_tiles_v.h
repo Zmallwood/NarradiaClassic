@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rend_base_v.h"
+#include "rend-core_v.h"
 
 namespace Narradia
 {
@@ -49,13 +49,12 @@ namespace Narradia
       bool is_batch_drawing_ = false;
    };
 
+   // Free functions
+#if 1
    RenderID NewTile();
-
    auto SetTileGeometry(RenderID vao_id, Square<Vertex3F> &verts) -> void;
-
    auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off = false) -> void;
-
    auto StartTileBatchDrawing() -> void;
-
    auto StopTileBatchDrawing() -> void;
+#endif
 }

@@ -6,6 +6,8 @@
 
 namespace Narradia
 {
+   // Rend2DImagesV
+#if 1
    Rend2DImagesV::Rend2DImagesV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_images, fragment_shader_source_2d_images);
@@ -13,6 +15,10 @@ namespace Narradia
    Rend2DImagesV::~Rend2DImagesV() {
       CleanupBase();
    }
+#endif
+
+   // Free functions
+#if 1
    auto NewImage() -> RenderID {
       auto renderer = Rend2DImagesV::get();
       auto renderer_base = renderer->renderer_base();
@@ -80,4 +86,5 @@ namespace Narradia
       glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
+#endif
 }

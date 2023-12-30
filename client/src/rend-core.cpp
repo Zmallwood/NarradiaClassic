@@ -1,4 +1,4 @@
-#include "rend_base.h"
+#include "rend-core.h"
 
 namespace Narradia
 {

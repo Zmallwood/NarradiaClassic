@@ -1,6 +1,6 @@
 #if 1
 #include "main_menu_pg-adds-menu_models.h"
-#include "rend/camera_gl.h"
+#include "rend-core.h"
 #endif
 
 namespace Narradia

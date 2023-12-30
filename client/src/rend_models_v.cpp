@@ -1,18 +1,17 @@
 #if 1
 #include "rend_models_v.h"
-#include "shaders.h"
-#include "assets.h"
-#include "cmd_v/new_body_keyframe.h"
-#include "cmd_v/new_body_keyframe_geometry.h"
 #include "actors.h"
+#include "assets.h"
 #include "conf.h"
 #include "math.h"
-#include "rend/camera_gl.h"
+#include "shaders.h"
 #include "world-struct.h"
 #endif
 
 namespace Narradia
 {
+   // RendModelsV
+#if 1
    RendModelsV::RendModelsV()
        : timelines_(std::make_shared<std::map<std::string_view, std::map<float, RenderID>>>()),
          model_ids_(std::make_shared<
@@ -32,6 +31,69 @@ namespace Narradia
    RendModelsV::~RendModelsV() {
       CleanupBase();
    }
+   auto RendModelsV::NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID {
+      auto vao_id = renderer_base_->GenNewVAOId();
+      if (timelines_->count(model_name) == 0)
+         timelines_->insert({model_name, std::map<float, RenderID>()});
+      timelines_->at(model_name).insert({ms_time, vao_id});
+      return vao_id;
+   }
+   auto RendModelsV::NewBodyKeyframeGeometry(
+       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) -> void {
+      glEnable(GL_DEPTH_TEST);
+      UseVAOBegin(vao_id);
+      glUniformMatrix4fv(
+          location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->perspective_matrix()));
+      glUniformMatrix4fv(location_view_, 1, GL_FALSE, value_ptr(CameraGL::get()->view_matrix()));
+      glUniform1f(location_alpha_, 1.0f);
+      std::vector<int> indices(vertices.size());
+      std::iota(std::begin(indices), std::end(indices), 0);
+      std::vector<float> positions;
+      std::vector<float> colors;
+      std::vector<float> uvs;
+      std::vector<float> normals;
+      auto i = 0;
+      for (auto &vertex : vertices) {
+         positions.push_back(vertex.pos.x);
+         positions.push_back(vertex.pos.y);
+         positions.push_back(vertex.pos.z);
+         colors.push_back(vertex.color.r);
+         colors.push_back(vertex.color.g);
+         colors.push_back(vertex.color.b);
+         colors.push_back(vertex.color.a);
+         uvs.push_back(vertex.uv.x);
+         uvs.push_back(vertex.uv.y);
+         if (vertex_normals.size() > i) {
+            auto vertex_normal = vertex_normals.at(i);
+            normals.push_back(vertex_normal.x);
+            normals.push_back(-vertex_normal.y);
+            normals.push_back(vertex_normal.z);
+         }
+         i++;
+      }
+      auto index_buffer_id = renderer_base_->GenNewBufId(BufferTypes::Indices, vao_id);
+      auto position_buffer_id = renderer_base_->GenNewBufId(BufferTypes::Positions3D, vao_id);
+      auto color_buffer_id = renderer_base_->GenNewBufId(BufferTypes::Colors, vao_id);
+      auto uv_buffer_id = renderer_base_->GenNewBufId(BufferTypes::Uvs, vao_id);
+      auto normal_buffer_id = renderer_base_->GenNewBufId(BufferTypes::Normals, vao_id);
+      auto num_vertices = vertices.size();
+      SetIndicesData(index_buffer_id, num_vertices, indices.data());
+      SetData(
+          position_buffer_id, num_vertices, positions.data(), BufferTypes::Positions3D,
+          RendModelsV::kLocationPosition);
+      SetData(
+          color_buffer_id, num_vertices, colors.data(), BufferTypes::Colors,
+          RendModelsV::kLocationColor);
+      SetData(uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, RendModelsV::kLocationUv);
+      SetData(
+          normal_buffer_id, num_vertices, normals.data(), BufferTypes::Normals,
+          RendModelsV::kLocationNormal);
+      UseVAOEnd();
+   }
+#endif
+
+   // Free functions
+#if 1
    auto NewModel(std::string_view model_name) -> void {
       auto renderer = RendModelsV::get();
       auto model = ModelBank::get()->GetModel(model_name);
@@ -44,7 +106,7 @@ namespace Narradia
             auto keyframe_time = keyframe.first;
             auto anim_key_body_keyframe = keyframe.second;
             auto vertex_count = anim_key_body_keyframe->vertices.size();
-            auto body_keyframe_id = NewBodyKeyframe(model_name, keyframe_time);
+            auto body_keyframe_id = RendModelsV::get()->NewBodyKeyframe(model_name, keyframe_time);
             if (model_ids->at(model_name.data()).count(i_body) == 0)
                model_ids->at(model_name.data()).insert({i_body, std::map<float, const BodyData>()});
             BodyData body_data;
@@ -68,7 +130,7 @@ namespace Narradia
                n3f.z = v.normal.z;
                normals.push_back(n3f);
             }
-            NewBodyKeyframeGeometry(body_keyframe_id, vertices, normals);
+            RendModelsV::get()->NewBodyKeyframeGeometry(body_keyframe_id, vertices, normals);
          }
          i_body++;
       }
@@ -156,4 +218,20 @@ namespace Narradia
       if (!is_batch_drawing)
          glUseProgram(0);
    }
+   auto StartModelsBatchDrawing() -> void {
+      auto renderer = RendModelsV::get();
+      renderer->set_is_batch_drawing(true);
+      glEnable(GL_DEPTH_TEST);
+      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
+      glUniformMatrix4fv(
+          renderer->location_projection(), 1, GL_FALSE,
+          value_ptr(CameraGL::get()->perspective_matrix()));
+      glUniformMatrix4fv(
+          renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+   }
+   auto StopModelsBatchDrawing() -> void {
+      auto renderer = RendModelsV::get();
+      renderer->set_is_batch_drawing(false);
+   }
+#endif
 }

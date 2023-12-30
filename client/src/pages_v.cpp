@@ -2,7 +2,7 @@
 #include "pages_v.h"
 #include "pages.h"
 #include "gui-core_v.h"
-#include "rend/rend_2d_images_v.h"
+#include "rend_2d_images_v.h"
 #include "rend_text.h"
 #include "gui-core_v.h"
 #include "main_menu_pg-adds-menu_models_v.h"

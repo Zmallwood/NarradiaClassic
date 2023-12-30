@@ -4,13 +4,14 @@
 #include "assets.h"
 #include "conf.h"
 #include "math.h"
-#include "rend/camera_gl.h"
 #include "shaders.h"
 #include "world-struct.h"
 #endif
 
 namespace Narradia
 {
+   // RendTilesV
+#if 1
    RendTilesV::RendTilesV() {
       shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
       location_projection_ = GetUniformLocation("projection");
@@ -23,6 +24,10 @@ namespace Narradia
    RendTilesV::~RendTilesV() {
       CleanupBase();
    }
+#endif
+
+   // Free functions
+#if 1
    RenderID NewTile() {
       auto num_vertices = 4;
       auto renderer = RendTilesV::get();
@@ -82,8 +87,7 @@ namespace Narradia
       glBindVertexArray(vao_id);
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
-          position_buffer_id, positions, BufferTypes::Positions3D,
-          RendTilesV::kLocationPosition);
+          position_buffer_id, positions, BufferTypes::Positions3D, RendTilesV::kLocationPosition);
       renderer->UpdateData(
           color_buffer_id, colors, BufferTypes::Colors, RendTilesV::kLocationColor);
       renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendTilesV::kLocationUv);
@@ -170,4 +174,5 @@ namespace Narradia
       glUseProgram(0);
       glDisable(GL_CULL_FACE);
    }
+#endif
 }

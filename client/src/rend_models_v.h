@@ -1,14 +1,27 @@
 #pragma once
 
-#include "rend/body_data.h"
-#include "rend/rend_base_v.h"
+#include "rend-core_v.h"
 
 namespace Narradia
 {
+   // Related type BodyData
+#if 1
+   class BodyData {
+     public:
+      RenderID rid = -1;
+      int num_vertices = 0;
+      std::string image_name;
+   };
+#endif
+
    class RendModelsV : public RendBaseV, public S<RendModelsV> {
      public:
       RendModelsV();
       ~RendModelsV();
+      auto NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID;
+      auto NewBodyKeyframeGeometry(
+          GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals)
+          -> void;
       auto timelines() {
          return timelines_;
       }
@@ -86,5 +99,7 @@ namespace Narradia
        std::string_view model_name, float ms_time, Point3F position, float rotation = 0.0f,
        float scaling = 1.0f, float brightness = 1.0f, glm::vec3 color_mod = {1.0f, 1.0f, 1.0f},
        bool no_fog = false, bool no_lighting = false) -> void;
+   auto StartModelsBatchDrawing() -> void;
+   auto StopModelsBatchDrawing() -> void;
 #endif
 }
