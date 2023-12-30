@@ -5,8 +5,7 @@
 
 namespace Narradia
 {
-   auto NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID
-   {
+   auto NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID {
       auto renderer = RendererModelsV::get();
       auto renderer_base = renderer->renderer_base();
       auto timelines = renderer->timelines();

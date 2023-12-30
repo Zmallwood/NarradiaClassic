@@ -55,8 +55,8 @@ set(PCH_FILES
 "src/matter/m/color.h"
 "src/matter/m/point3f.h"
 
-"srccomm/sys/cmd/singletons_cleanup.h"
-"srccomm/sys/singleton.h"
+"src/common/sys/cmd/singletons_cleanup.h"
+"src/common/sys/singleton.h"
 "src/math/sys/tile_calc.h"
 "src/math/sys/trigonometry.h"
 )

@@ -7,8 +7,7 @@ namespace Narradia
    class RendererBase;
    class ShaderProgramV;
 
-   class RendererBaseV
-   {
+   class RendererBaseV {
      public:
       RendererBaseV();
       void UseVAOBegin(GLuint vao_id) const;
@@ -21,12 +20,10 @@ namespace Narradia
       void UpdateData(
           GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
           int layout_location) const;
-      auto shader_program_view()
-      {
+      auto shader_program_view() {
          return shader_program_view_;
       }
-      auto renderer_base()
-      {
+      auto renderer_base() {
          return renderer_base_;
       }
 

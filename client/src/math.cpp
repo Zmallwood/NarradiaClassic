@@ -6,23 +6,20 @@
 
 namespace Narradia
 {
-    // Trigonometry
+   // Trigonometry
 #if 1
-   float SinDeg(float angle_deg)
-   {
+   float SinDeg(float angle_deg) {
       return sinf(angle_deg * static_cast<float>(M_PI) / 180.0f);
    }
 
-   float CosDeg(float angle_deg)
-   {
+   float CosDeg(float angle_deg) {
       return cosf(angle_deg * static_cast<float>(M_PI) / 180.0f);
    }
 #endif
 
    // Tile calculations
 #if 1
-   float CalcTileAverageElevation(Point coord)
-   {
+   float CalcTileAverageElevation(Point coord) {
       auto map_area = World::get()->CurrWorldArea();
       auto elev00 = map_area->GetTile(coord.x, coord.y)->elevation() * kElevAmount;
       auto elev10 = elev00;
@@ -41,8 +38,7 @@ namespace Narradia
       return (elev00 + elev10 + elev11 + elev01) / 4.0f;
    }
 
-   Point3F CalcTileNormal(Point3F v0, Point3F v1, Point3F v2)
-   {
+   Point3F CalcTileNormal(Point3F v0, Point3F v1, Point3F v2) {
       auto point0 = glm::vec3(v0.x, v0.y, v0.z);
       auto point1 = glm::vec3(v1.x, v1.y, v1.z);
       auto Point2 = glm::vec3(v2.x, v2.y, v2.z);
@@ -57,24 +53,21 @@ namespace Narradia
 
    // Exp calculations
 #if 1
-   int GetCurrentLevel(int exp)
-   {
+   int GetCurrentLevel(int exp) {
       auto value = std::trunc(log2f(pow(exp + 70, 2) / 5000)) + 1;
       auto level = static_cast<int>(value);
 
       return level;
    }
 
-   int GetExpForLevel(int lvl)
-   {
+   int GetExpForLevel(int lvl) {
       auto value = std::max(sqrtf(powf(2, lvl - 1) * 5000) - 70, 0.0f);
       auto experience = static_cast<int>(value);
 
       return experience;
    }
 
-   int GetExpDiffToNextLevel(int exp)
-   {
+   int GetExpDiffToNextLevel(int exp) {
       auto current_level = GetCurrentLevel(exp);
       auto next_level = current_level + 1;
       auto total_experience_current_level = GetExpForLevel(current_level);
@@ -84,23 +77,20 @@ namespace Narradia
       return experience_difference;
    }
 
-   int GetExpReqForCurrLevelStart(int exp)
-   {
+   int GetExpReqForCurrLevelStart(int exp) {
       auto current_level = GetCurrentLevel(exp);
       auto total_experience_current_level_start = GetExpForLevel(current_level);
 
       return total_experience_current_level_start;
    }
 
-   int GetExpGainedSinceLevelStart(int exp)
-   {
+   int GetExpGainedSinceLevelStart(int exp) {
       auto experience_since_start = exp - GetExpReqForCurrLevelStart(exp);
 
       return experience_since_start;
    }
 
-   float GetFractionalExpProgress(int exp)
-   {
+   float GetFractionalExpProgress(int exp) {
       auto experience_gain = exp - GetExpReqForCurrLevelStart(exp);
       auto experience_difference = GetExpDiffToNextLevel(exp);
       auto progress_fractional = static_cast<float>(experience_gain) / experience_difference;

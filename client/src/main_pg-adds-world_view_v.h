@@ -4,18 +4,15 @@ namespace Narradia
 {
    class Tile;
 
-   class WorldViewAddV : public S<WorldViewAddV>
-   {
+   class WorldViewAddV : public S<WorldViewAddV> {
      public:
       WorldViewAddV(bool simplified_ground = false);
       void Render();
       void InitCurrWorldArea();
-      auto render_distance()
-      {
+      auto render_distance() {
          return render_distance_;
       }
-      void set_render_distance(int value)
-      {
+      void set_render_distance(int value) {
          render_distance_ = value;
       }
 

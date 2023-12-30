@@ -4,8 +4,7 @@
 
 namespace Narradia
 {
-   class Renderer2DImagesV : public RendererBaseV, public S<Renderer2DImagesV>
-   {
+   class Renderer2DImagesV : public RendererBaseV, public S<Renderer2DImagesV> {
      public:
       Renderer2DImagesV();
       ~Renderer2DImagesV();

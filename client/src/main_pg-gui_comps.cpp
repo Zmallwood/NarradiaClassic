@@ -2,17 +2,15 @@
 
 namespace Narradia
 {
-    // StatusPanel
+   // StatusPanel
 #if 1
-   void StatusPanel::UpdateGameLogic()
-   {
+   void StatusPanel::UpdateGameLogic() {
    }
 #endif
-   
+
    // ExperienceBar
 #if 1
-   void ExperienceBar::UpdateGameLogic()
-   {
+   void ExperienceBar::UpdateGameLogic() {
    }
 #endif
 }

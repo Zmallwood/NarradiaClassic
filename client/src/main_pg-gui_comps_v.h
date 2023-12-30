@@ -4,8 +4,7 @@
 
 namespace Narradia
 {
-   class StatusPanelV : public GuiComponentV
-   {
+   class StatusPanelV : public GuiComponentV {
      public:
       StatusPanelV();
       void Render() override;
@@ -23,8 +22,7 @@ namespace Narradia
       RenderID rid_level_;
    };
 
-   class ExperienceBarV : public GuiComponentV
-   {
+   class ExperienceBarV : public GuiComponentV {
      public:
       ExperienceBarV();
       void Render() override;

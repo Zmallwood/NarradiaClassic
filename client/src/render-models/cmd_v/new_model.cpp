@@ -1,25 +1,22 @@
 #if 1
 #include "new_model.h"
 #include "assets.h"
-#include "render-models/renderer_models_v.h"
 #include "new_body_keyframe.h"
 #include "new_body_keyframe_geometry.h"
+#include "render-models/renderer_models_v.h"
 #endif
 
 namespace Narradia
 {
-   auto NewModel(std::string_view model_name) -> void
-   {
+   auto NewModel(std::string_view model_name) -> void {
       auto renderer = RendererModelsV::get();
       auto model = ModelBank::get()->GetModel(model_name);
       auto model_ids = renderer->model_ids();
       model_ids->insert({model_name.data(), std::map<int, std::map<float, const BodyData>>()});
       auto i_body = 0;
-      for (auto &body : *model->model_parts())
-      {
+      for (auto &body : *model->model_parts()) {
          auto &timelines = body->timeline()->keyframes;
-         for (auto &keyframe : timelines)
-         {
+         for (auto &keyframe : timelines) {
             auto keyframe_time = keyframe.first;
             auto anim_key_body_keyframe = keyframe.second;
             auto vertex_count = anim_key_body_keyframe->vertices.size();
@@ -35,8 +32,7 @@ namespace Narradia
             std::vector<Vertex3F> vertices;
             std::vector<Point3F> normals;
             auto &anim_vertices = model_keyframe->vertices;
-            for (auto v : anim_vertices)
-            {
+            for (auto v : anim_vertices) {
                Vertex3F v3f;
                v3f.pos = v.pos;
                v3f.color = v.color;

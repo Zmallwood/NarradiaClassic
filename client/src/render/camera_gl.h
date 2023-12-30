@@ -2,23 +2,18 @@
 
 namespace Narradia
 {
-   class CameraGL : public S<CameraGL>
-   {
+   class CameraGL : public S<CameraGL> {
      public:
-      auto perspective_matrix()
-      {
+      auto perspective_matrix() {
          return perspective_matrix_;
       }
-      void set_perspective_matrix(glm::mat4 value)
-      {
+      void set_perspective_matrix(glm::mat4 value) {
          perspective_matrix_ = value;
       }
-      auto view_matrix()
-      {
+      auto view_matrix() {
          return view_matrix_;
       }
-      void set_view_matrix(glm::mat4 value)
-      {
+      void set_view_matrix(glm::mat4 value) {
          view_matrix_ = value;
       }
 

@@ -3,49 +3,41 @@
 #include "conf.h"
 #include "core.h"
 #include "main_pg-adds-world_view.h"
-#include "math.h"
-#include "world-struct.h"
 #include "main_pg-adds-world_view_v.h"
+#include "math.h"
 #include "render/renderer_tiles_v.h"
+#include "world-struct.h"
 #endif
 
 namespace Narradia
 {
    // Player
 #if 1
-   Player::Player()
-   {
+   Player::Player() {
       position_ = {0, 0};
    }
-   void Player::MoveForward()
-   {
+   void Player::MoveForward() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(0.0f);
    }
-   void Player::MoveRight()
-   {
+   void Player::MoveRight() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(90.0f);
    }
-   void Player::MoveBackwards()
-   {
+   void Player::MoveBackwards() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(180.0f);
    }
-   void Player::MoveLeft()
-   {
+   void Player::MoveLeft() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(-90.0f);
    }
-   void Player::AddExperience(int amount)
-   {
+   void Player::AddExperience(int amount) {
       experience_ += amount;
       Console::get()->Print("You got " + std::to_string(amount) + " experience");
    }
-   void Player::MoveAtAngle(float angle_deg_)
-   {
-      try
-      {
+   void Player::MoveAtAngle(float angle_deg_) {
+      try {
          auto map_area = World::get()->CurrWorldArea();
          auto used_angle = angle_deg_ - facing_angle_deg_;
          auto dx = CosDeg(used_angle + 90.0f) * step_size_;
@@ -57,8 +49,7 @@ namespace Narradia
          if (new_z < 0 || new_x >= map_area->GetWidth() || new_z >= map_area->GetHeight())
             return;
          auto new_coord = Point{static_cast<int>(new_x), static_cast<int>(new_z)};
-         if (new_coord.x < 0)
-         {
+         if (new_coord.x < 0) {
             new_coord.x += map_area->GetWidth();
             new_x += map_area->GetWidth();
             world_location_.x--;
@@ -71,35 +62,29 @@ namespace Narradia
          position_.x = new_x;
          position_.z = new_z;
       }
-      catch (std::exception &e)
-      {
+      catch (std::exception &e) {
          Console::get()->Print("Exception in Player::MoveAtAngle: " + std::string(e.what()));
       }
    }
-   bool Player::IsMoving()
-   {
+   bool Player::IsMoving() {
       return SDL_GetTicks() < ticks_last_move_ + 400 / movement_speed_;
    }
-   void Player::Hit(float damage)
-   {
+   void Player::Hit(float damage) {
       health_ -= damage;
    }
 #endif
 
    // Mob
 #if 1
-   void Mob::Hit(float damage)
-   {
+   void Mob::Hit(float damage) {
       health_ -= damage;
       ticks_last_hit_recieved_ = SDL_GetTicks();
       aggroing_player_ = true;
    }
-   bool Mob::IsDead()
-   {
+   bool Mob::IsDead() {
       return health_ <= 0.0f;
    }
-   void Mob::AggroPlayer()
-   {
+   void Mob::AggroPlayer() {
       aggroing_player_ = true;
    }
 #endif

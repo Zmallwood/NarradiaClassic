@@ -2,27 +2,20 @@
 
 namespace Narradia
 {
-   enum class FontSizes
-   {
-      _20,
-      _40
-   };
+   enum class FontSizes { _20, _40 };
 
    class Font;
 
-   class RendererText : public S<RendererText>
-   {
+   class RendererText : public S<RendererText> {
      public:
       RendererText();
       void RenderText(
           RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
           std::string &out_unique_name_id, SizeF &out_size) const;
-      auto fonts()
-      {
+      auto fonts() {
          return fonts_;
       }
-      auto unique_name_ids()
-      {
+      auto unique_name_ids() {
          return unique_name_ids_;
       }
 

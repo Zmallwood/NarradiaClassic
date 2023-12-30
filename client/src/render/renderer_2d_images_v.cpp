@@ -1,23 +1,20 @@
 #if 1
 #include "renderer_2d_images_v.h"
-#include "shaders.h"
-#include "render/shader_program_v.h"
 #include "assets.h"
+#include "render/shader_program_v.h"
+#include "shaders.h"
 #endif
 
 namespace Narradia
 {
-   Renderer2DImagesV::Renderer2DImagesV()
-   {
+   Renderer2DImagesV::Renderer2DImagesV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_images, fragment_shader_source_2d_images);
    }
-   Renderer2DImagesV::~Renderer2DImagesV()
-   {
+   Renderer2DImagesV::~Renderer2DImagesV() {
       CleanupBase();
    }
-   auto NewImage() -> RenderID
-   {
+   auto NewImage() -> RenderID {
       auto renderer = Renderer2DImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
@@ -37,8 +34,8 @@ namespace Narradia
       renderer->UseVAOEnd();
       return vao_id;
    }
-   auto DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color) -> void
-   {
+   auto DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color)
+       -> void {
       auto renderer = Renderer2DImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = dest.ToGLRectF();
@@ -59,8 +56,7 @@ namespace Narradia
       std::vector<float> positions;
       std::vector<float> colors;
       std::vector<float> uvs;
-      for (auto &vertex : vertices)
-      {
+      for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
          colors.push_back(color.r);

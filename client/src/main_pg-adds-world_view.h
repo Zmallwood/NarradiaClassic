@@ -2,41 +2,33 @@
 
 namespace Narradia
 {
-   class WorldViewAdd : public S<WorldViewAdd>
-   {
+   class WorldViewAdd : public S<WorldViewAdd> {
      public:
       WorldViewAdd();
       void UpdateGameLogic();
    };
 
-   // Show Camera class 
+   // Show Camera class
 #if 1
-   class Camera : public S<Camera>
-   {
+   class Camera : public S<Camera> {
      public:
       void UpdateGameLogic();
-      auto horizontal_angle_deg()
-      {
+      auto horizontal_angle_deg() {
          return horizontal_angle_deg_;
       }
-      void set_horizontal_angle_deg(float value)
-      {
+      void set_horizontal_angle_deg(float value) {
          horizontal_angle_deg_ = value;
       }
-      auto vertical_angle_deg()
-      {
+      auto vertical_angle_deg() {
          return vertical_angle_deg_;
       }
-      void set_vertical_angle_deg(float value)
-      {
+      void set_vertical_angle_deg(float value) {
          vertical_angle_deg_ = value;
       }
-      auto camera_distance()
-      {
+      auto camera_distance() {
          return camera_distance_;
       }
-      void set_camera_distance(float value)
-      {
+      void set_camera_distance(float value) {
          camera_distance_ = value;
       }
 

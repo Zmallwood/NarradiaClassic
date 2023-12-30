@@ -1,21 +1,20 @@
 #if 1
 #include "renderer_tiles_v.h"
-#include "shaders.h"
-#include "render/shader_program_v.h"
-#include "render/shader_program.h"
-#include "conf.h"
+#include "actors.h"
 #include "assets.h"
+#include "conf.h"
+#include "math.h"
 #include "render/camera_gl.h"
 #include "render/renderer_tiles_v.h"
-#include "actors.h"
+#include "render/shader_program.h"
+#include "render/shader_program_v.h"
+#include "shaders.h"
 #include "world-struct.h"
-#include "math.h"
 #endif
 
 namespace Narradia
 {
-   RendererTilesV::RendererTilesV()
-   {
+   RendererTilesV::RendererTilesV() {
       shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
       location_projection_ = GetUniformLocation("projection");
       location_view_ = GetUniformLocation("view");
@@ -24,12 +23,10 @@ namespace Narradia
       location_view_pos_ = GetUniformLocation("viewPos");
       location_fog_color_ = GetUniformLocation("fogColor");
    }
-   RendererTilesV::~RendererTilesV()
-   {
+   RendererTilesV::~RendererTilesV() {
       CleanupBase();
    }
-   RenderID NewTile()
-   {
+   RenderID NewTile() {
       auto num_vertices = 4;
       auto renderer = RendererTilesV::get();
       auto renderer_base = renderer->renderer_base();
@@ -49,8 +46,7 @@ namespace Narradia
       glBindVertexArray(0);
       return vertex_array_id;
    }
-   auto SetTileGeometry(RenderID vao_id, Square<Vertex3F> &verts) -> void
-   {
+   auto SetTileGeometry(RenderID vao_id, Square<Vertex3F> &verts) -> void {
       std::vector<Vertex3F> vertices;
       vertices.push_back(verts._00);
       vertices.push_back(verts._10);
@@ -66,8 +62,7 @@ namespace Narradia
       std::vector<float> colors;
       std::vector<float> uvs;
       std::vector<float> normals;
-      for (auto &vertex : vertices)
-      {
+      for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
          positions.push_back(vertex.pos.z);
@@ -101,16 +96,14 @@ namespace Narradia
       if (!renderer->is_batch_drawing())
          renderer->UseVAOEnd();
    }
-   auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) -> void
-   {
+   auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) -> void {
       auto vertex_count = 4;
       auto renderer = RendererTilesV::get();
       if (depth_test_off)
          glDisable(GL_DEPTH_TEST);
       else
          glEnable(GL_DEPTH_TEST);
-      if (!renderer->is_batch_drawing())
-      {
+      if (!renderer->is_batch_drawing()) {
          renderer->UseVAOBegin(vao_id);
          glUniformMatrix4fv(
              renderer->location_projection(), 1, GL_FALSE,
@@ -141,8 +134,7 @@ namespace Narradia
       if (!renderer->is_batch_drawing())
          renderer->UseVAOEnd();
    }
-   auto StartTileBatchDrawing() -> void
-   {
+   auto StartTileBatchDrawing() -> void {
       auto renderer = RendererTilesV::get();
       renderer->set_is_batch_drawing(true);
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
@@ -175,8 +167,7 @@ namespace Narradia
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }
-   auto StopTileBatchDrawing() -> void
-   {
+   auto StopTileBatchDrawing() -> void {
       auto renderer = RendererTilesV::get();
       renderer->set_is_batch_drawing(false);
       glUseProgram(0);

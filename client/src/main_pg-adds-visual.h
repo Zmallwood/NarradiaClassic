@@ -2,12 +2,10 @@
 
 namespace Narradia
 {
-   class FPSCounterAdd : public S<FPSCounterAdd>
-   {
+   class FPSCounterAdd : public S<FPSCounterAdd> {
      public:
       void UpdateGameLogic();
-      auto fps()
-      {
+      auto fps() {
          return fps_;
       }
 
@@ -21,13 +19,11 @@ namespace Narradia
 
    class Mob;
 
-   class MobTargetingAdd : public S<MobTargetingAdd>
-   {
+   class MobTargetingAdd : public S<MobTargetingAdd> {
      public:
       void UpdateGameLogic();
       void ClearTarget();
-      auto targeted_mob()
-      {
+      auto targeted_mob() {
          return targeted_mob_;
       }
 
@@ -35,32 +31,27 @@ namespace Narradia
       std::shared_ptr<Mob> targeted_mob_;
    };
 
-   class KeyboardMovementAdd : public S<KeyboardMovementAdd>
-   {
+   class KeyboardMovementAdd : public S<KeyboardMovementAdd> {
      public:
       void UpdateGameLogic();
    };
 
-   class CombatChaseMovementAdd : public S<CombatChaseMovementAdd>
-   {
+   class CombatChaseMovementAdd : public S<CombatChaseMovementAdd> {
      public:
       void UpdateGameLogic();
    };
 
-   class MouseMovementAdd : public S<MouseMovementAdd>
-   {
+   class MouseMovementAdd : public S<MouseMovementAdd> {
      public:
       void UpdateGameLogic();
    };
 
-   class MobMovementAdd : public S<MobMovementAdd>
-   {
+   class MobMovementAdd : public S<MobMovementAdd> {
      public:
       void UpdateGameLogic();
    };
 
-   class MouseRotationAdd : public S<MouseRotationAdd>
-   {
+   class MouseRotationAdd : public S<MouseRotationAdd> {
      public:
       void UpdateGameLogic();
 
@@ -73,8 +64,7 @@ namespace Narradia
       const float kRotationSens = 200.0f;
    };
 
-   class SkillPerformingAdd : public S<SkillPerformingAdd>
-   {
+   class SkillPerformingAdd : public S<SkillPerformingAdd> {
      public:
       void UpdateGameLogic();
 
@@ -83,12 +73,10 @@ namespace Narradia
       float skill_ticks_frequency_ = 0.4f;
    };
 
-   class TileHoveringAdd : public S<TileHoveringAdd>
-   {
+   class TileHoveringAdd : public S<TileHoveringAdd> {
      public:
       void UpdateGameLogic();
-      auto hovered_tile()
-      {
+      auto hovered_tile() {
          return hovered_tile_;
       }
 

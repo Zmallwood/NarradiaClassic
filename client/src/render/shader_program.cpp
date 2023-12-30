@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   void ShaderProgram::Cleanup()
-   {
+   void ShaderProgram::Cleanup() {
       glDeleteProgram(program_id_);
    }
 }

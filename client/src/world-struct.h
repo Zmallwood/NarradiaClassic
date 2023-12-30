@@ -11,16 +11,13 @@ namespace Narradia
    // Show Tile sub classes
 #if 1
 
-   class Object
-   {
+   class Object {
      public:
       Object(std::string type);
-      auto type()
-      {
+      auto type() {
          return type_;
       }
-      void set_type(std::string_view value)
-      {
+      void set_type(std::string_view value) {
          type_ = value;
       }
 
@@ -28,8 +25,7 @@ namespace Narradia
       std::string type_ = "";
    };
 
-   class TileEffect
-   {
+   class TileEffect {
      public:
       std::string_view type;
       int ticks_started = 0;
@@ -39,72 +35,55 @@ namespace Narradia
 
    class Mob;
 
-   class Tile
-   {
+   class Tile {
      public:
       Tile()
-          : color_(std::make_shared<Color>())
-      {
+          : color_(std::make_shared<Color>()) {
       }
       void IncreaseElevation(float amount);
-      auto ground()
-      {
+      auto ground() {
          return ground_;
       }
-      void set_ground(std::string value)
-      {
+      void set_ground(std::string value) {
          ground_ = value;
       }
-      auto object()
-      {
+      auto object() {
          return object_;
       }
-      void set_object(std::shared_ptr<Object> value)
-      {
+      void set_object(std::shared_ptr<Object> value) {
          object_ = value;
       }
-      auto mob()
-      {
+      auto mob() {
          return mob_;
       }
-      void set_mob(std::shared_ptr<Mob> value)
-      {
+      void set_mob(std::shared_ptr<Mob> value) {
          mob_ = value;
       }
-      auto elevation()
-      {
+      auto elevation() {
          return elevation_;
       }
-      void set_elevation(float value)
-      {
+      void set_elevation(float value) {
          elevation_ = value;
       }
-      auto tile_effect()
-      {
+      auto tile_effect() {
          return tile_effect_;
       }
-      void set_tile_effect(TileEffect value)
-      {
+      void set_tile_effect(TileEffect value) {
          tile_effect_ = value;
       }
-      auto rid()
-      {
+      auto rid() {
          return rid_;
       }
-      void set_rid(RenderID value)
-      {
+      void set_rid(RenderID value) {
          rid_ = value;
       }
-      auto normal()
-      {
+      auto normal() {
          return normal_;
       }
-      void set_normal(Point3F value)
-      {
+      void set_normal(Point3F value) {
          normal_ = value;
       }
-      auto color()
-      {
+      auto color() {
          return color_;
       }
 
@@ -121,8 +100,7 @@ namespace Narradia
 
 #endif
 
-   class WorldArea
-   {
+   class WorldArea {
      public:
       WorldArea(int width, int height);
       std::shared_ptr<Tile> GetTile(int x, int y);
@@ -131,8 +109,7 @@ namespace Narradia
       int GetWidth();
       int GetHeight();
       void ClearAllRIDS();
-      auto mobs_mirror()
-      {
+      auto mobs_mirror() {
          return mobs_mirror_;
       }
 
@@ -143,22 +120,18 @@ namespace Narradia
 
 #endif
 
-   class World : public S<World>
-   {
+   class World : public S<World> {
      public:
       World();
       auto CurrWorldArea() -> std::shared_ptr<WorldArea>;
       auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea>;
-      auto world_width()
-      {
+      auto world_width() {
          return world_width_;
       }
-      auto world_height()
-      {
+      auto world_height() {
          return world_height_;
       }
-      auto world_areas()
-      {
+      auto world_areas() {
          return world_areas_;
       }
 

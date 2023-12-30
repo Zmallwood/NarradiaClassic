@@ -1,22 +1,19 @@
 #if 1
 #include "renderer_2d_solid_colors_v.h"
-#include "shaders.h"
 #include "render/shader_program_v.h"
+#include "shaders.h"
 #endif
 
 namespace Narradia
 {
-   Renderer2DSolidColorsV::Renderer2DSolidColorsV()
-   {
+   Renderer2DSolidColorsV::Renderer2DSolidColorsV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
    }
-   Renderer2DSolidColorsV::~Renderer2DSolidColorsV()
-   {
+   Renderer2DSolidColorsV::~Renderer2DSolidColorsV() {
       CleanupBase();
    }
-   auto NewRect() -> RenderID
-   {
+   auto NewRect() -> RenderID {
       auto renderer = Renderer2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
@@ -33,8 +30,7 @@ namespace Narradia
       renderer->UseVAOEnd();
       return vao_id;
    }
-   auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void
-   {
+   auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void {
       auto renderer = Renderer2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
@@ -48,8 +44,7 @@ namespace Narradia
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
-      for (auto &vertex : vertices)
-      {
+      for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
          colors.push_back(color.r);
@@ -70,8 +65,7 @@ namespace Narradia
       glDrawElements(GL_LINE_STRIP, RendererBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
-   auto FillRect(RenderID vao_id, RectF rect, Color color) -> void
-   {
+   auto FillRect(RenderID vao_id, RectF rect, Color color) -> void {
       auto renderer = Renderer2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
@@ -85,8 +79,7 @@ namespace Narradia
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
-      for (auto &vertex : vertices)
-      {
+      for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
          colors.push_back(color.r);

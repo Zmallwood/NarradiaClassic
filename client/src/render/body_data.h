@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class BodyData
-   {
+   class BodyData {
      public:
       RenderID rid = -1;
       int num_vertices = 0;

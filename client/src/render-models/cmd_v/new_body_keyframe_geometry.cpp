@@ -1,14 +1,13 @@
 #if 1
 #include "new_body_keyframe_geometry.h"
-#include "render/camera_gl.h"
 #include "render-models/renderer_models_v.h"
+#include "render/camera_gl.h"
 #endif
 
 namespace Narradia
 {
    auto NewBodyKeyframeGeometry(
-       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) -> void
-   {
+       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) -> void {
       auto renderer = RendererModelsV::get();
       auto renderer_base = renderer->renderer_base();
       glEnable(GL_DEPTH_TEST);
@@ -26,8 +25,7 @@ namespace Narradia
       std::vector<float> uvs;
       std::vector<float> normals;
       auto i = 0;
-      for (auto &vertex : vertices)
-      {
+      for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
          positions.push_back(vertex.pos.z);
@@ -37,8 +35,7 @@ namespace Narradia
          colors.push_back(vertex.color.a);
          uvs.push_back(vertex.uv.x);
          uvs.push_back(vertex.uv.y);
-         if (vertex_normals.size() > i)
-         {
+         if (vertex_normals.size() > i) {
             auto vertex_normal = vertex_normals.at(i);
             normals.push_back(vertex_normal.x);
             normals.push_back(-vertex_normal.y);
@@ -60,8 +57,7 @@ namespace Narradia
           color_buffer_id, num_vertices, colors.data(), BufferTypes::Colors,
           RendererModelsV::kLocationColor);
       renderer->SetData(
-          uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs,
-          RendererModelsV::kLocationUv);
+          uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, RendererModelsV::kLocationUv);
       renderer->SetData(
           normal_buffer_id, num_vertices, normals.data(), BufferTypes::Normals,
           RendererModelsV::kLocationNormal);

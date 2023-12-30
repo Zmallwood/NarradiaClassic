@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class KeyframeCreator: public S<KeyframeCreator>
-   {
+   class KeyframeCreator : public S<KeyframeCreator> {
      public:
       // clang-format off
       auto PosKeyframe(
@@ -37,8 +36,7 @@ namespace Narradia
 
    class ModelPart;
 
-   class ModelPartCreator: public S<ModelPartCreator>
-   {
+   class ModelPartCreator : public S<ModelPartCreator> {
      public:
       // clang-format off
       auto
@@ -77,8 +75,7 @@ namespace Narradia
       // clang-format on
    };
 
-   class MeshObtainer : public S<MeshObtainer>
-   {
+   class MeshObtainer : public S<MeshObtainer> {
      public:
       // clang-format off
       auto ModelMeshIds(
@@ -93,8 +90,7 @@ namespace Narradia
 
    class Model;
 
-   class ModelCreator: public S<ModelCreator>
-   {
+   class ModelCreator : public S<ModelCreator> {
      public:
       auto CreateModel(const aiScene *raw_model) -> std::shared_ptr<Model>;
 

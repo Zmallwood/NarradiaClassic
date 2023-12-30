@@ -5,8 +5,7 @@
 
 namespace Narradia
 {
-   auto StopModelsBatchDrawing() -> void
-   {
+   auto StopModelsBatchDrawing() -> void {
       auto renderer = RendererModelsV::get();
       renderer->set_is_batch_drawing(false);
    }

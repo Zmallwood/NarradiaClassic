@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class MapGenAddV : public S<MapGenAddV>
-   {
+   class MapGenAddV : public S<MapGenAddV> {
      public:
       void Render();
    };

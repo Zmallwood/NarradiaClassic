@@ -2,18 +2,9 @@
 
 namespace Narradia
 {
-   enum class BufferTypes
-   {
-      Indices,
-      Positions2D,
-      Positions3D,
-      Colors,
-      Uvs,
-      Normals
-   };
+   enum class BufferTypes { Indices, Positions2D, Positions3D, Colors, Uvs, Normals };
 
-   class RendererBase
-   {
+   class RendererBase {
      public:
       GLuint GenNewVAOId();
       GLuint GenNewBufId(BufferTypes buffer_type, GLuint vao_id);

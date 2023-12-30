@@ -4,8 +4,7 @@
 
 namespace Narradia
 {
-   class StatusPanel : public GuiComponent, public S<StatusPanel>
-   {
+   class StatusPanel : public GuiComponent, public S<StatusPanel> {
      public:
       void UpdateGameLogic() override;
 
@@ -14,8 +13,7 @@ namespace Narradia
       static constexpr RectF kStaminaBarBounds = {0.08f, 0.14f, 0.1f, 0.01f};
    };
 
-   class ExperienceBar : public GuiComponent
-   {
+   class ExperienceBar : public GuiComponent {
      public:
       void UpdateGameLogic() override;
 

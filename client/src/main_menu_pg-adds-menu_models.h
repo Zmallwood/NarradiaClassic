@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class MenuModelsAdd : public S<MenuModelsAdd>
-   {
+   class MenuModelsAdd : public S<MenuModelsAdd> {
      public:
       void UpdateGameLogic();
 

@@ -1,31 +1,23 @@
 #if 1
 #include "core_c.h"
-#include "intro_pg_c.h"
-#include "main_pg_c.h"
-#include "main_menu_pg_c.h"
-#include "map_creation_pg_c.h"
+#include "pages_c.h"
 #endif
 
 namespace Narradia
 {
    // EngineC
 #if 1
-   auto EngineC::HandleInput() -> void
-   {
+   auto EngineC::HandleInput() -> void {
       PollEvents();
    }
-   auto EngineC::UpdateGameFlow() -> void
-   {
+   auto EngineC::UpdateGameFlow() -> void {
       PageMngrC::get()->UpdateGameFlowCurrScene();
    }
-   void EngineC::PollEvents()
-   {
+   void EngineC::PollEvents() {
       SDL_Event ev;
 
-      while (SDL_PollEvent(&ev) != 0)
-      {
-         switch (ev.type)
-         {
+      while (SDL_PollEvent(&ev) != 0) {
+         switch (ev.type) {
          case SDL_QUIT:
             Engine::get()->set_running(false);
             break;
@@ -55,22 +47,19 @@ namespace Narradia
 
    // PageMngrC
 #if 1
-   PageMngrC::PageMngrC()
-   {
+   PageMngrC::PageMngrC() {
       scene_controllers_[PageNames::Intro] = IntroPgC::get();
       scene_controllers_[PageNames::MainMenu] = MainMenuPgC::get();
       scene_controllers_[PageNames::MapCreation] = MapCreationPgC::get();
       scene_controllers_[PageNames::Main] = MainPgC::get();
    }
-   auto PageMngrC::UpdateGameFlowCurrScene() -> void
-   {
+   auto PageMngrC::UpdateGameFlowCurrScene() -> void {
       PageMngr::get()->set_curr_scene_canceled(false);
       auto curr_scene = PageMngr::get()->curr_scene();
       if (scene_controllers_.count(curr_scene) != 0)
          scene_controllers_.at(curr_scene)->UpdateGameFlow();
    }
-   auto PageMngrC::ChangeScene(PageNames new_scene) -> void
-   {
+   auto PageMngrC::ChangeScene(PageNames new_scene) -> void {
       PageMngr::get()->set_curr_scene(new_scene);
       scene_controllers_.at(new_scene)->OnEnter();
       PageMngr::get()->set_curr_scene_canceled(true);
@@ -79,8 +68,7 @@ namespace Narradia
 
    // IPageC
 #if 1
-   auto IPageC::UpdateGameFlow() -> void
-   {
+   auto IPageC::UpdateGameFlow() -> void {
       UpdateGameFlowDerived();
    }
 #endif

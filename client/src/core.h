@@ -2,22 +2,18 @@
 
 namespace Narradia
 {
-   class Engine : public S<Engine>
-   {
+   class Engine : public S<Engine> {
      public:
       Engine();
       void UpdateGameLogic();
       void Finalize();
-      auto is_running()
-      {
+      auto is_running() {
          return is_running_;
       }
-      void set_running(bool value)
-      {
+      void set_running(bool value) {
          is_running_ = value;
       }
-      auto title()
-      {
+      auto title() {
          return title_;
       }
 
@@ -26,8 +22,7 @@ namespace Narradia
       std::string_view title_ = "Narradia";
    };
 
-   class FPSCapper : public S<FPSCapper>
-   {
+   class FPSCapper : public S<FPSCapper> {
      public:
       auto Below60FPS() -> bool;
 
@@ -35,37 +30,25 @@ namespace Narradia
       int prev_ticks_ = 0;
    };
 
-   enum class PageNames
-   {
-      None,
-      Intro,
-      MainMenu,
-      Main,
-      MapCreation
-   };
+   enum class PageNames { None, Intro, MainMenu, Main, MapCreation };
 
    class IPage;
 
-   class PageMngr : public S<PageMngr>
-   {
+   class PageMngr : public S<PageMngr> {
      public:
       PageMngr();
       void UpdateGameLogicCurrScene();
       void FinalizeCurrScene();
-      auto curr_scene()
-      {
+      auto curr_scene() {
          return curr_scene_;
       }
-      void set_curr_scene(PageNames value)
-      {
+      void set_curr_scene(PageNames value) {
          curr_scene_ = value;
       }
-      auto curr_scene_canceled()
-      {
+      auto curr_scene_canceled() {
          return curr_scene_canceled_;
       }
-      void set_curr_scene_canceled(bool value)
-      {
+      void set_curr_scene_canceled(bool value) {
          curr_scene_canceled_ = value;
       }
 
@@ -77,14 +60,12 @@ namespace Narradia
 
    class SceneGui;
 
-   class IPage
-   {
+   class IPage {
      public:
       IPage();
       void UpdateGameLogic();
       virtual void Finalize() = 0;
-      auto scene_gui()
-      {
+      auto scene_gui() {
          return scene_gui_;
       }
 
@@ -94,25 +75,16 @@ namespace Narradia
       std::shared_ptr<SceneGui> scene_gui_;
    };
 
-   enum class CursorStyles
-   {
-      Default,
-      Hovering,
-      Rotating,
-      Attack
-   };
+   enum class CursorStyles { Default, Hovering, Rotating, Attack };
 
-   class Cursor : public S<Cursor>
-   {
+   class Cursor : public S<Cursor> {
      public:
       void ResetStyle();
       auto GetCursorImageName() -> std::string_view;
-      auto style()
-      {
+      auto style() {
          return style_;
       }
-      void set_style(CursorStyles value)
-      {
+      void set_style(CursorStyles value) {
          style_ = value;
       }
 
@@ -120,8 +92,7 @@ namespace Narradia
       CursorStyles style_ = CursorStyles::Default;
    };
 
-   class KbInput : public S<KbInput>
-   {
+   class KbInput : public S<KbInput> {
      public:
       void OnKeyPress(SDL_Keycode key);
       void OnKeyRelease(SDL_Keycode key);
@@ -143,16 +114,14 @@ namespace Narradia
 #if 1
    // Show MouseAction
 #if 1
-   class MouseAction
-   {
+   class MouseAction {
      public:
       std::function<void()> action;
       int z_order = 0;
    };
 #endif
 
-   class MouseActionMngr
-   {
+   class MouseActionMngr {
      public:
       void AddFiredAction(std::function<void()> action, int z_order = 0);
       void AddReleasedAction(std::function<void()> action, int z_order = 0);
@@ -167,12 +136,10 @@ namespace Narradia
    };
 #endif
 
-   class MouseButton
-   {
+   class MouseButton {
      public:
       MouseButton()
-          : action_mngr_(std::make_shared<MouseActionMngr>())
-      {
+          : action_mngr_(std::make_shared<MouseActionMngr>()) {
       }
 
       void OnPress();
@@ -180,12 +147,10 @@ namespace Narradia
       void ExecMouseActions();
       void AddFiredAction(std::function<void()> action, int z_order = 0);
       void AddReleasedAction(std::function<void()> action, int z_order = 0);
-      auto is_pressed()
-      {
+      auto is_pressed() {
          return is_pressed_;
       }
-      auto action_mngr()
-      {
+      auto action_mngr() {
          return action_mngr_;
       }
 
@@ -197,23 +162,19 @@ namespace Narradia
    };
 #endif
 
-   class MouseInput : public S<MouseInput>
-   {
+   class MouseInput : public S<MouseInput> {
      public:
       MouseInput()
           : left_btn_(std::make_shared<MouseButton>()),
-            right_btn_(std::make_shared<MouseButton>())
-      {
+            right_btn_(std::make_shared<MouseButton>()) {
       }
       void OnPress(Uint8 button);
       void OnRelease(Uint8 button);
       void ExecMouseActions();
-      auto left_btn()
-      {
+      auto left_btn() {
          return left_btn_;
       }
-      auto right_btn()
-      {
+      auto right_btn() {
          return right_btn_;
       }
 
@@ -222,8 +183,7 @@ namespace Narradia
       std::shared_ptr<MouseButton> right_btn_;
    };
 
-   class SDLDeleter
-   {
+   class SDLDeleter {
      public:
       void operator()(SDL_Window *win);
       void operator()(SDL_Renderer *rend);
@@ -232,27 +192,21 @@ namespace Narradia
       void operator()(TTF_Font *font);
    };
 
-   class Graphics : public S<Graphics>
-   {
+   class Graphics : public S<Graphics> {
      public:
-      auto win()
-      {
+      auto win() {
          return win_;
       }
-      void set_win(std::shared_ptr<SDL_Window> value)
-      {
+      void set_win(std::shared_ptr<SDL_Window> value) {
          win_ = value;
       }
-      auto win_size()
-      {
+      auto win_size() {
          return win_size_;
       }
-      auto win_flags()
-      {
+      auto win_flags() {
          return win_flags_;
       }
-      auto clear_color()
-      {
+      auto clear_color() {
          return clear_color_;
       }
 
@@ -265,39 +219,32 @@ namespace Narradia
 
    // Show Console sub classes
 #if 1
-   class TextLine
-   {
+   class TextLine {
      public:
       std::string text;
       Color color;
    };
 #endif
 
-   class Console : public S<Console>
-   {
+   class Console : public S<Console> {
      public:
       auto UpdateGameLogic() -> void;
       auto Print(std::string_view text, Color text_color = Colors::wheat) -> void;
       auto InputTextWithCursor() -> std::string;
       auto Bounds() -> RectF;
-      auto text_lines()
-      {
+      auto text_lines() {
          return text_lines_;
       }
-      auto enabled()
-      {
+      auto enabled() {
          return enabled_;
       }
-      auto input_active()
-      {
+      auto input_active() {
          return input_active_;
       }
-      auto cursor_position()
-      {
+      auto cursor_position() {
          return cursor_position_;
       }
-      auto input_text()
-      {
+      auto input_text() {
          return input_text_;
       }
 
@@ -314,8 +261,7 @@ namespace Narradia
       std::string input_text_;
    };
 
-   class ConsoleCalc : public S<ConsoleCalc>
-   {
+   class ConsoleCalc : public S<ConsoleCalc> {
      public:
       auto MaxNumLines() -> int;
       auto TextLineIndex(int visible_row_index) -> int;

@@ -1,20 +1,19 @@
 #if 1
 #include "main_pg-gui_comps_v.h"
+#include "actors.h"
 #include "main_pg-gui_comps.h"
+#include "math.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
 #include "render/renderer_2d_images_v.h"
-#include "actors.h"
-#include "math.h"
 #include "render/renderer_2d_solid_colors_v.h"
 #endif
 
 namespace Narradia
 {
-    // StatusPanelV
+   // StatusPanelV
 #if 1
-   StatusPanelV::StatusPanelV()
-   {
+   StatusPanelV::StatusPanelV() {
       rid_background_image_ = NewImage();
       rid_health_text_ = NewString();
       rid_stamina_text_ = NewString();
@@ -26,8 +25,7 @@ namespace Narradia
       rid_level_label_ = NewString();
       rid_level_ = NewString();
    }
-   void StatusPanelV::Render()
-   {
+   void StatusPanelV::Render() {
       auto player = Player::get();
       DrawImage("PanelBg", rid_background_image_, StatusPanel::kBoundsPanel);
       DrawString(
@@ -56,14 +54,12 @@ namespace Narradia
 
    // ExperienceBarV
 #if 1
-   ExperienceBarV::ExperienceBarV()
-   {
+   ExperienceBarV::ExperienceBarV() {
       rid_unfilled_area_ = NewRect();
       rid_filled_area_ = NewImage();
       rid_text_ = NewString();
    }
-   void ExperienceBarV::Render()
-   {
+   void ExperienceBarV::Render() {
       auto unfilled_area =
           RectF{0.0f, 1.0f - ExperienceBar::kBarHeight, 1.0f, ExperienceBar::kBarHeight};
       FillRect(rid_unfilled_area_, unfilled_area, Colors::dark_gray);

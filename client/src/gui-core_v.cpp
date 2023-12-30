@@ -9,21 +9,17 @@ namespace Narradia
 {
    // GuiButtonV
 #if 1
-   GuiButtonV::GuiButtonV()
-   {
+   GuiButtonV::GuiButtonV() {
       rid_image = NewImage();
       rid_label_text_ = NewString();
    }
-   void GuiButtonV::Render()
-   {
+   void GuiButtonV::Render() {
       auto model = std::static_pointer_cast<GuiButton>(gui_component_);
       std::string_view used_image_name;
-      if (model->hovered())
-      {
+      if (model->hovered()) {
          used_image_name = model->hovered_img_name();
       }
-      else
-      {
+      else {
          used_image_name = model->img_name();
       }
       auto used_bounds = model->bounds();
@@ -40,13 +36,11 @@ namespace Narradia
 
    // GuiContainerV
 #if 1
-   void GuiContainerV::Render()
-   {
+   void GuiContainerV::Render() {
       for (auto &comp_view : gui_component_views_)
          comp_view->Render();
    }
-   void GuiContainerV::AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view)
-   {
+   void GuiContainerV::AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view) {
       auto comp_model = gui_container_->gui_components()->at(gui_component_views_.size());
       comp_view->set_gui_component(comp_model);
       gui_component_views_.push_back(comp_view);
@@ -55,8 +49,7 @@ namespace Narradia
 
    // GuiMovableContainerV
 #if 1
-   void GuiMovableContainerV::Render()
-   {
+   void GuiMovableContainerV::Render() {
       GuiContainerV::Render();
    }
 #endif
@@ -64,14 +57,12 @@ namespace Narradia
    // GuiWindowV
 #if 1
    GuiWindowV::GuiWindowV()
-       : gui_window_close_button_view_(std::make_shared<GuiWindowCloseButtonV>())
-   {
+       : gui_window_close_button_view_(std::make_shared<GuiWindowCloseButtonV>()) {
       rid_background_ = NewImage();
       rid_title_bar_ = NewImage();
       rid_title_text_ = NewString();
    }
-   void GuiWindowV::Render()
-   {
+   void GuiWindowV::Render() {
       auto model = static_pointer_cast<GuiWindow>(gui_component_);
       if (!model->visible())
          return;
@@ -87,12 +78,10 @@ namespace Narradia
 
    // GuiWindowCloseButtonV
 #if 1
-   GuiWindowCloseButtonV::GuiWindowCloseButtonV()
-   {
+   GuiWindowCloseButtonV::GuiWindowCloseButtonV() {
       rid_close_btn_img_ = NewImage();
    }
-   void GuiWindowCloseButtonV::Render()
-   {
+   void GuiWindowCloseButtonV::Render() {
       if (model_->hovered())
          DrawImage("GuiWindowCloseButtonHovered", rid_close_btn_img_, model_->Bounds());
       else
@@ -102,13 +91,11 @@ namespace Narradia
 
    // SceneGuiV
 #if 1
-   void SceneGuiV::Render()
-   {
+   void SceneGuiV::Render() {
       for (auto gui_component_view : gui_component_views_)
          gui_component_view->Render();
    }
-   void SceneGuiV::AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view)
-   {
+   void SceneGuiV::AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view) {
       auto comp_model = scene_gui_->gui_components()->at(gui_component_views_.size());
       comp_view->set_gui_component(comp_model);
       gui_component_views_.push_back(comp_view);

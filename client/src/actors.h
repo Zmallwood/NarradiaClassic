@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class Player : public S<Player>
-   {
+   class Player : public S<Player> {
      public:
       Player();
       void MoveForward();
@@ -14,100 +13,76 @@ namespace Narradia
       void AddExperience(int amount);
       bool IsMoving();
       void Hit(float damage);
-      auto position()
-      {
+      auto position() {
          return position_;
       }
-      void set_position(Point3F value)
-      {
+      void set_position(Point3F value) {
          position_ = value;
       }
-      auto movement_speed()
-      {
+      auto movement_speed() {
          return movement_speed_;
       }
-      auto ticks_last_move()
-      {
+      auto ticks_last_move() {
          return ticks_last_move_;
       }
-      void set_ticks_last_move(int value)
-      {
+      void set_ticks_last_move(int value) {
          ticks_last_move_ = value;
       }
-      auto destination()
-      {
+      auto destination() {
          return destination_;
       }
-      void set_destination(Point value)
-      {
+      void set_destination(Point value) {
          destination_ = value;
       }
-      auto attack_speed()
-      {
+      auto attack_speed() {
          return attack_speed_;
       }
-      auto ticks_last_hit_performed()
-      {
+      auto ticks_last_hit_performed() {
          return ticks_last_hit_performed_;
       }
-      void set_ticks_last_hit_performed(int value)
-      {
+      void set_ticks_last_hit_performed(int value) {
          ticks_last_hit_performed_ = value;
       }
-      auto ultimate_skill_chance()
-      {
+      auto ultimate_skill_chance() {
          return ultimate_skill_chance_;
       }
-      auto ticks_ulti_skill_start()
-      {
+      auto ticks_ulti_skill_start() {
          return ticks_ulti_skill_start_;
       }
-      void set_ticks_ulti_skill_start(int value)
-      {
+      void set_ticks_ulti_skill_start(int value) {
          ticks_ulti_skill_start_ = value;
       }
-      auto ulti_skill_duration()
-      {
+      auto ulti_skill_duration() {
          return ulti_skill_duration_;
       }
-      auto facing_angle_deg()
-      {
+      auto facing_angle_deg() {
          return facing_angle_deg_;
       }
-      void set_facing_angle_deg(float value)
-      {
+      void set_facing_angle_deg(float value) {
          facing_angle_deg_ = value;
       }
-      auto experience()
-      {
+      auto experience() {
          return experience_;
       }
-      auto health()
-      {
+      auto health() {
          return health_;
       }
-      auto max_health()
-      {
+      auto max_health() {
          return max_health_;
       }
-      auto stamina()
-      {
+      auto stamina() {
          return stamina_;
       }
-      auto max_stamina()
-      {
+      auto max_stamina() {
          return max_stamina_;
       }
-      auto name()
-      {
+      auto name() {
          return name_;
       }
-      auto world_location()
-      {
+      auto world_location() {
          return world_location_;
       }
-      void set_world_location(Point value)
-      {
+      void set_world_location(Point value) {
          world_location_ = value;
       }
 
@@ -132,54 +107,42 @@ namespace Narradia
       std::string_view name_ = "SomePlayer";
    };
 
-   class Mob
-   {
+   class Mob {
      public:
       Mob(std::string type)
-          : type_(type)
-      {
+          : type_(type) {
       }
       void Hit(float damage);
       bool IsDead();
       void AggroPlayer();
-      auto type()
-      {
+      auto type() {
          return type_;
       }
-      auto ticks_last_move()
-      {
+      auto ticks_last_move() {
          return ticks_last_move_;
       }
-      void set_ticks_last_move(int value)
-      {
+      void set_ticks_last_move(int value) {
          ticks_last_move_ = value;
       }
-      auto movement_speed()
-      {
+      auto movement_speed() {
          return movement_speed_;
       }
-      auto attack_speed()
-      {
+      auto attack_speed() {
          return attack_speed_;
       }
-      auto ticks_last_hit_recieved()
-      {
+      auto ticks_last_hit_recieved() {
          return ticks_last_hit_recieved_;
       }
-      auto ticks_last_hit_performed()
-      {
+      auto ticks_last_hit_performed() {
          return ticks_last_hit_performed_;
       }
-      void set_ticks_last_hit_performed(int value)
-      {
+      void set_ticks_last_hit_performed(int value) {
          ticks_last_hit_performed_ = value;
       }
-      auto health()
-      {
+      auto health() {
          return health_;
       }
-      auto aggroing_player()
-      {
+      auto aggroing_player() {
          return aggroing_player_;
       }
 

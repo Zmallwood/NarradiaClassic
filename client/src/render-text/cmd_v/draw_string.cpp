@@ -1,15 +1,14 @@
 #if 1
 #include "draw_string.h"
-#include "render/renderer_2d_images_v.h"
 #include "render-text/font.h"
+#include "render/renderer_2d_images_v.h"
 #endif
 
 namespace Narradia
 {
    auto DrawString(
        RenderID rid, std::string_view text, PointF position, Color color, bool center_align,
-       FontSizes font_size) -> void
-   {
+       FontSizes font_size) -> void {
       std::string unique_name_id;
       SizeF size;
       RendererText::get()->RenderText(

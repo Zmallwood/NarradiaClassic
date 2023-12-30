@@ -6,8 +6,7 @@ namespace Narradia
 {
    // Geometry
 #if 1
-   class Point
-   {
+   class Point {
      public:
       Point Translate(int dx, int dy);
 
@@ -15,8 +14,7 @@ namespace Narradia
       int y = 0;
    };
 
-   class PointF
-   {
+   class PointF {
      public:
       PointF Translate(float dx, float dy) const;
       Point ToIntPoint();
@@ -25,8 +23,7 @@ namespace Narradia
       float y = 0.0f;
    };
 
-   class Point3F
-   {
+   class Point3F {
      public:
       Point3F Translate(float dx, float dy, float dz);
       Point3F Multiply(float k);
@@ -37,22 +34,19 @@ namespace Narradia
       float z = 0.0f;
    };
 
-   class Size
-   {
+   class Size {
      public:
       int w = 0;
       int h = 0;
    };
 
-   class SizeF
-   {
+   class SizeF {
      public:
       float w = 0.0f;
       float h = 0.0f;
    };
 
-   class GLRectF
-   {
+   class GLRectF {
      public:
       float x = .0f;
       float y = .0f;
@@ -60,8 +54,7 @@ namespace Narradia
       float h = .0f;
    };
 
-   class RectF
-   {
+   class RectF {
      public:
       GLRectF ToGLRectF() const;
       RectF Translate(float dx, float dy) const;
@@ -80,8 +73,7 @@ namespace Narradia
 
    // Colors
 #if 1
-   class Color
-   {
+   class Color {
      public:
       SDL_Color ToSDLColor() const;
 
@@ -106,16 +98,14 @@ namespace Narradia
 
    // Vertices
 #if 1
-   class Vertex2F
-   {
+   class Vertex2F {
      public:
       PointF pos;
       Color color;
       PointF uv;
    };
 
-   class Vertex3F
-   {
+   class Vertex3F {
      public:
       Point3F pos;
       Color color;

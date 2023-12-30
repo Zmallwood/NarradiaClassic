@@ -2,10 +2,9 @@
 
 namespace Narradia
 {
-    // GuiWindowWorldMap
+   // GuiWindowWorldMap
 #if 1
-   void GuiWindowWorldMap::UpdateGameLogicDerived()
-   {
+   void GuiWindowWorldMap::UpdateGameLogicDerived() {
    }
 #endif
 }

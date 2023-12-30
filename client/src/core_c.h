@@ -4,8 +4,7 @@
 
 namespace Narradia
 {
-   class EngineC : public S<EngineC>
-   {
+   class EngineC : public S<EngineC> {
      public:
       auto HandleInput() -> void;
       auto UpdateGameFlow() -> void;
@@ -16,8 +15,7 @@ namespace Narradia
 
    class IPageC;
 
-   class PageMngrC : public S<PageMngrC>
-   {
+   class PageMngrC : public S<PageMngrC> {
      public:
       PageMngrC();
       auto UpdateGameFlowCurrScene() -> void;
@@ -27,8 +25,7 @@ namespace Narradia
       std::map<PageNames, std::shared_ptr<IPageC>> scene_controllers_;
    };
 
-   class IPageC
-   {
+   class IPageC {
      public:
       virtual auto OnEnter() -> void = 0;
       auto UpdateGameFlow() -> void;

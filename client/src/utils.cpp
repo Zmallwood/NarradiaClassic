@@ -8,33 +8,28 @@ namespace Narradia
 {
    // Canvas utils
 #if 1
-   Size CanvasSize()
-   {
+   Size CanvasSize() {
       int w, h;
       SDL_GetWindowSize(Graphics::get()->win().get(), &w, &h);
 
       return {w, h};
    }
-   float AspectRatio()
-   {
+   float AspectRatio() {
       auto canv_sz = CanvasSize();
 
       return static_cast<float>(canv_sz.w) / canv_sz.h;
    }
-   float WidthToHeight(float w)
-   {
+   float WidthToHeight(float w) {
       return w * AspectRatio();
    }
-   float HeightToWidth(float h)
-   {
+   float HeightToWidth(float h) {
       return h / AspectRatio();
    }
 #endif
 
    // Mouse, mouse and texture utils
 #if 1
-   PointF MousePosition()
-   {
+   PointF MousePosition() {
       int x_px, y_px;
       auto canv_sz = CanvasSize();
       SDL_GetMouseState(&x_px, &y_px);
@@ -43,8 +38,7 @@ namespace Narradia
 
       return {x, y};
    }
-   std::string_view CurrTime()
-   {
+   std::string_view CurrTime() {
       char buffer[80];
       auto now = time(0);
       auto p_tstruct = localtime(&now);
@@ -52,8 +46,7 @@ namespace Narradia
 
       return std::string_view(buffer);
    }
-   Size TextureDimensions(std::string_view img_name)
-   {
+   Size TextureDimensions(std::string_view img_name) {
       Size dim;
       int mip_level = 0;
       auto img_id = ImageBank::get()->GetImage(img_name);
@@ -67,12 +60,10 @@ namespace Narradia
 
    // File utils
 #if 1
-   std::string_view FileExtension(std::string_view abs_path)
-   {
+   std::string_view FileExtension(std::string_view abs_path) {
       return abs_path.substr(abs_path.find_last_of('.') + 1);
    }
-   std::string FileNameNoExt(std::string_view abs_path)
-   {
+   std::string FileNameNoExt(std::string_view abs_path) {
       auto name_with_ext = abs_path.substr(abs_path.find_last_of('/') + 1);
 
       return std::string(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
@@ -82,12 +73,10 @@ namespace Narradia
 // Singleton helpers
 #if 1
    static std::vector<std::function<void()>> gDisposeActions;
-   void AddSingletonDisposeAction(std::function<void()> action)
-   {
+   void AddSingletonDisposeAction(std::function<void()> action) {
       gDisposeActions.push_back(action);
    }
-   void DisposeSingletons()
-   {
+   void DisposeSingletons() {
       for (auto &action : gDisposeActions)
          action();
    }

@@ -5,69 +5,53 @@
 
 namespace Narradia
 {
-   class RendererModelsV : public RendererBaseV, public S<RendererModelsV>
-   {
+   class RendererModelsV : public RendererBaseV, public S<RendererModelsV> {
      public:
       RendererModelsV();
       ~RendererModelsV();
-      auto timelines()
-      {
+      auto timelines() {
          return timelines_;
       }
-      auto model_ids()
-      {
+      auto model_ids() {
          return model_ids_;
       }
-      auto location_projection()
-      {
+      auto location_projection() {
          return location_projection_;
       }
-      auto location_view()
-      {
+      auto location_view() {
          return location_view_;
       }
-      auto location_alpha()
-      {
+      auto location_alpha() {
          return location_alpha_;
       }
-      auto location_model()
-      {
+      auto location_model() {
          return location_model_;
       }
-      auto location_model_no_translation()
-      {
+      auto location_model_no_translation() {
          return location_model_no_translation_;
       }
-      auto location_color_mod()
-      {
+      auto location_color_mod() {
          return location_color_mod_;
       }
-      auto location_view_pos()
-      {
+      auto location_view_pos() {
          return location_view_pos_;
       }
-      auto location_fog_color()
-      {
+      auto location_fog_color() {
          return location_fog_color_;
       }
-      auto location_no_fog()
-      {
+      auto location_no_fog() {
          return location_no_fog_;
       }
-      auto location_no_lighting()
-      {
+      auto location_no_lighting() {
          return location_no_lighting_;
       }
-      auto global_animation_speed()
-      {
+      auto global_animation_speed() {
          return global_animation_speed_;
       }
-      auto is_batch_drawing()
-      {
+      auto is_batch_drawing() {
          return is_batch_drawing_;
       }
-      void set_is_batch_drawing(bool value)
-      {
+      void set_is_batch_drawing(bool value) {
          is_batch_drawing_ = value;
       }
 

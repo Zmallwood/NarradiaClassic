@@ -40,11 +40,9 @@ namespace Narradia
    // Misc
 #if 1
    template <class T>
-   class Square
-   {
+   class Square {
      public:
-      void SetAll(T value)
-      {
+      void SetAll(T value) {
          _00 = value;
          _01 = value;
          _11 = value;

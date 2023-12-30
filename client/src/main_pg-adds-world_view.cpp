@@ -1,30 +1,27 @@
 #if 1
 #include "main_pg-adds-world_view.h"
+#include "actors.h"
 #include "assets.h"
 #include "conf.h"
-#include "render/camera_gl.h"
-#include "actors.h"
-#include "world-struct.h"
 #include "math.h"
+#include "render/camera_gl.h"
+#include "world-struct.h"
 #endif
 
 namespace Narradia
 {
-    // WorldViewModele
+   // WorldViewModele
 #if 1
-   WorldViewAdd::WorldViewAdd()
-   {
+   WorldViewAdd::WorldViewAdd() {
    }
-   void WorldViewAdd::UpdateGameLogic()
-   {
+   void WorldViewAdd::UpdateGameLogic() {
       Camera::get()->UpdateGameLogic();
    }
 #endif
 
    // Camera
 #if 1
-   void Camera::UpdateGameLogic()
-   {
+   void Camera::UpdateGameLogic() {
       {
          auto new_perspective_matrix =
              glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
@@ -49,8 +46,7 @@ namespace Narradia
          CameraGL::get()->set_view_matrix(new_view_matrix);
       }
    }
-   Point3F Camera::GetCameraPosition()
-   {
+   Point3F Camera::GetCameraPosition() {
       auto player = Player::get();
       float player_elev;
       {

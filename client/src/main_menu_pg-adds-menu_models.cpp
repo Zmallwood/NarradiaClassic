@@ -5,8 +5,7 @@
 
 namespace Narradia
 {
-   void MenuModelsAdd::UpdateGameLogic()
-   {
+   void MenuModelsAdd::UpdateGameLogic() {
       {
          auto new_perspective_matrix =
              glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);

@@ -4,8 +4,7 @@
 
 namespace Narradia
 {
-   class Renderer2DSolidColorsV : public RendererBaseV, public S<Renderer2DSolidColorsV>
-   {
+   class Renderer2DSolidColorsV : public RendererBaseV, public S<Renderer2DSolidColorsV> {
      public:
       Renderer2DSolidColorsV();
       ~Renderer2DSolidColorsV();

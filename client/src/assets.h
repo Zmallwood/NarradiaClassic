@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class ImageBank : public S<ImageBank>
-   {
+   class ImageBank : public S<ImageBank> {
      public:
       ImageBank();
       ~ImageBank();
@@ -22,35 +21,28 @@ namespace Narradia
 #if 1
    // Show Model sub classes
 #if 1
-   class Keyframe
-   {
+   class Keyframe {
      public:
       std::vector<Vertex3F> vertices;
    };
 
-   class Timeline
-   {
+   class Timeline {
      public:
       std::map<float, std::shared_ptr<const Keyframe>> keyframes;
    };
 
-   class ModelPart
-   {
+   class ModelPart {
      public:
       ModelPart()
-          : timeline_(std::make_shared<Timeline>())
-      {
+          : timeline_(std::make_shared<Timeline>()) {
       }
-      auto texture_name()
-      {
+      auto texture_name() {
          return texture_name_;
       }
-      void set_texture_name(std::string value)
-      {
+      void set_texture_name(std::string value) {
          texture_name_ = value;
       }
-      auto timeline()
-      {
+      auto timeline() {
          return timeline_;
       }
 
@@ -60,20 +52,16 @@ namespace Narradia
    };
 #endif
 
-   class Model
-   {
+   class Model {
      public:
       Model(int anim_duration)
           : anim_duration_(anim_duration),
-            model_parts_(std::make_shared<std::vector<std::shared_ptr<ModelPart>>>())
-      {
+            model_parts_(std::make_shared<std::vector<std::shared_ptr<ModelPart>>>()) {
       }
-      auto anim_duration()
-      {
+      auto anim_duration() {
          return anim_duration_;
       }
-      auto model_parts()
-      {
+      auto model_parts() {
          return model_parts_;
       }
 
@@ -83,13 +71,11 @@ namespace Narradia
    };
 #endif
 
-   class ModelBank : public S<ModelBank>
-   {
+   class ModelBank : public S<ModelBank> {
      public:
       ModelBank();
       auto GetModel(std::string_view model_name) -> std::shared_ptr<Model>;
-      auto models()
-      {
+      auto models() {
          return models_;
       }
 

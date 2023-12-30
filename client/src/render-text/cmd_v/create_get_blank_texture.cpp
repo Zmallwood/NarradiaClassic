@@ -5,8 +5,7 @@
 
 namespace Narradia
 {
-   auto CreateGetBlankTexture() -> std::string
-   {
+   auto CreateGetBlankTexture() -> std::string {
       static int id_counter = 0;
       auto id = id_counter++;
       auto unique_name = "RenderedImage" + std::to_string(id);

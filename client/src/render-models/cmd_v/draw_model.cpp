@@ -1,29 +1,27 @@
 #if 1
 #include "draw_model.h"
-#include "conf.h"
-#include "assets.h"
-#include "render/camera_gl.h"
-#include "render-models/renderer_models_v.h"
 #include "actors.h"
+#include "assets.h"
+#include "conf.h"
+#include "math.h"
+#include "render-models/renderer_models_v.h"
+#include "render/camera_gl.h"
 #include "render/shader_program.h"
 #include "render/shader_program_v.h"
 #include "world-struct.h"
-#include "math.h"
 #endif
 
 namespace Narradia
 {
    auto DrawModel(
        std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
-       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) -> void
-   {
+       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) -> void {
       auto renderer = RendererModelsV::get();
       auto model_ids = renderer->model_ids();
       auto is_batch_drawing = renderer->is_batch_drawing();
       if (model_ids->count(model_name.data()) == 0)
          return;
-      if (!is_batch_drawing)
-      {
+      if (!is_batch_drawing) {
          glEnable(GL_DEPTH_TEST);
          glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
          glUniformMatrix4fv(
@@ -79,13 +77,11 @@ namespace Narradia
          ms_time_used = static_cast<int>(ms_time * renderer->global_animation_speed()) %
                         p_model->anim_duration();
       auto &model_data = all_nodes;
-      for (auto &entry : all_nodes)
-      {
+      for (auto &entry : all_nodes) {
          auto &timeline = entry.second;
          auto found_time = -1.0f;
          const BodyData *p_body_data = nullptr;
-         for (auto &keyframe : timeline)
-         {
+         for (auto &keyframe : timeline) {
             auto time = keyframe.first;
             if (ms_time_used >= time)
                found_time = time;

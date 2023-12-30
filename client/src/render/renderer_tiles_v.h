@@ -4,41 +4,32 @@
 
 namespace Narradia
 {
-   class RendererTilesV : public RendererBaseV, public S<RendererTilesV>
-   {
+   class RendererTilesV : public RendererBaseV, public S<RendererTilesV> {
      public:
       RendererTilesV();
       ~RendererTilesV();
-      auto is_batch_drawing()
-      {
+      auto is_batch_drawing() {
          return is_batch_drawing_;
       }
-      void set_is_batch_drawing(bool value)
-      {
+      void set_is_batch_drawing(bool value) {
          is_batch_drawing_ = value;
       }
-      auto location_projection()
-      {
+      auto location_projection() {
          return location_projection_;
       }
-      auto location_view()
-      {
+      auto location_view() {
          return location_view_;
       }
-      auto location_model()
-      {
+      auto location_model() {
          return location_model_;
       }
-      auto location_alpha()
-      {
+      auto location_alpha() {
          return location_alpha_;
       }
-      auto location_view_pos()
-      {
+      auto location_view_pos() {
          return location_view_pos_;
       }
-      auto location_fog_color()
-      {
+      auto location_fog_color() {
          return location_fog_color_;
       }
 
@@ -46,7 +37,7 @@ namespace Narradia
       static constexpr int kLocationColor = 1;
       static constexpr int kLocationUv = 2;
       static constexpr int kLocationNormal = 3;
-      inline static Color kFogColorGround = Colors::mild_blue;
+      inline static Color kFogColorGround = Colors::black;
 
      private:
       int location_projection_ = -1;

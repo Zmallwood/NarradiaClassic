@@ -1,30 +1,24 @@
 #if 1
 #include "core_v.h"
-#include "intro_pg_v.h"
-#include "render/renderer_2d_images_v.h"
-#include "main_menu_pg_v.h"
-#include "main_pg_v.h"
-#include "map_creation_pg_v.h"
+#include "pages_v.h"
 #include "render-text/cmd_v/draw_string.h"
 #include "render-text/cmd_v/new_string.h"
+#include "render/renderer_2d_images_v.h"
 #endif
 
 namespace Narradia
 {
 // EngineV
 #if 1
-   void EngineV::Render()
-   {
-      try
-      {
+   void EngineV::Render() {
+      try {
          GraphicsV::get()->ClearCanvas();
          PageMngrV::get()->RenderCurrScene();
          ConsoleV::get()->Render();
          CursorV::get()->RenderCursor();
          GraphicsV::get()->PresentCanvas();
       }
-      catch (std::exception &e)
-      {
+      catch (std::exception &e) {
          Console::get()->Print("Exception in EngineV::Render:" + std::string(e.what()));
       }
    };
@@ -32,15 +26,13 @@ namespace Narradia
 
       // PageMngrV
 #if 1
-   PageMngrV::PageMngrV()
-   {
+   PageMngrV::PageMngrV() {
       scene_views_[PageNames::Intro] = IntroPgV::get();
       scene_views_[PageNames::MainMenu] = MainMenuPgV::get();
       scene_views_[PageNames::MapCreation] = MapCreationPgV::get();
       scene_views_[PageNames::Main] = MainPgV::get();
    }
-   auto PageMngrV::RenderCurrScene() -> void
-   {
+   auto PageMngrV::RenderCurrScene() -> void {
       if (PageMngr::get()->curr_scene_canceled())
          return;
       auto curr_scene = PageMngr::get()->curr_scene();
@@ -52,11 +44,9 @@ namespace Narradia
    // IPageV
 #if 1
    IPageV::IPageV()
-       : scene_gui_view_(std::make_shared<SceneGuiV>())
-   {
+       : scene_gui_view_(std::make_shared<SceneGuiV>()) {
    }
-   void IPageV::Render()
-   {
+   void IPageV::Render() {
       RenderDerived();
       scene_gui_view_->Render();
    }
@@ -64,13 +54,11 @@ namespace Narradia
 
 // CursorV
 #if 1
-   CursorV::CursorV()
-   {
+   CursorV::CursorV() {
       SDL_ShowCursor(0);
       rid_image = NewImage();
    }
-   void CursorV::RenderCursor()
-   {
+   void CursorV::RenderCursor() {
       auto mouse_pos = MousePosition();
       auto w = kCursorWidth;
       auto h = w * AspectRatio();
@@ -82,8 +70,7 @@ namespace Narradia
 
    // GraphicsV
 #if 1
-   GraphicsV::GraphicsV()
-   {
+   GraphicsV::GraphicsV() {
       auto win_size = Graphics::get()->win_size();
       auto win_flags = Graphics::get()->win_flags();
       auto win = std::shared_ptr<SDL_Window>(
@@ -91,8 +78,7 @@ namespace Narradia
           SDLDeleter());
       SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
       SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-      if (SDL_GL_CreateContext(win.get()) == nullptr)
-      {
+      if (SDL_GL_CreateContext(win.get()) == nullptr) {
          std::cout << "OpenGL context could not be "
                       "created! SDL Error: "
                    << std::string(SDL_GetError()) << std::endl;
@@ -101,16 +87,13 @@ namespace Narradia
       Graphics::get()->set_win(win);
       InitGL();
    }
-   void GraphicsV::ClearCanvas()
-   {
+   void GraphicsV::ClearCanvas() {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    }
-   void GraphicsV::PresentCanvas()
-   {
+   void GraphicsV::PresentCanvas() {
       SDL_GL_SwapWindow(Graphics::get()->win().get());
    }
-   void GraphicsV::InitGL()
-   {
+   void GraphicsV::InitGL() {
       glewExperimental = GL_TRUE;
       auto glew_error = glewInit();
       if (glew_error != GLEW_OK)
@@ -119,8 +102,7 @@ namespace Narradia
          std::cout << "Warning: Unable to disable VSync, SDL Error: " << SDL_GetError()
                    << std::endl;
       glClearColor(kClearColor.r, kClearColor.g, kClearColor.b, kClearColor.a);
-      if (kCullFace)
-      {
+      if (kCullFace) {
          glEnable(GL_CULL_FACE);
          glCullFace(GL_FRONT);
       }
@@ -131,8 +113,7 @@ namespace Narradia
 
    // ConsoleV
 #if 1
-   ConsoleV::ConsoleV()
-   {
+   ConsoleV::ConsoleV() {
       rid_image_ = NewImage();
       rid_split_line_ = NewImage();
       rid_cmd_line_input_arrow_ = NewImage();
@@ -140,19 +121,16 @@ namespace Narradia
       for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++)
          rids_text_lines_.push_back(NewString());
    }
-   void ConsoleV::Render() const
-   {
+   void ConsoleV::Render() const {
       auto model = Console::get();
       if (!model->enabled())
          return;
 
       DrawImage("TextOutBoxBack", rid_image_, Console::get()->Bounds());
 
-      for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++)
-      {
+      for (auto i = 0; i < ConsoleCalc::get()->MaxNumLines(); i++) {
          auto text_line_index = ConsoleCalc::get()->TextLineIndex(i);
-         if (text_line_index >= 0)
-         {
+         if (text_line_index >= 0) {
             PointF position = ConsoleCalc::get()->TextLinePosition(i);
             DrawString(
                 rids_text_lines_.at(i), model->text_lines().at(text_line_index).text, position,

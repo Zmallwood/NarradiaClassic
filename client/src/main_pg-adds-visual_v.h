@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class FPSCounterAddV : public S<FPSCounterAddV>
-   {
+   class FPSCounterAddV : public S<FPSCounterAddV> {
      public:
       FPSCounterAddV();
       void Render();

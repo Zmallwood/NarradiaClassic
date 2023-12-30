@@ -16,16 +16,14 @@ namespace Narradia
       static constexpr int NoObstacle = 1 << 0;
    }
 
-   class ObjectConfEntry
-   {
+   class ObjectConfEntry {
      public:
       int flags = 0;
       float model_scaling = 1.0f;
    };
 #endif
 
-   class ObjectsConf : public S<ObjectsConf>
-   {
+   class ObjectsConf : public S<ObjectsConf> {
      public:
       ObjectsConf();
       auto IsObstacle(std::string_view object_type) -> bool;
@@ -37,15 +35,13 @@ namespace Narradia
 
    // Shoiw MobsConf sub components
 #if 1
-   class MobConfEntry
-   {
+   class MobConfEntry {
      public:
       int aggro_range = 0;
    };
 #endif
 
-   class MobsConf : public S<MobsConf>
-   {
+   class MobsConf : public S<MobsConf> {
      public:
       MobsConf();
       int GetAggroRange(std::string_view mob_type);

@@ -2,38 +2,31 @@
 
 namespace Narradia
 {
-   class GuiComponent
-   {
+   class GuiComponent {
      public:
       virtual void UpdateGameLogic() = 0;
    };
 
-   class GuiButton : public GuiComponent
-   {
+   class GuiButton : public GuiComponent {
      public:
       GuiButton(
           const std::string_view &text, RectF bounds, std::function<void()> action,
           std::string_view img_name = "GuiButtonBack",
           std::string_view hovered_img_name = "GuiButtonBackHovered");
       void UpdateGameLogic() override;
-      auto text()
-      {
+      auto text() {
          return text_;
       }
-      auto bounds()
-      {
+      auto bounds() {
          return bounds_;
       }
-      auto img_name()
-      {
+      auto img_name() {
          return img_name_;
       }
-      auto hovered_img_name()
-      {
+      auto hovered_img_name() {
          return hovered_img_name_;
       }
-      auto hovered()
-      {
+      auto hovered() {
          return hovered_;
       }
 
@@ -46,34 +39,28 @@ namespace Narradia
       bool hovered_;
    };
 
-   class GuiContainer : public GuiComponent
-   {
+   class GuiContainer : public GuiComponent {
      public:
       GuiContainer(PointF position, SizeF size)
           : position_(position),
             size_(size),
-            gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>())
-      {
+            gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>()) {
       }
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
       RectF Bounds();
-      auto position()
-      {
+      auto position() {
          return position_;
       }
-      auto size()
-      {
+      auto size() {
          return size_;
       }
-      auto gui_components()
-      {
+      auto gui_components() {
          return gui_components_;
       }
 
      protected:
       void UpdateGameLogic() override;
-      void set_position(PointF value)
-      {
+      void set_position(PointF value) {
          position_ = value;
       }
 
@@ -83,13 +70,11 @@ namespace Narradia
       std::shared_ptr<std::vector<std::shared_ptr<GuiComponent>>> gui_components_;
    };
 
-   class GuiMovableContainer : public GuiContainer
-   {
+   class GuiMovableContainer : public GuiContainer {
      public:
       GuiMovableContainer(RectF rel_dragable_area, PointF position, SizeF size)
           : GuiContainer(position, size),
-            rel_dragable_area_(rel_dragable_area)
-      {
+            rel_dragable_area_(rel_dragable_area) {
       }
 
      protected:
@@ -105,8 +90,7 @@ namespace Narradia
 
    class GuiWindowCloseButton;
 
-   class GuiWindow : public GuiMovableContainer
-   {
+   class GuiWindow : public GuiMovableContainer {
      public:
       GuiWindow(
           std::string_view title, RectF bounds, bool destroy_on_close = false,
@@ -114,24 +98,19 @@ namespace Narradia
       void Hide();
       void ToggleVisibility();
       RectF AbsTitleBarBounds();
-      auto destroy_on_close()
-      {
+      auto destroy_on_close() {
          return destroy_on_close_;
       }
-      auto visible()
-      {
+      auto visible() {
          return visible_;
       }
-      auto background_image_name()
-      {
+      auto background_image_name() {
          return background_image_name_;
       }
-      auto title()
-      {
+      auto title() {
          return title_;
       }
-      auto gui_window_close_button()
-      {
+      auto gui_window_close_button() {
          return gui_window_close_button_;
       }
 
@@ -151,16 +130,13 @@ namespace Narradia
       std::string_view background_image_name_;
    };
 
-   class GuiWindowCloseButton
-   {
+   class GuiWindowCloseButton {
      public:
       GuiWindowCloseButton(std::shared_ptr<GuiWindow> parent_window)
-          : parent_window_(parent_window)
-      {
+          : parent_window_(parent_window) {
       }
       void UpdateGameLogic();
-      auto hovered()
-      {
+      auto hovered() {
          return hovered_;
       }
       RectF Bounds() const;
@@ -171,18 +147,15 @@ namespace Narradia
       bool hovered_ = false;
    };
 
-   class SceneGui
-   {
+   class SceneGui {
      public:
       SceneGui()
-          : gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>())
-      {
+          : gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>()) {
       }
       void UpdateGameLogic();
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
       void RemoveGuiComponent(std::shared_ptr<GuiComponent> comp);
-      auto gui_components()
-      {
+      auto gui_components() {
          return gui_components_;
       }
 

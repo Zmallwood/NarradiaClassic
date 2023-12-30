@@ -5,16 +5,14 @@
 
 namespace Narradia
 {
-   class EngineV : public S<EngineV>
-   {
+   class EngineV : public S<EngineV> {
      public:
       void Render();
    };
 
    class IPageV;
 
-   class PageMngrV : public S<PageMngrV>
-   {
+   class PageMngrV : public S<PageMngrV> {
      public:
       PageMngrV();
       void RenderCurrScene();
@@ -23,8 +21,7 @@ namespace Narradia
       std::map<PageNames, std::shared_ptr<IPageV>> scene_views_;
    };
 
-   class IPageV
-   {
+   class IPageV {
      public:
       IPageV();
       void Render();
@@ -35,8 +32,7 @@ namespace Narradia
       std::shared_ptr<SceneGuiV> scene_gui_view_;
    };
 
-   class CursorV : public S<CursorV>
-   {
+   class CursorV : public S<CursorV> {
      public:
       CursorV();
       void RenderCursor();
@@ -47,8 +43,7 @@ namespace Narradia
       static constexpr float kCursorWidth = 0.02f;
    };
 
-   class GraphicsV : public S<GraphicsV>
-   {
+   class GraphicsV : public S<GraphicsV> {
      public:
       GraphicsV();
       void ClearCanvas();
@@ -58,11 +53,10 @@ namespace Narradia
       void InitGL();
 
       static constexpr bool kCullFace = false;
-      const Color kClearColor = Colors::mild_blue;
+      const Color kClearColor = Colors::black;
    };
 
-   class ConsoleV : public S<ConsoleV>
-   {
+   class ConsoleV : public S<ConsoleV> {
      public:
       ConsoleV();
       void Render() const;

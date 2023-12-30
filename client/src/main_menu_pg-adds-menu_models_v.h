@@ -2,8 +2,7 @@
 
 namespace Narradia
 {
-   class MenuModelsAddV : public S<MenuModelsAddV>
-   {
+   class MenuModelsAddV : public S<MenuModelsAddV> {
      public:
       void Render();
    };

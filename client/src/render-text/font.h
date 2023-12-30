@@ -2,16 +2,13 @@
 
 namespace Narradia
 {
-   class Font
-   {
+   class Font {
      public:
       Font(std::string_view font_file_name, int font_size);
-      auto SDL_font()
-      {
+      auto SDL_font() {
          return SDL_font_;
       }
-      auto outline_SDL_font()
-      {
+      auto outline_SDL_font() {
          return outline_SDL_font_;
       }
 

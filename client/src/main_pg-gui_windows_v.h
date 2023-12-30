@@ -4,12 +4,10 @@
 
 namespace Narradia
 {
-   class GuiWindowWorldMapV : public GuiWindowV
-   {
+   class GuiWindowWorldMapV : public GuiWindowV {
      public:
       GuiWindowWorldMapV();
-      auto tex_id()
-      {
+      auto tex_id() {
          return tex_id_;
       }
 

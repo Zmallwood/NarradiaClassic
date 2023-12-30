@@ -1,27 +1,24 @@
 #if 1
 #include "map_creation_pg-adds-map_gen_v.h"
-#include "assets.h"
-#include "render-models/renderer_models_v.h"
-#include "render/renderer_tiles_v.h"
-#include "core_v.h"
 #include "actors.h"
+#include "assets.h"
+#include "core_v.h"
 #include "main_pg-adds-world_view.h"
 #include "main_pg-adds-world_view_v.h"
+#include "render-models/renderer_models_v.h"
+#include "render/renderer_tiles_v.h"
 #include "world-struct.h"
 #endif
 
 namespace Narradia
 {
-   void MapGenAddV::Render()
-   {
+   void MapGenAddV::Render() {
       auto world_width = World::get()->world_width();
       auto world_height = World::get()->world_height();
       auto map_areas = World::get()->world_areas();
 
-      for (auto y = 0; y < world_height; y++)
-      {
-         for (auto x = 0; x < world_width; x++)
-         {
+      for (auto y = 0; y < world_height; y++) {
+         for (auto x = 0; x < world_width; x++) {
 
             WorldViewAddV::Dispose();
             RendererTilesV::Dispose();
@@ -55,8 +52,7 @@ namespace Narradia
             WorldViewAddV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             Camera::get()->set_camera_distance(orig_camera_distance);
-            //GraphicsV::get()->PresentCanvas();
-
+            // GraphicsV::get()->PresentCanvas();
 
             ImageBank::get()->CreateBlankTextImage(
                 "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y));
@@ -81,7 +77,7 @@ namespace Narradia
             glBindTexture(GL_TEXTURE_2D, 0);
             delete[] data;
             GraphicsV::get()->ClearCanvas();
-            //GraphicsV::get()->PresentCanvas();
+            // GraphicsV::get()->PresentCanvas();
             map_area->ClearAllRIDS();
          }
       }
@@ -89,4 +85,3 @@ namespace Narradia
       RendererTilesV::Dispose();
    }
 }
-

@@ -18,7 +18,7 @@ namespace Narradia
         //GenerateDesert(map_area);
         //GenerateWater(map_area);
         //GenerateSnow(map_area);
-        GenerateElevation(map_area);
+        //GenerateElevation(map_area);
         GenerateObjects(map_area);
         GenerateMobs(map_area);
         GenerateGroundColor(map_area);
