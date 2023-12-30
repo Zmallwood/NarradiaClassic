@@ -1,12 +1,12 @@
 #if 1
 #include "new_body_keyframe.h"
-#include "rend-models/renderer_models_v.h"
+#include "rend-models/rend_models_v.h"
 #endif
 
 namespace Narradia
 {
    auto NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID {
-      auto renderer = RendererModelsV::get();
+      auto renderer = RendModelsV::get();
       auto renderer_base = renderer->renderer_base();
       auto timelines = renderer->timelines();
       auto vao_id = renderer_base->GenNewVAOId();

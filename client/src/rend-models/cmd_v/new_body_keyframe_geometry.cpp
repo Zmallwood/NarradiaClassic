@@ -1,6 +1,6 @@
 #if 1
 #include "new_body_keyframe_geometry.h"
-#include "rend-models/renderer_models_v.h"
+#include "rend-models/rend_models_v.h"
 #include "rend/camera_gl.h"
 #endif
 
@@ -8,7 +8,7 @@ namespace Narradia
 {
    auto NewBodyKeyframeGeometry(
        GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) -> void {
-      auto renderer = RendererModelsV::get();
+      auto renderer = RendModelsV::get();
       auto renderer_base = renderer->renderer_base();
       glEnable(GL_DEPTH_TEST);
       renderer->UseVAOBegin(vao_id);
@@ -52,15 +52,15 @@ namespace Narradia
       renderer->SetIndicesData(index_buffer_id, num_vertices, indices.data());
       renderer->SetData(
           position_buffer_id, num_vertices, positions.data(), BufferTypes::Positions3D,
-          RendererModelsV::kLocationPosition);
+          RendModelsV::kLocationPosition);
       renderer->SetData(
           color_buffer_id, num_vertices, colors.data(), BufferTypes::Colors,
-          RendererModelsV::kLocationColor);
+          RendModelsV::kLocationColor);
       renderer->SetData(
-          uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, RendererModelsV::kLocationUv);
+          uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, RendModelsV::kLocationUv);
       renderer->SetData(
           normal_buffer_id, num_vertices, normals.data(), BufferTypes::Normals,
-          RendererModelsV::kLocationNormal);
+          RendModelsV::kLocationNormal);
       renderer->UseVAOEnd();
    }
 }

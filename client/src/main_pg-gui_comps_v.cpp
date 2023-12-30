@@ -3,9 +3,9 @@
 #include "actors.h"
 #include "main_pg-gui_comps.h"
 #include "math.h"
-#include "rend/renderer_2d_images_v.h"
-#include "rend/renderer_2d_solid_colors_v.h"
-#include "rend-text/renderer_text.h"
+#include "rend/rend_2d_images_v.h"
+#include "rend/rend_2d_solid_colors_v.h"
+#include "rend_text.h"
 #endif
 
 namespace Narradia

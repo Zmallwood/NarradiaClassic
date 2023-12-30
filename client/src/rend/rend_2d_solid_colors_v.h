@@ -1,13 +1,13 @@
 #pragma once
 
-#include "renderer_base_v.h"
+#include "rend_base_v.h"
 
 namespace Narradia
 {
-   class Renderer2DSolidColorsV : public RendererBaseV, public S<Renderer2DSolidColorsV> {
+   class Rend2DSolidColorsV : public RendBaseV, public S<Rend2DSolidColorsV> {
      public:
-      Renderer2DSolidColorsV();
-      ~Renderer2DSolidColorsV();
+      Rend2DSolidColorsV();
+      ~Rend2DSolidColorsV();
 
       static constexpr int kLocationPosition = 0;
       static constexpr int kLocationColor = 1;

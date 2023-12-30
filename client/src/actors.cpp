@@ -5,7 +5,7 @@
 #include "main_pg-adds-world_view.h"
 #include "main_pg-adds-world_view_v.h"
 #include "math.h"
-#include "rend/renderer_tiles_v.h"
+#include "rend/rend_tiles_v.h"
 #include "world-struct.h"
 #endif
 
@@ -55,7 +55,7 @@ namespace Narradia
             world_location_.x--;
             map_area = World::get()->CurrWorldArea();
             WorldViewAddV::Dispose();
-            RendererTilesV::Dispose();
+            RendTilesV::Dispose();
          }
          if (map_area->GetTile(new_coord)->ground() == "GroundWater")
             return;

@@ -1,6 +1,6 @@
 #if 1
 #include "start_models_batch_drawing.h"
-#include "rend-models/renderer_models_v.h"
+#include "rend-models/rend_models_v.h"
 #include "rend/camera_gl.h"
 #include "rend/shader_program.h"
 #include "rend/shader_program_v.h"
@@ -9,7 +9,7 @@
 namespace Narradia
 {
    auto StartModelsBatchDrawing() -> void {
-      auto renderer = RendererModelsV::get();
+      auto renderer = RendModelsV::get();
       renderer->set_is_batch_drawing(true);
       glEnable(GL_DEPTH_TEST);
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());

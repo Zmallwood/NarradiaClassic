@@ -1,14 +1,14 @@
 #pragma once
 
 #include "rend/body_data.h"
-#include "rend/renderer_base_v.h"
+#include "rend/rend_base_v.h"
 
 namespace Narradia
 {
-   class RendererModelsV : public RendererBaseV, public S<RendererModelsV> {
+   class RendModelsV : public RendBaseV, public S<RendModelsV> {
      public:
-      RendererModelsV();
-      ~RendererModelsV();
+      RendModelsV();
+      ~RendModelsV();
       auto timelines() {
          return timelines_;
       }

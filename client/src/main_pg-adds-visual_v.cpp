@@ -1,7 +1,7 @@
 #if 1
 #include "main_pg-adds-visual_v.h"
 #include "main_pg-adds-visual.h"
-#include "rend-text/renderer_text.h"
+#include "rend_text.h"
 #endif
 
 namespace Narradia

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "renderer_base_v.h"
+#include "rend_base_v.h"
 
 namespace Narradia
 {
-   class RendererTilesV : public RendererBaseV, public S<RendererTilesV> {
+   class RendTilesV : public RendBaseV, public S<RendTilesV> {
      public:
-      RendererTilesV();
-      ~RendererTilesV();
+      RendTilesV();
+      ~RendTilesV();
       auto is_batch_drawing() {
          return is_batch_drawing_;
       }

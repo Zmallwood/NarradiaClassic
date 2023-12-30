@@ -7,8 +7,8 @@
 #include "rend-models/cmd_v/draw_model.h"
 #include "rend-models/cmd_v/start_models_batch_drawing.h"
 #include "rend-models/cmd_v/stop_models_batch_drawing.h"
-#include "rend-models/renderer_models_v.h"
-#include "rend/renderer_tiles_v.h"
+#include "rend-models/rend_models_v.h"
+#include "rend/rend_tiles_v.h"
 #include "world-struct.h"
 #endif
 

@@ -1,5 +1,5 @@
 #if 1
-#include "renderer_tiles_v.h"
+#include "rend_tiles_v.h"
 #include "actors.h"
 #include "assets.h"
 #include "conf.h"
@@ -13,7 +13,7 @@
 
 namespace Narradia
 {
-   RendererTilesV::RendererTilesV() {
+   RendTilesV::RendTilesV() {
       shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
       location_projection_ = GetUniformLocation("projection");
       location_view_ = GetUniformLocation("view");
@@ -22,12 +22,12 @@ namespace Narradia
       location_view_pos_ = GetUniformLocation("viewPos");
       location_fog_color_ = GetUniformLocation("fogColor");
    }
-   RendererTilesV::~RendererTilesV() {
+   RendTilesV::~RendTilesV() {
       CleanupBase();
    }
    RenderID NewTile() {
       auto num_vertices = 4;
-      auto renderer = RendererTilesV::get();
+      auto renderer = RendTilesV::get();
       auto renderer_base = renderer->renderer_base();
       auto vertex_array_id = renderer_base->GenNewVAOId();
       auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vertex_array_id);
@@ -51,7 +51,7 @@ namespace Narradia
       vertices.push_back(verts._10);
       vertices.push_back(verts._11);
       vertices.push_back(verts._01);
-      auto renderer = RendererTilesV::get();
+      auto renderer = RendTilesV::get();
       auto renderer_base = renderer->renderer_base();
       if (!renderer->is_batch_drawing())
          renderer->UseVAOBegin(vao_id);
@@ -85,19 +85,19 @@ namespace Narradia
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions3D,
-          RendererTilesV::kLocationPosition);
+          RendTilesV::kLocationPosition);
       renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, RendererTilesV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendererTilesV::kLocationUv);
+          color_buffer_id, colors, BufferTypes::Colors, RendTilesV::kLocationColor);
+      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendTilesV::kLocationUv);
       renderer->UpdateData(
-          normal_buffer_id, normals, BufferTypes::Normals, RendererTilesV::kLocationNormal);
+          normal_buffer_id, normals, BufferTypes::Normals, RendTilesV::kLocationNormal);
       glBindVertexArray(0);
       if (!renderer->is_batch_drawing())
          renderer->UseVAOEnd();
    }
    auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) -> void {
       auto vertex_count = 4;
-      auto renderer = RendererTilesV::get();
+      auto renderer = RendTilesV::get();
       if (depth_test_off)
          glDisable(GL_DEPTH_TEST);
       else
@@ -121,8 +121,8 @@ namespace Narradia
              player_pos.z);
          glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
          glm::vec3 fog_color_gl(
-             RendererTilesV::kFogColorGround.r, RendererTilesV::kFogColorGround.g,
-             RendererTilesV::kFogColorGround.b);
+             RendTilesV::kFogColorGround.r, RendTilesV::kFogColorGround.g,
+             RendTilesV::kFogColorGround.b);
          glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       }
       auto image_id = ImageBank::get()->GetImage(image_name);
@@ -134,7 +134,7 @@ namespace Narradia
          renderer->UseVAOEnd();
    }
    auto StartTileBatchDrawing() -> void {
-      auto renderer = RendererTilesV::get();
+      auto renderer = RendTilesV::get();
       renderer->set_is_batch_drawing(true);
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
@@ -159,15 +159,15 @@ namespace Narradia
           player_pos.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
       glm::vec3 fog_color_gl(
-          RendererTilesV::kFogColorGround.r, RendererTilesV::kFogColorGround.g,
-          RendererTilesV::kFogColorGround.b);
+          RendTilesV::kFogColorGround.r, RendTilesV::kFogColorGround.g,
+          RendTilesV::kFogColorGround.b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }
    auto StopTileBatchDrawing() -> void {
-      auto renderer = RendererTilesV::get();
+      auto renderer = RendTilesV::get();
       renderer->set_is_batch_drawing(false);
       glUseProgram(0);
       glDisable(GL_CULL_FACE);

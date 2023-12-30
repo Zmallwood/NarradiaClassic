@@ -1,12 +1,12 @@
 #if 1
-#include "renderer_models_v.h"
+#include "rend_models_v.h"
 #include "rend/shader_program_v.h"
 #include "shaders.h"
 #endif
 
 namespace Narradia
 {
-   RendererModelsV::RendererModelsV()
+   RendModelsV::RendModelsV()
        : timelines_(std::make_shared<std::map<std::string_view, std::map<float, RenderID>>>()),
          model_ids_(std::make_shared<
                     std::map<std::string, std::map<int, std::map<float, const BodyData>>>>()) {
@@ -22,7 +22,7 @@ namespace Narradia
       location_no_fog_ = GetUniformLocation("noFog");
       location_no_lighting_ = GetUniformLocation("noLighting");
    }
-   RendererModelsV::~RendererModelsV() {
+   RendModelsV::~RendModelsV() {
       CleanupBase();
    }
 }

@@ -1,5 +1,5 @@
 #if 1
-#include "renderer_2d_images_v.h"
+#include "rend_2d_images_v.h"
 #include "assets.h"
 #include "shader_program_v.h"
 #include "shaders.h"
@@ -7,15 +7,15 @@
 
 namespace Narradia
 {
-   Renderer2DImagesV::Renderer2DImagesV() {
+   Rend2DImagesV::Rend2DImagesV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_images, fragment_shader_source_2d_images);
    }
-   Renderer2DImagesV::~Renderer2DImagesV() {
+   Rend2DImagesV::~Rend2DImagesV() {
       CleanupBase();
    }
    auto NewImage() -> RenderID {
-      auto renderer = Renderer2DImagesV::get();
+      auto renderer = Rend2DImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
       renderer->UseVAOBegin(vao_id);
@@ -23,23 +23,23 @@ namespace Narradia
       auto position_buffer_id = renderer_base->GenNewBufId(BufferTypes::Positions2D, vao_id);
       auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vao_id);
       auto uv_buffer_id = renderer_base->GenNewBufId(BufferTypes::Uvs, vao_id);
-      renderer->SetIndicesData(index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
+      renderer->SetIndicesData(index_buffer_id, RendBase::kNumVerticesInRectangle, nullptr);
       renderer->SetData(
-          position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
+          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr,
           BufferTypes::Positions2D);
       renderer->SetData(
-          color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
+          color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
       renderer->SetData(
-          uv_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
+          uv_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
       renderer->UseVAOEnd();
       return vao_id;
    }
    auto DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color)
        -> void {
-      auto renderer = Renderer2DImagesV::get();
+      auto renderer = Rend2DImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = dest.ToGLRectF();
-      Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
+      Vertex2F vertices[RendBase::kNumVerticesInRectangle];
       vertices[0].pos = {gl_rect.x, gl_rect.y - gl_rect.h};
       vertices[1].pos = {gl_rect.x, gl_rect.y};
       vertices[2].pos = {gl_rect.x + gl_rect.w, gl_rect.y};
@@ -51,7 +51,7 @@ namespace Narradia
       glDisable(GL_DEPTH_TEST);
       auto image_id = ImageBank::get()->GetImage(image_name);
       glBindTexture(GL_TEXTURE_2D, image_id);
-      auto indices = std::vector<int>(RendererBase::kNumVerticesInRectangle);
+      auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
@@ -74,11 +74,11 @@ namespace Narradia
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions2D,
-          Renderer2DImagesV::kLocationPosition);
+          Rend2DImagesV::kLocationPosition);
       renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, Renderer2DImagesV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, Renderer2DImagesV::kLocationUv);
-      glDrawElements(GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
+          color_buffer_id, colors, BufferTypes::Colors, Rend2DImagesV::kLocationColor);
+      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, Rend2DImagesV::kLocationUv);
+      glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
 }

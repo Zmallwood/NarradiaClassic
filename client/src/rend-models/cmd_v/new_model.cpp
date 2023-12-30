@@ -3,13 +3,13 @@
 #include "assets.h"
 #include "new_body_keyframe.h"
 #include "new_body_keyframe_geometry.h"
-#include "rend-models/renderer_models_v.h"
+#include "rend-models/rend_models_v.h"
 #endif
 
 namespace Narradia
 {
    auto NewModel(std::string_view model_name) -> void {
-      auto renderer = RendererModelsV::get();
+      auto renderer = RendModelsV::get();
       auto model = ModelBank::get()->GetModel(model_name);
       auto model_ids = renderer->model_ids();
       model_ids->insert({model_name.data(), std::map<int, std::map<float, const BodyData>>()});

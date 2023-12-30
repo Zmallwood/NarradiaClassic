@@ -1,46 +1,46 @@
 #if 1
-#include "renderer_2d_solid_colors_v.h"
+#include "rend_2d_solid_colors_v.h"
 #include "shader_program_v.h"
 #include "shaders.h"
 #endif
 
 namespace Narradia
 {
-   Renderer2DSolidColorsV::Renderer2DSolidColorsV() {
+   Rend2DSolidColorsV::Rend2DSolidColorsV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
    }
-   Renderer2DSolidColorsV::~Renderer2DSolidColorsV() {
+   Rend2DSolidColorsV::~Rend2DSolidColorsV() {
       CleanupBase();
    }
    auto NewRect() -> RenderID {
-      auto renderer = Renderer2DSolidColorsV::get();
+      auto renderer = Rend2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
       renderer->UseVAOBegin(vao_id);
       auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vao_id);
       auto position_buffer_id = renderer_base->GenNewBufId(BufferTypes::Positions2D, vao_id);
       auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vao_id);
-      renderer->SetIndicesData(index_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr);
+      renderer->SetIndicesData(index_buffer_id, RendBase::kNumVerticesInRectangle, nullptr);
       renderer->SetData(
-          position_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr,
+          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr,
           BufferTypes::Positions2D);
       renderer->SetData(
-          color_buffer_id, RendererBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
+          color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
       renderer->UseVAOEnd();
       return vao_id;
    }
    auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void {
-      auto renderer = Renderer2DSolidColorsV::get();
+      auto renderer = Rend2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
-      Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
+      Vertex2F vertices[RendBase::kNumVerticesInRectangle];
       vertices[0].pos = {gl_rect.x, gl_rect.y - gl_rect.h};
       vertices[1].pos = {gl_rect.x, gl_rect.y};
       vertices[2].pos = {gl_rect.x + gl_rect.w, gl_rect.y};
       vertices[3].pos = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
       glDisable(GL_DEPTH_TEST);
-      auto indices = std::vector<int>(RendererBase::kNumVerticesInRectangle);
+      auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
@@ -59,23 +59,23 @@ namespace Narradia
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions2D,
-          Renderer2DSolidColorsV::kLocationPosition);
+          Rend2DSolidColorsV::kLocationPosition);
       renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, Renderer2DSolidColorsV::kLocationColor);
-      glDrawElements(GL_LINE_STRIP, RendererBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
+          color_buffer_id, colors, BufferTypes::Colors, Rend2DSolidColorsV::kLocationColor);
+      glDrawElements(GL_LINE_STRIP, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
    auto FillRect(RenderID vao_id, RectF rect, Color color) -> void {
-      auto renderer = Renderer2DSolidColorsV::get();
+      auto renderer = Rend2DSolidColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
-      Vertex2F vertices[RendererBase::kNumVerticesInRectangle];
+      Vertex2F vertices[RendBase::kNumVerticesInRectangle];
       vertices[0].pos = {gl_rect.x, gl_rect.y - gl_rect.h};
       vertices[1].pos = {gl_rect.x, gl_rect.y};
       vertices[2].pos = {gl_rect.x + gl_rect.w, gl_rect.y};
       vertices[3].pos = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
       glDisable(GL_DEPTH_TEST);
-      auto indices = std::vector<int>(RendererBase::kNumVerticesInRectangle);
+      auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
@@ -94,10 +94,10 @@ namespace Narradia
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions2D,
-          Renderer2DSolidColorsV::kLocationPosition);
+          Rend2DSolidColorsV::kLocationPosition);
       renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, Renderer2DSolidColorsV::kLocationColor);
-      glDrawElements(GL_TRIANGLE_FAN, RendererBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
+          color_buffer_id, colors, BufferTypes::Colors, Rend2DSolidColorsV::kLocationColor);
+      glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
 }

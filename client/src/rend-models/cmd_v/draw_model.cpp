@@ -4,7 +4,7 @@
 #include "assets.h"
 #include "conf.h"
 #include "math.h"
-#include "rend-models/renderer_models_v.h"
+#include "rend-models/rend_models_v.h"
 #include "rend/camera_gl.h"
 #include "rend/shader_program.h"
 #include "rend/shader_program_v.h"
@@ -16,7 +16,7 @@ namespace Narradia
    auto DrawModel(
        std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
        float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) -> void {
-      auto renderer = RendererModelsV::get();
+      auto renderer = RendModelsV::get();
       auto model_ids = renderer->model_ids();
       auto is_batch_drawing = renderer->is_batch_drawing();
       if (model_ids->count(model_name.data()) == 0)
@@ -62,8 +62,8 @@ namespace Narradia
           player_space_coord.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(viewPos));
       glm::vec3 fogColorGl(
-          RendererModelsV::kFogColorModels.r, RendererModelsV::kFogColorModels.g,
-          RendererModelsV::kFogColorModels.b);
+          RendModelsV::kFogColorModels.r, RendModelsV::kFogColorModels.g,
+          RendModelsV::kFogColorModels.b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fogColorGl));
       glUniform1f(renderer->location_alpha(), brightness);
       glUniform1f(renderer->location_no_fog(), no_fog ? 1.0f : 0.0f);

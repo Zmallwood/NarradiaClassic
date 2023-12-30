@@ -5,8 +5,8 @@
 #include "core_v.h"
 #include "main_pg-adds-world_view.h"
 #include "main_pg-adds-world_view_v.h"
-#include "rend-models/renderer_models_v.h"
-#include "rend/renderer_tiles_v.h"
+#include "rend-models/rend_models_v.h"
+#include "rend/rend_tiles_v.h"
 #include "world-struct.h"
 #endif
 
@@ -21,7 +21,7 @@ namespace Narradia
          for (auto x = 0; x < world_width; x++) {
 
             WorldViewAddV::Dispose();
-            RendererTilesV::Dispose();
+            RendTilesV::Dispose();
 
             GraphicsV::get()->ClearCanvas();
 
@@ -30,8 +30,8 @@ namespace Narradia
             auto y_center = map_area->GetHeight() / 2.0f;
             Player::get()->set_position({x_center, 0.0f, y_center});
             Player::get()->set_world_location({x, y});
-            auto orig_ground_fog = RendererTilesV::get()->kFogColorGround;
-            auto orig_objs_fog = RendererModelsV::get()->kFogColorModels;
+            auto orig_ground_fog = RendTilesV::get()->kFogColorGround;
+            auto orig_objs_fog = RendModelsV::get()->kFogColorModels;
             auto width = map_area->GetWidth();
             auto height = map_area->GetHeight();
             auto render_dist = std::sqrt(width * width + height * height) / 2.0f;
@@ -44,11 +44,11 @@ namespace Narradia
             Camera::get()->set_camera_distance(110.0f);
             Camera::get()->UpdateGameLogic();
             WorldViewAddV::get()->set_render_distance(render_dist);
-            RendererTilesV::get()->kFogColorGround = Colors::white;
-            RendererModelsV::get()->kFogColorModels = Colors::white;
+            RendTilesV::get()->kFogColorGround = Colors::white;
+            RendModelsV::get()->kFogColorModels = Colors::white;
             WorldViewAddV::get()->Render();
-            RendererTilesV::get()->kFogColorGround = orig_ground_fog;
-            RendererModelsV::get()->kFogColorModels = orig_objs_fog;
+            RendTilesV::get()->kFogColorGround = orig_ground_fog;
+            RendModelsV::get()->kFogColorModels = orig_objs_fog;
             WorldViewAddV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             Camera::get()->set_camera_distance(orig_camera_distance);
@@ -82,6 +82,6 @@ namespace Narradia
          }
       }
       WorldViewAddV::Dispose();
-      RendererTilesV::Dispose();
+      RendTilesV::Dispose();
    }
 }

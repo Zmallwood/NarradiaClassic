@@ -1,15 +1,15 @@
 #pragma once
 
-#include "renderer_base.h"
+#include "rend_base.h"
 
 namespace Narradia
 {
-   class RendererBase;
+   class RendBase;
    class ShaderProgramV;
 
-   class RendererBaseV {
+   class RendBaseV {
      public:
-      RendererBaseV();
+      RendBaseV();
       void UseVAOBegin(GLuint vao_id) const;
       void UseVAOEnd() const;
       void SetIndicesData(GLuint indices_vbo_id, int num_vertices, const void *data) const;
@@ -31,7 +31,7 @@ namespace Narradia
       GLuint GetUniformLocation(std::string_view var_name);
       void CleanupBase();
 
-      std::shared_ptr<RendererBase> renderer_base_;
+      std::shared_ptr<RendBase> renderer_base_;
 
      private:
       void SetArrayBufferData(
