@@ -1,7 +1,7 @@
 #if 1
 #include "renderer_2d_images_v.h"
 #include "assets.h"
-#include "render/shader_program_v.h"
+#include "shader_program_v.h"
 #include "shaders.h"
 #endif
 

@@ -2,9 +2,8 @@
 #include "pages_v.h"
 #include "pages.h"
 #include "gui-core_v.h"
-#include "render-text/cmd_v/draw_string.h"
-#include "render-text/cmd_v/new_string.h"
-#include "render/renderer_2d_images_v.h"
+#include "rend/renderer_2d_images_v.h"
+#include "rend-text/renderer_text.h"
 #include "gui-core_v.h"
 #include "main_menu_pg-adds-menu_models_v.h"
 #include "map_creation_pg-adds-map_gen_v.h"
@@ -13,8 +12,6 @@
 #include "main_pg-adds-world_view_v.h"
 #include "main_pg-gui_comps_v.h"
 #include "main_pg-gui_windows_v.h"
-#include "render-text/cmd_v/draw_string.h"
-#include "render-text/cmd_v/new_string.h"
 #endif
 
 namespace Narradia

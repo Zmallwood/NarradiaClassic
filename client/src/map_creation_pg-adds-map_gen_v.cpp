@@ -5,8 +5,8 @@
 #include "core_v.h"
 #include "main_pg-adds-world_view.h"
 #include "main_pg-adds-world_view_v.h"
-#include "render-models/renderer_models_v.h"
-#include "render/renderer_tiles_v.h"
+#include "rend-models/renderer_models_v.h"
+#include "rend/renderer_tiles_v.h"
 #include "world-struct.h"
 #endif
 

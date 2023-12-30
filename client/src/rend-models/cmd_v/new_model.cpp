@@ -3,7 +3,7 @@
 #include "assets.h"
 #include "new_body_keyframe.h"
 #include "new_body_keyframe_geometry.h"
-#include "render-models/renderer_models_v.h"
+#include "rend-models/renderer_models_v.h"
 #endif
 
 namespace Narradia

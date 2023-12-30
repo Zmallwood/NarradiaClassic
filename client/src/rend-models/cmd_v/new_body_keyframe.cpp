@@ -1,6 +1,6 @@
 #if 1
 #include "new_body_keyframe.h"
-#include "render-models/renderer_models_v.h"
+#include "rend-models/renderer_models_v.h"
 #endif
 
 namespace Narradia

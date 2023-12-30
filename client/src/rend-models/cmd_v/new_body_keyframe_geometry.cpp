@@ -1,7 +1,7 @@
 #if 1
 #include "new_body_keyframe_geometry.h"
-#include "render-models/renderer_models_v.h"
-#include "render/camera_gl.h"
+#include "rend-models/renderer_models_v.h"
+#include "rend/camera_gl.h"
 #endif
 
 namespace Narradia

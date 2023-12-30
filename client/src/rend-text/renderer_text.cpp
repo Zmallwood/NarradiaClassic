@@ -1,7 +1,8 @@
 #if 1
 #include "renderer_text.h"
 #include "assets.h"
-#include "render-text/font.h"
+#include "core.h"
+#include "rend/renderer_2d_images_v.h"
 #endif
 
 namespace Narradia
@@ -59,5 +60,41 @@ namespace Narradia
       SDL_FreeSurface(image);
       SDL_FreeSurface(text_surface);
       SDL_FreeSurface(text_outline_surface);
+   }
+   Font::Font(std::string_view font_file_name, int font_size) {
+      SDL_font_ =
+          std::shared_ptr<TTF_Font>(TTF_OpenFont(font_file_name.data(), font_size), SDLDeleter());
+      outline_SDL_font_ =
+          std::shared_ptr<TTF_Font>(TTF_OpenFont(font_file_name.data(), font_size), SDLDeleter());
+      TTF_SetFontOutline(outline_SDL_font_.get(), kFontOutlineWidth);
+   }
+   auto NewString() -> RenderID {
+      static int id_counter = 0;
+      auto id = id_counter++;
+      auto unique_name = "RenderedImage" + std::to_string(id);
+      ImageBank::get()->CreateBlankTextImage(unique_name);
+      auto rendid_image_rect = NewImage();
+      RendererText::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
+      return rendid_image_rect;
+   }
+   auto DrawString(
+       RenderID rid, std::string_view text, PointF position, Color color, bool center_align,
+       FontSizes font_size) -> void {
+      std::string unique_name_id;
+      SizeF size;
+      RendererText::get()->RenderText(
+          rid, text, color, center_align, font_size, unique_name_id, size);
+      auto canvas_size = CanvasSize();
+      auto rect = RectF{position.x, position.y, size.w, size.h};
+      int text_w;
+      int text_h;
+      TTF_SizeText(
+          RendererText::get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w,
+          &text_h);
+      rect.y -= static_cast<float>(text_h / AspectRatio()) / canvas_size.h / 2.0f;
+      if (center_align)
+         rect.x -=
+             static_cast<float>(text_w) / static_cast<float>(canvas_size.h) / 2.0f / AspectRatio();
+      DrawImage(unique_name_id, rid, rect);
    }
 }

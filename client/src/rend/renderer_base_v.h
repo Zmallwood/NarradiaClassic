@@ -1,6 +1,6 @@
 #pragma once
 
-#include "render/renderer_base.h"
+#include "renderer_base.h"
 
 namespace Narradia
 {

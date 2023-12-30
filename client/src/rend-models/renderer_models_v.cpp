@@ -1,6 +1,6 @@
 #if 1
 #include "renderer_models_v.h"
-#include "render/shader_program_v.h"
+#include "rend/shader_program_v.h"
 #include "shaders.h"
 #endif
 

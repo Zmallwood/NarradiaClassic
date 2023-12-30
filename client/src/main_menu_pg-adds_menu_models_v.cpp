@@ -1,6 +1,6 @@
 #if 1
 #include "main_menu_pg-adds-menu_models_v.h"
-#include "render-models/cmd_v/draw_model.h"
+#include "rend-models/cmd_v/draw_model.h"
 #endif
 
 namespace Narradia

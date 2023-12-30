@@ -4,7 +4,7 @@
 #include "conf.h"
 #include "core.h"
 #include "main_pg-adds-world_view.h"
-#include "render/camera_gl.h"
+#include "rend/camera_gl.h"
 #include "world-struct.h"
 #endif
 

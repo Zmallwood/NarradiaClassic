@@ -25,4 +25,27 @@ namespace Narradia
       std::map<FontSizes, std::shared_ptr<Font>> fonts_;
       std::shared_ptr<std::map<RenderID, std::string>> unique_name_ids_;
    };
+
+   class Font {
+     public:
+      Font(std::string_view font_file_name, int font_size);
+      auto SDL_font() {
+         return SDL_font_;
+      }
+      auto outline_SDL_font() {
+         return outline_SDL_font_;
+      }
+
+      static constexpr int kFontOutlineWidth = 2;
+
+     private:
+      std::shared_ptr<TTF_Font> SDL_font_;
+      std::shared_ptr<TTF_Font> outline_SDL_font_;
+   };
+
+   auto NewString() -> RenderID;
+
+   auto DrawString(
+       RenderID rid, std::string_view text, PointF position, Color color = Colors::white,
+       bool center_align = false, FontSizes font_size = FontSizes::_20) -> void;
 }

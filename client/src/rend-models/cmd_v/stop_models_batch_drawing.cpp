@@ -1,6 +1,6 @@
 #if 1
 #include "stop_models_batch_drawing.h"
-#include "render-models/renderer_models_v.h"
+#include "rend-models/renderer_models_v.h"
 #endif
 
 namespace Narradia

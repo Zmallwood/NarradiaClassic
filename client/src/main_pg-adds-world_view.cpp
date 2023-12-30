@@ -4,7 +4,7 @@
 #include "assets.h"
 #include "conf.h"
 #include "math.h"
-#include "render/camera_gl.h"
+#include "rend/camera_gl.h"
 #include "world-struct.h"
 #endif
 

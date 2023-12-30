@@ -1,8 +1,7 @@
 #if 1
 #include "gui-core_v.h"
-#include "render-text/cmd_v/draw_string.h"
-#include "render-text/cmd_v/new_string.h"
-#include "render/renderer_2d_images_v.h"
+#include "rend/renderer_2d_images_v.h"
+#include "rend-text/renderer_text.h"
 #endif
 
 namespace Narradia

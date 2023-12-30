@@ -1,7 +1,7 @@
 #pragma once
 
-#include "render/body_data.h"
-#include "render/renderer_base_v.h"
+#include "rend/body_data.h"
+#include "rend/renderer_base_v.h"
 
 namespace Narradia
 {

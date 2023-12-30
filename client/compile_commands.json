@@ -14,11 +14,11 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/main_pg-adds-visual.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/main_pg-adds-visual.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/conf.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/conf.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/main_pg-adds-visual.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/main_pg-adds-visual.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/conf.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/conf.cpp.o"
   }
 ]
