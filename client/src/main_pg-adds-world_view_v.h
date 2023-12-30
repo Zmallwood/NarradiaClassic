@@ -18,7 +18,6 @@ namespace Narradia
 
      private:
       void DrawGround(std::shared_ptr<Tile> tile, Point coord);
-      void DrawMob(std::shared_ptr<Tile> tile, Point coord);
       void DrawObjects(std::shared_ptr<Tile> tile, Point coord);
       void DrawPlayer();
       void DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord);

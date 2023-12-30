@@ -53,7 +53,7 @@ namespace Narradia
       void InitGL();
 
       static constexpr bool kCullFace = false;
-      const Color kClearColor = Colors::black;
+      const Color kClearColor = Colors::mild_blue;
    };
 
    class ConsoleV : public S<ConsoleV> {

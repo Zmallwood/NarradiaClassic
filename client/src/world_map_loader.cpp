@@ -93,8 +93,8 @@ namespace Narradia
                      file >> s2;
                   }
                   if (mob_type != "0") {
-                     tile->set_mob(std::make_shared<Mob>(mob_type));
-                     world_area->mobs_mirror()->insert({tile->mob(), {x, y}});
+                     //tile->set_mob(std::make_shared<Mob>(mob_type));
+                     //world_area->mobs_mirror()->insert({tile->mob(), {x, y}});
                   }
                }
                else if (s.find("<red>") != std::string::npos) {

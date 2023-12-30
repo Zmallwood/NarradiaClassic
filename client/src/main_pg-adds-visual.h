@@ -17,36 +17,12 @@ namespace Narradia
       static constexpr int kMillisPerSecond = 1000;
    };
 
-   class Mob;
-
-   class MobTargetingAdd : public S<MobTargetingAdd> {
-     public:
-      void UpdateGameLogic();
-      void ClearTarget();
-      auto targeted_mob() {
-         return targeted_mob_;
-      }
-
-     private:
-      std::shared_ptr<Mob> targeted_mob_;
-   };
-
    class KeyboardMovementAdd : public S<KeyboardMovementAdd> {
      public:
       void UpdateGameLogic();
    };
 
-   class CombatChaseMovementAdd : public S<CombatChaseMovementAdd> {
-     public:
-      void UpdateGameLogic();
-   };
-
    class MouseMovementAdd : public S<MouseMovementAdd> {
-     public:
-      void UpdateGameLogic();
-   };
-
-   class MobMovementAdd : public S<MobMovementAdd> {
      public:
       void UpdateGameLogic();
    };

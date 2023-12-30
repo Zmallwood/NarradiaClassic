@@ -61,17 +61,12 @@ namespace Narradia
    void MainPg::UpdateGameLogicDerived() {
       try {
          KbBindingsAdd::get()->UpdateGameLogic();
-         MobMovementAdd::get()->UpdateGameLogic();
          KeyboardMovementAdd::get()->UpdateGameLogic();
          MouseMovementAdd::get()->UpdateGameLogic();
-         CombatChaseMovementAdd::get()->UpdateGameLogic();
          WorldViewAdd::get()->UpdateGameLogic();
          MouseRotationAdd::get()->UpdateGameLogic();
          TileHoveringAdd::get()->UpdateGameLogic();
-         MobTargetingAdd::get()->UpdateGameLogic();
-         CombatAdd::get()->UpdateGameLogic();
          SkillPerformingAdd::get()->UpdateGameLogic();
-         MobDeathHandlingAdd::get()->UpdateGameLogic();
          FPSCounterAdd::get()->UpdateGameLogic();
       }
       catch (std::exception &e) {

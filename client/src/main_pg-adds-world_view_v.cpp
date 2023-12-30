@@ -318,7 +318,7 @@ namespace Narradia
                auto coord = Point{x, y};
 
                DrawObjects(tile, coord);
-               //DrawMob(tile, coord);
+               // DrawMob(tile, coord);
             }
          }
 
@@ -342,19 +342,6 @@ namespace Narradia
       }
       // std::cout << ground << std::endl;
       DrawTile(ground, tile->rid());
-   }
-   void WorldViewAddV::DrawMob(std::shared_ptr<Tile> tile, Point coord) {
-      auto map_area = World::get()->CurrWorldArea();
-      auto curr_map_location = Player::get()->world_location();
-      auto tile_size = kTileSize;
-      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
-      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
-      auto pos = Point3F{coord.x * kTileSize, CalcTileAverageElevation(coord), coord.y * kTileSize}
-                     .Translate(0.5f, 0.0f, 0.5f)
-                     .Translate(map_offset_x, 0.0f, map_offset_y);
-      if (tile->mob()) {
-         DrawModel(tile->mob()->type(), 0.0f, pos, 0.0f, 0.7f);
-      }
    }
    void WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord) {
       if (tile->object()) {
@@ -388,7 +375,7 @@ namespace Narradia
       player_space_coord.y += tile_average_elevation;
       auto ms_anim_time = 0.0f;
       if (Player::get()->IsMoving())
-         ms_anim_time = SDL_GetTicks();
+         ms_anim_time = SDL_GetTicks() * 2;
       DrawModel(
           "Player2", ms_anim_time, player_space_coord, Player::get()->facing_angle_deg() + 180.0f,
           0.6f);
@@ -400,9 +387,6 @@ namespace Narradia
           Player::get()->ticks_ulti_skill_start() != 0 && coord.x == player_pos.x &&
           coord.y == player_pos.y) {
          DrawTile("TilePlayerUltiSkill", tile->rid());
-      }
-      else if (MobTargetingAdd::get()->targeted_mob() == tile->mob() && tile->mob() != nullptr) {
-         DrawTile("TileTargetedMob", tile->rid());
       }
       else if (SDL_GetTicks() < tile->tile_effect().ticks_started + 800) {
          DrawTile(tile->tile_effect().type, tile->rid());

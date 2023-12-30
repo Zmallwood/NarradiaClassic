@@ -4,8 +4,8 @@
 #include "conf.h"
 #include "core.h"
 #include "main_pg-adds-world_view.h"
-#include "world-struct.h"
 #include "rend-core.h"
+#include "world-struct.h"
 #endif
 
 namespace Narradia
@@ -19,29 +19,6 @@ namespace Narradia
          frames_count_ = 0;
          ticks_last_update_ = SDL_GetTicks();
       }
-   }
-#endif
-
-   // MobTargetingModule
-#if 1
-   void MobTargetingAdd::UpdateGameLogic() {
-      MouseInput::get()->right_btn()->AddFiredAction(
-          [&] {
-             auto map_area = World::get()->CurrWorldArea();
-             auto hovered_tile = TileHoveringAdd::get()->hovered_tile();
-             if (hovered_tile.x < 0 || hovered_tile.y < 0 ||
-                 hovered_tile.x >= map_area->GetWidth() || hovered_tile.y >= map_area->GetHeight())
-                return;
-             auto mob = map_area->GetTile(hovered_tile.x, hovered_tile.y)->mob();
-             if (mob) {
-                targeted_mob_ = mob;
-             }
-             Player::get()->set_destination({-1, -1});
-          },
-          1);
-   }
-   void MobTargetingAdd::ClearTarget() {
-      targeted_mob_ = nullptr;
    }
 #endif
 
@@ -66,41 +43,11 @@ namespace Narradia
                Player::get()->MoveLeft();
             Player::get()->set_ticks_last_move(SDL_GetTicks());
             Player::get()->set_destination({-1, -1});
-            MobTargetingAdd::get()->ClearTarget();
          }
       }
       catch (std::exception &e) {
          Console::get()->Print(
              "Exception in KeyboardMovementAdd::UpdateGameLogic: " + std::string(e.what()));
-      }
-   }
-#endif
-
-   // CombatChaseMovementModule
-#if 1
-   void CombatChaseMovementAdd::UpdateGameLogic() {
-      auto time_to_update =
-          SDL_GetTicks() > Player::get()->ticks_last_move() + 400 / Player::get()->movement_speed();
-      if (false == time_to_update)
-         return;
-      auto targeted_mob = MobTargetingAdd::get()->targeted_mob();
-      if (targeted_mob) {
-         auto map_area = World::get()->CurrWorldArea();
-         auto player_pos = Player::get()->position();
-         auto mob_coord = map_area->mobs_mirror()->at(targeted_mob);
-         auto dx = mob_coord.x - player_pos.x;
-         auto dy = mob_coord.y - player_pos.z;
-         auto abs_dx = std::abs(dx);
-         auto abs_dy = std::abs(dy);
-         if (abs_dx < 0.5f && abs_dy < 0.5f)
-            return;
-         auto base_angle_deg = std::atan2(dy, dx) * 180.0f / M_PI - 90.0f;
-         Player::get()->set_facing_angle_deg(-base_angle_deg);
-         auto angle_deg = base_angle_deg + Player::get()->facing_angle_deg();
-         Player::get()->MoveAtAngle(angle_deg);
-         Player::get()->set_facing_angle_deg(angle_deg);
-         Player::get()->set_ticks_last_move(SDL_GetTicks());
-         Player::get()->set_destination({-1, -1});
       }
    }
 #endif
@@ -111,7 +58,6 @@ namespace Narradia
       MouseInput::get()->left_btn()->AddFiredAction(
           [] {
              Player::get()->set_destination(TileHoveringAdd::get()->hovered_tile());
-             MobTargetingAdd::get()->ClearTarget();
           },
           5);
       auto destination = Player::get()->destination();
@@ -133,66 +79,6 @@ namespace Narradia
          auto angle_deg = base_angle_deg + Player::get()->facing_angle_deg();
          Player::get()->MoveAtAngle(angle_deg);
          Player::get()->set_ticks_last_move(SDL_GetTicks());
-      }
-   }
-#endif
-
-   // MobMovementModule
-#if 1
-   void MobMovementAdd::UpdateGameLogic() {
-      auto map_area = World::get()->CurrWorldArea();
-      auto &mobs = *(map_area->mobs_mirror());
-      for (auto it = mobs.begin(); it != mobs.end();) {
-         auto mob = it->first;
-         auto coord = it->second;
-         if (SDL_GetTicks() > mob->ticks_last_move() + 400 / mob->movement_speed()) {
-            auto player_pos = Player::get()->position().GetXZ().ToIntPoint();
-            auto dx = player_pos.x - coord.x;
-            auto dy = player_pos.y - coord.y;
-            auto aggro_range = MobsConf::get()->GetAggroRange(mob->type());
-            if (aggro_range > 0) {
-               auto r = std::sqrt(dx * dx + dy * dy);
-               if (r <= aggro_range)
-                  mob->AggroPlayer();
-            }
-            int new_x;
-            int new_y;
-            if (mob->aggroing_player()) {
-               auto norm_x = 0;
-               auto norm_y = 0;
-               auto abs_dx = std::abs(dx);
-               auto abs_dy = std::abs(dy);
-               if (dx)
-                  norm_x = dx / abs_dx;
-               if (dy)
-                  norm_y = dy / abs_dy;
-               new_x = coord.x + norm_x;
-               new_y = coord.y + norm_y;
-            }
-            else {
-               auto dx = rand() % 2 - rand() % 2;
-               auto dy = rand() % 2 - rand() % 2;
-               new_x = coord.x + dx;
-               new_y = coord.y + dy;
-            }
-            if (new_x >= 0 && new_y >= 0 && new_x < map_area->GetWidth() &&
-                new_y < map_area->GetHeight()) {
-               auto tile = map_area->GetTile(new_x, new_y);
-               if (tile->ground() != "GroundWater") {
-                  if (nullptr == tile->object()) {
-                     if (nullptr == tile->mob()) {
-                        tile->set_mob(mob);
-                        map_area->GetTile(coord.x, coord.y)->set_mob(nullptr);
-                        mob->set_ticks_last_move(SDL_GetTicks());
-                        mobs.erase(it++);
-                        mobs.insert({mob, {new_x, new_y}});
-                        continue;
-                     }
-                  }
-               }
-            }
-         }
-         ++it;
       }
    }
 #endif
@@ -242,11 +128,6 @@ namespace Narradia
                   if (dx * dx + dy * dy <= r * r) {
                      map_area->GetTile(x, y)->set_tile_effect(
                          {"UltiSkillTileFire", static_cast<int>(SDL_GetTicks())});
-                     if (map_area->GetTile(x, y)->mob()) {
-                        map_area->GetTile(x, y)->mob()->Hit(
-                            map_area->GetTile(x, y)->mob()->health());
-                        Player::get()->AddExperience(30);
-                     }
                   }
                }
             }
@@ -306,12 +187,14 @@ namespace Narradia
             elev11 = map_area->GetTile(coord11)->elevation();
          if (map_area->IsInsideMap(coord01))
             elev01 = map_area->GetTile(coord01)->elevation();
-         auto x0 = world_loc.x*map_area->GetWidth()*tile_size+ tile_coord.x * tile_size;
+         auto x0 = world_loc.x * map_area->GetWidth() * tile_size + tile_coord.x * tile_size;
          auto y0 = elev00 * elev_amount;
-         auto z0 =world_loc.y*map_area->GetHeight()*tile_size + tile_coord.y * tile_size;
-         auto x2 = world_loc.x*map_area->GetWidth() * tile_size +tile_coord.x * tile_size + tile_size;
+         auto z0 = world_loc.y * map_area->GetHeight() * tile_size + tile_coord.y * tile_size;
+         auto x2 =
+             world_loc.x * map_area->GetWidth() * tile_size + tile_coord.x * tile_size + tile_size;
          auto y2 = elev11 * elev_amount;
-         auto z2 = world_loc.y * map_area->GetHeight()*tile_size + tile_coord.y * tile_size + tile_size;
+         auto z2 =
+             world_loc.y * map_area->GetHeight() * tile_size + tile_coord.y * tile_size + tile_size;
          auto center = glm::vec3{(x0 + x2) / 2, (y0 + y2) / 2, (z0 + z2) / 2};
          auto closest_point =
              glm::closestPointOnLine(center, mouse_world_near_plane, mouse_world_far_plane);
