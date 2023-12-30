@@ -20,4 +20,21 @@ namespace Narradia
       std::vector<GLuint> vao_ids_;
       std::map<BufferTypes, std::map<GLuint, GLuint>> vbo_ids_;
    };
+
+   // Belonging ShaderProgram class
+#if 1
+   class ShaderProgram {
+     public:
+      void Cleanup();
+      auto program_id() const {
+         return program_id_;
+      }
+      void set_program_id(GLuint value) {
+         program_id_ = value;
+      }
+
+     private:
+      GLuint program_id_ = 0;
+   };
+#endif
 }

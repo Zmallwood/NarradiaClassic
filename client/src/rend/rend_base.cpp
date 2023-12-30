@@ -2,6 +2,8 @@
 
 namespace Narradia
 {
+   // RendBase
+#if 1
    GLuint RendBase::GenNewVAOId() {
       GLuint new_vao_id;
       glGenVertexArrays(1, &new_vao_id);
@@ -24,4 +26,12 @@ namespace Narradia
       for (auto vao_id : vao_ids_)
          glDeleteVertexArrays(1, &vao_id);
    }
+#endif
+
+   // ShaderProgram
+#if 1
+   void ShaderProgram::Cleanup() {
+      glDeleteProgram(program_id_);
+   }
+#endif
 }

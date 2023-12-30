@@ -5,8 +5,6 @@
 #include "conf.h"
 #include "math.h"
 #include "rend/camera_gl.h"
-#include "shader_program.h"
-#include "shader_program_v.h"
 #include "shaders.h"
 #include "world-struct.h"
 #endif

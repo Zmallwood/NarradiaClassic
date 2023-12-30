@@ -4,7 +4,6 @@
 #include "conf.h"
 #include "core.h"
 #include "main_pg-adds-visual.h"
-#include "rend-models/cmd_v/draw_model.h"
 #include "rend-models/cmd_v/start_models_batch_drawing.h"
 #include "rend-models/cmd_v/stop_models_batch_drawing.h"
 #include "rend-models/rend_models_v.h"

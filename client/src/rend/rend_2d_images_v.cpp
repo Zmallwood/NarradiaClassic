@@ -1,7 +1,6 @@
 #if 1
 #include "rend_2d_images_v.h"
 #include "assets.h"
-#include "shader_program_v.h"
 #include "shaders.h"
 #endif
 

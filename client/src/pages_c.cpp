@@ -3,7 +3,7 @@
 #include "core.h"
 #include "core_c.h"
 #include "assets.h"
-#include "rend-models/cmd_v/new_model.h"
+#include "rend-models/rend_models_v.h"
 #include "actors.h"
 #include "world-struct.h"
 #include "main_pg-adds-non-visual.h"

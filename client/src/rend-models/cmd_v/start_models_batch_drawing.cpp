@@ -2,8 +2,6 @@
 #include "start_models_batch_drawing.h"
 #include "rend-models/rend_models_v.h"
 #include "rend/camera_gl.h"
-#include "rend/shader_program.h"
-#include "rend/shader_program_v.h"
 #endif
 
 namespace Narradia
