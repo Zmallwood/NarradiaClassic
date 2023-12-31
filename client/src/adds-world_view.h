@@ -77,7 +77,7 @@ namespace Narradia
       }
 
      private:
-      void DrawWestTile(int x, int y);
+      void DrawTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
       void DrawAllGround();
       void DrawAllModels();
       void DrawGround(std::shared_ptr<Tile> tile, Point coord);

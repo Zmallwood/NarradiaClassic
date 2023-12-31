@@ -271,7 +271,22 @@ namespace Narradia
 
                // West
                if (x < 0 && y >= 0 && y < curr_wa->Height()) {
-                  DrawWestTile(x, y);
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = curr_wa->Width() + x_orig;
+                  y = y_orig;
+                  DrawTileOutsideWorldArea(x, y, -1, 0);
+               }
+               else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig - curr_wa->Width();
+                  y = y_orig;
+                  DrawTileOutsideWorldArea(x, y, 1, 0);
                }
             }
             else {
@@ -290,117 +305,114 @@ namespace Narradia
       StopTileBatchDrawing();
    }
 
-   void WorldViewAddV::DrawWestTile(int x, int y) {
+   void WorldViewAddV::DrawTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Player::get()->world_location();
-      auto loc_w = world_loc.Translate(-1, 0);
-      auto wa_w = World::get()->WorldAreaAt(loc_w);
-      if (wa_w) {
-         auto tile = wa_w->GetTile(curr_wa->Width() + x, y);
-         if (tile) {
-            auto rid = tile->rid();
-            if (!rid) {
-               rid = NewTile();
-               auto curr_map_loc = Player::get()->world_location();
-               auto t_sz = kTileSize;
-               auto map_offs_x = curr_map_loc.x * curr_wa->Width() * t_sz;
-               auto map_offs_y = curr_map_loc.y * curr_wa->Height() * t_sz;
-               int x_orig = x;
-               int y_orig = y;
-               int x;
-               int y;
-               x = curr_wa->Width() + x_orig;
-               y = y_orig;
-               auto map_offs_x_orig = map_offs_x;
-               auto map_offs_y_orig = map_offs_y;
-               map_offs_x -= curr_wa->Width() * kTileSize;
-               Vertex3F v0;
-               Vertex3F v1;
-               Vertex3F v2;
-               Vertex3F v3;
-               auto elev00 = wa_w->GetTile(x, y)->elevation() * kElevAmount;
-               auto elev10 = elev00;
-               auto elev11 = elev00;
-               auto elev01 = elev00;
-               auto normal00 = wa_w->GetTile(x, y)->normal();
-               auto normal10 = normal00;
-               auto normal11 = normal00;
-               auto normal01 = normal00;
-               auto color00 = *wa_w->GetTile(x, y)->color();
-               auto color10 = color00;
-               auto color11 = color00;
-               auto color01 = color00;
-               auto coord10 = Point{x + 1, y};
-               auto coord11 = Point{x + 1, y + 1};
-               auto coord01 = Point{x, y + 1};
+      auto loc = world_loc.Translate(dloc_x, dloc_y);
+      auto wa = World::get()->WorldAreaAt(loc);
+      if (wa) {
+         if (wa->IsInsideMap({x, y})) {
+            auto tile = wa->GetTile(x, y);
+            if (tile) {
+               auto rid = tile->rid();
+               if (!rid) {
+                  rid = NewTile();
+                  auto curr_map_loc = Player::get()->world_location();
+                  auto t_sz = kTileSize;
+                  auto map_offs_x = curr_map_loc.x * curr_wa->Width() * t_sz;
+                  auto map_offs_y = curr_map_loc.y * curr_wa->Height() * t_sz;
+                  auto map_offs_x_orig = map_offs_x;
+                  auto map_offs_y_orig = map_offs_y;
+                  map_offs_x += dloc_x * curr_wa->Width() * kTileSize;
+                  map_offs_y += dloc_y * curr_wa->Height() * kTileSize;
+                  Vertex3F v0;
+                  Vertex3F v1;
+                  Vertex3F v2;
+                  Vertex3F v3;
+                  auto elev00 = wa->GetTile(x, y)->elevation() * kElevAmount;
+                  auto elev10 = elev00;
+                  auto elev11 = elev00;
+                  auto elev01 = elev00;
+                  auto normal00 = wa->GetTile(x, y)->normal();
+                  auto normal10 = normal00;
+                  auto normal11 = normal00;
+                  auto normal01 = normal00;
+                  auto color00 = *wa->GetTile(x, y)->color();
+                  auto color10 = color00;
+                  auto color11 = color00;
+                  auto color01 = color00;
+                  auto coord10 = Point{x + 1, y};
+                  auto coord11 = Point{x + 1, y + 1};
+                  auto coord01 = Point{x, y + 1};
 
-               if (wa_w->IsInsideMap(coord10)) {
-                  elev10 = wa_w->GetTile(coord10)->elevation() * kElevAmount;
-                  normal10 = wa_w->GetTile(coord10)->normal();
-                  color10 = *wa_w->GetTile(coord10)->color();
+                  if (wa->IsInsideMap(coord10)) {
+                     elev10 = wa->GetTile(coord10)->elevation() * kElevAmount;
+                     normal10 = wa->GetTile(coord10)->normal();
+                     color10 = *wa->GetTile(coord10)->color();
+                  }
+
+                  if (wa->IsInsideMap(coord11)) {
+                     elev11 = wa->GetTile(coord11)->elevation() * kElevAmount;
+                     normal11 = wa->GetTile(coord11)->normal();
+                     color11 = *wa->GetTile(coord11)->color();
+                  }
+
+                  if (wa->IsInsideMap(coord01)) {
+                     elev01 = wa->GetTile(coord01)->elevation() * kElevAmount;
+                     normal01 = wa->GetTile(coord01)->normal();
+                     color01 = *wa->GetTile(coord01)->color();
+                  }
+
+                  auto t_sz_side = t_sz;
+
+                  if (simplified_ground_)
+                     t_sz_side *= kGroundSimpleK;
+                  v0.pos = {map_offs_x + x * t_sz, elev00, map_offs_y + y * t_sz};
+                  v1.pos = {map_offs_x + x * t_sz + t_sz_side, elev10, map_offs_y + y * t_sz};
+                  v2.pos = {
+                      map_offs_x + x * t_sz + t_sz_side, elev11, map_offs_y + y * t_sz + t_sz_side};
+                  v3.pos = {map_offs_x + x * t_sz, elev01, map_offs_y + y * t_sz + t_sz_side};
+
+                  v0.uv = {0.0f, 0.0f};
+                  v1.uv = {1.0f, 0.0f};
+                  v2.uv = {1.0f, 1.0f};
+                  v3.uv = {0.0f, 1.0f};
+
+                  v0.color = color00;
+                  v1.color = color10;
+                  v2.color = color11;
+                  v3.color = color01;
+
+                  Square<Vertex3F> verts;
+                  Square<Point3F> norms;
+
+                  verts._00 = v0;
+                  verts._10 = v1;
+                  verts._11 = v2;
+                  verts._01 = v3;
+
+                  verts._00.normal = normal00;
+                  verts._10.normal = normal10;
+                  verts._11.normal = normal11;
+                  verts._01.normal = normal01;
+
+                  SetTileGeom(rid, verts);
+                  wa->GetTile(x, y)->set_rid(rid);
                }
 
-               if (wa_w->IsInsideMap(coord11)) {
-                  elev11 = wa_w->GetTile(coord11)->elevation() * kElevAmount;
-                  normal11 = wa_w->GetTile(coord11)->normal();
-                  color11 = *wa_w->GetTile(coord11)->color();
-               }
+               auto coord = Point{x, y};
 
-               if (wa_w->IsInsideMap(coord01)) {
-                  elev01 = wa_w->GetTile(coord01)->elevation() * kElevAmount;
-                  normal01 = wa_w->GetTile(coord01)->normal();
-                  color01 = *wa_w->GetTile(coord01)->color();
-               }
+               DrawGround(tile, coord);
 
-               auto t_sz_side = t_sz;
-
-               if (simplified_ground_)
-                  t_sz_side *= kGroundSimpleK;
-               v0.pos = {map_offs_x + x * t_sz, elev00, map_offs_y + y * t_sz};
-               v1.pos = {map_offs_x + x * t_sz + t_sz_side, elev10, map_offs_y + y * t_sz};
-               v2.pos = {
-                   map_offs_x + x * t_sz + t_sz_side, elev11, map_offs_y + y * t_sz + t_sz_side};
-               v3.pos = {map_offs_x + x * t_sz, elev01, map_offs_y + y * t_sz + t_sz_side};
-
-               v0.uv = {0.0f, 0.0f};
-               v1.uv = {1.0f, 0.0f};
-               v2.uv = {1.0f, 1.0f};
-               v3.uv = {0.0f, 1.0f};
-
-               v0.color = color00;
-               v1.color = color10;
-               v2.color = color11;
-               v3.color = color01;
-
-               Square<Vertex3F> verts;
-               Square<Point3F> norms;
-
-               verts._00 = v0;
-               verts._10 = v1;
-               verts._11 = v2;
-               verts._01 = v3;
-
-               verts._00.normal = normal00;
-               verts._10.normal = normal10;
-               verts._11.normal = normal11;
-               verts._01.normal = normal01;
-
-               SetTileGeom(rid, verts);
-               wa_w->GetTile(x, y)->set_rid(rid);
+               // auto tile_symbols =
+               // std::make_shared<Tile>();
+               // tile_symbols->set_mob(tile->mob());
+               // tile_symbols->set_rid(rids_tile_symbols[x
+               /// inc][y / inc]);
+               // tile_symbols->set_tile_effect(tile->tile_effect());
+               // DrawTileSymbols(tile_symbols,
+               // coord);
             }
-
-            auto coord = Point{x, y};
-
-            DrawGround(tile, coord);
-
-            // auto tile_symbols =
-            // std::make_shared<Tile>();
-            // tile_symbols->set_mob(tile->mob());
-            // tile_symbols->set_rid(rids_tile_symbols[x
-            /// inc][y / inc]);
-            // tile_symbols->set_tile_effect(tile->tile_effect());
-            // DrawTileSymbols(tile_symbols,
-            // coord);
          }
       }
    }

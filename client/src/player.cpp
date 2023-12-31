@@ -58,6 +58,7 @@ namespace Narradia
          if (new_coord.x < 0) {
             new_coord.x += map_area->Width();
             new_x += map_area->Width();
+            map_area->ClearAllRIDS();
             world_location_.x--;
             map_area = World::get()->CurrWorldArea();
             WorldViewAddV::Dispose();
