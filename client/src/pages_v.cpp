@@ -5,13 +5,13 @@
 #include "rend_2d_images_v.h"
 #include "rend_text.h"
 #include "gui-core_v.h"
-#include "main_menu_pg-adds-menu_models_v.h"
-#include "map_creation_pg-adds-map_gen_v.h"
+#include "adds-menu_models_v.h"
+#include "adds-map_gen_v.h"
 #include "actors.h"
-#include "main_pg-adds-visual_v.h"
-#include "main_pg-adds-world_view_v.h"
-#include "main_pg-gui_comps_v.h"
-#include "main_pg-gui_windows_v.h"
+#include "adds-visual_v.h"
+#include "adds-world_view_v.h"
+#include "gui_comps_v.h"
+#include "gui_windows_v.h"
 #endif
 
 namespace Narradia

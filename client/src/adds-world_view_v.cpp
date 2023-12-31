@@ -1,13 +1,13 @@
 #if 1
-#include "main_pg-adds-world_view_v.h"
 #include "actors.h"
 #include "conf.h"
 #include "core.h"
-#include "main_pg-adds-visual.h"
+#include "adds-visual.h"
+#include "adds-world_view_v.h"
+#include "calc.h"
 #include "rend_models_v.h"
 #include "rend_tiles_v.h"
 #include "world-struct.h"
-#include "narradia_math.h"
 #endif
 
 namespace Narradia

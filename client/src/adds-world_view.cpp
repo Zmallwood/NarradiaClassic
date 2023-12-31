@@ -1,9 +1,9 @@
 #if 1
-#include "main_pg-adds-world_view.h"
+#include "adds-world_view.h"
 #include "actors.h"
 #include "assets.h"
 #include "conf.h"
-#include "narradia_math.h"
+#include "calc.h"
 #include "world-struct.h"
 #include "rend-core.h"
 #endif

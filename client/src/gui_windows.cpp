@@ -1,4 +1,4 @@
-#include "main_pg-gui_windows.h"
+#include "gui_windows.h"
 
 namespace Narradia
 {

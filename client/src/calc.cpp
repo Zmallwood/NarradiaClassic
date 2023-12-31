@@ -1,5 +1,5 @@
 #if 1
-#include "narradia_math.h"
+#include "calc.h"
 #include "conf.h"
 #include "world-struct.h"
 #endif

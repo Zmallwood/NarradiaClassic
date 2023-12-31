@@ -6,7 +6,7 @@
 #include "rend_models_v.h"
 #include "actors.h"
 #include "world-struct.h"
-#include "main_pg-adds-non-visual.h"
+#include "adds-non-visual.h"
 #endif
 
 namespace Narradia

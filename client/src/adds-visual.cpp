@@ -1,9 +1,9 @@
 #if 1
-#include "main_pg-adds-visual.h"
+#include "adds-visual.h"
 #include "actors.h"
 #include "conf.h"
 #include "core.h"
-#include "main_pg-adds-world_view.h"
+#include "adds-world_view.h"
 #include "rend-core.h"
 #include "world-struct.h"
 #endif

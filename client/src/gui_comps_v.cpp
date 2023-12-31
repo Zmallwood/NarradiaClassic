@@ -1,8 +1,8 @@
 #if 1
-#include "main_pg-gui_comps_v.h"
 #include "actors.h"
-#include "main_pg-gui_comps.h"
-#include "narradia_math.h"
+#include "gui_comps.h"
+#include "gui_comps_v.h"
+#include "calc.h"
 #include "rend_2d_images_v.h"
 #include "rend_2d_solid_colors_v.h"
 #include "rend_text.h"

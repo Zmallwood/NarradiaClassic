@@ -1,11 +1,11 @@
 #if 1
-#include "main_pg-adds-non-visual.h"
+#include "adds-non-visual.h"
 #include "actors.h"
 #include "conf.h"
 #include "core.h"
-#include "main_pg-adds-visual.h"
-#include "main_pg-gui_windows.h"
-#include "narradia_math.h"
+#include "adds-visual.h"
+#include "gui_windows.h"
+#include "calc.h"
 #include "world-struct.h"
 #endif
 

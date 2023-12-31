@@ -1,6 +1,6 @@
 #if 1
-#include "main_pg-adds-visual_v.h"
-#include "main_pg-adds-visual.h"
+#include "adds-visual_v.h"
+#include "adds-visual.h"
 #include "rend_text.h"
 #endif
 

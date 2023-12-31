@@ -3,7 +3,7 @@
 #include "actors.h"
 #include "assets.h"
 #include "conf.h"
-#include "narradia_math.h"
+#include "calc.h"
 #include "shaders.h"
 #include "world-struct.h"
 #endif

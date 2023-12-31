@@ -1,10 +1,10 @@
 #if 1
-#include "map_creation_pg-adds-map_gen_v.h"
+#include "adds-map_gen_v.h"
 #include "actors.h"
 #include "assets.h"
 #include "core_v.h"
-#include "main_pg-adds-world_view.h"
-#include "main_pg-adds-world_view_v.h"
+#include "adds-world_view.h"
+#include "adds-world_view_v.h"
 #include "rend_models_v.h"
 #include "rend_tiles_v.h"
 #include "world-struct.h"

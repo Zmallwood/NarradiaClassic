@@ -1,7 +1,7 @@
 #if 1
-#include "main_pg-gui_windows_v.h"
+#include "gui_windows_v.h"
 #include "actors.h"
-#include "main_pg-gui_windows.h"
+#include "gui_windows.h"
 #include "rend_2d_images_v.h"
 #include "rend_2d_solid_colors_v.h"
 #include "world-struct.h"

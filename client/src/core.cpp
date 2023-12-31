@@ -2,7 +2,7 @@
 #include "core.h"
 #include "conf.h"
 #include "gui-core.h"
-#include "main_pg-gui_comps.h"
+#include "gui_comps.h"
 #include "pages.h"
 #endif
 
