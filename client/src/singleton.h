@@ -14,6 +14,9 @@ namespace Narradia
       inline static std::shared_ptr<T> instance_;
    };
 
+   template <class T>
+   using S = Singleton<T>;
+
 // Function definitions
 #if 1
    template <class T>

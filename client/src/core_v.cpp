@@ -1,5 +1,6 @@
 #if 1
 #include "core_v.h"
+#include "conf.h"
 #include "pages_v.h"
 #include "rend_2d_images_v.h"
 #include "rend_text.h"
@@ -9,6 +10,10 @@ namespace Narradia
 {
 // EngineV
 #if 1
+   EngineV::~EngineV() {
+      if (kVerbose)
+         std::cout << "Disposing EngineV\n";
+   }
    void EngineV::Render() {
       try {
          GraphicsV::get()->ClearCanvas();

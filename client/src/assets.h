@@ -74,6 +74,7 @@ namespace Narradia
    class ModelBank : public S<ModelBank> {
      public:
       ModelBank();
+      ~ModelBank();
       auto GetModel(std::string_view model_name) -> std::shared_ptr<Model>;
       auto models() {
          return models_;

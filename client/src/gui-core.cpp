@@ -1,5 +1,6 @@
 #if 1
 #include "gui-core.h"
+#include "conf.h"
 #include "core.h"
 #include "pages.h"
 #endif
@@ -88,10 +89,17 @@ namespace Narradia
        : GuiMovableContainer(
              {0.0f, 0.0f, bounds.w, kTitleBarHeight}, bounds.GetPosition(), bounds.GetSize()),
          gui_window_close_button_(
-             std::make_shared<GuiWindowCloseButton>(std::shared_ptr<GuiWindow>(this))) {
+             std::make_shared<GuiWindowCloseButton>(this)) {
       background_image_name_ = background_image_name;
       title_ = title;
       destroy_on_close_ = destroy_on_close;
+   }
+   GuiWindow::~GuiWindow() {
+      if (kVerbose)
+         std::cout << "Cleaning up GuiWindow.\n";
+      gui_window_close_button_ = nullptr;
+      if (kVerbose)
+         std::cout << "Cleaning up of GuiWindow finished.\n";
    }
    void GuiWindow::Hide() {
       visible_ = false;
@@ -113,6 +121,10 @@ namespace Narradia
 
    // GuiWindowCloseButton
 #if 1
+   GuiWindowCloseButton::~GuiWindowCloseButton() {
+      if (kVerbose)
+         std::cout << "Disposing GuiWindowCloseButton.\n";
+   }
    void GuiWindowCloseButton::UpdateGameLogic() {
       hovered_ = false;
       if (Bounds().Contains(MousePosition())) {
@@ -151,10 +163,10 @@ namespace Narradia
    void SceneGui::AddGuiComponent(std::shared_ptr<GuiComponent> comp) {
       gui_components_->push_back(comp);
    }
-   void SceneGui::RemoveGuiComponent(std::shared_ptr<GuiComponent> comp) {
+   void SceneGui::RemoveGuiComponent(GuiComponent* comp) {
       auto i = 0;
       for (auto &entry : *gui_components_) {
-         if (entry.get() == comp.get()) {
+         if (entry.get() == comp) {
             gui_components_->erase(gui_components_->begin() + i);
             break;
          }

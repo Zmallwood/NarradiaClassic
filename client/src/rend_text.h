@@ -9,6 +9,7 @@ namespace Narradia
    class RendText : public S<RendText> {
      public:
       RendText();
+      ~RendText();
       void RenderText(
           RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
           std::string &out_unique_name_id, SizeF &out_size) const;

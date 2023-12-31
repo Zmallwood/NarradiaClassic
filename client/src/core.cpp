@@ -1,5 +1,6 @@
 #if 1
 #include "core.h"
+#include "conf.h"
 #include "gui-core.h"
 #include "main_pg-gui_comps.h"
 #include "pages.h"
@@ -11,6 +12,10 @@ namespace Narradia
 #if 1
    Engine::Engine() {
       srand(time(nullptr));
+   }
+   Engine::~Engine() {
+      if (kVerbose)
+         std::cout << "Disposing Engine\n";
    }
    void Engine::UpdateGameLogic() {
       try {
@@ -76,6 +81,10 @@ namespace Narradia
 
 // Cursor
 #if 1
+   Cursor::~Cursor() {
+      if (kVerbose)
+         std::cout << "Disposing Cursor.\n";
+   }
    void Cursor::ResetStyle() {
       style_ = CursorStyles::Default;
    }

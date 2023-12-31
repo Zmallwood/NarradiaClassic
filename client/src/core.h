@@ -5,6 +5,7 @@ namespace Narradia
    class Engine : public S<Engine> {
      public:
       Engine();
+      ~Engine();
       void UpdateGameLogic();
       void Finalize();
       auto is_running() {
@@ -79,6 +80,7 @@ namespace Narradia
 
    class Cursor : public S<Cursor> {
      public:
+      ~Cursor();
       void ResetStyle();
       auto GetCursorImageName() -> std::string_view;
       auto style() {

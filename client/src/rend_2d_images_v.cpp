@@ -2,6 +2,7 @@
 #include "rend_2d_images_v.h"
 #include "assets.h"
 #include "shaders.h"
+#include "conf.h"
 #endif
 
 namespace Narradia
@@ -13,7 +14,11 @@ namespace Narradia
           vertex_shader_source_2d_images, fragment_shader_source_2d_images);
    }
    Rend2DImagesV::~Rend2DImagesV() {
+      if (kVerbose)
+         std::cout << "Cleaning up Rend2DImagesV.\n";
       CleanupBase();
+      if (kVerbose)
+         std::cout << "Cleaning up of Rend2DImagesV finished.\n";
    }
 #endif
 

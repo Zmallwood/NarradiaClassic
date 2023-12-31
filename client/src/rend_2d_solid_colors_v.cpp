@@ -1,5 +1,6 @@
 #if 1
 #include "rend_2d_solid_colors_v.h"
+#include "conf.h"
 #include "shaders.h"
 #endif
 
@@ -12,7 +13,11 @@ namespace Narradia
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
    }
    Rend2DSolidColorsV::~Rend2DSolidColorsV() {
+      if (kVerbose)
+         std::cout << "Cleaning up Rend2DSolidColorsV.\n";
       CleanupBase();
+      if (kVerbose)
+         std::cout << "Cleaning up of Rend2DSolidColorsV finished.\n";
    }
 #endif
 

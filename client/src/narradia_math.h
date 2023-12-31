@@ -1,7 +1,5 @@
 #pragma once
 
-#include "matter.h"
-
 namespace Narradia
 {
    // Trigonometry

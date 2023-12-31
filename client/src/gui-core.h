@@ -95,6 +95,7 @@ namespace Narradia
       GuiWindow(
           std::string_view title, RectF bounds, bool destroy_on_close = false,
           std::string_view background_image_name = "PanelBg");
+      ~GuiWindow();
       void Hide();
       void ToggleVisibility();
       RectF AbsTitleBarBounds();
@@ -132,9 +133,10 @@ namespace Narradia
 
    class GuiWindowCloseButton {
      public:
-      GuiWindowCloseButton(std::shared_ptr<GuiWindow> parent_window)
+      GuiWindowCloseButton(GuiWindow* parent_window)
           : parent_window_(parent_window) {
       }
+      ~GuiWindowCloseButton();
       void UpdateGameLogic();
       auto hovered() {
          return hovered_;
@@ -143,7 +145,7 @@ namespace Narradia
 
      private:
       static constexpr float kWidth = 0.01f;
-      std::shared_ptr<GuiWindow> parent_window_;
+      GuiWindow* parent_window_;
       bool hovered_ = false;
    };
 
@@ -154,7 +156,7 @@ namespace Narradia
       }
       void UpdateGameLogic();
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
-      void RemoveGuiComponent(std::shared_ptr<GuiComponent> comp);
+      void RemoveGuiComponent(GuiComponent* comp);
       auto gui_components() {
          return gui_components_;
       }

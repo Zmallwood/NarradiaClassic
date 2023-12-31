@@ -2,6 +2,10 @@
 
 namespace Narradia
 {
+   // Developer settings
+#if 1
+   constexpr bool kVerbose = false;
+#endif
    // Constants for scaling of different aspect of the game world map
 #if 1
    constexpr float kTileSize = 2.0f;

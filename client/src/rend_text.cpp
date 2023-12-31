@@ -1,5 +1,6 @@
 #if 1
 #include "rend_text.h"
+#include "conf.h"
 #include "assets.h"
 #include "core.h"
 #include "rend_2d_images_v.h"
@@ -16,6 +17,10 @@ namespace Narradia
           std::string(SDL_GetBasePath()) + kRelFontsPath + "PartyConfettiRegular-eZOn3.ttf";
       fonts_.insert({FontSizes::_20, std::make_shared<Font>(font_path.c_str(), 20)});
       fonts_.insert({FontSizes::_40, std::make_shared<Font>(font_path.c_str(), 40)});
+   }
+   RendText::~RendText() {
+      if (kVerbose)
+         std::cout << "Disposing RendText.\n";
    }
    void RendText::RenderText(
        RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,

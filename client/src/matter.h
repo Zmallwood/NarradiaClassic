@@ -1,6 +1,6 @@
 #pragma once
 
-struct SDL_Color;
+#include <SDL2/SDL.h>
 
 namespace Narradia
 {
@@ -8,7 +8,9 @@ namespace Narradia
 #if 1
    class Point {
      public:
-      Point Translate(int dx, int dy);
+      Point Translate(int dx, int dy) {
+         return {x + dx, y + dy};
+      }
 
       int x = 0;
       int y = 0;
@@ -16,8 +18,12 @@ namespace Narradia
 
    class PointF {
      public:
-      PointF Translate(float dx, float dy) const;
-      Point ToIntPoint();
+      PointF Translate(float dx, float dy) const {
+         return {x + dx, y + dy};
+      }
+      Point ToIntPoint() {
+         return {static_cast<int>(x), static_cast<int>(y)};
+      }
 
       float x = 0.0f;
       float y = 0.0f;
@@ -25,9 +31,15 @@ namespace Narradia
 
    class Point3F {
      public:
-      Point3F Translate(float dx, float dy, float dz);
-      Point3F Multiply(float k);
-      PointF GetXZ();
+      Point3F Translate(float dx, float dy, float dz) {
+         return {x + dx, y + dy, z + dz};
+      }
+      Point3F Multiply(float k) {
+         return {x * k, y * k, z * k};
+      }
+      PointF GetXZ() {
+         return {x, z};
+      }
 
       float x = 0.0f;
       float y = 0.0f;
@@ -56,13 +68,27 @@ namespace Narradia
 
    class RectF {
      public:
-      GLRectF ToGLRectF() const;
-      RectF Translate(float dx, float dy) const;
-      PointF GetPosition() const;
-      PointF GetCenter() const;
-      bool Contains(PointF point) const;
-      RectF WithWidth(float w_new) const;
-      SizeF GetSize() const;
+      GLRectF ToGLRectF() const {
+         return {x * 2 - 1.0f, 1.0f - y * 2, w * 2, h * 2};
+      }
+      RectF Translate(float dx, float dy) const {
+         return {x + dx, y + dy, w, h};
+      }
+      PointF GetPosition() const {
+         return {x, y};
+      }
+      PointF GetCenter() const {
+         return {x + w / 2, y + h / 2};
+      }
+      bool Contains(PointF point) const {
+         return point.x >= x && point.y >= y && point.x < x + w && point.y < y + h;
+      }
+      RectF WithWidth(float w_new) const {
+         return {x, y, w_new, h};
+      }
+      SizeF GetSize() const {
+         return {w, h};
+      }
 
       float x = 0.0f;
       float y = 0.0f;
@@ -75,7 +101,11 @@ namespace Narradia
 #if 1
    class Color {
      public:
-      SDL_Color ToSDLColor() const;
+      SDL_Color ToSDLColor() const {
+         return {
+             static_cast<unsigned char>(r * 255), static_cast<unsigned char>(g * 255),
+             static_cast<unsigned char>(b * 255), static_cast<unsigned char>(a * 255)};
+      }
 
       float r = 1.0f;
       float g = 1.0f;

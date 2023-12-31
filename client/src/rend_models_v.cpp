@@ -3,7 +3,7 @@
 #include "actors.h"
 #include "assets.h"
 #include "conf.h"
-#include "math.h"
+#include "narradia_math.h"
 #include "shaders.h"
 #include "world-struct.h"
 #endif
@@ -29,7 +29,11 @@ namespace Narradia
       location_no_lighting_ = GetUniformLocation("noLighting");
    }
    RendModelsV::~RendModelsV() {
+      if (kVerbose)
+         std::cout << "Cleaning up RendModelsV.\n";
       CleanupBase();
+      if (kVerbose)
+         std::cout << "Cleaning up of RendModelsV finished.\n";
    }
    auto RendModelsV::NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID {
       auto vao_id = renderer_base_->GenNewVAOId();

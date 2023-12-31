@@ -1,5 +1,6 @@
 #if 1
 #include "assets.h"
+#include "conf.h"
 #include "model_creation.h"
 #endif
 
@@ -39,8 +40,12 @@ namespace Narradia
    }
 
    ImageBank::~ImageBank() {
+      if (kVerbose)
+         std::cout << "Cleaning up ImageBank\n";
       for (const auto &img : images_)
          glDeleteTextures(1, &img.second);
+      if (kVerbose)
+         std::cout << "Cleaning up of ImageBank finished.\n";
    }
 
    GLuint ImageBank::LoadSingleImage(std::string_view abs_file_path) {
@@ -97,6 +102,11 @@ namespace Narradia
    ModelBank::ModelBank()
        : models_(std::make_shared<std::map<std::string, std::shared_ptr<Model>>>()) {
       LoadModels();
+   }
+
+   ModelBank::~ModelBank() {
+      if (kVerbose)
+         std::cout << "Disposing ModelBank\n";
    }
 
    auto ModelBank::GetModel(std::string_view model_name) -> std::shared_ptr<Model> {

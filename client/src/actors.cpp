@@ -4,7 +4,7 @@
 #include "core.h"
 #include "main_pg-adds-world_view.h"
 #include "main_pg-adds-world_view_v.h"
-#include "math.h"
+#include "narradia_math.h"
 #include "rend_tiles_v.h"
 #include "world-struct.h"
 #endif

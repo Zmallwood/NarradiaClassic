@@ -5,7 +5,7 @@
 #include "core.h"
 #include "main_pg-adds-visual.h"
 #include "main_pg-gui_windows.h"
-#include "math.h"
+#include "narradia_math.h"
 #include "world-struct.h"
 #endif
 

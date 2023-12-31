@@ -7,6 +7,7 @@
 #include "rend_models_v.h"
 #include "rend_tiles_v.h"
 #include "world-struct.h"
+#include "narradia_math.h"
 #endif
 
 namespace Narradia

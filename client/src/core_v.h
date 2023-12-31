@@ -7,6 +7,7 @@ namespace Narradia
 {
    class EngineV : public S<EngineV> {
      public:
+      ~EngineV();
       void Render();
    };
 
