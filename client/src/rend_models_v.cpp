@@ -1,6 +1,6 @@
 #if 1
 #include "rend_models_v.h"
-#include "actors.h"
+#include "player.h"
 #include "assets.h"
 #include "conf.h"
 #include "calc.h"
@@ -47,7 +47,7 @@ namespace Narradia
       glEnable(GL_DEPTH_TEST);
       UseVAOBegin(vao_id);
       glUniformMatrix4fv(
-          location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->perspective_matrix()));
+          location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->persp_matrix()));
       glUniformMatrix4fv(location_view_, 1, GL_FALSE, value_ptr(CameraGL::get()->view_matrix()));
       glUniform1f(location_alpha_, 1.0f);
       std::vector<int> indices(vertices.size());
@@ -152,7 +152,7 @@ namespace Narradia
          glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
          glUniformMatrix4fv(
              renderer->location_projection(), 1, GL_FALSE,
-             value_ptr(CameraGL::get()->perspective_matrix()));
+             value_ptr(CameraGL::get()->persp_matrix()));
          glUniformMatrix4fv(
              renderer->location_view(), 1, GL_FALSE,
              glm::value_ptr(CameraGL::get()->view_matrix()));
@@ -177,8 +177,8 @@ namespace Narradia
       auto curr_map_location = Player::get()->world_location();
       auto map_area = World::get()->CurrWorldArea();
       auto tile_size = kTileSize;
-      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
-      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+      auto map_offset_x = curr_map_location.x * map_area->Width() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->Height() * tile_size;
       player_space_coord.x += map_offset_x;
       player_space_coord.z += map_offset_y;
       glm::vec3 viewPos(
@@ -229,7 +229,7 @@ namespace Narradia
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
           renderer->location_projection(), 1, GL_FALSE,
-          value_ptr(CameraGL::get()->perspective_matrix()));
+          value_ptr(CameraGL::get()->persp_matrix()));
       glUniformMatrix4fv(
           renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
    }

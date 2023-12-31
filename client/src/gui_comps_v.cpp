@@ -1,11 +1,11 @@
 #if 1
-#include "actors.h"
+#include "player.h"
 #include "gui_comps.h"
 #include "gui_comps_v.h"
 #include "calc.h"
 #include "rend_2d_images_v.h"
-#include "rend_2d_solid_colors_v.h"
-#include "rend_text.h"
+#include "rend_2d_colors_v.h"
+#include "rend_text_v.h"
 #endif
 
 namespace Narradia

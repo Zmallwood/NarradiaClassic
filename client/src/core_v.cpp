@@ -1,9 +1,9 @@
 #if 1
 #include "core_v.h"
 #include "conf.h"
-#include "pages_v.h"
+#include "pages.h"
 #include "rend_2d_images_v.h"
-#include "rend_text.h"
+#include "rend_text_v.h"
 #endif
 
 namespace Narradia

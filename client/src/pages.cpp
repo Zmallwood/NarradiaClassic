@@ -1,25 +1,32 @@
 #if 1
 #include "pages.h"
-#include "actors.h"
+#include "player.h"
+#include "adds-map_gen.h"
+#include "adds-menu_models.h"
+#include "adds-non-visual.h"
+#include "adds-visual.h"
+#include "adds-world_view.h"
 #include "assets.h"
 #include "core.h"
 #include "core_c.h"
 #include "core_v.h"
 #include "gui-core.h"
-#include "adds-menu_models.h"
-#include "adds-non-visual.h"
-#include "adds-visual.h"
-#include "adds-world_view.h"
+#include "gui-core_v.h"
 #include "gui_comps.h"
+#include "gui_comps_v.h"
 #include "gui_windows.h"
-#include "rend_models_v.h"
+#include "gui_windows_v.h"
 #include "rend_2d_images_v.h"
+#include "rend_models_v.h"
+#include "rend_text_v.h"
 #include "rend_tiles_v.h"
 #include "world-struct.h"
 #endif
 
 namespace Narradia
 {
+   // Model
+#if 1
    // IntroPg
 #if 1
    void IntroPg::UpdateGameLogicDerived() {
@@ -74,5 +81,117 @@ namespace Narradia
              "Exception in MainPg::UpdateGameLogicDerived: " + std::string(e.what()));
       }
    }
+#endif
+#endif
+
+   // View
+#if 1
+   // IntroPgV
+#if 1
+   IntroPgV::IntroPgV() {
+      scene_gui_view_->set_scene_gui(IntroPg::get()->scene_gui());
+      rid_background = NewImage();
+      rid_logo = NewImage();
+      rid_text = NewString();
+   }
+   void IntroPgV::RenderDerived() {
+      RectF dest_background = {0.0f, 0.0f, 1.0f, 1.0f};
+      DrawImage("DefaultSceneBackground", rid_background, dest_background);
+      DrawImage("NarradiaLogo", rid_logo, {0.3f, 0.1f, 0.4f, 0.2f});
+      RectF rect = {0.1f, 0.1f, 0.2f, 0.1f};
+      Color color = {1.0f, 0.0f, 0.0f, 255};
+      if (SDL_GetTicks() % 600 > 300)
+         DrawString(rid_text, "Press to start", {0.5f, 0.5f}, {1.0f, 1.0f, 1.0f, 1.0f}, true);
+   }
+#endif
+
+   // MainMenuPgV
+#if 1
+   MainMenuPgV::MainMenuPgV() {
+      scene_gui_view_->set_scene_gui(MainMenuPg::get()->scene_gui());
+      scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonV>());
+      scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonV>());
+      rid_background = NewImage();
+      rid_logo = NewImage();
+   }
+   void MainMenuPgV::RenderDerived() {
+      DrawImage("DefaultSceneBackground", rid_background, {0.0f, 0.0f, 1.0f, 1.0f});
+      DrawImage("NarradiaLogo", rid_logo, {0.4f, 0.1f, 0.2f, 0.1f});
+      MenuModelsAddV::get()->Render();
+   }
+#endif
+
+   // MapCreationPgV
+#if 1
+   void MapCreationPgV::RenderDerived() {
+      MapGenAddV::get()->Render();
+   }
+#endif
+
+   // MainPgV
+#if 1
+   MainPgV::MainPgV() {
+      scene_gui_view_->set_scene_gui(MainPg::get()->scene_gui());
+      scene_gui_view_->AddGuiComponentView(std::make_shared<ExperienceBarV>());
+      scene_gui_view_->AddGuiComponentView(std::make_shared<StatusPanelV>());
+      scene_gui_view_->AddGuiComponentView(std::make_shared<GuiWindowWorldMapV>());
+   }
+   void MainPgV::RenderDerived() {
+      WorldViewAddV::get()->Render();
+      FPSCounterAddV::get()->Render();
+   }
+#endif
+
+#endif
+
+   // Controller
+#if 1
+   // IntroPgC
+#if 1
+   void IntroPgC::OnEnter() {
+   }
+   void IntroPgC::UpdateGameFlowDerived() {
+      if (KbInput::get()->AnyKeyIsPressedPickResult()) {
+         PageMngrC::get()->ChangeScene(PageNames::MainMenu);
+      }
+      MouseInput::get()->left_btn()->AddFiredAction(
+          [] { PageMngrC::get()->ChangeScene(PageNames::MainMenu); });
+      MouseInput::get()->right_btn()->AddFiredAction(
+          [] { PageMngrC::get()->ChangeScene(PageNames::MainMenu); });
+   }
+#endif
+
+   // MainMenuPgC
+#if 1
+   void MainMenuPgC::OnEnter() {
+      auto all_models = *ModelBank::get()->models();
+      for (auto &entry : all_models)
+         NewModel(entry.first);
+   }
+   void MainMenuPgC::UpdateGameFlowDerived() {
+   }
+#endif
+
+   // MapCreationPgC
+#if 1
+   void MapCreationPgC::OnEnter() {
+      auto map_area = World::get()->CurrWorldArea();
+      auto x = map_area->Width() / 2.0f;
+      auto y = map_area->Height() / 2.0f;
+      Player::get()->set_position({x, 0.0f, y});
+   }
+   void MapCreationPgC::UpdateGameFlowDerived() {
+   }
+#endif
+
+   // MainPgC
+#if 1
+   void MainPgC::OnEnter() {
+      Console::get()->Print("Entering Narradia");
+      PlayerSpawnPositioningAdd::get()->SpawnAtGoodLocation();
+   }
+   void MainPgC::UpdateGameFlowDerived() {
+   }
+#endif
 #endif
 }

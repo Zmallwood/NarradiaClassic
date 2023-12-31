@@ -2,6 +2,8 @@
 
 namespace Narradia
 {
+   // Model
+   #if 1
    class KbBindingsAdd : public S<KbBindingsAdd> {
      public:
       void UpdateGameLogic();
@@ -11,4 +13,5 @@ namespace Narradia
      public:
       void SpawnAtGoodLocation();
    };
+#endif
 }

@@ -1,6 +1,6 @@
 #if 1
 #include "rend_tiles_v.h"
-#include "actors.h"
+#include "player.h"
 #include "assets.h"
 #include "conf.h"
 #include "calc.h"
@@ -108,7 +108,7 @@ namespace Narradia
          renderer->UseVAOBegin(vao_id);
          glUniformMatrix4fv(
              renderer->location_projection(), 1, GL_FALSE,
-             glm::value_ptr(CameraGL::get()->perspective_matrix()));
+             glm::value_ptr(CameraGL::get()->persp_matrix()));
          glUniformMatrix4fv(
              renderer->location_view(), 1, GL_FALSE,
              glm::value_ptr(CameraGL::get()->view_matrix()));
@@ -141,7 +141,7 @@ namespace Narradia
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
           renderer->location_projection(), 1, GL_FALSE,
-          glm::value_ptr(CameraGL::get()->perspective_matrix()));
+          glm::value_ptr(CameraGL::get()->persp_matrix()));
       glUniformMatrix4fv(
           renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
       glm::mat4 model(1.0);
@@ -151,8 +151,8 @@ namespace Narradia
       auto curr_map_location = Player::get()->world_location();
       auto map_area = World::get()->CurrWorldArea();
       auto tile_size = kTileSize;
-      auto map_offset_x = curr_map_location.x * map_area->GetWidth() * tile_size;
-      auto map_offset_y = curr_map_location.y * map_area->GetHeight() * tile_size;
+      auto map_offset_x = curr_map_location.x * map_area->Width() * tile_size;
+      auto map_offset_y = curr_map_location.y * map_area->Height() * tile_size;
       player_pos.x += map_offset_x;
       player_pos.z += map_offset_y;
       glm::vec3 view_pos(

@@ -1,15 +1,18 @@
 #if 1
 #include "adds-menu_models.h"
 #include "rend-core.h"
+#include "rend_models_v.h"
 #endif
 
 namespace Narradia
 {
+   // Model
+#if 1
    void MenuModelsAdd::UpdateGameLogic() {
       {
-         auto new_perspective_matrix =
+         auto new_persp_matrix =
              glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
-         CameraGL::get()->set_perspective_matrix(new_perspective_matrix);
+         CameraGL::get()->set_persp_matrix(new_persp_matrix);
       }
       {
          auto look_from = Point3F{0.0f, 5.0f, -8.0f};
@@ -20,4 +23,13 @@ namespace Narradia
          CameraGL::get()->set_view_matrix(new_view_matrix);
       }
    }
+#endif
+
+   // View
+#if 1
+   void MenuModelsAddV::Render() {
+      DrawModel("Player2", SDL_GetTicks(), {3.0f, 0.0f, 0.0f});
+      DrawModel("MobBoar", SDL_GetTicks(), {-3.0f, 1.0f, 0.0f}, 0.0f, 0.7f);
+   }
+#endif
 }

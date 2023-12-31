@@ -42,11 +42,11 @@ namespace Narradia
 #if 1
    class CameraGL : public S<CameraGL> {
      public:
-      auto perspective_matrix() {
-         return perspective_matrix_;
+      auto persp_matrix() {
+         return persp_matrix_;
       }
-      void set_perspective_matrix(glm::mat4 value) {
-         perspective_matrix_ = value;
+      void set_persp_matrix(glm::mat4 value) {
+         persp_matrix_ = value;
       }
       auto view_matrix() {
          return view_matrix_;
@@ -56,7 +56,7 @@ namespace Narradia
       }
 
      private:
-      glm::mat4 perspective_matrix_;
+      glm::mat4 persp_matrix_;
       glm::mat4 view_matrix_;
    };
 #endif

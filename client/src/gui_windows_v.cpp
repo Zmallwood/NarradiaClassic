@@ -1,9 +1,9 @@
 #if 1
 #include "gui_windows_v.h"
-#include "actors.h"
+#include "player.h"
 #include "gui_windows.h"
 #include "rend_2d_images_v.h"
-#include "rend_2d_solid_colors_v.h"
+#include "rend_2d_colors_v.h"
 #include "world-struct.h"
 #endif
 
@@ -56,8 +56,8 @@ namespace Narradia
             if (x == Player::get()->world_location().x && y == Player::get()->world_location().y) {
                auto player_pos = Player::get()->position();
                auto map_area = World::get()->world_areas()[x][y];
-               auto tile_width = cell_width / map_area->GetWidth();
-               auto tile_height = cell_height / map_area->GetHeight();
+               auto tile_width = cell_width / map_area->Width();
+               auto tile_height = cell_height / map_area->Height();
                auto marker_size = 0.005f;
                auto rect = RectF{
                    bounds.x + x * cell_width + player_pos.x * tile_width,

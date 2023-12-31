@@ -1,15 +1,18 @@
 #if 1
 #include "adds-visual.h"
-#include "actors.h"
+#include "adds-world_view.h"
 #include "conf.h"
 #include "core.h"
-#include "adds-world_view.h"
+#include "player.h"
 #include "rend-core.h"
+#include "rend_text_v.h"
 #include "world-struct.h"
 #endif
 
 namespace Narradia
 {
+// Model
+#if 1
    // FPSCounterModule
 #if 1
    void FPSCounterAdd::UpdateGameLogic() {
@@ -56,10 +59,7 @@ namespace Narradia
 #if 1
    void MouseMovementAdd::UpdateGameLogic() {
       MouseInput::get()->left_btn()->AddFiredAction(
-          [] {
-             Player::get()->set_destination(TileHoveringAdd::get()->hovered_tile());
-          },
-          5);
+          [] { Player::get()->set_destination(TileHoveringAdd::get()->hovered_tile()); }, 5);
       auto destination = Player::get()->destination();
       if (destination.x == -1 && destination.y == -1)
          return;
@@ -121,7 +121,7 @@ namespace Narradia
             auto r = 7;
             for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
                for (auto x = player_pos.x - r; x <= player_pos.x + r; x++) {
-                  if (x < 0 || y < 0 || x >= map_area->GetWidth() || y >= map_area->GetHeight())
+                  if (x < 0 || y < 0 || x >= map_area->Width() || y >= map_area->Height())
                      continue;
                   auto dx = x - player_pos.x;
                   auto dy = y - player_pos.y;
@@ -141,7 +141,7 @@ namespace Narradia
 #if 1
    void TileHoveringAdd::UpdateGameLogic() {
       auto view_matrix = CameraGL::get()->view_matrix();
-      auto perspective_matrix = CameraGL::get()->perspective_matrix();
+      auto perspective_matrix = CameraGL::get()->persp_matrix();
       auto mouse_position_f = MousePosition();
       auto canvas_size = CanvasSize();
       auto player_x = Player::get()->position().x;
@@ -187,14 +187,14 @@ namespace Narradia
             elev11 = map_area->GetTile(coord11)->elevation();
          if (map_area->IsInsideMap(coord01))
             elev01 = map_area->GetTile(coord01)->elevation();
-         auto x0 = world_loc.x * map_area->GetWidth() * tile_size + tile_coord.x * tile_size;
+         auto x0 = world_loc.x * map_area->Width() * tile_size + tile_coord.x * tile_size;
          auto y0 = elev00 * elev_amount;
-         auto z0 = world_loc.y * map_area->GetHeight() * tile_size + tile_coord.y * tile_size;
+         auto z0 = world_loc.y * map_area->Height() * tile_size + tile_coord.y * tile_size;
          auto x2 =
-             world_loc.x * map_area->GetWidth() * tile_size + tile_coord.x * tile_size + tile_size;
+             world_loc.x * map_area->Width() * tile_size + tile_coord.x * tile_size + tile_size;
          auto y2 = elev11 * elev_amount;
          auto z2 =
-             world_loc.y * map_area->GetHeight() * tile_size + tile_coord.y * tile_size + tile_size;
+             world_loc.y * map_area->Height() * tile_size + tile_coord.y * tile_size + tile_size;
          auto center = glm::vec3{(x0 + x2) / 2, (y0 + y2) / 2, (z0 + z2) / 2};
          auto closest_point =
              glm::closestPointOnLine(center, mouse_world_near_plane, mouse_world_far_plane);
@@ -212,5 +212,19 @@ namespace Narradia
          }
       }
    }
+#endif
+#endif
+
+// View
+#if 1
+   // FPSCounterModuleV
+#if 1
+   FPSCounterAddV::FPSCounterAddV() {
+      rid_text = NewString();
+   }
+   void FPSCounterAddV::Render() {
+      DrawString(rid_text, "Fps: " + std::to_string(FPSCounterAdd::get()->fps()), {0.95f, 0.05f});
+   }
+#endif
 #endif
 }

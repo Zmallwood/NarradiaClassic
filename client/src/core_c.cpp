@@ -1,6 +1,6 @@
 #if 1
 #include "core_c.h"
-#include "pages_c.h"
+#include "pages.h"
 #endif
 
 namespace Narradia

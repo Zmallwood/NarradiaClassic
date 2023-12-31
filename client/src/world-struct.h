@@ -1,4 +1,9 @@
 #pragma once
+#if 1
+#include "player.h"
+#include "conf.h"
+#include "world_map_loader.h"
+#endif
 
 namespace Narradia
 {
@@ -13,7 +18,9 @@ namespace Narradia
 
    class Object {
      public:
-      Object(std::string type);
+      Object(std::string type)
+          : type_(type) {
+      }
       auto type() {
          return type_;
       }
@@ -40,7 +47,9 @@ namespace Narradia
       Tile()
           : color_(std::make_shared<Color>()) {
       }
-      void IncreaseElevation(float amount);
+      void IncreaseElevation(float amount) {
+         elevation_ += amount;
+      }
       auto ground() {
          return ground_;
       }
@@ -102,13 +111,42 @@ namespace Narradia
 
    class WorldArea {
      public:
-      WorldArea(int width, int height);
-      std::shared_ptr<Tile> GetTile(int x, int y);
-      std::shared_ptr<Tile> GetTile(Point coord);
-      bool IsInsideMap(Point coord);
-      int GetWidth();
-      int GetHeight();
-      void ClearAllRIDS();
+      WorldArea(int width, int height)
+          : mobs_mirror_(std::make_shared<std::map<std::shared_ptr<Mob>, Point>>()) {
+         for (auto x = 0; x < width; x++) {
+            tiles_.push_back(std::vector<std::shared_ptr<Tile>>());
+            for (auto y = 0; y < height; y++) {
+               tiles_.at(x).push_back(std::make_shared<Tile>());
+            }
+         }
+      }
+      std::shared_ptr<Tile> GetTile(int x, int y) {
+         try {
+            return tiles_.at(x).at(y);
+         }
+         catch (std::exception &e) {
+            throw std::runtime_error("Tried to access tile with an invalid coordinate.");
+         }
+      }
+      std::shared_ptr<Tile> GetTile(Point coord) {
+         return GetTile(coord.x, coord.y);
+      }
+      bool IsInsideMap(Point coord) {
+         return coord.x < tiles_.size() && coord.y < tiles_.at(0).size();
+      }
+      int Width() {
+         return tiles_.size();
+      }
+      int Height() {
+         return tiles_.at(0).size();
+      }
+      void ClearAllRIDS() {
+         for (auto y = 0; y < Height(); y++) {
+            for (auto x = 0; x < Width(); x++) {
+               tiles_.at(x).at(y)->set_rid(0);
+            }
+         }
+      }
       auto mobs_mirror() {
          return mobs_mirror_;
       }
@@ -122,9 +160,27 @@ namespace Narradia
 
    class World : public S<World> {
      public:
-      World();
-      auto CurrWorldArea() -> std::shared_ptr<WorldArea>;
-      auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea>;
+      World() {
+         world_width_ = WorldMapLoader::get()->world_map_width();
+         world_height_ = WorldMapLoader::get()->world_map_height();
+         auto map_names = WorldMapLoader::get()->world_area_names();
+         for (auto y = 0; y < world_height_; y++) {
+            for (auto x = 0; x < world_width_; x++) {
+               world_areas_[x][y] = nullptr;
+               WorldMapLoader::get()->LoadWorldMapFromFile(world_areas_[x][y], map_names[x][y]);
+            }
+         }
+      }
+      auto CurrWorldArea() -> std::shared_ptr<WorldArea> {
+         auto world_loc = Player::get()->world_location();
+         return world_areas_[world_loc.x][world_loc.y];
+      }
+      auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea> {
+         if (world_areas_.count(location.x) != 0)
+            if (world_areas_.at(location.x).count(location.y) != 0)
+               return world_areas_[location.x][location.y];
+         return nullptr;
+      }
       auto world_width() {
          return world_width_;
       }

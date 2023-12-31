@@ -1,6 +1,6 @@
 #if 1
 #include "world_map_loader.h"
-#include "actors.h"
+#include "player.h"
 #include "world-struct.h"
 #endif
 

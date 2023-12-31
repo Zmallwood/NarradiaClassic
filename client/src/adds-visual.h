@@ -2,6 +2,8 @@
 
 namespace Narradia
 {
+   // Model
+#if 1
    class FPSCounterAdd : public S<FPSCounterAdd> {
      public:
       void UpdateGameLogic();
@@ -59,4 +61,17 @@ namespace Narradia
      private:
       Point hovered_tile_ = {-1, -1};
    };
+#endif
+
+// View
+#if 1
+   class FPSCounterAddV : public S<FPSCounterAddV> {
+     public:
+      FPSCounterAddV();
+      void Render();
+
+     private:
+      RenderID rid_text;
+   };
+#endif
 }
