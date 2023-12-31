@@ -10,6 +10,18 @@ namespace Narradia
       void UpdateGameLogic();
    };
 
+   class TileSquare {
+     public:
+      TileSquare(int x, int y) {
+         coords._00 = {x, y};
+         coords._10 = {x + 1, y};
+         coords._11 = {x + 1, y + 1};
+         coords._01 = {x, y + 1};
+      }
+
+      Square<Point> coords;
+   };
+
    // Show Camera class
 #if 1
    class Camera : public S<Camera> {
@@ -37,7 +49,7 @@ namespace Narradia
      private:
       void SetPerspMat();
       void SetViewMat();
-      Point3F GetCameraPosition();
+      Point3F GetCameraPos();
 
       float camera_height_ = 3.0f;
       float used_fov_ = 90.0f;
@@ -65,6 +77,9 @@ namespace Narradia
       }
 
      private:
+      void DrawWestTile(int x, int y);
+      void DrawAllGround();
+      void DrawAllModels();
       void DrawGround(std::shared_ptr<Tile> tile, Point coord);
       void DrawObjects(std::shared_ptr<Tile> tile, Point coord);
       void DrawPlayer();

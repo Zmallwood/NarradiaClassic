@@ -48,7 +48,7 @@ namespace Narradia
       glBindVertexArray(0);
       return vertex_array_id;
    }
-   auto SetTileGeometry(RenderID vao_id, Square<Vertex3F> &verts) -> void {
+   auto SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts) -> void {
       std::vector<Vertex3F> vertices;
       vertices.push_back(verts._00);
       vertices.push_back(verts._10);
@@ -115,11 +115,11 @@ namespace Narradia
          glm::mat4 model(1.0);
          glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
          glUniform1f(renderer->location_alpha(), 1.0f);
-         auto player_pos = Player::get()->position().Multiply(kTileSize);
+         auto player_pos = Player::get()->pos().Multiply(kTileSize);
          glm::vec3 view_pos(
              player_pos.x,
              player_pos.y +
-                 CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint()),
+                 CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
              player_pos.z);
          glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
          glm::vec3 fog_color_gl(
@@ -147,7 +147,7 @@ namespace Narradia
       glm::mat4 model(1.0);
       glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
       glUniform1f(renderer->location_alpha(), 1.0f);
-      auto player_pos = Player::get()->position().Multiply(kTileSize);
+      auto player_pos = Player::get()->pos().Multiply(kTileSize);
       auto curr_map_location = Player::get()->world_location();
       auto map_area = World::get()->CurrWorldArea();
       auto tile_size = kTileSize;
@@ -157,7 +157,7 @@ namespace Narradia
       player_pos.z += map_offset_y;
       glm::vec3 view_pos(
           player_pos.x,
-          player_pos.y + CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint()),
+          player_pos.y + CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
           player_pos.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
       glm::vec3 fog_color_gl(

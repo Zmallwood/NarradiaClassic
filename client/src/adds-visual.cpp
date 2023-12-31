@@ -66,8 +66,8 @@ namespace Narradia
       auto time_to_update =
           SDL_GetTicks() > Player::get()->ticks_last_move() + 400 / Player::get()->movement_speed();
       if (time_to_update) {
-         auto dx = destination.x + 0.5f - Player::get()->position().x;
-         auto dy = destination.y + 0.5f - Player::get()->position().z;
+         auto dx = destination.x + 0.5f - Player::get()->pos().x;
+         auto dy = destination.y + 0.5f - Player::get()->pos().z;
          auto abs_dx = std::abs(dx);
          auto abs_dy = std::abs(dy);
          if (abs_dx < 0.5f && abs_dy < 0.5f) {
@@ -116,7 +116,7 @@ namespace Narradia
          if (SDL_GetTicks() <
                  Player::get()->ticks_ulti_skill_start() + Player::get()->ulti_skill_duration() &&
              Player::get()->ticks_ulti_skill_start() != 0) {
-            auto player_pos = Player::get()->position().GetXZ().ToIntPoint();
+            auto player_pos = Player::get()->pos().GetXZ().ToIntPoint();
             auto map_area = World::get()->CurrWorldArea();
             auto r = 7;
             for (auto y = player_pos.y - r; y < player_pos.y + r; y++) {
@@ -144,11 +144,11 @@ namespace Narradia
       auto perspective_matrix = CameraGL::get()->persp_matrix();
       auto mouse_position_f = MousePosition();
       auto canvas_size = CanvasSize();
-      auto player_x = Player::get()->position().x;
-      auto player_y = Player::get()->position().z;
+      auto player_x = Player::get()->pos().x;
+      auto player_y = Player::get()->pos().z;
       auto tile_size = kTileSize;
       auto elev_amount = kElevAmount;
-      auto player_world_area_position = Player::get()->position().Multiply(kTileSize);
+      auto player_world_area_position = Player::get()->pos().Multiply(kTileSize);
       auto map_area = World::get()->CurrWorldArea();
       auto mouse_world_near_plane = glm::unProject(
           glm::vec3(

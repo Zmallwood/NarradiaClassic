@@ -172,7 +172,7 @@ namespace Narradia
           renderer->location_model_no_translation(), 1, GL_FALSE,
           glm::value_ptr(model_no_translation_matrix));
       glUniform3fv(renderer->location_color_mod(), 1, glm::value_ptr(color_mod));
-      auto player_space_coord = Player::get()->position().Multiply(kTileSize);
+      auto player_space_coord = Player::get()->pos().Multiply(kTileSize);
 
       auto curr_map_location = Player::get()->world_location();
       auto map_area = World::get()->CurrWorldArea();
@@ -184,7 +184,7 @@ namespace Narradia
       glm::vec3 viewPos(
           player_space_coord.x,
           player_space_coord.y +
-              CalcTileAverageElevation(Player::get()->position().GetXZ().ToIntPoint()),
+              CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
           player_space_coord.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(viewPos));
       glm::vec3 fogColorGl(

@@ -54,7 +54,7 @@ namespace Narradia
                 {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height},
                 Colors::black);
             if (x == Player::get()->world_location().x && y == Player::get()->world_location().y) {
-               auto player_pos = Player::get()->position();
+               auto player_pos = Player::get()->pos();
                auto map_area = World::get()->world_areas()[x][y];
                auto tile_width = cell_width / map_area->Width();
                auto tile_height = cell_height / map_area->Height();

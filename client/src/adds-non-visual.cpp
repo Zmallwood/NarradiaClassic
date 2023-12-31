@@ -39,7 +39,7 @@ namespace Narradia
          y = y_center + static_cast<int>((r_min - 1) * SinDeg(angle_deg));
          tile = map_area->GetTile(x, y);
       } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
-      Player::get()->set_position({static_cast<float>(x), 0.0f, static_cast<float>(y)});
+      Player::get()->set_pos({static_cast<float>(x), 0.0f, static_cast<float>(y)});
    }
 #endif
 #endif

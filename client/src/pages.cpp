@@ -178,7 +178,7 @@ namespace Narradia
       auto map_area = World::get()->CurrWorldArea();
       auto x = map_area->Width() / 2.0f;
       auto y = map_area->Height() / 2.0f;
-      Player::get()->set_position({x, 0.0f, y});
+      Player::get()->set_pos({x, 0.0f, y});
    }
    void MapCreationPgC::UpdateGameFlowDerived() {
    }
