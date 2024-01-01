@@ -61,6 +61,24 @@ namespace Narradia
      private:
       Point hovered_tile_ = {-1, -1};
    };
+
+   class MenuModelsAdd : public S<MenuModelsAdd> {
+     public:
+      void UpdateGameLogic();
+
+     private:
+      float used_fov_ = 90.0f;
+   };
+
+   class KbBindingsAdd : public S<KbBindingsAdd> {
+   public:
+      void UpdateGameLogic();
+   };
+
+   class PlayerSpawnPositioningAdd : public S<PlayerSpawnPositioningAdd> {
+   public:
+      void SpawnAtGoodLocation();
+   };
 #endif
 
 // View
@@ -72,6 +90,11 @@ namespace Narradia
 
      private:
       RenderID rid_text;
+   };
+
+   class MenuModelsAddV : public S<MenuModelsAddV> {
+     public:
+      void Render();
    };
 #endif
 }

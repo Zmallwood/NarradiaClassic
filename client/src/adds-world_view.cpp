@@ -1,14 +1,14 @@
 #if 1
 #include "adds-world_view.h"
-#include "adds-visual.h"
+#include "adds.h"
 #include "assets.h"
 #include "calc.h"
 #include "conf.h"
 #include "core.h"
 #include "player.h"
 #include "rend-core.h"
-#include "rend_models_v.h"
-#include "rend_tiles_v.h"
+#include "rend_models.h"
+#include "rend_tiles.h"
 #include "world-struct.h"
 #endif
 
@@ -275,7 +275,7 @@ namespace Narradia
                   int y_orig = y;
                   int x;
                   int y;
-                  x = curr_wa->Width() + x_orig;
+                  x = x_orig + curr_wa->Width();
                   y = y_orig;
                   DrawGroundTileOutsideWorldArea(x, y, -1, 0);
                }
@@ -288,6 +288,26 @@ namespace Narradia
                   x = x_orig - curr_wa->Width();
                   y = y_orig;
                   DrawGroundTileOutsideWorldArea(x, y, 1, 0);
+               }
+               // North
+               else if (x >= 0 && y < 0 && x < curr_wa->Width()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig;
+                  y = y_orig + curr_wa->Height();
+                  DrawGroundTileOutsideWorldArea(x, y, 0, -1);
+               }
+               // South
+               else if (x >= 0 && y >= curr_wa->Height() && x < curr_wa->Width()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig;
+                  y = y_orig - curr_wa->Height();
+                  DrawGroundTileOutsideWorldArea(x, y, 0, 1);
                }
             }
             else {
@@ -342,6 +362,26 @@ namespace Narradia
                   x = x_orig - curr_wa->Width();
                   y = y_orig;
                   DrawModelsTileOutsideWorldArea(x, y, 1, 0);
+               }
+               // North
+               else if (x >= 0 && y < 0 && x < curr_wa->Width()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig;
+                  y = y_orig + curr_wa->Height();
+                  DrawModelsTileOutsideWorldArea(x, y, 0, -1);
+               }
+               // South
+               else if (x >= 0 && y >= curr_wa->Height() && x < curr_wa->Width()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig;
+                  y = y_orig - curr_wa->Height();
+                  DrawModelsTileOutsideWorldArea(x, y, 0, 1);
                }
             }
             else {
@@ -510,7 +550,8 @@ namespace Narradia
       DrawTile(ground, tile->rid());
    }
 
-   void WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
+   void
+   WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
       if (tile->object()) {
          auto curr_wa = World::get()->CurrWorldArea();
          auto curr_map_location = Player::get()->world_location();

@@ -1,15 +1,17 @@
 #if 1
-#include "rend_tiles_v.h"
-#include "player.h"
+#include "rend_tiles.h"
 #include "assets.h"
-#include "conf.h"
 #include "calc.h"
+#include "conf.h"
+#include "player.h"
 #include "shaders.h"
 #include "world-struct.h"
 #endif
 
 namespace Narradia
 {
+   // View
+#if 1
    // RendTilesV
 #if 1
    RendTilesV::RendTilesV() {
@@ -118,8 +120,7 @@ namespace Narradia
          auto player_pos = Player::get()->pos().Multiply(kTileSize);
          glm::vec3 view_pos(
              player_pos.x,
-             player_pos.y +
-                 CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
+             player_pos.y + CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
              player_pos.z);
          glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
          glm::vec3 fog_color_gl(
@@ -174,5 +175,6 @@ namespace Narradia
       glUseProgram(0);
       glDisable(GL_CULL_FACE);
    }
+#endif
 #endif
 }

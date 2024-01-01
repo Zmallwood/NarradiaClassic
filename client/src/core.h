@@ -1,7 +1,6 @@
 #pragma once
 
 #if 1
-#include "gui-core_v.h"
 #endif
 
 namespace Narradia
@@ -298,6 +297,8 @@ namespace Narradia
      private:
       std::map<PageNames, std::shared_ptr<IPageV>> scene_views_;
    };
+
+   class SceneGuiV;
 
    class IPageV {
      public:

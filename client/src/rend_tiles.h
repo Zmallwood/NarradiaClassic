@@ -1,9 +1,11 @@
 #pragma once
 
-#include "rend-core_v.h"
+#include "rend-core.h"
 
 namespace Narradia
 {
+   // View
+#if 1
    class RendTilesV : public RendBaseV, public S<RendTilesV> {
      public:
       RendTilesV();
@@ -56,5 +58,6 @@ namespace Narradia
    auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off = false) -> void;
    auto StartTileBatchDrawing() -> void;
    auto StopTileBatchDrawing() -> void;
+#endif
 #endif
 }

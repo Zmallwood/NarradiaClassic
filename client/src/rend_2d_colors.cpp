@@ -1,11 +1,13 @@
 #if 1
-#include "rend_2d_colors_v.h"
+#include "rend_2d_colors.h"
 #include "conf.h"
 #include "shaders.h"
 #endif
 
 namespace Narradia
 {
+// View
+#if 1
    // Rend2DSolidColorsV
 #if 1
    Rend2DColorsV::Rend2DColorsV() {
@@ -33,8 +35,7 @@ namespace Narradia
       auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vao_id);
       renderer->SetIndicesData(index_buffer_id, RendBase::kNumVerticesInRectangle, nullptr);
       renderer->SetData(
-          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr,
-          BufferTypes::Positions2D);
+          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Positions2D);
       renderer->SetData(
           color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
       renderer->UseVAOEnd();
@@ -110,5 +111,6 @@ namespace Narradia
       glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
+#endif
 #endif
 }

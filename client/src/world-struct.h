@@ -1,7 +1,7 @@
 #pragma once
 #if 1
-#include "player.h"
 #include "conf.h"
+#include "player.h"
 #include "world_map_loader.h"
 #endif
 

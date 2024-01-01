@@ -3,8 +3,8 @@
 #include "adds-world_view.h"
 #include "assets.h"
 #include "player.h"
-#include "rend_models_v.h"
-#include "rend_tiles_v.h"
+#include "rend_models.h"
+#include "rend_tiles.h"
 #include "world-struct.h"
 #endif
 

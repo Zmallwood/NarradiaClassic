@@ -2,11 +2,32 @@
 #include "core.h"
 #include "conf.h"
 #include "gui-core.h"
-#include "gui_comps.h"
+#include "gui-main_pg.h"
 #include "pages.h"
-#include "rend_2d_images_v.h"
-#include "rend_text_v.h"
+#include "rend_2d_images.h"
+#include "rend_text.h"
 #endif
+
+int main(int argc, char *argv[]) {
+   using namespace Narradia;
+
+   while (Engine::get()->is_running()) {
+      if (FPSCapper::get()->Below60FPS()) {
+         try {
+            EngineC::get()->HandleInput();
+            EngineC::get()->UpdateGameFlow();
+            Engine::get()->UpdateGameLogic();
+            EngineV::get()->Render();
+            Engine::get()->Finalize();
+         }
+         catch (std::exception &e) {
+            Console::get()->Print("Exception in main: " + std::string(e.what()));
+         }
+      }
+   }
+
+   DisposeSingletons();
+}
 
 namespace Narradia
 {
@@ -370,7 +391,7 @@ namespace Narradia
    };
 #endif
 
-      // PageMngrV
+   // PageMngrV
 #if 1
    PageMngrV::PageMngrV() {
       scene_views_[PageNames::Intro] = IntroPgV::get();

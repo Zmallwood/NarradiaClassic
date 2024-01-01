@@ -1,9 +1,11 @@
 #pragma once
 
-#include "rend-core_v.h"
+#include "rend-core.h"
 
 namespace Narradia
 {
+   // View
+#if 1
    // Related type BodyData
 #if 1
    class BodyData {
@@ -101,5 +103,6 @@ namespace Narradia
        bool no_fog = false, bool no_lighting = false) -> void;
    auto StartModelsBatchDrawing() -> void;
    auto StopModelsBatchDrawing() -> void;
+#endif
 #endif
 }

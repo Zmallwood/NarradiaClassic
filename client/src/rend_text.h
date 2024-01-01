@@ -2,6 +2,8 @@
 
 namespace Narradia
 {
+   // View
+#if 1
    enum class FontSizes { _20, _40 };
 
    class Font;
@@ -54,5 +56,6 @@ namespace Narradia
    auto DrawString(
        RenderID rid, std::string_view text, PointF position, Color color = Colors::white,
        bool center_align = false, FontSizes font_size = FontSizes::_20) -> void;
+#endif
 #endif
 }

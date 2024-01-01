@@ -1,13 +1,15 @@
 #if 1
-#include "rend_text_v.h"
+#include "rend_text.h"
 #include "assets.h"
 #include "conf.h"
 #include "core.h"
-#include "rend_2d_images_v.h"
+#include "rend_2d_images.h"
 #endif
 
 namespace Narradia
 {
+   // View
+#if 1
    // RendText
 #if 1
    RendTextV::RendTextV()
@@ -110,5 +112,6 @@ namespace Narradia
              static_cast<float>(text_w) / static_cast<float>(canvas_size.h) / 2.0f / AspectRatio();
       DrawImage(unique_name_id, rid, rect);
    }
+#endif
 #endif
 }

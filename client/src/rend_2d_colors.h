@@ -1,9 +1,11 @@
 #pragma once
 
-#include "rend-core_v.h"
+#include "rend-core.h"
 
 namespace Narradia
 {
+   // View
+#if 1
    class Rend2DColorsV : public RendBaseV, public S<Rend2DColorsV> {
      public:
       Rend2DColorsV();
@@ -18,5 +20,6 @@ namespace Narradia
    auto NewRect() -> RenderID;
    auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void;
    auto FillRect(RenderID vao_id, RectF rect, Color color) -> void;
+#endif
 #endif
 }

@@ -1,12 +1,14 @@
 #if 1
-#include "rend_2d_images_v.h"
+#include "rend_2d_images.h"
 #include "assets.h"
-#include "shaders.h"
 #include "conf.h"
+#include "shaders.h"
 #endif
 
 namespace Narradia
 {
+   // View
+#if 1
    // Rend2DImagesV
 #if 1
    Rend2DImagesV::Rend2DImagesV() {
@@ -35,12 +37,10 @@ namespace Narradia
       auto uv_buffer_id = renderer_base->GenNewBufId(BufferTypes::Uvs, vao_id);
       renderer->SetIndicesData(index_buffer_id, RendBase::kNumVerticesInRectangle, nullptr);
       renderer->SetData(
-          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr,
-          BufferTypes::Positions2D);
+          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Positions2D);
       renderer->SetData(
           color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
-      renderer->SetData(
-          uv_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
+      renderer->SetData(uv_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
       renderer->UseVAOEnd();
       return vao_id;
    }
@@ -91,5 +91,6 @@ namespace Narradia
       glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
+#endif
 #endif
 }

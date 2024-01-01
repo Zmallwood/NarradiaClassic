@@ -1,9 +1,11 @@
 #pragma once
 
-#include "rend-core_v.h"
+#include "rend-core.h"
 
 namespace Narradia
 {
+   // View
+#if 1
    class Rend2DImagesV : public RendBaseV, public S<Rend2DImagesV> {
      public:
       Rend2DImagesV();
@@ -20,5 +22,6 @@ namespace Narradia
    auto DrawImage(
        std::string_view image_name, RenderID rid, const RectF &dest, Color color = Colors::white)
        -> void;
+#endif
 #endif
 }
