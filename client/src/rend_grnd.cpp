@@ -1,20 +1,19 @@
 #if 1
-#include "rend_tiles.h"
+#include "rend_grnd.h"
 #include "assets.h"
 #include "calc.h"
 #include "conf.h"
-#include "player.h"
-#include "shaders.h"
-#include "world-struct.h"
+#include "hero.h"
+#include "world.h"
 #endif
 
 namespace Narradia
 {
    // View
 #if 1
-   // RendTilesV
+   // RendGrndV
 #if 1
-   RendTilesV::RendTilesV() {
+   RendGrndV::RendGrndV() {
       shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
       location_projection_ = GetUniformLocation("projection");
       location_view_ = GetUniformLocation("view");
@@ -23,7 +22,7 @@ namespace Narradia
       location_view_pos_ = GetUniformLocation("viewPos");
       location_fog_color_ = GetUniformLocation("fogColor");
    }
-   RendTilesV::~RendTilesV() {
+   RendGrndV::~RendGrndV() {
       CleanupBase();
    }
 #endif
@@ -32,7 +31,7 @@ namespace Narradia
 #if 1
    RenderID NewTile() {
       auto num_vertices = 4;
-      auto renderer = RendTilesV::get();
+      auto renderer = RendGrndV::get();
       auto renderer_base = renderer->renderer_base();
       auto vertex_array_id = renderer_base->GenNewVAOId();
       auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vertex_array_id);
@@ -56,7 +55,7 @@ namespace Narradia
       vertices.push_back(verts._10);
       vertices.push_back(verts._11);
       vertices.push_back(verts._01);
-      auto renderer = RendTilesV::get();
+      auto renderer = RendGrndV::get();
       auto renderer_base = renderer->renderer_base();
       if (!renderer->is_batch_drawing())
          renderer->UseVAOBegin(vao_id);
@@ -89,19 +88,19 @@ namespace Narradia
       glBindVertexArray(vao_id);
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
-          position_buffer_id, positions, BufferTypes::Positions3D, RendTilesV::kLocationPosition);
+          position_buffer_id, positions, BufferTypes::Positions3D, RendGrndV::kLocationPosition);
       renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, RendTilesV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendTilesV::kLocationUv);
+          color_buffer_id, colors, BufferTypes::Colors, RendGrndV::kLocationColor);
+      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendGrndV::kLocationUv);
       renderer->UpdateData(
-          normal_buffer_id, normals, BufferTypes::Normals, RendTilesV::kLocationNormal);
+          normal_buffer_id, normals, BufferTypes::Normals, RendGrndV::kLocationNormal);
       glBindVertexArray(0);
       if (!renderer->is_batch_drawing())
          renderer->UseVAOEnd();
    }
    auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) -> void {
       auto vertex_count = 4;
-      auto renderer = RendTilesV::get();
+      auto renderer = RendGrndV::get();
       if (depth_test_off)
          glDisable(GL_DEPTH_TEST);
       else
@@ -117,15 +116,15 @@ namespace Narradia
          glm::mat4 model(1.0);
          glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
          glUniform1f(renderer->location_alpha(), 1.0f);
-         auto player_pos = Player::get()->pos().Multiply(kTileSize);
+         auto player_pos = Hero::get()->pos().Multiply(kTileSize);
          glm::vec3 view_pos(
              player_pos.x,
-             player_pos.y + CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
+             player_pos.y + CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint()),
              player_pos.z);
          glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
          glm::vec3 fog_color_gl(
-             RendTilesV::kFogColorGround.r, RendTilesV::kFogColorGround.g,
-             RendTilesV::kFogColorGround.b);
+             RendGrndV::kFogColorGround.r, RendGrndV::kFogColorGround.g,
+             RendGrndV::kFogColorGround.b);
          glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       }
       auto image_id = ImageBank::get()->GetImage(image_name);
@@ -137,7 +136,7 @@ namespace Narradia
          renderer->UseVAOEnd();
    }
    auto StartTileBatchDrawing() -> void {
-      auto renderer = RendTilesV::get();
+      auto renderer = RendGrndV::get();
       renderer->set_is_batch_drawing(true);
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
@@ -148,8 +147,8 @@ namespace Narradia
       glm::mat4 model(1.0);
       glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
       glUniform1f(renderer->location_alpha(), 1.0f);
-      auto player_pos = Player::get()->pos().Multiply(kTileSize);
-      auto curr_map_location = Player::get()->world_location();
+      auto player_pos = Hero::get()->pos().Multiply(kTileSize);
+      auto curr_map_location = Hero::get()->world_location();
       auto map_area = World::get()->CurrWorldArea();
       auto tile_size = kTileSize;
       auto map_offset_x = curr_map_location.x * map_area->Width() * tile_size;
@@ -158,19 +157,19 @@ namespace Narradia
       player_pos.z += map_offset_y;
       glm::vec3 view_pos(
           player_pos.x,
-          player_pos.y + CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
+          player_pos.y + CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint()),
           player_pos.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
       glm::vec3 fog_color_gl(
-          RendTilesV::kFogColorGround.r, RendTilesV::kFogColorGround.g,
-          RendTilesV::kFogColorGround.b);
+          RendGrndV::kFogColorGround.r, RendGrndV::kFogColorGround.g,
+          RendGrndV::kFogColorGround.b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }
    auto StopTileBatchDrawing() -> void {
-      auto renderer = RendTilesV::get();
+      auto renderer = RendGrndV::get();
       renderer->set_is_batch_drawing(false);
       glUseProgram(0);
       glDisable(GL_CULL_FACE);

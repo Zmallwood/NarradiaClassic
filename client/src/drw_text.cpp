@@ -1,18 +1,18 @@
 #if 1
-#include "rend_text.h"
+#include "drw_text.h"
 #include "assets.h"
 #include "conf.h"
 #include "core.h"
-#include "rend_2d_images.h"
+#include "drw_images.h"
 #endif
 
 namespace Narradia
 {
    // View
 #if 1
-   // RendText
+   // DrwText
 #if 1
-   RendTextV::RendTextV()
+   DrwTextV::DrwTextV()
        : unique_name_ids_(std::make_shared<std::map<RenderID, std::string>>()) {
       TTF_Init();
       auto font_path =
@@ -20,11 +20,11 @@ namespace Narradia
       fonts_.insert({FontSizes::_20, std::make_shared<Font>(font_path.c_str(), 20)});
       fonts_.insert({FontSizes::_40, std::make_shared<Font>(font_path.c_str(), 40)});
    }
-   RendTextV::~RendTextV() {
+   DrwTextV::~DrwTextV() {
       if (kVerbose)
-         std::cout << "Disposing RendText.\n";
+         std::cout << "Disposing DrwText.\n";
    }
-   void RendTextV::RenderText(
+   void DrwTextV::RenderText(
        RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
        std::string &out_unique_name_id, SizeF &out_size) const {
       auto font = fonts_.at(font_size)->SDL_font().get();
@@ -91,7 +91,7 @@ namespace Narradia
       auto unique_name = "RenderedImage" + std::to_string(id);
       ImageBank::get()->CreateBlankTextImage(unique_name);
       auto rendid_image_rect = NewImage();
-      RendTextV::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
+      DrwTextV::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
       return rendid_image_rect;
    }
    auto DrawString(
@@ -99,13 +99,13 @@ namespace Narradia
        FontSizes font_size) -> void {
       std::string unique_name_id;
       SizeF size;
-      RendTextV::get()->RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
+      DrwTextV::get()->RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
       auto canvas_size = CanvasSize();
       auto rect = RectF{position.x, position.y, size.w, size.h};
       int text_w;
       int text_h;
       TTF_SizeText(
-          RendTextV::get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
+          DrwTextV::get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
       rect.y -= static_cast<float>(text_h / AspectRatio()) / canvas_size.h / 2.0f;
       if (center_align)
          rect.x -=

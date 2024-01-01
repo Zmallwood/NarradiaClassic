@@ -6,10 +6,10 @@ namespace Narradia
 {
    // View
 #if 1
-   class RendTilesV : public RendBaseV, public S<RendTilesV> {
+   class RendGrndV : public RendBaseV, public S<RendGrndV> {
      public:
-      RendTilesV();
-      ~RendTilesV();
+      RendGrndV();
+      ~RendGrndV();
       auto is_batch_drawing() {
          return is_batch_drawing_;
       }

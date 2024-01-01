@@ -1,12 +1,12 @@
 #if 1
-#include "world_map_loader.h"
-#include "player.h"
-#include "world-struct.h"
+#include "world_map_rdr.h"
+#include "hero.h"
+#include "world.h"
 #endif
 
 namespace Narradia
 {
-   WorldMapLoader::WorldMapLoader() {
+   WorldMapRdr::WorldMapRdr() {
 
       std::ifstream file;
       file.open(std::string(SDL_GetBasePath()) + kFileName);
@@ -30,7 +30,7 @@ namespace Narradia
 
       file.close();
    }
-   void WorldMapLoader::LoadWorldMapFromFile(
+   void WorldMapRdr::LoadWorldMapFromFile(
        std::shared_ptr<WorldArea> &world_area, std::string map_name) {
       std::ifstream file;
       file.open(std::string(SDL_GetBasePath()) + map_name);

@@ -6,10 +6,10 @@ namespace Narradia
 {
    // View
 #if 1
-   class Rend2DImagesV : public RendBaseV, public S<Rend2DImagesV> {
+   class DrwImagesV : public RendBaseV, public S<DrwImagesV> {
      public:
-      Rend2DImagesV();
-      ~Rend2DImagesV();
+      DrwImagesV();
+      ~DrwImagesV();
 
       static constexpr int kLocationPosition = 0;
       static constexpr int kLocationColor = 1;

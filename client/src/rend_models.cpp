@@ -3,9 +3,8 @@
 #include "assets.h"
 #include "calc.h"
 #include "conf.h"
-#include "player.h"
-#include "shaders.h"
-#include "world-struct.h"
+#include "hero.h"
+#include "world.h"
 #endif
 
 namespace Narradia
@@ -174,9 +173,9 @@ namespace Narradia
           renderer->location_model_no_translation(), 1, GL_FALSE,
           glm::value_ptr(model_no_translation_matrix));
       glUniform3fv(renderer->location_color_mod(), 1, glm::value_ptr(color_mod));
-      auto player_space_coord = Player::get()->pos().Multiply(kTileSize);
+      auto player_space_coord = Hero::get()->pos().Multiply(kTileSize);
 
-      auto curr_map_location = Player::get()->world_location();
+      auto curr_map_location = Hero::get()->world_location();
       auto map_area = World::get()->CurrWorldArea();
       auto tile_size = kTileSize;
       auto map_offset_x = curr_map_location.x * map_area->Width() * tile_size;
@@ -186,7 +185,7 @@ namespace Narradia
       glm::vec3 viewPos(
           player_space_coord.x,
           player_space_coord.y +
-              CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint()),
+              CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint()),
           player_space_coord.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(viewPos));
       glm::vec3 fogColorGl(

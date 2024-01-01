@@ -2,9 +2,9 @@
 
 namespace Narradia
 {
-   class Player : public S<Player> {
+   class Hero: public S<Hero> {
      public:
-      Player();
+      Hero();
       void MoveForward();
       void MoveRight();
       void MoveBackwards();

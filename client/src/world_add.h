@@ -4,9 +4,9 @@ namespace Narradia
 {
    // Model
 #if 1
-   class WorldViewAdd : public S<WorldViewAdd> {
+   class WorldAdd : public S<WorldAdd> {
      public:
-      WorldViewAdd();
+      WorldAdd();
       void UpdateGameLogic();
    };
 
@@ -64,9 +64,9 @@ namespace Narradia
 #if 1
    class Tile;
 
-   class WorldViewAddV : public S<WorldViewAddV> {
+   class WorldAddV : public S<WorldAddV> {
      public:
-      WorldViewAddV(bool simplified_ground = false);
+      WorldAddV(bool simplified_ground = false);
       void Render();
       void InitCurrWorldArea();
       auto render_distance() {

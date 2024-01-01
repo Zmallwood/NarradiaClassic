@@ -1,7 +1,7 @@
 #pragma once
 #if 1
 #include "conf.h"
-#include "world-struct.h"
+#include "world.h"
 #endif
 
 namespace Narradia

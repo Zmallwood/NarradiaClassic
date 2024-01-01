@@ -4,8 +4,8 @@
 #include "gui-core.h"
 #include "gui-main_pg.h"
 #include "pages.h"
-#include "rend_2d_images.h"
-#include "rend_text.h"
+#include "drw_images.h"
+#include "drw_text.h"
 #endif
 
 int main(int argc, char *argv[]) {

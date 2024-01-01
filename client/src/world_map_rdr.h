@@ -4,9 +4,9 @@ namespace Narradia
 {
    class WorldArea;
 
-   class WorldMapLoader : public S<WorldMapLoader> {
+   class WorldMapRdr : public S<WorldMapRdr> {
      public:
-      WorldMapLoader();
+      WorldMapRdr();
       void LoadWorldMapFromFile(std::shared_ptr<WorldArea> &world_area, std::string map_name);
       auto world_map_width() {
          return world_map_width_;

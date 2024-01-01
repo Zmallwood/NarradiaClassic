@@ -8,10 +8,10 @@ namespace Narradia
 
    class Font;
 
-   class RendTextV : public S<RendTextV> {
+   class DrwTextV : public S<DrwTextV> {
      public:
-      RendTextV();
-      ~RendTextV();
+      DrwTextV();
+      ~DrwTextV();
       void RenderText(
           RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
           std::string &out_unique_name_id, SizeF &out_size) const;

@@ -1,48 +1,48 @@
 #if 1
-#include "player.h"
-#include "adds-world_view.h"
+#include "hero.h"
+#include "world_add.h"
 #include "calc.h"
 #include "conf.h"
 #include "core.h"
-#include "rend_tiles.h"
-#include "world-struct.h"
+#include "rend_grnd.h"
+#include "world.h"
 #endif
 
 namespace Narradia
 {
-   // Player
+   // Hero
 #if 1
 
-   Player::Player() {
+   Hero::Hero() {
       pos_ = {0, 0};
    }
 
-   void Player::MoveForward() {
+   void Hero::MoveForward() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(0.0f);
    }
 
-   void Player::MoveRight() {
+   void Hero::MoveRight() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(90.0f);
    }
 
-   void Player::MoveBackwards() {
+   void Hero::MoveBackwards() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(180.0f);
    }
 
-   void Player::MoveLeft() {
+   void Hero::MoveLeft() {
       facing_angle_deg_ = Camera::get()->horizontal_angle_deg();
       MoveAtAngle(-90.0f);
    }
 
-   void Player::AddExperience(int amount) {
+   void Hero::AddExperience(int amount) {
       experience_ += amount;
       Console::get()->Print("You got " + std::to_string(amount) + " experience");
    }
 
-   void Player::MoveAtAngle(float angle_deg_) {
+   void Hero::MoveAtAngle(float angle_deg_) {
       try {
          auto map_area = World::get()->CurrWorldArea();
          auto used_angle = angle_deg_ - facing_angle_deg_;
@@ -65,8 +65,8 @@ namespace Narradia
             }
             world_location_.x--;
             map_area = World::get()->CurrWorldArea();
-            WorldViewAddV::Dispose();
-            RendTilesV::Dispose();
+            WorldAddV::Dispose();
+            RendGrndV::Dispose();
          }
          // East
          else if (new_coord.x >= map_area->Width()) {
@@ -80,8 +80,8 @@ namespace Narradia
             }
             world_location_.x++;
             map_area = World::get()->CurrWorldArea();
-            WorldViewAddV::Dispose();
-            RendTilesV::Dispose();
+            WorldAddV::Dispose();
+            RendGrndV::Dispose();
          }
          // North
          else if (new_coord.y < 0) {
@@ -95,8 +95,8 @@ namespace Narradia
             }
             world_location_.y--;
             map_area = World::get()->CurrWorldArea();
-            WorldViewAddV::Dispose();
-            RendTilesV::Dispose();
+            WorldAddV::Dispose();
+            RendGrndV::Dispose();
          }
          // South
          else if (new_coord.y >= map_area->Height()) {
@@ -110,8 +110,8 @@ namespace Narradia
             }
             world_location_.y++;
             map_area = World::get()->CurrWorldArea();
-            WorldViewAddV::Dispose();
-            RendTilesV::Dispose();
+            WorldAddV::Dispose();
+            RendGrndV::Dispose();
          }
 
          if (map_area->GetTile(new_coord)->ground() == "GroundWater")
@@ -120,15 +120,15 @@ namespace Narradia
          pos_.z = new_z;
       }
       catch (std::exception &e) {
-         Console::get()->Print("Exception in Player::MoveAtAngle: " + std::string(e.what()));
+         Console::get()->Print("Exception in Hero::MoveAtAngle: " + std::string(e.what()));
       }
    }
 
-   bool Player::IsMoving() {
+   bool Hero::IsMoving() {
       return SDL_GetTicks() < ticks_last_move_ + 400 / movement_speed_;
    }
 
-   void Player::Hit(float damage) {
+   void Hero::Hit(float damage) {
       health_ -= damage;
    }
 

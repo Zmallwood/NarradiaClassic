@@ -1,27 +1,27 @@
 #if 1
-#include "adds-world_view.h"
+#include "world_add.h"
 #include "adds.h"
 #include "assets.h"
 #include "calc.h"
 #include "conf.h"
 #include "core.h"
-#include "player.h"
+#include "hero.h"
 #include "rend-core.h"
 #include "rend_models.h"
-#include "rend_tiles.h"
-#include "world-struct.h"
+#include "rend_grnd.h"
+#include "world.h"
 #endif
 
 namespace Narradia
 {
 // Model
 #if 1
-   // WorldViewModele
+   // WorldModele
 #if 1
-   WorldViewAdd::WorldViewAdd() {
+   WorldAdd::WorldAdd() {
    }
 
-   void WorldViewAdd::UpdateGameLogic() {
+   void WorldAdd::UpdateGameLogic() {
       Camera::get()->UpdateGameLogic();
    }
 #endif
@@ -43,15 +43,15 @@ namespace Narradia
    }
 
    void Camera::SetViewMat() {
-      auto player_pos = Player::get()->pos().Multiply(kTileSize);
-      auto curr_world_loc = Player::get()->world_location();
+      auto player_pos = Hero::get()->pos().Multiply(kTileSize);
+      auto curr_world_loc = Hero::get()->world_location();
       auto t_sz = kTileSize;
       auto curr_wa = World::get()->CurrWorldArea();
       auto map_offs_x = curr_world_loc.x * curr_wa->Width() * t_sz;
       auto map_offs_y = curr_world_loc.y * curr_wa->Height() * t_sz;
       auto look_from = GetCameraPos();
       look_from = look_from.Translate(map_offs_x, 0.0f, map_offs_y);
-      auto player_avg_elev = CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint());
+      auto player_avg_elev = CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint());
       auto look_at = player_pos.Translate(0.0f, player_avg_elev, 0.0f);
       look_at = look_at.Translate(map_offs_x, 0.0f, map_offs_y);
       auto new_view_matrix = glm::lookAt(
@@ -61,7 +61,7 @@ namespace Narradia
    }
 
    Point3F Camera::GetCameraPos() {
-      auto player = Player::get();
+      auto player = Hero::get();
       float player_elev;
       {
          auto player_position = player->pos().GetXZ();
@@ -110,7 +110,7 @@ namespace Narradia
              CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
          auto dy = SinDeg(used_vertical_angle) * used_camera_distance * 3.0f;
          auto player_average_elevation =
-             CalcTileAverageElevation(Player::get()->pos().GetXZ().ToIntPoint());
+             CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint());
          result = player_position_no_elevation.Translate(dx, dy + player_average_elevation, dz);
       }
       return result.Translate(0.0f, camera_height_ * kTileSize, 0.0f);
@@ -120,14 +120,14 @@ namespace Narradia
 
 // View
 #if 1
-   WorldViewAddV::WorldViewAddV(bool simplified_ground)
+   WorldAddV::WorldAddV(bool simplified_ground)
        : simplified_ground_(simplified_ground) {
       InitCurrWorldArea();
    }
 
-   void WorldViewAddV::InitCurrWorldArea() {
+   void WorldAddV::InitCurrWorldArea() {
       auto wa = World::get()->CurrWorldArea();
-      auto curr_map_loc = Player::get()->world_location();
+      auto curr_map_loc = Hero::get()->world_location();
       auto t_sz = kTileSize;
       auto map_offset_x = curr_map_loc.x * wa->Width() * t_sz;
       auto map_offset_y = curr_map_loc.y * wa->Height() * t_sz;
@@ -212,7 +212,7 @@ namespace Narradia
       }
    }
 
-   void WorldViewAddV::Render() {
+   void WorldAddV::Render() {
       try {
          DrawAllGround();
          DrawAllModels();
@@ -222,9 +222,9 @@ namespace Narradia
       }
    }
 
-   void WorldViewAddV::DrawAllGround() {
+   void WorldAddV::DrawAllGround() {
       auto curr_wa = World::get()->CurrWorldArea();
-      auto world_loc = Player::get()->world_location();
+      auto world_loc = Hero::get()->world_location();
 
       auto loc_n = world_loc.Translate(0, -1);
       auto loc_ne = world_loc.Translate(1, -1);
@@ -243,8 +243,8 @@ namespace Narradia
       auto wa_nw = World::get()->WorldAreaAt(loc_nw);
 
       auto r = render_distance_;
-      auto x_center = static_cast<int>(Player::get()->pos().x);
-      auto y_center = static_cast<int>(Player::get()->pos().z);
+      auto x_center = static_cast<int>(Hero::get()->pos().x);
+      auto y_center = static_cast<int>(Hero::get()->pos().z);
       auto inc = 1;
 
       if (simplified_ground_)
@@ -326,10 +326,10 @@ namespace Narradia
       StopTileBatchDrawing();
    }
 
-   void WorldViewAddV::DrawAllModels() {
+   void WorldAddV::DrawAllModels() {
       auto curr_wa = World::get()->CurrWorldArea();
-      auto x_center = static_cast<int>(Player::get()->pos().x);
-      auto y_center = static_cast<int>(Player::get()->pos().z);
+      auto x_center = static_cast<int>(Hero::get()->pos().x);
+      auto y_center = static_cast<int>(Hero::get()->pos().z);
       auto r = render_distance_;
 
       StartModelsBatchDrawing();
@@ -397,9 +397,9 @@ namespace Narradia
       StopModelsBatchDrawing();
    }
 
-   void WorldViewAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   void WorldAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
-      auto world_loc = Player::get()->world_location();
+      auto world_loc = Hero::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
       auto wa = World::get()->WorldAreaAt(loc);
       if (wa) {
@@ -409,7 +409,7 @@ namespace Narradia
                auto rid = tile->rid();
                if (!rid) {
                   rid = NewTile();
-                  auto curr_map_loc = Player::get()->world_location();
+                  auto curr_map_loc = Hero::get()->world_location();
                   auto t_sz = kTileSize;
                   auto map_offs_x = curr_map_loc.x * curr_wa->Width() * t_sz;
                   auto map_offs_y = curr_map_loc.y * curr_wa->Height() * t_sz;
@@ -509,9 +509,9 @@ namespace Narradia
       }
    }
 
-   void WorldViewAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   void WorldAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
-      auto world_loc = Player::get()->world_location();
+      auto world_loc = Hero::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
       auto wa = World::get()->WorldAreaAt(loc);
       if (wa) {
@@ -535,7 +535,7 @@ namespace Narradia
       }
    }
 
-   void WorldViewAddV::DrawGround(std::shared_ptr<Tile> tile, Point coord) {
+   void WorldAddV::DrawGround(std::shared_ptr<Tile> tile, Point coord) {
       auto ground = tile->ground();
       if (ground == "GroundWater") {
          auto anim_index = ((SDL_GetTicks() + coord.x * coord.y) % 900) / 300;
@@ -551,10 +551,10 @@ namespace Narradia
    }
 
    void
-   WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
+   WorldAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
       if (tile->object()) {
          auto curr_wa = World::get()->CurrWorldArea();
-         auto curr_map_location = Player::get()->world_location();
+         auto curr_map_location = Hero::get()->world_location();
          auto tile_size = kTileSize;
          auto map_offset_x = (curr_map_location.x + dloc_x) * curr_wa->Width() * tile_size;
          auto map_offset_y = (curr_map_location.y + dloc_y) * curr_wa->Height() * tile_size;
@@ -570,31 +570,31 @@ namespace Narradia
       }
    }
 
-   void WorldViewAddV::DrawPlayer() {
+   void WorldAddV::DrawPlayer() {
       auto curr_wa = World::get()->CurrWorldArea();
-      auto curr_map_location = Player::get()->world_location();
+      auto curr_map_location = Hero::get()->world_location();
       auto tile_size = kTileSize;
       auto map_offset_x = curr_map_location.x * curr_wa->Width() * tile_size;
       auto map_offset_y = curr_map_location.y * curr_wa->Height() * tile_size;
-      auto player_space_coord = Player::get()->pos().Multiply(kTileSize);
+      auto player_space_coord = Hero::get()->pos().Multiply(kTileSize);
       player_space_coord.x += map_offset_x;
       player_space_coord.z += map_offset_y;
-      auto player_map_coord = Player::get()->pos().GetXZ().ToIntPoint();
+      auto player_map_coord = Hero::get()->pos().GetXZ().ToIntPoint();
       auto tile_average_elevation = CalcTileAverageElevation(player_map_coord);
       player_space_coord.y += tile_average_elevation;
       auto ms_anim_time = 0.0f;
-      if (Player::get()->IsMoving())
+      if (Hero::get()->IsMoving())
          ms_anim_time = SDL_GetTicks() * 2;
       DrawModel(
-          "Player2", ms_anim_time, player_space_coord, Player::get()->facing_angle_deg() + 180.0f,
+          "Player2", ms_anim_time, player_space_coord, Hero::get()->facing_angle_deg() + 180.0f,
           0.6f);
    }
 
-   void WorldViewAddV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord) {
-      auto player_pos = Player::get()->pos().GetXZ().ToIntPoint();
+   void WorldAddV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord) {
+      auto player_pos = Hero::get()->pos().GetXZ().ToIntPoint();
       if (SDL_GetTicks() <
-              Player::get()->ticks_ulti_skill_start() + Player::get()->ulti_skill_duration() &&
-          Player::get()->ticks_ulti_skill_start() != 0 && coord.x == player_pos.x &&
+              Hero::get()->ticks_ulti_skill_start() + Hero::get()->ulti_skill_duration() &&
+          Hero::get()->ticks_ulti_skill_start() != 0 && coord.x == player_pos.x &&
           coord.y == player_pos.y) {
          DrawTile("TilePlayerUltiSkill", tile->rid());
       }

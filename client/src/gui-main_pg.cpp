@@ -1,10 +1,10 @@
 #include "gui-main_pg.h"
 #include "calc.h"
-#include "player.h"
-#include "rend_2d_colors.h"
-#include "rend_2d_images.h"
-#include "rend_text.h"
-#include "world-struct.h"
+#include "hero.h"
+#include "drw_colors.h"
+#include "drw_images.h"
+#include "drw_text.h"
+#include "world.h"
 
 namespace Narradia
 {
@@ -53,7 +53,7 @@ namespace Narradia
       rid_level_ = NewString();
    }
    void StatusPanelV::Render() {
-      auto player = Player::get();
+      auto player = Hero::get();
       DrawImage("PanelBg", rid_background_image_, StatusPanel::kBoundsPanel);
       DrawString(
           rid_player_name_, player->name(),
@@ -90,7 +90,7 @@ namespace Narradia
       auto unfilled_area =
           RectF{0.0f, 1.0f - ExperienceBar::kBarHeight, 1.0f, ExperienceBar::kBarHeight};
       FillRect(rid_unfilled_area_, unfilled_area, Colors::dark_gray);
-      auto experience_progress = GetFractionalExpProgress(Player::get()->experience());
+      auto experience_progress = GetFractionalExpProgress(Hero::get()->experience());
       auto filled_area = RectF{
           0.0f, 1.0f - ExperienceBar::kBarHeight, experience_progress, ExperienceBar::kBarHeight};
       DrawImage("Green", rid_filled_area_, filled_area);
@@ -147,8 +147,8 @@ namespace Narradia
                 rids_rectangles_[i],
                 {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height},
                 Colors::black);
-            if (x == Player::get()->world_location().x && y == Player::get()->world_location().y) {
-               auto player_pos = Player::get()->pos();
+            if (x == Hero::get()->world_location().x && y == Hero::get()->world_location().y) {
+               auto player_pos = Hero::get()->pos();
                auto map_area = World::get()->world_areas()[x][y];
                auto tile_width = cell_width / map_area->Width();
                auto tile_height = cell_height / map_area->Height();

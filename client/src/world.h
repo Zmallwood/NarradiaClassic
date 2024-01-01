@@ -1,8 +1,8 @@
 #pragma once
 #if 1
 #include "conf.h"
-#include "player.h"
-#include "world_map_loader.h"
+#include "hero.h"
+#include "world_map_rdr.h"
 #endif
 
 namespace Narradia
@@ -161,18 +161,18 @@ namespace Narradia
    class World : public S<World> {
      public:
       World() {
-         world_width_ = WorldMapLoader::get()->world_map_width();
-         world_height_ = WorldMapLoader::get()->world_map_height();
-         auto map_names = WorldMapLoader::get()->world_area_names();
+         world_width_ = WorldMapRdr::get()->world_map_width();
+         world_height_ = WorldMapRdr::get()->world_map_height();
+         auto map_names = WorldMapRdr::get()->world_area_names();
          for (auto y = 0; y < world_height_; y++) {
             for (auto x = 0; x < world_width_; x++) {
                world_areas_[x][y] = nullptr;
-               WorldMapLoader::get()->LoadWorldMapFromFile(world_areas_[x][y], map_names[x][y]);
+               WorldMapRdr::get()->LoadWorldMapFromFile(world_areas_[x][y], map_names[x][y]);
             }
          }
       }
       auto CurrWorldArea() -> std::shared_ptr<WorldArea> {
-         auto world_loc = Player::get()->world_location();
+         auto world_loc = Hero::get()->world_location();
          return world_areas_[world_loc.x][world_loc.y];
       }
       auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea> {

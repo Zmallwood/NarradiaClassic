@@ -193,6 +193,17 @@ namespace Narradia
 #endif
 #endif
 
+   // File utils
+#if 1
+   inline std::string_view FileExtension(std::string_view abs_path) {
+      return abs_path.substr(abs_path.find_last_of('.') + 1);
+   }
+   inline std::string FileNameNoExt(std::string_view abs_path) {
+      auto name_with_ext = abs_path.substr(abs_path.find_last_of('/') + 1);
+
+      return std::string(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
+   }
+#endif
 }
 
 // clang-format off
@@ -203,8 +214,6 @@ namespace Narradia
 
 namespace Narradia
 {
-
-
    // Canvas utils
 #if 1
    inline Size CanvasSize() {
@@ -257,17 +266,6 @@ namespace Narradia
    }
 #endif
 
-   // File utils
-#if 1
-   inline std::string_view FileExtension(std::string_view abs_path) {
-      return abs_path.substr(abs_path.find_last_of('.') + 1);
-   }
-   inline std::string FileNameNoExt(std::string_view abs_path) {
-      auto name_with_ext = abs_path.substr(abs_path.find_last_of('/') + 1);
-
-      return std::string(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
-   }
-#endif
 
 // Singleton helpers
 #if 1

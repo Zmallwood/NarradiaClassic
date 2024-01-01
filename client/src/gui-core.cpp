@@ -3,8 +3,8 @@
 #include "conf.h"
 #include "core.h"
 #include "pages.h"
-#include "rend_2d_images.h"
-#include "rend_text.h"
+#include "drw_images.h"
+#include "drw_text.h"
 #endif
 
 namespace Narradia

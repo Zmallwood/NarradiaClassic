@@ -1,18 +1,18 @@
 #if 1
 #include "pages.h"
-#include "adds-map_gen.h"
+#include "map_gen_add.h"
 #include "adds.h"
-#include "adds-world_view.h"
+#include "world_add.h"
 #include "assets.h"
 #include "core.h"
 #include "gui-core.h"
 #include "gui-main_pg.h"
-#include "player.h"
-#include "rend_2d_images.h"
+#include "hero.h"
+#include "drw_images.h"
 #include "rend_models.h"
-#include "rend_text.h"
-#include "rend_tiles.h"
-#include "world-struct.h"
+#include "drw_text.h"
+#include "rend_grnd.h"
+#include "world.h"
 #endif
 
 namespace Narradia
@@ -43,7 +43,7 @@ namespace Narradia
    // MapCreationPg
 #if 1
    void MapCreationPg::UpdateGameLogicDerived() {
-      WorldViewAdd::get()->UpdateGameLogic();
+      WorldAdd::get()->UpdateGameLogic();
    }
    void MapCreationPg::Finalize() {
       PageMngrC::get()->ChangeScene(PageNames::Main);
@@ -62,7 +62,7 @@ namespace Narradia
          KbBindingsAdd::get()->UpdateGameLogic();
          KeyboardMovementAdd::get()->UpdateGameLogic();
          MouseMovementAdd::get()->UpdateGameLogic();
-         WorldViewAdd::get()->UpdateGameLogic();
+         WorldAdd::get()->UpdateGameLogic();
          MouseRotationAdd::get()->UpdateGameLogic();
          TileHoveringAdd::get()->UpdateGameLogic();
          SkillPerformingAdd::get()->UpdateGameLogic();
@@ -129,7 +129,7 @@ namespace Narradia
       scene_gui_view_->AddGuiComponentView(std::make_shared<GuiWindowWorldMapV>());
    }
    void MainPgV::RenderDerived() {
-      WorldViewAddV::get()->Render();
+      WorldAddV::get()->Render();
       FPSCounterAddV::get()->Render();
    }
 #endif
@@ -170,7 +170,7 @@ namespace Narradia
       auto map_area = World::get()->CurrWorldArea();
       auto x = map_area->Width() / 2.0f;
       auto y = map_area->Height() / 2.0f;
-      Player::get()->set_pos({x, 0.0f, y});
+      Hero::get()->set_pos({x, 0.0f, y});
    }
    void MapCreationPgC::UpdateGameFlowDerived() {
    }

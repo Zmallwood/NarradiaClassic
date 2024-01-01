@@ -1,33 +1,32 @@
 #if 1
-#include "rend_2d_images.h"
+#include "drw_images.h"
 #include "assets.h"
 #include "conf.h"
-#include "shaders.h"
 #endif
 
 namespace Narradia
 {
    // View
 #if 1
-   // Rend2DImagesV
+   // DrwImagesV
 #if 1
-   Rend2DImagesV::Rend2DImagesV() {
+   DrwImagesV::DrwImagesV() {
       shader_program_view()->Create(
           vertex_shader_source_2d_images, fragment_shader_source_2d_images);
    }
-   Rend2DImagesV::~Rend2DImagesV() {
+   DrwImagesV::~DrwImagesV() {
       if (kVerbose)
-         std::cout << "Cleaning up Rend2DImagesV.\n";
+         std::cout << "Cleaning up DrwImagesV.\n";
       CleanupBase();
       if (kVerbose)
-         std::cout << "Cleaning up of Rend2DImagesV finished.\n";
+         std::cout << "Cleaning up of DrwImagesV finished.\n";
    }
 #endif
 
    // Free functions
 #if 1
    auto NewImage() -> RenderID {
-      auto renderer = Rend2DImagesV::get();
+      auto renderer = DrwImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
       renderer->UseVAOBegin(vao_id);
@@ -46,7 +45,7 @@ namespace Narradia
    }
    auto DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color)
        -> void {
-      auto renderer = Rend2DImagesV::get();
+      auto renderer = DrwImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = dest.ToGLRectF();
       Vertex2F vertices[RendBase::kNumVerticesInRectangle];
@@ -84,10 +83,10 @@ namespace Narradia
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions2D,
-          Rend2DImagesV::kLocationPosition);
+          DrwImagesV::kLocationPosition);
       renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, Rend2DImagesV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, Rend2DImagesV::kLocationUv);
+          color_buffer_id, colors, BufferTypes::Colors, DrwImagesV::kLocationColor);
+      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, DrwImagesV::kLocationUv);
       glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
