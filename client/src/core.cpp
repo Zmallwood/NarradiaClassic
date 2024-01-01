@@ -335,7 +335,7 @@ namespace Narradia
    }
    auto ConsoleCalc::HorizontalSplitterRect() -> RectF {
       return {
-          0.0f,
+          Console::get()->Bounds().x,
           Console::get()->Bounds().y + Console::get()->Bounds().h - 1.3f * Console::kTextLineHeight,
           Console::get()->Bounds().w, Console::kSplitLineHeight};
    }

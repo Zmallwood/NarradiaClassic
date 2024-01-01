@@ -260,7 +260,7 @@ namespace Narradia
       static constexpr float kSplitLineHeight = 0.001f;
 
      private:
-      static constexpr RectF kDefaultBounds = {0.0f, 0.8f, 0.3f, 0.2f};
+      static constexpr RectF kDefaultBounds = {0.35f, 0.8f, 0.3f, 0.2f};
 
       std::vector<TextLine> text_lines_;
       bool enabled_ = true;

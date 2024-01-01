@@ -35,11 +35,11 @@ namespace Narradia
 #if 1
    MainMenuPg::MainMenuPg() {
       scene_gui()->AddGuiComponent(
-          std::make_shared<GuiButton>("Play", RectF{0.4f, 0.4f, 0.2f, 0.1f}, [] {
+          std::make_shared<GuiButton>("Play", RectF{0.05f, 0.4f, 0.2f, 0.1f}, [] {
              PageMngrC::get()->ChangeScene(PageNames::MapCreation);
           }));
       scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
-          "Exit", RectF{0.4f, 0.55f, 0.2f, 0.1f}, [] { Engine::get()->set_running(false); }));
+          "Exit", RectF{0.05f, 0.55f, 0.2f, 0.1f}, [] { Engine::get()->set_running(false); }));
    }
    void MainMenuPg::UpdateGameLogicDerived() {
       MenuModelsAdd::get()->UpdateGameLogic();
@@ -113,8 +113,8 @@ namespace Narradia
       rid_logo = NewImage();
    }
    void MainMenuPgV::RenderDerived() {
-      DrawImage("DefaultSceneBackground", rid_background, {0.0f, 0.0f, 1.0f, 1.0f});
-      DrawImage("NarradiaLogo", rid_logo, {0.4f, 0.1f, 0.2f, 0.1f});
+      DrawImage("MainMenuSceneBackground", rid_background, {0.0f, 0.0f, 1.0f, 1.0f});
+      DrawImage("NarradiaLogo", rid_logo, {0.05f, 0.1f, 0.2f, 0.1f});
       MenuModelsAddV::get()->Render();
    }
 #endif
