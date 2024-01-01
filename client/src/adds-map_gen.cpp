@@ -2,7 +2,6 @@
 #include "adds-map_gen.h"
 #include "adds-world_view.h"
 #include "assets.h"
-#include "core_v.h"
 #include "player.h"
 #include "rend_models_v.h"
 #include "rend_tiles_v.h"
@@ -79,7 +78,7 @@ namespace Narradia
             delete[] data;
             GraphicsV::get()->ClearCanvas();
             // GraphicsV::get()->PresentCanvas();
-            map_area->ClearAllRIDS();
+            map_area->ClearAllRIDs();
          }
       }
       WorldViewAddV::Dispose();

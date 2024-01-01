@@ -1,13 +1,19 @@
 #pragma once
 
+namespace Narradia
+{
+   typedef GLuint RenderID;
+}
+
+// clang-format off
 #include "singleton.h"
 #include "assets.h"
 #include "core.h"
 #include <GL/glew.h>
+//clang-format on
 
 namespace Narradia
 {
-   typedef GLuint RenderID;
 
    // Canvas utils
 #if 1

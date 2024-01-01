@@ -277,8 +277,9 @@ namespace Narradia
                   int y;
                   x = curr_wa->Width() + x_orig;
                   y = y_orig;
-                  DrawTileOutsideWorldArea(x, y, -1, 0);
+                  DrawGroundTileOutsideWorldArea(x, y, -1, 0);
                }
+               // East
                else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
                   int x_orig = x;
                   int y_orig = y;
@@ -286,7 +287,7 @@ namespace Narradia
                   int y;
                   x = x_orig - curr_wa->Width();
                   y = y_orig;
-                  DrawTileOutsideWorldArea(x, y, 1, 0);
+                  DrawGroundTileOutsideWorldArea(x, y, 1, 0);
                }
             }
             else {
@@ -305,7 +306,58 @@ namespace Narradia
       StopTileBatchDrawing();
    }
 
-   void WorldViewAddV::DrawTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   void WorldViewAddV::DrawAllModels() {
+      auto curr_wa = World::get()->CurrWorldArea();
+      auto x_center = static_cast<int>(Player::get()->pos().x);
+      auto y_center = static_cast<int>(Player::get()->pos().z);
+      auto r = render_distance_;
+
+      StartModelsBatchDrawing();
+
+      for (auto y = y_center - r; y <= y_center + r; y++) {
+         for (auto x = x_center - r; x <= x_center + r; x++) {
+            auto dx = x - x_center;
+            auto dy = y - y_center;
+
+            if (dx * dx + dy * dy > r * r)
+               continue;
+
+            if (x < 0 || y < 0 || x >= curr_wa->Width() || y >= curr_wa->Height()) {
+               // West
+               if (x < 0 && y >= 0 && y < curr_wa->Height()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = curr_wa->Width() + x_orig;
+                  y = y_orig;
+                  DrawModelsTileOutsideWorldArea(x, y, -1, 0);
+               }
+               // East
+               else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig - curr_wa->Width();
+                  y = y_orig;
+                  DrawModelsTileOutsideWorldArea(x, y, 1, 0);
+               }
+            }
+            else {
+               auto tile = curr_wa->GetTile(x, y);
+               auto coord = Point{x, y};
+
+               DrawObjects(tile, coord);
+            }
+         }
+      }
+
+      DrawPlayer();
+      StopModelsBatchDrawing();
+   }
+
+   void WorldViewAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Player::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
@@ -417,34 +469,30 @@ namespace Narradia
       }
    }
 
-   void WorldViewAddV::DrawAllModels() {
+   void WorldViewAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
-      auto x_center = static_cast<int>(Player::get()->pos().x);
-      auto y_center = static_cast<int>(Player::get()->pos().z);
-      auto r = render_distance_;
+      auto world_loc = Player::get()->world_location();
+      auto loc = world_loc.Translate(dloc_x, dloc_y);
+      auto wa = World::get()->WorldAreaAt(loc);
+      if (wa) {
+         if (wa->IsInsideMap({x, y})) {
+            auto tile = wa->GetTile(x, y);
+            if (tile) {
+               auto coord = Point{x, y};
 
-      StartModelsBatchDrawing();
+               DrawObjects(tile, coord, dloc_x, dloc_y);
 
-      for (auto y = y_center - r; y <= y_center + r; y++) {
-         for (auto x = x_center - r; x <= x_center + r; x++) {
-            if (x < 0 || y < 0 || x >= curr_wa->Width() || y >= curr_wa->Height())
-               continue;
-
-            auto dx = x - x_center;
-            auto dy = y - y_center;
-
-            if (dx * dx + dy * dy > r * r)
-               continue;
-
-            auto tile = curr_wa->GetTile(x, y);
-            auto coord = Point{x, y};
-
-            DrawObjects(tile, coord);
+               // auto tile_symbols =
+               // std::make_shared<Tile>();
+               // tile_symbols->set_mob(tile->mob());
+               // tile_symbols->set_rid(rids_tile_symbols[x
+               /// inc][y / inc]);
+               // tile_symbols->set_tile_effect(tile->tile_effect());
+               // DrawTileSymbols(tile_symbols,
+               // coord);
+            }
          }
       }
-
-      DrawPlayer();
-      StopModelsBatchDrawing();
    }
 
    void WorldViewAddV::DrawGround(std::shared_ptr<Tile> tile, Point coord) {
@@ -462,13 +510,13 @@ namespace Narradia
       DrawTile(ground, tile->rid());
    }
 
-   void WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord) {
+   void WorldViewAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
       if (tile->object()) {
          auto curr_wa = World::get()->CurrWorldArea();
          auto curr_map_location = Player::get()->world_location();
          auto tile_size = kTileSize;
-         auto map_offset_x = curr_map_location.x * curr_wa->Width() * tile_size;
-         auto map_offset_y = curr_map_location.y * curr_wa->Height() * tile_size;
+         auto map_offset_x = (curr_map_location.x + dloc_x) * curr_wa->Width() * tile_size;
+         auto map_offset_y = (curr_map_location.y + dloc_y) * curr_wa->Height() * tile_size;
          auto pos =
              Point3F{coord.x * kTileSize, CalcTileAverageElevation(coord), coord.y * kTileSize}
                  .Translate(0.5f, 0.0f, 0.5f)

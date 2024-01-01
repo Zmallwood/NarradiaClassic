@@ -1,7 +1,5 @@
 #if 1
 #include "core.h"
-#include "core_c.h"
-#include "core_v.h"
 #endif
 
 int main(int argc, char *argv[]) {

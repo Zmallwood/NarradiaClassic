@@ -77,11 +77,12 @@ namespace Narradia
       }
 
      private:
-      void DrawTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
+      void DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
+      void DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
       void DrawAllGround();
       void DrawAllModels();
       void DrawGround(std::shared_ptr<Tile> tile, Point coord);
-      void DrawObjects(std::shared_ptr<Tile> tile, Point coord);
+      void DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x = 0, int dloc_y = 0);
       void DrawPlayer();
       void DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord);
 

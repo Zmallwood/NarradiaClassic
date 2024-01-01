@@ -140,7 +140,7 @@ namespace Narradia
       int Height() {
          return tiles_.at(0).size();
       }
-      void ClearAllRIDS() {
+      void ClearAllRIDs() {
          for (auto y = 0; y < Height(); y++) {
             for (auto x = 0; x < Width(); x++) {
                tiles_.at(x).at(y)->set_rid(0);

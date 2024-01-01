@@ -1,8 +1,6 @@
 #pragma once
 
 #include "core.h"
-#include "core_c.h"
-#include "core_v.h"
 
 namespace Narradia
 {

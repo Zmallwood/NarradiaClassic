@@ -8,8 +8,6 @@
 #include "adds-world_view.h"
 #include "assets.h"
 #include "core.h"
-#include "core_c.h"
-#include "core_v.h"
 #include "gui-core.h"
 #include "gui-core_v.h"
 #include "gui_comps.h"

@@ -1,7 +1,13 @@
 #pragma once
 
+#if 1
+#include "gui-core_v.h"
+#endif
+
 namespace Narradia
 {
+   // Model
+#if 1
    class Engine : public S<Engine> {
      public:
       Engine();
@@ -272,4 +278,106 @@ namespace Narradia
       auto InputArrowRect() -> RectF;
       auto InputTextPosition() -> PointF;
    };
+#endif
+
+// View
+#if 1
+   class EngineV : public S<EngineV> {
+     public:
+      ~EngineV();
+      void Render();
+   };
+
+   class IPageV;
+
+   class PageMngrV : public S<PageMngrV> {
+     public:
+      PageMngrV();
+      void RenderCurrScene();
+
+     private:
+      std::map<PageNames, std::shared_ptr<IPageV>> scene_views_;
+   };
+
+   class IPageV {
+     public:
+      IPageV();
+      void Render();
+
+     protected:
+      virtual void RenderDerived() = 0;
+
+      std::shared_ptr<SceneGuiV> scene_gui_view_;
+   };
+
+   class CursorV : public S<CursorV> {
+     public:
+      CursorV();
+      void RenderCursor();
+
+     private:
+      RenderID rid_image;
+
+      static constexpr float kCursorWidth = 0.02f;
+   };
+
+   class GraphicsV : public S<GraphicsV> {
+     public:
+      GraphicsV();
+      void ClearCanvas();
+      void PresentCanvas();
+
+     private:
+      void InitGL();
+
+      static constexpr bool kCullFace = false;
+      const Color kClearColor = Colors::mild_blue;
+   };
+
+   class ConsoleV : public S<ConsoleV> {
+     public:
+      ConsoleV();
+      void Render() const;
+
+     private:
+      RenderID rid_image_;
+      RenderID rid_split_line_;
+      RenderID rid_cmd_line_input_arrow_;
+      RenderID rid_input_text_;
+      std::vector<RenderID> rids_text_lines_;
+   };
+#endif
+
+   // Controller
+#if 1
+   class EngineC : public S<EngineC> {
+     public:
+      auto HandleInput() -> void;
+      auto UpdateGameFlow() -> void;
+
+     private:
+      void PollEvents();
+   };
+
+   class IPageC;
+
+   class PageMngrC : public S<PageMngrC> {
+     public:
+      PageMngrC();
+      auto UpdateGameFlowCurrScene() -> void;
+      auto ChangeScene(PageNames new_scene) -> void;
+
+     private:
+      std::map<PageNames, std::shared_ptr<IPageC>> scene_controllers_;
+   };
+
+   class IPageC {
+     public:
+      virtual auto OnEnter() -> void = 0;
+      auto UpdateGameFlow() -> void;
+
+     protected:
+      virtual void UpdateGameFlowDerived() = 0;
+   };
+#endif
 }
