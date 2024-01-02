@@ -66,7 +66,8 @@ while ($running eq "true") {
         $num_tiles_y = $world_height*$world_area_height;
         $max_side = $num_tiles_x > $num_tiles_y ? $num_tiles_x : $num_tiles_y;
         print "Max side: $max_side\n";
-        $r = $max_side/2*80/100;
+        $r_cont = $max_side/2*80/100;
+        $r = $r_cont;
         $r_varying = 50;
         $center_x = $num_tiles_x/2;
         $center_y = $num_tiles_y/2;
@@ -222,7 +223,7 @@ while ($running eq "true") {
             }
         }
 
-        # Generate elevation
+        # Generate hills
 
         print "Generate elevation: large hills\n";
 
@@ -237,6 +238,11 @@ while ($running eq "true") {
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
                 for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
                     for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+
+                        if ($x < 0 or $x >= $num_tiles_x or $y < 0 or $y >= $num_tiles_y) {
+                            next;
+                        }
+
                         $dx = $x - $x_cent;
                         $dy = $y - $y_cent;
 
@@ -263,6 +269,11 @@ while ($running eq "true") {
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
                 for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
                     for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+
+                        if ($x < 0 or $x >= $num_tiles_x or $y < 0 or $y >= $num_tiles_y) {
+                            next;
+                        }
+
                         $dx = $x - $x_cent;
                         $dy = $y - $y_cent;
 
@@ -275,8 +286,6 @@ while ($running eq "true") {
                 }
             }
         }
-
-        print "Generate mountain ridge\n";
 
         # Generate colors variations
 
@@ -294,7 +303,7 @@ while ($running eq "true") {
             for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
                 for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
 
-                    if ($x < 0 || $x >= $num_tiles_x || $y < 0 || $y >= $num_tiles_y) {
+                    if ($x < 0 or $x >= $num_tiles_x or $y < 0 or $y >= $num_tiles_y) {
                         next;
                     }
 
@@ -335,6 +344,114 @@ while ($running eq "true") {
                 }
             }
         }
+
+        # Generate mountain ridge
+
+        print "Generate mountain ridge\n";
+
+        $start_coord_chosen = "no";
+
+        my $ridge_start_x;
+        my $ridge_start_y;
+
+        while ($start_coord_chosen eq "no") {
+            $ridge_start_x = int(rand($num_tiles_x));
+            $ridge_start_y = int(rand($num_tiles_y));
+
+            $dx = $ridge_start_x - $num_tiles_x/2;
+            $dy = $ridge_start_y - $num_tiles_y/2;
+
+            if ((($dx*$dx + $dy*$dy) <= $r_cont*$r_cont) and (($dx*$dx + $dy*$dy) > $r_cont*$r_cont*0.4*0.4)) {
+                if ($tiles[$ridge_start_x][$ridge_start_y] ne "GroundWater") {
+                    $start_coord_chosen = "yes";
+                }
+            }
+        }
+
+        print "ridge_start_x: $ridge_start_x\n";
+        print "ridge_start_y: $ridge_start_y\n";
+
+        $dx = $num_tiles_x/2 - $ridge_start_x;
+        $dy = $num_tiles_y/2 - $ridge_start_y;
+
+        $absdx = abs($dx);
+        $absdy = abs($dy);
+
+        $normx = 0;
+        $normy = 0;
+
+        if ($dx != 0) {
+            $normx = $dx/$absdx;
+        }
+
+        if ($dy != 0) {
+            $normy = $dy/$absdy;
+        }
+
+        $xstep = $normx != 0 ? $normx : (rand(3) - 1);
+        $ystep = $normy != 0 ? $normy : (rand(3) - 1);
+
+        $dxstep = (rand(3) - 1);
+        $dystep = (rand(3) - 1);
+
+        $dr = (rand(3) - 1);
+        $ddr = -1*$dr/10.0;
+
+        $ridge_num_steps = 600;
+
+        $x = $ridge_start_x;
+        $y = $ridge_start_y;
+
+        $ridge_r = 60 + int(rand(40));
+
+        $elev_inc = 0.1;
+
+        for ($i = 0; $i < $ridge_num_steps; $i = $i + 10) {
+
+            if ($i % 160 == 0) {
+                $xstep = $xstep + $dxstep;
+                $ystep = $ystep + $dystep;
+            }
+
+            for ($r_local = $ridge_r; $r_local >= 0; $r_local = $r_local - 1) {
+                for ($yy = $y - $r_local; $yy <= $y + $r_local; $yy = $yy + 1) {
+                    for ($xx = $x - $r_local; $xx <= $x + $r_local; $xx = $xx + 1) {
+
+                        if ($xx < 0 || $yy < 0 || $xx >= $num_tiles_x || $yy >= $num_tiles_y) {
+                            next;
+                        }
+
+                        if ($tiles[$xx][$yy] eq "GroundWater") {
+                            next;
+                        }
+
+                        $dx = $xx - $x;
+                        $dy = $yy - $y;
+
+                        if ($dx*$dx + $dy*$dy <= $r_local*$r_local) {
+                            $elevs[$xx][$yy] = $elevs[$xx][$yy] + $elev_inc;
+                            $tiles[$xx][$yy] = "Ground";
+                            $objects[$xx][$yy] = "";
+                            $reds[$xx][$yy] = 0.7;
+                            $greens[$xx][$yy] = 1.0;
+                            $blues[$xx][$yy] = 0.8;
+                        }
+                    }
+                }
+            }
+
+            #$ridge_r = $ridge_r + $dr;
+            #$dr = $dr + $ddr;
+
+            $x = int($x + $xstep*10);
+            $y = int($y + $ystep*10);
+        }
+
+        # Generate lakes
+
+        # Generate rivers
+
+        # Generate misc objects
 
         # Generate normals
 
