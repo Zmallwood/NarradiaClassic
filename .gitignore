@@ -1,1 +1,3 @@
 client/run.sh
+*.map
+World.conf
