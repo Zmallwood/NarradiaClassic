@@ -17,8 +17,8 @@ while ($running eq "true") {
     if ($menu_select == "1") {
         print "Generating world map...\n";
 
-        $world_width = 5;
-        $world_height = 5;
+        $world_width = 6;
+        $world_height = 6;
         $world_area_width = 300;
         $world_area_height = 300;
 
@@ -39,6 +39,8 @@ while ($running eq "true") {
         my @normalsx;
         my @normalsy;
         my @normalsz;
+
+        # Generate sea
 
         for ($wy = 0; $wy < $world_height; $wy = $wy + 1) {
             for ($wx = 0; $wx < $world_width; $wx = $wx + 1) {
@@ -64,10 +66,12 @@ while ($running eq "true") {
         $num_tiles_y = $world_height*$world_area_height;
         $max_side = $num_tiles_x > $num_tiles_y ? $num_tiles_x : $num_tiles_y;
         print "Max side: $max_side\n";
-        $r = $max_side/2*90/100;
+        $r = $max_side/2*80/100;
         $r_varying = 50;
         $center_x = $num_tiles_x/2;
         $center_y = $num_tiles_y/2;
+
+        # Generate continent
 
         print "Continent radius: $r\n";
 
@@ -76,13 +80,12 @@ while ($running eq "true") {
                 $dx = $x - $center_x;
                 $dy = $y - $center_y;
 
-                $w = 3.14;
+                $r_local = $r + $r_varying;
 
                 if ($dx != 0) {
                     $w = atan($dy/$dx);
+                    $r_local = $r + int(cos($w*10 + 3)*$r_varying);
                 }
-
-                $r_local = $r + int(cos($w*10 + 3)*$r_varying);
 
                 if ($dx*$dx + $dy*$dy < $r_local*$r_local) {
                     $tiles[$x][$y] = "Ground";
@@ -123,20 +126,23 @@ while ($running eq "true") {
 
         print "Generating snow lands.\n";
 
-        $snow_lands_border = 0.15;
+        $snow_lands_border = 0.25;
         $snow_lands_border_row =int($snow_lands_border*$num_tiles_y);
 
         print "Snow lands border at row $snow_lands_border_row.\n";
 
         for ($y = 0; $y < $snow_lands_border_row; $y = $y + 1) {
             for ($x = 0; $x < $num_tiles_x; $x = $x + 1) {
-                if ($tiles[$x][$y] eq "Ground") {
-                    $tiles[$x][$y] = "Ground";
-                    $tiles[$x][$y] = "GroundSnow";
-                    $objects[$x][$y] = "";
-                    $reds[$x][$y] = 1.0;
-                    $greens[$x][$y] = 1.0;
-                    $blues[$x][$y] = 1.0;
+                $border_row_vary = $snow_lands_border_row + cos($x/50.0)*20 - 20;
+                if ($y < $border_row_vary) {
+                    if ($tiles[$x][$y] eq "Ground") {
+                        $tiles[$x][$y] = "Ground";
+                        $tiles[$x][$y] = "GroundSnow";
+                        $objects[$x][$y] = "";
+                        $reds[$x][$y] = 1.0;
+                        $greens[$x][$y] = 1.0;
+                        $blues[$x][$y] = 1.0;
+                    }
                 }
             }
         }
@@ -145,20 +151,73 @@ while ($running eq "true") {
 
         print "Generating deserts.\n";
 
-        $deserts_border = 0.85;
+        $deserts_border = 0.75;
         $deserts_border_row =int($deserts_border*$num_tiles_y);
 
         print "Deserts border at row $deserts_border_row.\n";
 
         for ($y = $deserts_border_row; $y < $num_tiles_y; $y = $y + 1) {
             for ($x = 0; $x < $num_tiles_x; $x = $x + 1) {
-                if ($tiles[$x][$y] eq "Ground") {
-                    $tiles[$x][$y] = "Ground";
-                    $tiles[$x][$y] = "GroundSand";
-                    $objects[$x][$y] = "";
-                    $reds[$x][$y] = 1.0;
-                    $greens[$x][$y] = 1.0;
-                    $blues[$x][$y] = 1.0;
+                $border_row_vary = $deserts_border_row + cos($x/50.0)*20 + 20;
+                if ($y > $border_row_vary) {
+                    if ($tiles[$x][$y] eq "Ground") {
+                        $tiles[$x][$y] = "Ground";
+                        $tiles[$x][$y] = "GroundSand";
+                        $objects[$x][$y] = "";
+                        $reds[$x][$y] = 1.0;
+                        $greens[$x][$y] = 1.0;
+                        $blues[$x][$y] = 1.0;
+                    }
+                }
+            }
+        }
+
+        # Generate islands
+
+        print "Generating islands\n";
+
+        $num_islands = 8 + int(rand(8));
+
+        for ($i = 0; $i < $num_islands; $i = $i + 1) {
+
+            my $coord_at_sea = "no";
+
+            my $x;
+            my $y;
+
+            while ($coord_at_sea eq "no") {
+
+                $x = int(rand($num_tiles_x));
+                $y = int(rand($num_tiles_y));
+
+                $dx = $x - $center_x;
+                $dy = $y - $center_y;
+
+                $r_local = $r + $r_varying;
+
+                if ($dx != 0) {
+                    $w = atan($dy/$dx);
+                    $r_local = $r + int(cos($w*10 + 3)*$r_varying);
+                }
+
+                if ($dx*$dx + $dy*$dy > $r_local*$r_local) {
+                    $coord_at_sea = "yes";
+                }
+            }
+
+            $r_island = 40 + int(rand(70));
+
+            for ($yy = $y - $r_island; $yy <= $y + $r_island; $yy = $yy + 1) {
+                for ($xx = $x - $r_island; $xx <= $x + $r_island; $xx = $xx + 1) {
+                    $dx_isl = $xx - $x;
+                    $dy_isl = $yy - $y;
+
+                    if ($dx_isl*$dx_isl + $dy_isl*$dy_isl <= $r_island*$r_island) {
+                        $tiles[$xx][$yy] = "Ground";
+                        $reds[$xx][$yy] = 0.0;
+                        $greens[$xx][$yy] = 1.0;
+                        $blues[$xx][$yy] = 0.0;
+                    }
                 }
             }
         }
