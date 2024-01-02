@@ -14,11 +14,11 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/adds.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/adds.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/map_gen_add.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/map_gen_add.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/adds.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/adds.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/map_gen_add.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/map_gen_add.cpp.o"
   }
 ]

@@ -1,11 +1,11 @@
 #if 1
 #include "map_gen_add.h"
-#include "world_add.h"
 #include "assets.h"
 #include "hero.h"
-#include "rend_models.h"
 #include "rend_grnd.h"
+#include "rend_models.h"
 #include "world.h"
+#include "world_add.h"
 #endif
 
 namespace Narradia
@@ -67,15 +67,41 @@ namespace Narradia
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             auto canv_sz = CanvasSize();
             typedef char byte;
-            byte *data = new byte[canv_sz.w * canv_sz.h * 3];
+            // byte *data = new byte[canv_sz.w * canv_sz.h * 3];
+            int w = canv_sz.h;
+            int h = canv_sz.h;
+            std::vector<uint8_t> pixels(3 * w * h);
+            //glReadPixels(x, y, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
+
             glReadBuffer(GL_BACK);
             glReadPixels(
                 canv_sz.w / 2 - canv_sz.h / 2, 0, canv_sz.h, canv_sz.h, GL_RGB, GL_UNSIGNED_BYTE,
-                data);
+                pixels.data());
+            for (int line = 0; line < h; line++) {
+               for (auto px = 0; px < w / 2; px++) {
+                  for (auto val = 0; val < 3; val++) {
+                     auto pos1 = line*w*3+px*3 + val;
+                     auto pos2 = line*w*3 + w*3 - px*3 + val;
+                     //if (pos1 < 0 || pos1 >= 3*w*h) {
+                     //   std::cout << "error pos 1\n";
+                     //   continue;
+                     //}
+                     //if (pos2 < 0 || pos2 >= 3*w*h) {
+                     //   std::cout << "error pos 2\n";
+                     //   continue;
+                     //}
+                     
+                     auto &a = pixels.data()[pos1];
+                     auto &b = pixels.data()[pos2];
+                     std::swap(a, b);
+                  }
+               }
+            }
             glTexImage2D(
-                GL_TEXTURE_2D, 0, GL_RGB, canv_sz.h, canv_sz.h, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+                GL_TEXTURE_2D, 0, GL_RGB, canv_sz.h, canv_sz.h, 0, GL_RGB, GL_UNSIGNED_BYTE,
+                pixels.data());
             glBindTexture(GL_TEXTURE_2D, 0);
-            delete[] data;
+            // delete[] data;
             GraphicsV::get()->ClearCanvas();
             // GraphicsV::get()->PresentCanvas();
             map_area->ClearAllRIDs();

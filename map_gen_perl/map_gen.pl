@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# Map generation script for Narradia
+
 $running = "true";
 
 while ($running eq "true") {
@@ -73,13 +75,37 @@ while ($running eq "true") {
 
                 if ($dx*$dx + $dy*$dy < $r*$r) {
                     $tiles[$x][$y] = "Ground";
+                    $reds[$x][$y] = 0.0;
+                    $blues[$x][$y] = 0.0;
                 }
             }
         }
 
+        $num_forests1 = 3 + int(rand(5));
+        $num_trees_forest1 = 50 + int(rand(100));
+
+        for ($i = 0; $i < $num_forests1; $i = $i + 1) {
+            $x = int(rand($num_tiles_x));
+            $y = int(rand($num_tiles_y));
+
+            for ($j = 0; $j < $num_trees_forest1; $j = $j + 1) {
+                $dx = $x - $center_x;
+                $dy = $y - $center_y;
+
+                if ($dx*$dx + $dy*$dy < $r*$r) {
+                    $objects[$x][$y] = "ObjectTree1";
+                }
+
+                $x = $x + int(rand(3)) - int(rand(3));
+                $y = $y + int(rand(3)) - int(rand(3));
+            }
+        }
+
+        # Writing to files
+
         for ($wy = 0; $wy < $world_height; $wy = $wy + 1) {
             for ($wx = 0; $wx < $world_width; $wx = $wx + 1) {
-                print ">Generating tile at map ($wx, $wy)\n";
+                print ">Writing file for map ($wx, $wy)\n";
 
                 print DATA "$wx,$wy=Map$wx\_$wy.map\n";
 
