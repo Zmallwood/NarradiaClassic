@@ -377,16 +377,10 @@ while ($running eq "true") {
         $absdx = abs($dx);
         $absdy = abs($dy);
 
-        $normx = 0;
-        $normy = 0;
+        $absmax = $absdx > $absdy ? $absdx : $absdy;
 
-        if ($dx != 0) {
-            $normx = $dx/$absdx;
-        }
-
-        if ($dy != 0) {
-            $normy = $dy/$absdy;
-        }
+        $normx = $dx/$absmax;
+        $normy = $dy/$absmax;
 
         $xstep = $normx != 0 ? $normx : (rand(3) - 1);
         $ystep = $normy != 0 ? $normy : (rand(3) - 1);
@@ -408,7 +402,7 @@ while ($running eq "true") {
 
         for ($i = 0; $i < $ridge_num_steps; $i = $i + 10) {
 
-            if ($i % 160 == 0) {
+            if ($i % 300 == 0) {
                 $xstep = $xstep + $dxstep;
                 $ystep = $ystep + $dystep;
             }
@@ -449,13 +443,50 @@ while ($running eq "true") {
 
         # Generate lakes
 
+        print "Generate lakes.\n";
+
+        $num_lakes = 20 + int(rand(20));
+
+        for ($i = 0; $i < $num_lakes; $i = $i + 1) {
+            $x_cent = int(rand($num_tiles_x));
+            $y_cent = int(rand($num_tiles_y));
+            $r = 20 + int(rand(90));
+
+            for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
+                for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+
+                    if ($x < 0 or $x >= $num_tiles_x or $y < 0 or $y >= $num_tiles_y) {
+                        next;
+                    }
+
+                    $dx = $x - $x_cent;
+                    $dy = $y - $y_cent;
+                    $r_local = sqrt($dx*$dx + $dy*$dy);
+
+                    if ($dx*$dx + $dy*$dy <= $r*$r) {
+                        if ($elevs[$x][$y] < 2.0) {
+                            $tiles[$x][$y] = "GroundWater";
+                            $reds[$x][$y] = 1.0;
+                            $greens[$x][$y] = 1.0;
+                            $blues[$x][$y] = 1.0;
+                            $elevs[$x][$y] = 0.0;
+                        }
+                    }
+                }
+            }
+        }
+
         # Generate rivers
+
+        print "Generate rivers\n";
 
         # Generate misc objects
 
-        # Generate normals
+        print "Generate misc objects\n";
 
-        print "Generate normals\n";
+        # Calculating normals
+
+        print "Calculating normals\n";
 
         # Writing to files
 
