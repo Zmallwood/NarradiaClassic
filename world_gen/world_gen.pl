@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 use Math::Trig;
+use Math::Vec;
 
 # World generation script for Narradia
 
@@ -21,6 +22,8 @@ while ($running eq "true") {
         $world_height = 6;
         $world_area_width = 300;
         $world_area_height = 300;
+        $tile_size = 2.0;
+        $elev_amount = 3.0;
 
         open(DATA, ">World.conf") or die "Couldn't open file World.conf, $!";
 
@@ -258,12 +261,43 @@ while ($running eq "true") {
 
         print "Generate elevation: small hills\n";
 
-        $num_large_hills = 50 + int(rand(50));
+        $num_small_hills = 500 + int(rand(50));
 
-        for ($i = 0; $i < $num_large_hills; $i = $i + 1) {
+        for ($i = 0; $i < $num_small_hills; $i = $i + 1) {
             $x_cent = int(rand($num_tiles_x));
             $y_cent = int(rand($num_tiles_y));
             $r_max = 20 + int(rand(50));
+            $elev_inc = 0.05 + rand(1)/6.0;
+
+            for ($r = $r_max; $r >= 0; $r = $r - 1) {
+                for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
+                    for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+
+                        if ($x < 0 or $x >= $num_tiles_x or $y < 0 or $y >= $num_tiles_y) {
+                            next;
+                        }
+
+                        $dx = $x - $x_cent;
+                        $dy = $y - $y_cent;
+
+                        if ($dx*$dx + $dy*$dy <= $r*$r) {
+                            if ($tiles[$x][$y] ne "GroundWater") {
+                                $elevs[$x][$y] = $elevs[$x][$y] + $elev_inc;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        print "Generate elevation: small elevs\n";
+
+        $num_small_elevs = 3000 + int(rand(50));
+
+        for ($i = 0; $i < $num_small_elevs; $i = $i + 1) {
+            $x_cent = int(rand($num_tiles_x));
+            $y_cent = int(rand($num_tiles_y));
+            $r_max = 5 + int(rand(5));
             $elev_inc = 0.05 + rand(1)/6.0;
 
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
@@ -382,8 +416,8 @@ while ($running eq "true") {
         $normx = $dx/$absmax;
         $normy = $dy/$absmax;
 
-        $xstep = $normx != 0 ? $normx : (rand(3) - 1);
-        $ystep = $normy != 0 ? $normy : (rand(3) - 1);
+        $xstep = $normx != 0 ? $normx*5 : (rand(3) - 1);
+        $ystep = $normy != 0 ? $normy*5 : (rand(3) - 1);
 
         $dxstep = (rand(3) - 1);
         $dystep = (rand(3) - 1);
@@ -391,18 +425,18 @@ while ($running eq "true") {
         $dr = (rand(3) - 1);
         $ddr = -1*$dr/10.0;
 
-        $ridge_num_steps = 600;
+        $ridge_num_steps = 200;
 
         $x = $ridge_start_x;
         $y = $ridge_start_y;
 
         $ridge_r = 60 + int(rand(40));
 
-        $elev_inc = 0.1;
+        $elev_inc = 0.4;
 
         for ($i = 0; $i < $ridge_num_steps; $i = $i + 10) {
 
-            if ($i % 300 == 0) {
+            if ($i % 60 == 0) {
                 $xstep = $xstep + $dxstep;
                 $ystep = $ystep + $dystep;
             }
@@ -445,7 +479,7 @@ while ($running eq "true") {
 
         print "Generate lakes.\n";
 
-        $num_lakes = 20 + int(rand(20));
+        $num_lakes = 10 + int(rand(10));
 
         for ($i = 0; $i < $num_lakes; $i = $i + 1) {
             $x_cent = int(rand($num_tiles_x));
@@ -480,13 +514,111 @@ while ($running eq "true") {
 
         print "Generate rivers\n";
 
+        $num_rivers = 20 + int(rand(20));
+
+        for ($i = 0; $i < $num_rivers; $i = $i + 1) {
+            $x = int(rand($num_tiles_x));
+            $y = int(rand($num_tiles_y));
+            $xstep = rand(3) - 1.0;
+            $ystep = rand(3) - 1.0;
+
+            $riv_len = 100 + int(rand(400));
+
+            for ($j = 0; $j < $riv_len; $j = $j + 1) {
+                if ($tiles[$x][$y] eq "Ground") {
+                    if ($x >= 0 and $x >= 0 and $x < $num_tiles_x - 1 and $y < $num_tiles_y - 1) {
+                        $reds[$x][$y]= 0.0;
+                        $greens[$x][$y]= 0.0;
+                        $blues[$x][$y]= 1.0;
+
+                        $reds[$x + 1][$y]= 0.0;
+                        $greens[$x + 1][$y]= 0.0;
+                        $blues[$x + 1][$y]= 1.0;
+
+                        $reds[$x + 1][$y + 1]= 0.0;
+                        $greens[$x + 1][$y + 1]= 0.0;
+                        $blues[$x + 1][$y + 1]= 1.0;
+
+                        $reds[$x][$y + 1]= 0.0;
+                        $greens[$x][$y + 1]= 0.0;
+                        $blues[$x][$y + 1]= 1.0;
+                    }
+                }
+
+                $x = $x + $xstep;
+                $y = $y + $ystep;
+            }
+        }
+
         # Generate misc objects
 
         print "Generate misc objects\n";
 
+        $num_tree1s = 2000;
+
+        for ($i = 0; $i < $num_tree1s; $i = $i + 1) {
+            $x = int(rand($num_tiles_x));
+            $y = int(rand($num_tiles_y));
+
+            if ($tiles[$x][$y] eq "Ground") {
+                if ($reds[$x][$y] < 0.6 and $blues[$x][$y] < 0.6) {
+                    $objects[$x][$y] = "ObjectTree1";
+                }
+            }
+        }
+
+        $num_tree2s = 2000;
+
+        for ($i = 0; $i < $num_tree2s; $i = $i + 1) {
+            $x = int(rand($num_tiles_x));
+            $y = int(rand($num_tiles_y));
+
+            if ($tiles[$x][$y] eq "Ground") {
+                if ($reds[$x][$y] < 0.6 and $blues[$x][$y] < 0.6) {
+                    $objects[$x][$y] = "ObjectTree2";
+                }
+            }
+        }
+
+        $num_bush1s = 2000;
+
+        for ($i = 0; $i < $num_bush1s; $i = $i + 1) {
+            $x = int(rand($num_tiles_x));
+            $y = int(rand($num_tiles_y));
+
+            if ($tiles[$x][$y] eq "Ground") {
+                if ($reds[$x][$y] < 0.6 and $blues[$x][$y] < 0.6) {
+                    $objects[$x][$y] = "ObjectBush1";
+                }
+            }
+        }
+
+        $num_stone_boulders = 2000;
+
+        for ($i = 0; $i < $num_stone_boulders; $i = $i + 1) {
+            $x = int(rand($num_tiles_x));
+            $y = int(rand($num_tiles_y));
+
+            if ($tiles[$x][$y] eq "Ground") {
+                $objects[$x][$y] = "ObjectStoneBoulder";
+            }
+        }
+
         # Calculating normals
 
         print "Calculating normals\n";
+
+        for ($y = 0; $y < $num_tiles_y - 1; $y = $y + 1) {
+            for ($x = 0; $x < $num_tiles_x - 1; $x = $x + 1) {
+                $v = Math::Vec->new(0, 0, 0);
+                $A = Math::Vec->new($tile_size,$elevs[$x + 1][$y]*$elev_amount - $elevs[$x][$y]*$elev_amount,0);
+                $B = Math::Vec->new(0,$elevs[$x][$y + 1]*$elev_amount- $elevs[$x][$y]*$elev_amount,$tile_size);
+                @normal = $v->PlaneUnitNormal($A, $B);
+                $normalsx[$x][$y] = $normal[0];
+                $normalsy[$x][$y] = -$normal[1];
+                $normalsz[$x][$y] = $normal[2];
+            }
+        }
 
         # Writing to files
 
