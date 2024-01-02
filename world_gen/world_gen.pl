@@ -222,6 +222,124 @@ while ($running eq "true") {
             }
         }
 
+        # Generate elevation
+
+        print "Generate elevation: large hills\n";
+
+        $num_large_hills = 10 + int(rand(10));
+
+        for ($i = 0; $i < $num_large_hills; $i = $i + 1) {
+            $x_cent = int(rand($num_tiles_x));
+            $y_cent = int(rand($num_tiles_y));
+            $r_max = 50 + int(rand(100));
+            $elev_inc = 0.05 + rand(1)/5.0;
+
+            for ($r = $r_max; $r >= 0; $r = $r - 1) {
+                for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
+                    for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+                        $dx = $x - $x_cent;
+                        $dy = $y - $y_cent;
+
+                        if ($dx*$dx + $dy*$dy <= $r*$r) {
+                            if ($tiles[$x][$y] ne "GroundWater") {
+                                $elevs[$x][$y] = $elevs[$x][$y] + $elev_inc;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        print "Generate elevation: small hills\n";
+
+        $num_large_hills = 50 + int(rand(50));
+
+        for ($i = 0; $i < $num_large_hills; $i = $i + 1) {
+            $x_cent = int(rand($num_tiles_x));
+            $y_cent = int(rand($num_tiles_y));
+            $r_max = 20 + int(rand(50));
+            $elev_inc = 0.05 + rand(1)/6.0;
+
+            for ($r = $r_max; $r >= 0; $r = $r - 1) {
+                for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
+                    for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+                        $dx = $x - $x_cent;
+                        $dy = $y - $y_cent;
+
+                        if ($dx*$dx + $dy*$dy <= $r*$r) {
+                            if ($tiles[$x][$y] ne "GroundWater") {
+                                $elevs[$x][$y] = $elevs[$x][$y] + $elev_inc;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        print "Generate mountain ridge\n";
+
+        # Generate colors variations
+
+        print "Generate color variations\n";
+
+        $num_color_variations = 50 + int(rand(50));
+
+        for ($i = 0; $i < $num_color_variations; $i = $i + 1) {
+            $x_cent = int(rand($num_tiles_x));
+            $y_cent = int(rand($num_tiles_y));
+            $r = 40 + int(rand(160));
+            $elev_inc = 0.05 + rand(1)/6.0;
+            $vary_type = int(rand(4));
+
+            for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
+                for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+
+                    if ($x < 0 || $x >= $num_tiles_x || $y < 0 || $y >= $num_tiles_y) {
+                        next;
+                    }
+
+                    $dx = $x - $x_cent;
+                    $dy = $y - $y_cent;
+                    $r_local = sqrt($dx*$dx + $dy*$dy);
+
+                    if ($dx*$dx + $dy*$dy <= $r*$r) {
+                        if ($tiles[$x][$y] ne "GroundWater") {
+                            if ($vary_type == 0) {
+                                $greens[$x][$y] = 1.0;
+                                $reds[$x][$y] = ($reds[$x][$y] + 0.2)*1.05*(1.0 + ($r - $r_local)/$r);
+                                $blues[$x][$y] = ($blues[$x][$y] + 0.3)*1.1*(1.0 + ($r - $r_local)/$r);
+                            }
+                            elsif ($vary_type == 1) {
+                                $greens[$x][$y] = 1.0;
+                                $reds[$x][$y] = $reds[$x][$y]*$r_local/$r + $greens[$x][$y]*($r - $r_local)/$r;
+                            }
+                            elsif ($vary_type == 2) {
+                                $greens[$x][$y] = 1.0;
+                                $blues[$x][$y] = $blues[$x][$y]*$r_local/$r + $greens[$x][$y]*($r - $r_local)/$r;
+                            }
+                            elsif ($vary_type == 3) {
+                                $reds[$x][$y] = $reds[$x][$y]*($r_local + 30)/$r*1.5;
+                                $greens[$x][$y] = 1.0;
+                                $blues[$x][$y] = $blues[$x][$y]*($r_local + 30)/$r*1.5;
+                            }
+
+                            $reds[$x][$y] = $reds[$x][$y] < 0.0 ? 0.0 : $reds[$x][$y];
+                            $greens[$x][$y] = $greens[$x][$y] < 0.0 ? 0.0 : $greens[$x][$y];
+                            $blues[$x][$y] = $blues[$x][$y] < 0.0 ? 0.0 : $blues[$x][$y];
+
+                            $reds[$x][$y] = $reds[$x][$y] > 0.6 ? 0.6 : $reds[$x][$y];
+                            $greens[$x][$y] = $greens[$x][$y] > 1.0 ? 1.0 : $greens[$x][$y];
+                            $blues[$x][$y] = $blues[$x][$y] > 0.8 ? 0.8 : $blues[$x][$y];
+                        }
+                    }
+                }
+            }
+        }
+
+        # Generate normals
+
+        print "Generate normals\n";
+
         # Writing to files
 
         for ($wy = 0; $wy < $world_height; $wy = $wy + 1) {
