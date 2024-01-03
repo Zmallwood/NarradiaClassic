@@ -19,8 +19,8 @@ namespace Narradia
 
    // Tile calculations
 #if 1
-   inline float CalcTileAverageElevation(Point coord) {
-      auto map_area = World::get()->CurrWorldArea();
+   inline float CalcTileAverageElevation(Point coord, Point world_loc) {
+      auto map_area = World::get()->WorldAreaAt({world_loc.x, world_loc.y});
       auto elev00 = map_area->GetTile(coord.x, coord.y)->elevation() * kElevAmount;
       auto elev10 = elev00;
       auto elev11 = elev00;

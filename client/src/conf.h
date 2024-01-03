@@ -8,8 +8,8 @@ namespace Narradia
 #endif
    // Constants for scaling of different aspect of the game world map
 #if 1
-   constexpr float kTileSize = 2.0f;
-   constexpr float kElevAmount = 3.0f;
+   constexpr float kTileSize = 6.0f;
+   constexpr float kElevAmount = 11.0f;
 #endif
 
    // Show ObjectsConf sub components

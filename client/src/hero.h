@@ -97,7 +97,7 @@ namespace Narradia
       int ticks_ulti_skill_start_ = 0;
       int ulti_skill_duration_ = 9000;
       float facing_angle_deg_ = 0.0f;
-      float step_size_ = 0.8f;
+      float step_size_ = 0.2f;
       int experience_ = 0;
       float health_ = 10.0f;
       float max_health_ = 10.0f;

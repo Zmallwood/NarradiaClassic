@@ -1,9 +1,9 @@
 #include "gui-main_pg.h"
 #include "calc.h"
-#include "hero.h"
 #include "drw_colors.h"
 #include "drw_images.h"
 #include "drw_text.h"
+#include "hero.h"
 #include "world.h"
 
 namespace Narradia
@@ -147,22 +147,22 @@ namespace Narradia
                 rids_rectangles_[i],
                 {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height},
                 Colors::black);
-            if (x == Hero::get()->world_location().x && y == Hero::get()->world_location().y) {
-               auto player_pos = Hero::get()->pos();
-               auto map_area = World::get()->world_areas()[x][y];
-               auto tile_width = cell_width / map_area->Width();
-               auto tile_height = cell_height / map_area->Height();
-               auto marker_size = 0.005f;
-               auto rect = RectF{
-                   bounds.x + x * cell_width + player_pos.x * tile_width,
-                   bounds.y + y * cell_height + player_pos.z * tile_height, marker_size,
-                   marker_size};
-               FillRect(rid_player_, rect, Colors::red);
-               DrawRect(rid_player_outline_, rect, Colors::black);
-            }
             i++;
          }
       }
+      auto player_pos = Hero::get()->pos();
+      auto map_area =
+          World::get()
+              ->world_areas()[Hero::get()->world_location().x][Hero::get()->world_location().y];
+      auto tile_width = cell_width / map_area->Width();
+      auto tile_height = cell_height / map_area->Height();
+      auto marker_size = 0.005f;
+      auto rect = RectF{
+          bounds.x + Hero::get()->world_location().x * cell_width + player_pos.x * tile_width,
+          bounds.y + Hero::get()->world_location().y * cell_height + player_pos.z * tile_height,
+          marker_size, marker_size};
+      FillRect(rid_player_, rect, Colors::yellow);
+      DrawRect(rid_player_outline_, rect, Colors::black);
    }
 #endif
 #endif

@@ -7,8 +7,8 @@
 #include "core.h"
 #include "hero.h"
 #include "rend-core.h"
-#include "rend_models.h"
 #include "rend_grnd.h"
+#include "rend_models.h"
 #include "world.h"
 #endif
 
@@ -37,7 +37,7 @@ namespace Narradia
       auto fov_rads = glm::radians(used_fov_ / 2);
       auto aspect = 1600.0f / 900.0f;
       auto z_near = 0.1f;
-      auto z_far = 1000.0f;
+      auto z_far = 3000.0f;
       auto new_persp_mat = glm::perspective(fov_rads, aspect, z_near, z_far);
       CameraGL::get()->set_persp_matrix(new_persp_mat);
    }
@@ -51,7 +51,8 @@ namespace Narradia
       auto map_offs_y = curr_world_loc.y * curr_wa->Height() * t_sz;
       auto look_from = GetCameraPos();
       look_from = look_from.Translate(map_offs_x, 0.0f, map_offs_y);
-      auto player_avg_elev = CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint());
+      auto player_avg_elev = CalcTileAverageElevation(
+          Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location());
       auto look_at = player_pos.Translate(0.0f, player_avg_elev, 0.0f);
       look_at = look_at.Translate(map_offs_x, 0.0f, map_offs_y);
       auto new_view_matrix = glm::lookAt(
@@ -101,7 +102,7 @@ namespace Narradia
          auto player_position_no_elevation = player->pos().Multiply(kTileSize);
          player_position_no_elevation.y = 0.0f;
          auto used_vertical_angle = vertical_angle_deg_;
-         auto used_camera_distance = camera_distance_ * kTileSize;
+         auto used_camera_distance = camera_distance_ * 2.0f;
          auto dz_unrotated = CosDeg(used_vertical_angle) * used_camera_distance;
          auto hypotenuse = dz_unrotated;
          auto dx =
@@ -109,11 +110,11 @@ namespace Narradia
          auto dz =
              CosDeg(horizontal_angle_deg_) * hypotenuse - 3.0f * CosDeg(horizontal_angle_deg_);
          auto dy = SinDeg(used_vertical_angle) * used_camera_distance * 3.0f;
-         auto player_average_elevation =
-             CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint());
+         auto player_average_elevation = CalcTileAverageElevation(
+             Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location());
          result = player_position_no_elevation.Translate(dx, dy + player_average_elevation, dz);
       }
-      return result.Translate(0.0f, camera_height_ * kTileSize, 0.0f);
+      return result.Translate(0.0f, camera_height_ * 2.0f, 0.0f);
    }
 #endif
 #endif
@@ -202,10 +203,10 @@ namespace Narradia
 
             rids_tile_symbols.at(x / inc).push_back(NewTile());
 
-            verts._00.pos.y += kTinyDistance * kTileSize;
-            verts._10.pos.y += kTinyDistance * kTileSize;
-            verts._11.pos.y += kTinyDistance * kTileSize;
-            verts._01.pos.y += kTinyDistance * kTileSize;
+            verts._00.pos.y += kTinyDistance * t_sz;
+            verts._10.pos.y += kTinyDistance * t_sz;
+            verts._11.pos.y += kTinyDistance * t_sz;
+            verts._01.pos.y += kTinyDistance * t_sz;
 
             SetTileGeom(rids_tile_symbols[x / inc][y / inc], verts);
          }
@@ -550,8 +551,7 @@ namespace Narradia
       DrawTile(ground, tile->rid());
    }
 
-   void
-   WorldAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
+   void WorldAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
       if (tile->object()) {
          auto curr_wa = World::get()->CurrWorldArea();
          auto curr_map_location = Hero::get()->world_location();
@@ -559,7 +559,10 @@ namespace Narradia
          auto map_offset_x = (curr_map_location.x + dloc_x) * curr_wa->Width() * tile_size;
          auto map_offset_y = (curr_map_location.y + dloc_y) * curr_wa->Height() * tile_size;
          auto pos =
-             Point3F{coord.x * kTileSize, CalcTileAverageElevation(coord), coord.y * kTileSize}
+             Point3F{
+                 coord.x * kTileSize,
+                 CalcTileAverageElevation(coord, curr_map_location.Translate(dloc_x, dloc_y)),
+                 coord.y * kTileSize}
                  .Translate(0.5f, 0.0f, 0.5f)
                  .Translate(map_offset_x, 0.0f, map_offset_y);
          auto model_rotation = 360.0f * ((coord.x * coord.y) % 10) / 10.0f;
@@ -580,7 +583,8 @@ namespace Narradia
       player_space_coord.x += map_offset_x;
       player_space_coord.z += map_offset_y;
       auto player_map_coord = Hero::get()->pos().GetXZ().ToIntPoint();
-      auto tile_average_elevation = CalcTileAverageElevation(player_map_coord);
+      auto tile_average_elevation =
+          CalcTileAverageElevation(player_map_coord, Hero::get()->world_location());
       player_space_coord.y += tile_average_elevation;
       auto ms_anim_time = 0.0f;
       if (Hero::get()->IsMoving())

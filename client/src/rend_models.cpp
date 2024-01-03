@@ -185,7 +185,8 @@ namespace Narradia
       glm::vec3 viewPos(
           player_space_coord.x,
           player_space_coord.y +
-              CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint()),
+              CalcTileAverageElevation(
+                  Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location()),
           player_space_coord.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(viewPos));
       glm::vec3 fogColorGl(

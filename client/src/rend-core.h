@@ -167,7 +167,7 @@ inline static const GLchar *fragment_shader_source_models =
     out vec4 fragColor;
 
     float nearPlane = 0.1;
-    float farPlane = 65.0;
+    float farPlane = 165.0;
 
     float getFogFactor(float d, float nearPlane, float farPlane)
     {
@@ -289,7 +289,7 @@ inline static const GLchar *fragment_shader_source_tiles =
     out vec4 fragColor;
 
     float nearPlane = 0.1;
-    float farPlane = 65.0;
+    float farPlane = 165.0;
 
     float getFogFactor(float d, float nearPlane, float farPlane)
     {

@@ -23,7 +23,7 @@ while ($running eq "true") {
         $world_area_width = 300;
         $world_area_height = 300;
         $tile_size = 2.0;
-        $elev_amount = 3.0;
+        $elev_amount = 11.0;
 
         open(DATA, ">World.conf") or die "Couldn't open file World.conf, $!";
 
@@ -213,6 +213,11 @@ while ($running eq "true") {
 
             for ($yy = $y - $r_island; $yy <= $y + $r_island; $yy = $yy + 1) {
                 for ($xx = $x - $r_island; $xx <= $x + $r_island; $xx = $xx + 1) {
+
+                    if ($xx < 0 or $xx >= $num_tiles_x or $yy < 0 or $yy >= $num_tiles_y) {
+                        next;
+                    }
+
                     $dx_isl = $xx - $x;
                     $dy_isl = $yy - $y;
 
@@ -237,6 +242,11 @@ while ($running eq "true") {
             $y_cent = int(rand($num_tiles_y));
             $r_max = 50 + int(rand(100));
             $elev_inc = 0.05 + rand(1)/5.0;
+
+            if ($i % ($num_large_hills/10) == 0) {
+                $progress = int($i / $num_large_hills *100);
+                print "$progress %\n";
+            }
 
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
                 for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
@@ -269,6 +279,11 @@ while ($running eq "true") {
             $r_max = 20 + int(rand(50));
             $elev_inc = 0.05 + rand(1)/6.0;
 
+            if ($i % ($num_small_hills/10) == 0) {
+                $progress = int($i / $num_small_hills *100);
+                print "$progress %\n";
+            }
+
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
                 for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
                     for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
@@ -300,6 +315,11 @@ while ($running eq "true") {
             $r_max = 5 + int(rand(5));
             $elev_inc = 0.05 + rand(1)/6.0;
 
+            if ($i % ($num_small_elevs/10) == 0) {
+                $progress = int($i / $num_small_elevs *100);
+                print "$progress %\n";
+            }
+
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
                 for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
                     for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
@@ -318,6 +338,22 @@ while ($running eq "true") {
                         }
                     }
                 }
+            }
+        }
+
+        # Generate per tile elev
+
+        print "Generate elevation: per tile\n";
+
+        for ($y = 0; $y < $num_tiles_y; $y = $y + 1) {
+            for ($x = 0; $x < $num_tiles_x; $x = $x + 1) {
+
+                if (($y*$num_tiles_x + $x) % (($num_tiles_x*$num_tiles_y)/10) == 0) {
+                    $progress = int(($y*$num_tiles_x + $x) / ($num_tiles_x*$num_tiles_y) *100);
+                    print "$progress %\n";
+                }
+
+                $elevs[$x][$y] = $elevs[$x][$y] + rand(0.3) - rand(0.3);
             }
         }
 

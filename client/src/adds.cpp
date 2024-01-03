@@ -117,7 +117,9 @@ namespace Narradia
       MouseInput::get()->right_btn()->AddFiredAction(
           [&] {
              is_rotating_ = true;
+
              mouse_pos_rotation_start_ = MousePosition();
+
              cam_horizontal_angle_deg_rotation_start_ = Camera::get()->horizontal_angle_deg();
              cam_vertical_angle_deg_rotation_start_ = Camera::get()->vertical_angle_deg();
           },
@@ -188,71 +190,98 @@ namespace Narradia
 
       auto view_matrix = CameraGL::get()->view_matrix();
       auto perspective_matrix = CameraGL::get()->persp_matrix();
+
       auto mouse_position_f = MousePosition();
       auto canvas_size = CanvasSize();
+
       auto player_x = Hero::get()->pos().x;
       auto player_y = Hero::get()->pos().z;
+
       auto tile_size = kTileSize;
       auto elev_amount = kElevAmount;
       auto player_world_area_position = Hero::get()->pos().Multiply(kTileSize);
       auto map_area = World::get()->CurrWorldArea();
+
       auto mouse_world_near_plane = glm::unProject(
           glm::vec3(
               mouse_position_f.x * canvas_size.w, (1.0f - mouse_position_f.y) * canvas_size.h,
               0.0f),
           view_matrix, perspective_matrix, glm::ivec4(0, 0, canvas_size.w, canvas_size.h));
+
       auto mouse_world_far_plane = glm::unProject(
           glm::vec3(
               mouse_position_f.x * canvas_size.w, (1.0f - mouse_position_f.y) * canvas_size.h,
               1.0f),
           view_matrix, perspective_matrix, glm::ivec4(0, 0, canvas_size.w, canvas_size.h));
+
       auto world_loc = Hero::get()->world_location();
       auto columns_count = 111;
       auto rows_count = 111;
+
       auto player_x_major = static_cast<int>(player_x);
       auto player_y_major = static_cast<int>(player_y);
+
       bool tile_found = false;
+
       auto fn_iteration = [&](int x, int y) -> bool {
          auto map_x = player_x_major + x;
          auto map_y = player_y_major + y;
+
          if (!map_area->IsInsideMap({map_x, map_y}))
             return false;
+
          auto tile_coord = Point{map_x, map_y};
          auto tile = map_area->GetTile(tile_coord);
+
          auto elev00 = static_cast<float>(tile->elevation());
          auto elev10 = elev00;
          auto elev11 = elev00;
          auto elev01 = elev00;
+
          auto tile_avg_elev = (elev00 + elev10 + elev01 + elev11) / 4.0f;
+
          auto coord10 = tile_coord.Translate(1, 0);
          auto coord11 = tile_coord.Translate(1, 1);
          auto coord01 = tile_coord.Translate(0, 1);
+
          if (map_area->IsInsideMap(coord10))
             elev10 = map_area->GetTile(coord10)->elevation();
+
          if (map_area->IsInsideMap(coord11))
             elev11 = map_area->GetTile(coord11)->elevation();
+
          if (map_area->IsInsideMap(coord01))
             elev01 = map_area->GetTile(coord01)->elevation();
+
          auto x0 = world_loc.x * map_area->Width() * tile_size + tile_coord.x * tile_size;
          auto y0 = elev00 * elev_amount;
          auto z0 = world_loc.y * map_area->Height() * tile_size + tile_coord.y * tile_size;
+
          auto x2 =
              world_loc.x * map_area->Width() * tile_size + tile_coord.x * tile_size + tile_size;
          auto y2 = elev11 * elev_amount;
          auto z2 =
              world_loc.y * map_area->Height() * tile_size + tile_coord.y * tile_size + tile_size;
+
          auto center = glm::vec3{(x0 + x2) / 2, (y0 + y2) / 2, (z0 + z2) / 2};
+
          auto closest_point =
              glm::closestPointOnLine(center, mouse_world_near_plane, mouse_world_far_plane);
+
          if (glm::distance(center, closest_point) < tile_size / 2) {
+
             hovered_tile_ = {map_x, map_y};
             tile_found = true;
+
             return true;
          }
          return false;
       };
+
       for (int y = -(rows_count - 1) / 2; y < (rows_count - 1) / 2 && !tile_found; y++) {
+
          for (int x = -(columns_count - 1) / 2; x < (columns_count - 1) / 2 && !tile_found; x++) {
+
             if (fn_iteration(x, y))
                return;
          }
@@ -263,26 +292,29 @@ namespace Narradia
 // MenuModelsAdd
 #if 1
    void MenuModelsAdd::UpdateGameLogic() {
-      {
-         auto new_persp_matrix =
-             glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
-         CameraGL::get()->set_persp_matrix(new_persp_matrix);
-      }
-      {
-         auto look_from = Point3F{0.0f, 5.0f, -8.0f};
-         auto look_at = Point3F{0.0f, 3.0f, 0.0f};
-         auto new_view_matrix = glm::lookAt(
-             glm::vec3(look_from.x, look_from.y, look_from.z),
-             glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
-         CameraGL::get()->set_view_matrix(new_view_matrix);
-      }
+
+      auto new_persp_matrix =
+          glm::perspective(glm::radians(used_fov_ / 2), 1600.0f / 900.0f, 0.1f, 1000.0f);
+
+      CameraGL::get()->set_persp_matrix(new_persp_matrix);
+
+      auto look_from = Point3F{0.0f, 5.0f, -8.0f};
+      auto look_at = Point3F{0.0f, 3.0f, 0.0f};
+
+      auto new_view_matrix = glm::lookAt(
+          glm::vec3(look_from.x, look_from.y, look_from.z),
+          glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
+
+      CameraGL::get()->set_view_matrix(new_view_matrix);
    }
 #endif
 
    // KbBindingsModule
 #if 1
    void KbBindingsAdd::UpdateGameLogic() {
+
       if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_m)) {
+
          GuiWindowWorldMap::get()->ToggleVisibility();
       }
    }
@@ -291,20 +323,30 @@ namespace Narradia
    // PlayerSpawnPositioningModule
 #if 1
    void PlayerSpawnPositioningAdd::SpawnAtGoodLocation() {
+
       Hero::get()->set_world_location({2, 2});
       auto map_area = World::get()->CurrWorldArea();
+
       std::shared_ptr<Tile> tile;
+
       int x;
       int y;
+
       auto x_center = map_area->Width() / 2;
       auto y_center = map_area->Height() / 2;
+
       auto r_min = std::min(map_area->Width(), map_area->Height()) / 2;
+
       do {
+
          auto angle_deg = static_cast<float>(rand() % 360);
+
          x = x_center + static_cast<int>((r_min - 1) * CosDeg(angle_deg));
          y = y_center + static_cast<int>((r_min - 1) * SinDeg(angle_deg));
+
          tile = map_area->GetTile(x, y);
       } while (tile->ground() == "GroundWater" || tile->object() || tile->mob());
+
       Hero::get()->set_pos({static_cast<float>(x), 0.0f, static_cast<float>(y)});
    }
 #endif
@@ -315,9 +357,12 @@ namespace Narradia
    // FPSCounterModuleV
 #if 1
    FPSCounterAddV::FPSCounterAddV() {
+
       rid_text = NewString();
    }
+
    void FPSCounterAddV::Render() {
+
       DrawString(rid_text, "Fps: " + std::to_string(FPSCounterAdd::get()->fps()), {0.95f, 0.05f});
    }
 #endif
@@ -325,8 +370,8 @@ namespace Narradia
 // MenuModelsAddV
 #if 1
    void MenuModelsAddV::Render() {
+
       DrawModel("Player2", SDL_GetTicks(), {-3.0f, 0.0f, 0.0f});
-      // DrawModel("MobBoar", SDL_GetTicks(), {3.0f, 1.0f, 0.0f}, 0.0f, 0.7f);
    }
 #endif
 #endif

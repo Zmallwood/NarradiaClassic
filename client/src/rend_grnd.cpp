@@ -89,8 +89,7 @@ namespace Narradia
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions3D, RendGrndV::kLocationPosition);
-      renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, RendGrndV::kLocationColor);
+      renderer->UpdateData(color_buffer_id, colors, BufferTypes::Colors, RendGrndV::kLocationColor);
       renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendGrndV::kLocationUv);
       renderer->UpdateData(
           normal_buffer_id, normals, BufferTypes::Normals, RendGrndV::kLocationNormal);
@@ -119,7 +118,9 @@ namespace Narradia
          auto player_pos = Hero::get()->pos().Multiply(kTileSize);
          glm::vec3 view_pos(
              player_pos.x,
-             player_pos.y + CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint()),
+             player_pos.y +
+                 CalcTileAverageElevation(
+                     Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location()),
              player_pos.z);
          glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
          glm::vec3 fog_color_gl(
@@ -157,12 +158,13 @@ namespace Narradia
       player_pos.z += map_offset_y;
       glm::vec3 view_pos(
           player_pos.x,
-          player_pos.y + CalcTileAverageElevation(Hero::get()->pos().GetXZ().ToIntPoint()),
+          player_pos.y +
+              CalcTileAverageElevation(
+                  Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location()),
           player_pos.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
       glm::vec3 fog_color_gl(
-          RendGrndV::kFogColorGround.r, RendGrndV::kFogColorGround.g,
-          RendGrndV::kFogColorGround.b);
+          RendGrndV::kFogColorGround.r, RendGrndV::kFogColorGround.g, RendGrndV::kFogColorGround.b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
