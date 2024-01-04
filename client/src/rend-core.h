@@ -171,8 +171,8 @@ namespace Narradia
 
     out vec4 fragColor;
 
-    float nearPlane = 0.1;
-    float farPlane = 165.0;
+    float nearPlane = 290.0;
+    float farPlane = 365.0;
 
     float getFogFactor(float d, float nearPlane, float farPlane)
     {
@@ -293,8 +293,8 @@ namespace Narradia
 
     out vec4 fragColor;
 
-    float nearPlane = 0.1;
-    float farPlane = 165.0;
+    float nearPlane = 290.0;
+    float farPlane = 365.0;
 
     float getFogFactor(float d, float nearPlane, float farPlane)
     {

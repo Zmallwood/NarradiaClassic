@@ -143,90 +143,132 @@ namespace Narradia
 
    void WorldAddV::InitCurrWorldArea() {
 
-      auto wa = World::get()->CurrWorldArea();
+      // auto wa = World::get()->CurrWorldArea();
       auto curr_map_loc = Hero::get()->world_location();
       auto t_sz = kTileSize;
-      auto map_offset_x = curr_map_loc.x * wa->Width() * t_sz;
-      auto map_offset_y = curr_map_loc.y * wa->Height() * t_sz;
       auto inc = 1;
 
       if (simplified_ground_)
          inc = kGroundSimpleK;
 
-      for (auto x = 0; x < wa->Width(); x += inc) {
+      rid_tile_surface = NewTileSurface();
+      rid_tile_surface_e = NewTileSurface();
+      rid_tile_surface_w = NewTileSurface();
+      rid_tile_surface_n = NewTileSurface();
+      rid_tile_surface_s = NewTileSurface();
+      rid_tile_surface_ne = NewTileSurface();
+      rid_tile_surface_se = NewTileSurface();
+      rid_tile_surface_sw = NewTileSurface();
+      rid_tile_surface_nw = NewTileSurface();
 
-         rids_tiles.push_back(Vec<RenderID>());
-         rids_tile_symbols.push_back(Vec<RenderID>());
+      for (auto yy = -1; yy <= 1; yy++) {
+         for (auto xx = -1; xx <= 1; xx++) {
 
-         for (auto y = 0; y < wa->Height(); y += inc) {
+            if (curr_map_loc.x + xx < 0 || curr_map_loc.y + yy < 0 ||
+                curr_map_loc.x + xx >= World::get()->world_width() ||
+                curr_map_loc.y + yy >= World::get()->world_height())
+               continue;
 
-            rids_tiles.at(x / inc).push_back(NewTile());
-            auto t_square = TileSquare(x, y);
-            Square<Vertex3F> verts;
-            Square<float> elevs;
-            Square<Color> colors;
-            elevs.SetAll(wa->GetTile(x, y)->elevation() * kElevAmount);
-            colors.SetAll(*wa->GetTile(x, y)->color());
+            auto wa = World::get()->WorldAreaAt({curr_map_loc.x + xx, curr_map_loc.y + yy});
+            auto map_offset_x = (curr_map_loc.x + xx) * wa->Width() * t_sz;
+            auto map_offset_y = (curr_map_loc.y + yy) * wa->Height() * t_sz;
+            Vec<Vec<Square<Vertex3F>>> surf_verts;
+            for (auto x = 0; x < wa->Width(); x += inc) {
 
-            verts._00.normal = wa->GetTile(x, y)->normal();
+               rids_tiles.push_back(Vec<RenderID>());
+               rids_tile_symbols.push_back(Vec<RenderID>());
+               surf_verts.push_back(Vec<Square<Vertex3F>>());
 
-            if (wa->IsInsideMap(t_square.coords._10)) {
-               auto tile = wa->GetTile(t_square.coords._10);
-               elevs._10 = tile->elevation() * kElevAmount;
-               verts._10.normal = tile->normal();
-               colors._10 = *tile->color();
+               for (auto y = 0; y < wa->Height(); y += inc) {
+
+                  rids_tiles.at(x / inc).push_back(NewTile());
+                  auto t_square = TileSquare(x, y);
+                  Square<Vertex3F> verts;
+                  Square<float> elevs;
+                  Square<Color> colors;
+                  elevs.SetAll(wa->GetTile(x, y)->elevation() * kElevAmount);
+                  colors.SetAll(*wa->GetTile(x, y)->color());
+
+                  verts._00.normal = wa->GetTile(x, y)->normal();
+
+                  if (wa->IsInsideMap(t_square.coords._10)) {
+                     auto tile = wa->GetTile(t_square.coords._10);
+                     elevs._10 = tile->elevation() * kElevAmount;
+                     verts._10.normal = tile->normal();
+                     colors._10 = *tile->color();
+                  }
+
+                  if (wa->IsInsideMap(t_square.coords._11)) {
+                     auto tile = wa->GetTile(t_square.coords._11);
+                     elevs._11 = tile->elevation() * kElevAmount;
+                     verts._11.normal = tile->normal();
+                     colors._11 = *tile->color();
+                  }
+
+                  if (wa->IsInsideMap(t_square.coords._01)) {
+                     auto tile = wa->GetTile(t_square.coords._01);
+                     elevs._01 = tile->elevation() * kElevAmount;
+                     verts._01.normal = tile->normal();
+                     colors._01 = *tile->color();
+                  }
+
+                  auto t_sz_side = t_sz;
+
+                  if (simplified_ground_)
+                     t_sz_side *= kGroundSimpleK;
+
+                  verts._00.pos = {map_offset_x + x * t_sz, elevs._00, map_offset_y + y * t_sz};
+                  verts._10.pos = {
+                      map_offset_x + x * t_sz + t_sz_side, elevs._10, map_offset_y + y * t_sz};
+                  verts._11.pos = {
+                      map_offset_x + x * t_sz + t_sz_side, elevs._11,
+                      map_offset_y + y * t_sz + t_sz_side};
+                  verts._01.pos = {
+                      map_offset_x + x * t_sz, elevs._01, map_offset_y + y * t_sz + t_sz_side};
+
+                  verts._00.uv = {0.0f, 0.0f};
+                  verts._10.uv = {1.0f, 0.0f};
+                  verts._11.uv = {1.0f, 1.0f};
+                  verts._01.uv = {0.0f, 1.0f};
+
+                  verts._00.color = colors._00;
+                  verts._10.color = colors._10;
+                  verts._11.color = colors._11;
+                  verts._01.color = colors._01;
+
+                  SetTileGeom(rids_tiles[x / inc][y / inc], verts);
+                  surf_verts[x / inc].push_back(verts);
+
+                  wa->GetTile(x, y)->set_rid(rids_tiles[x / inc][y / inc]);
+
+                  rids_tile_symbols.at(x / inc).push_back(NewTile());
+
+                  verts._00.pos.y += kTinyDistance * t_sz;
+                  verts._10.pos.y += kTinyDistance * t_sz;
+                  verts._11.pos.y += kTinyDistance * t_sz;
+                  verts._01.pos.y += kTinyDistance * t_sz;
+
+                  SetTileGeom(rids_tile_symbols[x / inc][y / inc], verts);
+               }
             }
-
-            if (wa->IsInsideMap(t_square.coords._11)) {
-               auto tile = wa->GetTile(t_square.coords._11);
-               elevs._11 = tile->elevation() * kElevAmount;
-               verts._11.normal = tile->normal();
-               colors._11 = *tile->color();
-            }
-
-            if (wa->IsInsideMap(t_square.coords._01)) {
-               auto tile = wa->GetTile(t_square.coords._01);
-               elevs._01 = tile->elevation() * kElevAmount;
-               verts._01.normal = tile->normal();
-               colors._01 = *tile->color();
-            }
-
-            auto t_sz_side = t_sz;
-
-            if (simplified_ground_)
-               t_sz_side *= kGroundSimpleK;
-
-            verts._00.pos = {map_offset_x + x * t_sz, elevs._00, map_offset_y + y * t_sz};
-            verts._10.pos = {
-                map_offset_x + x * t_sz + t_sz_side, elevs._10, map_offset_y + y * t_sz};
-            verts._11.pos = {
-                map_offset_x + x * t_sz + t_sz_side, elevs._11,
-                map_offset_y + y * t_sz + t_sz_side};
-            verts._01.pos = {
-                map_offset_x + x * t_sz, elevs._01, map_offset_y + y * t_sz + t_sz_side};
-
-            verts._00.uv = {0.0f, 0.0f};
-            verts._10.uv = {1.0f, 0.0f};
-            verts._11.uv = {1.0f, 1.0f};
-            verts._01.uv = {0.0f, 1.0f};
-
-            verts._00.color = colors._00;
-            verts._10.color = colors._10;
-            verts._11.color = colors._11;
-            verts._01.color = colors._01;
-
-            SetTileGeom(rids_tiles[x / inc][y / inc], verts);
-
-            wa->GetTile(x, y)->set_rid(rids_tiles[x / inc][y / inc]);
-
-            rids_tile_symbols.at(x / inc).push_back(NewTile());
-
-            verts._00.pos.y += kTinyDistance * t_sz;
-            verts._10.pos.y += kTinyDistance * t_sz;
-            verts._11.pos.y += kTinyDistance * t_sz;
-            verts._01.pos.y += kTinyDistance * t_sz;
-
-            SetTileGeom(rids_tile_symbols[x / inc][y / inc], verts);
+            if (xx == 0 && yy == 0)
+               SetTileSufaceGeom(rid_tile_surface, surf_verts);
+            else if (xx == -1 && yy == 0)
+               SetTileSufaceGeom(rid_tile_surface_w, surf_verts);
+            else if (xx == 1 && yy == 0)
+               SetTileSufaceGeom(rid_tile_surface_e, surf_verts);
+            else if (xx == 0 && yy == -1)
+               SetTileSufaceGeom(rid_tile_surface_n, surf_verts);
+            else if (xx == 0 && yy == 1)
+               SetTileSufaceGeom(rid_tile_surface_s, surf_verts);
+            else if (xx == 1 && yy == -1)
+               SetTileSufaceGeom(rid_tile_surface_ne, surf_verts);
+            else if (xx == 1 && yy == 1)
+               SetTileSufaceGeom(rid_tile_surface_se, surf_verts);
+            else if (xx == -1 && yy == 1)
+               SetTileSufaceGeom(rid_tile_surface_sw, surf_verts);
+            else if (xx == -1 && yy == -1)
+               SetTileSufaceGeom(rid_tile_surface_nw, surf_verts);
          }
       }
    }
@@ -248,7 +290,7 @@ namespace Narradia
    inline void DrawGroundRecur(bool simplified_ground = false);
 
    template <>
-   inline void DrawGroundRecur<2*30*2*30, 30>(bool simplified_ground) {
+   inline void DrawGroundRecur<2 * 30 * 2 * 30, 30>(bool simplified_ground) {
    }
 
    template <int I, int R>
@@ -256,8 +298,8 @@ namespace Narradia
 
       const auto x_center = static_cast<int>(Hero::get()->pos().x);
       const auto y_center = static_cast<int>(Hero::get()->pos().z);
-      const auto x = x_center + I % (2*R) - R;
-      const auto y = y_center + I / (2*R) - R;
+      const auto x = x_center + I % (2 * R) - R;
+      const auto y = y_center + I / (2 * R) - R;
       auto inc = 1;
       auto kGroundSimpleK = 6;
 
@@ -272,16 +314,17 @@ namespace Narradia
          r = WorldAddV::get()->render_distance_;
       }
       else {
-         const auto width = 300;
-         const auto height = 300;
+         const auto width = 100;
+         const auto height = 100;
          r = std::sqrt(width * width + height * height) / 2.0f;
       }
 
       auto dx = x - x_center;
       auto dy = y - y_center;
 
-      if (dx * dx + dy * dy > r * r)
+      if (dx * dx + dy * dy > r * r) {
          goto next_tile;
+      }
 
       if (simplified_ground) {
          if (x % kGroundSimpleK != 0 || y % kGroundSimpleK != 0)
@@ -337,6 +380,50 @@ namespace Narradia
             y = y_orig - curr_wa->Height();
             WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 0, 1);
          }
+         // North-East
+         else if (x >= curr_wa->Height() && y < 0) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig - curr_wa->Width();
+            y = y_orig + curr_wa->Height();
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 1, -1);
+         }
+         // SOuth-East
+         else if (x >= curr_wa->Height() && y >= curr_wa->Height()) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig - curr_wa->Width();
+            y = y_orig - curr_wa->Height();
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 1, 1);
+         }
+         // SOuth-West
+         else if (x < 0 && y >= curr_wa->Height()) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig + curr_wa->Width();
+            y = y_orig - curr_wa->Height();
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, -1, 1);
+         }
+         // North-West
+         else if (x < 0 && y < 0) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig + curr_wa->Width();
+            y = y_orig + curr_wa->Height();
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, -1, -1);
+         }
       }
       else {
 
@@ -384,28 +471,46 @@ namespace Narradia
       if (simplified_ground_)
          inc = kGroundSimpleK;
 
-      StartTileBatchDrawing();
+      DrawTileSurface("Ground", rid_tile_surface);
+
+      // StartTileBatchDrawing();
 
       if (false == simplified_ground_) {
          const int r = 1;
-         DrawGroundRecur<0, 30>(simplified_ground_);
+         // DrawGroundRecur<0, 30>(simplified_ground_);
       }
       else {
-       //  const auto width = 300;
-       //  const auto height = 300;
-       //  const int r = std::sqrt(width * width + height * height) / 2.0f;
-       //  DrawGroundRecur<-r, -r>();
+         //  const auto width = 300;
+         //  const auto height = 300;
+         //  const int r = std::sqrt(width * width + height * height) / 2.0f;
+         //  DrawGroundRecur<-r, -r>();
       }
 
-      for (auto y = y_center - r - 1; y <= y_center + r + 1 && false; y++) {
+      bool draw_side_surf_e = false;
+      bool draw_side_surf_w = false;
+      bool draw_side_surf_s = false;
+      bool draw_side_surf_n = false;
+      bool draw_side_surf_ne = false;
+      bool draw_side_surf_se = false;
+      bool draw_side_surf_sw = false;
+      bool draw_side_surf_nw = false;
+
+      for (auto y = y_center - r - 1; y <= y_center + r + 1; y++) {
 
          for (auto x = x_center - r - 1; x <= x_center + r + 1; x++) {
 
             auto dx = x - x_center;
             auto dy = y - y_center;
 
-            if (dx * dx + dy * dy > r * r)
+            if (dx * dx + dy * dy > r * r) {
+               if (dx > 0) {
+                  x += r + 1 - dx;
+               }
+               else if (dx < 0) {
+                  x += r + 1 + dx;
+               }
                continue;
+            }
 
             if (simplified_ground_) {
                if (x % kGroundSimpleK != 0 || y % kGroundSimpleK != 0)
@@ -426,7 +531,8 @@ namespace Narradia
                   int y;
                   x = x_orig + curr_wa->Width();
                   y = y_orig;
-                  DrawGroundTileOutsideWorldArea(x, y, -1, 0);
+                  draw_side_surf_w = true;
+                  // DrawGroundTileOutsideWorldArea(x, y, -1, 0);
                }
                // East
                else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
@@ -437,7 +543,8 @@ namespace Narradia
                   int y;
                   x = x_orig - curr_wa->Width();
                   y = y_orig;
-                  DrawGroundTileOutsideWorldArea(x, y, 1, 0);
+                  draw_side_surf_e = true;
+                  // DrawGroundTileOutsideWorldArea(x, y, 1, 0);
                }
                // North
                else if (x >= 0 && y < 0 && x < curr_wa->Width()) {
@@ -448,7 +555,8 @@ namespace Narradia
                   int y;
                   x = x_orig;
                   y = y_orig + curr_wa->Height();
-                  DrawGroundTileOutsideWorldArea(x, y, 0, -1);
+                  draw_side_surf_n = true;
+                  // DrawGroundTileOutsideWorldArea(x, y, 0, -1);
                }
                // South
                else if (x >= 0 && y >= curr_wa->Height() && x < curr_wa->Width()) {
@@ -459,24 +567,79 @@ namespace Narradia
                   int y;
                   x = x_orig;
                   y = y_orig - curr_wa->Height();
-                  DrawGroundTileOutsideWorldArea(x, y, 0, 1);
+                  draw_side_surf_s = true;
+                  // DrawGroundTileOutsideWorldArea(x, y, 0, 1);
                }
-            }
-            else {
+               // North-East
+               else if (x >= curr_wa->Height() && y < 0) {
 
-               auto tile = curr_wa->GetTile(x, y);
-               auto coord = Point{x, y};
-               DrawGround(tile, coord);
-               auto tile_symbols = MakeShared<Tile>();
-               tile_symbols->set_mob(tile->mob());
-               tile_symbols->set_rid(rids_tile_symbols[x / inc][y / inc]);
-               tile_symbols->set_tile_effect(tile->tile_effect());
-               DrawTileSymbols(tile_symbols, coord);
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig - curr_wa->Width();
+                  y = y_orig + curr_wa->Height();
+                  draw_side_surf_ne = true;
+                  //WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 1, -1);
+               }
+               // SOuth-East
+               else if (x >= curr_wa->Height() && y >= curr_wa->Height()) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig - curr_wa->Width();
+                  y = y_orig - curr_wa->Height();
+                  draw_side_surf_se = true;
+                  //WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 1, 1);
+               }
+               // SOuth-West
+               else if (x < 0 && y >= curr_wa->Height()) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig + curr_wa->Width();
+                  y = y_orig - curr_wa->Height();
+                  draw_side_surf_sw = true;
+                  //WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, -1, 1);
+               }
+               // North-West
+               else if (x < 0 && y < 0) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig + curr_wa->Width();
+                  y = y_orig + curr_wa->Height();
+                  draw_side_surf_nw = true;
+                  //WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, -1, -1);
+               }
             }
          }
       }
 
-      StopTileBatchDrawing();
+      if (draw_side_surf_e)
+         DrawTileSurface("Ground", rid_tile_surface_e);
+      if (draw_side_surf_w)
+         DrawTileSurface("Ground", rid_tile_surface_w);
+      if (draw_side_surf_n)
+         DrawTileSurface("Ground", rid_tile_surface_n);
+      if (draw_side_surf_s)
+         DrawTileSurface("Ground", rid_tile_surface_s);
+      if (draw_side_surf_ne)
+         DrawTileSurface("Ground", rid_tile_surface_ne);
+      if (draw_side_surf_se)
+         DrawTileSurface("Ground", rid_tile_surface_se);
+      if (draw_side_surf_sw)
+         DrawTileSurface("Ground", rid_tile_surface_sw);
+      if (draw_side_surf_nw)
+         DrawTileSurface("Ground", rid_tile_surface_nw);
+
+      // StopTileBatchDrawing();
    }
 
    void WorldAddV::DrawAllModels() {
@@ -542,6 +705,50 @@ namespace Narradia
                   x = x_orig;
                   y = y_orig - curr_wa->Height();
                   DrawModelsTileOutsideWorldArea(x, y, 0, 1);
+               }
+               // North-East
+               else if (x >= curr_wa->Height() && y < 0) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig - curr_wa->Width();
+                  y = y_orig + curr_wa->Height();
+                  DrawModelsTileOutsideWorldArea(x, y, 1, -1);
+               }
+               // SOuth-East
+               else if (x >= curr_wa->Height() && y >= curr_wa->Height()) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig - curr_wa->Width();
+                  y = y_orig - curr_wa->Height();
+                  DrawModelsTileOutsideWorldArea(x, y, 1, 1);
+               }
+               // SOuth-West
+               else if (x < 0 && y >= curr_wa->Height()) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig + curr_wa->Width();
+                  y = y_orig - curr_wa->Height();
+                  DrawModelsTileOutsideWorldArea(x, y, -1, 1);
+               }
+               // North-West
+               else if (x < 0 && y < 0) {
+
+                  int x_orig = x;
+                  int y_orig = y;
+                  int x;
+                  int y;
+                  x = x_orig + curr_wa->Width();
+                  y = y_orig + curr_wa->Height();
+                  DrawModelsTileOutsideWorldArea(x, y, -1, -1);
                }
             }
             else {

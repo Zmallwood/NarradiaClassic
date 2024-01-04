@@ -65,7 +65,7 @@ namespace Narradia
       Point3F GetCameraPos();
 
       float camera_height_ = 16.0f;
-      float used_fov_ = 130.0f;
+      float used_fov_ = 110.0f;
       float camera_distance_ = 9.0f;
       float horizontal_angle_deg_ = 0.0f;
       float vertical_angle_deg_ = 160.0f;
@@ -98,9 +98,18 @@ namespace Narradia
       inline void DrawGround(SharedPtr<Tile> tile, Point coord);
       inline void DrawTileSymbols(SharedPtr<Tile> tile, Point coord);
 
-      int render_distance_ = 30;
+      int render_distance_ = 40;
       Vec<Vec<RenderID>> rids_tiles;
       Vec<Vec<RenderID>> rids_tile_symbols;
+      RenderID rid_tile_surface;
+      RenderID rid_tile_surface_w;
+      RenderID rid_tile_surface_e;
+      RenderID rid_tile_surface_n;
+      RenderID rid_tile_surface_s;
+      RenderID rid_tile_surface_ne;
+      RenderID rid_tile_surface_se;
+      RenderID rid_tile_surface_sw;
+      RenderID rid_tile_surface_nw;
 
      private:
       void DrawAllGround();

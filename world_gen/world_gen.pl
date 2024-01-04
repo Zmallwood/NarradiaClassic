@@ -20,8 +20,8 @@ while ($running eq "true") {
 
         $world_width = 6;
         $world_height = 6;
-        $world_area_width = 300;
-        $world_area_height = 300;
+        $world_area_width = 100;
+        $world_area_height = 100;
         $tile_size = 2.0;
         $elev_amount = 11.0;
 
@@ -236,7 +236,7 @@ while ($running eq "true") {
 
         print "Generate elevation: large hills\n";
 
-        $num_large_hills = 10 + int(rand(10));
+        $num_large_hills = 5 + int(rand(5));
 
         for ($i = 0; $i < $num_large_hills; $i = $i + 1) {
             $x_cent = int(rand($num_tiles_x));
@@ -244,10 +244,6 @@ while ($running eq "true") {
             $r_max = 50 + int(rand(100));
             $elev_inc = 0.05 + rand(1)/5.0;
 
-            if ($i % ($num_large_hills/10) == 0) {
-                $progress = int($i / $num_large_hills *100);
-                print "$progress %\n";
-            }
 
             for ($r = $r_max; $r >= 0; $r = $r - 1) {
                 for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
@@ -272,7 +268,7 @@ while ($running eq "true") {
 
         print "Generate elevation: small hills\n";
 
-        $num_small_hills = 500 + int(rand(50));
+        $num_small_hills = 50 + int(rand(50));
 
         for ($i = 0; $i < $num_small_hills; $i = $i + 1) {
             $x_cent = int(rand($num_tiles_x));
@@ -308,7 +304,7 @@ while ($running eq "true") {
 
         print "Generate elevation: small elevs\n";
 
-        $num_small_elevs = 3000 + int(rand(50));
+        $num_small_elevs = 300 + int(rand(50));
 
         for ($i = 0; $i < $num_small_elevs; $i = $i + 1) {
             $x_cent = int(rand($num_tiles_x));
@@ -411,9 +407,9 @@ while ($running eq "true") {
         $x = $ridge_start_x;
         $y = $ridge_start_y;
 
-        $ridge_r = 60 + int(rand(40));
+        $ridge_r = 30 + int(rand(20));
 
-        $elev_inc = 0.4;
+        $elev_inc = 0.05;
 
         for ($i = 0; $i < $ridge_num_steps; $i = $i + 10) {
 
@@ -460,7 +456,7 @@ while ($running eq "true") {
 
         print "Generate color variations: Large\n";
 
-        $num_color_variations_large = 80 + int(rand(80));
+        $num_color_variations_large = 20 + int(rand(20));
 
         for ($i = 0; $i < $num_color_variations_large; $i = $i + 1) {
 
@@ -471,7 +467,7 @@ while ($running eq "true") {
 
             $x_cent = int(rand($num_tiles_x));
             $y_cent = int(rand($num_tiles_y));
-            $r = 40 + int(rand(160));
+            $r = 10 + int(rand(60));
             $elev_inc = 0.05 + rand(1)/6.0;
             $vary_type = int(rand(4));
 
@@ -523,7 +519,7 @@ while ($running eq "true") {
 
         print "Generate color variations: Small\n";
 
-        $num_color_variations_small = 5000;
+        $num_color_variations_small = 200;
 
         for ($i = 0; $i < $num_color_variations_small; $i = $i + 1) {
 
@@ -622,7 +618,7 @@ while ($running eq "true") {
 
         print "Generate rivers\n";
 
-        $num_rivers = 400;
+        $num_rivers = 60;
 
         for ($i = 0; $i < $num_rivers; $i = $i + 1) {
             $x = int(rand($num_tiles_x));

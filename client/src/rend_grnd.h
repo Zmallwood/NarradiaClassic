@@ -71,7 +71,10 @@ namespace Narradia
    // Free functions
 #if 1
    RenderID NewTile();
+   RenderID NewTileSurface();
    void SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts);
+   void SetTileSufaceGeom(RenderID vao_id, Vec<Vec<Square<Vertex3F>>> & verts);
+   void DrawTileSurface(StringView image_name, RenderID vao_id, bool depth_test_off = false);
    inline void DrawTile(StringView image_name, RenderID vao_id, bool depth_test_off = false) {
 
       auto vertex_count = 4;
