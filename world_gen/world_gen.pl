@@ -353,20 +353,91 @@ while ($running eq "true") {
                     print "$progress %\n";
                 }
 
-                $elevs[$x][$y] = $elevs[$x][$y] + rand(0.3) - rand(0.3);
+                if ($tiles[$x][$y] ne "GroundWater") {
+                    $elevs[$x][$y] = $elevs[$x][$y] + rand(0.15) - rand(0.15);
+                }
             }
         }
 
         # Generate colors variations
 
-        print "Generate color variations\n";
+        print "Generate color variations: Large\n";
 
-        $num_color_variations = 50 + int(rand(50));
+        $num_color_variations_large = 80 + int(rand(80));
 
-        for ($i = 0; $i < $num_color_variations; $i = $i + 1) {
+        for ($i = 0; $i < $num_color_variations_large; $i = $i + 1) {
+
+            if ($i % ($num_color_variations_large/10) == 0) {
+                $progress = int($i / $num_color_variations_large *100);
+                print "$progress %\n";
+            }
+
             $x_cent = int(rand($num_tiles_x));
             $y_cent = int(rand($num_tiles_y));
             $r = 40 + int(rand(160));
+            $elev_inc = 0.05 + rand(1)/6.0;
+            $vary_type = int(rand(4));
+
+            for ($y = $y_cent - $r; $y <= $y_cent + $r; $y = $y + 1) {
+                for ($x = $x_cent - $r; $x <= $x_cent + $r; $x = $x + 1) {
+
+                    if ($x < 0 or $x >= $num_tiles_x or $y < 0 or $y >= $num_tiles_y) {
+                        next;
+                    }
+
+                    $dx = $x - $x_cent;
+                    $dy = $y - $y_cent;
+                    $r_local = sqrt($dx*$dx + $dy*$dy);
+
+                    if ($dx*$dx + $dy*$dy <= $r*$r) {
+                        if ($tiles[$x][$y] ne "GroundWater") {
+                            if ($vary_type == 0) {
+                                $greens[$x][$y] = 1.0;
+                                $reds[$x][$y] = ($reds[$x][$y] + 0.2)*1.05*(1.0 + ($r - $r_local)/$r);
+                                $blues[$x][$y] = ($blues[$x][$y] + 0.3)*1.1*(1.0 + ($r - $r_local)/$r);
+                            }
+                            elsif ($vary_type == 1) {
+                                $greens[$x][$y] = 1.0;
+                                $reds[$x][$y] = $reds[$x][$y]*$r_local/$r + $greens[$x][$y]*($r - $r_local)/$r;
+                            }
+                            elsif ($vary_type == 2) {
+                                $greens[$x][$y] = 1.0;
+                                $blues[$x][$y] = $blues[$x][$y]*$r_local/$r + $greens[$x][$y]*($r - $r_local)/$r;
+                            }
+                            elsif ($vary_type == 3) {
+                                $reds[$x][$y] = $reds[$x][$y]*($r_local + 30)/$r*1.5;
+                                $greens[$x][$y] = 1.0;
+                                $blues[$x][$y] = $blues[$x][$y]*($r_local + 30)/$r*1.5;
+                            }
+
+                            $reds[$x][$y] = $reds[$x][$y] < 0.0 ? 0.0 : $reds[$x][$y];
+                            $greens[$x][$y] = $greens[$x][$y] < 0.0 ? 0.0 : $greens[$x][$y];
+                            $blues[$x][$y] = $blues[$x][$y] < 0.0 ? 0.0 : $blues[$x][$y];
+
+                            $reds[$x][$y] = $reds[$x][$y] > 0.6 ? 0.6 : $reds[$x][$y];
+                            $greens[$x][$y] = $greens[$x][$y] > 1.0 ? 1.0 : $greens[$x][$y];
+                            $blues[$x][$y] = $blues[$x][$y] > 0.8 ? 0.8 : $blues[$x][$y];
+                        }
+                    }
+                }
+            }
+        }
+
+
+        print "Generate color variations: Small\n";
+
+        $num_color_variations_small = 5000;
+
+        for ($i = 0; $i < $num_color_variations_small; $i = $i + 1) {
+
+            if ($i % ($num_color_variations_small/10) == 0) {
+                $progress = int($i / $num_color_variations_small *100);
+                print "$progress %\n";
+            }
+
+            $x_cent = int(rand($num_tiles_x));
+            $y_cent = int(rand($num_tiles_y));
+            $r = 5 + int(rand(10));
             $elev_inc = 0.05 + rand(1)/6.0;
             $vary_type = int(rand(4));
 
@@ -550,7 +621,7 @@ while ($running eq "true") {
 
         print "Generate rivers\n";
 
-        $num_rivers = 20 + int(rand(20));
+        $num_rivers = 400;
 
         for ($i = 0; $i < $num_rivers; $i = $i + 1) {
             $x = int(rand($num_tiles_x));
@@ -564,19 +635,19 @@ while ($running eq "true") {
                 if ($tiles[$x][$y] eq "Ground") {
                     if ($x >= 0 and $x >= 0 and $x < $num_tiles_x - 1 and $y < $num_tiles_y - 1) {
                         $reds[$x][$y]= 0.0;
-                        $greens[$x][$y]= 0.0;
+                        $greens[$x][$y]= 0.75;
                         $blues[$x][$y]= 1.0;
 
                         $reds[$x + 1][$y]= 0.0;
-                        $greens[$x + 1][$y]= 0.0;
+                        $greens[$x + 1][$y]= 0.75;
                         $blues[$x + 1][$y]= 1.0;
 
                         $reds[$x + 1][$y + 1]= 0.0;
-                        $greens[$x + 1][$y + 1]= 0.0;
+                        $greens[$x + 1][$y + 1]= 0.75;
                         $blues[$x + 1][$y + 1]= 1.0;
 
                         $reds[$x][$y + 1]= 0.0;
-                        $greens[$x][$y + 1]= 0.0;
+                        $greens[$x][$y + 1]= 0.75;
                         $blues[$x][$y + 1]= 1.0;
                     }
                 }
@@ -590,7 +661,7 @@ while ($running eq "true") {
 
         print "Generate misc objects\n";
 
-        $num_tree1s = 2000;
+        $num_tree1s = 18000;
 
         for ($i = 0; $i < $num_tree1s; $i = $i + 1) {
             $x = int(rand($num_tiles_x));
@@ -603,7 +674,7 @@ while ($running eq "true") {
             }
         }
 
-        $num_tree2s = 2000;
+        $num_tree2s = 18000;
 
         for ($i = 0; $i < $num_tree2s; $i = $i + 1) {
             $x = int(rand($num_tiles_x));
@@ -616,7 +687,7 @@ while ($running eq "true") {
             }
         }
 
-        $num_bush1s = 2000;
+        $num_bush1s = 18000;
 
         for ($i = 0; $i < $num_bush1s; $i = $i + 1) {
             $x = int(rand($num_tiles_x));
@@ -629,7 +700,7 @@ while ($running eq "true") {
             }
         }
 
-        $num_stone_boulders = 2000;
+        $num_stone_boulders = 18000;
 
         for ($i = 0; $i < $num_stone_boulders; $i = $i + 1) {
             $x = int(rand($num_tiles_x));
@@ -646,6 +717,12 @@ while ($running eq "true") {
 
         for ($y = 0; $y < $num_tiles_y - 1; $y = $y + 1) {
             for ($x = 0; $x < $num_tiles_x - 1; $x = $x + 1) {
+
+                if (($y*$num_tiles_x + $x) % (($num_tiles_x*$num_tiles_y)/10) == 0) {
+                    $progress = int(($y*$num_tiles_x + $x) / ($num_tiles_x*$num_tiles_y) *100);
+                    print "$progress %\n";
+                }
+
                 $v = Math::Vec->new(0, 0, 0);
                 $A = Math::Vec->new($tile_size,$elevs[$x + 1][$y]*$elev_amount - $elevs[$x][$y]*$elev_amount,0);
                 $B = Math::Vec->new(0,$elevs[$x][$y + 1]*$elev_amount- $elevs[$x][$y]*$elev_amount,$tile_size);
@@ -660,7 +737,7 @@ while ($running eq "true") {
 
         for ($wy = 0; $wy < $world_height; $wy = $wy + 1) {
             for ($wx = 0; $wx < $world_width; $wx = $wx + 1) {
-                print ">Writing file for map ($wx, $wy)\n";
+                print ">Writing file for world area at: ($wx, $wy)\n";
 
                 print DATA "$wx,$wy=Map$wx\_$wy.map\n";
 
