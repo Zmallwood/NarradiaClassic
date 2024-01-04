@@ -48,7 +48,6 @@ namespace Narradia
 #if 1
    class CameraGL : public S<CameraGL> {
      public:
-
       auto persp_matrix() {
          return persp_matrix_;
       }
@@ -75,8 +74,8 @@ namespace Narradia
 #if 1
 // 2D Images
 #if 1
-inline static const GLchar *fragment_shader_source_2d_images =
-    R"(
+   inline static const GLchar *fragment_shader_source_2d_images =
+       R"(
     #version 330 core
     precision mediump float;
     
@@ -93,8 +92,8 @@ inline static const GLchar *fragment_shader_source_2d_images =
     }
 )";
 
-inline static const GLchar *vertex_shader_source_2d_images =
-    R"(
+   inline static const GLchar *vertex_shader_source_2d_images =
+       R"(
     #version 330 core
 
     layout (location = 0) in vec2 in_Position;
@@ -115,8 +114,8 @@ inline static const GLchar *vertex_shader_source_2d_images =
 
 // 2D Solid Colors
 #if 1
-inline static const GLchar *fragment_shader_source_2d_solid_colors =
-    R"(
+   inline static const GLchar *fragment_shader_source_2d_solid_colors =
+       R"(
     #version 330 core
     precision mediump float;
     in vec4 ex_Color;
@@ -129,8 +128,8 @@ inline static const GLchar *fragment_shader_source_2d_solid_colors =
     }
 )";
 
-inline static const GLchar *vertex_shader_source_2d_solid_colors =
-    R"(
+   inline static const GLchar *vertex_shader_source_2d_solid_colors =
+       R"(
     #version 330 core
 
     layout (location = 0) in vec2 in_Position;
@@ -148,8 +147,8 @@ inline static const GLchar *vertex_shader_source_2d_solid_colors =
 
 // Models
 #if 1
-inline static const GLchar *fragment_shader_source_models =
-    R"(
+   inline static const GLchar *fragment_shader_source_models =
+       R"(
     #version 330 core
     precision mediump float;
 
@@ -236,8 +235,8 @@ inline static const GLchar *fragment_shader_source_models =
     }
 )";
 
-inline static const GLchar *vertex_shader_source_models =
-    R"(
+   inline static const GLchar *vertex_shader_source_models =
+       R"(
     #version 330 core
 
     layout (location = 0) in vec3 in_Position;
@@ -274,8 +273,8 @@ inline static const GLchar *vertex_shader_source_models =
 
 // Tiles
 #if 1
-inline static const GLchar *fragment_shader_source_tiles =
-    R"(
+   inline static const GLchar *fragment_shader_source_tiles =
+       R"(
     #version 330 core
     precision mediump float;
 
@@ -340,8 +339,8 @@ inline static const GLchar *fragment_shader_source_tiles =
     }
 )";
 
-inline static const GLchar *vertex_shader_source_tiles =
-    R"(
+   inline static const GLchar *vertex_shader_source_tiles =
+       R"(
     #version 330 core
 
     layout (location = 0) in vec3 in_Position;
@@ -429,7 +428,7 @@ inline static const GLchar *vertex_shader_source_tiles =
       }
 
      private:
-      auto CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) -> GLuint;
+      GLuint CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type);
 
       std::shared_ptr<ShaderProgram> shader_program_;
    };

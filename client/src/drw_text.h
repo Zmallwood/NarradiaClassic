@@ -55,11 +55,10 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewString() -> RenderID;
-
-   auto DrawString(
+   RenderID NewString();
+   void DrawString(
        RenderID rid, std::string_view text, PointF position, Color color = Colors::white,
-       bool center_align = false, FontSizes font_size = FontSizes::_20) -> void;
+       bool center_align = false, FontSizes font_size = FontSizes::_20);
 #endif
 #endif
 }

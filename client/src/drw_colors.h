@@ -17,9 +17,9 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewRect() -> RenderID;
-   auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void;
-   auto FillRect(RenderID vao_id, RectF rect, Color color) -> void;
+   RenderID NewRect();
+   void DrawRect(RenderID vao_id, RectF rect, Color color);
+   void FillRect(RenderID vao_id, RectF rect, Color color);
 #endif
 #endif
 }

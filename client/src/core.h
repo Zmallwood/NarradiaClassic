@@ -33,7 +33,7 @@ namespace Narradia
 
    class FPSCapper : public S<FPSCapper> {
      public:
-      auto Below60FPS() -> bool;
+      bool Below60FPS();
 
      private:
       int prev_ticks_ = 0;
@@ -95,7 +95,7 @@ namespace Narradia
      public:
       ~Cursor();
       void ResetStyle();
-      auto GetCursorImageName() -> std::string_view;
+      std::string_view GetCursorImageName();
 
       auto style() {
          return style_;
@@ -253,10 +253,10 @@ namespace Narradia
 
    class Console : public S<Console> {
      public:
-      auto UpdateGameLogic() -> void;
-      auto Print(std::string_view text, Color text_color = Colors::wheat) -> void;
-      auto InputTextWithCursor() -> std::string;
-      auto Bounds() -> RectF;
+      void UpdateGameLogic();
+      void Print(std::string_view text, Color text_color = Colors::wheat);
+      std::string InputTextWithCursor();
+      RectF Bounds();
 
       auto text_lines() {
          return text_lines_;
@@ -293,12 +293,12 @@ namespace Narradia
 
    class ConsoleCalc : public S<ConsoleCalc> {
      public:
-      auto MaxNumLines() -> int;
-      auto TextLineIndex(int visible_row_index) -> int;
-      auto TextLinePosition(int visible_row_index) -> PointF;
-      auto HorizontalSplitterRect() -> RectF;
-      auto InputArrowRect() -> RectF;
-      auto InputTextPosition() -> PointF;
+      int MaxNumLines();
+      int TextLineIndex(int visible_row_index);
+      PointF TextLinePosition(int visible_row_index);
+      RectF HorizontalSplitterRect();
+      RectF InputArrowRect();
+      PointF InputTextPosition();
    };
 #endif
 
@@ -376,8 +376,8 @@ namespace Narradia
 #if 1
    class EngineC : public S<EngineC> {
      public:
-      auto HandleInput() -> void;
-      auto UpdateGameFlow() -> void;
+      void HandleInput();
+      void UpdateGameFlow();
 
      private:
       void PollEvents();
@@ -388,8 +388,8 @@ namespace Narradia
    class PageMngrC : public S<PageMngrC> {
      public:
       PageMngrC();
-      auto UpdateGameFlowCurrScene() -> void;
-      auto ChangeScene(PageNames new_scene) -> void;
+      void UpdateGameFlowCurrScene();
+      void ChangeScene(PageNames new_scene);
 
      private:
       std::map<PageNames, std::shared_ptr<IPageC>> scene_controllers_;
@@ -397,8 +397,8 @@ namespace Narradia
 
    class IPageC {
      public:
-      virtual auto OnEnter() -> void = 0;
-      auto UpdateGameFlow() -> void;
+      virtual void OnEnter() = 0;
+      void UpdateGameFlow();
 
      protected:
       virtual void UpdateGameFlowDerived() = 0;

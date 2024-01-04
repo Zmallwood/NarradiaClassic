@@ -62,10 +62,10 @@ namespace Narradia
    // Free functions
 #if 1
    RenderID NewTile();
-   auto SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts) -> void;
-   auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off = false) -> void;
-   auto StartTileBatchDrawing() -> void;
-   auto StopTileBatchDrawing() -> void;
+   void SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts);
+   void DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off = false);
+   void StartTileBatchDrawing();
+   void StopTileBatchDrawing();
 #endif
 #endif
 }

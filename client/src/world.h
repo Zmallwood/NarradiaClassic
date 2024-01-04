@@ -196,12 +196,12 @@ namespace Narradia
          }
       }
 
-      auto CurrWorldArea() -> std::shared_ptr<WorldArea> {
+      std::shared_ptr<WorldArea> CurrWorldArea() {
          auto world_loc = Hero::get()->world_location();
          return world_areas_[world_loc.x][world_loc.y];
       }
 
-      auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea> {
+      std::shared_ptr<WorldArea> WorldAreaAt(Point location) {
          if (world_areas_.count(location.x) != 0)
             if (world_areas_.at(location.x).count(location.y) != 0)
                return world_areas_[location.x][location.y];

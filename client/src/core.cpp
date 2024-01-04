@@ -73,7 +73,7 @@ namespace Narradia
 
    // FPSCapper
 #if 1
-   auto FPSCapper::Below60FPS() -> bool {
+   bool FPSCapper::Below60FPS() {
 
       auto curr_ticks = SDL_GetTicks();
       auto delta = curr_ticks - prev_ticks_;
@@ -146,7 +146,7 @@ namespace Narradia
       style_ = CursorStyles::Default;
    }
 
-   auto Cursor::GetCursorImageName() -> std::string_view {
+   std::string_view Cursor::GetCursorImageName() {
 
       std::string_view img_name;
 
@@ -415,7 +415,7 @@ namespace Narradia
 
    // Console
 #if 1
-   auto Console::UpdateGameLogic() -> void {
+   void Console::UpdateGameLogic() {
 
       if (KbInput::get()->KeyHasBeenFiredPickResult(SDLK_RETURN)) {
 
@@ -430,7 +430,7 @@ namespace Narradia
       }
    }
 
-   auto Console::Print(std::string_view text, Color text_color) -> void {
+   void Console::Print(std::string_view text, Color text_color) {
 
       if (!enabled_)
          return;
@@ -441,7 +441,7 @@ namespace Narradia
       text_lines_.push_back({printed_text, text_color});
    }
 
-   auto Console::InputTextWithCursor() -> std::string {
+   std::string Console::InputTextWithCursor() {
 
       auto res = input_text_;
 
@@ -453,7 +453,7 @@ namespace Narradia
       return res;
    }
 
-   auto Console::Bounds() -> RectF {
+   RectF Console::Bounds() {
 
       return PageMngr::get()->curr_scene() == PageNames::Main
                  ? kDefaultBounds.Translate(0.0f, -ExperienceBar::kBarHeight)
@@ -463,31 +463,31 @@ namespace Narradia
 
    // ConsoleCalc
 #if 1
-   auto ConsoleCalc::MaxNumLines() -> int {
+   int ConsoleCalc::MaxNumLines() {
 
       return static_cast<int>(Console::get()->Bounds().h / Console::kTextLineHeight) - 2;
    }
 
-   auto ConsoleCalc::TextLineIndex(int visible_row_index) -> int {
+   int ConsoleCalc::TextLineIndex(int visible_row_index) {
 
       return static_cast<int>(Console::get()->text_lines().size()) - MaxNumLines() +
              visible_row_index;
    }
 
-   auto ConsoleCalc::InputTextPosition() -> PointF {
+   PointF ConsoleCalc::InputTextPosition() {
 
       return InputArrowRect().GetPosition().Translate(
           Console::kTextLineHeight, Console::kTextLineHeight / 2);
    }
 
-   auto ConsoleCalc::TextLinePosition(int visible_row_index) -> PointF {
+   PointF ConsoleCalc::TextLinePosition(int visible_row_index) {
 
       return {
           Console::get()->Bounds().x + 0.01f,
           Console::get()->Bounds().y + (visible_row_index + 1) * Console::kTextLineHeight};
    }
 
-   auto ConsoleCalc::HorizontalSplitterRect() -> RectF {
+   RectF ConsoleCalc::HorizontalSplitterRect() {
 
       return {
           Console::get()->Bounds().x,
@@ -495,7 +495,7 @@ namespace Narradia
           Console::get()->Bounds().w, Console::kSplitLineHeight};
    }
 
-   auto ConsoleCalc::InputArrowRect() -> RectF {
+   RectF ConsoleCalc::InputArrowRect() {
 
       return {
           0.0f,
@@ -542,7 +542,7 @@ namespace Narradia
       scene_views_[PageNames::Main] = MainPgV::get();
    }
 
-   auto PageMngrV::RenderCurrScene() -> void {
+   void PageMngrV::RenderCurrScene() {
 
       if (PageMngr::get()->curr_scene_canceled())
          return;
@@ -703,12 +703,12 @@ namespace Narradia
 #if 1
    // EngineC
 #if 1
-   auto EngineC::HandleInput() -> void {
+   void EngineC::HandleInput() {
 
       PollEvents();
    }
 
-   auto EngineC::UpdateGameFlow() -> void {
+   void EngineC::UpdateGameFlow() {
 
       PageMngrC::get()->UpdateGameFlowCurrScene();
    }
@@ -765,7 +765,7 @@ namespace Narradia
       scene_controllers_[PageNames::Main] = MainPgC::get();
    }
 
-   auto PageMngrC::UpdateGameFlowCurrScene() -> void {
+   void PageMngrC::UpdateGameFlowCurrScene() {
 
       PageMngr::get()->set_curr_scene_canceled(false);
       auto curr_scene = PageMngr::get()->curr_scene();
@@ -774,7 +774,7 @@ namespace Narradia
          scene_controllers_.at(curr_scene)->UpdateGameFlow();
    }
 
-   auto PageMngrC::ChangeScene(PageNames new_scene) -> void {
+   void PageMngrC::ChangeScene(PageNames new_scene) {
 
       PageMngr::get()->set_curr_scene(new_scene);
       scene_controllers_.at(new_scene)->OnEnter();
@@ -784,7 +784,7 @@ namespace Narradia
 
    // IPageC
 #if 1
-   auto IPageC::UpdateGameFlow() -> void {
+   void IPageC::UpdateGameFlow() {
 
       UpdateGameFlowDerived();
    }

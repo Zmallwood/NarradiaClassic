@@ -99,7 +99,7 @@ namespace Narradia
 
 // Free functions
 #if 1
-   auto NewString() -> RenderID {
+   RenderID NewString() {
 
       static int id_counter = 0;
 
@@ -112,9 +112,9 @@ namespace Narradia
       return rendid_image_rect;
    }
 
-   auto DrawString(
+   void DrawString(
        RenderID rid, std::string_view text, PointF position, Color color, bool center_align,
-       FontSizes font_size) -> void {
+       FontSizes font_size) {
 
       std::string unique_name_id;
       SizeF size;

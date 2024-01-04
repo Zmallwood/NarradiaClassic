@@ -30,8 +30,8 @@ namespace Narradia
    class ObjectsConf : public S<ObjectsConf> {
      public:
       ObjectsConf();
-      auto IsObstacle(std::string_view object_type) -> bool;
-      auto GetModelScaling(std::string_view object_type) -> float;
+      bool IsObstacle(std::string_view object_type);
+      float GetModelScaling(std::string_view object_type);
 
      private:
       std::map<std::string_view, ObjectConfEntry> object_confs_;

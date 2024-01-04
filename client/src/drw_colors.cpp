@@ -29,7 +29,7 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewRect() -> RenderID {
+   RenderID NewRect() {
 
       auto renderer = DrwColorsV::get();
       auto renderer_base = renderer->renderer_base();
@@ -48,7 +48,7 @@ namespace Narradia
       return vao_id;
    }
 
-   auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void {
+   void DrawRect(RenderID vao_id, RectF rect, Color color) {
 
       auto renderer = DrwColorsV::get();
       auto renderer_base = renderer->renderer_base();
@@ -87,7 +87,7 @@ namespace Narradia
       renderer->UseVAOEnd();
    }
 
-   auto FillRect(RenderID vao_id, RectF rect, Color color) -> void {
+   void FillRect(RenderID vao_id, RectF rect, Color color) {
 
       auto renderer = DrwColorsV::get();
       auto renderer_base = renderer->renderer_base();

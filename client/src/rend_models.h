@@ -20,10 +20,9 @@ namespace Narradia
      public:
       RendModelsV();
       ~RendModelsV();
-      auto NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID;
-      auto NewBodyKeyframeGeometry(
-          GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals)
-          -> void;
+      RenderID NewBodyKeyframe(std::string_view model_name, float ms_time);
+      void NewBodyKeyframeGeometry(
+          GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals);
 
       auto timelines() {
          return timelines_;
@@ -111,13 +110,13 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewModel(std::string_view model_name) -> void;
-   auto DrawModel(
+   void NewModel(std::string_view model_name);
+   void DrawModel(
        std::string_view model_name, float ms_time, Point3F position, float rotation = 0.0f,
        float scaling = 1.0f, float brightness = 1.0f, glm::vec3 color_mod = {1.0f, 1.0f, 1.0f},
-       bool no_fog = false, bool no_lighting = false) -> void;
-   auto StartModelsBatchDrawing() -> void;
-   auto StopModelsBatchDrawing() -> void;
+       bool no_fog = false, bool no_lighting = false);
+   void StartModelsBatchDrawing();
+   void StopModelsBatchDrawing();
 #endif
 #endif
 }

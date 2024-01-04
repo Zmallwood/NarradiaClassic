@@ -56,7 +56,7 @@ namespace Narradia
       return vertex_array_id;
    }
 
-   auto SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts) -> void {
+   void SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts) {
 
       std::vector<Vertex3F> vertices;
       vertices.push_back(verts._00);
@@ -116,7 +116,8 @@ namespace Narradia
    }
 
 
-   auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) -> void {
+   void DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) {
+
       auto vertex_count = 4;
       auto renderer = RendGrndV::get();
 
@@ -161,7 +162,7 @@ namespace Narradia
          renderer->UseVAOEnd();
    }
 
-   auto StartTileBatchDrawing() -> void {
+   void StartTileBatchDrawing() {
 
       auto renderer = RendGrndV::get();
       renderer->set_is_batch_drawing(true);
@@ -197,7 +198,7 @@ namespace Narradia
       glCullFace(GL_FRONT);
    }
 
-   auto StopTileBatchDrawing() -> void {
+   void StopTileBatchDrawing() {
 
       auto renderer = RendGrndV::get();
       renderer->set_is_batch_drawing(false);

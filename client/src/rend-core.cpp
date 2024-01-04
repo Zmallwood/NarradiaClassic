@@ -214,8 +214,8 @@ namespace Narradia
       return success;
    }
 
-   auto ShaderProgramV::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type)
-       -> GLuint {
+   GLuint
+   ShaderProgramV::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
 
       *shader = glCreateShader(shader_type);
 

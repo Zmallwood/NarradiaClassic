@@ -18,10 +18,9 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewImage() -> RenderID;
-   auto DrawImage(
-       std::string_view image_name, RenderID rid, const RectF &dest, Color color = Colors::white)
-       -> void;
+   RenderID NewImage();
+   void DrawImage(
+       std::string_view image_name, RenderID rid, const RectF &dest, Color color = Colors::white);
 #endif
 #endif
 }

@@ -30,7 +30,7 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewImage() -> RenderID {
+   RenderID NewImage() {
 
       auto renderer = DrwImagesV::get();
       auto renderer_base = renderer->renderer_base();
@@ -51,8 +51,8 @@ namespace Narradia
       return vao_id;
    }
 
-   auto DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color)
-       -> void {
+   void DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color) {
+
       auto renderer = DrwImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = dest.ToGLRectF();
@@ -92,8 +92,7 @@ namespace Narradia
       auto uv_buffer_id = renderer_base->BufId(BufferTypes::Uvs, rid);
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
-          position_buffer_id, positions, BufferTypes::Positions2D,
-          DrwImagesV::kLocationPosition);
+          position_buffer_id, positions, BufferTypes::Positions2D, DrwImagesV::kLocationPosition);
       renderer->UpdateData(
           color_buffer_id, colors, BufferTypes::Colors, DrwImagesV::kLocationColor);
       renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, DrwImagesV::kLocationUv);

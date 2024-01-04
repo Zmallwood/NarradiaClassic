@@ -43,7 +43,7 @@ namespace Narradia
          std::cout << "Cleaning up of RendModelsV finished.\n";
    }
 
-   auto RendModelsV::NewBodyKeyframe(std::string_view model_name, float ms_time) -> RenderID {
+   RenderID RendModelsV::NewBodyKeyframe(std::string_view model_name, float ms_time) {
 
       auto vao_id = renderer_base_->GenNewVAOId();
 
@@ -55,8 +55,8 @@ namespace Narradia
       return vao_id;
    }
 
-   auto RendModelsV::NewBodyKeyframeGeometry(
-       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) -> void {
+   void RendModelsV::NewBodyKeyframeGeometry(
+       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) {
 
       glEnable(GL_DEPTH_TEST);
       UseVAOBegin(vao_id);
@@ -118,7 +118,7 @@ namespace Narradia
 
    // Free functions
 #if 1
-   auto NewModel(std::string_view model_name) -> void {
+   void NewModel(std::string_view model_name) {
 
       auto renderer = RendModelsV::get();
       auto model = ModelBank::get()->GetModel(model_name);
@@ -171,9 +171,9 @@ namespace Narradia
       }
    }
 
-   auto DrawModel(
+   void DrawModel(
        std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
-       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) -> void {
+       float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) {
 
       auto renderer = RendModelsV::get();
       auto model_ids = renderer->model_ids();
@@ -271,7 +271,7 @@ namespace Narradia
          glUseProgram(0);
    }
 
-   auto StartModelsBatchDrawing() -> void {
+   void StartModelsBatchDrawing() {
 
       auto renderer = RendModelsV::get();
       renderer->set_is_batch_drawing(true);
@@ -283,7 +283,7 @@ namespace Narradia
           renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
    }
 
-   auto StopModelsBatchDrawing() -> void {
+   void StopModelsBatchDrawing() {
 
       auto renderer = RendModelsV::get();
       renderer->set_is_batch_drawing(false);
