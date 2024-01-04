@@ -5,12 +5,12 @@
 #include "calc.h"
 #include "conf.h"
 #include "core.h"
+#include "drw_images.h"
 #include "hero.h"
 #include "rend-core.h"
 #include "rend_grnd.h"
 #include "rend_models.h"
 #include "world.h"
-#include "drw_images.h"
 #endif
 
 namespace Narradia
@@ -244,6 +244,116 @@ namespace Narradia
          Console::get()->Print("Exception in WorldViewAdd::Render: " + String(e.what()));
       }
    }
+   template <int I, int R>
+   inline void DrawGroundRecur(bool simplified_ground = false);
+
+   template <>
+   inline void DrawGroundRecur<2*30*2*30, 30>(bool simplified_ground) {
+   }
+
+   template <int I, int R>
+   inline void DrawGroundRecur(bool simplified_ground) {
+
+      const auto x_center = static_cast<int>(Hero::get()->pos().x);
+      const auto y_center = static_cast<int>(Hero::get()->pos().z);
+      const auto x = x_center + I % (2*R) - R;
+      const auto y = y_center + I / (2*R) - R;
+      auto inc = 1;
+      auto kGroundSimpleK = 6;
+
+      if (simplified_ground)
+         inc = kGroundSimpleK;
+
+      auto curr_wa = World::get()->CurrWorldArea();
+
+      int r;
+
+      if (simplified_ground) {
+         r = WorldAddV::get()->render_distance_;
+      }
+      else {
+         const auto width = 300;
+         const auto height = 300;
+         r = std::sqrt(width * width + height * height) / 2.0f;
+      }
+
+      auto dx = x - x_center;
+      auto dy = y - y_center;
+
+      if (dx * dx + dy * dy > r * r)
+         goto next_tile;
+
+      if (simplified_ground) {
+         if (x % kGroundSimpleK != 0 || y % kGroundSimpleK != 0)
+            goto next_tile;
+      }
+
+      if (x < 0 || y < 0 || x >= curr_wa->Width() || y >= curr_wa->Height()) {
+
+         if (simplified_ground)
+            goto next_tile;
+
+         // West
+         if (x < 0 && y >= 0 && y < curr_wa->Height()) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig + curr_wa->Width();
+            y = y_orig;
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, -1, 0);
+         }
+         // East
+         else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig - curr_wa->Width();
+            y = y_orig;
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 1, 0);
+         }
+         // North
+         else if (x >= 0 && y < 0 && x < curr_wa->Width()) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig;
+            y = y_orig + curr_wa->Height();
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 0, -1);
+         }
+         // South
+         else if (x >= 0 && y >= curr_wa->Height() && x < curr_wa->Width()) {
+
+            int x_orig = x;
+            int y_orig = y;
+            int x;
+            int y;
+            x = x_orig;
+            y = y_orig - curr_wa->Height();
+            WorldAddV::get()->DrawGroundTileOutsideWorldArea(x, y, 0, 1);
+         }
+      }
+      else {
+
+         auto tile = curr_wa->GetTile(x, y);
+         auto coord = Point{x, y};
+         WorldAddV::get()->DrawGround(tile, coord);
+         auto tile_symbols = MakeShared<Tile>();
+         tile_symbols->set_mob(tile->mob());
+         tile_symbols->set_rid(WorldAddV::get()->rids_tile_symbols[x / inc][y / inc]);
+         tile_symbols->set_tile_effect(tile->tile_effect());
+         WorldAddV::get()->DrawTileSymbols(tile_symbols, coord);
+      }
+
+   next_tile:
+
+      DrawGroundRecur<I + 1, R>(simplified_ground);
+   }
 
    void WorldAddV::DrawAllGround() {
 
@@ -266,9 +376,9 @@ namespace Narradia
       auto wa_sw = World::get()->WorldAreaAt(loc_sw);
       auto wa_nw = World::get()->WorldAreaAt(loc_nw);
 
-      auto r = render_distance_;
-      auto x_center = static_cast<int>(Hero::get()->pos().x);
-      auto y_center = static_cast<int>(Hero::get()->pos().z);
+      const int r = (const int)(render_distance_);
+      const auto x_center = static_cast<int>(Hero::get()->pos().x);
+      const auto y_center = static_cast<int>(Hero::get()->pos().z);
       auto inc = 1;
 
       if (simplified_ground_)
@@ -276,7 +386,18 @@ namespace Narradia
 
       StartTileBatchDrawing();
 
-      for (auto y = y_center - r - 1; y <= y_center + r + 1; y++) {
+      if (false == simplified_ground_) {
+         const int r = 1;
+         DrawGroundRecur<0, 30>(simplified_ground_);
+      }
+      else {
+       //  const auto width = 300;
+       //  const auto height = 300;
+       //  const int r = std::sqrt(width * width + height * height) / 2.0f;
+       //  DrawGroundRecur<-r, -r>();
+      }
+
+      for (auto y = y_center - r - 1; y <= y_center + r + 1 && false; y++) {
 
          for (auto x = x_center - r - 1; x <= x_center + r + 1; x++) {
 
@@ -437,7 +558,7 @@ namespace Narradia
       StopModelsBatchDrawing();
    }
 
-   void WorldAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   inline void WorldAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
 
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Hero::get()->world_location();
@@ -561,7 +682,7 @@ namespace Narradia
       }
    }
 
-   void WorldAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   inline void WorldAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
 
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Hero::get()->world_location();
@@ -593,7 +714,7 @@ namespace Narradia
       }
    }
 
-   void WorldAddV::DrawGround(SharedPtr<Tile> tile, Point coord) {
+   inline void WorldAddV::DrawGround(SharedPtr<Tile> tile, Point coord) {
 
       auto ground = tile->ground();
 
@@ -663,7 +784,7 @@ namespace Narradia
           0.6f);
    }
 
-   void WorldAddV::DrawTileSymbols(SharedPtr<Tile> tile, Point coord) {
+   inline void WorldAddV::DrawTileSymbols(SharedPtr<Tile> tile, Point coord) {
 
       auto player_pos = Hero::get()->pos().GetXZ().ToIntPoint();
 

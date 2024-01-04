@@ -1,5 +1,7 @@
 #pragma once
 
+#include "world.h"
+
 namespace Narradia
 {
    // Model
@@ -91,24 +93,26 @@ namespace Narradia
       void set_render_distance(int value) {
          render_distance_ = value;
       }
+      inline void DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
+      inline void DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
+      inline void DrawGround(SharedPtr<Tile> tile, Point coord);
+      inline void DrawTileSymbols(SharedPtr<Tile> tile, Point coord);
 
-     private:
-      void DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
-      void DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
-      void DrawAllGround();
-      void DrawAllModels();
-      void DrawGround(SharedPtr<Tile> tile, Point coord);
-      void DrawObjects(SharedPtr<Tile> tile, Point coord, int dloc_x = 0, int dloc_y = 0);
-      void DrawPlayer();
-      void DrawTileSymbols(SharedPtr<Tile> tile, Point coord);
-
+      int render_distance_ = 30;
       Vec<Vec<RenderID>> rids_tiles;
       Vec<Vec<RenderID>> rids_tile_symbols;
+
+     private:
+      void DrawAllGround();
+      void DrawAllModels();
+      void DrawObjects(SharedPtr<Tile> tile, Point coord, int dloc_x = 0, int dloc_y = 0);
+      void DrawPlayer();
+
       RenderID rid_back_gradient;
-      int render_distance_ = 30;
-      bool simplified_ground_ = false;
       const float kTinyDistance = 0.001f;
       static constexpr int kGroundSimpleK = 6;
+      bool simplified_ground_ = false;
    };
+
 #endif
 }

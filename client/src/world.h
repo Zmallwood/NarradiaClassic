@@ -54,7 +54,7 @@ namespace Narradia
          elevation_ += amount;
       }
 
-      auto ground() {
+      inline auto ground() {
          return ground_;
       }
 
@@ -142,7 +142,7 @@ namespace Narradia
          }
       }
 
-      SharedPtr<Tile> GetTile(int x, int y) {
+      inline SharedPtr<Tile> GetTile(int x, int y) {
 
          try {
 
@@ -154,22 +154,22 @@ namespace Narradia
          }
       }
 
-      SharedPtr<Tile> GetTile(Point coord) {
+      inline SharedPtr<Tile> GetTile(Point coord) {
 
          return GetTile(coord.x, coord.y);
       }
 
-      bool IsInsideMap(Point coord) {
+      inline bool IsInsideMap(Point coord) {
 
          return coord.x < tiles_.size() && coord.y < tiles_.at(0).size();
       }
 
-      int Width() {
+      inline int Width() {
 
          return tiles_.size();
       }
 
-      int Height() {
+      inline int Height() {
          return tiles_.at(0).size();
       }
 
@@ -215,7 +215,7 @@ namespace Narradia
          }
       }
 
-      SharedPtr<WorldArea> CurrWorldArea() {
+      inline SharedPtr<WorldArea> CurrWorldArea() {
 
          auto world_loc = Hero::get()->world_location();
 

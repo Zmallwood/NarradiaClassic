@@ -178,7 +178,7 @@ namespace Narradia
       template <typename... U>
       static void Touch(U... args);
       static void Dispose();
-      static std::shared_ptr<T> get();
+      inline static std::shared_ptr<T> get();
 
      private:
       inline static std::shared_ptr<T> instance_;
@@ -250,7 +250,7 @@ namespace Narradia
    }
 
    template <class T>
-   auto ToString(T arg) {
+   inline auto ToString(T arg) {
       return std::to_string(arg);
    }
 #endif

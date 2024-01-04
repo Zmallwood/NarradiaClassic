@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 
    while (Engine::get()->is_running()) {
 
-      if (FPSCapper::get()->Below60FPS()) {
+      //if (FPSCapper::get()->Below60FPS()) {
 
          try {
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 
             Console::get()->Print("Exception in main: " + String(e.what()));
          }
-      }
+      //}
    }
 
    DisposeSingletons();
