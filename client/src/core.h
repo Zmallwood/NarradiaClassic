@@ -13,12 +13,15 @@ namespace Narradia
       ~Engine();
       void UpdateGameLogic();
       void Finalize();
+
       auto is_running() {
          return is_running_;
       }
+
       void set_running(bool value) {
          is_running_ = value;
       }
+
       auto title() {
          return title_;
       }
@@ -45,15 +48,19 @@ namespace Narradia
       PageMngr();
       void UpdateGameLogicCurrScene();
       void FinalizeCurrScene();
+
       auto curr_scene() {
          return curr_scene_;
       }
+
       void set_curr_scene(PageNames value) {
          curr_scene_ = value;
       }
+
       auto curr_scene_canceled() {
          return curr_scene_canceled_;
       }
+
       void set_curr_scene_canceled(bool value) {
          curr_scene_canceled_ = value;
       }
@@ -71,6 +78,7 @@ namespace Narradia
       IPage();
       void UpdateGameLogic();
       virtual void Finalize() = 0;
+
       auto scene_gui() {
          return scene_gui_;
       }
@@ -88,9 +96,11 @@ namespace Narradia
       ~Cursor();
       void ResetStyle();
       auto GetCursorImageName() -> std::string_view;
+
       auto style() {
          return style_;
       }
+
       void set_style(CursorStyles value) {
          style_ = value;
       }
@@ -154,9 +164,11 @@ namespace Narradia
       void ExecMouseActions();
       void AddFiredAction(std::function<void()> action, int z_order = 0);
       void AddReleasedAction(std::function<void()> action, int z_order = 0);
+
       auto is_pressed() {
          return is_pressed_;
       }
+
       auto action_mngr() {
          return action_mngr_;
       }
@@ -178,9 +190,11 @@ namespace Narradia
       void OnPress(Uint8 button);
       void OnRelease(Uint8 button);
       void ExecMouseActions();
+
       auto left_btn() {
          return left_btn_;
       }
+
       auto right_btn() {
          return right_btn_;
       }
@@ -204,15 +218,19 @@ namespace Narradia
       auto win() {
          return win_;
       }
+
       void set_win(std::shared_ptr<SDL_Window> value) {
          win_ = value;
       }
+
       auto win_size() {
          return win_size_;
       }
+
       auto win_flags() {
          return win_flags_;
       }
+
       auto clear_color() {
          return clear_color_;
       }
@@ -239,18 +257,23 @@ namespace Narradia
       auto Print(std::string_view text, Color text_color = Colors::wheat) -> void;
       auto InputTextWithCursor() -> std::string;
       auto Bounds() -> RectF;
+
       auto text_lines() {
          return text_lines_;
       }
+
       auto enabled() {
          return enabled_;
       }
+
       auto input_active() {
          return input_active_;
       }
+
       auto cursor_position() {
          return cursor_position_;
       }
+
       auto input_text() {
          return input_text_;
       }

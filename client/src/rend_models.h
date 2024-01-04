@@ -24,48 +24,63 @@ namespace Narradia
       auto NewBodyKeyframeGeometry(
           GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals)
           -> void;
+
       auto timelines() {
          return timelines_;
       }
+
       auto model_ids() {
          return model_ids_;
       }
+
       auto location_projection() {
          return location_projection_;
       }
+
       auto location_view() {
          return location_view_;
       }
+
       auto location_alpha() {
          return location_alpha_;
       }
+
       auto location_model() {
          return location_model_;
       }
+
       auto location_model_no_translation() {
          return location_model_no_translation_;
       }
+
       auto location_color_mod() {
          return location_color_mod_;
       }
+
       auto location_view_pos() {
          return location_view_pos_;
       }
+
       auto location_fog_color() {
          return location_fog_color_;
       }
+
       auto location_no_fog() {
          return location_no_fog_;
       }
+
       auto location_no_lighting() {
          return location_no_lighting_;
       }
+
       auto global_animation_speed() {
          return global_animation_speed_;
       }
+
       auto is_batch_drawing() {
          return is_batch_drawing_;
       }
+
       void set_is_batch_drawing(bool value) {
          is_batch_drawing_ = value;
       }

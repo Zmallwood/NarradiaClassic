@@ -21,9 +21,11 @@ namespace Narradia
       Object(std::string type)
           : type_(type) {
       }
+
       auto type() {
          return type_;
       }
+
       void set_type(std::string_view value) {
          type_ = value;
       }
@@ -47,51 +49,66 @@ namespace Narradia
       Tile()
           : color_(std::make_shared<Color>()) {
       }
+
       void IncreaseElevation(float amount) {
          elevation_ += amount;
       }
+
       auto ground() {
          return ground_;
       }
+
       void set_ground(std::string value) {
          ground_ = value;
       }
+
       auto object() {
          return object_;
       }
+
       void set_object(std::shared_ptr<Object> value) {
          object_ = value;
       }
+
       auto mob() {
          return mob_;
       }
+
       void set_mob(std::shared_ptr<Mob> value) {
          mob_ = value;
       }
+
       auto elevation() {
          return elevation_;
       }
+
       void set_elevation(float value) {
          elevation_ = value;
       }
+
       auto tile_effect() {
          return tile_effect_;
       }
+
       void set_tile_effect(TileEffect value) {
          tile_effect_ = value;
       }
+
       auto rid() {
          return rid_;
       }
+
       void set_rid(RenderID value) {
          rid_ = value;
       }
+
       auto normal() {
          return normal_;
       }
       void set_normal(Point3F value) {
          normal_ = value;
       }
+
       auto color() {
          return color_;
       }
@@ -120,6 +137,7 @@ namespace Narradia
             }
          }
       }
+
       std::shared_ptr<Tile> GetTile(int x, int y) {
          try {
             return tiles_.at(x).at(y);
@@ -128,18 +146,23 @@ namespace Narradia
             throw std::runtime_error("Tried to access tile with an invalid coordinate.");
          }
       }
+
       std::shared_ptr<Tile> GetTile(Point coord) {
          return GetTile(coord.x, coord.y);
       }
+
       bool IsInsideMap(Point coord) {
          return coord.x < tiles_.size() && coord.y < tiles_.at(0).size();
       }
+
       int Width() {
          return tiles_.size();
       }
+
       int Height() {
          return tiles_.at(0).size();
       }
+
       void ClearAllRIDs() {
          for (auto y = 0; y < Height(); y++) {
             for (auto x = 0; x < Width(); x++) {
@@ -147,6 +170,7 @@ namespace Narradia
             }
          }
       }
+
       auto mobs_mirror() {
          return mobs_mirror_;
       }
@@ -171,22 +195,27 @@ namespace Narradia
             }
          }
       }
+
       auto CurrWorldArea() -> std::shared_ptr<WorldArea> {
          auto world_loc = Hero::get()->world_location();
          return world_areas_[world_loc.x][world_loc.y];
       }
+
       auto WorldAreaAt(Point location) -> std::shared_ptr<WorldArea> {
          if (world_areas_.count(location.x) != 0)
             if (world_areas_.at(location.x).count(location.y) != 0)
                return world_areas_[location.x][location.y];
          return nullptr;
       }
+
       auto world_width() {
          return world_width_;
       }
+
       auto world_height() {
          return world_height_;
       }
+
       auto world_areas() {
          return world_areas_;
       }

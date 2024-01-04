@@ -9,6 +9,7 @@ namespace Narradia
    class IntroPg : public IPage, public S<IntroPg> {
      private:
       void UpdateGameLogicDerived() override;
+
       void Finalize() override {
       }
    };
@@ -19,6 +20,7 @@ namespace Narradia
 
      private:
       void UpdateGameLogicDerived() override;
+
       void Finalize() override {
       }
    };
@@ -35,6 +37,7 @@ namespace Narradia
 
      private:
       void UpdateGameLogicDerived() override;
+
       void Finalize() override {
       }
    };

@@ -11,13 +11,18 @@ namespace Narradia
    // DrwImagesV
 #if 1
    DrwImagesV::DrwImagesV() {
+
       shader_program_view()->Create(
           vertex_shader_source_2d_images, fragment_shader_source_2d_images);
    }
+
    DrwImagesV::~DrwImagesV() {
+
       if (kVerbose)
          std::cout << "Cleaning up DrwImagesV.\n";
+
       CleanupBase();
+
       if (kVerbose)
          std::cout << "Cleaning up of DrwImagesV finished.\n";
    }
@@ -26,6 +31,7 @@ namespace Narradia
    // Free functions
 #if 1
    auto NewImage() -> RenderID {
+
       auto renderer = DrwImagesV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
@@ -41,8 +47,10 @@ namespace Narradia
           color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
       renderer->SetData(uv_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
       renderer->UseVAOEnd();
+
       return vao_id;
    }
+
    auto DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color)
        -> void {
       auto renderer = DrwImagesV::get();
@@ -65,6 +73,7 @@ namespace Narradia
       std::vector<float> positions;
       std::vector<float> colors;
       std::vector<float> uvs;
+
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
@@ -75,6 +84,7 @@ namespace Narradia
          uvs.push_back(vertex.uv.x);
          uvs.push_back(vertex.uv.y);
       }
+
       renderer->UseVAOBegin(rid);
       auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, rid);
       auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions2D, rid);

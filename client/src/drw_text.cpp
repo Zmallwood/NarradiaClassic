@@ -14,28 +14,39 @@ namespace Narradia
 #if 1
    DrwTextV::DrwTextV()
        : unique_name_ids_(std::make_shared<std::map<RenderID, std::string>>()) {
+
       TTF_Init();
+
       auto font_path =
           std::string(SDL_GetBasePath()) + kRelFontsPath + "PartyConfettiRegular-eZOn3.ttf";
+
       fonts_.insert({FontSizes::_20, std::make_shared<Font>(font_path.c_str(), 20)});
       fonts_.insert({FontSizes::_40, std::make_shared<Font>(font_path.c_str(), 40)});
    }
+
    DrwTextV::~DrwTextV() {
+
       if (kVerbose)
          std::cout << "Disposing DrwText.\n";
    }
+
    void DrwTextV::RenderText(
        RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
        std::string &out_unique_name_id, SizeF &out_size) const {
+
       auto font = fonts_.at(font_size)->SDL_font().get();
+
       if (!font)
          return;
+
       auto sdl_color = color.ToSDLColor();
       auto outline_sdl_color = kOutlineColor.ToSDLColor();
       auto text_outline_surface = TTF_RenderText_Blended(
           fonts_.at(font_size)->outline_SDL_font().get(), text.data(), outline_sdl_color);
+
       if (!text_outline_surface)
          return;
+
       auto text_surface = TTF_RenderText_Blended(font, text.data(), sdl_color);
       glEnable(GL_TEXTURE_2D);
       auto unique_name_id = unique_name_ids_->at(rid);
@@ -75,10 +86,13 @@ namespace Narradia
    // Font
 #if 1
    Font::Font(std::string_view font_file_name, int font_size) {
+
       SDL_font_ =
           std::shared_ptr<TTF_Font>(TTF_OpenFont(font_file_name.data(), font_size), SDLDeleter());
+
       outline_SDL_font_ =
           std::shared_ptr<TTF_Font>(TTF_OpenFont(font_file_name.data(), font_size), SDLDeleter());
+
       TTF_SetFontOutline(outline_SDL_font_.get(), kFontOutlineWidth);
    }
 #endif
@@ -86,17 +100,22 @@ namespace Narradia
 // Free functions
 #if 1
    auto NewString() -> RenderID {
+
       static int id_counter = 0;
+
       auto id = id_counter++;
       auto unique_name = "RenderedImage" + std::to_string(id);
       ImageBank::get()->CreateBlankTextImage(unique_name);
       auto rendid_image_rect = NewImage();
       DrwTextV::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
+
       return rendid_image_rect;
    }
+
    auto DrawString(
        RenderID rid, std::string_view text, PointF position, Color color, bool center_align,
        FontSizes font_size) -> void {
+
       std::string unique_name_id;
       SizeF size;
       DrwTextV::get()->RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
@@ -107,9 +126,11 @@ namespace Narradia
       TTF_SizeText(
           DrwTextV::get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
       rect.y -= static_cast<float>(text_h / AspectRatio()) / canvas_size.h / 2.0f;
+
       if (center_align)
          rect.x -=
              static_cast<float>(text_w) / static_cast<float>(canvas_size.h) / 2.0f / AspectRatio();
+
       DrawImage(unique_name_id, rid, rect);
    }
 #endif

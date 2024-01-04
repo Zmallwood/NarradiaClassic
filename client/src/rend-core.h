@@ -30,9 +30,11 @@ namespace Narradia
    class ShaderProgram {
      public:
       void Cleanup();
+
       auto program_id() const {
          return program_id_;
       }
+
       void set_program_id(GLuint value) {
          program_id_ = value;
       }
@@ -46,15 +48,19 @@ namespace Narradia
 #if 1
    class CameraGL : public S<CameraGL> {
      public:
+
       auto persp_matrix() {
          return persp_matrix_;
       }
+
       void set_persp_matrix(glm::mat4 value) {
          persp_matrix_ = value;
       }
+
       auto view_matrix() {
          return view_matrix_;
       }
+
       void set_view_matrix(glm::mat4 value) {
          view_matrix_ = value;
       }
@@ -383,9 +389,11 @@ inline static const GLchar *vertex_shader_source_tiles =
       void UpdateData(
           GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
           int layout_location) const;
+
       auto shader_program_view() {
          return shader_program_view_;
       }
+
       auto renderer_base() {
          return renderer_base_;
       }
@@ -415,6 +423,7 @@ inline static const GLchar *vertex_shader_source_tiles =
      public:
       ShaderProgramV();
       bool Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src);
+
       auto shader_program() {
          return shader_program_;
       }

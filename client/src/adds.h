@@ -7,6 +7,7 @@ namespace Narradia
    class FPSCounterAdd : public S<FPSCounterAdd> {
      public:
       void UpdateGameLogic();
+
       auto fps() {
          return fps_;
       }

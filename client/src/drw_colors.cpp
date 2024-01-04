@@ -10,13 +10,18 @@ namespace Narradia
    // DrwSolidColorsV
 #if 1
    DrwColorsV::DrwColorsV() {
+
       shader_program_view()->Create(
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
    }
+
    DrwColorsV::~DrwColorsV() {
+
       if (kVerbose)
          std::cout << "Cleaning up DrwSolidColorsV.\n";
+
       CleanupBase();
+
       if (kVerbose)
          std::cout << "Cleaning up of DrwSolidColorsV finished.\n";
    }
@@ -25,6 +30,7 @@ namespace Narradia
    // Free functions
 #if 1
    auto NewRect() -> RenderID {
+
       auto renderer = DrwColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto vao_id = renderer_base->GenNewVAOId();
@@ -38,9 +44,12 @@ namespace Narradia
       renderer->SetData(
           color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
       renderer->UseVAOEnd();
+
       return vao_id;
    }
+
    auto DrawRect(RenderID vao_id, RectF rect, Color color) -> void {
+
       auto renderer = DrwColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
@@ -54,6 +63,7 @@ namespace Narradia
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
+
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
@@ -62,6 +72,7 @@ namespace Narradia
          colors.push_back(color.b);
          colors.push_back(color.a);
       }
+
       renderer->UseVAOBegin(vao_id);
       auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, vao_id);
       auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions2D, vao_id);
@@ -75,7 +86,9 @@ namespace Narradia
       glDrawElements(GL_LINE_STRIP, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       renderer->UseVAOEnd();
    }
+
    auto FillRect(RenderID vao_id, RectF rect, Color color) -> void {
+
       auto renderer = DrwColorsV::get();
       auto renderer_base = renderer->renderer_base();
       auto gl_rect = rect.ToGLRectF();
@@ -89,6 +102,7 @@ namespace Narradia
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
+
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
@@ -97,6 +111,7 @@ namespace Narradia
          colors.push_back(color.b);
          colors.push_back(color.a);
       }
+
       renderer->UseVAOBegin(vao_id);
       auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, vao_id);
       auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions2D, vao_id);

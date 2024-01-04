@@ -16,18 +16,23 @@ namespace Narradia
           std::string_view img_name = "GuiButtonBack",
           std::string_view hovered_img_name = "GuiButtonBackHovered");
       void UpdateGameLogic() override;
+
       auto text() {
          return text_;
       }
+
       auto bounds() {
          return bounds_;
       }
+
       auto img_name() {
          return img_name_;
       }
+
       auto hovered_img_name() {
          return hovered_img_name_;
       }
+
       auto hovered() {
          return hovered_;
       }
@@ -50,18 +55,22 @@ namespace Narradia
       }
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
       RectF Bounds();
+
       auto position() {
          return position_;
       }
+
       auto size() {
          return size_;
       }
+
       auto gui_components() {
          return gui_components_;
       }
 
      protected:
       void UpdateGameLogic() override;
+
       void set_position(PointF value) {
          position_ = value;
       }
@@ -101,18 +110,23 @@ namespace Narradia
       void Hide();
       void ToggleVisibility();
       RectF AbsTitleBarBounds();
+
       auto destroy_on_close() {
          return destroy_on_close_;
       }
+
       auto visible() {
          return visible_;
       }
+
       auto background_image_name() {
          return background_image_name_;
       }
+
       auto title() {
          return title_;
       }
+
       auto gui_window_close_button() {
          return gui_window_close_button_;
       }
@@ -140,10 +154,11 @@ namespace Narradia
       }
       ~GuiWindowCloseButton();
       void UpdateGameLogic();
+      RectF Bounds() const;
+
       auto hovered() {
          return hovered_;
       }
-      RectF Bounds() const;
 
      private:
       static constexpr float kWidth = 0.01f;
@@ -159,6 +174,7 @@ namespace Narradia
       void UpdateGameLogic();
       void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
       void RemoveGuiComponent(GuiComponent *comp);
+
       auto gui_components() {
          return gui_components_;
       }
@@ -173,9 +189,11 @@ namespace Narradia
    class GuiComponentV {
      public:
       virtual void Render() = 0;
+
       auto gui_component() {
          return gui_component_;
       }
+
       void set_gui_component(std::shared_ptr<GuiComponent> value) {
          gui_component_ = value;
       }
@@ -198,6 +216,7 @@ namespace Narradia
      protected:
       void Render() override;
       void AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view);
+
       void set_gui_container(std::shared_ptr<GuiContainer> value) {
          gui_container_ = value;
       }
@@ -217,6 +236,7 @@ namespace Narradia
    class GuiWindowV : public GuiMovableContainerV {
      public:
       GuiWindowV();
+
       auto gui_window_close_button_view() {
          return gui_window_close_button_view_;
       }
@@ -237,6 +257,7 @@ namespace Narradia
      public:
       GuiWindowCloseButtonV();
       void Render();
+
       void set_model(std::shared_ptr<GuiWindowCloseButton> value) {
          model_ = value;
       }
@@ -250,6 +271,7 @@ namespace Narradia
      public:
       void Render();
       void AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view);
+
       void set_scene_gui(std::shared_ptr<SceneGui> value) {
          scene_gui_ = value;
       }

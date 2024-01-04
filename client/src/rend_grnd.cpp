@@ -14,7 +14,9 @@ namespace Narradia
    // RendGrndV
 #if 1
    RendGrndV::RendGrndV() {
+
       shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
+
       location_projection_ = GetUniformLocation("projection");
       location_view_ = GetUniformLocation("view");
       location_model_ = GetUniformLocation("model");
@@ -22,7 +24,9 @@ namespace Narradia
       location_view_pos_ = GetUniformLocation("viewPos");
       location_fog_color_ = GetUniformLocation("fogColor");
    }
+
    RendGrndV::~RendGrndV() {
+
       CleanupBase();
    }
 #endif
@@ -30,6 +34,7 @@ namespace Narradia
    // Free functions
 #if 1
    RenderID NewTile() {
+
       auto num_vertices = 4;
       auto renderer = RendGrndV::get();
       auto renderer_base = renderer->renderer_base();
@@ -47,9 +52,12 @@ namespace Narradia
       renderer->SetData(uv_buffer_id, num_vertices, nullptr, BufferTypes::Uvs);
       renderer->SetData(normal_buffer_id, num_vertices, nullptr, BufferTypes::Normals);
       glBindVertexArray(0);
+
       return vertex_array_id;
    }
+
    auto SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts) -> void {
+
       std::vector<Vertex3F> vertices;
       vertices.push_back(verts._00);
       vertices.push_back(verts._10);
@@ -57,15 +65,19 @@ namespace Narradia
       vertices.push_back(verts._01);
       auto renderer = RendGrndV::get();
       auto renderer_base = renderer->renderer_base();
+
       if (!renderer->is_batch_drawing())
          renderer->UseVAOBegin(vao_id);
+
       std::vector<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
       std::vector<float> positions;
       std::vector<float> colors;
       std::vector<float> uvs;
       std::vector<float> normals;
+
       for (auto &vertex : vertices) {
+
          positions.push_back(vertex.pos.x);
          positions.push_back(vertex.pos.y);
          positions.push_back(vertex.pos.z);
@@ -80,12 +92,15 @@ namespace Narradia
          normals.push_back(vertex_normal.y);
          normals.push_back(vertex_normal.z);
       }
+
       auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, vao_id);
       auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions3D, vao_id);
       auto color_buffer_id = renderer_base->BufId(BufferTypes::Colors, vao_id);
       auto uv_buffer_id = renderer_base->BufId(BufferTypes::Uvs, vao_id);
       auto normal_buffer_id = renderer_base->BufId(BufferTypes::Normals, vao_id);
+
       glBindVertexArray(vao_id);
+
       renderer->UpdateIndicesData(index_buffer_id, indices);
       renderer->UpdateData(
           position_buffer_id, positions, BufferTypes::Positions3D, RendGrndV::kLocationPosition);
@@ -93,18 +108,25 @@ namespace Narradia
       renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendGrndV::kLocationUv);
       renderer->UpdateData(
           normal_buffer_id, normals, BufferTypes::Normals, RendGrndV::kLocationNormal);
+
       glBindVertexArray(0);
+
       if (!renderer->is_batch_drawing())
          renderer->UseVAOEnd();
    }
+
+
    auto DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) -> void {
       auto vertex_count = 4;
       auto renderer = RendGrndV::get();
+
       if (depth_test_off)
          glDisable(GL_DEPTH_TEST);
       else
          glEnable(GL_DEPTH_TEST);
+
       if (!renderer->is_batch_drawing()) {
+
          renderer->UseVAOBegin(vao_id);
          glUniformMatrix4fv(
              renderer->location_projection(), 1, GL_FALSE,
@@ -128,15 +150,19 @@ namespace Narradia
              RendGrndV::kFogColorGround.b);
          glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       }
+
       auto image_id = ImageBank::get()->GetImage(image_name);
       glBindTexture(GL_TEXTURE_2D, image_id);
       glBindVertexArray(vao_id);
       glDrawElements(GL_TRIANGLE_FAN, vertex_count, GL_UNSIGNED_INT, NULL);
       glBindVertexArray(0);
+
       if (!renderer->is_batch_drawing())
          renderer->UseVAOEnd();
    }
+
    auto StartTileBatchDrawing() -> void {
+
       auto renderer = RendGrndV::get();
       renderer->set_is_batch_drawing(true);
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
@@ -170,7 +196,9 @@ namespace Narradia
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }
+
    auto StopTileBatchDrawing() -> void {
+
       auto renderer = RendGrndV::get();
       renderer->set_is_batch_drawing(false);
       glUseProgram(0);

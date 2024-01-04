@@ -10,27 +10,35 @@ namespace Narradia
      public:
       RendGrndV();
       ~RendGrndV();
+
       auto is_batch_drawing() {
          return is_batch_drawing_;
       }
+
       void set_is_batch_drawing(bool value) {
          is_batch_drawing_ = value;
       }
+
       auto location_projection() {
          return location_projection_;
       }
+
       auto location_view() {
          return location_view_;
       }
+
       auto location_model() {
          return location_model_;
       }
+
       auto location_alpha() {
          return location_alpha_;
       }
+
       auto location_view_pos() {
          return location_view_pos_;
       }
+
       auto location_fog_color() {
          return location_fog_color_;
       }

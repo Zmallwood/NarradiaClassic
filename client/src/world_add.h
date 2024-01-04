@@ -13,6 +13,7 @@ namespace Narradia
    class TileSquare {
      public:
       TileSquare(int x, int y) {
+
          coords._00 = {x, y};
          coords._10 = {x + 1, y};
          coords._11 = {x + 1, y + 1};
@@ -27,21 +28,27 @@ namespace Narradia
    class Camera : public S<Camera> {
      public:
       void UpdateGameLogic();
+
       auto horizontal_angle_deg() {
          return horizontal_angle_deg_;
       }
+
       void set_horizontal_angle_deg(float value) {
          horizontal_angle_deg_ = value;
       }
+
       auto vertical_angle_deg() {
          return vertical_angle_deg_;
       }
+
       void set_vertical_angle_deg(float value) {
          vertical_angle_deg_ = value;
       }
+
       auto camera_distance() {
          return camera_distance_;
       }
+
       void set_camera_distance(float value) {
          camera_distance_ = value;
       }
@@ -69,9 +76,11 @@ namespace Narradia
       WorldAddV(bool simplified_ground = false);
       void Render();
       void InitCurrWorldArea();
+
       auto render_distance() {
          return render_distance_;
       }
+
       void set_render_distance(int value) {
          render_distance_ = value;
       }

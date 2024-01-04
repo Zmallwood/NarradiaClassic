@@ -15,9 +15,11 @@ namespace Narradia
       void RenderText(
           RenderID rid, std::string_view text, Color color, bool center_align, FontSizes font_size,
           std::string &out_unique_name_id, SizeF &out_size) const;
+
       auto fonts() {
          return fonts_;
       }
+
       auto unique_name_ids() {
          return unique_name_ids_;
       }
@@ -34,9 +36,11 @@ namespace Narradia
    class Font {
      public:
       Font(std::string_view font_file_name, int font_size);
+
       auto SDL_font() {
          return SDL_font_;
       }
+
       auto outline_SDL_font() {
          return outline_SDL_font_;
       }

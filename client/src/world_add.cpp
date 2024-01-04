@@ -22,6 +22,7 @@ namespace Narradia
    }
 
    void WorldAdd::UpdateGameLogic() {
+
       Camera::get()->UpdateGameLogic();
    }
 #endif
@@ -29,11 +30,13 @@ namespace Narradia
    // Camera
 #if 1
    void Camera::UpdateGameLogic() {
+
       SetPerspMat();
       SetViewMat();
    }
 
    void Camera::SetPerspMat() {
+
       auto fov_rads = glm::radians(used_fov_ / 2);
       auto aspect = 1600.0f / 900.0f;
       auto z_near = 0.1f;
@@ -43,6 +46,7 @@ namespace Narradia
    }
 
    void Camera::SetViewMat() {
+
       auto player_pos = Hero::get()->pos().Multiply(kTileSize);
       auto curr_world_loc = Hero::get()->world_location();
       auto t_sz = kTileSize;
@@ -62,6 +66,7 @@ namespace Narradia
    }
 
    Point3F Camera::GetCameraPos() {
+
       auto player = Hero::get();
       float player_elev;
       {
@@ -123,10 +128,12 @@ namespace Narradia
 #if 1
    WorldAddV::WorldAddV(bool simplified_ground)
        : simplified_ground_(simplified_ground) {
+
       InitCurrWorldArea();
    }
 
    void WorldAddV::InitCurrWorldArea() {
+
       auto wa = World::get()->CurrWorldArea();
       auto curr_map_loc = Hero::get()->world_location();
       auto t_sz = kTileSize;
@@ -138,10 +145,12 @@ namespace Narradia
          inc = kGroundSimpleK;
 
       for (auto x = 0; x < wa->Width(); x += inc) {
+
          rids_tiles.push_back(std::vector<RenderID>());
          rids_tile_symbols.push_back(std::vector<RenderID>());
 
          for (auto y = 0; y < wa->Height(); y += inc) {
+
             rids_tiles.at(x / inc).push_back(NewTile());
             auto t_square = TileSquare(x, y);
             Square<Vertex3F> verts;
@@ -214,16 +223,20 @@ namespace Narradia
    }
 
    void WorldAddV::Render() {
+
       try {
+
          DrawAllGround();
          DrawAllModels();
       }
       catch (std::exception &e) {
+
          Console::get()->Print("Exception in WorldViewAdd::Render: " + std::string(e.what()));
       }
    }
 
    void WorldAddV::DrawAllGround() {
+
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Hero::get()->world_location();
 
@@ -254,7 +267,9 @@ namespace Narradia
       StartTileBatchDrawing();
 
       for (auto y = y_center - r - 1; y <= y_center + r + 1; y++) {
+
          for (auto x = x_center - r - 1; x <= x_center + r + 1; x++) {
+
             auto dx = x - x_center;
             auto dy = y - y_center;
 
@@ -267,11 +282,13 @@ namespace Narradia
             }
 
             if (x < 0 || y < 0 || x >= curr_wa->Width() || y >= curr_wa->Height()) {
+
                if (simplified_ground_)
                   continue;
 
                // West
                if (x < 0 && y >= 0 && y < curr_wa->Height()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -282,6 +299,7 @@ namespace Narradia
                }
                // East
                else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -292,6 +310,7 @@ namespace Narradia
                }
                // North
                else if (x >= 0 && y < 0 && x < curr_wa->Width()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -302,6 +321,7 @@ namespace Narradia
                }
                // South
                else if (x >= 0 && y >= curr_wa->Height() && x < curr_wa->Width()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -312,6 +332,7 @@ namespace Narradia
                }
             }
             else {
+
                auto tile = curr_wa->GetTile(x, y);
                auto coord = Point{x, y};
                DrawGround(tile, coord);
@@ -328,6 +349,7 @@ namespace Narradia
    }
 
    void WorldAddV::DrawAllModels() {
+
       auto curr_wa = World::get()->CurrWorldArea();
       auto x_center = static_cast<int>(Hero::get()->pos().x);
       auto y_center = static_cast<int>(Hero::get()->pos().z);
@@ -336,7 +358,9 @@ namespace Narradia
       StartModelsBatchDrawing();
 
       for (auto y = y_center - r; y <= y_center + r; y++) {
+
          for (auto x = x_center - r; x <= x_center + r; x++) {
+
             auto dx = x - x_center;
             auto dy = y - y_center;
 
@@ -344,8 +368,10 @@ namespace Narradia
                continue;
 
             if (x < 0 || y < 0 || x >= curr_wa->Width() || y >= curr_wa->Height()) {
+
                // West
                if (x < 0 && y >= 0 && y < curr_wa->Height()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -356,6 +382,7 @@ namespace Narradia
                }
                // East
                else if (x >= curr_wa->Width() && y >= 0 && y < curr_wa->Height()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -376,6 +403,7 @@ namespace Narradia
                }
                // South
                else if (x >= 0 && y >= curr_wa->Height() && x < curr_wa->Width()) {
+
                   int x_orig = x;
                   int y_orig = y;
                   int x;
@@ -386,6 +414,7 @@ namespace Narradia
                }
             }
             else {
+
                auto tile = curr_wa->GetTile(x, y);
                auto coord = Point{x, y};
 
@@ -399,16 +428,24 @@ namespace Narradia
    }
 
    void WorldAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Hero::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
       auto wa = World::get()->WorldAreaAt(loc);
+
       if (wa) {
+
          if (wa->IsInsideMap({x, y})) {
+
             auto tile = wa->GetTile(x, y);
+
             if (tile) {
+
                auto rid = tile->rid();
+
                if (!rid) {
+
                   rid = NewTile();
                   auto curr_map_loc = Hero::get()->world_location();
                   auto t_sz = kTileSize;
@@ -439,18 +476,21 @@ namespace Narradia
                   auto coord01 = Point{x, y + 1};
 
                   if (wa->IsInsideMap(coord10)) {
+
                      elev10 = wa->GetTile(coord10)->elevation() * kElevAmount;
                      normal10 = wa->GetTile(coord10)->normal();
                      color10 = *wa->GetTile(coord10)->color();
                   }
 
                   if (wa->IsInsideMap(coord11)) {
+
                      elev11 = wa->GetTile(coord11)->elevation() * kElevAmount;
                      normal11 = wa->GetTile(coord11)->normal();
                      color11 = *wa->GetTile(coord11)->color();
                   }
 
                   if (wa->IsInsideMap(coord01)) {
+
                      elev01 = wa->GetTile(coord01)->elevation() * kElevAmount;
                      normal01 = wa->GetTile(coord01)->normal();
                      color01 = *wa->GetTile(coord01)->color();
@@ -460,6 +500,7 @@ namespace Narradia
 
                   if (simplified_ground_)
                      t_sz_side *= kGroundSimpleK;
+
                   v0.pos = {map_offs_x + x * t_sz, elev00, map_offs_y + y * t_sz};
                   v1.pos = {map_offs_x + x * t_sz + t_sz_side, elev10, map_offs_y + y * t_sz};
                   v2.pos = {
@@ -511,14 +552,20 @@ namespace Narradia
    }
 
    void WorldAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Hero::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
       auto wa = World::get()->WorldAreaAt(loc);
+
       if (wa) {
+
          if (wa->IsInsideMap({x, y})) {
+
             auto tile = wa->GetTile(x, y);
+
             if (tile) {
+
                auto coord = Point{x, y};
 
                DrawObjects(tile, coord, dloc_x, dloc_y);
@@ -537,22 +584,31 @@ namespace Narradia
    }
 
    void WorldAddV::DrawGround(std::shared_ptr<Tile> tile, Point coord) {
+
       auto ground = tile->ground();
+
       if (ground == "GroundWater") {
+
          auto anim_index = ((SDL_GetTicks() + coord.x * coord.y) % 900) / 300;
+
          if (anim_index > 0)
             ground = "GroundWater_" + std::to_string(anim_index);
       }
+
       if (ground == "GroundGrass") {
+
          auto vary_index = (coord.x * coord.y) % 3;
          ground = "GroundGrass_" + std::to_string(vary_index);
       }
+
       // std::cout << ground << std::endl;
       DrawTile(ground, tile->rid());
    }
 
    void WorldAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
+
       if (tile->object()) {
+
          auto curr_wa = World::get()->CurrWorldArea();
          auto curr_map_location = Hero::get()->world_location();
          auto tile_size = kTileSize;
@@ -574,6 +630,7 @@ namespace Narradia
    }
 
    void WorldAddV::DrawPlayer() {
+
       auto curr_wa = World::get()->CurrWorldArea();
       auto curr_map_location = Hero::get()->world_location();
       auto tile_size = kTileSize;
@@ -587,27 +644,36 @@ namespace Narradia
           CalcTileAverageElevation(player_map_coord, Hero::get()->world_location());
       player_space_coord.y += tile_average_elevation;
       auto ms_anim_time = 0.0f;
+
       if (Hero::get()->IsMoving())
          ms_anim_time = SDL_GetTicks() * 2;
+
       DrawModel(
           "Player2", ms_anim_time, player_space_coord, Hero::get()->facing_angle_deg() + 180.0f,
           0.6f);
    }
 
    void WorldAddV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord) {
+
       auto player_pos = Hero::get()->pos().GetXZ().ToIntPoint();
+
       if (SDL_GetTicks() <
               Hero::get()->ticks_ulti_skill_start() + Hero::get()->ulti_skill_duration() &&
           Hero::get()->ticks_ulti_skill_start() != 0 && coord.x == player_pos.x &&
           coord.y == player_pos.y) {
+
          DrawTile("TilePlayerUltiSkill", tile->rid());
       }
       else if (SDL_GetTicks() < tile->tile_effect().ticks_started + 800) {
+
          DrawTile(tile->tile_effect().type, tile->rid());
       }
       else {
+
          auto hovered_tile = TileHoveringAdd::get()->hovered_tile();
+
          if (hovered_tile.x == coord.x && hovered_tile.y == coord.y) {
+
             DrawTile("TileHovered", tile->rid());
          }
       }
