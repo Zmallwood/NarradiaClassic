@@ -63,7 +63,7 @@ namespace Narradia
 #if 1
    RenderID NewTile();
    void SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts);
-   void DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off = false);
+   void DrawTile(StringView image_name, RenderID vao_id, bool depth_test_off = false);
    void StartTileBatchDrawing();
    void StopTileBatchDrawing();
 #endif

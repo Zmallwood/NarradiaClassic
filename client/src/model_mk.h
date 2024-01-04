@@ -7,25 +7,25 @@ namespace Narradia
       // clang-format off
       auto PosKeyframe(
               const aiScene *raw_model,
-              std::string node_name,
+              String node_name,
               int keyframe_index) const -> aiVectorKey;
       auto RotKeyframe(
               const aiScene *raw_model,
-              std::string node_name,
+              String node_name,
               int keyframe_index) const -> aiQuatKey;
       auto ScalKeyframe(
               const aiScene *raw_model,
-              std::string node_name,
+              String node_name,
               int keyframe_index) const -> aiVectorKey;
       auto NodePosKeyframes(
               const aiScene *raw_model,
-              std::string node_name) const -> std::vector<aiVectorKey>;
+              String node_name) const -> Vec<aiVectorKey>;
       auto NodeRotKeyframes(
               const aiScene *raw_model,
-              std::string node_name) const -> std::vector<aiQuatKey>;
+              String node_name) const -> Vec<aiQuatKey>;
       auto NodeScalKeyframes(
               const aiScene *raw_model,
-              std::string node_name) const -> std::vector<aiVectorKey>;
+              String node_name) const -> Vec<aiVectorKey>;
       // clang-format on
 
      private:
@@ -42,8 +42,8 @@ namespace Narradia
       auto
       CreateModelPartFromMesh(
               const aiScene *raw_model,
-              std::string node_name,
-              aiMesh *mesh) const -> std::shared_ptr<ModelPart>;
+              String node_name,
+              aiMesh *mesh) const -> SharedPtr<ModelPart>;
 
      private:
       auto TexNameForMesh(
@@ -51,7 +51,7 @@ namespace Narradia
               aiMesh *mesh) const;
       auto NewModelPartKeyframe(
               const aiScene *raw_model,
-              std::string node_name,
+              String node_name,
               aiMesh *mesh,
               aiVectorKey position_keyframe,
               aiQuatKey rotation_keyframe,
@@ -60,7 +60,7 @@ namespace Narradia
               const aiScene *raw_model) const;
       auto NodeTransformation(
               const aiScene *raw_model,
-              std::string node_name) const;
+              String node_name) const;
       auto Position(
               aiVector3D vertex,
               aiMatrix4x4 node_transformation,
@@ -80,11 +80,11 @@ namespace Narradia
       // clang-format off
       auto ModelMeshIds(
               const aiScene *raw_model) const
-                 -> std::map<std::shared_ptr<std::string>, std::vector<int>>;
+                 -> Map<SharedPtr<String>, Vec<int>>;
       auto NodeMeshes(
               const aiScene *raw_model,
-              std::vector<int> node_mesh_ids) const
-                 -> std::vector<aiMesh *>;
+              Vec<int> node_mesh_ids) const
+                 -> Vec<aiMesh *>;
       // clang-format on
    };
 
@@ -92,7 +92,7 @@ namespace Narradia
 
    class ModelCreator : public S<ModelCreator> {
      public:
-      auto CreateModel(const aiScene *raw_model) -> std::shared_ptr<Model>;
+      auto CreateModel(const aiScene *raw_model) -> SharedPtr<Model>;
 
      private:
       auto ModelParts(const aiScene *raw_model);

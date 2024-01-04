@@ -12,9 +12,9 @@ namespace Narradia
    class GuiButton : public GuiComponent {
      public:
       GuiButton(
-          const std::string_view &text, RectF bounds, std::function<void()> action,
-          std::string_view img_name = "GuiButtonBack",
-          std::string_view hovered_img_name = "GuiButtonBackHovered");
+          const StringView &text, RectF bounds, Function<void()> action,
+          StringView img_name = "GuiButtonBack",
+          StringView hovered_img_name = "GuiButtonBackHovered");
       void UpdateGameLogic() override;
 
       auto text() {
@@ -38,11 +38,11 @@ namespace Narradia
       }
 
      private:
-      std::string_view text_;
+      StringView text_;
       RectF bounds_;
-      std::function<void()> action_;
-      std::string_view img_name_;
-      std::string_view hovered_img_name_;
+      Function<void()> action_;
+      StringView img_name_;
+      StringView hovered_img_name_;
       bool hovered_;
    };
 
@@ -51,9 +51,9 @@ namespace Narradia
       GuiContainer(PointF position, SizeF size)
           : position_(position),
             size_(size),
-            gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>()) {
+            gui_components_(MakeShared<Vec<SharedPtr<GuiComponent>>>()) {
       }
-      void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
+      void AddGuiComponent(SharedPtr<GuiComponent> comp);
       RectF Bounds();
 
       auto position() {
@@ -78,7 +78,7 @@ namespace Narradia
      private:
       PointF position_;
       SizeF size_;
-      std::shared_ptr<std::vector<std::shared_ptr<GuiComponent>>> gui_components_;
+      SharedPtr<Vec<SharedPtr<GuiComponent>>> gui_components_;
    };
 
    class GuiMovableContainer : public GuiContainer {
@@ -104,8 +104,8 @@ namespace Narradia
    class GuiWindow : public GuiMovableContainer {
      public:
       GuiWindow(
-          std::string_view title, RectF bounds, bool destroy_on_close = false,
-          std::string_view background_image_name = "PanelBg");
+          StringView title, RectF bounds, bool destroy_on_close = false,
+          StringView background_image_name = "PanelBg");
       ~GuiWindow();
       void Hide();
       void ToggleVisibility();
@@ -140,11 +140,11 @@ namespace Narradia
      private:
       virtual void UpdateGameLogicDerived() = 0;
 
-      std::string_view title_ = "Unnamed window";
+      StringView title_ = "Unnamed window";
       bool visible_ = false;
       bool destroy_on_close_ = false;
-      std::shared_ptr<GuiWindowCloseButton> gui_window_close_button_;
-      std::string_view background_image_name_;
+      SharedPtr<GuiWindowCloseButton> gui_window_close_button_;
+      StringView background_image_name_;
    };
 
    class GuiWindowCloseButton {
@@ -169,10 +169,10 @@ namespace Narradia
    class SceneGui {
      public:
       SceneGui()
-          : gui_components_(std::make_shared<std::vector<std::shared_ptr<GuiComponent>>>()) {
+          : gui_components_(MakeShared<Vec<SharedPtr<GuiComponent>>>()) {
       }
       void UpdateGameLogic();
-      void AddGuiComponent(std::shared_ptr<GuiComponent> comp);
+      void AddGuiComponent(SharedPtr<GuiComponent> comp);
       void RemoveGuiComponent(GuiComponent *comp);
 
       auto gui_components() {
@@ -180,7 +180,7 @@ namespace Narradia
       }
 
      private:
-      std::shared_ptr<std::vector<std::shared_ptr<GuiComponent>>> gui_components_;
+      SharedPtr<Vec<SharedPtr<GuiComponent>>> gui_components_;
    };
 #endif
 
@@ -194,12 +194,12 @@ namespace Narradia
          return gui_component_;
       }
 
-      void set_gui_component(std::shared_ptr<GuiComponent> value) {
+      void set_gui_component(SharedPtr<GuiComponent> value) {
          gui_component_ = value;
       }
 
      protected:
-      std::shared_ptr<GuiComponent> gui_component_;
+      SharedPtr<GuiComponent> gui_component_;
    };
 
    class GuiButtonV : public GuiComponentV {
@@ -215,15 +215,15 @@ namespace Narradia
    class GuiContainerV : public GuiComponentV {
      protected:
       void Render() override;
-      void AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view);
+      void AddGuiComponentView(SharedPtr<GuiComponentV> comp_view);
 
-      void set_gui_container(std::shared_ptr<GuiContainer> value) {
+      void set_gui_container(SharedPtr<GuiContainer> value) {
          gui_container_ = value;
       }
 
      private:
-      std::shared_ptr<GuiContainer> gui_container_;
-      std::vector<std::shared_ptr<GuiComponentV>> gui_component_views_;
+      SharedPtr<GuiContainer> gui_container_;
+      Vec<SharedPtr<GuiComponentV>> gui_component_views_;
    };
 
    class GuiMovableContainerV : public GuiContainerV {
@@ -250,7 +250,7 @@ namespace Narradia
       RenderID rid_background_;
       RenderID rid_title_bar_;
       RenderID rid_title_text_;
-      std::shared_ptr<GuiWindowCloseButtonV> gui_window_close_button_view_;
+      SharedPtr<GuiWindowCloseButtonV> gui_window_close_button_view_;
    };
 
    class GuiWindowCloseButtonV {
@@ -258,27 +258,27 @@ namespace Narradia
       GuiWindowCloseButtonV();
       void Render();
 
-      void set_model(std::shared_ptr<GuiWindowCloseButton> value) {
+      void set_model(SharedPtr<GuiWindowCloseButton> value) {
          model_ = value;
       }
 
      private:
-      std::shared_ptr<GuiWindowCloseButton> model_;
+      SharedPtr<GuiWindowCloseButton> model_;
       RenderID rid_close_btn_img_;
    };
 
    class SceneGuiV {
      public:
       void Render();
-      void AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view);
+      void AddGuiComponentView(SharedPtr<GuiComponentV> comp_view);
 
-      void set_scene_gui(std::shared_ptr<SceneGui> value) {
+      void set_scene_gui(SharedPtr<SceneGui> value) {
          scene_gui_ = value;
       }
 
      private:
-      std::shared_ptr<SceneGui> scene_gui_;
-      std::vector<std::shared_ptr<GuiComponentV>> gui_component_views_;
+      SharedPtr<SceneGui> scene_gui_;
+      Vec<SharedPtr<GuiComponentV>> gui_component_views_;
    };
 #endif
 }

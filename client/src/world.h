@@ -18,7 +18,7 @@ namespace Narradia
 
    class Object {
      public:
-      Object(std::string type)
+      Object(String type)
           : type_(type) {
       }
 
@@ -26,17 +26,17 @@ namespace Narradia
          return type_;
       }
 
-      void set_type(std::string_view value) {
+      void set_type(StringView value) {
          type_ = value;
       }
 
      private:
-      std::string type_ = "";
+      String type_ = "";
    };
 
    class TileEffect {
      public:
-      std::string_view type;
+      StringView type;
       int ticks_started = 0;
    };
 
@@ -47,7 +47,7 @@ namespace Narradia
    class Tile {
      public:
       Tile()
-          : color_(std::make_shared<Color>()) {
+          : color_(MakeShared<Color>()) {
       }
 
       void IncreaseElevation(float amount) {
@@ -58,7 +58,7 @@ namespace Narradia
          return ground_;
       }
 
-      void set_ground(std::string value) {
+      void set_ground(String value) {
          ground_ = value;
       }
 
@@ -66,7 +66,7 @@ namespace Narradia
          return object_;
       }
 
-      void set_object(std::shared_ptr<Object> value) {
+      void set_object(SharedPtr<Object> value) {
          object_ = value;
       }
 
@@ -74,7 +74,7 @@ namespace Narradia
          return mob_;
       }
 
-      void set_mob(std::shared_ptr<Mob> value) {
+      void set_mob(SharedPtr<Mob> value) {
          mob_ = value;
       }
 
@@ -114,14 +114,14 @@ namespace Narradia
       }
 
      private:
-      std::string ground_;
-      std::shared_ptr<Object> object_;
-      std::shared_ptr<Mob> mob_;
+      String ground_;
+      SharedPtr<Object> object_;
+      SharedPtr<Mob> mob_;
       float elevation_ = 0.0f;
       TileEffect tile_effect_;
       RenderID rid_ = 0;
       Point3F normal_;
-      std::shared_ptr<Color> color_;
+      SharedPtr<Color> color_;
    };
 
 #endif
@@ -129,33 +129,43 @@ namespace Narradia
    class WorldArea {
      public:
       WorldArea(int width, int height)
-          : mobs_mirror_(std::make_shared<std::map<std::shared_ptr<Mob>, Point>>()) {
+          : mobs_mirror_(MakeShared<Map<SharedPtr<Mob>, Point>>()) {
+
          for (auto x = 0; x < width; x++) {
-            tiles_.push_back(std::vector<std::shared_ptr<Tile>>());
+
+            tiles_.push_back(Vec<SharedPtr<Tile>>());
+
             for (auto y = 0; y < height; y++) {
-               tiles_.at(x).push_back(std::make_shared<Tile>());
+
+               tiles_.at(x).push_back(MakeShared<Tile>());
             }
          }
       }
 
-      std::shared_ptr<Tile> GetTile(int x, int y) {
+      SharedPtr<Tile> GetTile(int x, int y) {
+
          try {
+
             return tiles_.at(x).at(y);
          }
-         catch (std::exception &e) {
+         catch (Exception &e) {
+
             throw std::runtime_error("Tried to access tile with an invalid coordinate.");
          }
       }
 
-      std::shared_ptr<Tile> GetTile(Point coord) {
+      SharedPtr<Tile> GetTile(Point coord) {
+
          return GetTile(coord.x, coord.y);
       }
 
       bool IsInsideMap(Point coord) {
+
          return coord.x < tiles_.size() && coord.y < tiles_.at(0).size();
       }
 
       int Width() {
+
          return tiles_.size();
       }
 
@@ -164,8 +174,11 @@ namespace Narradia
       }
 
       void ClearAllRIDs() {
+
          for (auto y = 0; y < Height(); y++) {
+
             for (auto x = 0; x < Width(); x++) {
+
                tiles_.at(x).at(y)->set_rid(0);
             }
          }
@@ -176,8 +189,8 @@ namespace Narradia
       }
 
      private:
-      std::vector<std::vector<std::shared_ptr<Tile>>> tiles_;
-      std::shared_ptr<std::map<std::shared_ptr<Mob>, Point>> mobs_mirror_;
+      Vec<Vec<SharedPtr<Tile>>> tiles_;
+      SharedPtr<Map<SharedPtr<Mob>, Point>> mobs_mirror_;
    };
 
 #endif
@@ -185,26 +198,36 @@ namespace Narradia
    class World : public S<World> {
      public:
       World() {
+
          world_width_ = WorldMapRdr::get()->world_map_width();
          world_height_ = WorldMapRdr::get()->world_map_height();
+
          auto map_names = WorldMapRdr::get()->world_area_names();
+
          for (auto y = 0; y < world_height_; y++) {
+
             for (auto x = 0; x < world_width_; x++) {
+
                world_areas_[x][y] = nullptr;
+
                WorldMapRdr::get()->LoadWorldMapFromFile(world_areas_[x][y], map_names[x][y]);
             }
          }
       }
 
-      std::shared_ptr<WorldArea> CurrWorldArea() {
+      SharedPtr<WorldArea> CurrWorldArea() {
+
          auto world_loc = Hero::get()->world_location();
+
          return world_areas_[world_loc.x][world_loc.y];
       }
 
-      std::shared_ptr<WorldArea> WorldAreaAt(Point location) {
+      SharedPtr<WorldArea> WorldAreaAt(Point location) {
+
          if (world_areas_.count(location.x) != 0)
             if (world_areas_.at(location.x).count(location.y) != 0)
                return world_areas_[location.x][location.y];
+
          return nullptr;
       }
 
@@ -221,7 +244,7 @@ namespace Narradia
       }
 
      private:
-      std::map<int, std::map<int, std::shared_ptr<WorldArea>>> world_areas_;
+      Map<int, Map<int, SharedPtr<WorldArea>>> world_areas_;
       int world_width_ = -1;
       int world_height_ = -1;
    };

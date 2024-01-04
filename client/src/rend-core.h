@@ -16,13 +16,13 @@ namespace Narradia
       void CleanupBase() const;
 
       static constexpr int kNumVerticesInRectangle = 4;
-      inline static const auto kNumFloatsPerEntry = std::map<BufferTypes, int>{
+      inline static const auto kNumFloatsPerEntry = Map<BufferTypes, int>{
           {BufferTypes::Indices, 1}, {BufferTypes::Positions2D, 2}, {BufferTypes::Positions3D, 3},
           {BufferTypes::Colors, 4},  {BufferTypes::Uvs, 2},         {BufferTypes::Normals, 3}};
 
      private:
-      std::vector<GLuint> vao_ids_;
-      std::map<BufferTypes, std::map<GLuint, GLuint>> vbo_ids_;
+      Vec<GLuint> vao_ids_;
+      Map<BufferTypes, Map<GLuint, GLuint>> vbo_ids_;
    };
 
    // Belonging ShaderProgram class
@@ -384,10 +384,9 @@ namespace Narradia
       void SetData(
           GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
           int layout_location = -1) const;
-      void UpdateIndicesData(GLuint indices_vbo_id, std::vector<int> &indices) const;
+      void UpdateIndicesData(GLuint indices_vbo_id, Vec<int> &indices) const;
       void UpdateData(
-          GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
-          int layout_location) const;
+          GLuint vbo_id, Vec<float> &data, BufferTypes buffer_type, int layout_location) const;
 
       auto shader_program_view() {
          return shader_program_view_;
@@ -398,20 +397,19 @@ namespace Narradia
       }
 
      protected:
-      GLuint GetUniformLocation(std::string_view var_name);
+      GLuint GetUniformLocation(StringView var_name);
       void CleanupBase();
 
-      std::shared_ptr<RendBase> renderer_base_;
+      SharedPtr<RendBase> renderer_base_;
 
      private:
       void SetArrayBufferData(
           GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
           int layout_location = -1) const;
       void UpdateArrayBufferData(
-          GLuint vbo_id, std::vector<float> &data, int num_floats_per_entry,
-          int layout_location) const;
+          GLuint vbo_id, Vec<float> &data, int num_floats_per_entry, int layout_location) const;
 
-      std::shared_ptr<ShaderProgramV> shader_program_view_;
+      SharedPtr<ShaderProgramV> shader_program_view_;
    };
 
    // Belonging ShaderProgramV class
@@ -430,7 +428,7 @@ namespace Narradia
      private:
       GLuint CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type);
 
-      std::shared_ptr<ShaderProgram> shader_program_;
+      SharedPtr<ShaderProgram> shader_program_;
    };
 #endif
 #endif

@@ -30,11 +30,11 @@ namespace Narradia
    class ObjectsConf : public S<ObjectsConf> {
      public:
       ObjectsConf();
-      bool IsObstacle(std::string_view object_type);
-      float GetModelScaling(std::string_view object_type);
+      bool IsObstacle(StringView object_type);
+      float GetModelScaling(StringView object_type);
 
      private:
-      std::map<std::string_view, ObjectConfEntry> object_confs_;
+      Map<StringView, ObjectConfEntry> object_confs_;
    };
 
    // Shoiw MobsConf sub components
@@ -48,9 +48,9 @@ namespace Narradia
    class MobsConf : public S<MobsConf> {
      public:
       MobsConf();
-      int GetAggroRange(std::string_view mob_type);
+      int GetAggroRange(StringView mob_type);
 
      private:
-      std::map<std::string_view, MobConfEntry> mobs_confs_;
+      Map<StringView, MobConfEntry> mobs_confs_;
    };
 }

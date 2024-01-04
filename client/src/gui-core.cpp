@@ -2,9 +2,9 @@
 #include "gui-core.h"
 #include "conf.h"
 #include "core.h"
-#include "pages.h"
 #include "drw_images.h"
 #include "drw_text.h"
+#include "pages.h"
 #endif
 
 namespace Narradia
@@ -14,8 +14,8 @@ namespace Narradia
    // GuiButton
 #if 1
    GuiButton::GuiButton(
-       const std::string_view &text, RectF bounds, std::function<void()> action,
-       std::string_view img_name, std::string_view hovered_img_name) {
+       const StringView &text, RectF bounds, Function<void()> action, StringView img_name,
+       StringView hovered_img_name) {
 
       text_ = text;
       bounds_ = bounds;
@@ -52,7 +52,7 @@ namespace Narradia
          comp->UpdateGameLogic();
    }
 
-   void GuiContainer::AddGuiComponent(std::shared_ptr<GuiComponent> comp) {
+   void GuiContainer::AddGuiComponent(SharedPtr<GuiComponent> comp) {
 
       gui_components_->push_back(comp);
    }
@@ -76,7 +76,6 @@ namespace Narradia
 
             MouseInput::get()->left_btn()->AddFiredAction(
                 [&] {
-
                    self_pos_start_moving_ = position();
                    mouse_pos_start_moving_ = MousePosition();
                    is_moving_ = true;
@@ -95,7 +94,6 @@ namespace Narradia
 
          MouseInput::get()->left_btn()->AddReleasedAction(
              [&] {
-
                 is_moving_ = false;
                 movement_trigger_ = false;
              },
@@ -109,8 +107,7 @@ namespace Narradia
    // GuiWindow
 #if 1
    GuiWindow::GuiWindow(
-       std::string_view title, RectF bounds, bool destroy_on_close,
-       std::string_view background_image_name)
+       StringView title, RectF bounds, bool destroy_on_close, StringView background_image_name)
        : GuiMovableContainer(
              {0.0f, 0.0f, bounds.w, kTitleBarHeight}, bounds.GetPosition(), bounds.GetSize()),
          gui_window_close_button_(std::make_shared<GuiWindowCloseButton>(this)) {
@@ -175,7 +172,6 @@ namespace Narradia
          hovered_ = true;
          MouseInput::get()->left_btn()->AddFiredAction(
              [&] {
-
                 if (parent_window_->destroy_on_close()) {
 
                    if (PageMngr::get()->curr_scene() == PageNames::Main) {
@@ -212,7 +208,7 @@ namespace Narradia
          comp->UpdateGameLogic();
    }
 
-   void SceneGui::AddGuiComponent(std::shared_ptr<GuiComponent> comp) {
+   void SceneGui::AddGuiComponent(SharedPtr<GuiComponent> comp) {
 
       gui_components_->push_back(comp);
    }
@@ -280,7 +276,7 @@ namespace Narradia
          comp_view->Render();
    }
 
-   void GuiContainerV::AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view) {
+   void GuiContainerV::AddGuiComponentView(SharedPtr<GuiComponentV> comp_view) {
 
       auto comp_model = gui_container_->gui_components()->at(gui_component_views_.size());
 
@@ -300,7 +296,7 @@ namespace Narradia
    // GuiWindowV
 #if 1
    GuiWindowV::GuiWindowV()
-       : gui_window_close_button_view_(std::make_shared<GuiWindowCloseButtonV>()) {
+       : gui_window_close_button_view_(MakeShared<GuiWindowCloseButtonV>()) {
 
       rid_background_ = NewImage();
       rid_title_bar_ = NewImage();
@@ -352,7 +348,7 @@ namespace Narradia
          gui_component_view->Render();
    }
 
-   void SceneGuiV::AddGuiComponentView(std::shared_ptr<GuiComponentV> comp_view) {
+   void SceneGuiV::AddGuiComponentView(SharedPtr<GuiComponentV> comp_view) {
 
       auto comp_model = scene_gui_->gui_components()->at(gui_component_views_.size());
 

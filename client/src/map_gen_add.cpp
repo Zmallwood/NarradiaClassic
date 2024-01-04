@@ -43,7 +43,7 @@ namespace Narradia
             auto orig_camera_vert_angle = Camera::get()->vertical_angle_deg();
             Camera::get()->set_vertical_angle_deg(90.0f);
             auto orig_camera_distance = Camera::get()->camera_distance();
-            Camera::get()->set_camera_distance(110.0f*2.0f);
+            Camera::get()->set_camera_distance(110.0f * 2.0f);
             Camera::get()->UpdateGameLogic();
             WorldAddV::get()->set_render_distance(render_dist);
             RendGrndV::get()->kFogColorGround = Colors::white;
@@ -57,9 +57,9 @@ namespace Narradia
             // GraphicsV::get()->PresentCanvas();
 
             ImageBank::get()->CreateBlankTextImage(
-                "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y));
-            auto tex = ImageBank::get()->GetImage(
-                "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y));
+                "WorldMapImage" + ToString(x) + "_" + ToString(y));
+            auto tex =
+                ImageBank::get()->GetImage("WorldMapImage" + ToString(x) + "_" + ToString(y));
             glBindTexture(GL_TEXTURE_2D, tex);
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -72,8 +72,8 @@ namespace Narradia
             // byte *data = new byte[canv_sz.w * canv_sz.h * 3];
             int w = canv_sz.h;
             int h = canv_sz.h;
-            std::vector<uint8_t> pixels(3 * w * h);
-            //glReadPixels(x, y, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
+            Vec<uint8_t> pixels(3 * w * h);
+            // glReadPixels(x, y, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
 
             glReadBuffer(GL_BACK);
             glReadPixels(
@@ -86,17 +86,17 @@ namespace Narradia
 
                   for (auto val = 0; val < 3; val++) {
 
-                     auto pos1 = line*w*3+px*3 + val;
-                     auto pos2 = line*w*3 + w*3 - px*3 + val;
-                     //if (pos1 < 0 || pos1 >= 3*w*h) {
-                     //   std::cout << "error pos 1\n";
-                     //   continue;
-                     //}
-                     //if (pos2 < 0 || pos2 >= 3*w*h) {
-                     //   std::cout << "error pos 2\n";
-                     //   continue;
-                     //}
-                     
+                     auto pos1 = line * w * 3 + px * 3 + val;
+                     auto pos2 = line * w * 3 + w * 3 - px * 3 + val;
+                     // if (pos1 < 0 || pos1 >= 3*w*h) {
+                     //    std::cout << "error pos 1\n";
+                     //    continue;
+                     // }
+                     // if (pos2 < 0 || pos2 >= 3*w*h) {
+                     //    std::cout << "error pos 2\n";
+                     //    continue;
+                     // }
+
                      auto &a = pixels.data()[pos1];
                      auto &b = pixels.data()[pos2];
                      std::swap(a, b);

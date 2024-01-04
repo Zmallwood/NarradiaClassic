@@ -24,7 +24,7 @@ namespace Narradia
             std::cout << "Cleaning up of ImageBank finished.\n";
       }
 
-      GLuint GetImage(std::string_view img_name) {
+      GLuint GetImage(StringView img_name) {
 
          for (auto img : images_)
             if (img.first == img_name)
@@ -33,7 +33,7 @@ namespace Narradia
          return -1;
       }
 
-      void CreateBlankTextImage(std::string unique_img_name) {
+      void CreateBlankTextImage(String unique_img_name) {
 
          GLuint tex_id;
          glGenTextures(1, &tex_id);
@@ -46,7 +46,7 @@ namespace Narradia
 
          using iterator = std::filesystem::recursive_directory_iterator;
 
-         auto all_images_path = std::string(SDL_GetBasePath()) + kRelImagesPath.data();
+         auto all_images_path = String(SDL_GetBasePath()) + kRelImagesPath.data();
 
          for (auto &entry : iterator(all_images_path)) {
 
@@ -62,7 +62,7 @@ namespace Narradia
          }
       }
 
-      GLuint LoadSingleImage(std::string_view abs_file_path) {
+      GLuint LoadSingleImage(StringView abs_file_path) {
 
          GLuint tex_id;
 
@@ -92,8 +92,8 @@ namespace Narradia
          return tex_id;
       }
 
-      const std::string_view kRelImagesPath = "Resources/Images/";
-      std::map<std::string, GLuint> images_;
+      const StringView kRelImagesPath = "Resources/Images/";
+      Map<String, GLuint> images_;
    };
 
    // Show Model-structure
@@ -102,25 +102,25 @@ namespace Narradia
 #if 1
    class Keyframe {
      public:
-      std::vector<Vertex3F> vertices;
+      Vec<Vertex3F> vertices;
    };
 
    class Timeline {
      public:
-      std::map<float, std::shared_ptr<const Keyframe>> keyframes;
+      Map<float, SharedPtr<const Keyframe>> keyframes;
    };
 
    class ModelPart {
      public:
       ModelPart()
-          : timeline_(std::make_shared<Timeline>()) {
+          : timeline_(MakeShared<Timeline>()) {
       }
 
       auto texture_name() {
          return texture_name_;
       }
 
-      void set_texture_name(std::string value) {
+      void set_texture_name(String value) {
          texture_name_ = value;
       }
 
@@ -129,8 +129,8 @@ namespace Narradia
       }
 
      private:
-      std::string texture_name_;
-      std::shared_ptr<Timeline> timeline_;
+      String texture_name_;
+      SharedPtr<Timeline> timeline_;
    };
 #endif
 
@@ -151,23 +151,26 @@ namespace Narradia
 
      private:
       const int anim_duration_;
-      std::shared_ptr<std::vector<std::shared_ptr<ModelPart>>> model_parts_;
+      SharedPtr<Vec<SharedPtr<ModelPart>>> model_parts_;
    };
 #endif
 
    class ModelBank : public S<ModelBank> {
      public:
       ModelBank()
-          : models_(std::make_shared<std::map<std::string, std::shared_ptr<Model>>>()) {
+          : models_(MakeShared<Map<String, SharedPtr<Model>>>()) {
+
          LoadModels();
       }
 
       ~ModelBank() {
+
          if (kVerbose)
             std::cout << "Disposing ModelBank\n";
       }
 
-      auto GetModel(std::string_view model_name) -> std::shared_ptr<Model> {
+      SharedPtr<Model> GetModel(StringView model_name) {
+
          return models_->at(model_name.data());
       }
 
@@ -180,7 +183,7 @@ namespace Narradia
 
          using iterator = std ::filesystem::recursive_directory_iterator;
 
-         auto abs_models_path = std::string(SDL_GetBasePath()) + kRelModelsPath.data();
+         auto abs_models_path = String(SDL_GetBasePath()) + kRelModelsPath.data();
 
          for (const auto &entry : iterator(abs_models_path)) {
 
@@ -196,13 +199,15 @@ namespace Narradia
          }
       }
 
-      std::shared_ptr<Model> LoadSingleModel(std::string_view path) {
+      SharedPtr<Model> LoadSingleModel(StringView path) {
+
          Assimp::Importer importer;
          const aiScene *raw_model = importer.ReadFile(path.data(), 0);
+
          return ModelCreator::get()->CreateModel(raw_model);
       }
 
-      const std::string_view kRelModelsPath = "Resources/Models/";
-      std::shared_ptr<std::map<std::string, std::shared_ptr<Model>>> models_;
+      const StringView kRelModelsPath = "Resources/Models/";
+      SharedPtr<Map<String, SharedPtr<Model>>> models_;
    };
 }

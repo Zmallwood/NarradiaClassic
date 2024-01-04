@@ -12,7 +12,7 @@ namespace Narradia
      public:
       RenderID rid = -1;
       int num_vertices = 0;
-      std::string image_name;
+      String image_name;
    };
 #endif
 
@@ -20,9 +20,9 @@ namespace Narradia
      public:
       RendModelsV();
       ~RendModelsV();
-      RenderID NewBodyKeyframe(std::string_view model_name, float ms_time);
-      void NewBodyKeyframeGeometry(
-          GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals);
+      RenderID NewBodyKeyframe(StringView model_name, float ms_time);
+      void
+      NewBodyKeyframeGeometry(GLuint vao_id, Vec<Vertex3F> vertices, Vec<Point3F> vertex_normals);
 
       auto timelines() {
          return timelines_;
@@ -101,18 +101,17 @@ namespace Narradia
       int location_fog_color_ = -1;
       int location_no_fog_ = -1;
       int location_no_lighting_ = -1;
-      std::shared_ptr<std::map<std::string, std::map<int, std::map<float, const BodyData>>>>
-          model_ids_;
-      std::shared_ptr<std::map<std::string_view, std::map<float, RenderID>>> timelines_;
+      SharedPtr<Map<String, Map<int, Map<float, const BodyData>>>> model_ids_;
+      SharedPtr<Map<StringView, Map<float, RenderID>>> timelines_;
       float global_animation_speed_ = 1.0f;
       bool is_batch_drawing_ = false;
    };
 
    // Free functions
 #if 1
-   void NewModel(std::string_view model_name);
+   void NewModel(StringView model_name);
    void DrawModel(
-       std::string_view model_name, float ms_time, Point3F position, float rotation = 0.0f,
+       StringView model_name, float ms_time, Point3F position, float rotation = 0.0f,
        float scaling = 1.0f, float brightness = 1.0f, glm::vec3 color_mod = {1.0f, 1.0f, 1.0f},
        bool no_fog = false, bool no_lighting = false);
    void StartModelsBatchDrawing();

@@ -8,7 +8,7 @@ namespace Narradia
    // Keyframes
 #if 1
    auto KeyframeCreator::PosKeyframe(
-       const aiScene *raw_model, std::string node_name, int keyframe_index) const -> aiVectorKey {
+       const aiScene *raw_model, String node_name, int keyframe_index) const -> aiVectorKey {
 
       auto node_position_keyframes = NodePosKeyframes(raw_model, node_name);
       aiVectorKey position_keyframe;
@@ -22,7 +22,7 @@ namespace Narradia
    }
 
    auto KeyframeCreator::RotKeyframe(
-       const aiScene *raw_model, std::string node_name, int keyframe_index) const -> aiQuatKey {
+       const aiScene *raw_model, String node_name, int keyframe_index) const -> aiQuatKey {
 
       auto node_rotation_keyframes = NodeRotKeyframes(raw_model, node_name);
       aiQuatKey rotation_keyframe;
@@ -36,7 +36,7 @@ namespace Narradia
    }
 
    auto KeyframeCreator::ScalKeyframe(
-       const aiScene *raw_model, std::string node_name, int keyframe_index) const -> aiVectorKey {
+       const aiScene *raw_model, String node_name, int keyframe_index) const -> aiVectorKey {
 
       auto node_scaling_keyframes = NodeScalKeyframes(raw_model, node_name);
       aiVectorKey scaling_keyframe;
@@ -54,7 +54,7 @@ namespace Narradia
 #if 1
    auto KeyframeCreator::AnimPosKeyframes(const aiScene *raw_model) const {
 
-      auto node_name_to_position_keyframes = std::map<std::string, std::vector<aiVectorKey>>();
+      auto node_name_to_position_keyframes = Map<String, Vec<aiVectorKey>>();
 
       if (raw_model->mNumAnimations == 0) {
 
@@ -63,9 +63,9 @@ namespace Narradia
          for (auto i = 0; i < num_meshes; i++) {
 
             auto mesh = raw_model->mMeshes[i];
-            auto original_name = std::string(mesh->mName.C_Str());
+            auto original_name = String(mesh->mName.C_Str());
             auto node_name = original_name.substr(0, original_name.length() - 5);
-            std::vector<aiVectorKey> position_keyframes;
+            Vec<aiVectorKey> position_keyframes;
             aiVectorKey position_keyframe;
             position_keyframe.mTime = 0.0;
             position_keyframe.mValue = aiVector3D(0.0, 0.0, 0.0);
@@ -80,9 +80,9 @@ namespace Narradia
 
          for (auto i = 0; i < num_channels; i++) {
             auto anim_channel = animation0->mChannels[i];
-            auto node_name = std::string(anim_channel->mNodeName.C_Str());
+            auto node_name = String(anim_channel->mNodeName.C_Str());
             auto num_position_keys = anim_channel->mNumPositionKeys;
-            std::vector<aiVectorKey> position_keyframes;
+            Vec<aiVectorKey> position_keyframes;
             aiVectorKey original_position_keyframe;
 
             for (auto j = 0; j < num_position_keys; j++) {
@@ -106,7 +106,7 @@ namespace Narradia
 
    auto KeyframeCreator::AnimRotKeyframes(const aiScene *raw_model) const {
 
-      auto node_name_to_rotation_keyframes = std::map<std::string, std::vector<aiQuatKey>>();
+      auto node_name_to_rotation_keyframes = Map<String, Vec<aiQuatKey>>();
 
       if (raw_model->mNumAnimations == 0) {
 
@@ -115,9 +115,9 @@ namespace Narradia
          for (auto i = 0; i < num_meshes; i++) {
 
             auto mesh = raw_model->mMeshes[i];
-            auto original_name = std::string(mesh->mName.C_Str());
+            auto original_name = String(mesh->mName.C_Str());
             auto node_name = original_name.substr(0, original_name.length() - 5);
-            std::vector<aiQuatKey> rotation_keyframes;
+            Vec<aiQuatKey> rotation_keyframes;
             aiQuatKey rotation_keyframe;
             rotation_keyframe.mTime = 0.0;
             rotation_keyframe.mValue = aiQuaternion(0.0, 0.0, 0.0);
@@ -133,7 +133,7 @@ namespace Narradia
          for (auto i = 0; i < num_channels; i++) {
 
             auto anim_channel = animation0->mChannels[i];
-            auto node_name = std::string(anim_channel->mNodeName.C_Str());
+            auto node_name = String(anim_channel->mNodeName.C_Str());
             auto num_rotation_keys = anim_channel->mNumRotationKeys;
             std::vector<aiQuatKey> rotation_keyframes;
             aiQuatKey original_rotation_keyframe;
@@ -158,7 +158,7 @@ namespace Narradia
    }
 
    auto KeyframeCreator::AnimScalKeyframes(const aiScene *raw_model) const {
-      auto node_name_to_scaling_keyframes = std::map<std::string, std::vector<aiVectorKey>>();
+      auto node_name_to_scaling_keyframes = Map<String, Vec<aiVectorKey>>();
 
       if (raw_model->mNumAnimations == 0) {
 
@@ -167,9 +167,9 @@ namespace Narradia
          for (auto i = 0; i < num_meshes; i++) {
 
             auto mesh = raw_model->mMeshes[i];
-            auto original_name = std::string(mesh->mName.C_Str());
+            auto original_name = String(mesh->mName.C_Str());
             auto node_name = original_name.substr(0, original_name.length() - 5);
-            std::vector<aiVectorKey> scaling_keyframes;
+            Vec<aiVectorKey> scaling_keyframes;
             aiVectorKey scaling_keyframe;
             scaling_keyframe.mTime = 0.0;
             scaling_keyframe.mValue = aiVector3D(1.0, -1.0, 1.0);
@@ -185,9 +185,9 @@ namespace Narradia
          for (auto i = 0; i < num_channels; i++) {
 
             auto anim_channel = animation0->mChannels[i];
-            auto node_name = std::string(anim_channel->mNodeName.C_Str());
+            auto node_name = String(anim_channel->mNodeName.C_Str());
             auto num_scaling_keys = anim_channel->mNumScalingKeys;
-            std::vector<aiVectorKey> scaling_keyframes;
+            Vec<aiVectorKey> scaling_keyframes;
             aiVectorKey original_scaling_keyframe;
 
             for (auto j = 0; j < num_scaling_keys; j++) {
@@ -213,11 +213,11 @@ namespace Narradia
 
    // Node keyframes
 #if 1
-   auto KeyframeCreator::NodePosKeyframes(const aiScene *raw_model, std::string node_name) const
-       -> std::vector<aiVectorKey> {
+   auto KeyframeCreator::NodePosKeyframes(const aiScene *raw_model, String node_name) const
+       -> Vec<aiVectorKey> {
 
       auto all_position_keyframes = AnimPosKeyframes(raw_model);
-      std::vector<aiVectorKey> node_position_keyframes;
+      Vec<aiVectorKey> node_position_keyframes;
 
       if (all_position_keyframes.count(node_name))
          node_position_keyframes = all_position_keyframes.at(node_name);
@@ -234,11 +234,11 @@ namespace Narradia
       return node_position_keyframes;
    }
 
-   auto KeyframeCreator::NodeRotKeyframes(const aiScene *raw_model, std::string node_name) const
-       -> std::vector<aiQuatKey> {
+   auto KeyframeCreator::NodeRotKeyframes(const aiScene *raw_model, String node_name) const
+       -> Vec<aiQuatKey> {
 
       auto all_rotation_keyframes = AnimRotKeyframes(raw_model);
-      std::vector<aiQuatKey> node_rotation_keyframes;
+      Vec<aiQuatKey> node_rotation_keyframes;
 
       if (all_rotation_keyframes.count(node_name))
          node_rotation_keyframes = all_rotation_keyframes.at(node_name);
@@ -255,11 +255,11 @@ namespace Narradia
       return node_rotation_keyframes;
    }
 
-   auto KeyframeCreator::NodeScalKeyframes(const aiScene *raw_model, std::string node_name) const
-       -> std::vector<aiVectorKey> {
+   auto KeyframeCreator::NodeScalKeyframes(const aiScene *raw_model, String node_name) const
+       -> Vec<aiVectorKey> {
 
       auto all_scaling_keyframes = AnimScalKeyframes(raw_model);
-      std::vector<aiVectorKey> node_scaling_keyframes;
+      Vec<aiVectorKey> node_scaling_keyframes;
 
       if (all_scaling_keyframes.count(node_name))
          node_scaling_keyframes = all_scaling_keyframes.at(node_name);
@@ -282,7 +282,7 @@ namespace Narradia
 #if 1
    auto ModelPartCreator::TexNames(const aiScene *raw_model) const {
 
-      std::vector<std::string> tex_names;
+      Vec<String> tex_names;
       auto num_materials = raw_model->mNumMaterials;
 
       for (auto i = 0; i < num_materials; i++) {
@@ -310,7 +310,7 @@ namespace Narradia
 
       auto root_node = raw_model->mRootNode;
       auto num_nodes = root_node->mNumChildren;
-      auto node_name_to_transformations = std::map<std::shared_ptr<std::string>, aiMatrix4x4>();
+      auto node_name_to_transformations = Map<SharedPtr<String>, aiMatrix4x4>();
 
       for (auto i = 0; i < num_nodes; i++) {
 
@@ -318,14 +318,13 @@ namespace Narradia
          auto node_name = node->mName;
          auto node_transformation = node->mTransformation;
          node_name_to_transformations.insert(
-             {std::make_shared<std::string>(node_name.C_Str()), node_transformation});
+             {MakeShared<String>(node_name.C_Str()), node_transformation});
       }
 
       return node_name_to_transformations;
    }
 
-   auto
-   ModelPartCreator::NodeTransformation(const aiScene *raw_model, std::string node_name) const {
+   auto ModelPartCreator::NodeTransformation(const aiScene *raw_model, String node_name) const {
 
       auto all_transformations = Transformations(raw_model);
 
@@ -377,10 +376,10 @@ namespace Narradia
    }
 
    auto ModelPartCreator::NewModelPartKeyframe(
-       const aiScene *raw_model, std::string node_name, aiMesh *mesh, aiVectorKey position_keyframe,
+       const aiScene *raw_model, String node_name, aiMesh *mesh, aiVectorKey position_keyframe,
        aiQuatKey rotation_keyframe, aiVectorKey scaling_keyframe) const {
 
-      auto new_model_part_keyframe = std::make_shared<Keyframe>();
+      auto new_model_part_keyframe = MakeShared<Keyframe>();
       auto node_transformation = NodeTransformation(raw_model, node_name);
       auto num_vertices = mesh->mNumVertices;
 
@@ -409,10 +408,9 @@ namespace Narradia
    }
 
    auto ModelPartCreator::CreateModelPartFromMesh(
-       const aiScene *raw_model, std::string node_name, aiMesh *mesh) const
-       -> std::shared_ptr<ModelPart> {
+       const aiScene *raw_model, String node_name, aiMesh *mesh) const -> SharedPtr<ModelPart> {
 
-      auto new_model_part = std::make_shared<ModelPart>();
+      auto new_model_part = MakeShared<ModelPart>();
       auto tex_name = TexNameForMesh(raw_model, mesh);
       new_model_part->set_texture_name(tex_name);
       auto no_keyframe_at_time_0_exists =
@@ -440,9 +438,9 @@ namespace Narradia
    // MeshObtainer
 #if 1
    auto MeshObtainer::ModelMeshIds(const aiScene *raw_model) const
-       -> std::map<std::shared_ptr<std::string>, std::vector<int>> {
+       -> Map<SharedPtr<String>, Vec<int>> {
 
-      std::map<std::shared_ptr<std::string>, std::vector<int>> node_name_to_meshes;
+      Map<SharedPtr<String>, Vec<int>> node_name_to_meshes;
       auto root_node = raw_model->mRootNode;
       auto num_sub_nodes = root_node->mNumChildren;
 
@@ -451,21 +449,23 @@ namespace Narradia
          auto sub_node = root_node->mChildren[i];
          auto sub_node_name = sub_node->mName;
          auto num_meshes = sub_node->mNumMeshes;
-         std::vector<int> meshes;
+         Vec<int> meshes;
+
          for (auto j = 0; j < num_meshes; j++)
             meshes.push_back(sub_node->mMeshes[j]);
+
          const char *c_str = sub_node_name.C_Str();
-         auto key = std::string{c_str};
-         node_name_to_meshes.insert({std::make_shared<std::string>(key), meshes});
+         auto key = String{c_str};
+         node_name_to_meshes.insert({MakeShared<String>(key), meshes});
       }
 
       return node_name_to_meshes;
    }
 
-   auto MeshObtainer::NodeMeshes(const aiScene *raw_model, std::vector<int> node_mesh_ids) const
-       -> std::vector<aiMesh *> {
+   auto MeshObtainer::NodeMeshes(const aiScene *raw_model, Vec<int> node_mesh_ids) const
+       -> Vec<aiMesh *> {
 
-      std::vector<aiMesh *> node_meshes;
+      Vec<aiMesh *> node_meshes;
       auto num_meshes = node_mesh_ids.size();
 
       for (auto i = 0; i < num_meshes; i++) {

@@ -146,8 +146,8 @@ namespace Narradia
 
       for (auto x = 0; x < wa->Width(); x += inc) {
 
-         rids_tiles.push_back(std::vector<RenderID>());
-         rids_tile_symbols.push_back(std::vector<RenderID>());
+         rids_tiles.push_back(Vec<RenderID>());
+         rids_tile_symbols.push_back(Vec<RenderID>());
 
          for (auto y = 0; y < wa->Height(); y += inc) {
 
@@ -229,9 +229,9 @@ namespace Narradia
          DrawAllGround();
          DrawAllModels();
       }
-      catch (std::exception &e) {
+      catch (Exception &e) {
 
-         Console::get()->Print("Exception in WorldViewAdd::Render: " + std::string(e.what()));
+         Console::get()->Print("Exception in WorldViewAdd::Render: " + String(e.what()));
       }
    }
 
@@ -336,7 +336,7 @@ namespace Narradia
                auto tile = curr_wa->GetTile(x, y);
                auto coord = Point{x, y};
                DrawGround(tile, coord);
-               auto tile_symbols = std::make_shared<Tile>();
+               auto tile_symbols = MakeShared<Tile>();
                tile_symbols->set_mob(tile->mob());
                tile_symbols->set_rid(rids_tile_symbols[x / inc][y / inc]);
                tile_symbols->set_tile_effect(tile->tile_effect());
@@ -583,7 +583,7 @@ namespace Narradia
       }
    }
 
-   void WorldAddV::DrawGround(std::shared_ptr<Tile> tile, Point coord) {
+   void WorldAddV::DrawGround(SharedPtr<Tile> tile, Point coord) {
 
       auto ground = tile->ground();
 
@@ -592,20 +592,20 @@ namespace Narradia
          auto anim_index = ((SDL_GetTicks() + coord.x * coord.y) % 900) / 300;
 
          if (anim_index > 0)
-            ground = "GroundWater_" + std::to_string(anim_index);
+            ground = "GroundWater_" + ToString(anim_index);
       }
 
       if (ground == "GroundGrass") {
 
          auto vary_index = (coord.x * coord.y) % 3;
-         ground = "GroundGrass_" + std::to_string(vary_index);
+         ground = "GroundGrass_" + ToString(vary_index);
       }
 
       // std::cout << ground << std::endl;
       DrawTile(ground, tile->rid());
    }
 
-   void WorldAddV::DrawObjects(std::shared_ptr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
+   void WorldAddV::DrawObjects(SharedPtr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
 
       if (tile->object()) {
 
@@ -653,7 +653,7 @@ namespace Narradia
           0.6f);
    }
 
-   void WorldAddV::DrawTileSymbols(std::shared_ptr<Tile> tile, Point coord) {
+   void WorldAddV::DrawTileSymbols(SharedPtr<Tile> tile, Point coord) {
 
       auto player_pos = Hero::get()->pos().GetXZ().ToIntPoint();
 

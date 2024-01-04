@@ -64,7 +64,7 @@ namespace Narradia
           rid_player_name_, player->name(),
           StatusPanel::kBoundsPanel.GetPosition().Translate(0.01f, 0.02f));
 
-      auto level_text = std::to_string(GetCurrentLevel(player->experience()));
+      auto level_text = ToString(GetCurrentLevel(player->experience()));
 
       DrawString(
           rid_level_label_, "Level",
@@ -116,7 +116,7 @@ namespace Narradia
 
       std::stringstream stream;
       stream << std::fixed << std::setprecision(2) << (experience_progress * 100) << " %";
-      std::string progress_text = stream.str();
+      String progress_text = stream.str();
 
       DrawString(rid_text_, progress_text, unfilled_area.GetCenter(), Colors::white, true);
    }
@@ -176,7 +176,7 @@ namespace Narradia
          for (auto x = 0; x < world_w; x++) {
 
             DrawImage(
-                "WorldMapImage" + std::to_string(x) + "_" + std::to_string(y), rids_images_[i],
+                "WorldMapImage" + ToString(x) + "_" + ToString(y), rids_images_[i],
                 {bounds.x + x * cell_width, bounds.y + y * cell_height, cell_width, cell_height});
 
             DrawRect(

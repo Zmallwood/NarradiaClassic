@@ -14,9 +14,8 @@ namespace Narradia
    // RendModelsV
 #if 1
    RendModelsV::RendModelsV()
-       : timelines_(std::make_shared<std::map<std::string_view, std::map<float, RenderID>>>()),
-         model_ids_(std::make_shared<
-                    std::map<std::string, std::map<int, std::map<float, const BodyData>>>>()) {
+       : timelines_(MakeShared<Map<StringView, Map<float, RenderID>>>()),
+         model_ids_(MakeShared<Map<String, Map<int, Map<float, const BodyData>>>>()) {
 
       shader_program_view()->Create(vertex_shader_source_models, fragment_shader_source_models);
 
@@ -43,12 +42,12 @@ namespace Narradia
          std::cout << "Cleaning up of RendModelsV finished.\n";
    }
 
-   RenderID RendModelsV::NewBodyKeyframe(std::string_view model_name, float ms_time) {
+   RenderID RendModelsV::NewBodyKeyframe(StringView model_name, float ms_time) {
 
       auto vao_id = renderer_base_->GenNewVAOId();
 
       if (timelines_->count(model_name) == 0)
-         timelines_->insert({model_name, std::map<float, RenderID>()});
+         timelines_->insert({model_name, Map<float, RenderID>()});
 
       timelines_->at(model_name).insert({ms_time, vao_id});
 
@@ -56,7 +55,7 @@ namespace Narradia
    }
 
    void RendModelsV::NewBodyKeyframeGeometry(
-       GLuint vao_id, std::vector<Vertex3F> vertices, std::vector<Point3F> vertex_normals) {
+       GLuint vao_id, Vec<Vertex3F> vertices, Vec<Point3F> vertex_normals) {
 
       glEnable(GL_DEPTH_TEST);
       UseVAOBegin(vao_id);
@@ -64,12 +63,12 @@ namespace Narradia
           location_projection_, 1, GL_FALSE, value_ptr(CameraGL::get()->persp_matrix()));
       glUniformMatrix4fv(location_view_, 1, GL_FALSE, value_ptr(CameraGL::get()->view_matrix()));
       glUniform1f(location_alpha_, 1.0f);
-      std::vector<int> indices(vertices.size());
+      Vec<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
-      std::vector<float> positions;
-      std::vector<float> colors;
-      std::vector<float> uvs;
-      std::vector<float> normals;
+      Vec<float> positions;
+      Vec<float> colors;
+      Vec<float> uvs;
+      Vec<float> normals;
       auto i = 0;
 
       for (auto &vertex : vertices) {
@@ -118,12 +117,12 @@ namespace Narradia
 
    // Free functions
 #if 1
-   void NewModel(std::string_view model_name) {
+   void NewModel(StringView model_name) {
 
       auto renderer = RendModelsV::get();
       auto model = ModelBank::get()->GetModel(model_name);
       auto model_ids = renderer->model_ids();
-      model_ids->insert({model_name.data(), std::map<int, std::map<float, const BodyData>>()});
+      model_ids->insert({model_name.data(), Map<int, Map<float, const BodyData>>()});
       auto i_body = 0;
 
       for (auto &body : *model->model_parts()) {
@@ -138,7 +137,7 @@ namespace Narradia
             auto body_keyframe_id = RendModelsV::get()->NewBodyKeyframe(model_name, keyframe_time);
 
             if (model_ids->at(model_name.data()).count(i_body) == 0)
-               model_ids->at(model_name.data()).insert({i_body, std::map<float, const BodyData>()});
+               model_ids->at(model_name.data()).insert({i_body, Map<float, const BodyData>()});
 
             BodyData body_data;
             body_data.rid = body_keyframe_id;
@@ -146,8 +145,8 @@ namespace Narradia
             body_data.num_vertices = vertex_count;
             model_ids->at(model_name.data()).at(i_body).insert({keyframe_time, body_data});
             auto &model_keyframe = body->timeline()->keyframes.at(keyframe_time);
-            std::vector<Vertex3F> vertices;
-            std::vector<Point3F> normals;
+            Vec<Vertex3F> vertices;
+            Vec<Point3F> normals;
             auto &anim_vertices = model_keyframe->vertices;
 
             for (auto v : anim_vertices) {
@@ -172,7 +171,7 @@ namespace Narradia
    }
 
    void DrawModel(
-       std::string_view model_name, float ms_time, Point3F position, float rotation, float scaling,
+       StringView model_name, float ms_time, Point3F position, float rotation, float scaling,
        float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) {
 
       auto renderer = RendModelsV::get();

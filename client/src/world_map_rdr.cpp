@@ -9,11 +9,11 @@ namespace Narradia
    WorldMapRdr::WorldMapRdr() {
 
       std::ifstream file;
-      file.open(std::string(SDL_GetBasePath()) + kFileName);
+      file.open(String(SDL_GetBasePath()) + kFileName);
 
       while (true) {
 
-         std::string s;
+         String s;
          file >> s;
 
          if (file.eof())
@@ -40,11 +40,11 @@ namespace Narradia
       file.close();
    }
 
-   void WorldMapRdr::LoadWorldMapFromFile(
-       std::shared_ptr<WorldArea> &world_area, std::string map_name) {
+   void
+   WorldMapRdr::LoadWorldMapFromFile(std::shared_ptr<WorldArea> &world_area, std::string map_name) {
 
       std::ifstream file;
-      file.open(std::string(SDL_GetBasePath()) + map_name);
+      file.open(String(SDL_GetBasePath()) + map_name);
       std::string s;
       file >> s;
       auto width_str = s.substr(s.find(">") + 1, s.find_last_of("<") - s.find(">") - 1);
@@ -52,7 +52,7 @@ namespace Narradia
       file >> s;
       auto height_str = s.substr(s.find(">") + 1, s.find_last_of("<") - s.find(">") - 1);
       auto height = std::stoi(height_str);
-      world_area = std::make_shared<WorldArea>(width, height);
+      world_area = MakeShared<WorldArea>(width, height);
 
       for (auto y = 0; y < height; y++) {
 
@@ -169,7 +169,7 @@ namespace Narradia
 
                      if (s2.find("</object>") != std::string::npos) {
 
-                        tile->set_object(std::make_shared<Object>(object_type));
+                        tile->set_object(MakeShared<Object>(object_type));
                      }
                      else if (s2.find("<type>") != std::string::npos) {
 

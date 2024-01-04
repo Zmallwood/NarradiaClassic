@@ -15,14 +15,14 @@ namespace Narradia
       object_confs_["ObjectStoneBoulder"] = {0, 3.0f};
    }
 
-   bool ObjectsConf::IsObstacle(std::string_view object_type) {
+   bool ObjectsConf::IsObstacle(StringView object_type) {
 
       return object_confs_.count(object_type) == 0
                  ? true
                  : (object_confs_.at(object_type).flags & NoObstacle) == 0;
    }
 
-   float ObjectsConf::GetModelScaling(std::string_view object_type) {
+   float ObjectsConf::GetModelScaling(StringView object_type) {
 
       return object_confs_.count(object_type) == 0 ? 1.0f
                                                    : object_confs_.at(object_type).model_scaling;
@@ -38,7 +38,7 @@ namespace Narradia
       mobs_confs_["MobEvilSpirit"] = {8};
    }
 
-   int MobsConf::GetAggroRange(std::string_view mob_type) {
+   int MobsConf::GetAggroRange(StringView mob_type) {
 
       if (mobs_confs_.count(mob_type) == 0)
          return 0;

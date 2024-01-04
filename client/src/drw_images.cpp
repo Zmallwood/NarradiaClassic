@@ -51,7 +51,7 @@ namespace Narradia
       return vao_id;
    }
 
-   void DrawImage(std::string_view image_name, RenderID rid, const RectF &dest, Color color) {
+   void DrawImage(StringView image_name, RenderID rid, const RectF &dest, Color color) {
 
       auto renderer = DrwImagesV::get();
       auto renderer_base = renderer->renderer_base();
@@ -70,9 +70,9 @@ namespace Narradia
       glBindTexture(GL_TEXTURE_2D, image_id);
       auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
-      std::vector<float> positions;
-      std::vector<float> colors;
-      std::vector<float> uvs;
+      Vec<float> positions;
+      Vec<float> colors;
+      Vec<float> uvs;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);

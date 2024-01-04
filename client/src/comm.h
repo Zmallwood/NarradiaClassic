@@ -183,9 +183,6 @@ namespace Narradia
       inline static std::shared_ptr<T> instance_;
    };
 
-   template <class T>
-   using S = Singleton<T>;
-
    // Function definitions
 #if 1
    template <class T>
@@ -219,20 +216,58 @@ namespace Narradia
    }
 
 #endif
+
+   // Aliases
+#if 1
+   template <class T>
+   using S = Singleton<T>;
+
+   using String = std::string;
+
+   using StringView = std::string_view;
+
+   template <class T>
+   using Vec = std::vector<T>;
+
+   template <class T>
+   using SharedPtr = std::shared_ptr<T>;
+
+   template <class T, class U>
+   using Map = std::map<T, U>;
+
+   template <class T>
+   using Set = std::set<T>;
+
+   template <class T>
+   using Function = std::function<T>;
+
+   using Exception = std::exception;
+
+   template <class T, class... __Args>
+   auto MakeShared(__Args... args) {
+      return std::make_shared<T>(args...);
+   }
+
+   template <class T>
+   auto ToString(T arg) {
+      return std::to_string(arg);
+   }
+#endif
+
 #endif
 
    // File utils
 #if 1
-   inline std::string_view FileExtension(std::string_view abs_path) {
+   inline StringView FileExtension(StringView abs_path) {
 
       return abs_path.substr(abs_path.find_last_of('.') + 1);
    }
 
-   inline std::string FileNameNoExt(std::string_view abs_path) {
+   inline String FileNameNoExt(StringView abs_path) {
 
       auto name_with_ext = abs_path.substr(abs_path.find_last_of('/') + 1);
 
-      return std::string(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
+      return String(name_with_ext.substr(0, name_with_ext.find_last_of('.')));
    }
 #endif
 }
@@ -287,6 +322,7 @@ namespace Narradia
 
       return {x, y};
    }
+
    inline std::string_view CurrTime() {
 
       char buffer[80];
@@ -295,9 +331,10 @@ namespace Narradia
 
       strftime(buffer, sizeof(buffer), "%X", p_tstruct);
 
-      return std::string_view(buffer);
+      return StringView(buffer);
    }
-   inline Size TextureDimensions(std::string_view img_name) {
+
+   inline Size TextureDimensions(StringView img_name) {
 
       Size dim;
       int mip_level = 0;
@@ -314,9 +351,9 @@ namespace Narradia
 
 // Singleton helpers
 #if 1
-   static std::vector<std::function<void()>> gDisposeActions;
+   static Vec<Function<void()>> gDisposeActions;
 
-   inline void AddSingletonDisposeAction(std::function<void()> action) {
+   inline void AddSingletonDisposeAction(Function<void()> action) {
 
       gDisposeActions.push_back(action);
    }

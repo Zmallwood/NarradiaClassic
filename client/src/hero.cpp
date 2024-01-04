@@ -1,11 +1,11 @@
 #if 1
 #include "hero.h"
-#include "world_add.h"
 #include "calc.h"
 #include "conf.h"
 #include "core.h"
 #include "rend_grnd.h"
 #include "world.h"
+#include "world_add.h"
 #endif
 
 namespace Narradia
@@ -50,7 +50,7 @@ namespace Narradia
 
       experience_ += amount;
 
-      Console::get()->Print("You got " + std::to_string(amount) + " experience");
+      Console::get()->Print("You got " + ToString(amount) + " experience");
    }
 
    void Hero::MoveAtAngle(float angle_deg_) {
@@ -69,9 +69,9 @@ namespace Narradia
 
          // if (new_x < 0 || new_z < 0 || new_x >= map_area->Width() || new_z >=
          // map_area->Height())
-         
+
          auto new_coord = Point{static_cast<int>(new_x), static_cast<int>(new_z)};
-         
+
          // West
          if (new_coord.x < 0) {
 
@@ -167,9 +167,9 @@ namespace Narradia
          pos_.x = new_x;
          pos_.z = new_z;
       }
-      catch (std::exception &e) {
+      catch (Exception &e) {
 
-         Console::get()->Print("Exception in Hero::MoveAtAngle: " + std::string(e.what()));
+         Console::get()->Print("Exception in Hero::MoveAtAngle: " + String(e.what()));
       }
    }
 

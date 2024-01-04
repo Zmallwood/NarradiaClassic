@@ -24,9 +24,9 @@ int main(int argc, char *argv[]) {
             EngineV::get()->Render();
             Engine::get()->Finalize();
          }
-         catch (std::exception &e) {
+         catch (Exception &e) {
 
-            Console::get()->Print("Exception in main: " + std::string(e.what()));
+            Console::get()->Print("Exception in main: " + String(e.what()));
          }
       }
    }
@@ -59,9 +59,9 @@ namespace Narradia
          PageMngr::get()->UpdateGameLogicCurrScene();
          MouseInput::get()->ExecMouseActions();
       }
-      catch (std::exception &e) {
+      catch (Exception &e) {
 
-         Console::get()->Print("Exception in Engine::UpdateGameLogic: " + std::string(e.what()));
+         Console::get()->Print("Exception in Engine::UpdateGameLogic: " + String(e.what()));
       }
    }
 
@@ -123,7 +123,7 @@ namespace Narradia
    // IPage
 #if 1
    IPage::IPage()
-       : scene_gui_(std::make_shared<SceneGui>()) {
+       : scene_gui_(MakeShared<SceneGui>()) {
    }
 
    void IPage::UpdateGameLogic() {
@@ -146,9 +146,9 @@ namespace Narradia
       style_ = CursorStyles::Default;
    }
 
-   std::string_view Cursor::GetCursorImageName() {
+   StringView Cursor::GetCursorImageName() {
 
-      std::string_view img_name;
+      StringView img_name;
 
       switch (style_) {
 
@@ -207,7 +207,7 @@ namespace Narradia
       return result;
    }
 
-   void KbInput::AppendTextInput(std::string_view to_append) {
+   void KbInput::AppendTextInput(StringView to_append) {
 
       text_input_.append(to_append);
    }
@@ -293,12 +293,12 @@ namespace Narradia
       has_been_released_ = false;
    }
 
-   void MouseButton::AddFiredAction(std::function<void()> action, int z_order) {
+   void MouseButton::AddFiredAction(Function<void()> action, int z_order) {
 
       action_mngr_->AddFiredAction(action, z_order);
    }
 
-   void MouseButton::AddReleasedAction(std::function<void()> action, int z_order) {
+   void MouseButton::AddReleasedAction(Function<void()> action, int z_order) {
 
       action_mngr_->AddReleasedAction(action, z_order);
    }
@@ -306,12 +306,12 @@ namespace Narradia
 
    // MouseActionMngr
 #if 1
-   void MouseActionMngr::AddFiredAction(std::function<void()> action, int z_order) {
+   void MouseActionMngr::AddFiredAction(Function<void()> action, int z_order) {
 
       fired_actions_.push_back({action, z_order});
    }
 
-   void MouseActionMngr::AddReleasedAction(std::function<void()> action, int z_order) {
+   void MouseActionMngr::AddReleasedAction(Function<void()> action, int z_order) {
 
       released_actions_.push_back({action, z_order});
    }
@@ -322,7 +322,7 @@ namespace Narradia
          return false;
 
       int top_most_z_order = -1;
-      std::vector<MouseAction> top_most_actions;
+      Vec<MouseAction> top_most_actions;
 
       for (auto action : fired_actions_) {
 
@@ -351,7 +351,7 @@ namespace Narradia
          return false;
 
       int top_most_z_order = -1;
-      std::vector<MouseAction> top_most_actions;
+      Vec<MouseAction> top_most_actions;
 
       for (auto action : released_actions_) {
 
@@ -430,13 +430,13 @@ namespace Narradia
       }
    }
 
-   void Console::Print(std::string_view text, Color text_color) {
+   void Console::Print(StringView text, Color text_color) {
 
       if (!enabled_)
          return;
 
-      auto printed_text = std::string(CurrTime().data()) + "." +
-                          std::to_string(SDL_GetTicks() % 1000) + ") " + text.data();
+      auto printed_text =
+          String(CurrTime().data()) + "." + ToString(SDL_GetTicks() % 1000) + ") " + text.data();
 
       text_lines_.push_back({printed_text, text_color});
    }
@@ -557,7 +557,7 @@ namespace Narradia
    // IPageV
 #if 1
    IPageV::IPageV()
-       : scene_gui_view_(std::make_shared<SceneGuiV>()) {
+       : scene_gui_view_(MakeShared<SceneGuiV>()) {
    }
 
    void IPageV::Render() {
@@ -594,7 +594,7 @@ namespace Narradia
 
       auto win_size = Graphics::get()->win_size();
       auto win_flags = Graphics::get()->win_flags();
-      auto win = std::shared_ptr<SDL_Window>(
+      auto win = SharedPtr<SDL_Window>(
           SDL_CreateWindow(Engine::get()->title().data(), 0, 0, win_size.w, win_size.h, win_flags),
           SDLDeleter());
 
@@ -605,7 +605,7 @@ namespace Narradia
 
          std::cout << "OpenGL context could not be "
                       "created! SDL Error: "
-                   << std::string(SDL_GetError()) << std::endl;
+                   << String(SDL_GetError()) << std::endl;
          return;
       }
 

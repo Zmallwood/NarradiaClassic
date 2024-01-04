@@ -54,8 +54,8 @@ namespace Narradia
    // RendBaseV
 #if 1
    RendBaseV::RendBaseV()
-       : shader_program_view_(std::make_shared<ShaderProgramV>()),
-         renderer_base_(std::make_shared<RendBase>()) {
+       : shader_program_view_(MakeShared<ShaderProgramV>()),
+         renderer_base_(MakeShared<RendBase>()) {
    }
 
    void RendBaseV::SetIndicesData(GLuint indices_vbo_id, int num_vertices, const void *data) const {
@@ -96,7 +96,7 @@ namespace Narradia
       }
    }
 
-   void RendBaseV::UpdateIndicesData(GLuint indices_vbo_id, std::vector<int> &indices) const {
+   void RendBaseV::UpdateIndicesData(GLuint indices_vbo_id, Vec<int> &indices) const {
 
       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
 
@@ -104,8 +104,7 @@ namespace Narradia
    }
 
    void RendBaseV::UpdateArrayBufferData(
-       GLuint vbo_id, std::vector<float> &data, int num_floats_per_entry,
-       int layout_location) const {
+       GLuint vbo_id, Vec<float> &data, int num_floats_per_entry, int layout_location) const {
 
       glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
 
@@ -118,8 +117,7 @@ namespace Narradia
    }
 
    void RendBaseV::UpdateData(
-       GLuint vbo_id, std::vector<float> &data, BufferTypes buffer_type,
-       int layout_location) const {
+       GLuint vbo_id, Vec<float> &data, BufferTypes buffer_type, int layout_location) const {
 
       UpdateArrayBufferData(
           vbo_id, data, RendBase::kNumFloatsPerEntry.at(buffer_type), layout_location);
@@ -137,7 +135,7 @@ namespace Narradia
       glUseProgram(0);
    }
 
-   GLuint RendBaseV::GetUniformLocation(std::string_view var_name) {
+   GLuint RendBaseV::GetUniformLocation(StringView var_name) {
 
       return glGetUniformLocation(
           shader_program_view_->shader_program()->program_id(), var_name.data());
@@ -153,7 +151,7 @@ namespace Narradia
    // ShaderProgramV
 #if 1
    ShaderProgramV::ShaderProgramV()
-       : shader_program_(std::make_shared<ShaderProgram>()) {
+       : shader_program_(MakeShared<ShaderProgram>()) {
    }
 
    bool ShaderProgramV::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src) {

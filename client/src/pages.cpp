@@ -1,18 +1,18 @@
 #if 1
 #include "pages.h"
-#include "map_gen_add.h"
 #include "adds.h"
-#include "world_add.h"
 #include "assets.h"
 #include "core.h"
+#include "drw_images.h"
+#include "drw_text.h"
 #include "gui-core.h"
 #include "gui-main_pg.h"
 #include "hero.h"
-#include "drw_images.h"
-#include "rend_models.h"
-#include "drw_text.h"
+#include "map_gen_add.h"
 #include "rend_grnd.h"
+#include "rend_models.h"
 #include "world.h"
+#include "world_add.h"
 #endif
 
 namespace Narradia
@@ -30,11 +30,11 @@ namespace Narradia
    MainMenuPg::MainMenuPg() {
 
       scene_gui()->AddGuiComponent(
-          std::make_shared<GuiButton>("Play", RectF{0.05f, 0.4f, 0.2f, 0.1f}, [] {
+          MakeShared<GuiButton>("Play", RectF{0.05f, 0.4f, 0.2f, 0.1f}, [] {
              PageMngrC::get()->ChangeScene(PageNames::MapCreation);
           }));
 
-      scene_gui()->AddGuiComponent(std::make_shared<GuiButton>(
+      scene_gui()->AddGuiComponent(MakeShared<GuiButton>(
           "Exit", RectF{0.05f, 0.55f, 0.2f, 0.1f}, [] { Engine::get()->set_running(false); }));
    }
 
@@ -61,8 +61,8 @@ namespace Narradia
 #if 1
    MainPg::MainPg() {
 
-      scene_gui()->AddGuiComponent(std::make_shared<ExperienceBar>());
-      scene_gui()->AddGuiComponent(std::make_shared<StatusPanel>());
+      scene_gui()->AddGuiComponent(MakeShared<ExperienceBar>());
+      scene_gui()->AddGuiComponent(MakeShared<StatusPanel>());
       scene_gui()->AddGuiComponent(GuiWindowWorldMap::get());
    }
 
@@ -79,10 +79,9 @@ namespace Narradia
          SkillPerformingAdd::get()->UpdateGameLogic();
          FPSCounterAdd::get()->UpdateGameLogic();
       }
-      catch (std::exception &e) {
+      catch (Exception &e) {
 
-         Console::get()->Print(
-             "Exception in MainPg::UpdateGameLogicDerived: " + std::string(e.what()));
+         Console::get()->Print("Exception in MainPg::UpdateGameLogicDerived: " + String(e.what()));
       }
    }
 #endif
@@ -121,8 +120,8 @@ namespace Narradia
    MainMenuPgV::MainMenuPgV() {
 
       scene_gui_view_->set_scene_gui(MainMenuPg::get()->scene_gui());
-      scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonV>());
-      scene_gui_view_->AddGuiComponentView(std::make_shared<GuiButtonV>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonV>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonV>());
 
       rid_background = NewImage();
       rid_logo = NewImage();
@@ -150,9 +149,9 @@ namespace Narradia
    MainPgV::MainPgV() {
 
       scene_gui_view_->set_scene_gui(MainPg::get()->scene_gui());
-      scene_gui_view_->AddGuiComponentView(std::make_shared<ExperienceBarV>());
-      scene_gui_view_->AddGuiComponentView(std::make_shared<StatusPanelV>());
-      scene_gui_view_->AddGuiComponentView(std::make_shared<GuiWindowWorldMapV>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<ExperienceBarV>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<StatusPanelV>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<GuiWindowWorldMapV>());
    }
 
    void MainPgV::RenderDerived() {

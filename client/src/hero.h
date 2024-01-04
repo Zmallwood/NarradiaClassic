@@ -128,6 +128,6 @@ namespace Narradia
       float stamina_ = 10.0f;
       float max_stamina_ = 10.0f;
       Point world_location_ = {0, 0};
-      std::string_view name_ = "SomePlayer";
+      StringView name_ = "SomePlayer";
    };
 }

@@ -61,8 +61,8 @@ namespace Narradia
       glDisable(GL_DEPTH_TEST);
       auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
-      std::vector<float> positions;
-      std::vector<float> colors;
+      Vec<float> positions;
+      Vec<float> colors;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
@@ -100,8 +100,8 @@ namespace Narradia
       glDisable(GL_DEPTH_TEST);
       auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
-      std::vector<float> positions;
-      std::vector<float> colors;
+      Vec<float> positions;
+      Vec<float> colors;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);

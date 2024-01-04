@@ -69,12 +69,12 @@ namespace Narradia
       if (!renderer->is_batch_drawing())
          renderer->UseVAOBegin(vao_id);
 
-      std::vector<int> indices(vertices.size());
+      Vec<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
-      std::vector<float> positions;
-      std::vector<float> colors;
-      std::vector<float> uvs;
-      std::vector<float> normals;
+      Vec<float> positions;
+      Vec<float> colors;
+      Vec<float> uvs;
+      Vec<float> normals;
 
       for (auto &vertex : vertices) {
 
@@ -115,8 +115,7 @@ namespace Narradia
          renderer->UseVAOEnd();
    }
 
-
-   void DrawTile(std::string_view image_name, RenderID vao_id, bool depth_test_off) {
+   void DrawTile(StringView image_name, RenderID vao_id, bool depth_test_off) {
 
       auto vertex_count = 4;
       auto renderer = RendGrndV::get();

@@ -28,7 +28,7 @@ namespace Narradia
 
      private:
       bool is_running_ = true;
-      std::string_view title_ = "Narradia";
+      StringView title_ = "Narradia";
    };
 
    class FPSCapper : public S<FPSCapper> {
@@ -66,7 +66,7 @@ namespace Narradia
       }
 
      private:
-      std::map<PageNames, std::shared_ptr<IPage>> scenes_;
+      Map<PageNames, SharedPtr<IPage>> scenes_;
       PageNames curr_scene_ = PageNames::None;
       bool curr_scene_canceled_ = false;
    };
@@ -86,7 +86,7 @@ namespace Narradia
      protected:
       virtual void UpdateGameLogicDerived() = 0;
 
-      std::shared_ptr<SceneGui> scene_gui_;
+      SharedPtr<SceneGui> scene_gui_;
    };
 
    enum class CursorStyles { Default, Hovering, Rotating, Attack };
@@ -95,7 +95,7 @@ namespace Narradia
      public:
       ~Cursor();
       void ResetStyle();
-      std::string_view GetCursorImageName();
+      StringView GetCursorImageName();
 
       auto style() {
          return style_;
@@ -116,13 +116,13 @@ namespace Narradia
       bool KeyIsPressed(SDL_Keycode key);
       bool KeyHasBeenFiredPickResult(SDL_Keycode key);
       bool AnyKeyIsPressedPickResult();
-      void AppendTextInput(std::string_view to_append);
-      std::string_view PickTextInput();
+      void AppendTextInput(StringView to_append);
+      StringView PickTextInput();
 
      private:
-      std::set<SDL_Keycode> pressed_keys_;
-      std::set<SDL_Keycode> fired_keys_;
-      std::string text_input_;
+      Set<SDL_Keycode> pressed_keys_;
+      Set<SDL_Keycode> fired_keys_;
+      String text_input_;
    };
 
    // Show MouseButton
@@ -133,37 +133,37 @@ namespace Narradia
 #if 1
    class MouseAction {
      public:
-      std::function<void()> action;
+      Function<void()> action;
       int z_order = 0;
    };
 #endif
 
    class MouseActionMngr {
      public:
-      void AddFiredAction(std::function<void()> action, int z_order = 0);
-      void AddReleasedAction(std::function<void()> action, int z_order = 0);
+      void AddFiredAction(Function<void()> action, int z_order = 0);
+      void AddReleasedAction(Function<void()> action, int z_order = 0);
       bool ExecFiredActions();
       bool ExecReleasedActions();
       void ClearFiredActions();
       void ClearReleasedActions();
 
      private:
-      std::vector<MouseAction> fired_actions_;
-      std::vector<MouseAction> released_actions_;
+      Vec<MouseAction> fired_actions_;
+      Vec<MouseAction> released_actions_;
    };
 #endif
 
    class MouseButton {
      public:
       MouseButton()
-          : action_mngr_(std::make_shared<MouseActionMngr>()) {
+          : action_mngr_(MakeShared<MouseActionMngr>()) {
       }
 
       void OnPress();
       void OnRelease();
       void ExecMouseActions();
-      void AddFiredAction(std::function<void()> action, int z_order = 0);
-      void AddReleasedAction(std::function<void()> action, int z_order = 0);
+      void AddFiredAction(Function<void()> action, int z_order = 0);
+      void AddReleasedAction(Function<void()> action, int z_order = 0);
 
       auto is_pressed() {
          return is_pressed_;
@@ -177,15 +177,15 @@ namespace Narradia
       bool is_pressed_ = false;
       bool has_been_fired_ = false;
       bool has_been_released_ = false;
-      std::shared_ptr<MouseActionMngr> action_mngr_;
+      SharedPtr<MouseActionMngr> action_mngr_;
    };
 #endif
 
    class MouseInput : public S<MouseInput> {
      public:
       MouseInput()
-          : left_btn_(std::make_shared<MouseButton>()),
-            right_btn_(std::make_shared<MouseButton>()) {
+          : left_btn_(MakeShared<MouseButton>()),
+            right_btn_(MakeShared<MouseButton>()) {
       }
       void OnPress(Uint8 button);
       void OnRelease(Uint8 button);
@@ -200,8 +200,8 @@ namespace Narradia
       }
 
      private:
-      std::shared_ptr<MouseButton> left_btn_;
-      std::shared_ptr<MouseButton> right_btn_;
+      SharedPtr<MouseButton> left_btn_;
+      SharedPtr<MouseButton> right_btn_;
    };
 
    class SDLDeleter {
@@ -219,7 +219,7 @@ namespace Narradia
          return win_;
       }
 
-      void set_win(std::shared_ptr<SDL_Window> value) {
+      void set_win(SharedPtr<SDL_Window> value) {
          win_ = value;
       }
 
@@ -236,7 +236,7 @@ namespace Narradia
       }
 
      private:
-      std::shared_ptr<SDL_Window> win_;
+      SharedPtr<SDL_Window> win_;
       Size win_size_ = {660, 660};
       Uint32 win_flags_ = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP;
       Color clear_color_ = {0, 150, 255, 255};
@@ -246,7 +246,7 @@ namespace Narradia
 #if 1
    class TextLine {
      public:
-      std::string text;
+      String text;
       Color color;
    };
 #endif
@@ -254,8 +254,8 @@ namespace Narradia
    class Console : public S<Console> {
      public:
       void UpdateGameLogic();
-      void Print(std::string_view text, Color text_color = Colors::wheat);
-      std::string InputTextWithCursor();
+      void Print(StringView text, Color text_color = Colors::wheat);
+      String InputTextWithCursor();
       RectF Bounds();
 
       auto text_lines() {
@@ -284,11 +284,11 @@ namespace Narradia
      private:
       static constexpr RectF kDefaultBounds = {0.35f, 0.8f, 0.3f, 0.2f};
 
-      std::vector<TextLine> text_lines_;
+      Vec<TextLine> text_lines_;
       bool enabled_ = true;
       bool input_active_ = false;
       int cursor_position_ = 0;
-      std::string input_text_;
+      String input_text_;
    };
 
    class ConsoleCalc : public S<ConsoleCalc> {
@@ -318,7 +318,7 @@ namespace Narradia
       void RenderCurrScene();
 
      private:
-      std::map<PageNames, std::shared_ptr<IPageV>> scene_views_;
+      Map<PageNames, SharedPtr<IPageV>> scene_views_;
    };
 
    class SceneGuiV;
@@ -331,7 +331,7 @@ namespace Narradia
      protected:
       virtual void RenderDerived() = 0;
 
-      std::shared_ptr<SceneGuiV> scene_gui_view_;
+      SharedPtr<SceneGuiV> scene_gui_view_;
    };
 
    class CursorV : public S<CursorV> {
@@ -368,7 +368,7 @@ namespace Narradia
       RenderID rid_split_line_;
       RenderID rid_cmd_line_input_arrow_;
       RenderID rid_input_text_;
-      std::vector<RenderID> rids_text_lines_;
+      Vec<RenderID> rids_text_lines_;
    };
 #endif
 
@@ -392,7 +392,7 @@ namespace Narradia
       void ChangeScene(PageNames new_scene);
 
      private:
-      std::map<PageNames, std::shared_ptr<IPageC>> scene_controllers_;
+      Map<PageNames, SharedPtr<IPageC>> scene_controllers_;
    };
 
    class IPageC {
