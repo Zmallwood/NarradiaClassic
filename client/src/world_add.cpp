@@ -10,6 +10,7 @@
 #include "rend_grnd.h"
 #include "rend_models.h"
 #include "world.h"
+#include "drw_images.h"
 #endif
 
 namespace Narradia
@@ -55,9 +56,11 @@ namespace Narradia
       auto map_offs_y = curr_world_loc.y * curr_wa->Height() * t_sz;
       auto look_from = GetCameraPos();
       look_from = look_from.Translate(map_offs_x, 0.0f, map_offs_y);
+
       auto player_avg_elev = CalcTileAverageElevation(
           Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location());
       auto look_at = player_pos.Translate(0.0f, player_avg_elev, 0.0f);
+
       look_at = look_at.Translate(map_offs_x, 0.0f, map_offs_y);
       auto new_view_matrix = glm::lookAt(
           glm::vec3(look_from.x, look_from.y, look_from.z),
@@ -107,7 +110,8 @@ namespace Narradia
          auto player_position_no_elevation = player->pos().Multiply(kTileSize);
          player_position_no_elevation.y = 0.0f;
          auto used_vertical_angle = vertical_angle_deg_;
-         auto used_camera_distance = camera_distance_ * 2.0f;
+         float used_camera_distance;
+         used_camera_distance = camera_distance_ * 2.0f;
          auto dz_unrotated = CosDeg(used_vertical_angle) * used_camera_distance;
          auto hypotenuse = dz_unrotated;
          auto dx =
@@ -117,7 +121,10 @@ namespace Narradia
          auto dy = SinDeg(used_vertical_angle) * used_camera_distance * 3.0f;
          auto player_average_elevation = CalcTileAverageElevation(
              Hero::get()->pos().GetXZ().ToIntPoint(), Hero::get()->world_location());
-         result = player_position_no_elevation.Translate(dx, dy + player_average_elevation, dz);
+         if (use_fixed_camera_distance_)
+            result = player_position_no_elevation.Translate(dx, dy + kFixedCameraDistance, dz);
+         else
+            result = player_position_no_elevation.Translate(dx, dy + player_average_elevation, dz);
       }
       return result.Translate(0.0f, camera_height_ * 2.0f, 0.0f);
    }
@@ -130,6 +137,8 @@ namespace Narradia
        : simplified_ground_(simplified_ground) {
 
       InitCurrWorldArea();
+
+      rid_back_gradient = NewImage();
    }
 
    void WorldAddV::InitCurrWorldArea() {
@@ -226,6 +235,7 @@ namespace Narradia
 
       try {
 
+         DrawImage("WorldAddBackGradient", rid_back_gradient, {0.0f, 0.0f, 1.0f, 1.0f});
          DrawAllGround();
          DrawAllModels();
       }

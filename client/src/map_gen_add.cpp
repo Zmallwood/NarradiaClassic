@@ -41,19 +41,18 @@ namespace Narradia
             auto a = WorldAddV::get().get();
             auto orig_render_dist = WorldAddV::get()->render_distance();
             auto orig_camera_vert_angle = Camera::get()->vertical_angle_deg();
+            Camera::get()->set_use_fixed_camera_distance(true);
             Camera::get()->set_vertical_angle_deg(90.0f);
-            auto orig_camera_distance = Camera::get()->camera_distance();
-            Camera::get()->set_camera_distance(110.0f * 2.0f);
             Camera::get()->UpdateGameLogic();
             WorldAddV::get()->set_render_distance(render_dist);
             RendGrndV::get()->set_fog_color_ground(Colors::white);
             RendModelsV::get()->set_fog_color_models(Colors::white);
             WorldAddV::get()->Render();
+            Camera::get()->set_use_fixed_camera_distance(false);
             RendGrndV::get()->set_fog_color_ground(orig_ground_fog);
             RendModelsV::get()->set_fog_color_models(orig_objs_fog);
             WorldAddV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
-            Camera::get()->set_camera_distance(orig_camera_distance);
             // GraphicsV::get()->PresentCanvas();
 
             ImageBank::get()->CreateBlankTextImage(

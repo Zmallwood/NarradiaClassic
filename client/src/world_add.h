@@ -53,6 +53,10 @@ namespace Narradia
          camera_distance_ = value;
       }
 
+      void set_use_fixed_camera_distance(bool value) {
+         use_fixed_camera_distance_ = value;
+      }
+
      private:
       void SetPerspMat();
       void SetViewMat();
@@ -63,6 +67,9 @@ namespace Narradia
       float camera_distance_ = 9.0f;
       float horizontal_angle_deg_ = 0.0f;
       float vertical_angle_deg_ = 160.0f;
+      bool use_fixed_camera_distance_ = false;
+
+      const float kFixedCameraDistance = 1300.0f;
    };
 #endif
 #endif
@@ -97,6 +104,7 @@ namespace Narradia
 
       Vec<Vec<RenderID>> rids_tiles;
       Vec<Vec<RenderID>> rids_tile_symbols;
+      RenderID rid_back_gradient;
       int render_distance_ = 30;
       bool simplified_ground_ = false;
       const float kTinyDistance = 0.001f;
