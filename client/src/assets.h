@@ -1,7 +1,9 @@
 #pragma once
 
+#if 1
 #include "conf.h"
 #include "model_mk.h"
+#endif
 
 namespace Narradia
 {

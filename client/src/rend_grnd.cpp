@@ -23,6 +23,8 @@ namespace Narradia
       location_alpha_ = GetUniformLocation("mAlpha");
       location_view_pos_ = GetUniformLocation("viewPos");
       location_fog_color_ = GetUniformLocation("fogColor");
+
+      fog_color_ground_ = kFogColorGround;
    }
 
    RendGrndV::~RendGrndV() {
@@ -146,8 +148,8 @@ namespace Narradia
              player_pos.z);
          glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
          glm::vec3 fog_color_gl(
-             RendGrndV::kFogColorGround.r, RendGrndV::kFogColorGround.g,
-             RendGrndV::kFogColorGround.b);
+             RendGrndV::get()->fog_color_ground().r, RendGrndV::get()->fog_color_ground().g,
+             RendGrndV::get()->fog_color_ground().b);
          glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       }
 
@@ -190,7 +192,8 @@ namespace Narradia
           player_pos.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
       glm::vec3 fog_color_gl(
-          RendGrndV::kFogColorGround.r, RendGrndV::kFogColorGround.g, RendGrndV::kFogColorGround.b);
+          RendGrndV::get()->fog_color_ground().r, RendGrndV::get()->fog_color_ground().g,
+          RendGrndV::get()->fog_color_ground().b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);

@@ -147,6 +147,7 @@ namespace Narradia
       inline static Color red = {1.0f, 0.0f, 0.0, 1.0f};
       inline static Color yellow = {1.0f, 1.0f, 0.0, 1.0f};
       inline static Color dark_gray = {0.3f, 0.3f, 0.3, 1.0f};
+      inline static Color sky_blue = {0.3f, 0.4f, 0.6f, 1.0f};
    }
 #endif
 

@@ -1,3 +1,4 @@
+#if 1
 #include "gui-main_pg.h"
 #include "calc.h"
 #include "drw_colors.h"
@@ -5,6 +6,7 @@
 #include "drw_text.h"
 #include "hero.h"
 #include "world.h"
+#endif
 
 namespace Narradia
 {

@@ -1,5 +1,7 @@
+#if 1
 #include "model_mk.h"
 #include "assets.h"
+#endif
 
 namespace Narradia
 {

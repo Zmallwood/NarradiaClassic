@@ -84,11 +84,18 @@ namespace Narradia
          is_batch_drawing_ = value;
       }
 
+      auto fog_color_models() {
+         return fog_color_models_;
+      }
+
+      void set_fog_color_models(Color value) {
+         fog_color_models_ = value;
+      }
+
       static constexpr int kLocationPosition = 0;
       static constexpr int kLocationColor = 1;
       static constexpr int kLocationUv = 2;
       static constexpr int kLocationNormal = 3;
-      inline static Color kFogColorModels = Colors::purple;
 
      private:
       int location_projection_ = -1;
@@ -104,6 +111,7 @@ namespace Narradia
       SharedPtr<Map<String, Map<int, Map<float, const BodyData>>>> model_ids_;
       SharedPtr<Map<StringView, Map<float, RenderID>>> timelines_;
       float global_animation_speed_ = 1.0f;
+      Color fog_color_models_;
       bool is_batch_drawing_ = false;
    };
 

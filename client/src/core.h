@@ -1,8 +1,5 @@
 #pragma once
 
-#if 1
-#endif
-
 namespace Narradia
 {
    // Model
@@ -355,7 +352,6 @@ namespace Narradia
       void InitGL();
 
       static constexpr bool kCullFace = false;
-      const Color kClearColor = Colors::mild_blue;
    };
 
    class ConsoleV : public S<ConsoleV> {

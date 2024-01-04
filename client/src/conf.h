@@ -10,6 +10,9 @@ namespace Narradia
 #if 1
    constexpr float kTileSize = 6.0f;
    constexpr float kElevAmount = 11.0f;
+   const Color kClearColor = Colors::sky_blue;
+   const Color kFogColorGround = Colors::sky_blue;
+   const Color kFogColorModels = Colors::sky_blue;
 #endif
 
    // Show ObjectsConf sub components

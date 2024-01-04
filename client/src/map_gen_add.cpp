@@ -32,8 +32,8 @@ namespace Narradia
             auto y_center = map_area->Height() / 2.0f;
             Hero::get()->set_pos({x_center, 0.0f, y_center});
             Hero::get()->set_world_location({x, y});
-            auto orig_ground_fog = RendGrndV::get()->kFogColorGround;
-            auto orig_objs_fog = RendModelsV::get()->kFogColorModels;
+            auto orig_ground_fog = RendGrndV::get()->fog_color_ground();
+            auto orig_objs_fog = RendModelsV::get()->fog_color_models();
             auto width = map_area->Width();
             auto height = map_area->Height();
             auto render_dist = std::sqrt(width * width + height * height) / 2.0f;
@@ -46,11 +46,11 @@ namespace Narradia
             Camera::get()->set_camera_distance(110.0f * 2.0f);
             Camera::get()->UpdateGameLogic();
             WorldAddV::get()->set_render_distance(render_dist);
-            RendGrndV::get()->kFogColorGround = Colors::white;
-            RendModelsV::get()->kFogColorModels = Colors::white;
+            RendGrndV::get()->set_fog_color_ground(Colors::white);
+            RendModelsV::get()->set_fog_color_models(Colors::white);
             WorldAddV::get()->Render();
-            RendGrndV::get()->kFogColorGround = orig_ground_fog;
-            RendModelsV::get()->kFogColorModels = orig_objs_fog;
+            RendGrndV::get()->set_fog_color_ground(orig_ground_fog);
+            RendModelsV::get()->set_fog_color_models(orig_objs_fog);
             WorldAddV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             Camera::get()->set_camera_distance(orig_camera_distance);

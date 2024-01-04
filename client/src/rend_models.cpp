@@ -29,6 +29,8 @@ namespace Narradia
       location_fog_color_ = GetUniformLocation("fogColor");
       location_no_fog_ = GetUniformLocation("noFog");
       location_no_lighting_ = GetUniformLocation("noLighting");
+
+      fog_color_models_ = kFogColorModels;
    }
 
    RendModelsV::~RendModelsV() {
@@ -225,8 +227,8 @@ namespace Narradia
           player_space_coord.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(viewPos));
       glm::vec3 fogColorGl(
-          RendModelsV::kFogColorModels.r, RendModelsV::kFogColorModels.g,
-          RendModelsV::kFogColorModels.b);
+          RendModelsV::get()->fog_color_models().r, RendModelsV::get()->fog_color_models().g,
+          RendModelsV::get()->fog_color_models().b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fogColorGl));
       glUniform1f(renderer->location_alpha(), brightness);
       glUniform1f(renderer->location_no_fog(), no_fog ? 1.0f : 0.0f);
