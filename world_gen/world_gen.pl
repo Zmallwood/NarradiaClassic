@@ -54,8 +54,8 @@ while ($running eq "true") {
 
                         $tiles[$global_x][$global_y] = "GroundWater";
                         $elevs[$global_x][$global_y] = 0.0;
-                        $reds[$global_x][$global_y] = 1.0;
-                        $greens[$global_x][$global_y] = 1.0;
+                        $reds[$global_x][$global_y] = 0.0;
+                        $greens[$global_x][$global_y] = 0.75;
                         $blues[$global_x][$global_y] = 1.0;
                         $normalsx[$global_x][$global_y] = 0.0;
                         $normalsy[$global_x][$global_y] = 1.0;
@@ -605,10 +605,11 @@ while ($running eq "true") {
                     if ($dx*$dx + $dy*$dy <= $r*$r) {
                         if ($elevs[$x][$y] < 2.0) {
                             $tiles[$x][$y] = "GroundWater";
-                            $reds[$x][$y] = 1.0;
-                            $greens[$x][$y] = 1.0;
+                            $reds[$x][$y] = 0.0;
+                            $greens[$x][$y] = 0.75;
                             $blues[$x][$y] = 1.0;
                             $elevs[$x][$y] = 0.0;
+                            $objects[$x][$y] = "";
                         }
                     }
                 }
@@ -632,6 +633,8 @@ while ($running eq "true") {
             for ($j = 0; $j < $riv_len; $j = $j + 1) {
                 if ($tiles[$x][$y] eq "Ground") {
                     if ($x >= 0 and $x >= 0 and $x < $num_tiles_x - 1 and $y < $num_tiles_y - 1) {
+                        $tiles[$x][$y] = "GroundRiver";
+
                         $reds[$x][$y]= 0.0;
                         $greens[$x][$y]= 0.75;
                         $blues[$x][$y]= 1.0;
@@ -647,6 +650,8 @@ while ($running eq "true") {
                         $reds[$x][$y + 1]= 0.0;
                         $greens[$x][$y + 1]= 0.75;
                         $blues[$x][$y + 1]= 1.0;
+
+                        $objects[$x][$x] = "";
                     }
                 }
 

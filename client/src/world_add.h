@@ -101,6 +101,14 @@ namespace Narradia
       int render_distance_ = 40;
       Vec<Vec<RenderID>> rids_tiles;
       Vec<Vec<RenderID>> rids_tile_symbols;
+      Vec<Vec<RenderID>> rids_tile_symbols_w;
+      Vec<Vec<RenderID>> rids_tile_symbols_e;
+      Vec<Vec<RenderID>> rids_tile_symbols_n;
+      Vec<Vec<RenderID>> rids_tile_symbols_s;
+      Vec<Vec<RenderID>> rids_tile_symbols_ne;
+      Vec<Vec<RenderID>> rids_tile_symbols_se;
+      Vec<Vec<RenderID>> rids_tile_symbols_sw;
+      Vec<Vec<RenderID>> rids_tile_symbols_nw;
       RenderID rid_tile_surface;
       RenderID rid_tile_surface_w;
       RenderID rid_tile_surface_e;
