@@ -59,7 +59,7 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/comm.h"
+"src/Comm.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})

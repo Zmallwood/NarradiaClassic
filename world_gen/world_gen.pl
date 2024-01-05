@@ -28,7 +28,7 @@ while ($running eq "true") {
         open(DATA, ">World.conf") or die "Couldn't open file World.conf, $!";
 
         print DATA "Width=$world_width\n";
-        print DATA "Height=$world_height\n";
+        print DATA "Height=$world.height\n";
 
         my $global_x;
         my $global_y;
@@ -45,7 +45,7 @@ while ($running eq "true") {
 
         # Generate sea
 
-        for ($wy = 0; $wy < $world_height; $wy = $wy + 1) {
+        for ($wy = 0; $wy < $world.height; $wy = $wy + 1) {
             for ($wx = 0; $wx < $world_width; $wx = $wx + 1) {
                 for ($way = 0; $way < $world_area_height; $way = $way + 1) {
                     for ($wax = 0; $wax < $world_area_width; $wax = $wax + 1) {
@@ -66,7 +66,7 @@ while ($running eq "true") {
             }
         }
         $num_tiles_x = $world_width*$world_area_width;
-        $num_tiles_y = $world_height*$world_area_height;
+        $num_tiles_y = $world.height*$world_area_height;
         $max_side = $num_tiles_x > $num_tiles_y ? $num_tiles_x : $num_tiles_y;
         print "Max side: $max_side\n";
         $r_cont = $max_side/2*80/100;
@@ -738,7 +738,7 @@ while ($running eq "true") {
 
         # Writing to files
 
-        for ($wy = 0; $wy < $world_height; $wy = $wy + 1) {
+        for ($wy = 0; $wy < $world.height; $wy = $wy + 1) {
             for ($wx = 0; $wx < $world_width; $wx = $wx + 1) {
                 print ">Writing file for world area at: ($wx, $wy)\n";
 
