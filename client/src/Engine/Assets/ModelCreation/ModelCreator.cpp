@@ -22,7 +22,7 @@ namespace Narradia {
       auto _animDuration = _rawModel->mNumAnimations > 0 ? _rawModel->mAnimations[0]->mDuration : 0;
       auto _newModel = MakeShared<Model>(_animDuration);
       for (auto &_modelPart : ModelParts(_rawModel))
-         _newModel->ModelParts()->push_back(_modelPart);
+         _newModel->GetModelParts()->push_back(_modelPart);
       return _newModel;
    }
 }

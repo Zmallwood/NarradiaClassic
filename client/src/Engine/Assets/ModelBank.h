@@ -8,7 +8,8 @@ namespace Narradia {
       ModelBank();
       ~ModelBank();
       SharedPtr<Model> GetModel(StringView _modelName);
-      auto Models() {
+
+      auto GetModels() {
          return m_models;
       }
 

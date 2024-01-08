@@ -120,8 +120,8 @@ namespace Narradia {
       model_ids->insert({model_name.data(), Map<int, Map<float, const BodyData>>()});
       auto i_body = 0;
 
-      for (auto &body : *model->ModelParts()) {
-         auto &timelines = body->Timeln()->keyframes;
+      for (auto &body : *model->GetModelParts()) {
+         auto &timelines = body->GetTimeln()->keyframes;
 
          for (auto &keyframe : timelines) {
             auto keyframe_time = keyframe.first;
@@ -134,10 +134,10 @@ namespace Narradia {
 
             BodyData body_data;
             body_data.rid = body_keyframe_id;
-            body_data.image_name = body->TexName();
+            body_data.image_name = body->GetTexName();
             body_data.num_vertices = vertex_count;
             model_ids->at(model_name.data()).at(i_body).insert({keyframe_time, body_data});
-            auto &model_keyframe = body->Timeln()->keyframes.at(keyframe_time);
+            auto &model_keyframe = body->GetTimeln()->keyframes.at(keyframe_time);
             Vec<Vertex3F> vertices;
             Vec<Point3F> normals;
             auto &anim_vertices = model_keyframe->vertices;
@@ -225,11 +225,11 @@ namespace Narradia {
       auto p_model = ModelBank::get()->GetModel(model_name);
       int ms_time_used;
 
-      if (p_model->AnimDuration() == 0)
+      if (p_model->GetAnimDuration() == 0)
          ms_time_used = 0;
       else
          ms_time_used = static_cast<int>(ms_time * renderer->global_animation_speed()) %
-                        p_model->AnimDuration();
+                        p_model->GetAnimDuration();
 
       auto &model_data = all_nodes;
 

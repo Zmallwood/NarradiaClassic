@@ -2,7 +2,7 @@
 #include "Engine/Assets/ImageBank.h"
 
 namespace Narradia {
-   PointF MousePosition() {
+   PointF MousePos() {
       int _xPx, _yPx;
       auto _canvSz = CanvasSize();
       SDL_GetMouseState(&_xPx, &_yPx);

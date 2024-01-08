@@ -107,7 +107,7 @@ namespace Narradia {
           [&] {
              is_rotating_ = true;
 
-             mouse_pos_rotation_start_ = MousePosition();
+             mouse_pos_rotation_start_ = MousePos();
 
              cam_horizontal_angle_deg_rotation_start_ = Camera::get()->horizontal_angle_deg();
              cam_vertical_angle_deg_rotation_start_ = Camera::get()->vertical_angle_deg();
@@ -119,7 +119,7 @@ namespace Narradia {
       if (is_rotating_) {
          Cursor::get()->set_style(CursorStyles::Rotating);
 
-         auto mouse_pos = MousePosition();
+         auto mouse_pos = MousePos();
 
          auto dx = mouse_pos.x - mouse_pos_rotation_start_.x;
          auto dy = mouse_pos.y - mouse_pos_rotation_start_.y;
@@ -172,7 +172,7 @@ namespace Narradia {
       auto view_matrix = CameraGL::get()->view_matrix();
       auto perspective_matrix = CameraGL::get()->persp_matrix();
 
-      auto mouse_position_f = MousePosition();
+      auto mouse_position_f = MousePos();
       auto canvas_size = CanvasSize();
 
       auto player_x = Player::get()->pos().x;

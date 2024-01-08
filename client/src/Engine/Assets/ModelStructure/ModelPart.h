@@ -9,15 +9,13 @@ namespace Narradia {
           : m_timeln(MakeShared<Timeline>()) {
       }
 
-      auto TexName() {
+      auto GetTexName() {
          return m_texName;
       }
-
-      void SetTexName(String value) {
-         m_texName= value;
+      void SetTexName(String _value) {
+         m_texName= _value;
       }
-
-      auto Timeln() {
+      auto GetTimeln() {
          return m_timeln;
       }
 

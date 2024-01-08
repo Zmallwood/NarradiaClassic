@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Narradia {
-   PointF MousePosition();
+   PointF MousePos();
    StringView CurrTime();
    Size TexDimensions(StringView _imgName);
 }

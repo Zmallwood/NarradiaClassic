@@ -171,7 +171,7 @@ namespace Narradia {
    // MainMenuPgC
 #if 1
    void MainMenuPgC::OnEnter() {
-      auto all_models = *ModelBank::get()->Models();
+      auto all_models = *ModelBank::get()->GetModels();
 
       for (auto &entry : all_models)
          NewModel(entry.first);

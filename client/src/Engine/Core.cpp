@@ -475,7 +475,7 @@ namespace Narradia {
    }
 
    void CursorV::RenderCursor() {
-      auto mouse_pos = MousePosition();
+      auto mouse_pos = MousePos();
       auto w = kCursorWidth;
       auto h = w * AspectRatio();
       RectF rect = {mouse_pos.x - w, mouse_pos.y - h, w * 2, h * 2};
