@@ -59,7 +59,14 @@ set(PCH_FILES
 <assimp/scene.h>
 <assimp/postprocess.h>
 
-"src/Comm.h"
+"src/Common/Singleton.h"
+"src/Common/Aliases.h"
+"src/Common/File_Utilities.h"
+"src/Matter/Matter.h"
+"src/Common/Canvas_Utilities.h"
+"src/Common/Utilities.h"
+"src/Common/Singletons_Disposal.h"
+"src/Common/Square.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})

@@ -1,14 +1,14 @@
 #pragma once
 
-namespace Narradia
-{
+namespace Narradia {
 
-   // View
+    // View
+
 #if 1
-   class MapGenAddV : public S<MapGenAddV> {
-     public:
-      void Render();
-   };
+    class MapGenAddV : public Singleton<MapGenAddV> {
+      public:
+        void Render();
+    };
 #endif
 
 }

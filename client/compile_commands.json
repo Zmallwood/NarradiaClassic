@@ -63,12 +63,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Conf.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Conf.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Common/Singletons_Disposal.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/Singletons_Disposal.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Conf.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Conf.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/Singletons_Disposal.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Common/Singletons_Disposal.cpp.o"
   },
   {
     "arguments": [
@@ -86,12 +86,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Core.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Core.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Common/File_Utilities.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/File_Utilities.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Core.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Core.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/File_Utilities.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Common/File_Utilities.cpp.o"
   },
   {
     "arguments": [
@@ -109,12 +109,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Drw_Colors.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Drw_Colors.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Common/Canvas_Utilities.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/Canvas_Utilities.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Drw_Colors.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Drw_Colors.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/Canvas_Utilities.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Common/Canvas_Utilities.cpp.o"
   },
   {
     "arguments": [
@@ -132,12 +132,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Drw_Images.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Drw_Images.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Common/Utilities.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/Utilities.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Drw_Images.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Drw_Images.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Common/Utilities.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Common/Utilities.cpp.o"
   },
   {
     "arguments": [
@@ -155,12 +155,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Drw_Text.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Drw_Text.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Configuration/Configuration.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Configuration/Configuration.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Drw_Text.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Drw_Text.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Configuration/Configuration.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Configuration/Configuration.cpp.o"
   },
   {
     "arguments": [
@@ -178,12 +178,219 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Gui_Core.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Gui_Core.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Assets/Model_Creation/Model_Creation.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Assets/Model_Creation/Model_Creation.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Gui_Core.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Gui_Core.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Assets/Model_Creation/Model_Creation.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Assets/Model_Creation/Model_Creation.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Core.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Core.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Core.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Core.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Gui_Core/Gui_Core.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Gui_Core/Gui_Core.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Gui_Core/Gui_Core.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Gui_Core/Gui_Core.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Colors_Rendering.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Colors_Rendering.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Colors_Rendering.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Colors_Rendering.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Ground_Rendering.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Ground_Rendering.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Ground_Rendering.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Ground_Rendering.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Images_Rendering.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Images_Rendering.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Images_Rendering.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Images_Rendering.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Models_Rendering.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Models_Rendering.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Models_Rendering.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Models_Rendering.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Rendering_Core.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Rendering_Core.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Rendering_Core.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Rendering_Core.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Text_Rendering.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Text_Rendering.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Engine/Rendering/Text_Rendering.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Engine/Rendering/Text_Rendering.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/File_IO/World_Map_Rdr.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/File_IO/World_Map_Rdr.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/File_IO/World_Map_Rdr.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/File_IO/World_Map_Rdr.cpp.o"
   },
   {
     "arguments": [
@@ -224,12 +431,12 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Hero.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Hero.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Main.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Main.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Hero.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Hero.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Main.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Main.cpp.o"
   },
   {
     "arguments": [
@@ -270,12 +477,104 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Model_Mk.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Model_Mk.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/Matter/Color.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/Color.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Model_Mk.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Model_Mk.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/Color.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Matter/Color.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Matter/Point.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/Point.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/Point.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Matter/Point.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Matter/Point3F.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/Point3F.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/Point3F.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Matter/Point3F.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Matter/PointF.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/PointF.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/PointF.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Matter/PointF.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
+      "-Wfatal-errors",
+      "-std=c++20",
+      "-O3",
+      "-ftemplate-depth=4000",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu++20",
+      "-Winvalid-pch",
+      "-include",
+      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
+      "-c",
+      "-o",
+      "CMakeFiles/NarradiaClassic.dir/src/Matter/RectF.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/RectF.cpp"
+    ],
+    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Matter/RectF.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Matter/RectF.cpp.o"
   },
   {
     "arguments": [
@@ -316,75 +615,6 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Rend_Core.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Rend_Core.cpp"
-    ],
-    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Rend_Core.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Rend_Core.cpp.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
-      "-Wfatal-errors",
-      "-std=c++20",
-      "-O3",
-      "-ftemplate-depth=4000",
-      "-O3",
-      "-DNDEBUG",
-      "-std=gnu++20",
-      "-Winvalid-pch",
-      "-include",
-      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
-      "-c",
-      "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Rend_Grnd.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Rend_Grnd.cpp"
-    ],
-    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Rend_Grnd.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Rend_Grnd.cpp.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
-      "-Wfatal-errors",
-      "-std=c++20",
-      "-O3",
-      "-ftemplate-depth=4000",
-      "-O3",
-      "-DNDEBUG",
-      "-std=gnu++20",
-      "-Winvalid-pch",
-      "-include",
-      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
-      "-c",
-      "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/Rend_Models.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Rend_Models.cpp"
-    ],
-    "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/Rend_Models.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/Rend_Models.cpp.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-I/home/andreas/Code/C++/NarradiaClassic/repository/client/src",
-      "-Wfatal-errors",
-      "-std=c++20",
-      "-O3",
-      "-ftemplate-depth=4000",
-      "-O3",
-      "-DNDEBUG",
-      "-std=gnu++20",
-      "-Winvalid-pch",
-      "-include",
-      "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
-      "-c",
-      "-o",
       "CMakeFiles/NarradiaClassic.dir/src/World_Add.cpp.o",
       "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/World_Add.cpp"
     ],
@@ -408,11 +638,11 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/World_Map_Rdr.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/World_Map_Rdr.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/World_Structure/Actors/Player.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/World_Structure/Actors/Player.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/World_Map_Rdr.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/World_Map_Rdr.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/World_Structure/Actors/Player.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/World_Structure/Actors/Player.cpp.o"
   }
 ]

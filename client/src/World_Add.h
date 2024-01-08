@@ -1,136 +1,152 @@
 #pragma once
 
-#include "World.h"
+#include "World_Structure/World_Structure.h"
 
 namespace Narradia
 {
 
-   // Model
+    // Model
+
 #if 1
-   class WorldAdd : public S<WorldAdd> {
-     public:
-      WorldAdd();
-      void UpdateGameLogic();
-   };
+    class WorldAdd : public Singleton<WorldAdd>
+    {
+      public:
+        WorldAdd();
+        void UpdateGameLogic();
+    };
 
-   class TileSquare {
-     public:
-      TileSquare(int x, int y) {
+    class TileSquare
+    {
+      public:
+        TileSquare(int x, int y)
+        {
+            coords._00 = {x, y};
+            coords._10 = {x + 1, y};
+            coords._11 = {x + 1, y + 1};
+            coords._01 = {x, y + 1};
+        }
 
-         coords._00 = {x, y};
-         coords._10 = {x + 1, y};
-         coords._11 = {x + 1, y + 1};
-         coords._01 = {x, y + 1};
-      }
+        Square<Point> coords;
+    };
 
-      Square<Point> coords;
-   };
-
-   // Show Camera class
+    // Show Camera class
 #if 1
-   class Camera : public S<Camera> {
-     public:
-      void UpdateGameLogic();
+    class Camera : public Singleton<Camera>
+    {
+      public:
+        void UpdateGameLogic();
 
-      auto horizontal_angle_deg() {
-         return horizontal_angle_deg_;
-      }
+        auto horizontal_angle_deg()
+        {
+            return horizontal_angle_deg_;
+        }
 
-      void set_horizontal_angle_deg(float value) {
-         horizontal_angle_deg_ = value;
-      }
+        void set_horizontal_angle_deg(float value)
+        {
+            horizontal_angle_deg_ = value;
+        }
 
-      auto vertical_angle_deg() {
-         return vertical_angle_deg_;
-      }
+        auto vertical_angle_deg()
+        {
+            return vertical_angle_deg_;
+        }
 
-      void set_vertical_angle_deg(float value) {
-         vertical_angle_deg_ = value;
-      }
+        void set_vertical_angle_deg(float value)
+        {
+            vertical_angle_deg_ = value;
+        }
 
-      auto camera_distance() {
-         return camera_distance_;
-      }
+        auto camera_distance()
+        {
+            return camera_distance_;
+        }
 
-      void set_camera_distance(float value) {
-         camera_distance_ = value;
-      }
+        void set_camera_distance(float value)
+        {
+            camera_distance_ = value;
+        }
 
-      void set_use_fixed_camera_distance(bool value) {
-         use_fixed_camera_distance_ = value;
-      }
+        void set_use_fixed_camera_distance(bool value)
+        {
+            use_fixed_camera_distance_ = value;
+        }
 
-     private:
-      void SetPerspMat();
-      void SetViewMat();
-      Point3F GetCameraPos();
+      private:
+        void SetPerspMat();
+        void SetViewMat();
+        Point3F GetCameraPos();
 
-      float camera_height_ = 16.0f;
-      float used_fov_ = 110.0f;
-      float camera_distance_ = 9.0f;
-      float horizontal_angle_deg_ = 0.0f;
-      float vertical_angle_deg_ = 160.0f;
-      bool use_fixed_camera_distance_ = false;
+        float camera_height_ = 16.0f;
+        float used_fov_ = 110.0f;
+        float camera_distance_ = 9.0f;
+        float horizontal_angle_deg_ = 0.0f;
+        float vertical_angle_deg_ = 160.0f;
+        bool use_fixed_camera_distance_ = false;
 
-      const float kFixedCameraDistance = 1300.0f;
-   };
+        const float kFixedCameraDistance = 1300.0f;
+    };
 #endif
 #endif
 
-   // View
+    // View
+
 #if 1
-   class Tile;
+    class Tile;
 
-   class WorldAddV : public S<WorldAddV> {
-     public:
-      WorldAddV(bool simplified_ground = false);
-      void Render();
-      void InitCurrWorldArea();
+    class WorldAddV : public Singleton<WorldAddV>
+    {
+      public:
+        WorldAddV(bool simplified_ground = false);
+        void Render();
+        void InitCurrWorldArea();
 
-      auto render_distance() {
-         return render_distance_;
-      }
+        auto render_distance()
+        {
+            return render_distance_;
+        }
 
-      void set_render_distance(int value) {
-         render_distance_ = value;
-      }
-      inline void DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
-      inline void DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
-      inline void DrawGround(SharedPtr<Tile> tile, Point coord);
-      inline void DrawTileSymbols(SharedPtr<Tile> tile, Point coord);
+        void set_render_distance(int value)
+        {
+            render_distance_ = value;
+        }
 
-      int render_distance_ = 40;
-      Vec<Vec<RenderID>> rids_tiles;
-      Vec<Vec<RenderID>> rids_tile_symbols;
-      Vec<Vec<RenderID>> rids_tile_symbols_w;
-      Vec<Vec<RenderID>> rids_tile_symbols_e;
-      Vec<Vec<RenderID>> rids_tile_symbols_n;
-      Vec<Vec<RenderID>> rids_tile_symbols_s;
-      Vec<Vec<RenderID>> rids_tile_symbols_ne;
-      Vec<Vec<RenderID>> rids_tile_symbols_se;
-      Vec<Vec<RenderID>> rids_tile_symbols_sw;
-      Vec<Vec<RenderID>> rids_tile_symbols_nw;
-      RenderID rid_tile_surface;
-      RenderID rid_tile_surface_w;
-      RenderID rid_tile_surface_e;
-      RenderID rid_tile_surface_n;
-      RenderID rid_tile_surface_s;
-      RenderID rid_tile_surface_ne;
-      RenderID rid_tile_surface_se;
-      RenderID rid_tile_surface_sw;
-      RenderID rid_tile_surface_nw;
+        inline void DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
+        inline void DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y);
+        inline void DrawGround(Shared_Ptr<Tile> tile, Point coord);
+        inline void DrawTileSymbols(Shared_Ptr<Tile> tile, Point coord);
 
-     private:
-      void DrawAllGround();
-      void DrawAllModels();
-      void DrawObjects(SharedPtr<Tile> tile, Point coord, int dloc_x = 0, int dloc_y = 0);
-      void DrawPlayer();
+        int render_distance_ = 40;
+        Vector<Vector<Render_ID>> rids_tiles;
+        Vector<Vector<Render_ID>> rids_tile_symbols;
+        Vector<Vector<Render_ID>> rids_tile_symbols_w;
+        Vector<Vector<Render_ID>> rids_tile_symbols_e;
+        Vector<Vector<Render_ID>> rids_tile_symbols_n;
+        Vector<Vector<Render_ID>> rids_tile_symbols_s;
+        Vector<Vector<Render_ID>> rids_tile_symbols_ne;
+        Vector<Vector<Render_ID>> rids_tile_symbols_se;
+        Vector<Vector<Render_ID>> rids_tile_symbols_sw;
+        Vector<Vector<Render_ID>> rids_tile_symbols_nw;
+        Render_ID rid_tile_surface;
+        Render_ID rid_tile_surface_w;
+        Render_ID rid_tile_surface_e;
+        Render_ID rid_tile_surface_n;
+        Render_ID rid_tile_surface_s;
+        Render_ID rid_tile_surface_ne;
+        Render_ID rid_tile_surface_se;
+        Render_ID rid_tile_surface_sw;
+        Render_ID rid_tile_surface_nw;
 
-      RenderID rid_back_gradient;
-      const float kTinyDistance = 0.001f;
-      static constexpr int kGroundSimpleK = 6;
-      bool simplified_ground_ = false;
-   };
+      private:
+        void DrawAllGround();
+        void DrawAllModels();
+        void DrawObjects(Shared_Ptr<Tile> tile, Point coord, int dloc_x = 0, int dloc_y = 0);
+        void DrawPlayer();
+
+        Render_ID rid_back_gradient;
+        const float kTinyDistance = 0.001f;
+        static constexpr int kGroundSimpleK = 6;
+        bool simplified_ground_ = false;
+    };
 
 #endif
 

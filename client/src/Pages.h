@@ -1,120 +1,122 @@
 #pragma once
 
-#include "Core.h"
+#include "Engine/Core.h"
 
-namespace Narradia
-{
+namespace Narradia {
 
-   // Model
+    // Model
+
 #if 1
-   class IntroPg : public IPage, public S<IntroPg> {
-     private:
-      void UpdateGameLogicDerived() override;
+    class IntroPg : public IPage, public Singleton<IntroPg> {
+      private:
+        void UpdateGameLogicDerived() override;
 
-      void Finalize() override {
-      }
-   };
+        void Finalize() override {
+        }
+    };
 
-   class MainMenuPg : public IPage, public S<MainMenuPg> {
-     public:
-      MainMenuPg();
+    class MainMenuPg : public IPage, public Singleton<MainMenuPg> {
+      public:
+        MainMenuPg();
 
-     private:
-      void UpdateGameLogicDerived() override;
+      private:
+        void UpdateGameLogicDerived() override;
 
-      void Finalize() override {
-      }
-   };
+        void Finalize() override {
+        }
+    };
 
-   class MapCreationPg : public IPage, public S<MapCreationPg> {
-     private:
-      void UpdateGameLogicDerived() override;
-      void Finalize() override;
-   };
+    class MapCreationPg : public IPage, public Singleton<MapCreationPg> {
+      private:
+        void UpdateGameLogicDerived() override;
+        void Finalize() override;
+    };
 
-   class MainPg : public IPage, public S<MainPg> {
-     public:
-      MainPg();
+    class MainPg : public IPage, public Singleton<MainPg> {
+      public:
+        MainPg();
 
-     private:
-      void UpdateGameLogicDerived() override;
+      private:
+        void UpdateGameLogicDerived() override;
 
-      void Finalize() override {
-      }
-   };
+        void Finalize() override {
+        }
+    };
 #endif
 
-// View
+    // View
+
 #if 1
-   class IntroPgV : public IPageV, public S<IntroPgV> {
-     public:
-      IntroPgV();
+    class IntroPgV : public IPageV, public Singleton<IntroPgV> {
+      public:
+        IntroPgV();
 
-     private:
-      void RenderDerived() override;
+      private:
+        void RenderDerived() override;
 
-      RenderID rid_background;
-      RenderID rid_logo;
-      RenderID rid_text;
-   };
+        Render_ID rid_background;
+        Render_ID rid_logo;
+        Render_ID rid_text;
+    };
 
-   class MainMenuPgV : public IPageV, public S<MainMenuPgV> {
-     public:
-      MainMenuPgV();
+    class MainMenuPgV : public IPageV, public Singleton<MainMenuPgV> {
+      public:
+        MainMenuPgV();
 
-     private:
-      void RenderDerived() override;
+      private:
+        void RenderDerived() override;
 
-      RenderID rid_background;
-      RenderID rid_logo;
-   };
+        Render_ID rid_background;
+        Render_ID rid_logo;
+    };
 
-   class MapCreationPgV : public IPageV, public S<MapCreationPgV> {
-     private:
-      void RenderDerived() override;
-   };
+    class MapCreationPgV : public IPageV, public Singleton<MapCreationPgV> {
+      private:
+        void RenderDerived() override;
+    };
 
-   class MainPgV : public IPageV, public S<MainPgV> {
-     public:
-      MainPgV();
+    class MainPgV : public IPageV, public Singleton<MainPgV> {
+      public:
+        MainPgV();
 
-     private:
-      void RenderDerived() override;
-   };
+      private:
+        void RenderDerived() override;
+    };
 
 #endif
 
-   // Controller
+    // Controller
+
 #if 1
-   class IntroPgC : public IPageC, public S<IntroPgC> {
-     private:
-      void OnEnter() override;
-      void UpdateGameFlowDerived() override;
-   };
+    class IntroPgC : public IPageC, public Singleton<IntroPgC> {
+      private:
+        void OnEnter() override;
+        void UpdateGameFlowDerived() override;
+    };
 
-   class MainMenuPgC : public IPageC, public S<MainMenuPgC> {
-     public:
-      void OnEnter() override;
+    class MainMenuPgC : public IPageC, public Singleton<MainMenuPgC> {
+      public:
+        void OnEnter() override;
 
-     private:
-      void UpdateGameFlowDerived() override;
-   };
+      private:
+        void UpdateGameFlowDerived() override;
+    };
 
-   class MapCreationPgC : public IPageC, public S<MapCreationPgC> {
-     public:
-      void OnEnter() override;
+    class MapCreationPgC : public IPageC, public Singleton<MapCreationPgC> {
+      public:
+        void OnEnter() override;
 
-     private:
-      void UpdateGameFlowDerived() override;
-   };
+      private:
+        void UpdateGameFlowDerived() override;
+    };
 
-   class MainPgC : public IPageC, public S<MainPgC> {
-     public:
-      void OnEnter() override;
+    class MainPgC : public IPageC, public Singleton<MainPgC> {
+      public:
+        void OnEnter() override;
 
-     private:
-      void UpdateGameFlowDerived() override;
-   };
+      private:
+        void UpdateGameFlowDerived() override;
+    };
 #endif
 
 }
