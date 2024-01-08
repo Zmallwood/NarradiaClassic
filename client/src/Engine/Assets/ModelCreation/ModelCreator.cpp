@@ -1,10 +1,12 @@
 #include "ModelCreator.h"
 #include "MeshObtainer.h"
 #include "ModelPartCreator.h"
+#include "Engine/Assets/ModelBank.h"
+#include "Engine/Assets/ModelStructure/Model.h"
 
 namespace Narradia {
    auto ModelCreator::ModelParts(const aiScene *_rawModel) {
-      Vector<SharedPtr<ModelPart>> _allModelParts;
+      Vec<SharedPtr<ModelPart>> _allModelParts;
       for (auto &_entry : MeshObtainer::get()->ModelMeshIds(_rawModel)) {
          String _nodeName = *_entry.first;
          auto _nodeMeshIDs = _entry.second;
@@ -18,9 +20,9 @@ namespace Narradia {
    }
    auto ModelCreator::CreateModel(const aiScene *_rawModel) -> SharedPtr<Model> {
       auto _animDuration = _rawModel->mNumAnimations > 0 ? _rawModel->mAnimations[0]->mDuration : 0;
-      auto _newModel = std::make_shared<Model>(_animDuration);
+      auto _newModel = MakeShared<Model>(_animDuration);
       for (auto &_modelPart : ModelParts(_rawModel))
-         _newModel->model_parts()->push_back(_modelPart);
+         _newModel->ModelParts()->push_back(_modelPart);
       return _newModel;
    }
 }

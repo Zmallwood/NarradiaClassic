@@ -92,8 +92,8 @@ namespace Narradia {
 
       RenderID rid_img_;
       GLuint tex_id_ = -1;
-      Vector<RenderID> rids_rectangles_;
-      Vector<RenderID> rids_images_;
+      Vec<RenderID> rids_rectangles_;
+      Vec<RenderID> rids_images_;
       RenderID rid_player_;
       RenderID rid_player_outline_;
    };

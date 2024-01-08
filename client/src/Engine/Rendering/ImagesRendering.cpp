@@ -1,5 +1,7 @@
 #include "ImagesRendering.h"
-#include "Engine/Assets/Assets.h"
+#include "Engine/Assets/ModelBank.h"
+#include "Conf/Constants.h"
+#include "Engine/Assets/ImageBank.h"
 
 namespace Narradia {
 
@@ -64,9 +66,9 @@ namespace Narradia {
       glBindTexture(GL_TEXTURE_2D, image_id);
       auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
-      Vector<float> positions;
-      Vector<float> colors;
-      Vector<float> uvs;
+      Vec<float> positions;
+      Vec<float> colors;
+      Vec<float> uvs;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);

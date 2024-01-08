@@ -52,7 +52,7 @@ namespace Narradia {
       GuiContainer(PointF position, SizeF size)
           : position_(position),
             size_(size),
-            gui_components_(MakeShared<Vector<SharedPtr<GuiComponent>>>()) {
+            gui_components_(MakeShared<Vec<SharedPtr<GuiComponent>>>()) {
       }
       void AddGuiComponent(SharedPtr<GuiComponent> comp);
       RectF Bounds();
@@ -79,7 +79,7 @@ namespace Narradia {
      private:
       PointF position_;
       SizeF size_;
-      SharedPtr<Vector<SharedPtr<GuiComponent>>> gui_components_;
+      SharedPtr<Vec<SharedPtr<GuiComponent>>> gui_components_;
    };
 
    class GuiMovableContainer : public GuiContainer {
@@ -170,7 +170,7 @@ namespace Narradia {
    class SceneGui {
      public:
       SceneGui()
-          : gui_components_(MakeShared<Vector<SharedPtr<GuiComponent>>>()) {
+          : gui_components_(MakeShared<Vec<SharedPtr<GuiComponent>>>()) {
       }
       void UpdateGameLogic();
       void AddGuiComponent(SharedPtr<GuiComponent> comp);
@@ -181,7 +181,7 @@ namespace Narradia {
       }
 
      private:
-      SharedPtr<Vector<SharedPtr<GuiComponent>>> gui_components_;
+      SharedPtr<Vec<SharedPtr<GuiComponent>>> gui_components_;
    };
 #endif
 
@@ -225,7 +225,7 @@ namespace Narradia {
 
      private:
       SharedPtr<GuiContainer> gui_container_;
-      Vector<SharedPtr<GuiComponentV>> gui_component_views_;
+      Vec<SharedPtr<GuiComponentV>> gui_component_views_;
    };
 
    class GuiMovableContainerV : public GuiContainerV {
@@ -280,7 +280,7 @@ namespace Narradia {
 
      private:
       SharedPtr<SceneGui> scene_gui_;
-      Vector<SharedPtr<GuiComponentV>> gui_component_views_;
+      Vec<SharedPtr<GuiComponentV>> gui_component_views_;
    };
 #endif
 

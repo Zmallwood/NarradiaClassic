@@ -146,8 +146,8 @@ namespace Narradia {
       void ClearReleasedActions();
 
      private:
-      Vector<MouseAction> fired_actions_;
-      Vector<MouseAction> released_actions_;
+      Vec<MouseAction> fired_actions_;
+      Vec<MouseAction> released_actions_;
    };
 #endif
 
@@ -282,7 +282,7 @@ namespace Narradia {
      private:
       static constexpr RectF kDefaultBounds = {0.35f, 0.8f, 0.3f, 0.2f};
 
-      Vector<TextLine> text_lines_;
+      Vec<TextLine> text_lines_;
       bool enabled_ = true;
       bool input_active_ = false;
       int cursor_position_ = 0;
@@ -366,7 +366,7 @@ namespace Narradia {
       RenderID rid_split_line_;
       RenderID rid_cmd_line_input_arrow_;
       RenderID rid_input_text_;
-      Vector<RenderID> rids_text_lines_;
+      Vec<RenderID> rids_text_lines_;
    };
 #endif
 

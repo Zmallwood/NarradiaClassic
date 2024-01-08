@@ -18,13 +18,13 @@ namespace Narradia {
               int _kframeIdx) const -> aiVectorKey;
       auto NodePosKeyframes(
               const aiScene *_rawModel,
-              String _nodeName) const -> Vector<aiVectorKey>;
+              String _nodeName) const -> Vec<aiVectorKey>;
       auto NodeRotKeyframes(
               const aiScene *_rawModel,
-              String _nodeName) const -> Vector<aiQuatKey>;
+              String _nodeName) const -> Vec<aiQuatKey>;
       auto NodeScalKeyframes(
               const aiScene *_rawModel,
-              String _nodeName) const -> Vector<aiVectorKey>;
+              String _nodeName) const -> Vec<aiVectorKey>;
       // clang-format on
 
      private:

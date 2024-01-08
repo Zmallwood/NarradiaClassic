@@ -5,7 +5,7 @@ namespace Narradia {
    using String = std::string;
    using StringView = std::string_view;
    template <class T>
-   using Vector = std::vector<T>;
+   using Vec = std::vector<T>;
    template <class T>
    using SharedPtr = std::shared_ptr<T>;
    template <class T, class U>

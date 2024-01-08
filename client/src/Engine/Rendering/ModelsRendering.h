@@ -23,7 +23,7 @@ namespace Narradia {
       ~RendModelsV();
       RenderID NewBodyKeyframe(StringView model_name, float ms_time);
       void NewBodyKeyframeGeometry(
-          GLuint vao_id, Vector<Vertex3F> vertices, Vector<Point3F> vertex_normals);
+          GLuint vao_id, Vec<Vertex3F> vertices, Vec<Point3F> vertex_normals);
 
       auto timelines() {
          return timelines_;

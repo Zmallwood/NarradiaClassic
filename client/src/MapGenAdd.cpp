@@ -1,5 +1,5 @@
 #include "MapGenAdd.h"
-#include "Engine/Assets/Assets.h"
+#include "Engine/Assets/ModelBank.h"
 #include "Engine/Rendering/GroundRendering.h"
 #include "Engine/Rendering/ModelsRendering.h"
 #include "WorldAdd.h"
@@ -67,7 +67,7 @@ namespace Narradia {
             // byte *data = new byte[canv_sz.w * canv_sz.h * 3];
             int w = canv_sz.h;
             int h = canv_sz.h;
-            Vector<uint8_t> pixels(3 * w * h);
+            Vec<uint8_t> pixels(3 * w * h);
             // glReadPixels(x, y, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
 
             glReadBuffer(GL_BACK);

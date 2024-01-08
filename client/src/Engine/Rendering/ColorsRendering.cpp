@@ -1,4 +1,5 @@
 #include "ColorsRendering.h"
+#include "Conf/Constants.h"
 
 namespace Narradia {
 
@@ -55,8 +56,8 @@ namespace Narradia {
       glDisable(GL_DEPTH_TEST);
       auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
-      Vector<float> positions;
-      Vector<float> colors;
+      Vec<float> positions;
+      Vec<float> colors;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
@@ -92,8 +93,8 @@ namespace Narradia {
       glDisable(GL_DEPTH_TEST);
       auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(indices), std::end(indices), 0);
-      Vector<float> positions;
-      Vector<float> colors;
+      Vec<float> positions;
+      Vec<float> colors;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);

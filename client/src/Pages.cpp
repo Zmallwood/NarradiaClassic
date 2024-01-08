@@ -1,6 +1,6 @@
 #include "Pages.h"
 #include "Adds.h"
-#include "Engine/Assets/Assets.h"
+#include "Engine/Assets/ModelBank.h"
 #include "Engine/Core.h"
 #include "Engine/GuiCore/GuiCore.h"
 #include "Engine/Rendering/GroundRendering.h"
@@ -171,7 +171,7 @@ namespace Narradia {
    // MainMenuPgC
 #if 1
    void MainMenuPgC::OnEnter() {
-      auto all_models = *ModelBank::get()->models();
+      auto all_models = *ModelBank::get()->Models();
 
       for (auto &entry : all_models)
          NewModel(entry.first);

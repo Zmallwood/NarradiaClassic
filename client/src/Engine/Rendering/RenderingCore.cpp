@@ -89,14 +89,14 @@ namespace Narradia {
       }
    }
 
-   void RendBaseV::UpdateIndicesData(GLuint indices_vbo_id, Vector<int> &indices) const {
+   void RendBaseV::UpdateIndicesData(GLuint indices_vbo_id, Vec<int> &indices) const {
       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
 
       glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(float) * indices.size(), indices.data());
    }
 
    void RendBaseV::UpdateArrayBufferData(
-       GLuint vbo_id, Vector<float> &data, int num_floats_per_entry, int layout_location) const {
+       GLuint vbo_id, Vec<float> &data, int num_floats_per_entry, int layout_location) const {
       glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
 
       glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * data.size(), data.data());
@@ -108,7 +108,7 @@ namespace Narradia {
    }
 
    void RendBaseV::UpdateData(
-       GLuint vbo_id, Vector<float> &data, BufferTypes buffer_type, int layout_location) const {
+       GLuint vbo_id, Vec<float> &data, BufferTypes buffer_type, int layout_location) const {
       UpdateArrayBufferData(
           vbo_id, data, RendBase::kNumFloatsPerEntry.at(buffer_type), layout_location);
    }

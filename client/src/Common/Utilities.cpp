@@ -1,4 +1,5 @@
 #include "Utilities.h"
+#include "Engine/Assets/ImageBank.h"
 
 namespace Narradia {
    PointF MousePosition() {
@@ -16,7 +17,7 @@ namespace Narradia {
       strftime(_buffer, sizeof(_buffer), "%X", _pTStruct);
       return StringView(_buffer);
    }
-   Size TextureDimensions(StringView _imgName) {
+   Size TexDimensions(StringView _imgName) {
       Size _dim;
       int _mipLevel = 0;
       auto _imgID = ImageBank::get()->GetImage(_imgName);

@@ -4,6 +4,7 @@
 #include "Pages.h"
 #include "Rendering/ImagesRendering.h"
 #include "Rendering/TextRendering.h"
+#include "Conf/Constants.h"
 
 namespace Narradia {
 
@@ -255,7 +256,7 @@ namespace Narradia {
          return false;
 
       int top_most_z_order = -1;
-      Vector<MouseAction> top_most_actions;
+      Vec<MouseAction> top_most_actions;
 
       for (auto action : fired_actions_) {
          if (action.z_order > top_most_z_order) {
@@ -279,7 +280,7 @@ namespace Narradia {
          return false;
 
       int top_most_z_order = -1;
-      Vector<MouseAction> top_most_actions;
+      Vec<MouseAction> top_most_actions;
 
       for (auto action : released_actions_) {
          if (action.z_order > top_most_z_order) {

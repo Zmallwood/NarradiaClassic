@@ -1,7 +1,8 @@
 #include "GroundRendering.h"
-#include "Engine/Assets/Assets.h"
+#include "Engine/Assets/ModelBank.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
+#include "Conf/Constants.h"
 
 namespace Narradia {
 
@@ -74,7 +75,7 @@ namespace Narradia {
       return vertex_array_id;
    }
 
-   void SetTileSufaceGeom(RenderID vao_id, Vector<Vector<Square<Vertex3F>>> &verts) {
+   void SetTileSufaceGeom(RenderID vao_id, Vec<Vec<Square<Vertex3F>>> &verts) {
       std::vector<Vertex3F> vertices;
       for (auto y = 0; y < 100; y++) {
          for (auto x = 0; x < 100; x++) {
@@ -94,12 +95,12 @@ namespace Narradia {
       if (!renderer->is_batch_drawing())
          renderer->UseVAOBegin(vao_id);
 
-      Vector<int> indices(vertices.size());
+      Vec<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
-      Vector<float> positions;
-      Vector<float> colors;
-      Vector<float> uvs;
-      Vector<float> normals;
+      Vec<float> positions;
+      Vec<float> colors;
+      Vec<float> uvs;
+      Vec<float> normals;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);
@@ -151,12 +152,12 @@ namespace Narradia {
       if (!renderer->is_batch_drawing())
          renderer->UseVAOBegin(vao_id);
 
-      Vector<int> indices(vertices.size());
+      Vec<int> indices(vertices.size());
       std::iota(std::begin(indices), std::end(indices), 0);
-      Vector<float> positions;
-      Vector<float> colors;
-      Vector<float> uvs;
-      Vector<float> normals;
+      Vec<float> positions;
+      Vec<float> colors;
+      Vec<float> uvs;
+      Vec<float> normals;
 
       for (auto &vertex : vertices) {
          positions.push_back(vertex.pos.x);

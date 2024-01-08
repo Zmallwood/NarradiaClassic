@@ -3,6 +3,7 @@
 #include "Engine/Rendering/ImagesRendering.h"
 #include "Engine/Rendering/TextRendering.h"
 #include "Pages.h"
+#include "Conf/Constants.h"
 
 namespace Narradia {
 

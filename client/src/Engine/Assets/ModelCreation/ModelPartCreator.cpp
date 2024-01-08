@@ -1,9 +1,12 @@
 #include "ModelPartCreator.h"
 #include "KeyframeCreator.h"
+#include "Engine/Assets/ModelBank.h"
+#include "Engine/Assets/ModelStructure/Keyframe.h"
+#include "Engine/Assets/ModelStructure/ModelPart.h"
 
 namespace Narradia {
    auto ModelPartCreator::TexNames(const aiScene *_rawModel) const {
-      Vector<String> _texNames;
+      Vec<String> _texNames;
       auto _numMaterials = _rawModel->mNumMaterials;
       for (auto i = 0; i < _numMaterials; i++) {
          aiString _texNameCStr;
@@ -116,7 +119,7 @@ namespace Narradia {
       // clang-format on
       auto _newModelPart = MakeShared<ModelPart>();
       auto _texName = TexNameForMesh(_rawModel, _mesh);
-      _newModelPart->set_texture_name(_texName);
+      _newModelPart->SetTexName(_texName);
       auto _noKeyframeAtTime0Exists =
           KeyframeCreator::get()->PosKeyframe(_rawModel, _nodeName, 0).mTime > 0;
       auto _numKeyframes = KeyframeCreator::get()->NodePosKeyframes(_rawModel, _nodeName).size();
@@ -127,9 +130,9 @@ namespace Narradia {
          auto _keyframeTime = static_cast<float>(_posKeyframe.mTime);
          auto _newModelPartKeyframe = NewModelPartKeyframe(
              _rawModel, _nodeName, _mesh, _posKeyframe, _rotKeyframe, _scalKeyframe);
-         _newModelPart->timeline()->keyframes.insert({_keyframeTime, _newModelPartKeyframe});
+         _newModelPart->Timeln()->keyframes.insert({_keyframeTime, _newModelPartKeyframe});
          if (_noKeyframeAtTime0Exists && _k == 0)
-            _newModelPart->timeline()->keyframes.insert({0.0f, _newModelPartKeyframe});
+            _newModelPart->Timeln()->keyframes.insert({0.0f, _newModelPartKeyframe});
       }
       return _newModelPart;
    }

@@ -130,7 +130,7 @@ namespace Narradia {
       WorldArea(int width, int height)
           : mobs_mirror_(MakeShared<Map<SharedPtr<Mob>, Point>>()) {
          for (auto x = 0; x < width; x++) {
-            tiles_.push_back(Vector<SharedPtr<Tile>>());
+            tiles_.push_back(Vec<SharedPtr<Tile>>());
 
             for (auto y = 0; y < height; y++) {
                tiles_.at(x).push_back(MakeShared<Tile>());
@@ -175,7 +175,7 @@ namespace Narradia {
       }
 
      private:
-      Vector<Vector<SharedPtr<Tile>>> tiles_;
+      Vec<Vec<SharedPtr<Tile>>> tiles_;
       SharedPtr<Map<SharedPtr<Mob>, Point>> mobs_mirror_;
    };
 

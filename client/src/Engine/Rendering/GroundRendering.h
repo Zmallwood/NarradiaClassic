@@ -2,6 +2,7 @@
 
 #include "Math/Calc.h"
 #include "RenderingCore.h"
+#include "Engine/Assets/ImageBank.h"
 
 namespace Narradia {
 
@@ -74,7 +75,7 @@ namespace Narradia {
    RenderID NewTile();
    RenderID NewTileSurface();
    void SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts);
-   void SetTileSufaceGeom(RenderID vao_id, Vector<Vector<Square<Vertex3F>>> &verts);
+   void SetTileSufaceGeom(RenderID vao_id, Vec<Vec<Square<Vertex3F>>> &verts);
    void DrawTileSurface(StringView image_name, RenderID vao_id, bool depth_test_off = false);
    inline void DrawTile(StringView image_name, RenderID vao_id, bool depth_test_off = false) {
       auto vertex_count = 4;

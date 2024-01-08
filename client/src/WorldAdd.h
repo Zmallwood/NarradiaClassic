@@ -101,16 +101,16 @@ namespace Narradia {
       inline void DrawTileSymbols(SharedPtr<Tile> tile, Point coord);
 
       int render_distance_ = 40;
-      Vector<Vector<RenderID>> rids_tiles;
-      Vector<Vector<RenderID>> rids_tile_symbols;
-      Vector<Vector<RenderID>> rids_tile_symbols_w;
-      Vector<Vector<RenderID>> rids_tile_symbols_e;
-      Vector<Vector<RenderID>> rids_tile_symbols_n;
-      Vector<Vector<RenderID>> rids_tile_symbols_s;
-      Vector<Vector<RenderID>> rids_tile_symbols_ne;
-      Vector<Vector<RenderID>> rids_tile_symbols_se;
-      Vector<Vector<RenderID>> rids_tile_symbols_sw;
-      Vector<Vector<RenderID>> rids_tile_symbols_nw;
+      Vec<Vec<RenderID>> rids_tiles;
+      Vec<Vec<RenderID>> rids_tile_symbols;
+      Vec<Vec<RenderID>> rids_tile_symbols_w;
+      Vec<Vec<RenderID>> rids_tile_symbols_e;
+      Vec<Vec<RenderID>> rids_tile_symbols_n;
+      Vec<Vec<RenderID>> rids_tile_symbols_s;
+      Vec<Vec<RenderID>> rids_tile_symbols_ne;
+      Vec<Vec<RenderID>> rids_tile_symbols_se;
+      Vec<Vec<RenderID>> rids_tile_symbols_sw;
+      Vec<Vec<RenderID>> rids_tile_symbols_nw;
       RenderID rid_tile_surface;
       RenderID rid_tile_surface_w;
       RenderID rid_tile_surface_e;

@@ -6,11 +6,11 @@ namespace Narradia {
       // clang-format off
       auto ModelMeshIds(
               const aiScene *_rawModel) const
-                 -> Map<SharedPtr<String>, Vector<int>>;
+                 -> Map<SharedPtr<String>, Vec<int>>;
       auto NodeMeshes(
               const aiScene *_rawModel,
-              Vector<int> _nodeMeshIDs) const
-                 -> Vector<aiMesh *>;
+              Vec<int> _nodeMeshIDs) const
+                 -> Vec<aiMesh *>;
       // clang-format on
    };
 }

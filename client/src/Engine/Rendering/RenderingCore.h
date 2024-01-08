@@ -22,7 +22,7 @@ namespace Narradia {
           {BufferTypes::Colors, 4},  {BufferTypes::Uvs, 2},         {BufferTypes::Normals, 3}};
 
      private:
-      Vector<GLuint> vao_ids_;
+      Vec<GLuint> vao_ids_;
       Map<BufferTypes, Map<GLuint, GLuint>> vbo_ids_;
    };
 
@@ -454,9 +454,9 @@ namespace Narradia {
       void SetData(
           GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
           int layout_location = -1) const;
-      void UpdateIndicesData(GLuint indices_vbo_id, Vector<int> &indices) const;
+      void UpdateIndicesData(GLuint indices_vbo_id, Vec<int> &indices) const;
       void UpdateData(
-          GLuint vbo_id, Vector<float> &data, BufferTypes buffer_type, int layout_location) const;
+          GLuint vbo_id, Vec<float> &data, BufferTypes buffer_type, int layout_location) const;
 
       auto shader_program_view() {
          return shader_program_view_;
@@ -477,7 +477,7 @@ namespace Narradia {
           GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
           int layout_location = -1) const;
       void UpdateArrayBufferData(
-          GLuint vbo_id, Vector<float> &data, int num_floats_per_entry, int layout_location) const;
+          GLuint vbo_id, Vec<float> &data, int num_floats_per_entry, int layout_location) const;
 
       SharedPtr<ShaderProgramV> shader_program_view_;
    };

@@ -46,14 +46,14 @@ namespace Narradia {
    }
    // Anim keyframes
    auto KeyframeCreator::AnimPosKeyframes(const aiScene *_rawModel) const {
-      auto _nodeNameToPosKframes = Map<String, Vector<aiVectorKey>>();
+      auto _nodeNameToPosKframes = Map<String, Vec<aiVectorKey>>();
       if (_rawModel->mNumAnimations == 0) {
          auto _numMeshes = _rawModel->mNumMeshes;
          for (auto _i = 0; _i < _numMeshes; _i++) {
             auto _mesh = _rawModel->mMeshes[_i];
             auto _origName = String(_mesh->mName.C_Str());
             auto _nodeName = _origName.substr(0, _origName.length() - 5);
-            Vector<aiVectorKey> _posKframes;
+            Vec<aiVectorKey> _posKframes;
             aiVectorKey _posKframe;
             _posKframe.mTime = 0.0;
             _posKframe.mValue = aiVector3D(0.0, 0.0, 0.0);
@@ -67,7 +67,7 @@ namespace Narradia {
             auto _animChannel = _anim0->mChannels[_i];
             auto _nodeName = String(_animChannel->mNodeName.C_Str());
             auto num_position_keys = _animChannel->mNumPositionKeys;
-            Vector<aiVectorKey> _posKframes;
+            Vec<aiVectorKey> _posKframes;
             aiVectorKey _origPosKeyframe;
             for (auto _j = 0; _j < num_position_keys; _j++) {
                if (_j == 0)
@@ -84,14 +84,14 @@ namespace Narradia {
       return _nodeNameToPosKframes;
    }
    auto KeyframeCreator::AnimRotKeyframes(const aiScene *_rawModel) const {
-      auto _nodeNameToRotKframes = Map<String, Vector<aiQuatKey>>();
+      auto _nodeNameToRotKframes = Map<String, Vec<aiQuatKey>>();
       if (_rawModel->mNumAnimations == 0) {
          auto _numMeshes = _rawModel->mNumMeshes;
          for (auto _i = 0; _i < _numMeshes; _i++) {
             auto _mesh = _rawModel->mMeshes[_i];
             auto _origName = String(_mesh->mName.C_Str());
             auto _nodeName = _origName.substr(0, _origName.length() - 5);
-            Vector<aiQuatKey> _rotKframes;
+            Vec<aiQuatKey> _rotKframes;
             aiQuatKey _rotKframe;
             _rotKframe.mTime = 0.0;
             _rotKframe.mValue = aiQuaternion(0.0, 0.0, 0.0);
@@ -105,7 +105,7 @@ namespace Narradia {
             auto _animChannel = _anim0->mChannels[_i];
             auto _nodeName = String(_animChannel->mNodeName.C_Str());
             auto num_rotation_keys = _animChannel->mNumRotationKeys;
-            std::vector<aiQuatKey> _rotKframes;
+            Vec<aiQuatKey> _rotKframes;
             aiQuatKey _origRotKeyframe;
             for (auto _j = 0; _j < num_rotation_keys; _j++) {
                if (_j == 0)
@@ -123,14 +123,14 @@ namespace Narradia {
       return _nodeNameToRotKframes;
    }
    auto KeyframeCreator::AnimScalKeyframes(const aiScene *_rawModel) const {
-      auto _nodeNameToScalKframes = Map<String, Vector<aiVectorKey>>();
+      auto _nodeNameToScalKframes = Map<String, Vec<aiVectorKey>>();
       if (_rawModel->mNumAnimations == 0) {
          auto _numMeshes = _rawModel->mNumMeshes;
          for (auto _i = 0; _i < _numMeshes; _i++) {
             auto _mesh = _rawModel->mMeshes[_i];
             auto _origName = String(_mesh->mName.C_Str());
             auto _nodeName = _origName.substr(0, _origName.length() - 5);
-            Vector<aiVectorKey> _scalKframes;
+            Vec<aiVectorKey> _scalKframes;
             aiVectorKey _scalKframe;
             _scalKframe.mTime = 0.0;
             _scalKframe.mValue = aiVector3D(1.0, -1.0, 1.0);
@@ -144,7 +144,7 @@ namespace Narradia {
             auto _animChannel = _anim0->mChannels[_i];
             auto _nodeName = String(_animChannel->mNodeName.C_Str());
             auto _numScalKeys = _animChannel->mNumScalingKeys;
-            Vector<aiVectorKey> _scalKframes;
+            Vec<aiVectorKey> _scalKframes;
             aiVectorKey _origScalKeyframe;
             for (auto _j = 0; _j < _numScalKeys; _j++) {
                if (_j == 0)
@@ -163,9 +163,9 @@ namespace Narradia {
    }
    // Node keyframes
    auto KeyframeCreator::NodePosKeyframes(const aiScene *_rawModel, String _nodeName) const
-       -> Vector<aiVectorKey> {
+       -> Vec<aiVectorKey> {
       auto _allPosKframes = AnimPosKeyframes(_rawModel);
-      Vector<aiVectorKey> _nodePosKframes;
+      Vec<aiVectorKey> _nodePosKframes;
       if (_allPosKframes.count(_nodeName))
          _nodePosKframes = _allPosKframes.at(_nodeName);
       auto _numPosKframes = _nodePosKframes.size();
@@ -177,9 +177,9 @@ namespace Narradia {
       return _nodePosKframes;
    }
    auto KeyframeCreator::NodeRotKeyframes(const aiScene *_rawModel, String _nodeName) const
-       -> Vector<aiQuatKey> {
+       -> Vec<aiQuatKey> {
       auto _allRotKframes = AnimRotKeyframes(_rawModel);
-      Vector<aiQuatKey> _nodeRotKframes;
+      Vec<aiQuatKey> _nodeRotKframes;
       if (_allRotKframes.count(_nodeName))
          _nodeRotKframes = _allRotKframes.at(_nodeName);
       auto _numRotKframes = _nodeRotKframes.size();
@@ -191,9 +191,9 @@ namespace Narradia {
       return _nodeRotKframes;
    }
    auto KeyframeCreator::NodeScalKeyframes(const aiScene *_rawModel, String _nodeName) const
-       -> Vector<aiVectorKey> {
+       -> Vec<aiVectorKey> {
       auto _allScalKframes = AnimScalKeyframes(_rawModel);
-      Vector<aiVectorKey> _nodeScalKframes;
+      Vec<aiVectorKey> _nodeScalKframes;
       if (_allScalKframes.count(_nodeName))
          _nodeScalKframes = _allScalKframes.at(_nodeName);
       auto _numScalKframes = _nodeScalKframes.size();

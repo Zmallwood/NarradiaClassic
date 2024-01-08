@@ -1,7 +1,7 @@
 #include "WorldAdd.h"
 #include "Adds.h"
-#include "Engine/Assets/Assets.h"
-#include "Configuration/ObjectsConf.h"
+#include "Engine/Assets/ModelBank.h"
+#include "Conf/ObjectsConf.h"
 #include "Engine/Core.h"
 #include "Engine/Rendering/GroundRendering.h"
 #include "Engine/Rendering/ImagesRendering.h"
@@ -163,30 +163,30 @@ namespace Narradia {
             auto wa = World::get()->WorldAreaAt({curr_map_loc.x + xx, curr_map_loc.y + yy});
             auto map_offset_x = (curr_map_loc.x + xx) * wa->Width() * t_sz;
             auto map_offset_y = (curr_map_loc.y + yy) * wa->Height() * t_sz;
-            Vector<Vector<Square<Vertex3F>>> surf_verts;
+            Vec<Vec<Square<Vertex3F>>> surf_verts;
             for (auto x = 0; x < wa->Width(); x += inc) {
-               rids_tiles.push_back(Vector<RenderID>());
+               rids_tiles.push_back(Vec<RenderID>());
 
                if (xx == 0 && yy == 0)
-                  rids_tile_symbols.push_back(Vector<RenderID>());
+                  rids_tile_symbols.push_back(Vec<RenderID>());
                else if (xx == 0 && yy == -1)
-                  rids_tile_symbols_n.push_back(Vector<RenderID>());
+                  rids_tile_symbols_n.push_back(Vec<RenderID>());
                else if (xx == 0 && yy == 1)
-                  rids_tile_symbols_s.push_back(Vector<RenderID>());
+                  rids_tile_symbols_s.push_back(Vec<RenderID>());
                else if (xx == 1 && yy == 0)
-                  rids_tile_symbols_e.push_back(Vector<RenderID>());
+                  rids_tile_symbols_e.push_back(Vec<RenderID>());
                else if (xx == -1 && yy == 0)
-                  rids_tile_symbols_w.push_back(Vector<RenderID>());
+                  rids_tile_symbols_w.push_back(Vec<RenderID>());
                else if (xx == 1 && yy == -1)
-                  rids_tile_symbols_ne.push_back(Vector<RenderID>());
+                  rids_tile_symbols_ne.push_back(Vec<RenderID>());
                else if (xx == 1 && yy == 1)
-                  rids_tile_symbols_se.push_back(Vector<RenderID>());
+                  rids_tile_symbols_se.push_back(Vec<RenderID>());
                else if (xx == 1 && yy == -1)
-                  rids_tile_symbols_sw.push_back(Vector<RenderID>());
+                  rids_tile_symbols_sw.push_back(Vec<RenderID>());
                else if (xx == -1 && yy == -1)
-                  rids_tile_symbols_nw.push_back(Vector<RenderID>());
+                  rids_tile_symbols_nw.push_back(Vec<RenderID>());
 
-               surf_verts.push_back(Vector<Square<Vertex3F>>());
+               surf_verts.push_back(Vec<Square<Vertex3F>>());
 
                for (auto y = 0; y < wa->Height(); y += inc) {
                   rids_tiles.at(x / inc).push_back(NewTile());

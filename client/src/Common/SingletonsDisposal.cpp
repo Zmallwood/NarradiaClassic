@@ -1,13 +1,13 @@
 #include "SingletonsDisposal.h"
 
 namespace Narradia {
-   static Vector<Function<void()>> g_DisposeActions;
+   static Vec<Function<void()>> g_disposeActions;
 
    void AddSingletonDisposeAction(Function<void()> _action) {
-      g_DisposeActions.push_back(_action);
+      g_disposeActions.push_back(_action);
    }
    void DisposeSingletons() {
-      for (auto &_action : g_DisposeActions)
+      for (auto &_action : g_disposeActions)
          _action();
    }
 }
