@@ -1,101 +1,70 @@
 #include "ImagesRendering.h"
+#include "RendImagesView.h"
 #include "Core/Assets/ModelBank.h"
-#include "Conf/Constants.h"
 #include "Core/Assets/ImageBank.h"
 
 namespace Narradia {
-
-   // View
-
-#if 1
-   // DrwImagesV
-#if 1
-   DrwImagesV::DrwImagesV() {
-      shader_program_view()->Create(
-          vertex_shader_source_2d_images, fragment_shader_source_2d_images);
-   }
-
-   DrwImagesV::~DrwImagesV() {
-      if (k_verbose)
-         std::cout << "Cleaning up DrwImagesV.\n";
-
-      CleanupBase();
-
-      if (k_verbose)
-         std::cout << "Cleaning up of DrwImagesV finished.\n";
-   }
-#endif
-
-   // Free functions
-#if 1
    RenderID NewImage() {
-      auto renderer = DrwImagesV::get();
-      auto renderer_base = renderer->renderer_base();
-      auto vao_id = renderer_base->GenNewVAOId();
-      renderer->UseVAOBegin(vao_id);
-      auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vao_id);
-      auto position_buffer_id = renderer_base->GenNewBufId(BufferTypes::Positions2D, vao_id);
-      auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vao_id);
-      auto uv_buffer_id = renderer_base->GenNewBufId(BufferTypes::Uvs, vao_id);
-      renderer->SetIndicesData(index_buffer_id, RendBase::kNumVerticesInRectangle, nullptr);
-      renderer->SetData(
-          position_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Positions2D);
-      renderer->SetData(
-          color_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
-      renderer->SetData(uv_buffer_id, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
-      renderer->UseVAOEnd();
-
-      return vao_id;
+      auto _rend = RendImagesView::get();
+      auto _rendBase = _rend->renderer_base();
+      auto _VAOID = _rendBase->GenNewVAOId();
+      _rend->UseVAOBegin(_VAOID);
+      auto _indexBufID = _rendBase->GenNewBufId(BufferTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->GenNewBufId(BufferTypes::Positions2D, _VAOID);
+      auto _colorBufID = _rendBase->GenNewBufId(BufferTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->GenNewBufId(BufferTypes::Uvs, _VAOID);
+      _rend->SetIndicesData(_indexBufID, RendBase::kNumVerticesInRectangle, nullptr);
+      _rend->SetData(
+          _posBufID, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Positions2D);
+      _rend->SetData(
+          _colorBufID, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Colors);
+      _rend->SetData(_uvBufID, RendBase::kNumVerticesInRectangle, nullptr, BufferTypes::Uvs);
+      _rend->UseVAOEnd();
+      return _VAOID;
    }
-
-   void DrawImage(StringView image_name, RenderID rid, const RectF &dest, Color color) {
-      auto renderer = DrwImagesV::get();
-      auto renderer_base = renderer->renderer_base();
-      auto gl_rect = dest.ToGLRectF();
-      Vertex2F vertices[RendBase::kNumVerticesInRectangle];
-      vertices[0].pos = {gl_rect.x, gl_rect.y - gl_rect.h};
-      vertices[1].pos = {gl_rect.x, gl_rect.y};
-      vertices[2].pos = {gl_rect.x + gl_rect.w, gl_rect.y};
-      vertices[3].pos = {gl_rect.x + gl_rect.w, gl_rect.y - gl_rect.h};
-      vertices[0].uv = {0.0f, 1.0f};
-      vertices[1].uv = {0.0f, 0.0f};
-      vertices[2].uv = {1.0f, 0.0f};
-      vertices[3].uv = {1.0f, 1.0f};
+   void DrawImage(StringView _imgName, RenderID _RID, const RectF &_dest, Color _color) {
+      auto _rend = RendImagesView::get();
+      auto _rendBase = _rend->renderer_base();
+      auto _GLRect = _dest.ToGLRectF();
+      Vertex2F _verts[RendBase::kNumVerticesInRectangle];
+      _verts[0].pos = {_GLRect.x, _GLRect.y - _GLRect.h};
+      _verts[1].pos = {_GLRect.x, _GLRect.y};
+      _verts[2].pos = {_GLRect.x + _GLRect.w, _GLRect.y};
+      _verts[3].pos = {_GLRect.x + _GLRect.w, _GLRect.y - _GLRect.h};
+      _verts[0].uv = {0.0f, 1.0f};
+      _verts[1].uv = {0.0f, 0.0f};
+      _verts[2].uv = {1.0f, 0.0f};
+      _verts[3].uv = {1.0f, 1.0f};
       glDisable(GL_DEPTH_TEST);
-      auto image_id = ImageBank::get()->GetImage(image_name);
-      glBindTexture(GL_TEXTURE_2D, image_id);
-      auto indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
-      std::iota(std::begin(indices), std::end(indices), 0);
-      Vec<float> positions;
-      Vec<float> colors;
-      Vec<float> uvs;
-
-      for (auto &vertex : vertices) {
-         positions.push_back(vertex.pos.x);
-         positions.push_back(vertex.pos.y);
-         colors.push_back(color.r);
-         colors.push_back(color.g);
-         colors.push_back(color.b);
-         colors.push_back(color.a);
-         uvs.push_back(vertex.uv.x);
-         uvs.push_back(vertex.uv.y);
+      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      glBindTexture(GL_TEXTURE_2D, _imgID);
+      auto _indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
+      std::iota(std::begin(_indices), std::end(_indices), 0);
+      Vec<float> _positions;
+      Vec<float> _colors;
+      Vec<float> _uvs;
+      for (auto &_vert: _verts) {
+         _positions.push_back(_vert.pos.x);
+         _positions.push_back(_vert.pos.y);
+         _colors.push_back(_color.r);
+         _colors.push_back(_color.g);
+         _colors.push_back(_color.b);
+         _colors.push_back(_color.a);
+         _uvs.push_back(_vert.uv.x);
+         _uvs.push_back(_vert.uv.y);
       }
-
-      renderer->UseVAOBegin(rid);
-      auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, rid);
-      auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions2D, rid);
-      auto color_buffer_id = renderer_base->BufId(BufferTypes::Colors, rid);
-      auto uv_buffer_id = renderer_base->BufId(BufferTypes::Uvs, rid);
-      renderer->UpdateIndicesData(index_buffer_id, indices);
-      renderer->UpdateData(
-          position_buffer_id, positions, BufferTypes::Positions2D, DrwImagesV::kLocationPosition);
-      renderer->UpdateData(
-          color_buffer_id, colors, BufferTypes::Colors, DrwImagesV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, DrwImagesV::kLocationUv);
+      _rend->UseVAOBegin(_RID);
+      auto _indexBufID = _rendBase->BufId(BufferTypes::Indices, _RID);
+      auto _posBufID = _rendBase->BufId(BufferTypes::Positions2D, _RID);
+      auto _colorBufID = _rendBase->BufId(BufferTypes::Colors, _RID);
+      auto _uvBufID = _rendBase->BufId(BufferTypes::Uvs, _RID);
+      _rend->UpdateIndicesData(_indexBufID, _indices);
+      _rend->UpdateData(
+          _posBufID, _positions, BufferTypes::Positions2D, RendImagesView::kLocationPosition);
+      _rend->UpdateData(
+          _colorBufID, _colors, BufferTypes::Colors, RendImagesView::kLocationColor);
+      _rend->UpdateData(_uvBufID, _uvs, BufferTypes::Uvs, RendImagesView::kLocationUv);
       glDrawElements(GL_TRIANGLE_FAN, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
-      renderer->UseVAOEnd();
+      _rend->UseVAOEnd();
    }
-#endif
-#endif
-
 }

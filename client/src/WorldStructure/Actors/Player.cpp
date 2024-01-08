@@ -4,6 +4,7 @@
 #include "Math/Calc.h"
 #include "WorldAdd.h"
 #include "WorldStructure/WorldStructure.h"
+#include "Core/Rendering/RendGroundView.h"
 
 namespace Narradia {
 
@@ -79,7 +80,7 @@ namespace Narradia {
             map_area = World::get()->CurrWorldArea();
 
             WorldAddV::Dispose();
-            RendGrndV::Dispose();
+            RendGroundView::Dispose();
          }
          // East
          else if (new_coord.x >= map_area->Width()) {
@@ -98,7 +99,7 @@ namespace Narradia {
             map_area = World::get()->CurrWorldArea();
 
             WorldAddV::Dispose();
-            RendGrndV::Dispose();
+            RendGroundView::Dispose();
          }
          // North
          else if (new_coord.y < 0) {
@@ -117,7 +118,7 @@ namespace Narradia {
             map_area = World::get()->CurrWorldArea();
 
             WorldAddV::Dispose();
-            RendGrndV::Dispose();
+            RendGroundView::Dispose();
          }
          // South
          else if (new_coord.y >= map_area->Height()) {
@@ -136,7 +137,7 @@ namespace Narradia {
             map_area = World::get()->CurrWorldArea();
 
             WorldAddV::Dispose();
-            RendGrndV::Dispose();
+            RendGroundView::Dispose();
          }
 
          if (map_area->GetTile(new_coord)->ground() == "GroundWater")

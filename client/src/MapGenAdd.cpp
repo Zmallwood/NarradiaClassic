@@ -5,6 +5,8 @@
 #include "WorldAdd.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
+#include "Core/Assets/ImageBank.h"
+#include "Core/Rendering/RendGroundView.h"
 
 namespace Narradia {
 
@@ -19,7 +21,7 @@ namespace Narradia {
       for (auto y = 0; y < world_height; y++) {
          for (auto x = 0; x < world_width; x++) {
             WorldAddV::Dispose();
-            RendGrndV::Dispose();
+            RendGroundView::Dispose();
 
             GraphicsV::get()->ClearCanvas();
 
@@ -28,7 +30,7 @@ namespace Narradia {
             auto y_center = map_area->Height() / 2.0f;
             Player::get()->set_pos({x_center, 0.0f, y_center});
             Player::get()->set_world_location({x, y});
-            auto orig_ground_fog = RendGrndV::get()->fog_color_ground();
+            auto orig_ground_fog = RendGroundView::get()->fog_color_ground();
             auto orig_objs_fog = RendModelsV::get()->fog_color_models();
             auto width = map_area->Width();
             auto height = map_area->Height();
@@ -41,11 +43,11 @@ namespace Narradia {
             Camera::get()->set_vertical_angle_deg(90.0f);
             Camera::get()->UpdateGameLogic();
             WorldAddV::get()->set_render_distance(render_dist);
-            RendGrndV::get()->set_fog_color_ground(Colors::white);
+            RendGroundView::get()->set_fog_color_ground(Colors::white);
             RendModelsV::get()->set_fog_color_models(Colors::white);
             WorldAddV::get()->Render();
             Camera::get()->set_use_fixed_camera_distance(false);
-            RendGrndV::get()->set_fog_color_ground(orig_ground_fog);
+            RendGroundView::get()->set_fog_color_ground(orig_ground_fog);
             RendModelsV::get()->set_fog_color_models(orig_objs_fog);
             WorldAddV::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
@@ -108,7 +110,7 @@ namespace Narradia {
       }
 
       WorldAddV::Dispose();
-      RendGrndV::Dispose();
+      RendGroundView::Dispose();
    }
 #endif
 

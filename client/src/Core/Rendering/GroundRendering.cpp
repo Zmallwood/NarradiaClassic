@@ -1,298 +1,280 @@
 #include "GroundRendering.h"
+#include "Core/Assets/ImageBank.h"
 #include "Core/Assets/ModelBank.h"
+#include "Math/Calc.h"
+#include "RendColorsView.h"
+#include "RendGroundView.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
-#include "Conf/Constants.h"
 
 namespace Narradia {
-
-   // View
-
-#if 1
-   // RendGrndV
-#if 1
-   RendGrndV::RendGrndV() {
-      shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
-
-      location_projection_ = GetUniformLocation("projection");
-      location_view_ = GetUniformLocation("view");
-      location_model_ = GetUniformLocation("model");
-      location_alpha_ = GetUniformLocation("mAlpha");
-      location_view_pos_ = GetUniformLocation("viewPos");
-      location_fog_color_ = GetUniformLocation("fogColor");
-
-      fog_color_ground_ = k_fogColorGround;
-   }
-
-   RendGrndV::~RendGrndV() {
-      CleanupBase();
-   }
-#endif
-
-   // Free functions
-#if 1
    RenderID NewTile() {
-      auto num_vertices = 4;
-      auto renderer = RendGrndV::get();
-      auto renderer_base = renderer->renderer_base();
-      auto vertex_array_id = renderer_base->GenNewVAOId();
-      auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vertex_array_id);
-      auto position_buffer_id =
-          renderer_base->GenNewBufId(BufferTypes::Positions3D, vertex_array_id);
-      auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vertex_array_id);
-      auto uv_buffer_id = renderer_base->GenNewBufId(BufferTypes::Uvs, vertex_array_id);
-      auto normal_buffer_id = renderer_base->GenNewBufId(BufferTypes::Normals, vertex_array_id);
-      glBindVertexArray(vertex_array_id);
-      renderer->SetIndicesData(index_buffer_id, num_vertices, nullptr);
-      renderer->SetData(position_buffer_id, num_vertices, nullptr, BufferTypes::Positions3D);
-      renderer->SetData(color_buffer_id, num_vertices, nullptr, BufferTypes::Colors);
-      renderer->SetData(uv_buffer_id, num_vertices, nullptr, BufferTypes::Uvs);
-      renderer->SetData(normal_buffer_id, num_vertices, nullptr, BufferTypes::Normals);
+      auto _numVerts = 4;
+      auto _rend = RendGroundView::get();
+      auto _rendBase = _rend->renderer_base();
+      auto _VAOID = _rendBase->GenNewVAOId();
+      auto _indexBufID = _rendBase->GenNewBufId(BufferTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->GenNewBufId(BufferTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->GenNewBufId(BufferTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->GenNewBufId(BufferTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->GenNewBufId(BufferTypes::Normals, _VAOID);
+      glBindVertexArray(_VAOID);
+      _rend->SetIndicesData(_indexBufID, _numVerts, nullptr);
+      _rend->SetData(_posBufID, _numVerts, nullptr, BufferTypes::Positions3D);
+      _rend->SetData(_colorBufID, _numVerts, nullptr, BufferTypes::Colors);
+      _rend->SetData(_uvBufID, _numVerts, nullptr, BufferTypes::Uvs);
+      _rend->SetData(_normBufID, _numVerts, nullptr, BufferTypes::Normals);
       glBindVertexArray(0);
-
-      return vertex_array_id;
+      return _VAOID;
    }
-
    RenderID NewTileSurface() {
-      auto num_vertices = 6 * 100 * 100;
-      auto renderer = RendGrndV::get();
-      auto renderer_base = renderer->renderer_base();
-      auto vertex_array_id = renderer_base->GenNewVAOId();
-      auto index_buffer_id = renderer_base->GenNewBufId(BufferTypes::Indices, vertex_array_id);
-      auto position_buffer_id =
-          renderer_base->GenNewBufId(BufferTypes::Positions3D, vertex_array_id);
-      auto color_buffer_id = renderer_base->GenNewBufId(BufferTypes::Colors, vertex_array_id);
-      auto uv_buffer_id = renderer_base->GenNewBufId(BufferTypes::Uvs, vertex_array_id);
-      auto normal_buffer_id = renderer_base->GenNewBufId(BufferTypes::Normals, vertex_array_id);
-      glBindVertexArray(vertex_array_id);
-      renderer->SetIndicesData(index_buffer_id, num_vertices, nullptr);
-      renderer->SetData(position_buffer_id, num_vertices, nullptr, BufferTypes::Positions3D);
-      renderer->SetData(color_buffer_id, num_vertices, nullptr, BufferTypes::Colors);
-      renderer->SetData(uv_buffer_id, num_vertices, nullptr, BufferTypes::Uvs);
-      renderer->SetData(normal_buffer_id, num_vertices, nullptr, BufferTypes::Normals);
+      auto _numVerts = 6 * 100 * 100;
+      auto _rend = RendGroundView::get();
+      auto _rendBase = _rend->renderer_base();
+      auto _VAOID = _rendBase->GenNewVAOId();
+      auto _indexBufID = _rendBase->GenNewBufId(BufferTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->GenNewBufId(BufferTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->GenNewBufId(BufferTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->GenNewBufId(BufferTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->GenNewBufId(BufferTypes::Normals, _VAOID);
+      glBindVertexArray(_VAOID);
+      _rend->SetIndicesData(_indexBufID, _numVerts, nullptr);
+      _rend->SetData(_posBufID, _numVerts, nullptr, BufferTypes::Positions3D);
+      _rend->SetData(_colorBufID, _numVerts, nullptr, BufferTypes::Colors);
+      _rend->SetData(_uvBufID, _numVerts, nullptr, BufferTypes::Uvs);
+      _rend->SetData(_normBufID, _numVerts, nullptr, BufferTypes::Normals);
       glBindVertexArray(0);
-
-      return vertex_array_id;
+      return _VAOID;
    }
-
-   void SetTileSufaceGeom(RenderID vao_id, Vec<Vec<Square<Vertex3F>>> &verts) {
-      std::vector<Vertex3F> vertices;
-      for (auto y = 0; y < 100; y++) {
-         for (auto x = 0; x < 100; x++) {
-            auto entry = verts.at(x).at(y);
-            vertices.push_back(entry._00);
-            vertices.push_back(entry._10);
-            vertices.push_back(entry._11);
-            vertices.push_back(entry._00);
-            vertices.push_back(entry._11);
-            vertices.push_back(entry._01);
+   void SetTileSufaceGeom(RenderID _VAOID, Vec<Vec<Square<Vertex3F>>> &_verts) {
+      Vec<Vertex3F> _vertsVec;
+      for (auto _y = 0; _y < 100; _y++) {
+         for (auto _x = 0; _x < 100; _x++) {
+            auto _entry = _verts.at(_x).at(_y);
+            _vertsVec.push_back(_entry._00);
+            _vertsVec.push_back(_entry._10);
+            _vertsVec.push_back(_entry._11);
+            _vertsVec.push_back(_entry._00);
+            _vertsVec.push_back(_entry._11);
+            _vertsVec.push_back(_entry._01);
          }
       }
-
-      auto renderer = RendGrndV::get();
-      auto renderer_base = renderer->renderer_base();
-
-      if (!renderer->is_batch_drawing())
-         renderer->UseVAOBegin(vao_id);
-
-      Vec<int> indices(vertices.size());
-      std::iota(std::begin(indices), std::end(indices), 0);
-      Vec<float> positions;
-      Vec<float> colors;
-      Vec<float> uvs;
-      Vec<float> normals;
-
-      for (auto &vertex : vertices) {
-         positions.push_back(vertex.pos.x);
-         positions.push_back(vertex.pos.y);
-         positions.push_back(vertex.pos.z);
-         colors.push_back(vertex.color.r);
-         colors.push_back(vertex.color.g);
-         colors.push_back(vertex.color.b);
-         colors.push_back(vertex.color.a);
-         uvs.push_back(vertex.uv.x);
-         uvs.push_back(vertex.uv.y);
-         auto vertex_normal = vertex.normal;
-         normals.push_back(vertex_normal.x);
-         normals.push_back(vertex_normal.y);
-         normals.push_back(vertex_normal.z);
+      auto _rend = RendGroundView::get();
+      auto _rendBase = _rend->renderer_base();
+      if (!_rend->is_batch_drawing())
+         _rend->UseVAOBegin(_VAOID);
+      Vec<int> _indices(_vertsVec.size());
+      std::iota(std::begin(_indices), std::end(_indices), 0);
+      Vec<float> _positions;
+      Vec<float> _colors;
+      Vec<float> _uvs;
+      Vec<float> _normals;
+      for (auto &_vert : _vertsVec) {
+         _positions.push_back(_vert.pos.x);
+         _positions.push_back(_vert.pos.y);
+         _positions.push_back(_vert.pos.z);
+         _colors.push_back(_vert.color.r);
+         _colors.push_back(_vert.color.g);
+         _colors.push_back(_vert.color.b);
+         _colors.push_back(_vert.color.a);
+         _uvs.push_back(_vert.uv.x);
+         _uvs.push_back(_vert.uv.y);
+         auto _vert_normal = _vert.normal;
+         _normals.push_back(_vert_normal.x);
+         _normals.push_back(_vert_normal.y);
+         _normals.push_back(_vert_normal.z);
       }
-
-      auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, vao_id);
-      auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions3D, vao_id);
-      auto color_buffer_id = renderer_base->BufId(BufferTypes::Colors, vao_id);
-      auto uv_buffer_id = renderer_base->BufId(BufferTypes::Uvs, vao_id);
-      auto normal_buffer_id = renderer_base->BufId(BufferTypes::Normals, vao_id);
-
-      glBindVertexArray(vao_id);
-
-      renderer->UpdateIndicesData(index_buffer_id, indices);
-      renderer->UpdateData(
-          position_buffer_id, positions, BufferTypes::Positions3D, RendGrndV::kLocationPosition);
-      renderer->UpdateData(color_buffer_id, colors, BufferTypes::Colors, RendGrndV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendGrndV::kLocationUv);
-      renderer->UpdateData(
-          normal_buffer_id, normals, BufferTypes::Normals, RendGrndV::kLocationNormal);
-
+      auto _indexBufID = _rendBase->BufId(BufferTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->BufId(BufferTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->BufId(BufferTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->BufId(BufferTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->BufId(BufferTypes::Normals, _VAOID);
+      glBindVertexArray(_VAOID);
+      _rend->UpdateIndicesData(_indexBufID, _indices);
+      _rend->UpdateData(
+          _posBufID, _positions, BufferTypes::Positions3D, RendGroundView::kLocationPosition);
+      _rend->UpdateData(_colorBufID, _colors, BufferTypes::Colors, RendGroundView::kLocationColor);
+      _rend->UpdateData(_uvBufID, _uvs, BufferTypes::Uvs, RendGroundView::kLocationUv);
+      _rend->UpdateData(
+          _normBufID, _normals, BufferTypes::Normals, RendGroundView::kLocationNormal);
       glBindVertexArray(0);
-
-      if (!renderer->is_batch_drawing())
-         renderer->UseVAOEnd();
+      if (!_rend->is_batch_drawing())
+         _rend->UseVAOEnd();
+   }
+   void SetTileGeom(RenderID _VAOID, Square<Vertex3F> &_verts) {
+      Vec<Vertex3F> _vertsVec;
+      _vertsVec.push_back(_verts._00);
+      _vertsVec.push_back(_verts._10);
+      _vertsVec.push_back(_verts._11);
+      _vertsVec.push_back(_verts._01);
+      auto _rend = RendGroundView::get();
+      auto _rendBase = _rend->renderer_base();
+      if (!_rend->is_batch_drawing())
+         _rend->UseVAOBegin(_VAOID);
+      Vec<int> _indices(_vertsVec.size());
+      std::iota(std::begin(_indices), std::end(_indices), 0);
+      Vec<float> _positions;
+      Vec<float> _colors;
+      Vec<float> _uvs;
+      Vec<float> _normals;
+      for (auto &_vert : _vertsVec) {
+         _positions.push_back(_vert.pos.x);
+         _positions.push_back(_vert.pos.y);
+         _positions.push_back(_vert.pos.z);
+         _colors.push_back(_vert.color.r);
+         _colors.push_back(_vert.color.g);
+         _colors.push_back(_vert.color.b);
+         _colors.push_back(_vert.color.a);
+         _uvs.push_back(_vert.uv.x);
+         _uvs.push_back(_vert.uv.y);
+         auto _vert_normal = _vert.normal;
+         _normals.push_back(_vert_normal.x);
+         _normals.push_back(_vert_normal.y);
+         _normals.push_back(_vert_normal.z);
+      }
+      auto _indexBufID = _rendBase->BufId(BufferTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->BufId(BufferTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->BufId(BufferTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->BufId(BufferTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->BufId(BufferTypes::Normals, _VAOID);
+      glBindVertexArray(_VAOID);
+      _rend->UpdateIndicesData(_indexBufID, _indices);
+      _rend->UpdateData(
+          _posBufID, _positions, BufferTypes::Positions3D, RendGroundView::kLocationPosition);
+      _rend->UpdateData(_colorBufID, _colors, BufferTypes::Colors, RendGroundView::kLocationColor);
+      _rend->UpdateData(_uvBufID, _uvs, BufferTypes::Uvs, RendGroundView::kLocationUv);
+      _rend->UpdateData(
+          _normBufID, _normals, BufferTypes::Normals, RendGroundView::kLocationNormal);
+      glBindVertexArray(0);
+      if (!_rend->is_batch_drawing())
+         _rend->UseVAOEnd();
    }
 
-   void SetTileGeom(RenderID vao_id, Square<Vertex3F> &verts) {
-      std::vector<Vertex3F> vertices;
-      vertices.push_back(verts._00);
-      vertices.push_back(verts._10);
-      vertices.push_back(verts._11);
-      vertices.push_back(verts._01);
-      auto renderer = RendGrndV::get();
-      auto renderer_base = renderer->renderer_base();
-
-      if (!renderer->is_batch_drawing())
-         renderer->UseVAOBegin(vao_id);
-
-      Vec<int> indices(vertices.size());
-      std::iota(std::begin(indices), std::end(indices), 0);
-      Vec<float> positions;
-      Vec<float> colors;
-      Vec<float> uvs;
-      Vec<float> normals;
-
-      for (auto &vertex : vertices) {
-         positions.push_back(vertex.pos.x);
-         positions.push_back(vertex.pos.y);
-         positions.push_back(vertex.pos.z);
-         colors.push_back(vertex.color.r);
-         colors.push_back(vertex.color.g);
-         colors.push_back(vertex.color.b);
-         colors.push_back(vertex.color.a);
-         uvs.push_back(vertex.uv.x);
-         uvs.push_back(vertex.uv.y);
-         auto vertex_normal = vertex.normal;
-         normals.push_back(vertex_normal.x);
-         normals.push_back(vertex_normal.y);
-         normals.push_back(vertex_normal.z);
-      }
-
-      auto index_buffer_id = renderer_base->BufId(BufferTypes::Indices, vao_id);
-      auto position_buffer_id = renderer_base->BufId(BufferTypes::Positions3D, vao_id);
-      auto color_buffer_id = renderer_base->BufId(BufferTypes::Colors, vao_id);
-      auto uv_buffer_id = renderer_base->BufId(BufferTypes::Uvs, vao_id);
-      auto normal_buffer_id = renderer_base->BufId(BufferTypes::Normals, vao_id);
-
-      glBindVertexArray(vao_id);
-
-      renderer->UpdateIndicesData(index_buffer_id, indices);
-      renderer->UpdateData(
-          position_buffer_id, positions, BufferTypes::Positions3D, RendGrndV::kLocationPosition);
-      renderer->UpdateData(color_buffer_id, colors, BufferTypes::Colors, RendGrndV::kLocationColor);
-      renderer->UpdateData(uv_buffer_id, uvs, BufferTypes::Uvs, RendGrndV::kLocationUv);
-      renderer->UpdateData(
-          normal_buffer_id, normals, BufferTypes::Normals, RendGrndV::kLocationNormal);
-
-      glBindVertexArray(0);
-
-      if (!renderer->is_batch_drawing())
-         renderer->UseVAOEnd();
-   }
-
-   void DrawTileSurface(StringView image_name, RenderID vao_id, bool depth_test_off) {
-      auto vertex_count = 6 * 100 * 100;
-      auto renderer = RendGrndV::get();
-
-      if (depth_test_off)
+   void DrawTileSurface(StringView _imgName, RenderID _VAOID, bool _depthTestOff) {
+      auto _vert_count = 6 * 100 * 100;
+      auto _rend = RendGroundView::get();
+      if (_depthTestOff)
          glDisable(GL_DEPTH_TEST);
       else
          glEnable(GL_DEPTH_TEST);
-
-      renderer->UseVAOBegin(vao_id);
-
-      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
+      _rend->UseVAOBegin(_VAOID);
+      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
-          renderer->location_projection(), 1, GL_FALSE,
+          _rend->location_projection(), 1, GL_FALSE,
           glm::value_ptr(CameraGL::get()->persp_matrix()));
       glUniformMatrix4fv(
-          renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
-      glm::mat4 model(1.0);
-      glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
-      glUniform1f(renderer->location_alpha(), 1.0f);
-      auto player_pos = Player::get()->pos().Multiply(k_tileSize);
-      auto curr_map_location = Player::get()->world_location();
-      auto map_area = World::get()->CurrWorldArea();
-      auto tile_size = k_tileSize;
-      auto map_offset_x = curr_map_location.x * map_area->Width() * tile_size;
-      auto map_offset_y = curr_map_location.y * map_area->Height() * tile_size;
-      player_pos.x += map_offset_x;
-      player_pos.z += map_offset_y;
-      glm::vec3 view_pos(
-          player_pos.x,
-          player_pos.y +
+          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+      glm::mat4 _model(1.0);
+      glUniformMatrix4fv(_rend->location_model(), 1, GL_FALSE, glm::value_ptr(_model));
+      glUniform1f(_rend->location_alpha(), 1.0f);
+      auto _playerPos = Player::get()->pos().Multiply(k_tileSize);
+      auto _currMapLoc = Player::get()->world_location();
+      auto _worldArea = World::get()->CurrWorldArea();
+      auto _tileSize = k_tileSize;
+      auto _mapOffsX = _currMapLoc.x * _worldArea->Width() * _tileSize;
+      auto _mapOffsY = _currMapLoc.y * _worldArea->Height() * _tileSize;
+      _playerPos.x += _mapOffsX;
+      _playerPos.z += _mapOffsY;
+      glm::vec3 _viewPos(
+          _playerPos.x,
+          _playerPos.y +
               CalcTileAverageElevation(
                   Player::get()->pos().GetXZ().ToIntPoint(), Player::get()->world_location()),
-          player_pos.z);
-      glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
-      glm::vec3 fog_color_gl(
-          RendGrndV::get()->fog_color_ground().r, RendGrndV::get()->fog_color_ground().g,
-          RendGrndV::get()->fog_color_ground().b);
-      glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
-      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
+          _playerPos.z);
+      glUniform3fv(_rend->location_view_pos(), 1, glm::value_ptr(_viewPos));
+      glm::vec3 _fogColorGL(
+          RendGroundView::get()->fog_color_ground().r, RendGroundView::get()->fog_color_ground().g,
+          RendGroundView::get()->fog_color_ground().b);
+      glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
+      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
-
-      auto image_id = ImageBank::get()->GetImage(image_name);
-      glBindTexture(GL_TEXTURE_2D, image_id);
-      glBindVertexArray(vao_id);
-      glDrawElements(GL_TRIANGLES, vertex_count, GL_UNSIGNED_INT, NULL);
+      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      glBindTexture(GL_TEXTURE_2D, _imgID);
+      glBindVertexArray(_VAOID);
+      glDrawElements(GL_TRIANGLES, _vert_count, GL_UNSIGNED_INT, NULL);
       glBindVertexArray(0);
-
       glUseProgram(0);
       glDisable(GL_CULL_FACE);
    }
-
+   void DrawTile(StringView _imgName, RenderID _VAOID, bool _depthTestOff) {
+      auto _vert_count = 4;
+      auto _rend = RendGroundView::get();
+      if (_depthTestOff)
+         glDisable(GL_DEPTH_TEST);
+      else
+         glEnable(GL_DEPTH_TEST);
+      if (!_rend->is_batch_drawing()) {
+         _rend->UseVAOBegin(_VAOID);
+         glUniformMatrix4fv(
+             _rend->location_projection(), 1, GL_FALSE,
+             glm::value_ptr(CameraGL::get()->persp_matrix()));
+         glUniformMatrix4fv(
+             _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+         glm::mat4 _model(1.0);
+         glUniformMatrix4fv(_rend->location_model(), 1, GL_FALSE, glm::value_ptr(_model));
+         glUniform1f(_rend->location_alpha(), 1.0f);
+         auto _playerPos = Player::get()->pos().Multiply(k_tileSize);
+         glm::vec3 _viewPos(
+             _playerPos.x,
+             _playerPos.y +
+                 CalcTileAverageElevation(
+                     Player::get()->pos().GetXZ().ToIntPoint(), Player::get()->world_location()),
+             _playerPos.z);
+         glUniform3fv(_rend->location_view_pos(), 1, glm::value_ptr(_viewPos));
+         glm::vec3 _fogColorGL(
+             RendGroundView::get()->fog_color_ground().r,
+             RendGroundView::get()->fog_color_ground().g,
+             RendGroundView::get()->fog_color_ground().b);
+         glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
+      }
+      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      glBindTexture(GL_TEXTURE_2D, _imgID);
+      glBindVertexArray(_VAOID);
+      glDrawElements(GL_TRIANGLE_FAN, _vert_count, GL_UNSIGNED_INT, NULL);
+      glBindVertexArray(0);
+      if (!_rend->is_batch_drawing())
+         _rend->UseVAOEnd();
+   }
    void StartTileBatchDrawing() {
-      auto renderer = RendGrndV::get();
-      renderer->set_is_batch_drawing(true);
-      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
+      auto _rend = RendGroundView::get();
+      _rend->set_is_batch_drawing(true);
+      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
-          renderer->location_projection(), 1, GL_FALSE,
+          _rend->location_projection(), 1, GL_FALSE,
           glm::value_ptr(CameraGL::get()->persp_matrix()));
       glUniformMatrix4fv(
-          renderer->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
       glm::mat4 model(1.0);
-      glUniformMatrix4fv(renderer->location_model(), 1, GL_FALSE, glm::value_ptr(model));
-      glUniform1f(renderer->location_alpha(), 1.0f);
-      auto player_pos = Player::get()->pos().Multiply(k_tileSize);
-      auto curr_map_location = Player::get()->world_location();
-      auto map_area = World::get()->CurrWorldArea();
-      auto tile_size = k_tileSize;
-      auto map_offset_x = curr_map_location.x * map_area->Width() * tile_size;
-      auto map_offset_y = curr_map_location.y * map_area->Height() * tile_size;
-      player_pos.x += map_offset_x;
-      player_pos.z += map_offset_y;
-      glm::vec3 view_pos(
-          player_pos.x,
-          player_pos.y +
+      glUniformMatrix4fv(_rend->location_model(), 1, GL_FALSE, glm::value_ptr(model));
+      glUniform1f(_rend->location_alpha(), 1.0f);
+      auto _playerPos = Player::get()->pos().Multiply(k_tileSize);
+      auto _currMapLoc = Player::get()->world_location();
+      auto _worldArea = World::get()->CurrWorldArea();
+      auto _tileSize = k_tileSize;
+      auto _mapOffsX = _currMapLoc.x * _worldArea->Width() * _tileSize;
+      auto _mapOffsY = _currMapLoc.y * _worldArea->Height() * _tileSize;
+      _playerPos.x += _mapOffsX;
+      _playerPos.z += _mapOffsY;
+      glm::vec3 _viewPos(
+          _playerPos.x,
+          _playerPos.y +
               CalcTileAverageElevation(
                   Player::get()->pos().GetXZ().ToIntPoint(), Player::get()->world_location()),
-          player_pos.z);
-      glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(view_pos));
-      glm::vec3 fog_color_gl(
-          RendGrndV::get()->fog_color_ground().r, RendGrndV::get()->fog_color_ground().g,
-          RendGrndV::get()->fog_color_ground().b);
-      glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fog_color_gl));
-      glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
+          _playerPos.z);
+      glUniform3fv(_rend->location_view_pos(), 1, glm::value_ptr(_viewPos));
+      glm::vec3 _fogColorGL(
+          RendGroundView::get()->fog_color_ground().r, RendGroundView::get()->fog_color_ground().g,
+          RendGroundView::get()->fog_color_ground().b);
+      glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
+      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }
-
    void StopTileBatchDrawing() {
-      auto renderer = RendGrndV::get();
-      renderer->set_is_batch_drawing(false);
+      auto _rend = RendGroundView::get();
+      _rend->set_is_batch_drawing(false);
       glUseProgram(0);
       glDisable(GL_CULL_FACE);
    }
-#endif
-#endif
-
 }
