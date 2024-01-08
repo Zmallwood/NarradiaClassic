@@ -1,22 +1,20 @@
 #pragma once
 
 namespace Narradia {
+   template <class T>
+   class Square {
+     public:
+      void SetAll(T _value) {
 
-    template <class T>
-    class Square {
+         _00 = _value;
+         _01 = _value;
+         _11 = _value;
+         _10 = _value;
+      }
 
-      public:
-        void SetAll(T value) {
-
-            _00 = value;
-            _01 = value;
-            _11 = value;
-            _10 = value;
-        }
-
-        T _00;
-        T _01;
-        T _11;
-        T _10;
-    };
+      T _00;
+      T _01;
+      T _11;
+      T _10;
+   };
 }

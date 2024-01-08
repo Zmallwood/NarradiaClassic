@@ -1,31 +1,28 @@
 #include "Utilities.h"
 
 namespace Narradia {
-
-    PointF MousePosition() {
-        int XPx, YPx;
-        auto CanvSz = Get_Canvas_Size();
-        SDL_GetMouseState(&XPx, &YPx);
-        auto X = static_cast<float>(XPx) / CanvSz.w;
-        auto Y = static_cast<float>(YPx) / CanvSz.h;
-        return {X, Y};
-    }
-
-    String_View CurrTime() {
-        char Buffer[80];
-        auto Now = time(0);
-        auto PTStruct= localtime(&Now);
-        strftime(Buffer, sizeof(Buffer), "%X", PTStruct);
-        return String_View(Buffer);
-    }
-
-    Size TextureDimensions(String_View img_name) {
-        Size dim;
-        int mip_level = 0;
-        auto img_id = ImageBank::get()->GetImage(img_name);
-        glBindTexture(GL_TEXTURE_2D, img_id);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D, mip_level, GL_TEXTURE_WIDTH, &dim.w);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D, mip_level, GL_TEXTURE_HEIGHT, &dim.h);
-        return dim;
-    }
+   PointF MousePosition() {
+      int _xPx, _yPx;
+      auto _canvSz = CanvasSize();
+      SDL_GetMouseState(&_xPx, &_yPx);
+      auto _x = static_cast<float>(_xPx) / _canvSz.w;
+      auto _y = static_cast<float>(_yPx) / _canvSz.h;
+      return {_x, _y};
+   }
+   StringView CurrTime() {
+      char _buffer[80];
+      auto _now = time(0);
+      auto _pTStruct = localtime(&_now);
+      strftime(_buffer, sizeof(_buffer), "%X", _pTStruct);
+      return StringView(_buffer);
+   }
+   Size TextureDimensions(StringView _imgName) {
+      Size _dim;
+      int _mipLevel = 0;
+      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      glBindTexture(GL_TEXTURE_2D, _imgID);
+      glGetTexLevelParameteriv(GL_TEXTURE_2D, _mipLevel, GL_TEXTURE_WIDTH, &_dim.w);
+      glGetTexLevelParameteriv(GL_TEXTURE_2D, _mipLevel, GL_TEXTURE_HEIGHT, &_dim.h);
+      return _dim;
+   }
 }

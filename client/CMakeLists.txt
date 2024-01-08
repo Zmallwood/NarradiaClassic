@@ -61,11 +61,11 @@ set(PCH_FILES
 
 "src/Common/Singleton.h"
 "src/Common/Aliases.h"
-"src/Common/File_Utilities.h"
+"src/Common/FileUtilities.h"
 "src/Matter/Matter.h"
-"src/Common/Canvas_Utilities.h"
+"src/Common/CanvasUtilities.h"
 "src/Common/Utilities.h"
-"src/Common/Singletons_Disposal.h"
+"src/Common/SingletonsDisposal.h"
 "src/Common/Square.h"
 )
 
