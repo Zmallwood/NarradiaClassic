@@ -1,5 +1,4 @@
 #include "GuiCore.h"
-#include "Configuration/Configuration.h"
 #include "Engine/Core.h"
 #include "Engine/Rendering/ImagesRendering.h"
 #include "Engine/Rendering/TextRendering.h"

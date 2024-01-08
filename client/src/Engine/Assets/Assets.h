@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Configuration/Constants.h"
-#include "ModelCreation/ModelCreation.h"
+#include "ModelCreation/ModelCreator.h"
 
 namespace Narradia {
 

@@ -1,5 +1,4 @@
 #include "TextRendering.h"
-#include "Configuration/Configuration.h"
 #include "Engine/Assets/Assets.h"
 #include "Engine/Core.h"
 #include "ImagesRendering.h"

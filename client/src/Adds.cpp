@@ -1,5 +1,5 @@
 #include "Adds.h"
-#include "Configuration/Configuration.h"
+#include "Configuration/ObjectsConf.h"
 #include "Engine/Core.h"
 #include "Engine/Rendering/ModelsRendering.h"
 #include "Engine/Rendering/RenderingCore.h"

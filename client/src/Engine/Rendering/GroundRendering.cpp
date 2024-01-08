@@ -1,5 +1,4 @@
 #include "GroundRendering.h"
-#include "Configuration/Configuration.h"
 #include "Engine/Assets/Assets.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"

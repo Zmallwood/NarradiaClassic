@@ -5,7 +5,6 @@ namespace Narradia {
    class Square {
      public:
       void SetAll(T _value) {
-
          _00 = _value;
          _01 = _value;
          _11 = _value;

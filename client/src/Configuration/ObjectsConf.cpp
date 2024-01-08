@@ -1,7 +1,7 @@
-#include "Configuration.h"
+#include "ObjectsConf.h"
+#include "ObjectFlags.h"
 
 namespace Narradia {
-   // ObjectsConf
    using ObjectFlags::NoObstacle;
 
    ObjectsConf::ObjectsConf() {
@@ -19,18 +19,5 @@ namespace Narradia {
    float ObjectsConf::GetModelScaling(StringView _objectType) {
       return m_objectConfs.count(_objectType) == 0 ? 1.0f
                                                    : m_objectConfs.at(_objectType).modelScaling;
-   }
-
-   // MobsConf
-   MobsConf::MobsConf() {
-      m_mobsConfs["MobBoar"] = {4};
-      m_mobsConfs["MobTroll"] = {6};
-      m_mobsConfs["MobEvilSpirit"] = {8};
-   }
-   int MobsConf::GetAggroRange(StringView _mobType) {
-      if (m_mobsConfs.count(_mobType) == 0)
-         return 0;
-      else
-         return m_mobsConfs.at(_mobType).aggroRange;
    }
 }

@@ -1,7 +1,7 @@
 #include "WorldAdd.h"
 #include "Adds.h"
-#include "Configuration/Configuration.h"
 #include "Engine/Assets/Assets.h"
+#include "Configuration/ObjectsConf.h"
 #include "Engine/Core.h"
 #include "Engine/Rendering/GroundRendering.h"
 #include "Engine/Rendering/ImagesRendering.h"

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Configuration/Configuration.h"
 #include "WorldStructure/WorldStructure.h"
 
 namespace Narradia {

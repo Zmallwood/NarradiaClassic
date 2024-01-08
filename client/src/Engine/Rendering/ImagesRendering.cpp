@@ -1,5 +1,4 @@
 #include "ImagesRendering.h"
-#include "Configuration/Configuration.h"
 #include "Engine/Assets/Assets.h"
 
 namespace Narradia {

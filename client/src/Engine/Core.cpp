@@ -1,5 +1,4 @@
 #include "Core.h"
-#include "Configuration/Configuration.h"
 #include "GuiCore/GuiCore.h"
 #include "GuiMainPg.h"
 #include "Pages.h"

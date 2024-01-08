@@ -1,5 +1,4 @@
 #include "ColorsRendering.h"
-#include "Configuration/Configuration.h"
 
 namespace Narradia {
 

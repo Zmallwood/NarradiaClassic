@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Actors/Player.h"
-#include "Configuration/Configuration.h"
 #include "FileIO/WorldMapRdr.h"
 
 namespace Narradia {
