@@ -235,7 +235,7 @@ namespace Narradia {
 
         float intensity;
 	    vec4 toon_color;
-	    intensity = dot(lightDir/3.0,ex_Normal);
+	    intensity = dot(lightDir/5.0,ex_Normal);
 
 	    if (intensity > 0.95)
 	    	toon_color = fragColor;
@@ -321,7 +321,7 @@ namespace Narradia {
     #version 330 core
     precision mediump float;
 
-    vec3 light_direction = vec3(2.5, -8.0, -2.5)/22.0;
+    vec3 light_direction = vec3(2.5, -18.0, -2.5)/22.0;
     vec3 light_ambient = vec3(7.8, 7.8, 7.8)*1.5;
     vec3 light_color = vec3(0.5, 0.0, 0.2)/26.0;
     
@@ -380,7 +380,7 @@ namespace Narradia {
 
         float intensity;
 	    vec4 toon_color;
-	    intensity = dot(lightDir/2.0,ex_Normal);
+	    intensity = dot(lightDir/3.0,ex_Normal);
 
 	    if (intensity > 0.95)
 	    	toon_color = fragColor;
