@@ -7,15 +7,15 @@ namespace Narradia {
       auto PosKeyframe(
               const aiScene *_rawModel,
               String _nodeName,
-              int _keyframeIdx) const -> aiVectorKey;
+              int _kframeIdx) const -> aiVectorKey;
       auto RotKeyframe(
               const aiScene *_rawModel,
               String _nodeName,
-              int _keyframeIdx) const -> aiQuatKey;
+              int _kframeIdx) const -> aiQuatKey;
       auto ScalKeyframe(
               const aiScene *_rawModel,
               String _nodeName,
-              int _keyframeIdx) const -> aiVectorKey;
+              int _kframeIdx) const -> aiVectorKey;
       auto NodePosKeyframes(
               const aiScene *_rawModel,
               String _nodeName) const -> Vector<aiVectorKey>;

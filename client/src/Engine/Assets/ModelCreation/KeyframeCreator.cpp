@@ -6,59 +6,59 @@ namespace Narradia {
    auto KeyframeCreator::PosKeyframe(
       const aiScene *_rawModel, 
       String _nodeName, 
-      int _keyframeIdx) const -> aiVectorKey {
+      int _kframeIdx) const -> aiVectorKey {
       // clang-format on
-      auto _nodePosKeyframes = NodePosKeyframes(_rawModel, _nodeName);
-      aiVectorKey _posKeyframe;
-      if (_keyframeIdx < _nodePosKeyframes.size())
-         _posKeyframe = _nodePosKeyframes.at(_keyframeIdx);
+      auto _nodePosKframes = NodePosKeyframes(_rawModel, _nodeName);
+      aiVectorKey _posKframe;
+      if (_kframeIdx < _nodePosKframes.size())
+         _posKframe = _nodePosKframes.at(_kframeIdx);
       else
-         _posKeyframe = *(_nodePosKeyframes.end() - 1);
-      return _posKeyframe;
+         _posKframe = *(_nodePosKframes.end() - 1);
+      return _posKframe;
    }
    // clang-format off
    auto KeyframeCreator::RotKeyframe(
       const aiScene *_rawModel,
       String _nodeName,
-      int _keyframeIdx) const -> aiQuatKey {
+      int _kframeIdx) const -> aiQuatKey {
       // clang-format on
-      auto _nodeRotKeyframes = NodeRotKeyframes(_rawModel, _nodeName);
-      aiQuatKey _rotationKeyframe;
-      if (_keyframeIdx < _nodeRotKeyframes.size())
-         _rotationKeyframe = _nodeRotKeyframes.at(_keyframeIdx);
+      auto _nodeRotKframes = NodeRotKeyframes(_rawModel, _nodeName);
+      aiQuatKey _rotKframe;
+      if (_kframeIdx < _nodeRotKframes.size())
+         _rotKframe = _nodeRotKframes.at(_kframeIdx);
       else
-         _rotationKeyframe = *(_nodeRotKeyframes.end() - 1);
-      return _rotationKeyframe;
+         _rotKframe = *(_nodeRotKframes.end() - 1);
+      return _rotKframe;
    }
    // clang-format off
    auto KeyframeCreator::ScalKeyframe(
       const aiScene *_rawModel,
       String _nodeName,
-      int _keyframeIdx) const -> aiVectorKey {
+      int _kframeIdx) const -> aiVectorKey {
       // clang-format on
-      auto _nodeScalKeyframes = NodeScalKeyframes(_rawModel, _nodeName);
-      aiVectorKey _scalKeyframe;
-      if (_keyframeIdx < _nodeScalKeyframes.size())
-         _scalKeyframe = _nodeScalKeyframes.at(_keyframeIdx);
+      auto _nodeScalKframes = NodeScalKeyframes(_rawModel, _nodeName);
+      aiVectorKey _scalKframe;
+      if (_kframeIdx < _nodeScalKframes.size())
+         _scalKframe = _nodeScalKframes.at(_kframeIdx);
       else
-         _scalKeyframe = *(_nodeScalKeyframes.end() - 1);
-      return _scalKeyframe;
+         _scalKframe = *(_nodeScalKframes.end() - 1);
+      return _scalKframe;
    }
    // Anim keyframes
    auto KeyframeCreator::AnimPosKeyframes(const aiScene *_rawModel) const {
-      auto _nodeNameToPosKeyframes = Map<String, Vector<aiVectorKey>>();
+      auto _nodeNameToPosKframes = Map<String, Vector<aiVectorKey>>();
       if (_rawModel->mNumAnimations == 0) {
          auto _numMeshes = _rawModel->mNumMeshes;
          for (auto _i = 0; _i < _numMeshes; _i++) {
             auto _mesh = _rawModel->mMeshes[_i];
             auto _origName = String(_mesh->mName.C_Str());
             auto _nodeName = _origName.substr(0, _origName.length() - 5);
-            Vector<aiVectorKey> _posKeyframes;
-            aiVectorKey _posKeyframe;
-            _posKeyframe.mTime = 0.0;
-            _posKeyframe.mValue = aiVector3D(0.0, 0.0, 0.0);
-            _posKeyframes.push_back(_posKeyframe);
-            _nodeNameToPosKeyframes.insert({_nodeName.c_str(), _posKeyframes});
+            Vector<aiVectorKey> _posKframes;
+            aiVectorKey _posKframe;
+            _posKframe.mTime = 0.0;
+            _posKframe.mValue = aiVector3D(0.0, 0.0, 0.0);
+            _posKframes.push_back(_posKframe);
+            _nodeNameToPosKframes.insert({_nodeName.c_str(), _posKframes});
          }
       } else {
          auto _anim0 = _rawModel->mAnimations[0];
@@ -67,36 +67,36 @@ namespace Narradia {
             auto _animChannel = _anim0->mChannels[_i];
             auto _nodeName = String(_animChannel->mNodeName.C_Str());
             auto num_position_keys = _animChannel->mNumPositionKeys;
-            Vector<aiVectorKey> _posKeyframes;
+            Vector<aiVectorKey> _posKframes;
             aiVectorKey _origPosKeyframe;
             for (auto _j = 0; _j < num_position_keys; _j++) {
                if (_j == 0)
                   _origPosKeyframe = _animChannel->mPositionKeys[_j];
-               auto _posKeyframe = _animChannel->mPositionKeys[_j];
-               _posKeyframe.mValue -= _origPosKeyframe.mValue;
-               _posKeyframe.mValue.z *= -1;
-               _posKeyframes.push_back(_posKeyframe);
+               auto _posKframe = _animChannel->mPositionKeys[_j];
+               _posKframe.mValue -= _origPosKeyframe.mValue;
+               _posKframe.mValue.z *= -1;
+               _posKframes.push_back(_posKframe);
             }
             if (num_position_keys > 0)
-               _nodeNameToPosKeyframes.insert({_nodeName, _posKeyframes});
+               _nodeNameToPosKframes.insert({_nodeName, _posKframes});
          }
       }
-      return _nodeNameToPosKeyframes;
+      return _nodeNameToPosKframes;
    }
    auto KeyframeCreator::AnimRotKeyframes(const aiScene *_rawModel) const {
-      auto _nodeNameToRotKeyframes = Map<String, Vector<aiQuatKey>>();
+      auto _nodeNameToRotKframes = Map<String, Vector<aiQuatKey>>();
       if (_rawModel->mNumAnimations == 0) {
          auto _numMeshes = _rawModel->mNumMeshes;
          for (auto _i = 0; _i < _numMeshes; _i++) {
             auto _mesh = _rawModel->mMeshes[_i];
             auto _origName = String(_mesh->mName.C_Str());
             auto _nodeName = _origName.substr(0, _origName.length() - 5);
-            Vector<aiQuatKey> _rotationKeyframes;
-            aiQuatKey _rotationKeyframe;
-            _rotationKeyframe.mTime = 0.0;
-            _rotationKeyframe.mValue = aiQuaternion(0.0, 0.0, 0.0);
-            _rotationKeyframes.push_back(_rotationKeyframe);
-            _nodeNameToRotKeyframes.insert({_nodeName.c_str(), _rotationKeyframes});
+            Vector<aiQuatKey> _rotKframes;
+            aiQuatKey _rotKframe;
+            _rotKframe.mTime = 0.0;
+            _rotKframe.mValue = aiQuaternion(0.0, 0.0, 0.0);
+            _rotKframes.push_back(_rotKframe);
+            _nodeNameToRotKframes.insert({_nodeName.c_str(), _rotKframes});
          }
       } else {
          auto _anim0 = _rawModel->mAnimations[0];
@@ -105,37 +105,37 @@ namespace Narradia {
             auto _animChannel = _anim0->mChannels[_i];
             auto _nodeName = String(_animChannel->mNodeName.C_Str());
             auto num_rotation_keys = _animChannel->mNumRotationKeys;
-            std::vector<aiQuatKey> _rotationKeyframes;
+            std::vector<aiQuatKey> _rotKframes;
             aiQuatKey _origRotKeyframe;
             for (auto _j = 0; _j < num_rotation_keys; _j++) {
                if (_j == 0)
                   _origRotKeyframe = _animChannel->mRotationKeys[_j];
-               auto _rotationKeyframe = _animChannel->mRotationKeys[_j];
-               _rotationKeyframe.mValue.x -= _origRotKeyframe.mValue.x;
-               _rotationKeyframe.mValue.y -= _origRotKeyframe.mValue.y;
-               _rotationKeyframe.mValue.z -= _origRotKeyframe.mValue.z;
-               _rotationKeyframes.push_back(_rotationKeyframe);
+               auto _rotKframe = _animChannel->mRotationKeys[_j];
+               _rotKframe.mValue.x -= _origRotKeyframe.mValue.x;
+               _rotKframe.mValue.y -= _origRotKeyframe.mValue.y;
+               _rotKframe.mValue.z -= _origRotKeyframe.mValue.z;
+               _rotKframes.push_back(_rotKframe);
             }
             if (num_rotation_keys > 0)
-               _nodeNameToRotKeyframes.insert({_nodeName, _rotationKeyframes});
+               _nodeNameToRotKframes.insert({_nodeName, _rotKframes});
          }
       }
-      return _nodeNameToRotKeyframes;
+      return _nodeNameToRotKframes;
    }
    auto KeyframeCreator::AnimScalKeyframes(const aiScene *_rawModel) const {
-      auto _nodeNameToScalKeyframes = Map<String, Vector<aiVectorKey>>();
+      auto _nodeNameToScalKframes = Map<String, Vector<aiVectorKey>>();
       if (_rawModel->mNumAnimations == 0) {
          auto _numMeshes = _rawModel->mNumMeshes;
          for (auto _i = 0; _i < _numMeshes; _i++) {
             auto _mesh = _rawModel->mMeshes[_i];
             auto _origName = String(_mesh->mName.C_Str());
             auto _nodeName = _origName.substr(0, _origName.length() - 5);
-            Vector<aiVectorKey> _scalKeyframes;
-            aiVectorKey _scalKeyframe;
-            _scalKeyframe.mTime = 0.0;
-            _scalKeyframe.mValue = aiVector3D(1.0, -1.0, 1.0);
-            _scalKeyframes.push_back(_scalKeyframe);
-            _nodeNameToScalKeyframes.insert({_nodeName.c_str(), _scalKeyframes});
+            Vector<aiVectorKey> _scalKframes;
+            aiVectorKey _scalKframe;
+            _scalKframe.mTime = 0.0;
+            _scalKframe.mValue = aiVector3D(1.0, -1.0, 1.0);
+            _scalKframes.push_back(_scalKframe);
+            _nodeNameToScalKframes.insert({_nodeName.c_str(), _scalKframes});
          }
       } else {
          auto _anim0 = _rawModel->mAnimations[0];
@@ -144,64 +144,64 @@ namespace Narradia {
             auto _animChannel = _anim0->mChannels[_i];
             auto _nodeName = String(_animChannel->mNodeName.C_Str());
             auto _numScalKeys = _animChannel->mNumScalingKeys;
-            Vector<aiVectorKey> _scalKeyframes;
+            Vector<aiVectorKey> _scalKframes;
             aiVectorKey _origScalKeyframe;
             for (auto _j = 0; _j < _numScalKeys; _j++) {
                if (_j == 0)
                   _origScalKeyframe = _animChannel->mScalingKeys[_i];
-               auto _scalKeyframe = _animChannel->mScalingKeys[_j];
-               _scalKeyframe.mValue.x /= _origScalKeyframe.mValue.x;
-               _scalKeyframe.mValue.y /= _origScalKeyframe.mValue.y;
-               _scalKeyframe.mValue.z /= _origScalKeyframe.mValue.z;
-               _scalKeyframes.push_back(_scalKeyframe);
+               auto _scalKframe = _animChannel->mScalingKeys[_j];
+               _scalKframe.mValue.x /= _origScalKeyframe.mValue.x;
+               _scalKframe.mValue.y /= _origScalKeyframe.mValue.y;
+               _scalKframe.mValue.z /= _origScalKeyframe.mValue.z;
+               _scalKframes.push_back(_scalKframe);
             }
             if (_numScalKeys > 0)
-               _nodeNameToScalKeyframes.insert({_nodeName, _scalKeyframes});
+               _nodeNameToScalKframes.insert({_nodeName, _scalKframes});
          }
       }
-      return _nodeNameToScalKeyframes;
+      return _nodeNameToScalKframes;
    }
    // Node keyframes
    auto KeyframeCreator::NodePosKeyframes(const aiScene *_rawModel, String _nodeName) const
        -> Vector<aiVectorKey> {
-      auto _allPosKeyframes = AnimPosKeyframes(_rawModel);
-      Vector<aiVectorKey> _nodePosKeyframes;
-      if (_allPosKeyframes.count(_nodeName))
-         _nodePosKeyframes = _allPosKeyframes.at(_nodeName);
-      auto _numPosKeyframes = _nodePosKeyframes.size();
-      auto _numMaxKeyframes = _numPosKeyframes;
-      if (_numMaxKeyframes == 0) {
-         _numMaxKeyframes = 1;
-         _nodePosKeyframes.push_back(aiVectorKey(0.0, aiVector3D()));
+      auto _allPosKframes = AnimPosKeyframes(_rawModel);
+      Vector<aiVectorKey> _nodePosKframes;
+      if (_allPosKframes.count(_nodeName))
+         _nodePosKframes = _allPosKframes.at(_nodeName);
+      auto _numPosKframes = _nodePosKframes.size();
+      auto _numMaxKframes = _numPosKframes;
+      if (_numMaxKframes == 0) {
+         _numMaxKframes = 1;
+         _nodePosKframes.push_back(aiVectorKey(0.0, aiVector3D()));
       }
-      return _nodePosKeyframes;
+      return _nodePosKframes;
    }
    auto KeyframeCreator::NodeRotKeyframes(const aiScene *_rawModel, String _nodeName) const
        -> Vector<aiQuatKey> {
-      auto _allRotKeyframes = AnimRotKeyframes(_rawModel);
-      Vector<aiQuatKey> _nodeRotKeyframes;
-      if (_allRotKeyframes.count(_nodeName))
-         _nodeRotKeyframes = _allRotKeyframes.at(_nodeName);
-      auto _numRotKeyframes = _nodeRotKeyframes.size();
-      auto _numMaxKeyframes = _numRotKeyframes;
-      if (_numMaxKeyframes == 0) {
-         _numMaxKeyframes = 1;
-         _nodeRotKeyframes.push_back(aiQuatKey(0.0, aiQuaternion()));
+      auto _allRotKframes = AnimRotKeyframes(_rawModel);
+      Vector<aiQuatKey> _nodeRotKframes;
+      if (_allRotKframes.count(_nodeName))
+         _nodeRotKframes = _allRotKframes.at(_nodeName);
+      auto _numRotKframes = _nodeRotKframes.size();
+      auto _numMaxKframes = _numRotKframes;
+      if (_numMaxKframes == 0) {
+         _numMaxKframes = 1;
+         _nodeRotKframes.push_back(aiQuatKey(0.0, aiQuaternion()));
       }
-      return _nodeRotKeyframes;
+      return _nodeRotKframes;
    }
    auto KeyframeCreator::NodeScalKeyframes(const aiScene *_rawModel, String _nodeName) const
        -> Vector<aiVectorKey> {
-      auto _allScalKeyframes = AnimScalKeyframes(_rawModel);
-      Vector<aiVectorKey> _nodeScalKeyframes;
-      if (_allScalKeyframes.count(_nodeName))
-         _nodeScalKeyframes = _allScalKeyframes.at(_nodeName);
-      auto _numScalKeyframes = _nodeScalKeyframes.size();
-      auto _numMaxKeyframes = _numScalKeyframes;
-      if (_numMaxKeyframes == 0) {
-         _numMaxKeyframes = 1;
-         _nodeScalKeyframes.push_back(aiVectorKey(0.0, aiVector3D(1.0)));
+      auto _allScalKframes = AnimScalKeyframes(_rawModel);
+      Vector<aiVectorKey> _nodeScalKframes;
+      if (_allScalKframes.count(_nodeName))
+         _nodeScalKframes = _allScalKframes.at(_nodeName);
+      auto _numScalKframes = _nodeScalKframes.size();
+      auto _numMaxKframes = _numScalKframes;
+      if (_numMaxKframes == 0) {
+         _numMaxKframes = 1;
+         _nodeScalKframes.push_back(aiVectorKey(0.0, aiVector3D(1.0)));
       }
-      return _nodeScalKeyframes;
+      return _nodeScalKframes;
    }
 }
