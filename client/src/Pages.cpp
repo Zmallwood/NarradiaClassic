@@ -2,8 +2,11 @@
 #include "Adds.h"
 #include "Core/Assets/ModelBank.h"
 #include "Core/Core.h"
-#include "Core/GuiCore/GuiCore.h"
 #include "Core/Rendering/GroundRendering.h"
+#include "Core/GuiCore/SceneGui.h"
+#include "Core/GuiCore/GuiButton.h"
+#include "Core/GuiCore/SceneGuiView.h"
+#include "Core/GuiCore/GuiButtonView.h"
 #include "Core/Rendering/ImagesRendering.h"
 #include "Core/Rendering/ModelsRendering.h"
 #include "Core/Rendering/TextRendering.h"
@@ -83,7 +86,7 @@ namespace Narradia {
    // IntroPgV
 #if 1
    IntroPgV::IntroPgV() {
-      scene_gui_view_->set_scene_gui(IntroPg::get()->scene_gui());
+      scene_gui_view_->SetSceneGui(IntroPg::get()->scene_gui());
 
       rid_background = NewImage();
       rid_logo = NewImage();
@@ -107,7 +110,7 @@ namespace Narradia {
    // MainMenuPgV
 #if 1
    MainMenuPgV::MainMenuPgV() {
-      scene_gui_view_->set_scene_gui(MainMenuPg::get()->scene_gui());
+      scene_gui_view_->SetSceneGui(MainMenuPg::get()->scene_gui());
       scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonView>());
       scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonView>());
 
@@ -133,7 +136,7 @@ namespace Narradia {
    // MainPgV
 #if 1
    MainPgV::MainPgV() {
-      scene_gui_view_->set_scene_gui(MainPg::get()->scene_gui());
+      scene_gui_view_->SetSceneGui(MainPg::get()->scene_gui());
       scene_gui_view_->AddGuiComponentView(MakeShared<ExperienceBarV>());
       scene_gui_view_->AddGuiComponentView(MakeShared<StatusPanelV>());
       scene_gui_view_->AddGuiComponentView(MakeShared<GuiWindowWorldMapV>());

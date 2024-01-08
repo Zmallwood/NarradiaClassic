@@ -1,6 +1,6 @@
 #include "GuiWindow.h"
 #include "Conf/Constants.h"
-#include "GuiCore.h"
+#include "GuiWindowCloseButton.h"
 
 namespace Narradia {
    // clang-format off

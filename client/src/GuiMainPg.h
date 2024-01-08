@@ -1,6 +1,9 @@
 #pragma once
 
-#include "Core/GuiCore/GuiCore.h"
+#include "Core/GuiCore/GuiComponent.h"
+#include "Core/GuiCore/GuiWindow.h"
+#include "Core/GuiCore/GuiComponentView.h"
+#include "Core/GuiCore/GuiWindowView.h"
 
 namespace Narradia {
 
@@ -79,7 +82,7 @@ namespace Narradia {
 
 // Gui windows
 #if 1
-   class GuiWindowWorldMapV : public GuiWindowV {
+   class GuiWindowWorldMapV : public GuiWindowView {
      public:
       GuiWindowWorldMapV();
 

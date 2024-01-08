@@ -1,7 +1,7 @@
 #include "GuiWindowCloseButton.h"
 #include "Conf/Constants.h"
-#include "GuiCore.h"
 #include "GuiWindow.h"
+#include "SceneGui.h"
 #include "Pages.h"
 
 namespace Narradia {

@@ -5,6 +5,7 @@
 #include "Math/Calc.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
+#include "Core/GuiCore/GuiWindowCloseButtonView.h"
 
 namespace Narradia {
 
@@ -125,7 +126,7 @@ namespace Narradia {
    // GuiWindowWorldMapV
 #if 1
    GuiWindowWorldMapV::GuiWindowWorldMapV() {
-      gui_window_close_button_view()->set_model(
+      GetGuiWindowCloseButtonView()->SetModel(
           GuiWindowWorldMap::get()->GetCloseButton());
 
       rid_img_ = NewImage();

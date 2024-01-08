@@ -320,7 +320,7 @@ namespace Narradia {
       Map<PageNames, SharedPtr<IPageV>> scene_views_;
    };
 
-   class SceneGuiV;
+   class SceneGuiView;
 
    class IPageV {
      public:
@@ -330,7 +330,7 @@ namespace Narradia {
      protected:
       virtual void RenderDerived() = 0;
 
-      SharedPtr<SceneGuiV> scene_gui_view_;
+      SharedPtr<SceneGuiView> scene_gui_view_;
    };
 
    class CursorV : public Singleton<CursorV> {

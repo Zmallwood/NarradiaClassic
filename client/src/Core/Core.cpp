@@ -1,10 +1,11 @@
 #include "Core.h"
-#include "GuiCore/GuiCore.h"
 #include "GuiMainPg.h"
 #include "Pages.h"
 #include "Rendering/ImagesRendering.h"
 #include "Rendering/TextRendering.h"
 #include "Conf/Constants.h"
+#include "Core/GuiCore/SceneGui.h"
+#include "Core/GuiCore/SceneGuiView.h"
 
 namespace Narradia {
 
@@ -457,7 +458,7 @@ namespace Narradia {
    // IPageV
 #if 1
    IPageV::IPageV()
-       : scene_gui_view_(MakeShared<SceneGuiV>()) {
+       : scene_gui_view_(MakeShared<SceneGuiView>()) {
    }
 
    void IPageV::Render() {

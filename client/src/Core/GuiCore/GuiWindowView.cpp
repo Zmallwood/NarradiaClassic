@@ -2,32 +2,26 @@
 #include "Core/Rendering/ImagesRendering.h"
 #include "Core/Rendering/TextRendering.h"
 #include "GuiWindow.h"
-#include "GuiCore.h"
+#include "GuiWindowCloseButtonView.h"
 
 namespace Narradia {
-   GuiWindowV::GuiWindowV()
-       : gui_window_close_button_view_(MakeShared<GuiWindowCloseButtonV>()) {
-      rid_background_ = NewImage();
-      rid_title_bar_ = NewImage();
-      rid_title_text_ = NewString();
+   GuiWindowView::GuiWindowView()
+       : m_guiWindowCloseButtonView(MakeShared<GuiWindowCloseButtonView>()) {
+      m_RIDBackground = NewImage();
+      m_RIDTitleBar = NewImage();
+      m_RIDTitleText = NewString();
    }
-
-   void GuiWindowV::Render() {
-      auto model = static_pointer_cast<GuiWindow>(m_guiComponent);
-
-      if (!model->GetVisible())
+   void GuiWindowView::Render() {
+      auto _model = static_pointer_cast<GuiWindow>(m_guiComponent);
+      if (!_model->GetVisible())
          return;
-
-      DrawImage(model->GetBgImageName(), rid_background_, model->Bounds());
-      DrawImage("GuiWindowTitleBar", rid_title_bar_, model->AbsTitleBarBounds());
-
-      gui_window_close_button_view_->Render();
-
+      DrawImage(_model->GetBgImageName(), m_RIDBackground, _model->Bounds());
+      DrawImage("GuiWindowTitleBar", m_RIDTitleBar, _model->AbsTitleBarBounds());
+      m_guiWindowCloseButtonView->Render();
       DrawString(
-          rid_title_text_, model->GetTitle(), model->Bounds().GetPosition().Translate(0.005f, 0.01f));
-
+          m_RIDTitleText, _model->GetTitle(),
+          _model->Bounds().GetPosition().Translate(0.005f, 0.01f));
       RenderDerived();
-
       GuiMovableContainerView::Render();
    }
 }
