@@ -1,8 +1,8 @@
 #include "ModelPartCreator.h"
 #include "KeyframeCreator.h"
-#include "Engine/Assets/ModelBank.h"
-#include "Engine/Assets/ModelStructure/Keyframe.h"
-#include "Engine/Assets/ModelStructure/ModelPart.h"
+#include "Core/Assets/ModelBank.h"
+#include "Core/Assets/ModelStructure/Keyframe.h"
+#include "Core/Assets/ModelStructure/ModelPart.h"
 
 namespace Narradia {
    auto ModelPartCreator::TexNames(const aiScene *_rawModel) const {

@@ -2,9 +2,9 @@
 #include "Math/Calc.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
-#include "Engine/Assets/ModelBank.h"
-#include "Engine/Assets/ModelStructure/Model.h"
-#include "Engine/Assets/ImageBank.h"
+#include "Core/Assets/ModelBank.h"
+#include "Core/Assets/ModelStructure/Model.h"
+#include "Core/Assets/ImageBank.h"
 
 namespace Narradia {
 

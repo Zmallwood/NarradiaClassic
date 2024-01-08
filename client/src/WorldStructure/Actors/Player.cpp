@@ -1,6 +1,6 @@
 #include "Player.h"
-#include "Engine/Core.h"
-#include "Engine/Rendering/GroundRendering.h"
+#include "Core/Core.h"
+#include "Core/Rendering/GroundRendering.h"
 #include "Math/Calc.h"
 #include "WorldAdd.h"
 #include "WorldStructure/WorldStructure.h"

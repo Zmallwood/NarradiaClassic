@@ -1,12 +1,12 @@
 #include "Pages.h"
 #include "Adds.h"
-#include "Engine/Assets/ModelBank.h"
-#include "Engine/Core.h"
-#include "Engine/GuiCore/GuiCore.h"
-#include "Engine/Rendering/GroundRendering.h"
-#include "Engine/Rendering/ImagesRendering.h"
-#include "Engine/Rendering/ModelsRendering.h"
-#include "Engine/Rendering/TextRendering.h"
+#include "Core/Assets/ModelBank.h"
+#include "Core/Core.h"
+#include "Core/GuiCore/GuiCore.h"
+#include "Core/Rendering/GroundRendering.h"
+#include "Core/Rendering/ImagesRendering.h"
+#include "Core/Rendering/ModelsRendering.h"
+#include "Core/Rendering/TextRendering.h"
 #include "GuiMainPg.h"
 #include "MapGenAdd.h"
 #include "WorldAdd.h"
@@ -108,8 +108,8 @@ namespace Narradia {
 #if 1
    MainMenuPgV::MainMenuPgV() {
       scene_gui_view_->set_scene_gui(MainMenuPg::get()->scene_gui());
-      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonV>());
-      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonV>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonView>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonView>());
 
       rid_background = NewImage();
       rid_logo = NewImage();

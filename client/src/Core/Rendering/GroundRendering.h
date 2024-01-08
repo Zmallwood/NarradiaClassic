@@ -2,7 +2,7 @@
 
 #include "Math/Calc.h"
 #include "RenderingCore.h"
-#include "Engine/Assets/ImageBank.h"
+#include "Core/Assets/ImageBank.h"
 
 namespace Narradia {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/GuiCore/GuiCore.h"
+#include "Core/GuiCore/GuiCore.h"
 
 namespace Narradia {
 

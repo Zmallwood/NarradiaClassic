@@ -1,8 +1,8 @@
 #include "ModelCreator.h"
 #include "MeshObtainer.h"
 #include "ModelPartCreator.h"
-#include "Engine/Assets/ModelBank.h"
-#include "Engine/Assets/ModelStructure/Model.h"
+#include "Core/Assets/ModelBank.h"
+#include "Core/Assets/ModelStructure/Model.h"
 
 namespace Narradia {
    auto ModelCreator::ModelParts(const aiScene *_rawModel) {
