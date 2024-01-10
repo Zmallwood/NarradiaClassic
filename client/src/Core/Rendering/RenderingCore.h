@@ -1,30 +1,15 @@
 #pragma once
 
+#include "nBufTypes.h"
 #include <GL/glew.h>
+#include "nRendBase.h"
+#include "nRendBaseView.h"
 
 namespace Narradia {
 
    // Model
 
 #if 1
-   enum class BufferTypes { Indices, Positions2D, Positions3D, Colors, Uvs, Normals };
-
-   class RendBase {
-     public:
-      GLuint GenNewVAOId();
-      GLuint GenNewBufId(BufferTypes buffer_type, GLuint vao_id);
-      GLuint BufId(BufferTypes buffer_type, GLuint vao_id) const;
-      void CleanupBase() const;
-
-      static constexpr int kNumVerticesInRectangle = 4;
-      inline static const auto kNumFloatsPerEntry = Map<BufferTypes, int>{
-          {BufferTypes::Indices, 1}, {BufferTypes::Positions2D, 2}, {BufferTypes::Positions3D, 3},
-          {BufferTypes::Colors, 4},  {BufferTypes::Uvs, 2},         {BufferTypes::Normals, 3}};
-
-     private:
-      Vec<GLuint> vao_ids_;
-      Map<BufferTypes, Map<GLuint, GLuint>> vbo_ids_;
-   };
 
    // Belonging ShaderProgram class
 #if 1
@@ -442,53 +427,15 @@ namespace Narradia {
    // View
 
 #if 1
-   class RendBase;
-   class ShaderProgramV;
 
-   class RendBaseV {
-     public:
-      RendBaseV();
-      void UseVAOBegin(GLuint vao_id) const;
-      void UseVAOEnd() const;
-      void SetIndicesData(GLuint indices_vbo_id, int num_vertices, const void *data) const;
-      void SetData(
-          GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
-          int layout_location = -1) const;
-      void UpdateIndicesData(GLuint indices_vbo_id, Vec<int> &indices) const;
-      void UpdateData(
-          GLuint vbo_id, Vec<float> &data, BufferTypes buffer_type, int layout_location) const;
-
-      auto shader_program_view() {
-         return shader_program_view_;
-      }
-
-      auto renderer_base() {
-         return renderer_base_;
-      }
-
-     protected:
-      GLuint GetUniformLocation(StringView var_name);
-      void CleanupBase();
-
-      SharedPtr<RendBase> renderer_base_;
-
-     private:
-      void SetArrayBufferData(
-          GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
-          int layout_location = -1) const;
-      void UpdateArrayBufferData(
-          GLuint vbo_id, Vec<float> &data, int num_floats_per_entry, int layout_location) const;
-
-      SharedPtr<ShaderProgramV> shader_program_view_;
-   };
 
    // Belonging ShaderProgramV class
 #if 1
    class ShaderProgram;
 
-   class ShaderProgramV {
+   class ShaderProgramView {
      public:
-      ShaderProgramV();
+      ShaderProgramView();
       bool Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src);
 
       auto shader_program() {

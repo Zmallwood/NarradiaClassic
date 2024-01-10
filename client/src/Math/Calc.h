@@ -1,7 +1,7 @@
 #pragma once
 
 #include "WorldStructure/WorldStructure.h"
-#include "Conf/Constants.h"
+#include "Conf/Const.h"
 
 namespace Narradia {
 

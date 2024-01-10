@@ -3,10 +3,10 @@
 #include "RenderingCore.h"
 
 namespace Narradia {
-   class RendGroundView: public RendBaseV, public Singleton<RendGroundView> {
+   class nRendGroundView: public nRendBaseView, public Singleton<nRendGroundView> {
      public:
-      RendGroundView();
-      ~RendGroundView();
+      nRendGroundView();
+      ~nRendGroundView();
 
       auto is_batch_drawing() {
          return is_batch_drawing_;

@@ -3,7 +3,7 @@
 #include "Pages.h"
 #include "Rendering/ImagesRendering.h"
 #include "Rendering/TextRendering.h"
-#include "Conf/Constants.h"
+#include "Conf/Const.h"
 #include "Core/GuiCore/nSceneGui.h"
 #include "Core/GuiCore/nSceneGuiView.h"
 

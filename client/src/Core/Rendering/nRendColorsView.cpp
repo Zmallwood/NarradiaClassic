@@ -1,13 +1,13 @@
-#include "RendColorsView.h"
-#include "Conf/Constants.h"
+#include "nRendColorsView.h"
+#include "Conf/Const.h"
 
 namespace Narradia {
-   RendColorsView::RendColorsView() {
+   nRendColorsView::nRendColorsView() {
       shader_program_view()->Create(
           vertex_shader_source_2d_solid_colors, fragment_shader_source_2d_solid_colors);
    }
 
-   RendColorsView::~RendColorsView() {
+   nRendColorsView::~nRendColorsView() {
       if (k_verbose)
          std::cout << "Cleaning up DrwSolidColorsV.\n";
       CleanupBase();

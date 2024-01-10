@@ -6,7 +6,8 @@
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
 #include "Core/Assets/nImageBank.h"
-#include "Core/Rendering/RendGroundView.h"
+#include "Core/Rendering/nRendGroundView.h"
+#include "Core/Rendering/nRendModelsView.h"
 
 namespace Narradia {
 
@@ -21,7 +22,7 @@ namespace Narradia {
       for (auto y = 0; y < world_height; y++) {
          for (auto x = 0; x < world_width; x++) {
             WorldAddView::Dispose();
-            RendGroundView::Dispose();
+            nRendGroundView::Dispose();
 
             GraphicsView::get()->ClearCanvas();
 
@@ -30,8 +31,8 @@ namespace Narradia {
             auto y_center = map_area->Height() / 2.0f;
             Player::get()->set_pos({x_center, 0.0f, y_center});
             Player::get()->set_world_location({x, y});
-            auto orig_ground_fog = RendGroundView::get()->fog_color_ground();
-            auto orig_objs_fog = RendModelsView::get()->fog_color_models();
+            auto orig_ground_fog = nRendGroundView::get()->fog_color_ground();
+            auto orig_objs_fog = nRendModelsView::get()->fog_color_models();
             auto width = map_area->Width();
             auto height = map_area->Height();
             auto render_dist = std::sqrt(width * width + height * height) / 2.0f;
@@ -43,12 +44,12 @@ namespace Narradia {
             Camera::get()->set_vertical_angle_deg(90.0f);
             Camera::get()->UpdateGameLogic();
             WorldAddView::get()->set_render_distance(render_dist);
-            RendGroundView::get()->set_fog_color_ground(Colors::white);
-            RendModelsView::get()->set_fog_color_models(Colors::white);
+            nRendGroundView::get()->set_fog_color_ground(Colors::white);
+            nRendModelsView::get()->set_fog_color_models(Colors::white);
             WorldAddView::get()->Render();
             Camera::get()->set_use_fixed_camera_distance(false);
-            RendGroundView::get()->set_fog_color_ground(orig_ground_fog);
-            RendModelsView::get()->set_fog_color_models(orig_objs_fog);
+            nRendGroundView::get()->set_fog_color_ground(orig_ground_fog);
+               nRendModelsView::get()->set_fog_color_models(orig_objs_fog);
             WorldAddView::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             // GraphicsV::get()->PresentCanvas();
@@ -110,7 +111,7 @@ namespace Narradia {
       }
 
       WorldAddView::Dispose();
-      RendGroundView::Dispose();
+      nRendGroundView::Dispose();
    }
 #endif
 

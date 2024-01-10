@@ -1,8 +1,8 @@
-#include "RendGroundView.h"
-#include "Conf/Constants.h"
+#include "nRendGroundView.h"
+#include "Conf/Const.h"
 
 namespace Narradia {
-   RendGroundView::RendGroundView() {
+   nRendGroundView::nRendGroundView() {
       shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
 
       location_projection_ = GetUniformLocation("projection");
@@ -15,7 +15,7 @@ namespace Narradia {
       fog_color_ground_ = k_fogColorGround;
    }
 
-   RendGroundView::~RendGroundView() {
+   nRendGroundView::~nRendGroundView() {
       CleanupBase();
    }
 }

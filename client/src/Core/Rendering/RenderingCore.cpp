@@ -7,34 +7,7 @@ namespace Narradia {
 #if 1
    // RendBase
 #if 1
-   GLuint RendBase::GenNewVAOId() {
-      GLuint new_vao_id;
-      glGenVertexArrays(1, &new_vao_id);
-      vao_ids_.push_back(new_vao_id);
 
-      return new_vao_id;
-   }
-
-   GLuint RendBase::GenNewBufId(BufferTypes buffer_type, GLuint vao_id) {
-      GLuint new_buffer_id;
-      glGenBuffers(1, &new_buffer_id);
-      vbo_ids_[buffer_type][vao_id] = new_buffer_id;
-
-      return new_buffer_id;
-   }
-
-   GLuint RendBase::BufId(BufferTypes buffer_type, GLuint vao_id) const {
-      return vbo_ids_.at(buffer_type).at(vao_id);
-   }
-
-   void RendBase::CleanupBase() const {
-      for (auto &buffer_type : vbo_ids_)
-         for (auto &buffer_entry : buffer_type.second)
-            glDeleteBuffers(1, &buffer_entry.second);
-
-      for (auto vao_id : vao_ids_)
-         glDeleteVertexArrays(1, &vao_id);
-   }
 #endif
 
    // ShaderProgram
@@ -50,97 +23,16 @@ namespace Narradia {
 #if 1
    // RendBaseV
 #if 1
-   RendBaseV::RendBaseV()
-       : shader_program_view_(MakeShared<ShaderProgramV>()),
-         renderer_base_(MakeShared<RendBase>()) {
-   }
 
-   void RendBaseV::SetIndicesData(GLuint indices_vbo_id, int num_vertices, const void *data) const {
-      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
-
-      glBufferData(
-          GL_ELEMENT_ARRAY_BUFFER,
-          num_vertices * RendBase::kNumFloatsPerEntry.at(BufferTypes::Indices) * sizeof(float),
-          data, GL_DYNAMIC_DRAW);
-   }
-
-   void RendBaseV::SetData(
-       GLuint vbo_id, int num_vertices, const void *data, BufferTypes buffer_type,
-       int layout_location) const {
-      SetArrayBufferData(
-          vbo_id, num_vertices, data, RendBase::kNumFloatsPerEntry.at(buffer_type),
-          layout_location);
-   }
-
-   void RendBaseV::SetArrayBufferData(
-       GLuint vbo_id, int num_vertices, const void *data, int num_floats_per_entry,
-       int layout_location) const {
-      glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
-
-      glBufferData(
-          GL_ARRAY_BUFFER, num_vertices * num_floats_per_entry * sizeof(float), data,
-          GL_DYNAMIC_DRAW);
-
-      if (layout_location >= 0) {
-         glVertexAttribPointer(
-             layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);
-
-         glEnableVertexAttribArray(layout_location);
-      }
-   }
-
-   void RendBaseV::UpdateIndicesData(GLuint indices_vbo_id, Vec<int> &indices) const {
-      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_vbo_id);
-
-      glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(float) * indices.size(), indices.data());
-   }
-
-   void RendBaseV::UpdateArrayBufferData(
-       GLuint vbo_id, Vec<float> &data, int num_floats_per_entry, int layout_location) const {
-      glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
-
-      glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * data.size(), data.data());
-
-      glVertexAttribPointer(
-          layout_location, num_floats_per_entry, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);
-
-      glEnableVertexAttribArray(layout_location);
-   }
-
-   void RendBaseV::UpdateData(
-       GLuint vbo_id, Vec<float> &data, BufferTypes buffer_type, int layout_location) const {
-      UpdateArrayBufferData(
-          vbo_id, data, RendBase::kNumFloatsPerEntry.at(buffer_type), layout_location);
-   }
-
-   void RendBaseV::UseVAOBegin(GLuint vao_id) const {
-      glUseProgram(shader_program_view_->shader_program()->program_id());
-      glBindVertexArray(vao_id);
-   }
-
-   void RendBaseV::UseVAOEnd() const {
-      glBindVertexArray(0);
-      glUseProgram(0);
-   }
-
-   GLuint RendBaseV::GetUniformLocation(StringView var_name) {
-      return glGetUniformLocation(
-          shader_program_view_->shader_program()->program_id(), var_name.data());
-   }
-
-   void RendBaseV::CleanupBase() {
-      shader_program_view_->shader_program()->Cleanup();
-      renderer_base_->CleanupBase();
-   }
 #endif
 
    // ShaderProgramV
 #if 1
-   ShaderProgramV::ShaderProgramV()
+   ShaderProgramView::ShaderProgramView()
        : shader_program_(MakeShared<ShaderProgram>()) {
    }
 
-   bool ShaderProgramV::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src) {
+   bool ShaderProgramView::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src) {
       GLuint vertex_shader = 0;
       GLuint fragment_shader = 0;
       shader_program_->set_program_id(glCreateProgram());
@@ -193,7 +85,7 @@ namespace Narradia {
    }
 
    GLuint
-   ShaderProgramV::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
+   ShaderProgramView::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
       *shader = glCreateShader(shader_type);
 
       glShaderSource(*shader, 1, &shader_src, NULL);

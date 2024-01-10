@@ -3,10 +3,10 @@
 #include "RenderingCore.h"
 
 namespace Narradia {
-   class RendImagesView: public RendBaseV, public Singleton<RendImagesView> {
+   class nRendImagesView: public nRendBaseView, public Singleton<nRendImagesView> {
      public:
-      RendImagesView();
-      ~RendImagesView();
+      nRendImagesView();
+      ~nRendImagesView();
 
       static constexpr int kLocationPosition = 0;
       static constexpr int kLocationColor = 1;

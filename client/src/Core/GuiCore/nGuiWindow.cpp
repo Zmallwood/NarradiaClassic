@@ -1,5 +1,5 @@
 #include "nGuiWindow.h"
-#include "Conf/Constants.h"
+#include "Conf/Const.h"
 #include "nGuiWindowCloseButton.h"
 
 namespace Narradia {

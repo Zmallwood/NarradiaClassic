@@ -3,7 +3,7 @@
 #include "Core/Core.h"
 #include "ImagesRendering.h"
 #include "Core/Assets/nImageBank.h"
-#include "Conf/Constants.h"
+#include "Conf/Const.h"
 
 namespace Narradia {
 

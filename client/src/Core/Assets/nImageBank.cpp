@@ -1,5 +1,5 @@
 #include "nImageBank.h"
-#include "Conf/Constants.h"
+#include "Conf/Const.h"
 
 namespace Narradia {
    nImageBank::nImageBank() {

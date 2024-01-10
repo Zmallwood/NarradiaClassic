@@ -1,5 +1,5 @@
 #include "nGuiWindowCloseButton.h"
-#include "Conf/Constants.h"
+#include "Conf/Const.h"
 #include "nGuiWindow.h"
 #include "nSceneGui.h"
 #include "Pages.h"

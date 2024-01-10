@@ -2,48 +2,48 @@
 #include "Core/Assets/nImageBank.h"
 #include "Core/Assets/nModelBank.h"
 #include "Math/Calc.h"
-#include "RendColorsView.h"
-#include "RendGroundView.h"
+#include "nRendColorsView.h"
+#include "nRendGroundView.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
 
 namespace Narradia {
    RenderID NewTile() {
       auto _numVerts = 4;
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       auto _rendBase = _rend->renderer_base();
       auto _VAOID = _rendBase->GenNewVAOId();
-      auto _indexBufID = _rendBase->GenNewBufId(BufferTypes::Indices, _VAOID);
-      auto _posBufID = _rendBase->GenNewBufId(BufferTypes::Positions3D, _VAOID);
-      auto _colorBufID = _rendBase->GenNewBufId(BufferTypes::Colors, _VAOID);
-      auto _uvBufID = _rendBase->GenNewBufId(BufferTypes::Uvs, _VAOID);
-      auto _normBufID = _rendBase->GenNewBufId(BufferTypes::Normals, _VAOID);
+      auto _indexBufID = _rendBase->GenNewBufId(nBufTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->GenNewBufId(nBufTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->GenNewBufId(nBufTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->GenNewBufId(nBufTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->GenNewBufId(nBufTypes::Normals, _VAOID);
       glBindVertexArray(_VAOID);
       _rend->SetIndicesData(_indexBufID, _numVerts, nullptr);
-      _rend->SetData(_posBufID, _numVerts, nullptr, BufferTypes::Positions3D);
-      _rend->SetData(_colorBufID, _numVerts, nullptr, BufferTypes::Colors);
-      _rend->SetData(_uvBufID, _numVerts, nullptr, BufferTypes::Uvs);
-      _rend->SetData(_normBufID, _numVerts, nullptr, BufferTypes::Normals);
+      _rend->SetData(_posBufID, _numVerts, nullptr, nBufTypes::Positions3D);
+      _rend->SetData(_colorBufID, _numVerts, nullptr, nBufTypes::Colors);
+      _rend->SetData(_uvBufID, _numVerts, nullptr, nBufTypes::Uvs);
+      _rend->SetData(_normBufID, _numVerts, nullptr, nBufTypes::Normals);
       glBindVertexArray(0);
       return _VAOID;
    }
 
    RenderID NewTileSurface() {
       auto _numVerts = 6 * 100 * 100;
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       auto _rendBase = _rend->renderer_base();
       auto _VAOID = _rendBase->GenNewVAOId();
-      auto _indexBufID = _rendBase->GenNewBufId(BufferTypes::Indices, _VAOID);
-      auto _posBufID = _rendBase->GenNewBufId(BufferTypes::Positions3D, _VAOID);
-      auto _colorBufID = _rendBase->GenNewBufId(BufferTypes::Colors, _VAOID);
-      auto _uvBufID = _rendBase->GenNewBufId(BufferTypes::Uvs, _VAOID);
-      auto _normBufID = _rendBase->GenNewBufId(BufferTypes::Normals, _VAOID);
+      auto _indexBufID = _rendBase->GenNewBufId(nBufTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->GenNewBufId(nBufTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->GenNewBufId(nBufTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->GenNewBufId(nBufTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->GenNewBufId(nBufTypes::Normals, _VAOID);
       glBindVertexArray(_VAOID);
       _rend->SetIndicesData(_indexBufID, _numVerts, nullptr);
-      _rend->SetData(_posBufID, _numVerts, nullptr, BufferTypes::Positions3D);
-      _rend->SetData(_colorBufID, _numVerts, nullptr, BufferTypes::Colors);
-      _rend->SetData(_uvBufID, _numVerts, nullptr, BufferTypes::Uvs);
-      _rend->SetData(_normBufID, _numVerts, nullptr, BufferTypes::Normals);
+      _rend->SetData(_posBufID, _numVerts, nullptr, nBufTypes::Positions3D);
+      _rend->SetData(_colorBufID, _numVerts, nullptr, nBufTypes::Colors);
+      _rend->SetData(_uvBufID, _numVerts, nullptr, nBufTypes::Uvs);
+      _rend->SetData(_normBufID, _numVerts, nullptr, nBufTypes::Normals);
       glBindVertexArray(0);
       return _VAOID;
    }
@@ -61,7 +61,7 @@ namespace Narradia {
             _vertsVec.push_back(_entry._01);
          }
       }
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       auto _rendBase = _rend->renderer_base();
       if (!_rend->is_batch_drawing())
          _rend->UseVAOBegin(_VAOID);
@@ -86,19 +86,19 @@ namespace Narradia {
          _normals.push_back(_vert_normal.y);
          _normals.push_back(_vert_normal.z);
       }
-      auto _indexBufID = _rendBase->BufId(BufferTypes::Indices, _VAOID);
-      auto _posBufID = _rendBase->BufId(BufferTypes::Positions3D, _VAOID);
-      auto _colorBufID = _rendBase->BufId(BufferTypes::Colors, _VAOID);
-      auto _uvBufID = _rendBase->BufId(BufferTypes::Uvs, _VAOID);
-      auto _normBufID = _rendBase->BufId(BufferTypes::Normals, _VAOID);
+      auto _indexBufID = _rendBase->BufId(nBufTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->BufId(nBufTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->BufId(nBufTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->BufId(nBufTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->BufId(nBufTypes::Normals, _VAOID);
       glBindVertexArray(_VAOID);
       _rend->UpdateIndicesData(_indexBufID, _indices);
       _rend->UpdateData(
-          _posBufID, _positions, BufferTypes::Positions3D, RendGroundView::kLocationPosition);
-      _rend->UpdateData(_colorBufID, _colors, BufferTypes::Colors, RendGroundView::kLocationColor);
-      _rend->UpdateData(_uvBufID, _uvs, BufferTypes::Uvs, RendGroundView::kLocationUv);
+          _posBufID, _positions, nBufTypes::Positions3D, nRendGroundView::kLocationPosition);
+      _rend->UpdateData(_colorBufID, _colors, nBufTypes::Colors, nRendGroundView::kLocationColor);
+      _rend->UpdateData(_uvBufID, _uvs, nBufTypes::Uvs, nRendGroundView::kLocationUv);
       _rend->UpdateData(
-          _normBufID, _normals, BufferTypes::Normals, RendGroundView::kLocationNormal);
+          _normBufID, _normals, nBufTypes::Normals, nRendGroundView::kLocationNormal);
       glBindVertexArray(0);
       if (!_rend->is_batch_drawing())
          _rend->UseVAOEnd();
@@ -110,7 +110,7 @@ namespace Narradia {
       _vertsVec.push_back(_verts._10);
       _vertsVec.push_back(_verts._11);
       _vertsVec.push_back(_verts._01);
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       auto _rendBase = _rend->renderer_base();
       if (!_rend->is_batch_drawing())
          _rend->UseVAOBegin(_VAOID);
@@ -135,19 +135,19 @@ namespace Narradia {
          _normals.push_back(_vert_normal.y);
          _normals.push_back(_vert_normal.z);
       }
-      auto _indexBufID = _rendBase->BufId(BufferTypes::Indices, _VAOID);
-      auto _posBufID = _rendBase->BufId(BufferTypes::Positions3D, _VAOID);
-      auto _colorBufID = _rendBase->BufId(BufferTypes::Colors, _VAOID);
-      auto _uvBufID = _rendBase->BufId(BufferTypes::Uvs, _VAOID);
-      auto _normBufID = _rendBase->BufId(BufferTypes::Normals, _VAOID);
+      auto _indexBufID = _rendBase->BufId(nBufTypes::Indices, _VAOID);
+      auto _posBufID = _rendBase->BufId(nBufTypes::Positions3D, _VAOID);
+      auto _colorBufID = _rendBase->BufId(nBufTypes::Colors, _VAOID);
+      auto _uvBufID = _rendBase->BufId(nBufTypes::Uvs, _VAOID);
+      auto _normBufID = _rendBase->BufId(nBufTypes::Normals, _VAOID);
       glBindVertexArray(_VAOID);
       _rend->UpdateIndicesData(_indexBufID, _indices);
       _rend->UpdateData(
-          _posBufID, _positions, BufferTypes::Positions3D, RendGroundView::kLocationPosition);
-      _rend->UpdateData(_colorBufID, _colors, BufferTypes::Colors, RendGroundView::kLocationColor);
-      _rend->UpdateData(_uvBufID, _uvs, BufferTypes::Uvs, RendGroundView::kLocationUv);
+          _posBufID, _positions, nBufTypes::Positions3D, nRendGroundView::kLocationPosition);
+      _rend->UpdateData(_colorBufID, _colors, nBufTypes::Colors, nRendGroundView::kLocationColor);
+      _rend->UpdateData(_uvBufID, _uvs, nBufTypes::Uvs, nRendGroundView::kLocationUv);
       _rend->UpdateData(
-          _normBufID, _normals, BufferTypes::Normals, RendGroundView::kLocationNormal);
+          _normBufID, _normals, nBufTypes::Normals, nRendGroundView::kLocationNormal);
       glBindVertexArray(0);
       if (!_rend->is_batch_drawing())
          _rend->UseVAOEnd();
@@ -155,7 +155,7 @@ namespace Narradia {
 
    void DrawTileSurface(StringView _imgName, RenderID _VAOID, bool _depthTestOff) {
       auto _vert_count = 6 * 100 * 100;
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       if (_depthTestOff)
          glDisable(GL_DEPTH_TEST);
       else
@@ -186,8 +186,8 @@ namespace Narradia {
           _playerPos.z);
       glUniform3fv(_rend->location_view_pos(), 1, glm::value_ptr(_viewPos));
       glm::vec3 _fogColorGL(
-          RendGroundView::get()->fog_color_ground().r, RendGroundView::get()->fog_color_ground().g,
-          RendGroundView::get()->fog_color_ground().b);
+          nRendGroundView::get()->fog_color_ground().r, nRendGroundView::get()->fog_color_ground().g,
+          nRendGroundView::get()->fog_color_ground().b);
       glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
       glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
@@ -203,7 +203,7 @@ namespace Narradia {
 
    void DrawTile(StringView _imgName, RenderID _VAOID, bool _depthTestOff) {
       auto _vert_count = 4;
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       if (_depthTestOff)
          glDisable(GL_DEPTH_TEST);
       else
@@ -227,9 +227,9 @@ namespace Narradia {
              _playerPos.z);
          glUniform3fv(_rend->location_view_pos(), 1, glm::value_ptr(_viewPos));
          glm::vec3 _fogColorGL(
-             RendGroundView::get()->fog_color_ground().r,
-             RendGroundView::get()->fog_color_ground().g,
-             RendGroundView::get()->fog_color_ground().b);
+             nRendGroundView::get()->fog_color_ground().r,
+             nRendGroundView::get()->fog_color_ground().g,
+             nRendGroundView::get()->fog_color_ground().b);
          glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
       }
       auto _imgID = nImageBank::get()->GetImage(_imgName);
@@ -242,7 +242,7 @@ namespace Narradia {
    }
 
    void StartTileBatchDrawing() {
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       _rend->set_is_batch_drawing(true);
       glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glUniformMatrix4fv(
@@ -269,8 +269,8 @@ namespace Narradia {
           _playerPos.z);
       glUniform3fv(_rend->location_view_pos(), 1, glm::value_ptr(_viewPos));
       glm::vec3 _fogColorGL(
-          RendGroundView::get()->fog_color_ground().r, RendGroundView::get()->fog_color_ground().g,
-          RendGroundView::get()->fog_color_ground().b);
+          nRendGroundView::get()->fog_color_ground().r, nRendGroundView::get()->fog_color_ground().g,
+          nRendGroundView::get()->fog_color_ground().b);
       glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
       glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
@@ -278,7 +278,7 @@ namespace Narradia {
    }
 
    void StopTileBatchDrawing() {
-      auto _rend = RendGroundView::get();
+      auto _rend = nRendGroundView::get();
       _rend->set_is_batch_drawing(false);
       glUseProgram(0);
       glDisable(GL_CULL_FACE);
