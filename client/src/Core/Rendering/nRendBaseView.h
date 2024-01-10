@@ -4,7 +4,7 @@
 
 namespace Narradia {
    class nRendBase;
-   class ShaderProgramView;
+   class nShaderProgramView;
 
    class nRendBaseView {
      public:
@@ -19,19 +19,18 @@ namespace Narradia {
       void
       UpdateData(GLuint _VBOID, Vec<float> &_data, nBufTypes _bufType, int _layoutLocation) const;
 
-      auto shader_program_view() {
-         return shader_program_view_;
+      auto ShaderProgramView() {
+         return m_shaderProgramView;
       }
-
-      auto renderer_base() {
-         return renderer_base_;
+      auto RendererBase() {
+         return m_rendererBase;
       }
 
      protected:
       GLuint GetUniformLocation(StringView _varName);
       void CleanupBase();
 
-      SharedPtr<nRendBase> renderer_base_;
+      SharedPtr<nRendBase> m_rendererBase;
 
      private:
       void SetArrayBufferData(
@@ -40,6 +39,6 @@ namespace Narradia {
       void UpdateArrayBufferData(
           GLuint _VBOID, Vec<float> &_data, int _numFloatsPerEntry, int _layoutLocation) const;
 
-      SharedPtr<ShaderProgramView> shader_program_view_;
+      SharedPtr<nShaderProgramView> m_shaderProgramView;
    };
 }

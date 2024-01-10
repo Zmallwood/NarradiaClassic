@@ -6,7 +6,7 @@
 namespace Narradia {
    RenderID NewImage() {
       auto _rend = nRendImagesView::get();
-      auto _rendBase = _rend->renderer_base();
+      auto _rendBase = _rend->RendererBase();
       auto _VAOID = _rendBase->GenNewVAOId();
       _rend->UseVAOBegin(_VAOID);
       auto _indexBufID = _rendBase->GenNewBufId(nBufTypes::Indices, _VAOID);
@@ -25,7 +25,7 @@ namespace Narradia {
 
    void DrawImage(StringView _imgName, RenderID _RID, const RectF &_dest, Color _color) {
       auto _rend = nRendImagesView::get();
-      auto _rendBase = _rend->renderer_base();
+      auto _rendBase = _rend->RendererBase();
       auto _GLRect = _dest.ToGLRectF();
       Vertex2F _verts[nRendBase::kNumVerticesInRectangle];
       _verts[0].pos = {_GLRect.x, _GLRect.y - _GLRect.h};

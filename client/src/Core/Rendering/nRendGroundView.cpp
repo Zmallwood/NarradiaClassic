@@ -3,7 +3,7 @@
 
 namespace Narradia {
    nRendGroundView::nRendGroundView() {
-      shader_program_view()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
+      ShaderProgramView()->Create(vertex_shader_source_tiles, fragment_shader_source_tiles);
 
       location_projection_ = GetUniformLocation("projection");
       location_view_ = GetUniformLocation("view");

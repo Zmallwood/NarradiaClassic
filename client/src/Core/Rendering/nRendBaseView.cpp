@@ -1,11 +1,11 @@
 #include "nRendBaseView.h"
-#include "nRendBase.h"
 #include "RenderingCore.h"
+#include "nRendBase.h"
 
 namespace Narradia {
    nRendBaseView::nRendBaseView()
-       : shader_program_view_(MakeShared<ShaderProgramView>()),
-         renderer_base_(MakeShared<nRendBase>()) {
+       : m_shaderProgramView(MakeShared<nShaderProgramView>()),
+         m_rendererBase(MakeShared<nRendBase>()) {
    }
 
    void
@@ -13,16 +13,15 @@ namespace Narradia {
       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indicesVBOID);
       glBufferData(
           GL_ELEMENT_ARRAY_BUFFER,
-          _numVertices * nRendBase::kNumFloatsPerEntry.at(nBufTypes::Indices) * sizeof(float), _data,
-          GL_DYNAMIC_DRAW);
+          _numVertices * nRendBase::kNumFloatsPerEntry.at(nBufTypes::Indices) * sizeof(float),
+          _data, GL_DYNAMIC_DRAW);
    }
 
    void nRendBaseView::SetData(
        GLuint _VBOID, int _numVertices, const void *_data, nBufTypes _bufType,
        int _layoutLocation) const {
       SetArrayBufferData(
-          _VBOID, _numVertices, _data, nRendBase::kNumFloatsPerEntry.at(_bufType),
-          _layoutLocation);
+          _VBOID, _numVertices, _data, nRendBase::kNumFloatsPerEntry.at(_bufType), _layoutLocation);
    }
 
    void nRendBaseView::SetArrayBufferData(
@@ -60,7 +59,7 @@ namespace Narradia {
    }
 
    void nRendBaseView::UseVAOBegin(GLuint _VAOID) const {
-      glUseProgram(shader_program_view_->shader_program()->program_id());
+      glUseProgram(m_shaderProgramView->shader_program()->program_id());
       glBindVertexArray(_VAOID);
    }
 
@@ -71,11 +70,11 @@ namespace Narradia {
 
    GLuint nRendBaseView::GetUniformLocation(StringView _varName) {
       return glGetUniformLocation(
-          shader_program_view_->shader_program()->program_id(), _varName.data());
+          m_shaderProgramView->shader_program()->program_id(), _varName.data());
    }
 
    void nRendBaseView::CleanupBase() {
-      shader_program_view_->shader_program()->Cleanup();
-      renderer_base_->CleanupBase();
+      m_shaderProgramView->shader_program()->Cleanup();
+      m_rendererBase->CleanupBase();
    }
 }

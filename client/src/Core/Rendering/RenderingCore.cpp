@@ -12,7 +12,7 @@ namespace Narradia {
 
    // ShaderProgram
 #if 1
-   void ShaderProgram::Cleanup() {
+   void nShaderProgram::Cleanup() {
       glDeleteProgram(program_id_);
    }
 #endif
@@ -28,11 +28,11 @@ namespace Narradia {
 
    // ShaderProgramV
 #if 1
-   ShaderProgramView::ShaderProgramView()
-       : shader_program_(MakeShared<ShaderProgram>()) {
+   nShaderProgramView::nShaderProgramView()
+       : shader_program_(MakeShared<nShaderProgram>()) {
    }
 
-   bool ShaderProgramView::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src) {
+   bool nShaderProgramView::Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src) {
       GLuint vertex_shader = 0;
       GLuint fragment_shader = 0;
       shader_program_->set_program_id(glCreateProgram());
@@ -85,7 +85,7 @@ namespace Narradia {
    }
 
    GLuint
-   ShaderProgramView::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
+   nShaderProgramView::CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type) {
       *shader = glCreateShader(shader_type);
 
       glShaderSource(*shader, 1, &shader_src, NULL);

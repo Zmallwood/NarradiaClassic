@@ -38,7 +38,7 @@ namespace Narradia {
       auto z_near = 0.1f;
       auto z_far = 3000.0f;
       auto new_persp_mat = glm::perspective(fov_rads, aspect, z_near, z_far);
-      CameraGL::get()->set_persp_matrix(new_persp_mat);
+      nCameraGL::get()->SetPerspMatrix(new_persp_mat);
    }
 
    void Camera::SetViewMat() {
@@ -59,7 +59,7 @@ namespace Narradia {
       auto new_view_matrix = glm::lookAt(
           glm::vec3(look_from.x, look_from.y, look_from.z),
           glm::vec3(look_at.x, look_at.y, look_at.z), glm::vec3(0.0, 1.0, 0.0));
-      CameraGL::get()->set_view_matrix(new_view_matrix);
+      nCameraGL::get()->SetViewMatrix(new_view_matrix);
    }
 
    Point3F Camera::GetCameraPos() {

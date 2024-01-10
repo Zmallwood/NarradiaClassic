@@ -11,7 +11,7 @@ namespace Narradia {
    RenderID NewTile() {
       auto _numVerts = 4;
       auto _rend = nRendGroundView::get();
-      auto _rendBase = _rend->renderer_base();
+      auto _rendBase = _rend->RendererBase();
       auto _VAOID = _rendBase->GenNewVAOId();
       auto _indexBufID = _rendBase->GenNewBufId(nBufTypes::Indices, _VAOID);
       auto _posBufID = _rendBase->GenNewBufId(nBufTypes::Positions3D, _VAOID);
@@ -31,7 +31,7 @@ namespace Narradia {
    RenderID NewTileSurface() {
       auto _numVerts = 6 * 100 * 100;
       auto _rend = nRendGroundView::get();
-      auto _rendBase = _rend->renderer_base();
+      auto _rendBase = _rend->RendererBase();
       auto _VAOID = _rendBase->GenNewVAOId();
       auto _indexBufID = _rendBase->GenNewBufId(nBufTypes::Indices, _VAOID);
       auto _posBufID = _rendBase->GenNewBufId(nBufTypes::Positions3D, _VAOID);
@@ -62,7 +62,7 @@ namespace Narradia {
          }
       }
       auto _rend = nRendGroundView::get();
-      auto _rendBase = _rend->renderer_base();
+      auto _rendBase = _rend->RendererBase();
       if (!_rend->is_batch_drawing())
          _rend->UseVAOBegin(_VAOID);
       Vec<int> _indices(_vertsVec.size());
@@ -111,7 +111,7 @@ namespace Narradia {
       _vertsVec.push_back(_verts._11);
       _vertsVec.push_back(_verts._01);
       auto _rend = nRendGroundView::get();
-      auto _rendBase = _rend->renderer_base();
+      auto _rendBase = _rend->RendererBase();
       if (!_rend->is_batch_drawing())
          _rend->UseVAOBegin(_VAOID);
       Vec<int> _indices(_vertsVec.size());
@@ -161,12 +161,12 @@ namespace Narradia {
       else
          glEnable(GL_DEPTH_TEST);
       _rend->UseVAOBegin(_VAOID);
-      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
+      glUseProgram(_rend->ShaderProgramView()->shader_program()->program_id());
       glUniformMatrix4fv(
           _rend->location_projection(), 1, GL_FALSE,
-          glm::value_ptr(CameraGL::get()->persp_matrix()));
+          glm::value_ptr(nCameraGL::get()->PerspMatrix()));
       glUniformMatrix4fv(
-          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(nCameraGL::get()->ViewMatrix()));
       glm::mat4 _model(1.0);
       glUniformMatrix4fv(_rend->location_model(), 1, GL_FALSE, glm::value_ptr(_model));
       glUniform1f(_rend->location_alpha(), 1.0f);
@@ -189,7 +189,7 @@ namespace Narradia {
           nRendGroundView::get()->fog_color_ground().r, nRendGroundView::get()->fog_color_ground().g,
           nRendGroundView::get()->fog_color_ground().b);
       glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
-      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
+      glUseProgram(_rend->ShaderProgramView()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
       auto _imgID = nImageBank::get()->GetImage(_imgName);
@@ -212,9 +212,9 @@ namespace Narradia {
          _rend->UseVAOBegin(_VAOID);
          glUniformMatrix4fv(
              _rend->location_projection(), 1, GL_FALSE,
-             glm::value_ptr(CameraGL::get()->persp_matrix()));
+             glm::value_ptr(nCameraGL::get()->PerspMatrix()));
          glUniformMatrix4fv(
-             _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+             _rend->location_view(), 1, GL_FALSE, glm::value_ptr(nCameraGL::get()->ViewMatrix()));
          glm::mat4 _model(1.0);
          glUniformMatrix4fv(_rend->location_model(), 1, GL_FALSE, glm::value_ptr(_model));
          glUniform1f(_rend->location_alpha(), 1.0f);
@@ -244,12 +244,12 @@ namespace Narradia {
    void StartTileBatchDrawing() {
       auto _rend = nRendGroundView::get();
       _rend->set_is_batch_drawing(true);
-      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
+      glUseProgram(_rend->ShaderProgramView()->shader_program()->program_id());
       glUniformMatrix4fv(
           _rend->location_projection(), 1, GL_FALSE,
-          glm::value_ptr(CameraGL::get()->persp_matrix()));
+          glm::value_ptr(nCameraGL::get()->PerspMatrix()));
       glUniformMatrix4fv(
-          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(nCameraGL::get()->ViewMatrix()));
       glm::mat4 model(1.0);
       glUniformMatrix4fv(_rend->location_model(), 1, GL_FALSE, glm::value_ptr(model));
       glUniform1f(_rend->location_alpha(), 1.0f);
@@ -272,7 +272,7 @@ namespace Narradia {
           nRendGroundView::get()->fog_color_ground().r, nRendGroundView::get()->fog_color_ground().g,
           nRendGroundView::get()->fog_color_ground().b);
       glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
-      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
+      glUseProgram(_rend->ShaderProgramView()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }

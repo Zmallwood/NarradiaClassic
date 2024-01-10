@@ -4,7 +4,7 @@
 namespace Narradia {
    RenderID NewRect() {
       auto _rend = nRendColorsView::get();
-      auto _rend_base = _rend->renderer_base();
+      auto _rend_base = _rend->RendererBase();
       auto _VAOID = _rend_base->GenNewVAOId();
       _rend->UseVAOBegin(_VAOID);
       auto _indexBuffID = _rend_base->GenNewBufId(nBufTypes::Indices, _VAOID);
@@ -21,7 +21,7 @@ namespace Narradia {
 
    void DrawRect(RenderID _VAOID, RectF _rect, Color _color) {
       auto _rend = nRendColorsView::get();
-      auto _rend_base = _rend->renderer_base();
+      auto _rend_base = _rend->RendererBase();
       auto _GLRect = _rect.ToGLRectF();
       Vertex2F _verts[nRendBase::kNumVerticesInRectangle];
       _verts[0].pos = {_GLRect.x, _GLRect.y - _GLRect.h};
@@ -56,7 +56,7 @@ namespace Narradia {
 
    void FillRect(RenderID _VAOID, RectF _rect, Color _color) {
       auto _rend = nRendColorsView::get();
-      auto _rend_base = _rend->renderer_base();
+      auto _rend_base = _rend->RendererBase();
       auto _GLRect = _rect.ToGLRectF();
       Vertex2F _verts[nRendBase::kNumVerticesInRectangle];
       _verts[0].pos = {_GLRect.x, _GLRect.y - _GLRect.h};

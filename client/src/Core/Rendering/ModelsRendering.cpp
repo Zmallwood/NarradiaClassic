@@ -71,13 +71,13 @@ namespace Narradia {
          return;
       if (!_isBatchDrawing) {
          glEnable(GL_DEPTH_TEST);
-         glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
+         glUseProgram(_rend->ShaderProgramView()->shader_program()->program_id());
          glUniformMatrix4fv(
              _rend->location_projection(), 1, GL_FALSE,
-             value_ptr(CameraGL::get()->persp_matrix()));
+             value_ptr(nCameraGL::get()->PerspMatrix()));
          glUniformMatrix4fv(
              _rend->location_view(), 1, GL_FALSE,
-             glm::value_ptr(CameraGL::get()->view_matrix()));
+             glm::value_ptr(nCameraGL::get()->ViewMatrix()));
       }
       auto _model_matrix = glm::rotate(
           glm::scale(
@@ -151,11 +151,11 @@ namespace Narradia {
       auto _rend = nRendModelsView::get();
       _rend->set_is_batch_drawing(true);
       glEnable(GL_DEPTH_TEST);
-      glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
+      glUseProgram(_rend->ShaderProgramView()->shader_program()->program_id());
       glUniformMatrix4fv(
-          _rend->location_projection(), 1, GL_FALSE, value_ptr(CameraGL::get()->persp_matrix()));
+          _rend->location_projection(), 1, GL_FALSE, value_ptr(nCameraGL::get()->PerspMatrix()));
       glUniformMatrix4fv(
-          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(CameraGL::get()->view_matrix()));
+          _rend->location_view(), 1, GL_FALSE, glm::value_ptr(nCameraGL::get()->ViewMatrix()));
    }
 
    void StopModelsBatchDrawing() {

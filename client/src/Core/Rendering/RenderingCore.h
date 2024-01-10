@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include "nRendBase.h"
 #include "nRendBaseView.h"
+#include "nCameraGL.h"
 
 namespace Narradia {
 
@@ -13,7 +14,7 @@ namespace Narradia {
 
    // Belonging ShaderProgram class
 #if 1
-   class ShaderProgram {
+   class nShaderProgram {
      public:
       void Cleanup();
 
@@ -32,28 +33,7 @@ namespace Narradia {
 
 // CameraGL using for tiles- and models rendering.
 #if 1
-   class CameraGL : public Singleton<CameraGL> {
-     public:
-      auto persp_matrix() {
-         return persp_matrix_;
-      }
 
-      void set_persp_matrix(glm::mat4 value) {
-         persp_matrix_ = value;
-      }
-
-      auto view_matrix() {
-         return view_matrix_;
-      }
-
-      void set_view_matrix(glm::mat4 value) {
-         view_matrix_ = value;
-      }
-
-     private:
-      glm::mat4 persp_matrix_;
-      glm::mat4 view_matrix_;
-   };
 #endif
 
    // Shaders
@@ -431,11 +411,11 @@ namespace Narradia {
 
    // Belonging ShaderProgramV class
 #if 1
-   class ShaderProgram;
+   class nShaderProgram;
 
-   class ShaderProgramView {
+   class nShaderProgramView {
      public:
-      ShaderProgramView();
+      nShaderProgramView();
       bool Create(const GLchar *vert_shader_src, const GLchar *frag_shader_src);
 
       auto shader_program() {
@@ -445,7 +425,7 @@ namespace Narradia {
      private:
       GLuint CompileShader(const GLchar *shader_src, GLuint *shader, GLenum shader_type);
 
-      SharedPtr<ShaderProgram> shader_program_;
+      SharedPtr<nShaderProgram> shader_program_;
    };
 #endif
 #endif
