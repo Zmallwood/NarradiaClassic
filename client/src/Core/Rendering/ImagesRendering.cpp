@@ -1,7 +1,7 @@
 #include "ImagesRendering.h"
 #include "RendImagesView.h"
-#include "Core/Assets/ModelBank.h"
-#include "Core/Assets/ImageBank.h"
+#include "Core/Assets/nModelBank.h"
+#include "Core/Assets/nImageBank.h"
 
 namespace Narradia {
    RenderID NewImage() {
@@ -22,6 +22,7 @@ namespace Narradia {
       _rend->UseVAOEnd();
       return _VAOID;
    }
+
    void DrawImage(StringView _imgName, RenderID _RID, const RectF &_dest, Color _color) {
       auto _rend = RendImagesView::get();
       auto _rendBase = _rend->renderer_base();

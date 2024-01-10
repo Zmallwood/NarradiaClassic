@@ -66,7 +66,7 @@ set(PCH_FILES
 "src/Common/CanvasUtilities.h"
 "src/Common/Utilities.h"
 "src/Common/SingletonsDisposal.h"
-"src/Common/Square.h"
+"src/Common/nSquare.h"
 )
 
 add_executable (NarradiaClassic ${SOURCE_FILES})

@@ -4,8 +4,8 @@
 #include "Rendering/ImagesRendering.h"
 #include "Rendering/TextRendering.h"
 #include "Conf/Constants.h"
-#include "Core/GuiCore/SceneGui.h"
-#include "Core/GuiCore/SceneGuiView.h"
+#include "Core/GuiCore/nSceneGui.h"
+#include "Core/GuiCore/nSceneGuiView.h"
 
 namespace Narradia {
 

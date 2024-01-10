@@ -18,6 +18,7 @@ namespace Narradia {
       _rend->UseVAOEnd();
       return _VAOID;
    }
+
    void DrawRect(RenderID _VAOID, RectF _rect, Color _color) {
       auto _rend = RendColorsView::get();
       auto _rend_base = _rend->renderer_base();
@@ -52,6 +53,7 @@ namespace Narradia {
       glDrawElements(GL_LINE_STRIP, RendBase::kNumVerticesInRectangle, GL_UNSIGNED_INT, NULL);
       _rend->UseVAOEnd();
    }
+
    void FillRect(RenderID _VAOID, RectF _rect, Color _color) {
       auto _rend = RendColorsView::get();
       auto _rend_base = _rend->renderer_base();

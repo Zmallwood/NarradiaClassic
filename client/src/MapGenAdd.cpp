@@ -1,11 +1,11 @@
 #include "MapGenAdd.h"
-#include "Core/Assets/ModelBank.h"
+#include "Core/Assets/nModelBank.h"
 #include "Core/Rendering/GroundRendering.h"
 #include "Core/Rendering/ModelsRendering.h"
 #include "WorldAdd.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
-#include "Core/Assets/ImageBank.h"
+#include "Core/Assets/nImageBank.h"
 #include "Core/Rendering/RendGroundView.h"
 
 namespace Narradia {

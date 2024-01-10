@@ -21,6 +21,7 @@ namespace Narradia {
          AddSingletonDisposeAction([&] { m_instance.reset(); });
       }
    }
+
    template <class T>
    void Singleton<T>::Dispose() {
       if (m_instance) {
@@ -28,6 +29,7 @@ namespace Narradia {
          m_instance = nullptr;
       }
    }
+
    template <class T>
    std::shared_ptr<T> Singleton<T>::get() {
 

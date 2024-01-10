@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Core/GuiCore/GuiComponent.h"
-#include "Core/GuiCore/GuiWindow.h"
-#include "Core/GuiCore/GuiComponentView.h"
-#include "Core/GuiCore/GuiWindowView.h"
+#include "Core/GuiCore/nGuiComponent.h"
+#include "Core/GuiCore/nGuiWindow.h"
+#include "Core/GuiCore/nGuiComponentView.h"
+#include "Core/GuiCore/nGuiWindowView.h"
 
 namespace Narradia {
 

@@ -2,9 +2,9 @@
 #include "Math/Calc.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
-#include "Core/Assets/ModelBank.h"
-#include "Core/Assets/ModelStructure/Model.h"
-#include "Core/Assets/ImageBank.h"
+#include "Core/Assets/nModelBank.h"
+#include "Core/Assets/ModelStructure/nModel.h"
+#include "Core/Assets/nImageBank.h"
 
 namespace Narradia {
 
@@ -121,7 +121,7 @@ namespace Narradia {
       auto i_body = 0;
 
       for (auto &body : *model->GetModelParts()) {
-         auto &timelines = body->GetTimeln()->keyframes;
+         auto &timelines = body->GetTimeline()->keyframes;
 
          for (auto &keyframe : timelines) {
             auto keyframe_time = keyframe.first;
@@ -137,7 +137,7 @@ namespace Narradia {
             body_data.image_name = body->GetTexName();
             body_data.num_vertices = vertex_count;
             model_ids->at(model_name.data()).at(i_body).insert({keyframe_time, body_data});
-            auto &model_keyframe = body->GetTimeln()->keyframes.at(keyframe_time);
+            auto &model_keyframe = body->GetTimeline()->keyframes.at(keyframe_time);
             Vec<Vertex3F> vertices;
             Vec<Point3F> normals;
             auto &anim_vertices = model_keyframe->vertices;

@@ -1,8 +1,8 @@
 #include "TextRendering.h"
-#include "Core/Assets/ModelBank.h"
+#include "Core/Assets/nModelBank.h"
 #include "Core/Core.h"
 #include "ImagesRendering.h"
-#include "Core/Assets/ImageBank.h"
+#include "Core/Assets/nImageBank.h"
 #include "Conf/Constants.h"
 
 namespace Narradia {

@@ -1,6 +1,6 @@
 #include "GroundRendering.h"
-#include "Core/Assets/ImageBank.h"
-#include "Core/Assets/ModelBank.h"
+#include "Core/Assets/nImageBank.h"
+#include "Core/Assets/nModelBank.h"
 #include "Math/Calc.h"
 #include "RendColorsView.h"
 #include "RendGroundView.h"
@@ -27,6 +27,7 @@ namespace Narradia {
       glBindVertexArray(0);
       return _VAOID;
    }
+
    RenderID NewTileSurface() {
       auto _numVerts = 6 * 100 * 100;
       auto _rend = RendGroundView::get();
@@ -46,6 +47,7 @@ namespace Narradia {
       glBindVertexArray(0);
       return _VAOID;
    }
+
    void SetTileSufaceGeom(RenderID _VAOID, Vec<Vec<Square<Vertex3F>>> &_verts) {
       Vec<Vertex3F> _vertsVec;
       for (auto _y = 0; _y < 100; _y++) {
@@ -101,6 +103,7 @@ namespace Narradia {
       if (!_rend->is_batch_drawing())
          _rend->UseVAOEnd();
    }
+
    void SetTileGeom(RenderID _VAOID, Square<Vertex3F> &_verts) {
       Vec<Vertex3F> _vertsVec;
       _vertsVec.push_back(_verts._00);
@@ -197,6 +200,7 @@ namespace Narradia {
       glUseProgram(0);
       glDisable(GL_CULL_FACE);
    }
+
    void DrawTile(StringView _imgName, RenderID _VAOID, bool _depthTestOff) {
       auto _vert_count = 4;
       auto _rend = RendGroundView::get();
@@ -236,6 +240,7 @@ namespace Narradia {
       if (!_rend->is_batch_drawing())
          _rend->UseVAOEnd();
    }
+
    void StartTileBatchDrawing() {
       auto _rend = RendGroundView::get();
       _rend->set_is_batch_drawing(true);
@@ -271,6 +276,7 @@ namespace Narradia {
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
    }
+
    void StopTileBatchDrawing() {
       auto _rend = RendGroundView::get();
       _rend->set_is_batch_drawing(false);

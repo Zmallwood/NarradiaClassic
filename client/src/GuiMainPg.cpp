@@ -5,7 +5,7 @@
 #include "Math/Calc.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
-#include "Core/GuiCore/GuiWindowCloseButtonView.h"
+#include "Core/GuiCore/nGuiWindowCloseButtonView.h"
 
 namespace Narradia {
 

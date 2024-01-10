@@ -15,11 +15,13 @@ namespace Narradia {
    template <class T>
    using Function = std::function<T>;
    using Exception = std::exception;
+
    template <class T, class... __Args>
    auto MakeShared(__Args... args) {
 
       return std::make_shared<T>(args...);
    }
+
    template <class T>
    inline auto ToString(T arg) {
 
