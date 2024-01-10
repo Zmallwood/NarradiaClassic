@@ -127,14 +127,14 @@ namespace Narradia {
    // View
 
 #if 1
-   WorldAddV::WorldAddV(bool simplified_ground)
+   WorldAddView::WorldAddView(bool simplified_ground)
        : simplified_ground_(simplified_ground) {
       InitCurrWorldArea();
 
       rid_back_gradient = NewImage();
    }
 
-   void WorldAddV::InitCurrWorldArea() {
+   void WorldAddView::InitCurrWorldArea() {
       // auto wa = World::get()->CurrWorldArea();
       auto curr_map_loc = Player::get()->world_location();
       auto t_sz = k_tileSize;
@@ -315,7 +315,7 @@ namespace Narradia {
       }
    }
 
-   void WorldAddV::Render() {
+   void WorldAddView::Render() {
       try {
          DrawImage("WorldAddBackGradient", rid_back_gradient, {0.0f, 0.0f, 1.0f, 1.0f});
          DrawAllGround();
@@ -324,7 +324,7 @@ namespace Narradia {
          Console::get()->Print("Exception in WorldViewAdd::Render: " + String(e.what()));
       }
    }
-   void WorldAddV::DrawAllGround() {
+   void WorldAddView::DrawAllGround() {
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Player::get()->world_location();
 
@@ -545,7 +545,7 @@ namespace Narradia {
       StopTileBatchDrawing();
    }
 
-   void WorldAddV::DrawAllModels() {
+   void WorldAddView::DrawAllModels() {
       auto curr_wa = World::get()->CurrWorldArea();
       auto x_center = static_cast<int>(Player::get()->pos().x);
       auto y_center = static_cast<int>(Player::get()->pos().z);
@@ -655,7 +655,7 @@ namespace Narradia {
       StopModelsBatchDrawing();
    }
 
-   inline void WorldAddV::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   inline void WorldAddView::DrawGroundTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Player::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
@@ -771,7 +771,7 @@ namespace Narradia {
       }
    }
 
-   inline void WorldAddV::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
+   inline void WorldAddView::DrawModelsTileOutsideWorldArea(int x, int y, int dloc_x, int dloc_y) {
       auto curr_wa = World::get()->CurrWorldArea();
       auto world_loc = Player::get()->world_location();
       auto loc = world_loc.Translate(dloc_x, dloc_y);
@@ -799,7 +799,7 @@ namespace Narradia {
       }
    }
 
-   inline void WorldAddV::DrawGround(SharedPtr<Tile> tile, Point coord) {
+   inline void WorldAddView::DrawGround(SharedPtr<Tile> tile, Point coord) {
       auto ground = tile->ground();
 
       if (ground == "GroundWater") {
@@ -818,7 +818,7 @@ namespace Narradia {
       DrawTile(ground, tile->rid());
    }
 
-   void WorldAddV::DrawObjects(SharedPtr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
+   void WorldAddView::DrawObjects(SharedPtr<Tile> tile, Point coord, int dloc_x, int dloc_y) {
       if (tile->object()) {
          auto curr_wa = World::get()->CurrWorldArea();
          auto curr_map_location = Player::get()->world_location();
@@ -840,7 +840,7 @@ namespace Narradia {
       }
    }
 
-   void WorldAddV::DrawPlayer() {
+   void WorldAddView::DrawPlayer() {
       auto curr_wa = World::get()->CurrWorldArea();
       auto curr_map_location = Player::get()->world_location();
       auto tile_size = k_tileSize;
@@ -863,7 +863,7 @@ namespace Narradia {
           0.6f);
    }
 
-   inline void WorldAddV::DrawTileSymbols(SharedPtr<Tile> tile, Point coord) {
+   inline void WorldAddView::DrawTileSymbols(SharedPtr<Tile> tile, Point coord) {
       auto player_pos = Player::get()->pos().GetXZ().ToIntPoint();
 
       if (tile->ground() == "GroundWater" || tile->ground() == "GroundRiver") {

@@ -330,18 +330,18 @@ namespace Narradia {
 #if 1
    // FPSCounterModuleV
 #if 1
-   FPSCounterAddV::FPSCounterAddV() {
+   FPSCounterAddView::FPSCounterAddView() {
       rid_text = NewString();
    }
 
-   void FPSCounterAddV::Render() {
+   void FPSCounterAddView::Render() {
       DrawString(rid_text, "Fps: " + std::to_string(FPSCounterAdd::get()->fps()), {0.95f, 0.05f});
    }
 #endif
 
 // MenuModelsAddV
 #if 1
-   void MenuModelsAddV::Render() {
+   void MenuModelsAddView::Render() {
       DrawModel("Player2", SDL_GetTicks(), {-3.0f, 0.0f, 0.0f});
    }
 #endif

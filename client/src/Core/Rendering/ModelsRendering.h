@@ -17,10 +17,10 @@ namespace Narradia {
    };
 #endif
 
-   class RendModelsV : public RendBaseV, public Singleton<RendModelsV> {
+   class RendModelsView : public RendBaseV, public Singleton<RendModelsView> {
      public:
-      RendModelsV();
-      ~RendModelsV();
+      RendModelsView();
+      ~RendModelsView();
       RenderID NewBodyKeyframe(StringView model_name, float ms_time);
       void NewBodyKeyframeGeometry(
           GLuint vao_id, Vec<Vertex3F> vertices, Vec<Point3F> vertex_normals);

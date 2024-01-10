@@ -12,11 +12,9 @@ namespace Narradia {
       auto TexName() {
          return m_texName;
       }
-
       void SetTexName(String _value) {
          m_texName= _value;
       }
-
       auto Timeline() {
          return m_timeline;
       }

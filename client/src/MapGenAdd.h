@@ -5,7 +5,7 @@ namespace Narradia {
    // View
 
 #if 1
-   class MapGenAddV : public Singleton<MapGenAddV> {
+   class MapGenAddView : public Singleton<MapGenAddView> {
      public:
       void Render();
    };

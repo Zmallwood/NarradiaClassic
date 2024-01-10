@@ -13,17 +13,17 @@ namespace Narradia {
    // View
 
 #if 1
-   void MapGenAddV::Render() {
+   void MapGenAddView::Render() {
       auto world_width = World::get()->world_width();
       auto world_height = World::get()->world_height();
       auto map_areas = World::get()->world_areas();
 
       for (auto y = 0; y < world_height; y++) {
          for (auto x = 0; x < world_width; x++) {
-            WorldAddV::Dispose();
+            WorldAddView::Dispose();
             RendGroundView::Dispose();
 
-            GraphicsV::get()->ClearCanvas();
+            GraphicsView::get()->ClearCanvas();
 
             auto map_area = map_areas[x][y];
             auto x_center = map_area->Width() / 2.0f;
@@ -31,25 +31,25 @@ namespace Narradia {
             Player::get()->set_pos({x_center, 0.0f, y_center});
             Player::get()->set_world_location({x, y});
             auto orig_ground_fog = RendGroundView::get()->fog_color_ground();
-            auto orig_objs_fog = RendModelsV::get()->fog_color_models();
+            auto orig_objs_fog = RendModelsView::get()->fog_color_models();
             auto width = map_area->Width();
             auto height = map_area->Height();
             auto render_dist = std::sqrt(width * width + height * height) / 2.0f;
-            WorldAddV::Touch(true);
-            auto a = WorldAddV::get().get();
-            auto orig_render_dist = WorldAddV::get()->render_distance();
+            WorldAddView::Touch(true);
+            auto a = WorldAddView::get().get();
+            auto orig_render_dist = WorldAddView::get()->render_distance();
             auto orig_camera_vert_angle = Camera::get()->vertical_angle_deg();
             Camera::get()->set_use_fixed_camera_distance(true);
             Camera::get()->set_vertical_angle_deg(90.0f);
             Camera::get()->UpdateGameLogic();
-            WorldAddV::get()->set_render_distance(render_dist);
+            WorldAddView::get()->set_render_distance(render_dist);
             RendGroundView::get()->set_fog_color_ground(Colors::white);
-            RendModelsV::get()->set_fog_color_models(Colors::white);
-            WorldAddV::get()->Render();
+            RendModelsView::get()->set_fog_color_models(Colors::white);
+            WorldAddView::get()->Render();
             Camera::get()->set_use_fixed_camera_distance(false);
             RendGroundView::get()->set_fog_color_ground(orig_ground_fog);
-            RendModelsV::get()->set_fog_color_models(orig_objs_fog);
-            WorldAddV::get()->set_render_distance(orig_render_dist);
+            RendModelsView::get()->set_fog_color_models(orig_objs_fog);
+            WorldAddView::get()->set_render_distance(orig_render_dist);
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             // GraphicsV::get()->PresentCanvas();
 
@@ -103,13 +103,13 @@ namespace Narradia {
                 pixels.data());
             glBindTexture(GL_TEXTURE_2D, 0);
             // delete[] data;
-            GraphicsV::get()->ClearCanvas();
+            GraphicsView::get()->ClearCanvas();
             // GraphicsV::get()->PresentCanvas();
             map_area->ClearAllRIDs();
          }
       }
 
-      WorldAddV::Dispose();
+      WorldAddView::Dispose();
       RendGroundView::Dispose();
    }
 #endif

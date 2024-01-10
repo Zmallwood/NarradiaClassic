@@ -417,34 +417,34 @@ namespace Narradia {
 #if 1
 // EngineV
 #if 1
-   EngineV::~EngineV() {
+   EngineView::~EngineView() {
       if (k_verbose)
          std::cout << "Disposing EngineV\n";
    }
 
-   void EngineV::Render() {
+   void EngineView::Render() {
       try {
-         GraphicsV::get()->ClearCanvas();
-         PageMngrV::get()->RenderCurrScene();
-         ConsoleV::get()->Render();
-         CursorV::get()->RenderCursor();
-         GraphicsV::get()->PresentCanvas();
+         GraphicsView::get()->ClearCanvas();
+         PageMngrView::get()->RenderCurrScene();
+         ConsoleView::get()->Render();
+         CursorView::get()->RenderCursor();
+         GraphicsView::get()->PresentCanvas();
       } catch (std::exception &e) {
-         Console::get()->Print("Exception in EngineV::Render:" + std::string(e.what()));
+         Console::get()->Print("Exception in EngineView::Render:" + std::string(e.what()));
       }
    };
 #endif
 
       // PageMngrV
 #if 1
-   PageMngrV::PageMngrV() {
-      scene_views_[PageNames::Intro] = IntroPgV::get();
-      scene_views_[PageNames::MainMenu] = MainMenuPgV::get();
-      scene_views_[PageNames::MapCreation] = MapCreationPgV::get();
-      scene_views_[PageNames::Main] = MainPgV::get();
+   PageMngrView::PageMngrView() {
+      scene_views_[PageNames::Intro] = IntroPgView::get();
+      scene_views_[PageNames::MainMenu] = MainMenuPgView::get();
+      scene_views_[PageNames::MapCreation] = MapCreationPgView::get();
+      scene_views_[PageNames::Main] = MainPgView::get();
    }
 
-   void PageMngrV::RenderCurrScene() {
+   void PageMngrView::RenderCurrScene() {
       if (PageMngr::get()->curr_scene_canceled())
          return;
 
@@ -457,11 +457,11 @@ namespace Narradia {
 
    // IPageV
 #if 1
-   IPageV::IPageV()
+   IPageView::IPageView()
        : scene_gui_view_(MakeShared<nSceneGuiView>()) {
    }
 
-   void IPageV::Render() {
+   void IPageView::Render() {
       RenderDerived();
       scene_gui_view_->Render();
    }
@@ -469,13 +469,13 @@ namespace Narradia {
 
 // CursorV
 #if 1
-   CursorV::CursorV() {
+   CursorView::CursorView() {
       SDL_ShowCursor(0);
 
       rid_image = NewImage();
    }
 
-   void CursorV::RenderCursor() {
+   void CursorView::RenderCursor() {
       auto mouse_pos = MousePos();
       auto w = kCursorWidth;
       auto h = w * AspectRatio();
@@ -488,7 +488,7 @@ namespace Narradia {
 
    // GraphicsV
 #if 1
-   GraphicsV::GraphicsV() {
+   GraphicsView::GraphicsView() {
       auto win_size = Graphics::get()->win_size();
       auto win_flags = Graphics::get()->win_flags();
       auto win = SharedPtr<SDL_Window>(
@@ -510,15 +510,15 @@ namespace Narradia {
       InitGL();
    }
 
-   void GraphicsV::ClearCanvas() {
+   void GraphicsView::ClearCanvas() {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    }
 
-   void GraphicsV::PresentCanvas() {
+   void GraphicsView::PresentCanvas() {
       SDL_GL_SwapWindow(Graphics::get()->win().get());
    }
 
-   void GraphicsV::InitGL() {
+   void GraphicsView::InitGL() {
       glewExperimental = GL_TRUE;
       auto glew_error = glewInit();
 
@@ -543,7 +543,7 @@ namespace Narradia {
 
    // ConsoleV
 #if 1
-   ConsoleV::ConsoleV() {
+   ConsoleView::ConsoleView() {
       rid_image_ = NewImage();
       rid_split_line_ = NewImage();
       rid_cmd_line_input_arrow_ = NewImage();
@@ -553,7 +553,7 @@ namespace Narradia {
          rids_text_lines_.push_back(NewString());
    }
 
-   void ConsoleV::Render() const {
+   void ConsoleView::Render() const {
       auto model = Console::get();
 
       if (!model->enabled())

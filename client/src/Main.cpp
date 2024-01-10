@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
             EngineC::get()->HandleInput();
             EngineC::get()->UpdateGameFlow();
             Engine::get()->UpdateGameLogic();
-            EngineV::get()->Render();
+            EngineView::get()->Render();
             Engine::get()->Finalize();
          } catch (Exception &e) {
             Console::get()->Print("Exception in main: " + String(e.what()));

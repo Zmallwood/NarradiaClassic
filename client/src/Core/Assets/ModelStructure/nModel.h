@@ -13,7 +13,6 @@ namespace Narradia {
       auto AnimDuration() {
          return m_animDuration;
       }
-      
       auto ModelParts() {
          return m_modelParts;
       }

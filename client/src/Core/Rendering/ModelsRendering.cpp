@@ -13,7 +13,7 @@ namespace Narradia {
 #if 1
    // RendModelsV
 #if 1
-   RendModelsV::RendModelsV()
+   RendModelsView::RendModelsView()
        : timelines_(MakeShared<Map<StringView, Map<float, RenderID>>>()),
          model_ids_(MakeShared<Map<String, Map<int, Map<float, const BodyData>>>>()) {
       shader_program_view()->Create(vertex_shader_source_models, fragment_shader_source_models);
@@ -32,7 +32,7 @@ namespace Narradia {
       fog_color_models_ = k_fogColorModels;
    }
 
-   RendModelsV::~RendModelsV() {
+   RendModelsView::~RendModelsView() {
       if (k_verbose)
          std::cout << "Cleaning up RendModelsV.\n";
 
@@ -42,7 +42,7 @@ namespace Narradia {
          std::cout << "Cleaning up of RendModelsV finished.\n";
    }
 
-   RenderID RendModelsV::NewBodyKeyframe(StringView model_name, float ms_time) {
+   RenderID RendModelsView::NewBodyKeyframe(StringView model_name, float ms_time) {
       auto vao_id = renderer_base_->GenNewVAOId();
 
       if (timelines_->count(model_name) == 0)
@@ -53,7 +53,7 @@ namespace Narradia {
       return vao_id;
    }
 
-   void RendModelsV::NewBodyKeyframeGeometry(
+   void RendModelsView::NewBodyKeyframeGeometry(
        GLuint vao_id, Vec<Vertex3F> vertices, Vec<Point3F> vertex_normals) {
       glEnable(GL_DEPTH_TEST);
       UseVAOBegin(vao_id);
@@ -99,14 +99,14 @@ namespace Narradia {
       SetIndicesData(index_buffer_id, num_vertices, indices.data());
       SetData(
           position_buffer_id, num_vertices, positions.data(), BufferTypes::Positions3D,
-          RendModelsV::kLocationPosition);
+          RendModelsView::kLocationPosition);
       SetData(
           color_buffer_id, num_vertices, colors.data(), BufferTypes::Colors,
-          RendModelsV::kLocationColor);
-      SetData(uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, RendModelsV::kLocationUv);
+          RendModelsView::kLocationColor);
+      SetData(uv_buffer_id, num_vertices, uvs.data(), BufferTypes::Uvs, RendModelsView::kLocationUv);
       SetData(
           normal_buffer_id, num_vertices, normals.data(), BufferTypes::Normals,
-          RendModelsV::kLocationNormal);
+          RendModelsView::kLocationNormal);
       UseVAOEnd();
    }
 #endif
@@ -114,7 +114,7 @@ namespace Narradia {
    // Free functions
 #if 1
    void NewModel(StringView model_name) {
-      auto renderer = RendModelsV::get();
+      auto renderer = RendModelsView::get();
       auto model = nModelBank::get()->GetModel(model_name);
       auto model_ids = renderer->model_ids();
       model_ids->insert({model_name.data(), Map<int, Map<float, const BodyData>>()});
@@ -127,7 +127,7 @@ namespace Narradia {
             auto keyframe_time = keyframe.first;
             auto anim_key_body_keyframe = keyframe.second;
             auto vertex_count = anim_key_body_keyframe->vertices.size();
-            auto body_keyframe_id = RendModelsV::get()->NewBodyKeyframe(model_name, keyframe_time);
+            auto body_keyframe_id = RendModelsView::get()->NewBodyKeyframe(model_name, keyframe_time);
 
             if (model_ids->at(model_name.data()).count(i_body) == 0)
                model_ids->at(model_name.data()).insert({i_body, Map<float, const BodyData>()});
@@ -155,7 +155,7 @@ namespace Narradia {
                normals.push_back(n3f);
             }
 
-            RendModelsV::get()->NewBodyKeyframeGeometry(body_keyframe_id, vertices, normals);
+            RendModelsView::get()->NewBodyKeyframeGeometry(body_keyframe_id, vertices, normals);
          }
 
          i_body++;
@@ -165,7 +165,7 @@ namespace Narradia {
    void DrawModel(
        StringView model_name, float ms_time, Point3F position, float rotation, float scaling,
        float brightness, glm::vec3 color_mod, bool no_fog, bool no_lighting) {
-      auto renderer = RendModelsV::get();
+      auto renderer = RendModelsView::get();
       auto model_ids = renderer->model_ids();
       auto is_batch_drawing = renderer->is_batch_drawing();
 
@@ -215,8 +215,8 @@ namespace Narradia {
           player_space_coord.z);
       glUniform3fv(renderer->location_view_pos(), 1, glm::value_ptr(viewPos));
       glm::vec3 fogColorGl(
-          RendModelsV::get()->fog_color_models().r, RendModelsV::get()->fog_color_models().g,
-          RendModelsV::get()->fog_color_models().b);
+          RendModelsView::get()->fog_color_models().r, RendModelsView::get()->fog_color_models().g,
+          RendModelsView::get()->fog_color_models().b);
       glUniform3fv(renderer->location_fog_color(), 1, glm::value_ptr(fogColorGl));
       glUniform1f(renderer->location_alpha(), brightness);
       glUniform1f(renderer->location_no_fog(), no_fog ? 1.0f : 0.0f);
@@ -259,7 +259,7 @@ namespace Narradia {
    }
 
    void StartModelsBatchDrawing() {
-      auto renderer = RendModelsV::get();
+      auto renderer = RendModelsView::get();
       renderer->set_is_batch_drawing(true);
       glEnable(GL_DEPTH_TEST);
       glUseProgram(renderer->shader_program_view()->shader_program()->program_id());
@@ -270,7 +270,7 @@ namespace Narradia {
    }
 
    void StopModelsBatchDrawing() {
-      auto renderer = RendModelsV::get();
+      auto renderer = RendModelsView::get();
       renderer->set_is_batch_drawing(false);
    }
 #endif

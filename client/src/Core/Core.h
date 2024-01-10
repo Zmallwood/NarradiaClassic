@@ -303,28 +303,28 @@ namespace Narradia {
    // View
 
 #if 1
-   class EngineV : public Singleton<EngineV> {
+   class EngineView : public Singleton<EngineView> {
      public:
-      ~EngineV();
+      ~EngineView();
       void Render();
    };
 
-   class IPageV;
+   class IPageView;
 
-   class PageMngrV : public Singleton<PageMngrV> {
+   class PageMngrView : public Singleton<PageMngrView> {
      public:
-      PageMngrV();
+      PageMngrView();
       void RenderCurrScene();
 
      private:
-      Map<PageNames, SharedPtr<IPageV>> scene_views_;
+      Map<PageNames, SharedPtr<IPageView>> scene_views_;
    };
 
    class nSceneGuiView;
 
-   class IPageV {
+   class IPageView {
      public:
-      IPageV();
+      IPageView();
       void Render();
 
      protected:
@@ -333,9 +333,9 @@ namespace Narradia {
       SharedPtr<nSceneGuiView> scene_gui_view_;
    };
 
-   class CursorV : public Singleton<CursorV> {
+   class CursorView : public Singleton<CursorView> {
      public:
-      CursorV();
+      CursorView();
       void RenderCursor();
 
      private:
@@ -344,9 +344,9 @@ namespace Narradia {
       static constexpr float kCursorWidth = 0.02f;
    };
 
-   class GraphicsV : public Singleton<GraphicsV> {
+   class GraphicsView : public Singleton<GraphicsView> {
      public:
-      GraphicsV();
+      GraphicsView();
       void ClearCanvas();
       void PresentCanvas();
 
@@ -356,9 +356,9 @@ namespace Narradia {
       static constexpr bool kCullFace = false;
    };
 
-   class ConsoleV : public Singleton<ConsoleV> {
+   class ConsoleView : public Singleton<ConsoleView> {
      public:
-      ConsoleV();
+      ConsoleView();
       void Render() const;
 
      private:

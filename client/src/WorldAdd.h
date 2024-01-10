@@ -81,9 +81,9 @@ namespace Narradia {
 #if 1
    class Tile;
 
-   class WorldAddV : public Singleton<WorldAddV> {
+   class WorldAddView : public Singleton<WorldAddView> {
      public:
-      WorldAddV(bool simplified_ground = false);
+      WorldAddView(bool simplified_ground = false);
       void Render();
       void InitCurrWorldArea();
 

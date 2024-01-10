@@ -9,10 +9,10 @@ namespace Narradia {
 
    class Font;
 
-   class DrwTextV : public Singleton<DrwTextV> {
+   class RendTextView : public Singleton<RendTextView> {
      public:
-      DrwTextV();
-      ~DrwTextV();
+      RendTextView();
+      ~RendTextView();
       void RenderText(
           RenderID rid, StringView text, Color color, bool center_align, FontSizes font_size,
           String &out_unique_name_id, SizeF &out_size) const;

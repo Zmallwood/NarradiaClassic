@@ -85,7 +85,7 @@ namespace Narradia {
 #if 1
    // IntroPgV
 #if 1
-   IntroPgV::IntroPgV() {
+   IntroPgView ::IntroPgView () {
       scene_gui_view_->SetSceneGui(IntroPg::get()->scene_gui());
 
       rid_background = NewImage();
@@ -93,7 +93,7 @@ namespace Narradia {
       rid_text = NewString();
    }
 
-   void IntroPgV::RenderDerived() {
+   void IntroPgView ::RenderDerived() {
       RectF dest_background = {0.0f, 0.0f, 1.0f, 1.0f};
 
       DrawImage("DefaultSceneBackground", rid_background, dest_background);
@@ -109,7 +109,7 @@ namespace Narradia {
 
    // MainMenuPgV
 #if 1
-   MainMenuPgV::MainMenuPgV() {
+   MainMenuPgView::MainMenuPgView() {
       scene_gui_view_->SetSceneGui(MainMenuPg::get()->scene_gui());
       scene_gui_view_->AddGuiComponentView(MakeShared<nGuiButtonView>());
       scene_gui_view_->AddGuiComponentView(MakeShared<nGuiButtonView>());
@@ -118,33 +118,33 @@ namespace Narradia {
       rid_logo = NewImage();
    }
 
-   void MainMenuPgV::RenderDerived() {
+   void MainMenuPgView::RenderDerived() {
       DrawImage("MainMenuSceneBackground", rid_background, {0.0f, 0.0f, 1.0f, 1.0f});
       DrawImage("NarradiaLogo", rid_logo, {0.05f, 0.1f, 0.2f, 0.1f});
 
-      MenuModelsAddV::get()->Render();
+      MenuModelsAddView::get()->Render();
    }
 #endif
 
    // MapCreationPgV
 #if 1
-   void MapCreationPgV::RenderDerived() {
-      MapGenAddV::get()->Render();
+   void MapCreationPgView::RenderDerived() {
+      MapGenAddView::get()->Render();
    }
 #endif
 
    // MainPgV
 #if 1
-   MainPgV::MainPgV() {
+   MainPgView::MainPgView() {
       scene_gui_view_->SetSceneGui(MainPg::get()->scene_gui());
       scene_gui_view_->AddGuiComponentView(MakeShared<ExperienceBarV>());
       scene_gui_view_->AddGuiComponentView(MakeShared<StatusPanelV>());
       scene_gui_view_->AddGuiComponentView(MakeShared<GuiWindowWorldMapV>());
    }
 
-   void MainPgV::RenderDerived() {
-      WorldAddV::get()->Render();
-      FPSCounterAddV::get()->Render();
+   void MainPgView::RenderDerived() {
+      WorldAddView::get()->Render();
+      FPSCounterAddView::get()->Render();
    }
 #endif
 
@@ -174,7 +174,7 @@ namespace Narradia {
    // MainMenuPgC
 #if 1
    void MainMenuPgC::OnEnter() {
-      auto all_models = *nModelBank::get()->GetModels();
+      auto all_models = *nModelBank::get()->Models();
 
       for (auto &entry : all_models)
          NewModel(entry.first);

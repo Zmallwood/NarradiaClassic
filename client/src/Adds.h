@@ -86,16 +86,16 @@ namespace Narradia {
    // View
 
 #if 1
-   class FPSCounterAddV : public Singleton<FPSCounterAddV> {
+   class FPSCounterAddView : public Singleton<FPSCounterAddView> {
      public:
-      FPSCounterAddV();
+      FPSCounterAddView();
       void Render();
 
      private:
       RenderID rid_text;
    };
 
-   class MenuModelsAddV : public Singleton<MenuModelsAddV> {
+   class MenuModelsAddView : public Singleton<MenuModelsAddView> {
      public:
       void Render();
    };

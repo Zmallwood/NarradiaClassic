@@ -79,7 +79,7 @@ namespace Narradia {
 
             map_area = World::get()->CurrWorldArea();
 
-            WorldAddV::Dispose();
+            WorldAddView::Dispose();
             RendGroundView::Dispose();
          }
          // East
@@ -98,7 +98,7 @@ namespace Narradia {
 
             map_area = World::get()->CurrWorldArea();
 
-            WorldAddV::Dispose();
+            WorldAddView::Dispose();
             RendGroundView::Dispose();
          }
          // North
@@ -117,7 +117,7 @@ namespace Narradia {
 
             map_area = World::get()->CurrWorldArea();
 
-            WorldAddV::Dispose();
+            WorldAddView::Dispose();
             RendGroundView::Dispose();
          }
          // South
@@ -136,7 +136,7 @@ namespace Narradia {
 
             map_area = World::get()->CurrWorldArea();
 
-            WorldAddV::Dispose();
+            WorldAddView::Dispose();
             RendGroundView::Dispose();
          }
 

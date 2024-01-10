@@ -47,9 +47,9 @@ namespace Narradia {
    // View
 
 #if 1
-   class IntroPgV : public IPageV, public Singleton<IntroPgV> {
+   class IntroPgView : public IPageView, public Singleton<IntroPgView> {
      public:
-      IntroPgV();
+      IntroPgView();
 
      private:
       void RenderDerived() override;
@@ -59,9 +59,9 @@ namespace Narradia {
       RenderID rid_text;
    };
 
-   class MainMenuPgV : public IPageV, public Singleton<MainMenuPgV> {
+   class MainMenuPgView : public IPageView, public Singleton<MainMenuPgView> {
      public:
-      MainMenuPgV();
+      MainMenuPgView();
 
      private:
       void RenderDerived() override;
@@ -70,14 +70,14 @@ namespace Narradia {
       RenderID rid_logo;
    };
 
-   class MapCreationPgV : public IPageV, public Singleton<MapCreationPgV> {
+   class MapCreationPgView : public IPageView, public Singleton<MapCreationPgView> {
      private:
       void RenderDerived() override;
    };
 
-   class MainPgV : public IPageV, public Singleton<MainPgV> {
+   class MainPgView : public IPageView, public Singleton<MainPgView> {
      public:
-      MainPgV();
+      MainPgView();
 
      private:
       void RenderDerived() override;

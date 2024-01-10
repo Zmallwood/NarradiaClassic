@@ -15,11 +15,11 @@
       "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/cmake_pch.hxx",
       "-c",
       "-o",
-      "CMakeFiles/NarradiaClassic.dir/src/GuiMainPg.cpp.o",
-      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/GuiMainPg.cpp"
+      "CMakeFiles/NarradiaClassic.dir/src/WorldStructure/Actors/Player.cpp.o",
+      "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/WorldStructure/Actors/Player.cpp"
     ],
     "directory": "/home/andreas/Code/C++/NarradiaClassic/build_client",
-    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/GuiMainPg.cpp",
-    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/GuiMainPg.cpp.o"
+    "file": "/home/andreas/Code/C++/NarradiaClassic/repository/client/src/WorldStructure/Actors/Player.cpp",
+    "output": "/home/andreas/Code/C++/NarradiaClassic/build_client/CMakeFiles/NarradiaClassic.dir/src/WorldStructure/Actors/Player.cpp.o"
   }
 ]

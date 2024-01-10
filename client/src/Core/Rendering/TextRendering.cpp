@@ -12,7 +12,7 @@ namespace Narradia {
 #if 1
    // DrwText
 #if 1
-   DrwTextV::DrwTextV()
+   RendTextView::RendTextView()
        : unique_name_ids_(MakeShared<std::map<RenderID, std::string>>()) {
       TTF_Init();
 
@@ -22,12 +22,12 @@ namespace Narradia {
       fonts_.insert({FontSizes::_40, MakeShared<Font>(font_path.c_str(), 40)});
    }
 
-   DrwTextV::~DrwTextV() {
+   RendTextView::~RendTextView() {
       if (k_verbose)
          std::cout << "Disposing DrwText.\n";
    }
 
-   void DrwTextV::RenderText(
+   void RendTextView::RenderText(
        RenderID rid, StringView text, Color color, bool center_align, FontSizes font_size,
        String &out_unique_name_id, SizeF &out_size) const {
       auto font = fonts_.at(font_size)->SDL_font().get();
@@ -100,7 +100,7 @@ namespace Narradia {
       auto unique_name = "RenderedImage" + ToString(id);
       nImageBank::get()->CreateBlankTextImage(unique_name);
       auto rendid_image_rect = NewImage();
-      DrwTextV::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
+      RendTextView::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
 
       return rendid_image_rect;
    }
@@ -110,13 +110,13 @@ namespace Narradia {
        FontSizes font_size) {
       String unique_name_id;
       SizeF size;
-      DrwTextV::get()->RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
+      RendTextView::get()->RenderText(rid, text, color, center_align, font_size, unique_name_id, size);
       auto canvas_size = CanvasSize();
       auto rect = RectF{position.x, position.y, size.w, size.h};
       int text_w;
       int text_h;
       TTF_SizeText(
-          DrwTextV::get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
+          RendTextView::get()->fonts().at(font_size)->SDL_font().get(), text.data(), &text_w, &text_h);
       rect.y -= static_cast<float>(text_h / AspectRatio()) / canvas_size.h / 2.0f;
 
       if (center_align)
