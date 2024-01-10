@@ -4,21 +4,21 @@
 #include "ModelStructure/nModel.h"
 
 namespace Narradia {
-   ModelBank::ModelBank()
+   nModelBank::nModelBank()
        : m_models(MakeShared<Map<String, SharedPtr<nModel>>>()) {
       LoadModels();
    }
 
-   ModelBank::~ModelBank() {
+   nModelBank::~nModelBank() {
       if (k_verbose)
          std::cout << "Disposing ModelBank\n";
    }
 
-   SharedPtr<nModel> ModelBank::GetModel(StringView _modelName) {
+   SharedPtr<nModel> nModelBank::GetModel(StringView _modelName) {
       return m_models->at(_modelName.data());
    }
 
-   void ModelBank::LoadModels() {
+   void nModelBank::LoadModels() {
       using iterator = std ::filesystem::recursive_directory_iterator;
       auto _absModelsPath = String(SDL_GetBasePath()) + k_relModelsPath.data();
       for (const auto &_entry : iterator(_absModelsPath)) {
@@ -31,7 +31,7 @@ namespace Narradia {
       }
    }
 
-   SharedPtr<nModel> ModelBank::LoadSingleModel(StringView _path) {
+   SharedPtr<nModel> nModelBank::LoadSingleModel(StringView _path) {
       Assimp::Importer _importer;
       const aiScene *_rawModel= _importer.ReadFile(_path.data(), 0);
       return nModelCreator::get()->CreateModel(_rawModel);

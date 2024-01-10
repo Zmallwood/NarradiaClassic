@@ -2,11 +2,11 @@
 #include "Conf/Constants.h"
 
 namespace Narradia {
-   ImageBank::ImageBank() {
+   nImageBank::nImageBank() {
       LoadImages();
    }
 
-   ImageBank::~ImageBank() {
+   nImageBank::~nImageBank() {
       if (k_verbose)
          std::cout << "Cleaning up ImageBank\n";
       for (const auto &_img : m_images)
@@ -15,20 +15,20 @@ namespace Narradia {
          std::cout << "Cleaning up of ImageBank finished.\n";
    }
 
-   GLuint ImageBank::GetImage(StringView _imgName) {
+   GLuint nImageBank::GetImage(StringView _imgName) {
       for (auto _img : m_images)
          if (_img.first == _imgName)
             return _img.second;
       return -1;
    }
 
-   void ImageBank::CreateBlankTextImage(String _uniqueImgName) {
+   void nImageBank::CreateBlankTextImage(String _uniqueImgName) {
       GLuint __texId;
       glGenTextures(1, &__texId);
       m_images.insert({_uniqueImgName, __texId});
    }
 
-   void ImageBank::LoadImages() {
+   void nImageBank::LoadImages() {
       using iterator = std::filesystem::recursive_directory_iterator;
       auto _allImagesPath = String(SDL_GetBasePath()) + k_relImagesPath.data();
       for (auto &_entry : iterator(_allImagesPath)) {
@@ -41,7 +41,7 @@ namespace Narradia {
       }
    }
 
-   GLuint ImageBank::LoadSingleImage(StringView _absFilePath) {
+   GLuint nImageBank::LoadSingleImage(StringView _absFilePath) {
       GLuint _texId;
       auto _surf = IMG_Load(_absFilePath.data());
       glEnable(GL_TEXTURE_2D);

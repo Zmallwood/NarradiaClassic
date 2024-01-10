@@ -46,7 +46,7 @@ namespace Narradia {
       auto text_surface = TTF_RenderText_Blended(font, text.data(), sdl_color);
       glEnable(GL_TEXTURE_2D);
       auto unique_name_id = unique_name_ids_->at(rid);
-      auto image_id = ImageBank::get()->GetImage(unique_name_id.c_str());
+      auto image_id = nImageBank::get()->GetImage(unique_name_id.c_str());
       glBindTexture(GL_TEXTURE_2D, image_id);
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -98,7 +98,7 @@ namespace Narradia {
 
       auto id = id_counter++;
       auto unique_name = "RenderedImage" + ToString(id);
-      ImageBank::get()->CreateBlankTextImage(unique_name);
+      nImageBank::get()->CreateBlankTextImage(unique_name);
       auto rendid_image_rect = NewImage();
       DrwTextV::get()->unique_name_ids()->insert({rendid_image_rect, unique_name});
 

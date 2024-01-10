@@ -3,9 +3,9 @@
 #include "nGuiComponentView.h"
 
 namespace Narradia {
-   class GuiButtonView : public GuiComponentView {
+   class nGuiButtonView : public nGuiComponentView {
      public:
-      GuiButtonView();
+      nGuiButtonView();
       void Render() override;
 
      private:

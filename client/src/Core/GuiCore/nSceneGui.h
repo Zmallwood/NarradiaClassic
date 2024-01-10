@@ -1,22 +1,22 @@
 #pragma once
 
 namespace Narradia {
-   class GuiComponent;
+   class nGuiComponent;
 
-   class SceneGui {
+   class nSceneGui {
      public:
-      SceneGui()
-          : m_guiComponents(MakeShared<Vec<SharedPtr<GuiComponent>>>()) {
+      nSceneGui()
+          : m_guiComponents(MakeShared<Vec<SharedPtr<nGuiComponent>>>()) {
       }
       void UpdateGameLogic();
-      void AddGuiComponent(SharedPtr<GuiComponent> _comp);
-      void RemoveGuiComponent(GuiComponent *_comp);
+      void AddGuiComponent(SharedPtr<nGuiComponent> _comp);
+      void RemoveGuiComponent(nGuiComponent *_comp);
 
-      auto GetGuiComponents() {
+      auto GuiComponents() {
          return m_guiComponents;
       }
 
      private:
-      SharedPtr<Vec<SharedPtr<GuiComponent>>> m_guiComponents;
+      SharedPtr<Vec<SharedPtr<nGuiComponent>>> m_guiComponents;
    };
 }

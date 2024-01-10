@@ -37,7 +37,7 @@ namespace Narradia {
       _verts[2].uv = {1.0f, 0.0f};
       _verts[3].uv = {1.0f, 1.0f};
       glDisable(GL_DEPTH_TEST);
-      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      auto _imgID = nImageBank::get()->GetImage(_imgName);
       glBindTexture(GL_TEXTURE_2D, _imgID);
       auto _indices = std::vector<int>(RendBase::kNumVerticesInRectangle);
       std::iota(std::begin(_indices), std::end(_indices), 0);

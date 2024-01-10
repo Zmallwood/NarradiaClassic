@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Narradia {
-   class GuiComponent {
+   class nGuiComponent {
      public:
       virtual void UpdateGameLogic() = 0;
    };

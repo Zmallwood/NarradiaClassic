@@ -5,24 +5,24 @@
 #include "nGuiWindowCloseButtonView.h"
 
 namespace Narradia {
-   GuiWindowView::GuiWindowView()
-       : m_guiWindowCloseButtonView(MakeShared<GuiWindowCloseButtonView>()) {
+   nGuiWindowView::nGuiWindowView()
+       : m_guiWindowCloseButtonView(MakeShared<nGuiWindowCloseButtonView>()) {
       m_RIDBackground = NewImage();
       m_RIDTitleBar = NewImage();
       m_RIDTitleText = NewString();
    }
 
-   void GuiWindowView::Render() {
-      auto _model = static_pointer_cast<GuiWindow>(m_guiComponent);
-      if (!_model->GetVisible())
+   void nGuiWindowView::Render() {
+      auto _model = static_pointer_cast<nGuiWindow>(m_guiComponent);
+      if (!_model->Visible())
          return;
-      DrawImage(_model->GetBgImageName(), m_RIDBackground, _model->Bounds());
+      DrawImage(_model->BgImageName(), m_RIDBackground, _model->Bounds());
       DrawImage("GuiWindowTitleBar", m_RIDTitleBar, _model->AbsTitleBarBounds());
       m_guiWindowCloseButtonView->Render();
       DrawString(
-          m_RIDTitleText, _model->GetTitle(),
+          m_RIDTitleText, _model->Title(),
           _model->Bounds().GetPosition().Translate(0.005f, 0.01f));
       RenderDerived();
-      GuiMovableContainerView::Render();
+      nGuiMovableContainerView::Render();
    }
 }

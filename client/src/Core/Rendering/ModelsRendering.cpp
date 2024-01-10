@@ -1,10 +1,10 @@
 #include "ModelsRendering.h"
+#include "Core/Assets/ModelStructure/nModel.h"
+#include "Core/Assets/nImageBank.h"
+#include "Core/Assets/nModelBank.h"
 #include "Math/Calc.h"
 #include "WorldStructure/Actors/Player.h"
 #include "WorldStructure/WorldStructure.h"
-#include "Core/Assets/nModelBank.h"
-#include "Core/Assets/ModelStructure/nModel.h"
-#include "Core/Assets/nImageBank.h"
 
 namespace Narradia {
 
@@ -115,13 +115,13 @@ namespace Narradia {
 #if 1
    void NewModel(StringView model_name) {
       auto renderer = RendModelsV::get();
-      auto model = ModelBank::get()->GetModel(model_name);
+      auto model = nModelBank::get()->GetModel(model_name);
       auto model_ids = renderer->model_ids();
       model_ids->insert({model_name.data(), Map<int, Map<float, const BodyData>>()});
       auto i_body = 0;
 
-      for (auto &body : *model->GetModelParts()) {
-         auto &timelines = body->GetTimeline()->keyframes;
+      for (auto &body : *model->ModelParts()) {
+         auto &timelines = body->Timeline()->keyframes;
 
          for (auto &keyframe : timelines) {
             auto keyframe_time = keyframe.first;
@@ -134,10 +134,10 @@ namespace Narradia {
 
             BodyData body_data;
             body_data.rid = body_keyframe_id;
-            body_data.image_name = body->GetTexName();
+            body_data.image_name = body->TexName();
             body_data.num_vertices = vertex_count;
             model_ids->at(model_name.data()).at(i_body).insert({keyframe_time, body_data});
-            auto &model_keyframe = body->GetTimeline()->keyframes.at(keyframe_time);
+            auto &model_keyframe = body->Timeline()->keyframes.at(keyframe_time);
             Vec<Vertex3F> vertices;
             Vec<Point3F> normals;
             auto &anim_vertices = model_keyframe->vertices;
@@ -222,14 +222,14 @@ namespace Narradia {
       glUniform1f(renderer->location_no_fog(), no_fog ? 1.0f : 0.0f);
       glUniform1f(renderer->location_no_lighting(), no_lighting ? 1.0f : 0.0f);
       auto &all_nodes = model_ids->at(model_name.data());
-      auto p_model = ModelBank::get()->GetModel(model_name);
+      auto p_model = nModelBank::get()->GetModel(model_name);
       int ms_time_used;
 
-      if (p_model->GetAnimDuration() == 0)
+      if (p_model->AnimDuration() == 0)
          ms_time_used = 0;
       else
          ms_time_used = static_cast<int>(ms_time * renderer->global_animation_speed()) %
-                        p_model->GetAnimDuration();
+                        p_model->AnimDuration();
 
       auto &model_data = all_nodes;
 
@@ -247,7 +247,7 @@ namespace Narradia {
 
          auto &body_data = timeline.at(found_time);
          glBindVertexArray(body_data.rid);
-         auto image_id = ImageBank::get()->GetImage(body_data.image_name);
+         auto image_id = nImageBank::get()->GetImage(body_data.image_name);
          glBindTexture(GL_TEXTURE_2D, image_id);
          glDrawElements(GL_TRIANGLES, body_data.num_vertices, GL_UNSIGNED_INT, NULL);
       }

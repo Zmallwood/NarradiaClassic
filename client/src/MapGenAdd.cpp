@@ -53,10 +53,10 @@ namespace Narradia {
             Camera::get()->set_vertical_angle_deg(orig_camera_vert_angle);
             // GraphicsV::get()->PresentCanvas();
 
-            ImageBank::get()->CreateBlankTextImage(
+            nImageBank::get()->CreateBlankTextImage(
                 "WorldMapImage" + ToString(x) + "_" + ToString(y));
             auto tex =
-                ImageBank::get()->GetImage("WorldMapImage" + ToString(x) + "_" + ToString(y));
+                nImageBank::get()->GetImage("WorldMapImage" + ToString(x) + "_" + ToString(y));
             glBindTexture(GL_TEXTURE_2D, tex);
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

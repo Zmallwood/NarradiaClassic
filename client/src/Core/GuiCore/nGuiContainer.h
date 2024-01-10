@@ -3,25 +3,23 @@
 #include "nGuiComponent.h"
 
 namespace Narradia {
-   class GuiContainer : public GuiComponent {
+   class nGuiContainer : public nGuiComponent {
      public:
-      GuiContainer(PointF _pos, SizeF _size)
+      nGuiContainer(PointF _pos, SizeF _size)
           : m_pos(_pos),
             m_size(_size),
-            m_guiComponents(MakeShared<Vec<SharedPtr<GuiComponent>>>()) {
+            m_guiComponents(MakeShared<Vec<SharedPtr<nGuiComponent>>>()) {
       }
-      void AddGuiComponent(SharedPtr<GuiComponent> _comp);
+      void AddGuiComponent(SharedPtr<nGuiComponent> _comp);
       RectF Bounds();
 
-      auto GetPos() {
+      auto Pos() {
          return m_pos;
       }
-
-      auto GetSize() {
+      auto Size() {
          return m_size;
       }
-
-      auto GetGuiComponents() {
+      auto GuiComponents() {
          return m_guiComponents;
       }
 
@@ -35,6 +33,6 @@ namespace Narradia {
      private:
       PointF m_pos;
       SizeF m_size;
-      SharedPtr<Vec<SharedPtr<GuiComponent>>> m_guiComponents;
+      SharedPtr<Vec<SharedPtr<nGuiComponent>>> m_guiComponents;
    };
 }

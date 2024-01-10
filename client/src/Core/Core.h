@@ -69,7 +69,7 @@ namespace Narradia {
       bool curr_scene_canceled_ = false;
    };
 
-   class SceneGui;
+   class nSceneGui;
 
    class IPage {
      public:
@@ -84,7 +84,7 @@ namespace Narradia {
      protected:
       virtual void UpdateGameLogicDerived() = 0;
 
-      SharedPtr<SceneGui> scene_gui_;
+      SharedPtr<nSceneGui> scene_gui_;
    };
 
    enum class CursorStyles { Default, Hovering, Rotating, Attack };
@@ -320,7 +320,7 @@ namespace Narradia {
       Map<PageNames, SharedPtr<IPageV>> scene_views_;
    };
 
-   class SceneGuiView;
+   class nSceneGuiView;
 
    class IPageV {
      public:
@@ -330,7 +330,7 @@ namespace Narradia {
      protected:
       virtual void RenderDerived() = 0;
 
-      SharedPtr<SceneGuiView> scene_gui_view_;
+      SharedPtr<nSceneGuiView> scene_gui_view_;
    };
 
    class CursorV : public Singleton<CursorV> {

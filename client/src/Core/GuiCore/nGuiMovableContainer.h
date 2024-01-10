@@ -3,10 +3,10 @@
 #include "nGuiContainer.h"
 
 namespace Narradia {
-   class GuiMovableContainer : public GuiContainer {
+   class nGuiMovableContainer : public nGuiContainer {
      public:
-      GuiMovableContainer(RectF _relDragableArea, PointF _pos, SizeF _size)
-          : GuiContainer(_pos, _size),
+      nGuiMovableContainer(RectF _relDragableArea, PointF _pos, SizeF _size)
+          : nGuiContainer(_pos, _size),
             m_relDragableArea(_relDragableArea) {
       }
 

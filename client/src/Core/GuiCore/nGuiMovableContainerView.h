@@ -3,7 +3,7 @@
 #include "nGuiContainerView.h"
 
 namespace Narradia {
-   class GuiMovableContainerView : public GuiContainerView {
+   class nGuiMovableContainerView : public nGuiContainerView {
      protected:
       void Render() override;
    };

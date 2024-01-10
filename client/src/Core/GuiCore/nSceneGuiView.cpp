@@ -3,13 +3,13 @@
 #include "nSceneGui.h"
 
 namespace Narradia {
-   void SceneGuiView::Render() {
+   void nSceneGuiView::Render() {
       for (auto _guiComponentView : m_guiComponentViews)
          _guiComponentView->Render();
    }
 
-   void SceneGuiView::AddGuiComponentView(SharedPtr<GuiComponentView> _compView) {
-      auto _compModel = m_sceneGui->GetGuiComponents()->at(m_guiComponentViews.size());
+   void nSceneGuiView::AddGuiComponentView(SharedPtr<nGuiComponentView> _compView) {
+      auto _compModel = m_sceneGui->GuiComponents()->at(m_guiComponentViews.size());
       _compView->SetGuiComponent(_compModel);
       m_guiComponentViews.push_back(_compView);
    }

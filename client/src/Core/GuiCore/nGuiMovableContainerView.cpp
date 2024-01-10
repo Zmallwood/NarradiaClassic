@@ -1,7 +1,7 @@
 #include "nGuiMovableContainerView.h"
 
 namespace Narradia {
-   void GuiMovableContainerView::Render() {
-      GuiContainerView::Render();
+   void nGuiMovableContainerView::Render() {
+      nGuiContainerView::Render();
    }
 }

@@ -1,21 +1,20 @@
 #pragma once
 
 namespace Narradia {
-   class GuiComponent;
+   class nGuiComponent;
 
-   class GuiComponentView {
+   class nGuiComponentView {
      public:
       virtual void Render() = 0;
 
-      auto GetGuiComponent() {
+      auto GuiComponent() {
          return m_guiComponent;
       }
-
-      void SetGuiComponent(SharedPtr<GuiComponent> _value) {
+      void SetGuiComponent(SharedPtr<nGuiComponent> _value) {
          m_guiComponent = _value;
       }
 
      protected:
-      SharedPtr<GuiComponent> m_guiComponent;
+      SharedPtr<nGuiComponent> m_guiComponent;
    };
 }

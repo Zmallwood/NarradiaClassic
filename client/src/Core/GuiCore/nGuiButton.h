@@ -3,10 +3,10 @@
 #include "nGuiComponent.h"
 
 namespace Narradia {
-   class GuiButton : public GuiComponent {
+   class nGuiButton : public nGuiComponent {
      public:
       // clang-format off
-      GuiButton(
+      nGuiButton(
          const StringView &_text, 
          RectF _bounds,
          Function<void()> _action,
@@ -15,23 +15,19 @@ namespace Narradia {
       // clang-format on
       void UpdateGameLogic() override;
 
-      auto GetText() {
+      auto Text() {
          return m_text;
       }
-
-      auto GetBounds() {
+      auto Bounds() {
          return m_bounds;
       }
-
-      auto GetImgName() {
+      auto ImgName() {
          return m_imgName;
       }
-
-      auto GetHoveredImgName() {
+      auto HoveredImgName() {
          return m_hoveredImgName;
       }
-
-      auto GetHovered() {
+      auto Hovered() {
          return m_hovered;
       }
 

@@ -85,7 +85,7 @@ namespace Narradia {
    // IPage
 #if 1
    IPage::IPage()
-       : scene_gui_(MakeShared<SceneGui>()) {
+       : scene_gui_(MakeShared<nSceneGui>()) {
    }
 
    void IPage::UpdateGameLogic() {
@@ -458,7 +458,7 @@ namespace Narradia {
    // IPageV
 #if 1
    IPageV::IPageV()
-       : scene_gui_view_(MakeShared<SceneGuiView>()) {
+       : scene_gui_view_(MakeShared<nSceneGuiView>()) {
    }
 
    void IPageV::Render() {

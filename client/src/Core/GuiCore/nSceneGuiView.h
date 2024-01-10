@@ -1,20 +1,20 @@
 #pragma once
 
 namespace Narradia {
-   class GuiComponentView;
-   class SceneGui;
+   class nGuiComponentView;
+   class nSceneGui;
 
-   class SceneGuiView {
+   class nSceneGuiView {
      public:
       void Render();
-      void AddGuiComponentView(SharedPtr<GuiComponentView> _compView);
+      void AddGuiComponentView(SharedPtr<nGuiComponentView> _compView);
 
-      void SetSceneGui(SharedPtr<SceneGui> _value) {
+      void SetSceneGui(SharedPtr<nSceneGui> _value) {
          m_sceneGui = _value;
       }
 
      private:
-      SharedPtr<SceneGui> m_sceneGui;
-      Vec<SharedPtr<GuiComponentView>> m_guiComponentViews;
+      SharedPtr<nSceneGui> m_sceneGui;
+      Vec<SharedPtr<nGuiComponentView>> m_guiComponentViews;
    };
 }

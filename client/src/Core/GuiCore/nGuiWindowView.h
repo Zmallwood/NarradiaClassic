@@ -3,13 +3,13 @@
 #include "nGuiMovableContainerView.h"
 
 namespace Narradia {
-   class GuiWindowCloseButtonView;
+   class nGuiWindowCloseButtonView;
 
-   class GuiWindowView : public GuiMovableContainerView {
+   class nGuiWindowView : public nGuiMovableContainerView {
      public:
-      GuiWindowView();
+      nGuiWindowView();
 
-      auto GetGuiWindowCloseButtonView() {
+      auto GuiWindowCloseButtonView() {
          return m_guiWindowCloseButtonView;
       }
 
@@ -22,6 +22,6 @@ namespace Narradia {
       RenderID m_RIDBackground;
       RenderID m_RIDTitleBar;
       RenderID m_RIDTitleText;
-      SharedPtr<GuiWindowCloseButtonView> m_guiWindowCloseButtonView;
+      SharedPtr<nGuiWindowCloseButtonView> m_guiWindowCloseButtonView;
    };
 }

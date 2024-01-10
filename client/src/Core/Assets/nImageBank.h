@@ -1,10 +1,10 @@
 #pragma once
 
 namespace Narradia {
-   class ImageBank : public Singleton<ImageBank> {
+   class nImageBank : public Singleton<nImageBank> {
      public:
-      ImageBank();
-      ~ImageBank();
+      nImageBank();
+      ~nImageBank();
       GLuint GetImage(StringView _imgName);
       void CreateBlankTextImage(String _uniqueImgName);
 

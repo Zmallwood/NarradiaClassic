@@ -1,19 +1,19 @@
 #pragma once
 
 namespace Narradia {
-   class GuiWindowCloseButton;
+   class nGuiWindowCloseButton;
 
-   class GuiWindowCloseButtonView {
+   class nGuiWindowCloseButtonView {
      public:
-      GuiWindowCloseButtonView();
+      nGuiWindowCloseButtonView();
       void Render();
 
-      void SetModel(SharedPtr<GuiWindowCloseButton> _value) {
+      void SetModel(SharedPtr<nGuiWindowCloseButton> _value) {
          m_model = _value;
       }
 
      private:
-      SharedPtr<GuiWindowCloseButton> m_model;
+      SharedPtr<nGuiWindowCloseButton> m_model;
       RenderID m_RIDCloseButtonImg;
    };
 }

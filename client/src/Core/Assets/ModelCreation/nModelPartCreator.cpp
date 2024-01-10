@@ -137,9 +137,9 @@ namespace Narradia {
          auto _keyframeTime = static_cast<float>(_posKeyframe.mTime);
          auto _newModelPartKeyframe = NewModelPartKeyframe(
              _rawModel, _nodeName, _mesh, _posKeyframe, _rotKeyframe, _scalKeyframe);
-         _newModelPart->GetTimeline()->keyframes.insert({_keyframeTime, _newModelPartKeyframe});
+         _newModelPart->Timeline()->keyframes.insert({_keyframeTime, _newModelPartKeyframe});
          if (_noKeyframeAtTime0Exists && _k == 0)
-            _newModelPart->GetTimeline()->keyframes.insert({0.0f, _newModelPartKeyframe});
+            _newModelPart->Timeline()->keyframes.insert({0.0f, _newModelPartKeyframe});
       }
       return _newModelPart;
    }

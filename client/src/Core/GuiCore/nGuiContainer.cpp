@@ -1,16 +1,16 @@
 #include "nGuiContainer.h"
 
 namespace Narradia {
-   void GuiContainer::UpdateGameLogic() {
+   void nGuiContainer::UpdateGameLogic() {
       for (auto &_comp : *m_guiComponents)
          _comp->UpdateGameLogic();
    }
 
-   void GuiContainer::AddGuiComponent(SharedPtr<GuiComponent> _comp) {
+   void nGuiContainer::AddGuiComponent(SharedPtr<nGuiComponent> _comp) {
       m_guiComponents->push_back(_comp);
    }
 
-   RectF GuiContainer::Bounds() {
+   RectF nGuiContainer::Bounds() {
       return {m_pos.x, m_pos.y, m_size.w, m_size.h};
    }
 }

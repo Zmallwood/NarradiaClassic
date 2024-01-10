@@ -126,8 +126,8 @@ namespace Narradia {
    // GuiWindowWorldMapV
 #if 1
    GuiWindowWorldMapV::GuiWindowWorldMapV() {
-      GetGuiWindowCloseButtonView()->SetModel(
-          GuiWindowWorldMap::get()->GetCloseButton());
+      GuiWindowCloseButtonView()->SetModel(
+          GuiWindowWorldMap::get()->CloseButton());
 
       rid_img_ = NewImage();
 
@@ -146,14 +146,14 @@ namespace Narradia {
    }
 
    void GuiWindowWorldMapV::RenderDerived() {
-      auto model = static_pointer_cast<GuiWindow>(m_guiComponent);
+      auto model = static_pointer_cast<nGuiWindow>(m_guiComponent);
 
       auto world_w = World::get()->world_width();
       auto world_h = World::get()->world_height();
 
       auto bounds = model->Bounds();
-      bounds.y += GuiWindow::k_titleBarHeight+ GuiWindow::k_margin;
-      bounds.h -= GuiWindow::k_titleBarHeight+ 3 * GuiWindow::k_margin;
+      bounds.y += nGuiWindow::k_titleBarHeight+ nGuiWindow::k_margin;
+      bounds.h -= nGuiWindow::k_titleBarHeight+ 3 * nGuiWindow::k_margin;
 
       auto cell_width = bounds.w / world_w;
       auto cell_height = WidthToHeight(cell_width);

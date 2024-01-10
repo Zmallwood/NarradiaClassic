@@ -31,11 +31,11 @@ namespace Narradia {
 #if 1
    MainMenuPg::MainMenuPg() {
       scene_gui()->AddGuiComponent(
-          MakeShared<GuiButton>("Play", RectF{0.05f, 0.4f, 0.2f, 0.1f}, [] {
+          MakeShared<nGuiButton>("Play", RectF{0.05f, 0.4f, 0.2f, 0.1f}, [] {
              PageMngrC::get()->ChangeScene(PageNames::MapCreation);
           }));
 
-      scene_gui()->AddGuiComponent(MakeShared<GuiButton>(
+      scene_gui()->AddGuiComponent(MakeShared<nGuiButton>(
           "Exit", RectF{0.05f, 0.55f, 0.2f, 0.1f}, [] { Engine::get()->set_running(false); }));
    }
 
@@ -111,8 +111,8 @@ namespace Narradia {
 #if 1
    MainMenuPgV::MainMenuPgV() {
       scene_gui_view_->SetSceneGui(MainMenuPg::get()->scene_gui());
-      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonView>());
-      scene_gui_view_->AddGuiComponentView(MakeShared<GuiButtonView>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<nGuiButtonView>());
+      scene_gui_view_->AddGuiComponentView(MakeShared<nGuiButtonView>());
 
       rid_background = NewImage();
       rid_logo = NewImage();
@@ -174,7 +174,7 @@ namespace Narradia {
    // MainMenuPgC
 #if 1
    void MainMenuPgC::OnEnter() {
-      auto all_models = *ModelBank::get()->GetModels();
+      auto all_models = *nModelBank::get()->GetModels();
 
       for (auto &entry : all_models)
          NewModel(entry.first);

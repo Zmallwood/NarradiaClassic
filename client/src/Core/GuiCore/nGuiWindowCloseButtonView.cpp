@@ -3,12 +3,12 @@
 #include "nGuiWindowCloseButton.h"
 
 namespace Narradia {
-   GuiWindowCloseButtonView::GuiWindowCloseButtonView() {
+   nGuiWindowCloseButtonView::nGuiWindowCloseButtonView() {
       m_RIDCloseButtonImg = NewImage();
    }
 
-   void GuiWindowCloseButtonView::Render() {
-      if (m_model->GetHovered())
+   void nGuiWindowCloseButtonView::Render() {
+      if (m_model->Hovered())
          DrawImage("GuiWindowCloseButtonHovered", m_RIDCloseButtonImg, m_model->Bounds());
       else
          DrawImage("GuiWindowCloseButton", m_RIDCloseButtonImg, m_model->Bounds());

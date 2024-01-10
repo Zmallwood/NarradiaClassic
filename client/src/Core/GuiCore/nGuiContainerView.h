@@ -3,19 +3,19 @@
 #include "nGuiComponentView.h"
 
 namespace Narradia {
-   class GuiContainer;
+   class nGuiContainer;
 
-   class GuiContainerView : public GuiComponentView {
+   class nGuiContainerView : public nGuiComponentView {
      protected:
       void Render() override;
-      void AddGuiComponentView(SharedPtr<GuiComponentView> _compView);
+      void AddGuiComponentView(SharedPtr<nGuiComponentView> _compView);
 
-      void SetGuiContainer(SharedPtr<GuiContainer> _value) {
+      void SetGuiContainer(SharedPtr<nGuiContainer> _value) {
          m_guiContainer = _value;
       }
 
      private:
-      SharedPtr<GuiContainer> m_guiContainer;
-      Vec<SharedPtr<GuiComponentView>> m_guiComponentViews;
+      SharedPtr<nGuiContainer> m_guiContainer;
+      Vec<SharedPtr<nGuiComponentView>> m_guiComponentViews;
    };
 }

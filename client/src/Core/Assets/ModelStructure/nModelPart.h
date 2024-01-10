@@ -9,7 +9,7 @@ namespace Narradia {
           : m_timeline(MakeShared<nTimeline>()) {
       }
 
-      auto GetTexName() {
+      auto TexName() {
          return m_texName;
       }
 
@@ -17,7 +17,7 @@ namespace Narradia {
          m_texName= _value;
       }
 
-      auto GetTimeline() {
+      auto Timeline() {
          return m_timeline;
       }
 

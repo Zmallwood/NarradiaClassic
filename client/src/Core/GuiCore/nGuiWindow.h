@@ -3,39 +3,35 @@
 #include "nGuiMovableContainer.h"
 
 namespace Narradia {
-   class GuiWindowCloseButton;
+   class nGuiWindowCloseButton;
 
-   class GuiWindow : public GuiMovableContainer {
+   class nGuiWindow : public nGuiMovableContainer {
      public:
       // clang-format off
-      GuiWindow(
+      nGuiWindow(
          StringView _title,
          RectF _bounds,
          bool _destroyOnClose = false,
          StringView _bgImageName = "PanelBg");
       // clang-format on
-      ~GuiWindow();
+      ~nGuiWindow();
       void Hide();
       void ToggleVisibility();
       RectF AbsTitleBarBounds();
 
-      auto GetDestroyOnClose() {
+      auto DestroyOnClose() {
          return m_destroyOnClose;
       }
-
-      auto GetVisible() {
+      auto Visible() {
          return m_visible;
       }
-
-      auto GetBgImageName() {
+      auto BgImageName() {
          return m_bgImageName;
       }
-
-      auto GetTitle() {
+      auto Title() {
          return m_title;
       }
-
-      auto GetCloseButton() {
+      auto CloseButton() {
          return m_closeButton;
       }
 
@@ -51,7 +47,7 @@ namespace Narradia {
       StringView m_title = "Unnamed window";
       bool m_visible = false;
       bool m_destroyOnClose = false;
-      SharedPtr<GuiWindowCloseButton> m_closeButton;
+      SharedPtr<nGuiWindowCloseButton> m_closeButton;
       StringView m_bgImageName;
    };
 }

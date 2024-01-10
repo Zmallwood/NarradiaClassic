@@ -192,7 +192,7 @@ namespace Narradia {
       glUseProgram(_rend->shader_program_view()->shader_program()->program_id());
       glEnable(GL_CULL_FACE);
       glCullFace(GL_FRONT);
-      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      auto _imgID = nImageBank::get()->GetImage(_imgName);
       glBindTexture(GL_TEXTURE_2D, _imgID);
       glBindVertexArray(_VAOID);
       glDrawElements(GL_TRIANGLES, _vert_count, GL_UNSIGNED_INT, NULL);
@@ -232,7 +232,7 @@ namespace Narradia {
              RendGroundView::get()->fog_color_ground().b);
          glUniform3fv(_rend->location_fog_color(), 1, glm::value_ptr(_fogColorGL));
       }
-      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      auto _imgID = nImageBank::get()->GetImage(_imgName);
       glBindTexture(GL_TEXTURE_2D, _imgID);
       glBindVertexArray(_VAOID);
       glDrawElements(GL_TRIANGLE_FAN, _vert_count, GL_UNSIGNED_INT, NULL);

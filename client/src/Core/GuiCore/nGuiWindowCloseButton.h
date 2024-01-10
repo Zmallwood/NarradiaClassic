@@ -1,24 +1,24 @@
 #pragma once
 
 namespace Narradia {
-   class GuiWindow;
+   class nGuiWindow;
 
-   class GuiWindowCloseButton {
+   class nGuiWindowCloseButton {
      public:
-      GuiWindowCloseButton(GuiWindow *_parentWindow)
+      nGuiWindowCloseButton(nGuiWindow *_parentWindow)
           : m_parentWindow(_parentWindow) {
       }
-      ~GuiWindowCloseButton();
+      ~nGuiWindowCloseButton();
       void UpdateGameLogic();
       RectF Bounds() const;
 
-      auto GetHovered() {
+      auto Hovered() {
          return m_hovered;
       }
 
      private:
       static constexpr float k_width = 0.01f;
-      GuiWindow *m_parentWindow;
+      nGuiWindow *m_parentWindow;
       bool m_hovered = false;
    };
 }

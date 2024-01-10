@@ -2,7 +2,7 @@
 
 namespace Narradia {
    // clang-format off
-   GuiButton::GuiButton(
+   nGuiButton::nGuiButton(
       const StringView &_text,
       RectF _bounds,
       Function<void()> _action,
@@ -16,7 +16,7 @@ namespace Narradia {
       m_hoveredImgName = _hoveredImgName;
    }
 
-   void GuiButton::UpdateGameLogic() {
+   void nGuiButton::UpdateGameLogic() {
       m_hovered = false;
       auto _usedBounds = m_bounds;
 

@@ -13,7 +13,7 @@ namespace Narradia {
 // Gui components
 #if 1
 #if 1
-   class StatusPanel : public GuiComponent, public Singleton<StatusPanel> {
+   class StatusPanel : public nGuiComponent, public Singleton<StatusPanel> {
      public:
       void UpdateGameLogic() override;
 
@@ -22,7 +22,7 @@ namespace Narradia {
       static constexpr RectF kStaminaBarBounds = {0.08f, 0.14f, 0.1f, 0.01f};
    };
 
-   class ExperienceBar : public GuiComponent {
+   class ExperienceBar : public nGuiComponent {
      public:
       void UpdateGameLogic() override;
 
@@ -34,10 +34,10 @@ namespace Narradia {
 // Gui windows
 #if 1
 #if 1
-   class GuiWindowWorldMap : public GuiWindow, public Singleton<GuiWindowWorldMap> {
+   class GuiWindowWorldMap : public nGuiWindow, public Singleton<GuiWindowWorldMap> {
      public:
       GuiWindowWorldMap()
-          : GuiWindow("World Map", {0.3f, 0.2f, 0.5f, 0.5f}) {
+          : nGuiWindow("World Map", {0.3f, 0.2f, 0.5f, 0.5f}) {
       }
 
      private:
@@ -50,7 +50,7 @@ namespace Narradia {
 #if 1
 // Gui components
 #if 1
-   class StatusPanelV : public GuiComponentView {
+   class StatusPanelV : public nGuiComponentView {
      public:
       StatusPanelV();
       void Render() override;
@@ -68,7 +68,7 @@ namespace Narradia {
       RenderID rid_level_;
    };
 
-   class ExperienceBarV : public GuiComponentView {
+   class ExperienceBarV : public nGuiComponentView {
      public:
       ExperienceBarV();
       void Render() override;
@@ -82,7 +82,7 @@ namespace Narradia {
 
 // Gui windows
 #if 1
-   class GuiWindowWorldMapV : public GuiWindowView {
+   class GuiWindowWorldMapV : public nGuiWindowView {
      public:
       GuiWindowWorldMapV();
 

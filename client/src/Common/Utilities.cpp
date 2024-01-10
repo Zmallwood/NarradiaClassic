@@ -22,7 +22,7 @@ namespace Narradia {
    Size TexDimensions(StringView _imgName) {
       Size _dim;
       int _mipLevel = 0;
-      auto _imgID = ImageBank::get()->GetImage(_imgName);
+      auto _imgID = nImageBank::get()->GetImage(_imgName);
       glBindTexture(GL_TEXTURE_2D, _imgID);
       glGetTexLevelParameteriv(GL_TEXTURE_2D, _mipLevel, GL_TEXTURE_WIDTH, &_dim.w);
       glGetTexLevelParameteriv(GL_TEXTURE_2D, _mipLevel, GL_TEXTURE_HEIGHT, &_dim.h);

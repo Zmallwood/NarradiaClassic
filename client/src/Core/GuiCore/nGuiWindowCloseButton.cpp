@@ -5,19 +5,19 @@
 #include "Pages.h"
 
 namespace Narradia {
-   GuiWindowCloseButton::~GuiWindowCloseButton() {
+   nGuiWindowCloseButton::~nGuiWindowCloseButton() {
       if (k_verbose)
          std::cout << "Disposing GuiWindowCloseButton.\n";
    }
 
-   void GuiWindowCloseButton::UpdateGameLogic() {
+   void nGuiWindowCloseButton::UpdateGameLogic() {
       m_hovered = false;
       if (Bounds().Contains(MousePos())) {
          Cursor::get()->set_style(CursorStyles::Hovering);
          m_hovered = true;
          MouseInput::get()->left_btn()->AddFiredAction(
              [&] {
-                if (m_parentWindow->GetDestroyOnClose()) {
+                if (m_parentWindow->DestroyOnClose()) {
                    if (PageMngr::get()->curr_scene() == PageNames::Main) {
                       auto _sceneGui = MainPg::get()->scene_gui();
                       _sceneGui->RemoveGuiComponent(m_parentWindow);
@@ -30,7 +30,7 @@ namespace Narradia {
       }
    }
 
-   RectF GuiWindowCloseButton::Bounds() const {
+   RectF nGuiWindowCloseButton::Bounds() const {
       auto _width = k_width;
       auto _height = WidthToHeight(_width);
       return RectF{

@@ -3,10 +3,10 @@
 namespace Narradia {
    class nModel;
 
-   class ModelBank : public Singleton<ModelBank> {
+   class nModelBank : public Singleton<nModelBank> {
      public:
-      ModelBank();
-      ~ModelBank();
+      nModelBank();
+      ~nModelBank();
       SharedPtr<nModel> GetModel(StringView _modelName);
 
       auto GetModels() {

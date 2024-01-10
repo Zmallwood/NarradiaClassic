@@ -10,11 +10,11 @@ namespace Narradia {
             m_modelParts(MakeShared<Vec<SharedPtr<nModelPart>>>()) {
       }
 
-      auto GetAnimDuration() {
+      auto AnimDuration() {
          return m_animDuration;
       }
       
-      auto GetModelParts() {
+      auto ModelParts() {
          return m_modelParts;
       }
 
